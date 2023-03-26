@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1679843652 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1679843654 0
+["pdflatex"] 1679844201 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1679844203 0
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbr10.pk" 1679843005 9388 ce5773ae3c25f206fd357f851c0301ec ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbrbx10.pk" 1679843002 9396 15cf81d8730d03d4020f8fb73d753ca4 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmtl10.pk" 1679843003 8732 a924ec40f67ec8d6ae53de26724691b6 ""
@@ -51,11 +51,11 @@
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/titlesec/titlesec.sty" 1625497667 48833 3b7b4cfab1a3d15596bfd3772a77ab65 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1463135581 57049 34128738f682d033422ca125f82e5d62 ""
   "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" 1679842906 385 36e15e20eafdf4c7109ec21fba4dd203 ""
-  "groupdata.tex" 1679843483 1119 996592df3804ec9619e70f5f885fd672 ""
+  "groupdata.tex" 1679844200 1120 b6f9a1a09706a61d2ef6135c08dcf6bf ""
   "local_macros.tex" 1679842501 1767 f5485e331c4de8db5b0cb832a8f3dbba ""
   "logos/DEI.pdf" 1679842501 295786 945427f4b2d699ba59e1be94beb88bb2 ""
   "logos/logo-unipd800.pdf" 1679842501 394708 68ef9087516729fe260e52a859f0e9dc ""
-  "main.aux" 1679843654 2221 5f9746db00be08b0a011f04f78475479 "pdflatex"
+  "main.aux" 1679844203 2221 5f9746db00be08b0a011f04f78475479 "pdflatex"
   "main.tex" 1679842906 385 36e15e20eafdf4c7109ec21fba4dd203 ""
   "sections/BLL/ClassDiagram.tex" 1679843648 568 dd0032f95084e8c67fb66dc2c1f253f8 ""
   "sections/BLL/RESTAPIDetails.tex" 1679842501 857 2f6e116072873574dbf289cdd0c7d922 ""
@@ -63,7 +63,7 @@
   "sections/BLL/RESTErrorCodes.tex" 1679842501 454 b934d4494c747c3fd9a4cae70ae5c1ae ""
   "sections/BLL/SequenceDiagram.tex" 1679843651 112 301139931e1f6002f76fe2767e033566 ""
   "sections/BusinessLogicLayer.tex" 1679842501 214 169c2de0ac00180552a26aae0721dfea ""
-  "sections/Contributions.tex" 1679842501 2946 dcee18ac4a5046284ba8bd9c2f65ce35 ""
+  "sections/Contributions.tex" 1679844157 466 73f4fa21a4a96464776605c5d1bfbaf6 ""
   "sections/DLL/ERSchema.tex" 1679843643 560 fd3f14781a0c20f1a0f17cdbca15a3ea ""
   "sections/DLL/OtherInformation.tex" 1679842501 602 f9478a23da494ef59000257105ecedce ""
   "sections/DataLogicLayer.tex" 1679842501 98 f7635e4d572012dcaaa95e7d87f1448e ""
