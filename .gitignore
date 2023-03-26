@@ -9,6 +9,7 @@ dist/
 
 # Compiled Java class files
 *.class
+appPass.txt
 
 # Compiled Python bytecode
 *.py[cod]
