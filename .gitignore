@@ -25,6 +25,7 @@ target/
 dist/
 
 # JetBrains IDE
+*.iml
 .idea/
 
 # Unit test reports
