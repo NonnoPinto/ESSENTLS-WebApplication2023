@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1680778049 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1680778053 0
+["pdflatex"] 1680779446 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1680779450 0
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbr10.pk" 1679843005 9388 ce5773ae3c25f206fd357f851c0301ec ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbrbx10.pk" 1679843002 9396 15cf81d8730d03d4020f8fb73d753ca4 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmtl10.pk" 1679843003 8732 a924ec40f67ec8d6ae53de26724691b6 ""
@@ -84,8 +84,8 @@
   "local_macros.tex" 1680731118 1767 f5485e331c4de8db5b0cb832a8f3dbba ""
   "logos/DEI.pdf" 1680731118 295786 945427f4b2d699ba59e1be94beb88bb2 ""
   "logos/logo-unipd800.pdf" 1680731118 394708 68ef9087516729fe260e52a859f0e9dc ""
-  "main.aux" 1680778053 3512 4dbe50f620190bd838967263863425d3 "pdflatex"
-  "main.out" 1680778053 2359 f6939ff9263b72b15c34729996e9f25e "pdflatex"
+  "main.aux" 1680779449 3513 a9e2d1aa82299595df34beaeba76daf8 "pdflatex"
+  "main.out" 1680779449 2364 9dd7c0c8bc36ab96ff3731fd869e3216 "pdflatex"
   "main.tex" 1680731118 412 ebce2d0a6312560cad743eec1254efc8 ""
   "sections/BLL/ClassDiagram.tex" 1680731118 568 dd0032f95084e8c67fb66dc2c1f253f8 ""
   "sections/BLL/RESTAPIDetails.tex" 1680731118 857 2f6e116072873574dbf289cdd0c7d922 ""
@@ -97,8 +97,8 @@
   "sections/DLL/ERSchema.tex" 1680731118 560 fd3f14781a0c20f1a0f17cdbca15a3ea ""
   "sections/DLL/OtherInformation.tex" 1680731118 602 f9478a23da494ef59000257105ecedce ""
   "sections/DataLogicLayer.tex" 1680731118 98 f7635e4d572012dcaaa95e7d87f1448e ""
-  "sections/MainFunctionalities.tex" 1680778044 517 431811d5f43aeeb3c187ff19cc0c041b ""
-  "sections/Objectives.tex" 1680777192 1411 71c168d129370e074e32f76ca167407a ""
+  "sections/MainFunctionalities.tex" 1680779445 1116 00b3c7ddade55aca94e294e37c86cfe2 ""
+  "sections/Objectives.tex" 1680778783 1411 2c023aa9a1bf70fc9030b414332a8999 ""
   "sections/PresentationLogicLayer.tex" 1680731118 1154 661aefb78063e951a36793ee7d7959d8 ""
   (generated)
   "main.aux"
