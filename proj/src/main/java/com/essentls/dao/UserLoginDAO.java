@@ -89,7 +89,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             rs.getString("DietType"),
                             rs.getString("Allergies"),
                             rs.getString("EmailHash"),
-                            rs.getString("EmailConfirmed"),
+                            rs.getString("EmailConfirmed")
                 ); 
 
                 LOGGER.info("User logged in {}.", user.getEmail());
