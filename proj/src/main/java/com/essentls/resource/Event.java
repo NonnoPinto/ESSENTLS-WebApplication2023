@@ -20,10 +20,12 @@ public class Event {
     private Date withdrawalEnd;
     private int maxWaitingList;
     private String attributes;
+    private String thumbnail;
+    private String poster;
 
     public Event(long id, String name, String description, float price, boolean visibility, String location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
-            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes) {
+            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,6 +41,8 @@ public class Event {
         this.withdrawalEnd = withdrawalEnd;
         this.maxWaitingList = maxWaitingList;
         this.attributes = attributes;
+        this.thumbnail = thumbnail;
+        this.poster = poster;
     }
 
     public long getId() {
@@ -99,6 +103,14 @@ public class Event {
 
     public String getAttributes() {
         return attributes;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public String getPoster() {
+        return poster;
     }
 
     public JSONObject toJSON() {
