@@ -7,6 +7,10 @@ import java.sql.SQLException;
 
 /**
  * Authenticates the user in the database
+ *
+ * @author Andrea Campagnol (andrea.campagnol.1@studenti.unipd.it)
+ * @version 1.00
+ * @since 1.00
  */
 public final class UserLoginDAO extends AbstractDAO<User> {
 //AbstractDAO<User> return the user logged in
@@ -92,11 +96,11 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             rs.getString("EmailConfirmed")
                 ); 
 
-                LOGGER.info("User logged in {}.", user.getEmail());
+                LOGGER.info("User logged in %s.", user.getEmail());
 
             }else{
 
-                LOGGER.error("error logging in the user {}", user.getEmail());
+                LOGGER.error("error logging in the user %s.", user.getEmail());
 
             }
 
