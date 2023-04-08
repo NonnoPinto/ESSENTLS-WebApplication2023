@@ -49,7 +49,7 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setInt(1, this.user.getId());
+            stmt.setLong(1, this.user.getId());
 
             rs = stmt.executeQuery();
 
