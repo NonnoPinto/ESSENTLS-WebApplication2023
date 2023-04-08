@@ -49,20 +49,20 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setInt(1, this.user.getID());
+            stmt.setInt(1, this.user.getId());
 
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 payments.add(
                         new Payment(
-                                rs.getInt("ID"),
-                                rs.getInt("UserID"),
-                                rs.getInt("EventID"),
-                                rs.getString("Method"),
-                                rs.getFloat("Amount"),
-                                rs.getDate("Date"),
-                                rs.getString("Notes")
+                                rs.getLong("id"),
+                                rs.getLong("userId"),
+                                rs.getLong("eventId"),
+                                rs.getString("method"),
+                                rs.getFloat("amount"),
+                                rs.getDate("date"),
+                                rs.getString("notes")
                         )
                 );
             }
