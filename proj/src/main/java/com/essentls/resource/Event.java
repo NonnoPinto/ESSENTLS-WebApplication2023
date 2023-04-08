@@ -1,6 +1,6 @@
 package com.essentls.resource;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.json.JSONObject;
 
@@ -13,19 +13,19 @@ public class Event {
     private String location;
     private int maxParticipantsInternational;
     private int maxParticipantsVolunteer;
-    private Date eventStart;
-    private Date eventEnd;
-    private Date subscriptionStart;
-    private Date subscriptionEnd;
-    private Date withdrawalEnd;
+    private LocalDate eventStart;
+    private LocalDate eventEnd;
+    private LocalDate subscriptionStart;
+    private LocalDate subscriptionEnd;
+    private LocalDate withdrawalEnd;
     private int maxWaitingList;
     private String attributes;
     private String thumbnail;
     private String poster;
 
     public Event(long id, String name, String description, float price, boolean visibility, String location,
-            int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
-            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
+            int maxParticipantsInternational, int maxParticipantsVolunteer, LocalDate eventStart, LocalDate eventEnd,
+            LocalDate subscriptionStart, LocalDate subscriptionEnd, LocalDate withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -43,6 +43,13 @@ public class Event {
         this.attributes = attributes;
         this.thumbnail = thumbnail;
         this.poster = poster;
+    }
+
+    // Used in the profile to get a list of the joined events 
+    public Event(long id, String name, LocalDate startDate) {
+        this.id = id;
+        this.name = name;
+        this.eventStart = startDate;
     }
 
     public long getId() {
@@ -77,23 +84,23 @@ public class Event {
         return maxParticipantsVolunteer;
     }
 
-    public Date getEventStart() {
+    public LocalDate getEventStart() {
         return eventStart;
     }
 
-    public Date getEventEnd() {
+    public LocalDate getEventEnd() {
         return eventEnd;
     }
 
-    public Date getSubscriptionStart() {
+    public LocalDate getSubscriptionStart() {
         return subscriptionStart;
     }
 
-    public Date getSubscriptionEnd() {
+    public LocalDate getSubscriptionEnd() {
         return subscriptionEnd;
     }
 
-    public Date getWithdrawalEnd() {
+    public LocalDate getWithdrawalEnd() {
         return withdrawalEnd;
     }
 

@@ -1,6 +1,6 @@
 package com.essentls.resource;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.json.JSONObject;
 
@@ -10,11 +10,11 @@ public class User {
     private String password;
     private int cardId;
     private int tier;
-    private Date registrationDate;
+    private LocalDate registrationDate;
     private String name;
     private String surname;
     private String sex;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String nationality;
     private String homeCountryAddress;
     private String homeCountryUniversity;
@@ -27,8 +27,8 @@ public class User {
     private String dietType;
     private String allergies;
 
-    public User(long id, String email, String password, int cardId, int tier, Date registrationDate, String name,
-            String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
+    public User(long id, String email, String password, int cardId, int tier, LocalDate registrationDate, String name,
+            String surname, String sex, LocalDate dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, int phoneNumber, String paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String allergies) {
         this.id = id;
@@ -74,7 +74,7 @@ public class User {
         return tier;
     }
 
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
@@ -90,7 +90,7 @@ public class User {
         return sex;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
