@@ -31,7 +31,7 @@ public class UserJoinsEventDAO extends AbstractDAO {
             pstmt.setLong(1, participant.getUserId());
             pstmt.setLong(2, participant.getEventId());
             pstmt.setString(3, participant.getRole());
-            pstmt.setDate(4, java.sql.Date.valueOf(participant.getDate()));
+            pstmt.setDate(4, participant.getDate());
 
             pstmt.execute();
 

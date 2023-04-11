@@ -34,7 +34,7 @@ public class JoinedEventsListDAO extends AbstractDAO<List<Event>> {
             rs = pstmt.executeQuery();
 
             while (rs.next())
-                joinedEvents.add(new Event(rs.getLong("id"), rs.getString("name"), rs.getDate("date").toLocalDate()));
+                joinedEvents.add(new Event(rs.getLong("id"), rs.getString("name"), rs.getDate("date")));
         
             LOGGER.info("Event(s) joined by user %l successfully listed.", userId);
             
