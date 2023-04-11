@@ -67,7 +67,7 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
                 );
             }
 
-            LOGGER.info("Pyament(s) related to user %s successfully listed.", this.user.getEmail());
+            LOGGER.info("Payment(s) related to user %s successfully listed.", this.user.getEmail());
 
         } finally {
             if (rs != null) {

@@ -1,6 +1,6 @@
 package com.essentls.resource;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import org.json.JSONObject;
 
@@ -10,10 +10,10 @@ public class Payment {
     private long eventId;
     private String method;
     private float amount;
-    private LocalDate date;
+    private Date date;
     private String notes;
     
-    public Payment(long id, long userId, long eventId, String method, float amount, LocalDate date, String notes) {
+    public Payment(long id, long userId, long eventId, String method, float amount, Date date, String notes) {
         this.id = id;
         this.userId = userId;
         this.eventId = eventId;
@@ -43,7 +43,7 @@ public class Payment {
         return amount;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 

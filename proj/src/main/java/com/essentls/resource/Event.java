@@ -1,5 +1,8 @@
 package com.essentls.resource;
 
+import java.sql.Date;
+// TODO: to keep?
+// import java.sql.Date;
 import java.time.LocalDate;
 
 import org.json.JSONObject;
@@ -13,19 +16,20 @@ public class Event {
     private String location;
     private int maxParticipantsInternational;
     private int maxParticipantsVolunteer;
-    private LocalDate eventStart;
-    private LocalDate eventEnd;
-    private LocalDate subscriptionStart;
-    private LocalDate subscriptionEnd;
-    private LocalDate withdrawalEnd;
+    private Date eventStart;
+    private Date eventEnd;
+    private Date subscriptionStart;
+    private Date subscriptionEnd;
+    private Date withdrawalEnd;
     private int maxWaitingList;
     private String attributes;
     private String thumbnail;
     private String poster;
 
+    //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
     public Event(long id, String name, String description, float price, boolean visibility, String location,
-            int maxParticipantsInternational, int maxParticipantsVolunteer, LocalDate eventStart, LocalDate eventEnd,
-            LocalDate subscriptionStart, LocalDate subscriptionEnd, LocalDate withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
+            int maxParticipantsInternational, int maxParticipantsVolunteer, Date date, Date date2,
+            Date date3, Date date4, Date date5, int maxWaitingList, String attributes, String thumbnail, String poster) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,11 +38,11 @@ public class Event {
         this.location = location;
         this.maxParticipantsInternational = maxParticipantsInternational;
         this.maxParticipantsVolunteer = maxParticipantsVolunteer;
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
-        this.subscriptionStart = subscriptionStart;
-        this.subscriptionEnd = subscriptionEnd;
-        this.withdrawalEnd = withdrawalEnd;
+        this.eventStart = date;
+        this.eventEnd = date2;
+        this.subscriptionStart = date3;
+        this.subscriptionEnd = date4;
+        this.withdrawalEnd = date5;
         this.maxWaitingList = maxWaitingList;
         this.attributes = attributes;
         this.thumbnail = thumbnail;
@@ -46,7 +50,7 @@ public class Event {
     }
 
     // Used in the profile to get a list of the joined events 
-    public Event(long id, String name, LocalDate startDate) {
+    public Event(long id, String name, Date startDate) {
         this.id = id;
         this.name = name;
         this.eventStart = startDate;
@@ -84,23 +88,23 @@ public class Event {
         return maxParticipantsVolunteer;
     }
 
-    public LocalDate getEventStart() {
+    public Date getEventStart() {
         return eventStart;
     }
 
-    public LocalDate getEventEnd() {
+    public Date getEventEnd() {
         return eventEnd;
     }
 
-    public LocalDate getSubscriptionStart() {
+    public Date getSubscriptionStart() {
         return subscriptionStart;
     }
 
-    public LocalDate getSubscriptionEnd() {
+    public Date getSubscriptionEnd() {
         return subscriptionEnd;
     }
 
-    public LocalDate getWithdrawalEnd() {
+    public Date getWithdrawalEnd() {
         return withdrawalEnd;
     }
 

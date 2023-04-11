@@ -6,8 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+// TODO: to keep?
+// import java.util.ArrayList; 
+// import java.util.List;
 
 /**
  * Gather an event by ID
@@ -46,7 +47,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
         ResultSet rs = null;
 
         // the results of the search
-        final event = null;
+        /* final */ Event event = null; //is finally very fundamental?
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
@@ -72,9 +73,8 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
                             rs.getString("Attributes"),
                             rs.getString("Thumbnail"),
                             rs.getString("Poster")
-                        )
-                );
-            }
+                        );
+            };
 
             LOGGER.info("Event with id %d successfully gathered.", this.id);
         } finally {

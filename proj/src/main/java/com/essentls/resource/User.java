@@ -1,6 +1,9 @@
 package com.essentls.resource;
 
+// TODO: to keep?
+// import java.sql.Date;
 import java.time.LocalDate;
+import java.sql.Date;
 
 import org.json.JSONObject;
 
@@ -10,11 +13,11 @@ public class User {
     private String password;
     private int cardId;
     private int tier;
-    private LocalDate registrationDate;
+    private Date registrationDate;
     private String name;
     private String surname;
     private String sex;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
     private String nationality;
     private String homeCountryAddress;
     private String homeCountryUniversity;
@@ -27,8 +30,8 @@ public class User {
     private String dietType;
     private String allergies;
 
-    public User(long id, String email, String password, int cardId, int tier, LocalDate registrationDate, String name,
-            String surname, String sex, LocalDate dateOfBirth, String nationality, String homeCountryAddress,
+    public User(long id, String email, String password, int cardId, int tier, Date date, String name,
+            String surname, String sex, Date date2, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, int phoneNumber, String paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String allergies) {
         this.id = id;
@@ -36,11 +39,11 @@ public class User {
         this.password = password;
         this.cardId = cardId;
         this.tier = tier;
-        this.registrationDate = registrationDate;
+        this.registrationDate = date;
         this.name = name;
         this.surname = surname;
         this.sex = sex;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = date2;
         this.nationality = nationality;
         this.homeCountryAddress = homeCountryAddress;
         this.homeCountryUniversity = homeCountryUniversity;
@@ -74,7 +77,7 @@ public class User {
         return tier;
     }
 
-    public LocalDate getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
@@ -90,7 +93,7 @@ public class User {
         return sex;
     }
 
-    public LocalDate getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
