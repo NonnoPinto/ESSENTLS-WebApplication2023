@@ -1,5 +1,6 @@
 package com.essentls.resource;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import org.json.JSONObject;
@@ -8,10 +9,10 @@ public class Participant {
     private long userId;
     private long eventId;
     private String role;
-    private LocalDate date;
+    private Date date;
     private String attributeValues;
     
-    public Participant(long userId, long eventId, String role, LocalDate date, String attributeValues) {
+    public Participant(long userId, long eventId, String role, Date date, String attributeValues) {
         this.userId = userId;
         this.eventId = eventId;
         this.role = role;
@@ -31,7 +32,7 @@ public class Participant {
         return role;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
