@@ -42,17 +42,17 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     public UserLoginDAO(final Connection con, final String email, final String password) {
         super(con);
 
-        if (email == null || email.isBlank()) {
-			LOGGER.error("The email cannot be null or empty.");
-			throw new NullPointerException("The email cannot be null or empty.");
-		}
-
+//        if (email == null || email.isBlank()) {
+//			LOGGER.error("The email cannot be null or empty.");
+//			throw new NullPointerException("The email cannot be null or empty.");
+//		}
+//
 		this.email = email;
-
-		if (password == null || password.isBlank()) {
-			LOGGER.error("The password cannot be null or empty.");
-			throw new NullPointerException("The password cannot be null or empty.");
-		}
+//
+//		if (password == null || password.isBlank()) {
+//			LOGGER.error("The password cannot be null or empty.");
+//			throw new NullPointerException("The password cannot be null or empty.");
+//		}
 
 		this.password = password;
     }
