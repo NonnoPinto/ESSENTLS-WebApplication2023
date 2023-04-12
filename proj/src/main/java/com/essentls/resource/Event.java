@@ -1,5 +1,6 @@
 package com.essentls.resource;
 
+import java.awt.image.BufferedImage;
 import java.sql.Date;
 // TODO: to keep?
 // import java.sql.Date;
@@ -25,6 +26,7 @@ public class Event {
     private String attributes;
     private String thumbnail;
     private String poster;
+
 
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
     public Event(long id, String name, String description, float price, boolean visibility, String location,

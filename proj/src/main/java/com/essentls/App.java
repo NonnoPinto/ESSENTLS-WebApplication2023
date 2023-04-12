@@ -1,5 +1,7 @@
 package com.essentls;
 
+import com.essentls.resource.DbConnection;
+
 /**
  * Hello world!
  *
