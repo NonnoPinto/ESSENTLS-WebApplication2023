@@ -1,9 +1,9 @@
 package com.essentls.resource;
 
-// TODO: to keep?
-// import java.sql.Date;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.sql.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.JSONObject;
 
@@ -139,6 +139,40 @@ public class User {
 
     public String getAllergies() {
         return allergies;
+    }
+
+    //Mail and password modifers
+    //Mail regExpr
+    final static Pattern VALID_EMAIL_ADDRESS_REGEX = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    //Mail validation helper method
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.matches();
+    }
+
+    public void setMail(String _mail) {
+        if (validate(_mail)) {
+            email = _mail;
+        }
+        else {
+            //send some kind of error message
+        }
+    }
+
+    public void setPassword(String _password) {
+        //password longer than 5 char
+        if(_password.length() < 5) {
+            //send some kind of error message
+        }
+        //not the same password
+        else if(_password.equals(password)) {
+            //send some kind of error message
+        }
+        else {
+            password = _password;
+        }
     }
 
     public JSONObject toJSON() {
