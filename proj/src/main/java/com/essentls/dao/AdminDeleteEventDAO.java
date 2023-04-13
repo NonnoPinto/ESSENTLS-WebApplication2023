@@ -35,7 +35,7 @@ public class AdminDeleteEventDAO extends AbstractDAO<Event>{
 
             rs = stmnt.executeQuery();
 
-            LOGGER.info("Event %s successfully deelted.", this.event.getId());
+            LOGGER.info("Event %s successfully deleted.", this.event.getId());
 
         }   finally {
             if (rs != null) {
