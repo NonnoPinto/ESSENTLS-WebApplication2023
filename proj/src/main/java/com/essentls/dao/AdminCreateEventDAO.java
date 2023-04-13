@@ -6,11 +6,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Admin Create Event DAO, to create an event
+ *
+ * @author Matteo VIllani (matteo.villani@studenti.unipd.it)
+ * @version 1.00
+ * @since 1.00
+ */
+
 public class AdminCreateEventDAO extends AbstractDAO<Event>{
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "INSERT INTO Event (id, 
+    private static final String STATEMENT = "INSERT INTO Events (id, 
                                                                 name, 
                                                                 description, 
                                                                 price, 
@@ -47,7 +55,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
         this.event = event;
     }
 
-
+    @Override
     public final void doAccess() throws SQLException{
         
         PreparedStatement stmt = null;
@@ -87,5 +95,6 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
                 rs.close();
             }
         }
+        con.close();
     }
 }

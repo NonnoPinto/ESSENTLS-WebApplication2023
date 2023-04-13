@@ -126,6 +126,55 @@ public class Event {
         return poster;
     }
 
+    public void setName(Stirng _name){
+        name = _name;
+    }
+    public void setDescription(Stirng _description){
+        name = _description;
+    }
+    public void setPrice(float _price){
+        price = _price;
+    }
+    public void setVisivility(boolean _visibility){
+        visibility = _visibility;
+    }
+    public void setLocation(Stirng _location){
+        location = _location;
+    }
+    public void setMaxParticipantsInternational(int _maxParticipantsInternational){
+        maxParticipantsInternational = _maxParticipantsInternational;
+    }
+    public void setMaxParticipantsVolunteer(int _maxParticipantsVolunteer){
+        maxParticipantsVolunteer = _maxParticipantsVolunteer;
+    }
+    public void setEventStart(Date _eventStart){
+        eventStart = _eventStart;
+    }
+    public void setEventEnd(Date _eventEnd){
+        eventEnd = _eventEnd;
+    }
+    public void setSubscriptionStart(Date _subscriptionStart){
+        subscriptionStart = _subscriptionStart;
+    }
+    public void setSubscriptionEnd(Date _subscriptionEnd){
+        subscriptionEnd = _subscriptionEnd;
+    }
+    public void setWithdrawalEnd(Date _withdrawalEnd){
+        withdrawalEnd = _withdrawalEnd;
+    }
+    public void setMaxWaitingList(int _maxWaitingList){
+        maxWaitingList = _maxWaitingList;
+    }
+    public void setAttributes(String _attributes){
+        attributes = _attributes;
+    }
+    public void setThumbnail(String _thumbnail){
+        thumbnail = _thumbnail;
+    }
+    public void setPoster(String _poster){
+        poster = _poster;
+    }
+
     public JSONObject toJSON() {
         JSONObject uJson = new JSONObject();
         uJson.put("id", id);
