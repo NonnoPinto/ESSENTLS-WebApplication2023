@@ -192,6 +192,8 @@ public class Event {
         uJson.put("withdrawalEnd", withdrawalEnd);
         uJson.put("maxWaitingList", maxWaitingList);
         uJson.put("attributes", attributes);
+        uJson.put("thumbnail", thumbnail);
+        uJson.put("poster", poster);
         return uJson;
     }
 }
