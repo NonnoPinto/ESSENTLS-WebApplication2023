@@ -5,6 +5,14 @@ import java.sql.PreparedStatement;
 
 import com.essentls.resource.Participant;
 
+
+/**
+ * Let a User join an Event
+ *
+ * @author Vittorio Cardillo (vittorio.cardillo@studenti.unipd.it)
+ * @version 1.00
+ * @since 1.00
+ */
 public class UserJoinsEventDAO extends AbstractDAO {
     private static final String STATEMENT_JOIN_EVENT = "INSERT INTO data.participant (userId, eventId, role, date, attributeValues) VALUES (?, ?, ?, ?, ?)";
 

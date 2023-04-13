@@ -8,6 +8,14 @@ import java.util.List;
 
 import com.essentls.resource.Event;
 
+
+/**
+ * Return the list of Events joined by a User
+ *
+ * @author Vittorio Cardillo (vittorio.cardillo@studenti.unipd.it)
+ * @version 1.00
+ * @since 1.00
+ */
 public class JoinedEventsListDAO extends AbstractDAO<List<Event>> {
     private static final String STATEMENT_JOINED_EVENTS = "SELECT e.id, e.name, e.startDate from data.participant AS p INNER JOIN data.event AS e " +
     "on p.eventId = e.id where p.userId = ?;";
