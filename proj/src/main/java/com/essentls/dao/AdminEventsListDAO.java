@@ -47,8 +47,8 @@ public class AdminEventsListDAO extends AbstractDAO<List<Event>> {
                                 rs.getDate("subscriptionEnd"),
                                 rs.getDate("withdrawalEnd"),
                                 rs.getInt("maxWaitingList"),
-                                rs.getString("attributes")),
-                                rs.getString("thumbnail")),
+                                rs.getString("attributes"),
+                                rs.getString("thumbnail"),
                                 rs.getString("poster")));
             }
 
