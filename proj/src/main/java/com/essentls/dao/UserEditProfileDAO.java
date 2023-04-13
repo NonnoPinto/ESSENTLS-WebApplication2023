@@ -15,14 +15,22 @@ import com.essentls.resource.User;
 public final class UserEditProfileDAO extends AbstractDAO<User> {
     
     /**
+     * new mail and pass
+     */
+    private final String newMail;
+    private final String newPassword;
+
+    /**
      * Creates a new object for gather info about user.
      *
      * @param con    the connection to the database.
      * @param user   the user that made the payments.
      */
-    public UserEditProfileDAO(final Connection con, final User user) {
+    public UserEditProfileDAO(final Connection con, final User user, String _newMail, String _newPassword) {
         super(con);
         this.user = user;
+        newMail = _newMail;
+        newPassword = _newPassword;
     }
 
     /**
@@ -35,44 +43,32 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
      */
     private final User user;
 
-    /**
-     * new mail and pass
-     */
-    //TODO: how do we get the new mail and pass?
-    /* private final String newMail;
-    private final String newPassword; */
-
     @Override
     protected void doAccess() throws Exception {
         PreparedStatement stmnt = null;
         ResultSet rs = null;
-        User myUser = null;
 
         try {
             stmnt = con.prepareStatement(STATEMENT);
             stmnt.setLong(1, this.user.getId());
 
             // Initialize mail and pass with old ones
-            //TODO: set functions
-            /* this.user.email = newMail;
-            this.user.password = newPassword; */
+            this.user.setMail(newMail);
+            this.user.setPassword(newPassword);
 
             rs = stmnt.executeQuery();
 
             LOGGER.info("Mail and password of user %s successfully changed.", this.user.getEmail());
 
         }   finally {
-        if (rs != null) {
-            rs.close();
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (stmnt != null) {
+                stmnt.close();
+            }
         }
-
-        if (stmnt != null) {
-            stmnt.close();
-        }
-
-    }
-
-        this.outputParam = user;
         con.close();
     }
     
