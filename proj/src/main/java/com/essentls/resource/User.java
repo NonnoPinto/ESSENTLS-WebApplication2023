@@ -29,11 +29,12 @@ public class User {
     private String documentFile;
     private String dietType;
     private String allergies;
+    private boolean emailConfirmed;
 
     public User(long id, String email, String password, int cardId, int tier, Date date, String name,
             String surname, String sex, Date date2, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, int phoneNumber, String paduaAddress,
-            String documentType, String documentNumber, String documentFile, String dietType, String allergies) {
+            String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -55,6 +56,7 @@ public class User {
         this.documentFile = documentFile;
         this.dietType = dietType;
         this.allergies = allergies;
+        this.emailConfirmed = emailConfirmed;
     }
 
     public long getId() {
@@ -141,6 +143,10 @@ public class User {
         return allergies;
     }
 
+    public boolean getEmailConfirmed(){
+        return emailConfirmed;
+    }
+
     //Mail and password modifers
     //Mail regExpr
     final static Pattern VALID_EMAIL_ADDRESS_REGEX = 
@@ -198,6 +204,7 @@ public class User {
         uJson.put("documentFile", documentFile);
         uJson.put("dietType", dietType);
         uJson.put("allergies", allergies);
+        uJson.put("emailConfirmed", emailConfirmed);
         return uJson;
     }
 }
