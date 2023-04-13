@@ -56,8 +56,6 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
             this.user.setMail(newMail);
             this.user.setPassword(newPassword);
 
-            rs = stmnt.executeQuery();
-
             LOGGER.info("Mail and password of user %s successfully changed.", this.user.getEmail());
 
         }   finally {
