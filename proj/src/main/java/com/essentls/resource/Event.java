@@ -126,10 +126,10 @@ public class Event {
         return poster;
     }
 
-    public void setName(Stirng _name){
+    public void setName(String _name){
         name = _name;
     }
-    public void setDescription(Stirng _description){
+    public void setDescription(String _description){
         name = _description;
     }
     public void setPrice(float _price){
@@ -138,7 +138,7 @@ public class Event {
     public void setVisivility(boolean _visibility){
         visibility = _visibility;
     }
-    public void setLocation(Stirng _location){
+    public void setLocation(String _location){
         location = _location;
     }
     public void setMaxParticipantsInternational(int _maxParticipantsInternational){
