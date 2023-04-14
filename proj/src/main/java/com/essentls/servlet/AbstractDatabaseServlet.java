@@ -1,5 +1,3 @@
-package main.java.com.essentls.servlet;
-
 package com.essentls.servlet;
 
 import jakarta.servlet.ServletConfig;
