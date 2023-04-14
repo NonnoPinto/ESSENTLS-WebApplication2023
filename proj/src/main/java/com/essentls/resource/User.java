@@ -1,6 +1,5 @@
 package com.essentls.resource;
 
-//import java.time.LocalDate;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,8 +30,8 @@ public class User {
     private String allergies;
     private boolean emailConfirmed;
 
-    public User(long id, String email, String password, int cardId, int tier, Date date, String name,
-            String surname, String sex, Date date2, String nationality, String homeCountryAddress,
+    public User(long id, String email, String password, int cardId, int tier, Date registrationDate, String name,
+            String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, int phoneNumber, String paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
         this.id = id;
@@ -40,11 +39,11 @@ public class User {
         this.password = password;
         this.cardId = cardId;
         this.tier = tier;
-        this.registrationDate = date;
+        this.registrationDate = registrationDate;
         this.name = name;
         this.surname = surname;
         this.sex = sex;
-        this.dateOfBirth = date2;
+        this.dateOfBirth = dateOfBirth;
         this.nationality = nationality;
         this.homeCountryAddress = homeCountryAddress;
         this.homeCountryUniversity = homeCountryUniversity;

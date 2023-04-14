@@ -2,9 +2,6 @@ package com.essentls.resource;
 
 import java.awt.image.BufferedImage;
 import java.sql.Date;
-// TODO: to keep?
-// import java.sql.Date;
-import java.time.LocalDate;
 
 import org.json.JSONObject;
 
@@ -30,8 +27,8 @@ public class Event {
 
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
     public Event(long id, String name, String description, float price, boolean visibility, String location,
-            int maxParticipantsInternational, int maxParticipantsVolunteer, Date date, Date date2,
-            Date date3, Date date4, Date date5, int maxWaitingList, String attributes, String thumbnail, String poster) {
+            int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
+            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,11 +37,11 @@ public class Event {
         this.location = location;
         this.maxParticipantsInternational = maxParticipantsInternational;
         this.maxParticipantsVolunteer = maxParticipantsVolunteer;
-        this.eventStart = date;
-        this.eventEnd = date2;
-        this.subscriptionStart = date3;
-        this.subscriptionEnd = date4;
-        this.withdrawalEnd = date5;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
+        this.subscriptionStart = subscriptionStart;
+        this.subscriptionEnd = subscriptionEnd;
+        this.withdrawalEnd = withdrawalEnd;
         this.maxWaitingList = maxWaitingList;
         this.attributes = attributes;
         this.thumbnail = thumbnail;
