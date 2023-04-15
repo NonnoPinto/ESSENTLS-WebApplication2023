@@ -1,4 +1,4 @@
-package com.essentls.servlet;
+package main.java.com.essentls.servlet;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
