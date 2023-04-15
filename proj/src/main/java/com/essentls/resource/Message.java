@@ -59,6 +59,22 @@ public class Message {
 
 
     /**
+     * Creates a generic error message.
+     *
+     * @param error
+     *            tells if the message is an error
+     *
+     * @param message
+     *            the message.
+     */
+    public Message(boolean error, final String message) {
+        this.message =message;
+        this.errorCode = null;
+        this.errorDetails = null;
+        this.isError = error;
+    }
+
+    /**
      * Returns the message.
      *
      * @return the message.
