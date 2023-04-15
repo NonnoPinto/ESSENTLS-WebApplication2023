@@ -2,7 +2,7 @@
 
 <Configuration status="INFO" monitorInterval="0" name="log4j2-config">
     <Appenders>
-        <RollingRandomAccessFile name="RFILE" fileName="${sys:catalina.base}/essentls/my-logs/essentls.log" filePattern="${sys:catalina.base}/essentls/my-logs/$${date:yyyy-MM}/essentls-%d{yyyyMMdd}-%i.log.gz">
+        <RollingRandomAccessFile name="RFILE" fileName="${sys:catalina.base}/webapps/my-logs/essentls.log" filePattern="${sys:catalina.base}/webapps/my-logs/$${date:yyyy-MM}/essentls-%d{yyyyMMdd}-%i.log.gz">
             <PatternLayout>
                 <Pattern>%date{DEFAULT} %level [%thread] %class{1}.%method(%file:%line)%n\tIP = %MDC{IP}; USER = %MDC{USER}; ACTION = %MDC{ACTION}; RESOURCE = %MDC{RESOURCE}%n\t%message%n\t%throwable%n</Pattern>
             </PatternLayout>
