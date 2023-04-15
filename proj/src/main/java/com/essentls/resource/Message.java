@@ -1,4 +1,4 @@
-package main.java.com.essentls.resource;
+package com.essentls.resource;
 
 /**
  * Represents a message or an error message.
