@@ -12,13 +12,17 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.essentls.servlet.LoginServlet</servlet-class>
     </servlet>
-
-
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.RegisterServlet</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>SearchUserServlet</servlet-name>
         <servlet-class>com.essentls.servlet.SearchUserServlet</servlet-class>
     </servlet>
+
+
 
     <servlet-mapping>
         <servlet-name>SearchUserServlet</servlet-name>
@@ -28,6 +32,11 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register/</url-pattern>
+        <url-pattern>/signup/</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import com.essentls.resource.User;
 
 
+
 /**
  * Add a new User to the database with tier 0
  *
@@ -17,8 +18,8 @@ public class UserRegistrationDAO extends AbstractDAO  {
     private static final String STATEMENT_REGISTRATION = "insert into data.user(email, password, tier, date, name, " + 
                                 "surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, " + 
                                 "phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies) " +
-                                "values (?, md5(?), 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+                                "values (?, md5(?), 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    //19 parameters
     private final User user;
 
     public UserRegistrationDAO(Connection con, User user) {
