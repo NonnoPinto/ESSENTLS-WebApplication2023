@@ -13,7 +13,7 @@
 <body>
 <h1>Search User</h1>
 
-<form method="POST" action="<c:url value="/search-user"/>">
+<form method="POST" action="<c:url value="/search-users"/>">
   <label for="userName">Name:</label>
   <input id="userName" name="userName" type="text"/><br/><br/>
 
