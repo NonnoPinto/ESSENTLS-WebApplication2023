@@ -23,10 +23,10 @@ import javax.swing.*;
 public final class SearchUserServlet extends AbstractDatabaseServlet{
 
     /**
-    @param req
-    @param res
-    @throws ServletException
-    @throws IOException
+    @param req  //request
+    @param res  //response
+    @throws ServletException    //exception servlet
+    @throws IOException     //exceptionIO
     */
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -65,7 +65,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
 
             //forward the control to the userlist-form JSP
 
-            req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req,res);
+            req.getRequestDispatcher("/jsp/userlist-results.jsp").forward(req,res);
 
         }catch (Exception ex){
             LOGGER.error(new StringFormattedMessage("Unable to send response when creating user %s", name), ex);
