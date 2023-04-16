@@ -10,11 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
-    private static final String STATEMENT_USERS_LIST = "SELECT * FROM users";
+    private static final String STATEMENT_USERS_LIST = "SELECT * FROM users WHERE (? IS NULL OR name = ?)";
+    private  String name="";
 
-    public AdminUsersListDAO(final Connection con) {
+    /**
+     * Creates a new object for the updating of the tier of a user
+     *
+     * @param con    the connection to the database.
+     * @param name  the name of the users we want to search
+     */
+    public AdminUsersListDAO(final Connection con, final String name)
+    {
         super(con);
+        this.name=name;
     }
+
 
     @Override
     public final void doAccess() throws SQLException {
@@ -25,7 +35,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
         try {
             stmt = con.prepareStatement(STATEMENT_USERS_LIST);
-
+            stmt.setString(1, this.name);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -51,7 +61,8 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
-                                rs.getString("allergies")));
+                                rs.getString("allergies"),
+                                rs.getBoolean("emailConfirmed")));
             }
 
             LOGGER.info("Users list successfully listed.");
