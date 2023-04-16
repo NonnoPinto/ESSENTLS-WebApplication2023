@@ -122,6 +122,7 @@ public class Event {
     public String getPoster() {
         return poster;
     }
+    
 
     public void setName(String _name){
         name = _name;
