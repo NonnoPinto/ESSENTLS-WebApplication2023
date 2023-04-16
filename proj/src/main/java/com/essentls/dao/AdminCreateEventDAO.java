@@ -18,24 +18,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "INSERT INTO Events (id, 
-                                                                name, 
-                                                                description, 
-                                                                price, 
-                                                                visibility, 
-                                                                location, 
-                                                                maxParticipantsInternational, 
-                                                                maxParticipantsVolunteer, 
-                                                                eventStart, 
-                                                                eventEnd,
-                                                                subscriptionStart, 
-                                                                subscriptionEnd,
-                                                                withdrawalEnd,
-                                                                maxWaitingList,
-                                                                attributes,
-                                                                thumbnail,
-                                                                poster)
-                                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String STATEMENT = "INSERT INTO Events (id, name, description, price, visibility, location, maxParticipantsInternational, maxParticipantsVolunteer, eventStart, eventEnd, subscriptionStart,  subscriptionEnd, withdrawalEnd, maxWaitingList, attributes, thumbnail, poster) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
     /**
