@@ -2,6 +2,7 @@ package com.essentls.dao;
 
 import com.essentls.resource.Event;
 
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -85,24 +86,8 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT name, 
-                                                    description, 
-                                                    price, 
-                                                    visibility, 
-                                                    location, 
-                                                    maxParticipantsInternational, 
-                                                    maxParticipantsVolunteer, 
-                                                    eventStart, 
-                                                    eventEnd,
-                                                    subscriptionStart, 
-                                                    subscriptionEnd,
-                                                    withdrawalEnd,
-                                                    maxWaitingList,
-                                                    attributes,
-                                                    thumbnail,
-                                                    poster
-                                             FROM Events WHERE id = ?";
-    
+    private static final String STATEMENT = "SELECT name, description, price, visibility, location,maxParticipantsInternational, maxParticipantsVolunteer, eventStart, eventEnd, subscriptionStart, subscriptionEnd, withdrawalEnd, maxWaitingList, attributes, thumbnail, poster FROM Events WHERE id = ?";
+  
 
 
     /**
