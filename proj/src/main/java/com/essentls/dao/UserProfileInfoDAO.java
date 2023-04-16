@@ -16,7 +16,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
     /**
      * The user to get info about
      */
-    private final User user;
+//    private final User user;
 
     /**
      * The SQL statement to be executed
@@ -27,7 +27,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * UserID
      * TODO: decide how to get this data
      */
-    private long infoID; //final id?
+//    private long infoID; //final id?
+    private final int id;
 
     /**
      * Creates a new object for gather info about user.
@@ -35,9 +36,10 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * @param con    the connection to the database.
      * @param user   the user that made the payments.
      */
-    public UserProfileInfoDAO(final Connection con, final User user) {
+    public UserProfileInfoDAO(final Connection con, final int id) {
         super(con);
-        this.user = user;
+//        this.user = user;
+        this.id = id;
     }
 
     @Override
@@ -49,12 +51,14 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
         try {
             stmnt = con.prepareStatement(STATEMENT);
-            stmnt.setLong(1, infoID);
+//            stmnt.setLong(1, infoID);
+            stmnt.setLong(1, id);
 
             rs = stmnt.executeQuery();
 
             if (rs.next()) {
-                myUser = new User(infoID,
+                myUser = new User(id,
+//                        myUser = new User(infoID,
                 rs.getString("email"),
                 rs.getString("password"),
                 rs.getInt("cardId"),
@@ -78,7 +82,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getBoolean("emailConfirmed"));
             }
 
-            LOGGER.info("Info about user %s successfully passed.", this.user.getEmail());
+//            LOGGER.info("Info about user %s successfully passed.", this.user.getEmail());
+            LOGGER.info("Info about user %s successfully passed.", id);
 
         } finally {
             if (rs != null) {
@@ -91,7 +96,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
         }
 
-        this.outputParam = user;
+//        this.outputParam = user;
+        this.outputParam = myUser;
         con.close();
     }
     
