@@ -2,7 +2,8 @@ package com.essentls.dao;
 
 import com.essentls.resource.Event;
 
-import java.util.Date;
+import java.sql.ResultSet;
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

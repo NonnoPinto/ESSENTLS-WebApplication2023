@@ -21,7 +21,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT * FROM User WHERE userID = ?";
+    private final String STATEMENT = "SELECT * FROM User WHERE userID = ?";
 
     /**
      * UserID
@@ -74,7 +74,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("documentNumber"),
                 rs.getString("documentFile"),
                 rs.getString("dietType"),
-                rs.getString("allergies"));
+                rs.getString("allergies"),
+                rs.getBoolean("emailConfirmed"));
             }
 
             LOGGER.info("Info about user %s successfully passed.", this.user.getEmail());
