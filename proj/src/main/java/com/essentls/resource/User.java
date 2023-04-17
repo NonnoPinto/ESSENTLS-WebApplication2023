@@ -180,6 +180,90 @@ public class User {
         }
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+
+    public void setTier(int tier) {
+        this.tier = tier;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setHomeCountryAddress(String homeCountryAddress) {
+        this.homeCountryAddress = homeCountryAddress;
+    }
+
+    public void setHomeCountryUniversity(String homeCountryUniversity) {
+        this.homeCountryUniversity = homeCountryUniversity;
+    }
+
+    public void setPeriodOfStay(String periodOfStay) {
+        this.periodOfStay = periodOfStay;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setPaduaAddress(String paduaAddress) {
+        this.paduaAddress = paduaAddress;
+    }
+
+    public void setDocumentType(String documentType) {
+        this.documentType = documentType;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
+    public void setDocumentFile(String documentFile) {
+        this.documentFile = documentFile;
+    }
+
+    public void setDietType(String dietType) {
+        this.dietType = dietType;
+    }
+
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public void setEmailConfirmed(boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
+    }
+
     public JSONObject toJSON() {
         JSONObject uJson = new JSONObject();
         uJson.put("id", id);
