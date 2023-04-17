@@ -41,10 +41,30 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         Message m = null;
     
         try {
-            //take from the request, the parameters (email and password)
+            //take from the request the parameters
             String email = req.getParameter("email");
             String password = req.getParameter("password");
-    
+            Integer tier = 0;
+            Date date = LocalDate.now(); //registration date
+            String name = req.getParameter("first_name");
+            String surname = req.getParameter("last_name");
+            String sex = req.getParameter("sex");
+            Date date2 = req.getParameter("birth-date"); //date of birth
+            String nationality = req.getParameter("nationality");
+            String homeCountryAddress = req.getParameter("home-country-address");
+            String homeCountryUniversity = req.getParameter("home-country-university");
+            String periodOfStay = req.getParameter("period-of-stay");
+            Integer phoneNumber = req.getParameter("phone-number");
+            String paduaAddress = req.getParameter("padua-address");
+            String documentType = req.getParameter("document-type");
+            String documentNumber = req.getParameter("document-number");
+            String documentFile = req.getParameter("document-file");
+            String dietType = req.getParameter("diet-type");
+            String allergies = req.getParameter("allergies");
+            String emailConfirmed = false;
+
+            user= new User(email, password, tier, date, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
+            
             LOGGER.info("user {} is trying to register",email);
     
             if (email == null || email.equals("")) {
@@ -68,45 +88,13 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     
             } else{
                 //the email and password are not null, we can try to register the user and set the value email confirmation to false until the user confirms the email
-                //TODO: email confirmation
-                //TODO: user registration
-
+                
                 email = email.toLowerCase();
-                LOGGER.info("User registration email %s",email);
-
-
-
-
-                //try to authenticate the user
-                email = email.toLowerCase();
-                LOGGER.info("User %s",email);
+                LOGGER.info("User is about to be registered %s",email);
+                sendCreationConfirmationEmail(user);
                 // try to find the user in the database
                 user = new UserLoginDAO(getConnection(),email, password).access().getOutputParam();
 
-    
-                //the UserLoginDAO will tell us if the email exists and the password
-                //matches
-                if (user == null){
-                    LOGGER.info("User null %s",email);
-                    //if not, tell it to the user, forward an error message
-                    ErrorCode ec = ErrorCode.WRONG_CREDENTIALS;
-                    res.setStatus(ec.getHTTPCode());
-                    m = new Message(true, "Credentials are wrong");
-                    req.setAttribute("message", m);
-                    req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
-                }
-                else{
-                    // activate a session to keep the user data
-                    HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
-                    session.setAttribute("tier", user.getTier());
-                    LOGGER.info("the USER {} LOGGED IN",user.getEmail());
-    //
-                    // login credentials were correct: we redirect the user to the profile page
-                    // now the session is active and its data can used to change the profile page
-                    res.sendRedirect(req.getContextPath()+"/profile");
-    
-    //                    req.getRequestDispatcher("/jsp/user/home.jsp").forward(req, res);
                 }
             }
         } catch (SQLException e){
@@ -120,20 +108,19 @@ public class RegisterServlet extends AbstractDatabaseServlet {
 
 		final StringBuilder sb = new StringBuilder();
         //TODO: test this
-		sb.append(String.format("<p>Dear %s,</p>%n", u.getSurname(), u.getName()));
-		sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been successfully created as follows:</p>%n"));
-		sb.append(String.format("<ul>%n"));
-		sb.append(String.format("<li><b>surname</b>: %s</li>%n", u.getSurname()));
-		sb.append(String.format("<li><b>age</b>: %d</li>%n", u.getAge()));
-		sb.append(String.format("</ul>%n"));
-		sb.append(String.format("<p>You can modify those informations in your profile page!</p>%n"));
+		sb.append(String.format("<p>Welcome %s,</p>%n", u.getSurname(), u.getName()));
+		sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been created.</p>%n"));
+		sb.append(String.format("<p>Please, verify your mail by clicking the link below.</p>%n"));
+        sb.append(String.format("<p><a href=\"%s\">Verify your mail</a></p>%n", "http://localhost:8080/essentls/verify?email=" + u.getEmail()));
 		sb.append(String.format("<p>Best regards,<br>The ESN Padua Team</p>%n"));
 		sb.append(String.format("<p>Remember, to fully enrol you must visit our office!</p>%n"));
+		sb.append(String.format("<p>You can find our office at , Padua. We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
+		sb.append(String.format("<a href=\"https://g.page/esnpadova\" target=\"_blank\" rel=\"noopener noreferral nofollow\" data-saferedirecturl=\"https://www.google.com/url?q=https://g.page/esnpadova&amp;source=gmail&amp;ust=1681817791169000&amp;usg=AOvVaw01EBgGYLow4nqz6_FdOcJ-\">Via Galileo Galilei, 42</a>%n"));
+		sb.append(String.format("<p>We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
 		sb.append(String.format("<p>MUST: bring with yourself a valid document.</p>%n"));
-        //TODO: add office address, opening hours and phone number
-        //TODO: write this message according to the ESN style
+        sb.append(String.format(""));
 
-		MailManager.sendMail(e.getEmail(), String.format("User %s successfully created.", e.getId()),
+		MailManager.sendMail(u.getEmail(), String.format("User %s successfully created.", u.getId()),
 				sb.toString(), "text/html;charset=UTF-8");
 
 	}

@@ -76,7 +76,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             // set the name of the event as the resource in the log context
             LogContext.setResource(req.getParameter("name"));
 
-            // creates a new employee from the request parameters
+            // creates a new event from the request parameters
             e = new Event(-1L, name, description, price, visibility, location, maxPartecipantsInternational, 
                 maxPartecipantVolunteer, java.sql.Date.valueOf(eventStart.toLocalDate()), 
                 java.sql.Date.valueOf(eventEnd.toLocalDate()), java.sql.Date.valueOf(subscriptionStart.toLocalDate()),
