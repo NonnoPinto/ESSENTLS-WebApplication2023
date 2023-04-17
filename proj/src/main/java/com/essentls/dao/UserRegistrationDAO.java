@@ -50,7 +50,7 @@ public class UserRegistrationDAO extends AbstractDAO  {
             pstmt.setString(9, user.getHomeCountryAddress());
             pstmt.setString(10, user.getHomeCountryUniversity());
             pstmt.setString(11, user.getPeriodOfStay());
-            pstmt.setInt(12, user.getPhoneNumber());
+            pstmt.setString(12, user.getPhoneNumber());
             pstmt.setString(13, user.getPaduaAddress());
             pstmt.setString(14, user.getDocumentType());
             pstmt.setString(15, user.getDocumentNumber());

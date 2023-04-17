@@ -21,7 +21,7 @@
 
 
 <!-- display the list of found users, if any -->
-<c:if test='${not empty userlist}'>
+<c:if test='${not empty userList}'>
   <table>
     <thead>
     <tr>
@@ -30,7 +30,7 @@
     </thead>
 
     <tbody>
-    <c:forEach var="user" items="${userlist}">
+    <c:forEach var="user" items="${userList}">
       <tr>
         <td><c:out value="${user.getId()}"/></td>
         <td><c:out value="${user.getName()}"/></td>
