@@ -41,7 +41,7 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
             pstmt.setLong(1, this.user.getId());
             pstmt.setString(2, this.user.getEmail());
             pstmt.setString(3, this.user.getPassword());
-            pstmt.setInt(4, this.user.getCardId());
+            pstmt.setString(4, this.user.getCardId());
             pstmt.setInt(5, this.user.getTier());
             pstmt.setDate(6, this.user.getRegistrationDate());
             pstmt.setString(7, this.user.getName());
@@ -52,7 +52,7 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
             pstmt.setString(12, this.user.getHomeCountryAddress());
             pstmt.setString(13, this.user.getHomeCountryUniversity());
             pstmt.setString(14, this.user.getPeriodOfStay());
-            pstmt.setInt(15, this.user.getPhoneNumber());
+            pstmt.setString(15, this.user.getPhoneNumber());
             pstmt.setString(16, this.user.getPaduaAddress());
             pstmt.setString(17, this.user.getDocumentType());
             pstmt.setString(18, this.user.getDocumentNumber());
