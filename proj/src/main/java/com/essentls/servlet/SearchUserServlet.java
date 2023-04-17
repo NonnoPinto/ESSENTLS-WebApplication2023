@@ -34,11 +34,11 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
         LogContext.setAction("SEARCH USER");
 
         //request parameter
-        String name="";
-        String surname="";
+        String name=null;
+        String surname=null;
         Long id;
-        String cardId="";
-        String email="";
+        String cardId=null;
+        String email=null;
         //model
         List<User> ul= null;
         Message m = null;
@@ -70,7 +70,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
             User user = new User(id, email,null, cardId,0,null, name, surname,
                     null, null,null,null,null,null,
                     null,null,null,null,null,null,
-                    null,true);
+                    null,null, true);
 
             //creates a new object for accessing the database and searching the users
             ul= new AdminUsersListDAO(getConnection(),user).access().getOutputParam();

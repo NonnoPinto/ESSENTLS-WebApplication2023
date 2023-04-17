@@ -28,12 +28,13 @@ public class User {
     private String documentFile;
     private String dietType;
     private String allergies;
+    private String emailHash;
     private boolean emailConfirmed;
 
     public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
-            String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
+            String documentType, String documentNumber, String documentFile, String dietType, String allergies, String emailHash, boolean emailConfirmed) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -55,6 +56,7 @@ public class User {
         this.documentFile = documentFile;
         this.dietType = dietType;
         this.allergies = allergies;
+        this.emailHash = emailHash;
         this.emailConfirmed = emailConfirmed;
     }
 
@@ -140,6 +142,10 @@ public class User {
 
     public String getAllergies() {
         return allergies;
+    }
+
+    public String getEmailHash() {
+        return emailHash;
     }
 
     public boolean getEmailConfirmed(){
@@ -260,6 +266,9 @@ public class User {
         this.allergies = allergies;
     }
 
+    public void setEmailHash(String emailHash) {
+        this.emailHash = emailHash;
+    }
     public void setEmailConfirmed(boolean emailConfirmed) {
         this.emailConfirmed = emailConfirmed;
     }

@@ -50,6 +50,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         String documentFile = null;
         String dietType = null;
         String allergies = null;
+        String emailHash = null;
         boolean emailConfirmed = false;
 
         // model
@@ -65,12 +66,20 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             email = req.getParameter("userEmail");
             password = req.getParameter("userPassword");
             cardId = req.getParameter("userCardId");
-            tier = Integer.parseInt(req.getParameter("userTier"));
+            try {
+            tier = Integer.parseInt(req.getParameter("userTier"));}
+            catch (Exception e){
+                tier = 0;
+            }
             registrationDate = Date.valueOf(req.getParameter("userRegistrationDate"));
             name = req.getParameter("userName");
             surname = req.getParameter("userSurname");
             sex = req.getParameter("userSex");
-            dateOfBirth = Date.valueOf(req.getParameter("userDateOfBirth"));
+            try {
+            dateOfBirth = Date.valueOf(req.getParameter("userDateOfBirth"));}
+            catch (Exception e){
+                dateOfBirth = null;
+            }
             nationality = req.getParameter("userNationality");
             homeCountryAddress = req.getParameter("userHomeCountryAddress");
             homeCountryUniversity = req.getParameter("userHomeCountryUniversity");
@@ -82,12 +91,17 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             documentFile = req.getParameter("userDocumentFile");
             dietType = req.getParameter("userDietType");
             allergies = req.getParameter("userAllergies");
-            emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));
+            emailHash = req.getParameter("userEmailHash");
+            try {
+            emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}
+            catch (Exception e){
+                emailConfirmed = false;
+            }
 
             //creates a new user from the request parameters
             u = new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, dateOfBirth,
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType,
-                    documentNumber, documentFile, dietType, allergies, emailConfirmed);
+                    documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed);
 
             //creates a new object for accessing the database and updates the user
             new AdminEditUserDAO(getConnection(), u).access();
