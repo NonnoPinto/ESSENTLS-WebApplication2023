@@ -20,8 +20,7 @@ The project is developed in PostgreSQL, Java, HTML, JavaScript and CSS.
 
 Developers of the project are:
 
-Asgharian Shirvan Saeid 2089602
-
+Asgharian Shirvan Saeid 2089602\\
 Borsato Alessandro 2089108
 
 
