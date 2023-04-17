@@ -35,21 +35,50 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
 
         //request parameter
         String name="";
-
+        String surname="";
+        Long id;
+        String cardId="";
+        String email="";
         //model
         List<User> ul= null;
         Message m = null;
 
         try{
-            //retrieves the request parameter
-            name = req.getParameter("userName");
+            //creates a user with the  request parameter
+            if(!(req.getParameter("userId").equals(""))){
+                id=Long.parseLong(req.getParameter("userId"));
+            }else{
+                id= (long) -1;
+            }
+
+            if(!(req.getParameter("userName").equals(""))){
+                name=req.getParameter("userName");
+            }
+
+            if(!(req.getParameter("userSurname").equals(""))){
+                surname=req.getParameter("useSurname");
+            }
+
+            if(!(req.getParameter("userCardId").equals(""))){
+                cardId=req.getParameter("userCardId");
+            }
+
+            if(!(req.getParameter("userEmail").equals(""))){
+                email=req.getParameter("userEmail");
+            }
+
+            User user = new User(id, email,null, cardId,0,null, name, surname,
+                    null, null,null,null,null,null,
+                    null,null,null,null,null,null,
+                    null,true);
 
             //creates a new object for accessing the database and searching the users
-            ul= new AdminUsersListDAO(getConnection(),name).access().getOutputParam();
+            ul= new AdminUsersListDAO(getConnection(),user).access().getOutputParam();
 
             m= new Message("Users succesfully searched");
 
-            LOGGER.info("Users succesfully searched by name %s.", name);
+
+            LOGGER.info("Users succesfully searched by " + name + id);
 
         }catch (SQLException ex){
             m=new Message("Cannot search for users. Unexpected error while accessing the database", "E200", ex.getMessage());
