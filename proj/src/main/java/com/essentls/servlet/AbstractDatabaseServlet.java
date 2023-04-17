@@ -45,7 +45,7 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
 
         try {
             cxt = new InitialContext();
-            ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/employee-ferro");
+            ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/public");
 
             LOGGER.info("Connection pool to the database pool successfully acquired.");
         } catch (NamingException e) {
