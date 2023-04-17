@@ -10,7 +10,7 @@ public class User {
     private long id;
     private String email;
     private String password;
-    private int cardId;
+    private String cardId;
     private int tier;
     private Date registrationDate;
     private String name;
@@ -21,7 +21,7 @@ public class User {
     private String homeCountryAddress;
     private String homeCountryUniversity;
     private String periodOfStay;
-    private int phoneNumber;
+    private String phoneNumber;
     private String paduaAddress;
     private String documentType;
     private String documentNumber;
@@ -30,9 +30,9 @@ public class User {
     private String allergies;
     private boolean emailConfirmed;
 
-    public User(long id, String email, String password, int cardId, int tier, Date registrationDate, String name,
+    public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
-            String homeCountryUniversity, String periodOfStay, int phoneNumber, String paduaAddress,
+            String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
         this.id = id;
         this.email = email;
@@ -70,7 +70,7 @@ public class User {
         return password;
     }
 
-    public int getCardId() {
+    public String getCardId() {
         return cardId;
     }
 
@@ -114,7 +114,7 @@ public class User {
         return periodOfStay;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
