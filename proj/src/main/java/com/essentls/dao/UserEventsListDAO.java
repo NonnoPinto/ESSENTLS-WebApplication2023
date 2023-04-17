@@ -21,7 +21,7 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT Id, Name, Description, Price, Visibility, Location, MaxParticipantsInternational, MaxParticipantsVolunteer, EventStart, EventEnd, SubscriptionStart, SubscriptionEnd, WithdrawalEnd, MaxWaitingList, Attributes, Thumbnail, Poster FROM Event WHERE Visibility <= ?";
+    private static final String STATEMENT = "SELECT Id, Name, Description, Price, Visibility, Location, MaxParticipantsInternational, MaxParticipantsVolunteer, EventStart, EventEnd, SubscriptionStart, SubscriptionEnd, WithdrawalEnd, MaxWaitingList, Attributes, Thumbnail, Poster FROM Events WHERE Visibility <= ?";
 
     /**
      * The tier of the current user
