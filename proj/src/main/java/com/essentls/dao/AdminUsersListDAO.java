@@ -10,19 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
-    private static final String STATEMENT_USERS_LIST = "SELECT * FROM users WHERE (? IS NULL OR name = ?)";
-    private  String name="";
+    private static final String STATEMENT_USERS_LIST = "SELECT * FROM users" +
+                                                        " WHERE (? = '' OR name = ?)" +
+                                                        " AND (? = '' OR surname = ?)" +
+                                                        " AND (? = -1 OR id = ?)" +
+                                                        " AND (? = '' OR cardId = ?)" +
+                                                        " AND (? = '' OR email = ?)";
+
+    private String name;
+    private String surname;
+    private Long id;
+    private String cardId;
+    private String email;
 
     /**
      * Creates a new object for the updating of the tier of a user
      *
      * @param con    the connection to the database.
-     * @param name  the name of the users we want to search
+     * @param user  the user to search for
      */
-    public AdminUsersListDAO(final Connection con, final String name)
+    public AdminUsersListDAO(final Connection con, final User user)
     {
         super(con);
-        this.name=name;
+        this.name=user.getName();
+        this.surname=user.getSurname();
+        this.id=user.getId();
+        this.cardId=user.getCardId();
+        this.email=user.getEmail();
+
     }
 
 
@@ -35,7 +50,26 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
         try {
             stmt = con.prepareStatement(STATEMENT_USERS_LIST);
-            stmt.setString(1, this.name);
+            //search by name
+            stmt.setString(1,name);
+            stmt.setString(2, name);
+
+            //search by surname
+            stmt.setString(3,surname);
+            stmt.setString(4, surname);
+
+            //search by id
+            stmt.setLong(5,id);
+            stmt.setLong(6, id);
+
+            //search by cardID
+            stmt.setString(7,cardId);
+            stmt.setString(8, cardId);
+
+            //search by email
+            stmt.setString(9,email);
+            stmt.setString(10, email);
+
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -44,7 +78,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getLong("id"),
                                 rs.getString("email"),
                                 rs.getString("password"),
-                                rs.getInt("cardId"),
+                                rs.getString("cardId"),
                                 rs.getInt("tier"),
                                 rs.getDate("date"),
                                 rs.getString("name"),
@@ -55,7 +89,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("homeCountryAddress,"),
                                 rs.getString("homeCountryUniversity"),
                                 rs.getString("periodOfStay"),
-                                rs.getInt("phoneNumber"),
+                                rs.getString("phoneNumber"),
                                 rs.getString("paduaAddress,"),
                                 rs.getString("documentType"),
                                 rs.getString("documentNumber"),
