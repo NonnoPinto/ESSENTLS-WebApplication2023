@@ -1,6 +1,6 @@
-<!-- @ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
-@ page contentType="text/html" pageEncoding="UTF-8"
-@ include file="/html/cdn.html" -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"   %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"   %>
+<%@ include file="/html/cdn.html"   %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +32,6 @@
     </div>
 
 </div>
-<footer class="footer">@include file="/html/footer.html"</footer>
+<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>
