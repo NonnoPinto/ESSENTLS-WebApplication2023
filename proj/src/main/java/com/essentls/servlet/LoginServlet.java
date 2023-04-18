@@ -84,7 +84,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
     //
                     // login credentials were correct: we redirect the user to the profile page
                     // now the session is active and its data can used to change the profile page
-                    res.sendRedirect(req.getContextPath()+"/profile");
+                    res.sendRedirect(req.getContextPath()+"/jsp/profile.jsp");
     
     //                    req.getRequestDispatcher("/jsp/user/home.jsp").forward(req, res);
                 }
