@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 
 public class UserEmailConfirmationDAO extends AbstractDAO<User>{
 
-    private static final String STATEMENT = "UPDATE Users SET emailConfirmed = true WHERE emailConfirmed = false AND emailHash = ?";
+    private static final String STATEMENT = "UPDATE public.\"Users\" SET emailConfirmed = true WHERE emailConfirmed = false AND emailHash = ?";
 
     private final User user;
 
