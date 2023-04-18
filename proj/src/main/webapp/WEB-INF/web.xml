@@ -13,6 +13,10 @@
         <servlet-class>com.essentls.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.essentls.servlet.RegisterServlet</servlet-class>
     </servlet>
