@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "EventDetailServlet", value = "/eventparticipants")
+@WebServlet(name = "EventParticipantsServlet", value = "/eventparticipants")
 public class EventParticipantsServlet extends AbstractDatabaseServlet {
 
     public final static String USER_SESSION_KEY = "user";
