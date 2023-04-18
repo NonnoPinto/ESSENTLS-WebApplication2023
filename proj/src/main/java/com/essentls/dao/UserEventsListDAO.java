@@ -61,7 +61,7 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
                                 rs.getString("Name"),
                                 rs.getString("Description"),
                                 rs.getFloat("Price"),
-                                rs.getBoolean("Visibility"),
+                                rs.getInt("Visibility"),
                                 rs.getString("Location"),
                                 rs.getInt("MaxParticipantsInternational"),
                                 rs.getInt("MaxParticipantsVolunteer"),

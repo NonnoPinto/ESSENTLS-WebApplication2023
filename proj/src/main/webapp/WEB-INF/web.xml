@@ -79,12 +79,12 @@
 
     <servlet-mapping>
         <servlet-name>EventDetailServlet</servlet-name>
-        <url-pattern>/eventdetail/</url-pattern>
+        <url-pattern>/eventdetail</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>EventParticipantsServlet</servlet-name>
-        <url-pattern>/eventparticipants/</url-pattern>
+        <url-pattern>/eventparticipants</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

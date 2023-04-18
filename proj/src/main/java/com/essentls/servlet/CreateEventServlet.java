@@ -30,7 +30,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         String name = null;
         String description = null;
         float price = -1;
-        boolean visibility = false;
+        int visibility = 0;
         String location = null;
         int maxPartecipantsInternational = -1;
         int maxPartecipantVolunteer = -1;
@@ -56,10 +56,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             name = req.getParameter("name");
             description = req.getParameter("description");
             price = Float.parseFloat(req.getParameter("price"));
-            String visibility_temp = req.getParameter("visibility");
-            if (visibility_temp == "Visible"){
-                visibility=true;
-            }  
+            visibility = Integer.parseInt(req.getParameter("visibility"));
             location = req.getParameter("location");
             maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxPartecipantsInternational"));
             maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxPartecipantVolunteer"));

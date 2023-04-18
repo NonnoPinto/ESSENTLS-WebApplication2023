@@ -24,7 +24,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     private final String new_name;
     private final String new_description;
     private final float new_price;
-    private final boolean new_visibility;
+    private final int new_visibility;
     private final String new_location;
     private final int new_maxParticipantsInternational;
     private final int new_maxParticipantsVolunteer;
@@ -48,7 +48,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     public AdminEditEventDAO(final Connection con, final Event event, final String _newname,
                                                                       final String _newdescription,
                                                                       final float _newprice,
-                                                                      final boolean _newvisibility,
+                                                                      final int _newvisibility,
                                                                       final String _newlocation,
                                                                       final int _newmaxParticipantsInternational,
                                                                       final int _newmaxParticipantsVolunteer,
@@ -111,7 +111,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
             this.event.setName(new_name);
             this.event.setDescription(new_description);
             this.event.setPrice(new_price);
-            this.event.setVisivility(new_visibility);
+            this.event.setVisibility(new_visibility);
             this.event.setLocation(new_location);
             this.event.setMaxParticipantsInternational(new_maxParticipantsInternational);
             this.event.setMaxParticipantsVolunteer(new_maxParticipantsVolunteer);

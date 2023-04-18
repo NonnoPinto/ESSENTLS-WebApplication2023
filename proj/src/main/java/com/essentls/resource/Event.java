@@ -10,7 +10,7 @@ public class Event {
     private String name;
     private String description;
     private float price;
-    private boolean visibility;
+    private int visibility;
     private String location;
     private int maxParticipantsInternational;
     private int maxParticipantsVolunteer;
@@ -26,7 +26,7 @@ public class Event {
 
 
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
-    public Event(long id, String name, String description, float price, boolean visibility, String location,
+    public Event(long id, String name, String description, float price, int visibility, String location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
             Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
         this.id = id;
@@ -71,7 +71,7 @@ public class Event {
         return price;
     }
 
-    public boolean isVisibility() {
+    public int getVisibility() {
         return visibility;
     }
 
@@ -133,7 +133,7 @@ public class Event {
     public void setPrice(float _price){
         price = _price;
     }
-    public void setVisivility(boolean _visibility){
+    public void setVisibility(int _visibility){
         visibility = _visibility;
     }
     public void setLocation(String _location){

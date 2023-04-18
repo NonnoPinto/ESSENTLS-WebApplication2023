@@ -22,7 +22,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT Id, Name, Description, Price, Visibility, Location, MaxParticipantsInternational, MaxParticipantsVolunteer, EventStart, EventEnd, SubscriptionStart, SubscriptionEnd, WithdrawalEnd, MaxWaitingList, Attributes, Thumbnail, Poster FROM Event WHERE Id = ?";
+    private static final String STATEMENT = "SELECT Id, Name, Description, Price, Visibility, Location, MaxParticipantsInternational, MaxParticipantsVolunteer, EventStart, EventEnd, SubscriptionStart, SubscriptionEnd, WithdrawalEnd, MaxWaitingList, Attributes, Thumbnail, Poster FROM public.\"Events\" WHERE Id = ?";
 
     /**
      * The id of the event
@@ -47,7 +47,8 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
         ResultSet rs = null;
 
         // the results of the search
-        /* final */ Event event = null; //is finally very fundamental?
+
+        Event event = null; //is finally very fundamental?
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
@@ -60,7 +61,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
                             rs.getString("Name"),
                             rs.getString("Description"),
                             rs.getFloat("Price"),
-                            rs.getBoolean("Visibility"),
+                            rs.getInt("Visibility"),
                             rs.getString("Location"),
                             rs.getInt("MaxParticipantsInternational"),
                             rs.getInt("MaxParticipantsVolunteer"),

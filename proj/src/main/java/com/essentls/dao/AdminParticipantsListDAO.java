@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
 
-    private static final String STATEMENT_PARTICIPANTS_LIST = "SELECT * FROM participants WHERE eventId = ?";
+    private static final String STATEMENT_PARTICIPANTS_LIST = "SELECT * FROM public.\"Participants\" WHERE eventId = ?";
 
     private final long eventId;
 

@@ -52,7 +52,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
             stmt.setString(2, this.event.getName());
             stmt.setString(3, this.event.getDescription());
             stmt.setFloat(4, this.event.getPrice());
-            stmt.setBoolean(5, this.event.isVisibility());
+            stmt.setInt(5, this.event.getVisibility());
             stmt.setString(6, this.event.getLocation());
             stmt.setInt(7, this.event.getMaxParticipantsInternational());
             stmt.setInt(8, this.event.getMaxParticipantsVolunteer());

@@ -19,15 +19,16 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer eventId = Integer.getInteger(request.getParameter("id").trim());
+        Integer eventId = Integer.parseInt(request.getParameter("id").trim());
         try {
-            Event event = new EventInfoDAO(getConnection(), eventId).getOutputParam();
-            List<Participant> participants = new AdminParticipantsListDAO(getConnection(),eventId).getOutputParam();
+            Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
+            List<Participant> participants = new AdminParticipantsListDAO(getConnection(),eventId).access().getOutputParam();
             request.setAttribute("event", event);
             request.setAttribute("participants", participants);
             request.getRequestDispatcher("/jsp/eventparticipants.jsp").forward(request, response);
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);
+            throw new ServletException(e);
         }
 
     }
