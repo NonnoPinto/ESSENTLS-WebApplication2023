@@ -75,7 +75,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
             while (rs.next()) {
                 users.add(
                         new User(
-                                rs.getLong("id"),
+                                //rs.getLong("id"),
                                 rs.getString("email"),
                                 rs.getString("password"),
                                 rs.getString("cardId"),
@@ -96,7 +96,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
                                 rs.getString("allergies"),
-                                rs.getString("emailHash"),
+                                //rs.getString("emailHash"),
                                 rs.getBoolean("emailConfirmed")));
             }
 

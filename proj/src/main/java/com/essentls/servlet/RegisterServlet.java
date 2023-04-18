@@ -1,27 +1,19 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.*;
-import com.essentls.mail.MailManager;
 import com.essentls.resource.*;
 import com.essentls.utils.ErrorCode;
 
-
-import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+
 import org.apache.logging.log4j.message.StringFormattedMessage;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @WebServlet(name = "RegisterServlet", value = "/register/")
 public class RegisterServlet extends AbstractDatabaseServlet {
@@ -39,32 +31,37 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     
         User user = null;
         Message m = null;
-    
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
         try {
             //take from the request the parameters
+            long id = 0;//TODO: delete me when user class is fixed
             String email = req.getParameter("email");
             String password = req.getParameter("password");
+            String cardId = req.getParameter("card-id");
             Integer tier = 0;
-            Date date = LocalDate.now(); //registration date
+            java.util.Date utilDate = new java.util.Date();
+            java.sql.Date registrationDate = new java.sql.Date(utilDate.getTime());//registration date
             String name = req.getParameter("first_name");
             String surname = req.getParameter("last_name");
             String sex = req.getParameter("sex");
-            Date date2 = req.getParameter("birth-date"); //date of birth
+            java.sql.Date date2 = new java.sql.Date(format.parse(req.getParameter("birth-date")).getTime());//registration date
             String nationality = req.getParameter("nationality");
             String homeCountryAddress = req.getParameter("home-country-address");
             String homeCountryUniversity = req.getParameter("home-country-university");
             String periodOfStay = req.getParameter("period-of-stay");
-            Integer phoneNumber = req.getParameter("phone-number");
+            String phoneNumber = req.getParameter("phone-number");
             String paduaAddress = req.getParameter("padua-address");
             String documentType = req.getParameter("document-type");
             String documentNumber = req.getParameter("document-number");
             String documentFile = req.getParameter("document-file");
             String dietType = req.getParameter("diet-type");
             String allergies = req.getParameter("allergies");
-            String emailConfirmed = false;
+            String emailHash = email;//TODO: hashme
+            Boolean emailConfirmed = false;
 
-            user= new User(email, password, tier, date, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
-            
+            user= new User(email, password, cardId, tier, registrationDate, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
+
             LOGGER.info("user {} is trying to register",email);
     
             if (email == null || email.equals("")) {
@@ -91,19 +88,30 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                 
                 email = email.toLowerCase();
                 LOGGER.info("User is about to be registered %s",email);
-                sendCreationConfirmationEmail(user);
+                //sendCreationConfirmationEmail(user);
+                LOGGER.info("Creation confirmation email for user %d successfully sent.", user.getEmail());
+
+                m = new Message(String.format("user %d successfully created and confirmation email successfully sent.",
+                        user.getEmail()));
                 // try to find the user in the database
-                user = new UserLoginDAO(getConnection(),email, password).access().getOutputParam();
-
-                }
+                //user = new UserLoginDAO(getConnection(),email, password).access().getOutputParam();
             }
-        } catch (SQLException e){
-            //something unexpected happened: we write it into the LOGGER
-            //writeError(res, ErrorCode.INTERNAL_ERROR);
-            LOGGER.error("stacktrace:", e);
-        }
-    }
+        } catch (NumberFormatException ex) {
+            m = new Message(
+                    "Cannot create the employee. Invalid input parameters: badge, age, and salary must be integer.",
+                    "E100", ex.getMessage());
 
+            LOGGER.error(
+                    "Cannot create the employee. Invalid input parameters: badge, age, and salary must be integer.",
+                    ex);
+        } catch (ParseException ex) {
+            m = new Message(String.format("Unable to set the date.",
+                    user.getEmail()));
+
+            LOGGER.warn(new StringFormattedMessage(
+                    "User %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
+        }
+    /*
     private void sendCreationConfirmationEmail(User u) throws MessagingException {
 
 		final StringBuilder sb = new StringBuilder();
@@ -123,8 +131,10 @@ public class RegisterServlet extends AbstractDatabaseServlet {
 		MailManager.sendMail(u.getEmail(), String.format("User %s successfully created.", u.getId()),
 				sb.toString(), "text/html;charset=UTF-8");
 
-	}
+	}*/
 
+
+    }
 }
 
 

@@ -99,9 +99,13 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             }
 
             //creates a new user from the request parameters
-            u = new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, dateOfBirth,
+            u = new User(
+                    //id,
+                    email, password, cardId, tier, registrationDate, name, surname, sex, dateOfBirth,
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType,
-                    documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed);
+                    documentNumber, documentFile, dietType, allergies,
+                    //emailHash,
+                    emailConfirmed);
 
             //creates a new object for accessing the database and updates the user
             new AdminEditUserDAO(getConnection(), u).access();

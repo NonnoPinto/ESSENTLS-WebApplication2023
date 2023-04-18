@@ -57,7 +57,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
             rs = stmnt.executeQuery();
 
             if (rs.next()) {
-                myUser = new User(id,
+                myUser = new User(
+                        //id,
 //                        myUser = new User(infoID,
                 rs.getString("email"),
                 rs.getString("password"),
@@ -79,7 +80,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("documentfile"),
                 rs.getString("diettype"),
                 rs.getString("allergies"),
-                rs.getString("emailhash"),
+                //rs.getString("emailhash"),
                 rs.getBoolean("emailconfirmed"));
             }
 

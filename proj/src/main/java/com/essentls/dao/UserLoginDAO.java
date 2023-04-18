@@ -73,7 +73,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
             if(rs.next()){
 
                 user = new User(
-                            rs.getLong("id"),
+                            //rs.getLong("id"),
                             rs.getString("email"),
                             rs.getString("password"),
                             rs.getString("cardid"),
@@ -94,7 +94,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             rs.getString("documentfile"),
                             rs.getString("diettype"),
                             rs.getString("allergies"),
-                            rs.getString("emailhash"),
+                            //rs.getString("emailhash"),
                             rs.getBoolean("emailconfirmed")
                 ); 
 

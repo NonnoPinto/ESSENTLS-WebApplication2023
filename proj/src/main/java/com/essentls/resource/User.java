@@ -31,11 +31,11 @@ public class User {
     private String emailHash;
     private boolean emailConfirmed;
 
-    public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
+    public User(String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
-            String documentType, String documentNumber, String documentFile, String dietType, String allergies, String emailHash, boolean emailConfirmed) {
-        this.id = id;
+            String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
+        // this.id = 0;
         this.email = email;
         this.password = password;
         this.cardId = cardId;
@@ -56,7 +56,7 @@ public class User {
         this.documentFile = documentFile;
         this.dietType = dietType;
         this.allergies = allergies;
-        this.emailHash = emailHash;
+        this.emailHash = email;//TODO: hash the email
         this.emailConfirmed = emailConfirmed;
     }
 
