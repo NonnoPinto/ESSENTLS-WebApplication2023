@@ -32,6 +32,6 @@
     </div>
 
 </div>
-<footer class="footer">Essentls footer!<!-- @ include file="/html/footer.html" --></footer>
+<footer class="footer">@include file="/html/footer.html"</footer>
 </body>
 </html>

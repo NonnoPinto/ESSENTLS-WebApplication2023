@@ -77,6 +77,6 @@
     }
 -->
 </div>
-<footer class="footer">Essentls©<!-- @include file="footer.html" --></footer>
+<footer class="footer">@include file="footer.html"</footer>
 </body>
 </html>
