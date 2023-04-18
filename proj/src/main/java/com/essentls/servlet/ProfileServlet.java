@@ -8,20 +8,26 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ProfileServlet", value = "/profile")
+@WebServlet(name = "ProfileServlet", value = "/profile/")
 public class ProfileServlet extends AbstractDatabaseServlet {
     public final static String USER_SESSION_KEY = "user";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer userId = Integer.getInteger(request.getParameter("id").trim());
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("Users");
+        long userId = user.getId();
+        LOGGER.info("userid: %s", userId);
+
+
         try {
-            User user = new UserProfileInfoDAO(getConnection(),userId).getOutputParam();
-            request.setAttribute("user", user);
+            user = new UserProfileInfoDAO(getConnection(), userId).getOutputParam();
+            request.setAttribute("Users", user);
             request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);

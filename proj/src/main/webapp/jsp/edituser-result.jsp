@@ -27,25 +27,45 @@
         <c:out value="${user.getId()} successfully edited."/>
         <br/>
         <c:out value="Email: ${user.getEmail()}"/>
+        <br/>
         <c:out value="CardId: ${user.getCardId()}"/>
+        <br/>
         <c:out value="Tier: ${user.getTier()}"/>
+        <br/>
         <c:out value="Registration Date: ${user.getRegistrationDate()}"/>
+        <br/>
         <c:out value="Name: ${user.getName()}"/>
+        <br/>
         <c:out value="Surname: ${user.getSurname()}"/>
+        <br/>
         <c:out value="Sex: ${user.getSex()}"/>
+        <br/>
         <c:out value="Date of Birth: ${user.getDateOfBirth()}"/>
+        <br/>
         <c:out value="Nationality: ${user.getNationality()}"/>
+        <br/>
         <c:out value="Home Country Address: ${user.getHomeCountryAddress()}"/>
+        <br/>
         <c:out value="Home Counrty University: ${user.getHomeCountryUniversity()}"/>
+        <br/>
         <c:out value="Period of Stay: ${user.getPeriodOfStay()}"/>
+        <br/>
         <c:out value="Phone Nuumber: ${user.getPhoneNumber()}"/>
+        <br/>
         <c:out value="Padua Address: ${user.getPaduaAddress()}"/>
+        <br/>
         <c:out value="Document Type: ${user.getDocumentType()}"/>
+        <br/>
         <c:out value="Document Number: ${user.getDocumentNumber()}"/>
+        <br/>
         <c:out value="Document File: ${user.getDocumentFile()}"/>
+        <br/>
         <c:out value="Diet Type: ${user.getDietType()}"/>
+        <br/>
         <c:out value="Allergies: ${user.getAllergies()}"/>
+        <br/>
         <c:out value="Email Confirmed: ${user.getEmailConfirmed()}"/>
+        <br/>
     </c:otherwise>
 </c:choose>
 

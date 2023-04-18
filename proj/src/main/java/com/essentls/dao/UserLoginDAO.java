@@ -42,14 +42,14 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     public UserLoginDAO(final Connection con, final String email, final String password) {
         super(con);
 
-        if (email == null || email.isBlank()) {
+        if (email == null || email.isEmpty()) {
 			LOGGER.error("The email cannot be null or empty.");
 			throw new NullPointerException("The email cannot be null or empty.");
 		}
 
 		this.email = email;
 
-		if (password == null || password.isBlank()) {
+		if (password == null || password.isEmpty()) {
 			LOGGER.error("The password cannot be null or empty.");
 			throw new NullPointerException("The password cannot be null or empty.");
 		}
@@ -76,26 +76,26 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             rs.getLong("id"),
                             rs.getString("email"),
                             rs.getString("password"),
-                            rs.getInt("cardId"),
+                            rs.getString("cardid"),
                             rs.getInt("tier"),
-                            rs.getDate("registrationDate"),
+                            rs.getDate("registrationdate"),
                             rs.getString("name"),
                             rs.getString("surname"),
                             rs.getString("sex"),
-                            rs.getDate("dateOfBirth"),
+                            rs.getDate("dateOfbirth"),
                             rs.getString("nationality"),
-                            rs.getString("homeCountryAddress"),
-                            rs.getString("homeCountryUniversity"),
-                            rs.getString("periodOfStay"),
-                            rs.getInt("phoneNumber"),
-                            rs.getString("padovaAddress"),
-                            rs.getString("documentType"),
-                            rs.getString("documentNumber"),
-                            rs.getString("documentFile"),
-                            rs.getString("dietType"),
+                            rs.getString("homecountryaddress"),
+                            rs.getString("homecountryuniversity"),
+                            rs.getString("periodofstay"),
+                            rs.getString("phonenumber"),
+                            rs.getString("paduaaddress"),
+                            rs.getString("documenttype"),
+                            rs.getString("documentnumber"),
+                            rs.getString("documentfile"),
+                            rs.getString("diettype"),
                             rs.getString("allergies"),
-                            //rs.getString("EmailHash"),
-                            rs.getBoolean("EmailConfirmed")
+                            rs.getString("emailhash"),
+                            rs.getBoolean("emailconfirmed")
                 ); 
 
                 LOGGER.info("User logged in {}.", user.getEmail());

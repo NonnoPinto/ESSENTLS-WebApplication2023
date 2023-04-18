@@ -16,21 +16,21 @@
   <title>User detail</title>
 </head>
 <body>
-  <div>
-    <h1>${user.name} ${user.surname}</h1>
-    <hr>
-    <h6>${user.dateOfBirth}</h6>
-    <hr>
-    <h6>${user.nationality}</h6>
-    <hr>
-    <p>${user.homeCountryAddress}</p>
-    <hr>
-    <p>${user.paduaAddress}</p>
-    <hr>
-    <p>${user.dietType}</p>
-    <hr>
-    <p>${user.allergies}</p>
-  </div>
+<div>
+  <h1>Profile Page</h1>
+  <hr>
+  <h3>${user.name} ${user.surname}</h3>
+  <h5>${user.dateOfBirth}</h5>
+  <h5>${user.nationality}</h5>
+  <hr>
+  <p>${user.homeCountryAddress}</p>
+  <hr>
+  <p>${user.paduaAddress}</p>
+  <hr>
+  <p>${user.dietType}</p>
+  <hr>
+  <p>${user.allergies}</p>
+</div>
 
 </body>
 </html>

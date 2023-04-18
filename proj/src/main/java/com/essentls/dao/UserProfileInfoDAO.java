@@ -21,14 +21,14 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
     /**
      * The SQL statement to be executed
      */
-    private final String STATEMENT = "SELECT * FROM User WHERE userID = ?";
+    private final String STATEMENT = "SELECT * FROM public.\"Users\" WHERE id = ?;";
 
     /**
      * UserID
      * TODO: decide how to get this data
      */
 //    private long infoID; //final id?
-    private final int id;
+    private final long id;
 
     /**
      * Creates a new object for gather info about user.
@@ -36,7 +36,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * @param con    the connection to the database.
      * @param user   the user that made the payments.
      */
-    public UserProfileInfoDAO(final Connection con, final int id) {
+    public UserProfileInfoDAO(final Connection con, final long id) {
         super(con);
 //        this.user = user;
         this.id = id;
@@ -61,25 +61,26 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 //                        myUser = new User(infoID,
                 rs.getString("email"),
                 rs.getString("password"),
-                rs.getString("cardId"),
+                rs.getString("cardid"),
                 rs.getInt("tier"),
-                rs.getDate("registrationDate"),
+                rs.getDate("registrationdate"),
                 rs.getString("name"),
                 rs.getString("surname"),
                 rs.getString("sex"),
-                rs.getDate("dateOfBirth"),
+                rs.getDate("dateOfbirth"),
                 rs.getString("nationality"),
-                rs.getString("homeCountryAddress"),
-                rs.getString("homeCountryUniversity"),
-                rs.getString("periodOfStay"),
-                rs.getString("phoneNumber"),
-                rs.getString("padovaAddress"),
-                rs.getString("documentType"),
-                rs.getString("documentNumber"),
-                rs.getString("documentFile"),
-                rs.getString("dietType"),
+                rs.getString("homecountryaddress"),
+                rs.getString("homecountryuniversity"),
+                rs.getString("periodofstay"),
+                rs.getString("phonenumber"),
+                rs.getString("paduaaddress"),
+                rs.getString("documenttype"),
+                rs.getString("documentnumber"),
+                rs.getString("documentfile"),
+                rs.getString("diettype"),
                 rs.getString("allergies"),
-                rs.getBoolean("emailConfirmed"));
+                rs.getString("emailhash"),
+                rs.getBoolean("emailconfirmed"));
             }
 
 //            LOGGER.info("Info about user %s successfully passed.", this.user.getEmail());

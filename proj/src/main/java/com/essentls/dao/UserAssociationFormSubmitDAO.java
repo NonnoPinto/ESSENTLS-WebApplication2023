@@ -14,7 +14,7 @@ public class UserAssociationFormSubmitDAO extends AbstractDAO<User> {
      * @param con the connection to be used for accessing the database.
      */
 
-    private static final String STATEMENT = "UPDATE Users SET " +
+    private static final String STATEMENT = "UPDATE public.\"Users\" SET " +
             "cardID = ?, " +
             "name = ?, " +
             "surname = ?, " +

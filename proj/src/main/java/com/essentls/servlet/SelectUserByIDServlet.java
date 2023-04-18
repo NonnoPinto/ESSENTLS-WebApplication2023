@@ -7,6 +7,7 @@ import com.essentls.resource.Message;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +31,7 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
          Long id;
 
          //model
-         User u= null;
+         List<User> ul= null;
          Message m = null;
 
          try {
@@ -43,17 +44,14 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
 
                 User user = new User(id, null, null, null, 0, null, null, null, null, null, null,
                 null, null, null, null, null, null, null, null,
-                null, null, true);
+                null, null, null, true);
 
-                //creates a connection to the database
-                try (Connection con = getConnection()) {
-                    //creates a new object for the search of the user
-                    AdminUsersListDAO dao = new AdminUsersListDAO(con, user);
-                    //searches the user
-                    dao.doAccess();
-                    //gets the user
-                    u = new AdminUsersListDAO(getConnection(),user).access().getOutputParam().get(0);;
-                }
+             //creates a new object for accessing the database and searching the users
+             ul = new AdminUsersListDAO(getConnection(),user).access().getOutputParam();
+
+             m= new Message("User succesfully searched");
+
+             LOGGER.info("User %d succesfully searched", id);
          } catch (SQLException e) {
              m = new Message("Database error");
              LOGGER.error(new StringFormattedMessage("Database error: %s", e.getMessage()));
@@ -67,7 +65,7 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
 
          try{
              //stores the user in the request
-             req.setAttribute("user", u);
+             req.setAttribute("user", ul.get(0));
              req.setAttribute("message", m);
 
              //forward the control to the edituser-form JSP

@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
-    private static final String STATEMENT_USERS_LIST = "SELECT * FROM users" +
-                                                        " WHERE (? = '' OR name = ?)" +
-                                                        " AND (? = '' OR surname = ?)" +
+    private static final String STATEMENT_USERS_LIST = "SELECT * FROM public.\"Users\"" +
+                                                        " WHERE (? IS NULL OR name = ?)" +
+                                                        " AND (? IS NULL OR surname = ?)" +
                                                         " AND (? = -1 OR id = ?)" +
-                                                        " AND (? = '' OR cardId = ?)" +
-                                                        " AND (? = '' OR email = ?)";
+                                                        " AND (? IS NULL OR cardId = ?)" +
+                                                        " AND (? IS NULL OR email = ?)";
 
     private String name;
     private String surname;
@@ -51,23 +51,23 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
         try {
             stmt = con.prepareStatement(STATEMENT_USERS_LIST);
             //search by name
-            stmt.setString(1,name);
+            stmt.setString(1, name);
             stmt.setString(2, name);
 
             //search by surname
-            stmt.setString(3,surname);
+            stmt.setString(3, surname);
             stmt.setString(4, surname);
 
             //search by id
-            stmt.setLong(5,id);
+            stmt.setLong(5, id);
             stmt.setLong(6, id);
 
             //search by cardID
-            stmt.setString(7,cardId);
+            stmt.setString(7, cardId);
             stmt.setString(8, cardId);
 
             //search by email
-            stmt.setString(9,email);
+            stmt.setString(9, email);
             stmt.setString(10, email);
 
             rs = stmt.executeQuery();
@@ -80,26 +80,27 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("password"),
                                 rs.getString("cardId"),
                                 rs.getInt("tier"),
-                                rs.getDate("date"),
+                                rs.getDate("registrationDate"),
                                 rs.getString("name"),
                                 rs.getString("surname"),
                                 rs.getString("sex"),
-                                rs.getDate("date2"),
+                                rs.getDate("dateOfBirth"),
                                 rs.getString("nationality"),
-                                rs.getString("homeCountryAddress,"),
+                                rs.getString("homeCountryAddress"),
                                 rs.getString("homeCountryUniversity"),
                                 rs.getString("periodOfStay"),
                                 rs.getString("phoneNumber"),
-                                rs.getString("paduaAddress,"),
+                                rs.getString("paduaAddress"),
                                 rs.getString("documentType"),
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
                                 rs.getString("allergies"),
+                                rs.getString("emailHash"),
                                 rs.getBoolean("emailConfirmed")));
             }
 
-            LOGGER.info("Users list successfully listed.");
+            LOGGER.info("Users list successfully listed. Found %d users.", users.size());
 
         } finally {
             if (rs != null) {
