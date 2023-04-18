@@ -25,7 +25,7 @@
   <table>
     <thead>
     <tr>
-      <th>id</th><th>name</th><th>surname</th><th>sex</th><th>dateOfBirth</th><th>cardId</th><th>tier</th>
+      <th>id</th><th>name</th><th>surname</th><th>sex</th><th>dateOfBirth</th><th>cardId</th><th>tier</th><th>edit</th>
     </tr>
     </thead>
 
@@ -39,6 +39,12 @@
         <td><c:out value="${user.getDateOfBirth()}"/></td>
         <td><c:out value="${user.getCardId()}"/></td>
         <td><c:out value="${user.getTier()}"/></td>
+        <td>
+          <form method="POST" action="<c:url value="/select-user-by-id"/>">
+            <input type="hidden" name="userId" value="${user.getId()}"/>
+            <button type="submit">Edit</button>
+          </form>
+        </td>
       </tr>
     </c:forEach>
     </tbody>
