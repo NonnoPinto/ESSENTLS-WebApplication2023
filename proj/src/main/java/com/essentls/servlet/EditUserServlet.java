@@ -110,6 +110,8 @@ public class EditUserServlet extends AbstractDatabaseServlet {
 
             LOGGER.info("User %d successfully updated.", u.getId());
 
+            u = new AdminUsersListDAO(getConnection(), u).access().getOutputParam().get(0);
+
         } catch (NumberFormatException e) {
             m = new Message("Invalid request parameters.");
             LOGGER.error("Invalid request parameters.", e);

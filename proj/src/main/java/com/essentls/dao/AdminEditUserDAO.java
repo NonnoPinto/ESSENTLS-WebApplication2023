@@ -35,7 +35,6 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
 	protected final void doAccess() throws SQLException {
 
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 
 		try {
 			pstmt = con.prepareStatement(STATEMENT);
@@ -63,7 +62,7 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
             pstmt.setBoolean(17, this.user.getEmailConfirmed());
             pstmt.setLong(18, this.user.getId());
 
-			rs = pstmt.executeQuery();
+			pstmt.executeUpdate();
 
 			LOGGER.info("User %d successfully edited in the database.", this.user.getId());
 
@@ -71,10 +70,6 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
             LOGGER.error("Error while editing user %d in the database.", this.user.getId(), e);
         }
         finally {
-			if (rs != null) {
-				rs.close();
-			}
-
 			if (pstmt != null) {
 				pstmt.close();
 			}
