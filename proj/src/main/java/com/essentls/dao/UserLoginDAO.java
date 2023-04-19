@@ -76,7 +76,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             //rs.getLong("id"),
                             rs.getString("email"),
                             rs.getString("password"),
-                            rs.getString("cardID"),
+                            rs.getString("cardId"),
                             rs.getInt("tier"),
                             rs.getDate("registrationDate"),
                             rs.getString("name"),
@@ -94,15 +94,15 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             rs.getString("documentFile"),
                             rs.getString("dietType"),
                             rs.getString("allergies"),
-                            //rs.getString("emailHash"),
+                            //rs.getString("emailhash"),
                             rs.getBoolean("emailConfirmed")
                 ); 
 
-                LOGGER.info("User logged in %s.", user.getEmail());
+                LOGGER.info("User logged in {}.", user.getEmail());
 
             }else{
 
-                LOGGER.error("error logging in the user %s.", this.email);
+                LOGGER.error("error logging in the user {}.", this.email);
 
             }
 

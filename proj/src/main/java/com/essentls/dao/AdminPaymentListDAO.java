@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminPaymentListDAO extends AbstractDAO<List<Payment>>{
-    private static final String STATEMENT_USERS_LIST = "SELECT * FROM Payment";
+    private static final String STATEMENT_USERS_LIST = "SELECT * FROM Payment;";
 
     public AdminPaymentListDAO(final Connection con) {
         super(con);

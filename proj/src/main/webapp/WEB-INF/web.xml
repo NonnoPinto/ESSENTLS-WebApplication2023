@@ -17,6 +17,10 @@
         <servlet-class>com.essentls.servlet.ProfileServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PaymentsListServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.PaymentsListServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.essentls.servlet.RegisterServlet</servlet-class>
     </servlet>
@@ -59,6 +63,11 @@
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
         <url-pattern>/profile/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PaymentsListServlet</servlet-name>
+        <url-pattern>/paymentslist/</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
