@@ -20,7 +20,9 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     /**
 	 * The SQL statement to be executed
 	 */
-    private static final String STATEMENT_LOGIN = "SELECT * FROM public.\"User\" WHERE email=? AND password=md5(?);"; //md5() not secure?
+    private static final String STATEMENT_LOGIN = "SELECT * FROM public.\"Users\" WHERE email=? AND password=md5(?);"; //md5() not secure?
+    //Use this command only for test
+//    private static final String STATEMENT_LOGIN = "SELECT * FROM public.\"Users\" WHERE email=? AND password=?;"; //md5() not secure?
 
 	/**
 	 * The email of the user to be authenticated
@@ -76,26 +78,26 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                             //rs.getLong("id"),
                             rs.getString("email"),
                             rs.getString("password"),
-                            rs.getString("cardid"),
+                            rs.getString("cardId"),
                             rs.getInt("tier"),
-                            rs.getDate("registrationdate"),
+                            rs.getDate("registrationDate"),
                             rs.getString("name"),
                             rs.getString("surname"),
                             rs.getString("sex"),
-                            rs.getDate("dateOfbirth"),
+                            rs.getDate("dateOfBirth"),
                             rs.getString("nationality"),
-                            rs.getString("homecountryaddress"),
-                            rs.getString("homecountryuniversity"),
-                            rs.getString("periodofstay"),
-                            rs.getString("phonenumber"),
-                            rs.getString("paduaaddress"),
-                            rs.getString("documenttype"),
-                            rs.getString("documentnumber"),
-                            rs.getString("documentfile"),
-                            rs.getString("diettype"),
+                            rs.getString("homeCountryAddress"),
+                            rs.getString("homeCountryUniversity"),
+                            rs.getString("periodOfStay"),
+                            rs.getString("phoneNumber"),
+                            rs.getString("paduaAddress"),
+                            rs.getString("documentType"),
+                            rs.getString("documentNumber"),
+                            rs.getString("documentFile"),
+                            rs.getString("dietType"),
                             rs.getString("allergies"),
                             //rs.getString("emailhash"),
-                            rs.getBoolean("emailconfirmed")
+                            rs.getBoolean("emailConfirmed")
                 ); 
 
                 LOGGER.info("User logged in {}.", user.getEmail());
