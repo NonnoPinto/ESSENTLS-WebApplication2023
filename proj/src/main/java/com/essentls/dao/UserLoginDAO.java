@@ -20,7 +20,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     /**
 	 * The SQL statement to be executed
 	 */
-    private static final String STATEMENT_LOGIN = "SELECT * FROM public.\"User\" WHERE email=? AND password=md5(?);"; //md5() not secure?
+    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE email=? AND password=?;"; //md5() not secure?
 
 	/**
 	 * The email of the user to be authenticated
