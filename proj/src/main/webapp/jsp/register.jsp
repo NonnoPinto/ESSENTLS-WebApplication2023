@@ -12,8 +12,9 @@
         <!-- TODO: check all types and names (19 params) -->
             <div>
                 <label for="email">email:</label>
-                <input name="email" type="text"/><br/><br/>
-
+                <input name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="text"/><br/><br/>
+                <!-- if we want to block mails with + in the first argument, this can be a trick to register multiple with gmail,.. -->
+                <!-- <input name="email" pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="text"/><br/><br/> -->
                 <label for="password">password:</label>
                 <input name="password" type="password"/><br/><br/>
                 <label for="rpassword">repeat password:</label>
@@ -54,15 +55,26 @@
                 <label for="card-id">Card ID:</label>
                 <input name="card-id" type="text" required><br><br>
                 <label for="document-type">Document type:</label>
-                <input name="document-type" type="text" required><br><br>
+                <select name="document-type">
+                    <option value="ID">ID</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Driver license">Driver license</option>
+                </select><br><br>
                 <label for="document-number">Document number:</label>
                 <input name="document-number" type="text" required><br><br>
                 <label for="document-file">Document file:</label>
-                <input name="document-file" type="file" type="text" required><br><br>
+                <input type="document-file" accept="image/*,.pdf" required/><br><br>
                 <label for="diet-type">Diet type:</label>
-                <input name="diet-type"><br><br>
-                <label for="allergies">Allergies:</label>
-                <input name="allergies"><br><br>
+                <select name="diet-type">
+                    <option value="No specific">No specific</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Halal">Halal</option>
+                    <option value="Kosher">Kosher</option>
+                    <option value="Pescatarian">Pescatarian</option>
+                </select><br><br>
+                <label for="allergies">Allergies: (please use commas to separate them)</label>
+                <input name="allergies" type="text"><br><br>
             </div>
 
 
