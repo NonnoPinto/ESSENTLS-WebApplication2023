@@ -13,10 +13,7 @@
             <div>
                 <label for="email">email:</label>
                 <input name="email" type="text"/><br/><br/>
-                <label for="first_name">first name:</label>
-                <input name="first_name" type="text"/><br/><br/>
-                <label for="last_name">last name:</label>
-                <input name="last_name" type="text"/><br/><br/>
+
                 <label for="password">password:</label>
                 <input name="password" type="password"/><br/><br/>
                 <label for="rpassword">repeat password:</label>
@@ -24,8 +21,12 @@
             </div>
 
             <div>
-                <label for="sex">Please select your gender!</label>
-                <input id="choose" name="sex" type="text" required pattern="Male|Female|Other"><br><br>
+                <label for="sex">Please select your gender:</label>
+                <select name="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select><br><br>
                 <label for="first_name">First Name:</label>
                 <input name="first_name" type="text" required><br><br>
                 <label for="last_name">Last Name:</label>
