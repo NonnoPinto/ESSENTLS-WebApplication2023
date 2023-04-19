@@ -22,7 +22,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT Id, Name, Description, Price, Visibility, Location, MaxParticipantsInternational, MaxParticipantsVolunteer, EventStart, EventEnd, SubscriptionStart, SubscriptionEnd, WithdrawalEnd, MaxWaitingList, Attributes, Thumbnail, Poster FROM public.\"Events\" WHERE Id = ?";
+    private static final String STATEMENT = "SELECT * FROM public.\"Events\" WHERE Id = ?";
 
     /**
      * The id of the event

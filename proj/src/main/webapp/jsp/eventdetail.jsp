@@ -12,12 +12,16 @@
 <body>
 
 <div class="container">
-  <div >
+  <div>
+    <img src="${event.thumbnail}"/>
     <h2>${event.name}</h2>
     <hr>
     <p>
       ${event.description}
     </p>
+    <p>Cost: ${event.price}</p>
+    <p>Current participants: ${nParticipants}</p>
+    <p>Waiting List: ${nWaiting}</p>
   </div>
 
 

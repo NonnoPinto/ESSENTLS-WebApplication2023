@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 
 @WebServlet(name = "EventDetailServlet", value = "/eventdetail")
 public class EventDetailServlet extends AbstractDatabaseServlet {
@@ -29,7 +30,19 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
         Integer eventId = Integer.parseInt(request.getParameter("id").trim());
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
+            List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
+            int nParticipants = 0;
+            int nWaiting = 0;
+            for(Participant p: participants){
+                if(!p.getRole().equals("WaitingList")){
+                    nParticipants++;
+                }else{
+                    nWaiting++;
+                }
+            }
             request.setAttribute("event", e);
+            request.setAttribute("nParticipants", nParticipants);
+            request.setAttribute("nWaiting", nWaiting);
             request.getRequestDispatcher("/jsp/eventdetail.jsp").forward(request, response);
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);
