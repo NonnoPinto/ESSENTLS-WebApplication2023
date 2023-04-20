@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.essentls.dao.TagsListDAO;
 import com.essentls.dao.UserEventsListDAO;
 import com.essentls.resource.Event;
 import com.essentls.resource.Message;
+import com.essentls.resource.Tag;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,7 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "HomeServlet", value = "/home")
+@WebServlet(name = "HomeServlet", value = "")
 public final class HomeServlet extends AbstractDatabaseServlet {
 
     @Override
@@ -26,11 +28,11 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
-        LogContext.setAction("LOGIN");
+        LogContext.setAction("RETRIVE EVENTS BY TIER AND TAGS");
 
         //get user tier from session or set the default value
         Object o = session.getAttribute("tier");
-        int userTier = 0;
+        int userTier = 3;
 
         if (o != null) {
             userTier = (int) o;
@@ -39,6 +41,8 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         List<Event> events = null;
+
+        List<Tag> tags = null;
 
         try {
 
@@ -56,7 +60,21 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         }
 
         try {
+
+            tags = new TagsListDAO(getConnection()).access().getOutputParam();
+
+            LOGGER.info("Tags successfully retrieved in the home");
+
+        } catch (SQLException e) {
+            
+            LOGGER.error("Cannot search for tags: unexpected error while accessing the database.", e);
+
+            m = new Message(true, "Cannot search for tags: unexpected error while accessing the database.");
+        }
+
+        try {
             req.setAttribute("events", events);
+            req.setAttribute("tags", tags);
             req.setAttribute("message", m);
             req.getRequestDispatcher("/jsp/home.jsp").forward(req, resp);
         } catch (Exception e) {

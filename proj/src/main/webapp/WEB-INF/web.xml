@@ -5,8 +5,13 @@
 
     <display-name>ESSENTLS</display-name>
     <welcome-file-list>
-        <welcome-file>html/helloworld.html</welcome-file>
+        <welcome-file>HomeServlet</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.HomeServlet</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -49,6 +54,11 @@
         <servlet-name>EventParticipantsServlet</servlet-name>
         <servlet-class>com.essentls.servlet.EventParticipantsServlet</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>SearchUserServlet</servlet-name>
