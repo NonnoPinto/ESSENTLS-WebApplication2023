@@ -22,6 +22,15 @@
                     ID
                 </th>
                 <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
                     Role
                 </th>
                 <th>
