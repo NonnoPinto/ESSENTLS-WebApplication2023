@@ -82,7 +82,7 @@ public class User {
         this.documentFile = documentFile;
         this.dietType = dietType;
         this.allergies = allergies;
-        this.emailHash = email;//TODO: hash the email
+        this.emailHash = email.hashCode()+"";
         this.emailConfirmed = emailConfirmed;
     }
 
@@ -190,8 +190,18 @@ public class User {
     }
 
     public void setMail(String _mail) {
+        this.setMailAndHash(_mail);
+    }
+
+    public void setEmail(String _mail) {
+        this.setMailAndHash(_mail);
+    }
+
+    //in case of email change (not allowed by now)
+    public void setMailAndHash(String _mail) {
         if (validate(_mail)) {
-            email = _mail;
+            this.email = _mail;
+            this.emailHash = _mail.hashCode()+"";
         }
         else {
             //send some kind of error message
@@ -214,10 +224,6 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setCardId(String cardId) {
@@ -292,9 +298,6 @@ public class User {
         this.allergies = allergies;
     }
 
-    public void setEmailHash(String emailHash) {
-        this.emailHash = emailHash;
-    }
     public void setEmailConfirmed(boolean emailConfirmed) {
         this.emailConfirmed = emailConfirmed;
     }

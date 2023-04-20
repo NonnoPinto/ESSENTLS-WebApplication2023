@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@WebServlet(name = "RegisterServlet", value = "/register/")
+@WebServlet(name = "RegisterServlet", value = "/register")
 public class RegisterServlet extends AbstractDatabaseServlet {
 
     //public final static String REGISTER_JSP = "/jsp/register.jsp";
