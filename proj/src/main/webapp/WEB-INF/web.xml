@@ -46,6 +46,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>EmailConfirmatioServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EmailConfirmatioServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>EventDetailServlet</servlet-name>
         <servlet-class>com.essentls.servlet.EventDetailServlet</servlet-class>
     </servlet>
@@ -95,6 +100,11 @@
     <servlet-mapping>
         <servlet-name>EditUserServlet</servlet-name>
         <url-pattern>/edit-user</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EmailConfirmationServlet</servlet-name>
+        <url-pattern>/email-confirmation/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
