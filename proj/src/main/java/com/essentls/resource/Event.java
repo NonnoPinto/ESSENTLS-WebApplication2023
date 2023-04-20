@@ -48,6 +48,16 @@ public class Event {
         this.poster = poster;
     }
 
+    //Used in the home to get the list of events
+    public Event(long id, String name, String description, float price, String location, Date subscriptionEnd) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.location = location;
+        this.subscriptionEnd = subscriptionEnd;
+    }
+
     // Used in the profile to get a list of the joined events 
     public Event(long id, String name, Date startDate) {
         this.id = id;

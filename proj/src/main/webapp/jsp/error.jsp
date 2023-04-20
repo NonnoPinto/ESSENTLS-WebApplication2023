@@ -31,7 +31,7 @@
         </p>
     </div>
 </div>
-<!-- <%
+<%
     } else if(exception instanceof IOException){
         %>
 %>
@@ -80,7 +80,6 @@
     </div>
 </div>
     }
--->
 </div>
 <footer class="footer"><%@include file="footer.html"%></footer>
 </body>

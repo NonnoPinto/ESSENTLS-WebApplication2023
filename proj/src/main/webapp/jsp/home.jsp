@@ -15,8 +15,26 @@
                 </ul>
             </c:when>
             <c:otherwise>
+                <h1>All the Events</h1>
+
+                <form action="">
+                    <label for="tag">Filter:</label>
+                    <select name="tag">
+                        <c:forEach items="${tags}" var="tag" varStatus="loop">
+                            <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></li>
+                        </c:forEach>
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+
                 <c:forEach items="${events}" var="event" varStatus="loop">
-                    <li><c:out value="${event.getName()}"/></li>
+                    <hr>
+                    <li>Event ID: <c:out value="${event.getId()}"/></li>
+                    <li>Event Name: <c:out value="${event.getName()}"/></li>
+                    <li>Event Location: <c:out value="${event.getLocation()}"/></li>
+                    <li>Event Price: <c:out value="${event.getPrice()}"/></li>
+                    <li>Event Description: <c:out value="${event.getDescription()}"/></li>
                 </c:forEach>
             </c:otherwise>
         </c:choose>

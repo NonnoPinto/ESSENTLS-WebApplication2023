@@ -14,7 +14,7 @@ import com.essentls.resource.Participant;
  * @since 1.00
  */
 public class UserJoinsEventDAO extends AbstractDAO {
-    private static final String STATEMENT_JOIN_EVENT = "INSERT INTO data.participant (userId, eventId, role, date, attributeValues) VALUES (?, ?, ?, ?, ?)";
+    private static final String STATEMENT_JOIN_EVENT = "INSERT INTO  public.\"Participants\" (\"userId\", \"eventId\", role, date, \"attributeValues\") VALUES (?, ?, ?, ?, ?)";
 
     private final Participant participant;
 
