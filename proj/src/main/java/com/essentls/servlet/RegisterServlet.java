@@ -1,8 +1,8 @@
 package com.essentls.servlet;
 
+import com.essentls.dao.*;
 import com.essentls.resource.*;
 import com.essentls.utils.ErrorCode;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +21,14 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     //public final static String REGISTER_JSP = "/jsp/register.jsp";
 
 
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+        //take the request uri
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setAction("REGISTER");
+
+        req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
+    }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 

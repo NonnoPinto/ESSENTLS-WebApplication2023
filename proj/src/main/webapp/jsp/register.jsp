@@ -8,10 +8,10 @@
     </head>
     <body>
 
-        <form method="POST" action="<c:url value="/user/register/"/>">
+        <form method="POST" action="<c:url value="/user/register"/>">
         <!-- TODO: check all types and names (19 params) -->
             <div>
-                <label for="email">email:</label>
+                <label for="email">Enter your email:</label>
                 <input name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="text"/><br/><br/>
                 <!-- if we want to block mails with + in the first argument, this can be a trick to register multiple with gmail,.. -->
                 <!-- <input name="email" pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="text"/><br/><br/> -->

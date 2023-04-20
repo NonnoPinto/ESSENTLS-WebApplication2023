@@ -19,7 +19,7 @@
 			<h1>LOG IN</h1>
 			<hr>
 		</div>
-		<form action="<c:url value="/login/"/>" id="loginForm" method="POST">
+		<form action="<c:url value="/login"/>" id="loginForm" method="POST">
 
 			<!-- ---------------- EMAIL -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
@@ -58,7 +58,7 @@
 
 
 		<p>
-			Don't have an account? <a href="<c:url value="/signup/"/>" >Sign up</a>
+			Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
 		</p>
 	</div>
 	<footer class="footer"><%-- @ include file="/html/footer.html" --%></footer>
