@@ -26,7 +26,7 @@ public class ProfileServlet extends AbstractDatabaseServlet {
 
 
         try {
-            user = new UserProfileInfoDAO(getConnection(), userId).getOutputParam();
+            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
             request.setAttribute("Users", user);
             request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
         } catch (SQLException e) {
