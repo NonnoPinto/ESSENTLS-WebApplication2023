@@ -17,6 +17,13 @@ import java.sql.SQLException;
 public class LoginServlet extends AbstractDatabaseServlet {
 
     //public final static String LOGIN_JSP = "/jsp/login.jsp";
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setAction("LOGIN");
+
+        req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+    }
 
 
 
