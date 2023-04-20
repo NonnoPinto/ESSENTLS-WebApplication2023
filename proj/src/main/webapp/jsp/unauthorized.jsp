@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"   %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"   %>
-<%@ include file="/html/cdn.html"   %>
+<%-- @ include file="/html/cdn.html" --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +14,16 @@
 <!--     <script src="${pageContext.request.contextPath}/js/login.js"></script> -->
 </head>
 <body>
-<!-- <jsp:include page="navbar.jsp" /> -->
+<%--jsp:include page="navbar.jsp"--%>
 <div class="headerup"></div>
 <div class="container">
 
        <div style="margin: 30px 0">
            <div class="alert alert-danger" role="alert">
-                                <div>
-                                    You are not authorized.
-                                </div>
-               <div>
+                <div>
+                    You are not authorized.
+                </div>
+           <div>
                    <!-- <a class="btn btn-danger btn-lg" href="${pageContext.request.contextPath}/jsp/home.jsp" role="button">Back</a> -->
            </div>
 

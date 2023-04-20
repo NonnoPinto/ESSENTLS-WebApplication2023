@@ -1,6 +1,7 @@
 package com.essentls.dao;
 
 import com.essentls.resource.Participant;
+import com.essentls.resource.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
 
-    private static final String STATEMENT_PARTICIPANTS_LIST = "SELECT * FROM public.\"Participants\" WHERE \"eventId\" = ?";
+    private static final String STATEMENT_PARTICIPANTS_LIST = "SELECT * FROM public.\"Participants\" INNER JOIN public.\"Users\" ON public.\"Participants\".\"userId\" = public.\"Users\".\"id\" WHERE \"eventId\" = ?";
 
     private final long eventId;
 
@@ -35,13 +36,39 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
+
                 participants.add(
                         new Participant(
                                 rs.getLong("userId"),
                                 rs.getLong("eventId"),
                                 rs.getString("role"),
                                 rs.getDate("date"),
-                                rs.getString("attributeValues")));
+                                rs.getString("attributeValues"),
+                                new User(
+                                        rs.getString("email"),
+                                        rs.getString("password"),
+                                        rs.getString("cardId"),
+                                        rs.getInt("tier"),
+                                        rs.getDate("registrationDate"),
+                                        rs.getString("name"),
+                                        rs.getString("surname"),
+                                        rs.getString("sex"),
+                                        rs.getDate("dateOfBirth"),
+                                        rs.getString("nationality"),
+                                        rs.getString("homeCountryAddress"),
+                                        rs.getString("homeCountryUniversity"),
+                                        rs.getString("periodOfStay"),
+                                        rs.getString("phoneNumber"),
+                                        rs.getString("paduaAddress"),
+                                        rs.getString("documentType"),
+                                        rs.getString("documentNumber"),
+                                        rs.getString("documentFile"),
+                                        rs.getString("dietType"),
+                                        rs.getString("allergies"),
+                                        rs.getBoolean("emailConfirmed")
+                                )
+                        )
+                );
             }
 
             LOGGER.info("Participants list for event {} successfully listed.", this.eventId);

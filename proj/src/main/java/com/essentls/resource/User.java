@@ -31,6 +31,32 @@ public class User {
     private String emailHash;
     private boolean emailConfirmed;
 
+    public User(){}
+    public User(User user){
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.cardId = user.getCardId();
+        this.tier = user.getTier();
+        this.registrationDate = user.getRegistrationDate();
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.sex = user.getSex();
+        this.dateOfBirth = user.getDateOfBirth();
+        this.nationality = user.getNationality();
+        this.homeCountryAddress = user.getHomeCountryAddress();
+        this.homeCountryUniversity = user.getHomeCountryUniversity();
+        this.periodOfStay = user.getPeriodOfStay();
+        this.phoneNumber = user.getPhoneNumber();
+        this.paduaAddress = user.getPaduaAddress();
+        this.documentType = user.getDocumentType();
+        this.documentNumber = user.getDocumentNumber();
+        this.documentFile = user.getDocumentFile();
+        this.dietType = user.getDietType();
+        this.allergies = user.getAllergies();
+        this.emailHash = user.getEmailHash();
+        this.emailConfirmed = user.getEmailConfirmed();
+    }
+
     public User(String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
