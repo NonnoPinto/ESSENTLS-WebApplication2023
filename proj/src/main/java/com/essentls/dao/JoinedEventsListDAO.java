@@ -17,8 +17,8 @@ import com.essentls.resource.Event;
  * @since 1.00
  */
 public class JoinedEventsListDAO extends AbstractDAO<List<Event>> {
-    private static final String STATEMENT_JOINED_EVENTS = "SELECT e.id, e.name, e.startDate from data.participant AS p INNER JOIN data.event AS e " +
-    "on p.eventId = e.id where p.userId = ?;";
+    private static final String STATEMENT_JOINED_EVENTS = "SELECT e.id, e.name, e.\"startDate\" from public.\"Participants\" AS p INNER JOIN public.\"Events\" AS e " +
+    "on p.\"eventId\" = e.id where p.\"userId\" = ?;";
 
     private final long userId;
 
