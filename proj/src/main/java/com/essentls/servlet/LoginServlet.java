@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 
-@WebServlet(name = "LoginServlet", value = "/login/")
+@WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends AbstractDatabaseServlet {
 
     //public final static String LOGIN_JSP = "/jsp/login.jsp";

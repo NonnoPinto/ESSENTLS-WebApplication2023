@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ProfileServlet", value = "/profile/")
+@WebServlet(name = "ProfileServlet", value = "/profile")
 public class ProfileServlet extends AbstractDatabaseServlet {
     public final static String USER_SESSION_KEY = "user";
 
