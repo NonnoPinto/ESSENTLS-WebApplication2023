@@ -42,7 +42,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
     
-            LOGGER.info("user {} is trying to login",email);
+            LOGGER.info("user %s is trying to login",email);
     
             if (email == null || email.equals("")) {
                 //the email is null (was not set on the parameters) or an empty string
@@ -87,11 +87,11 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     HttpSession session = req.getSession();
                     session.setAttribute("user", user);
                     session.setAttribute("tier", user.getTier());
-                    LOGGER.info("the USER {} LOGGED IN",user.getEmail());
+                    LOGGER.info("the USER %s LOGGED IN",user.getEmail());
     //
                     // login credentials were correct: we redirect the user to the profile page
                     // now the session is active and its data can used to change the profile page
-                    res.sendRedirect(req.getContextPath()+"/jsp/profile.jsp");
+                    res.sendRedirect(req.getContextPath()+"/profile");
     
     //                    req.getRequestDispatcher("/jsp/user/home.jsp").forward(req, res);
                 }
