@@ -22,7 +22,7 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("Users");
+        User user = (User) session.getAttribute("user");
         if(user == null || user.getTier() < 3){ //Auth check
             request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
         }else {
