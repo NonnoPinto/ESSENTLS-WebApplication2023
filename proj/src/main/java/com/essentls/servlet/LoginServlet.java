@@ -73,7 +73,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
     
                 //the UserLoginDAO will tell us if the email exists and the password
                 //matches
-                if (user == null){
+                if (user == null || !user.getEmailConfirmed()) {
                     LOGGER.info("User null %s",email);
                     //if not, tell it to the user, forward an error message
                     ErrorCode ec = ErrorCode.WRONG_CREDENTIALS;
@@ -81,8 +81,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     m = new Message(true, "Credentials are wrong");
                     req.setAttribute("message", m);
                     req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
-                }
-                else{
+                } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
                     session.setAttribute("user", user);
