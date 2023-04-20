@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.essentls.dao.EventsFromTagAndTierDAO;
 import com.essentls.dao.TagsListDAO;
 import com.essentls.dao.UserEventsListDAO;
 import com.essentls.resource.Event;
@@ -16,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "HomeServlet", urlPatterns = {"/", "/home"})
+@WebServlet(name = "HomeServlet", urlPatterns = {"", "/home"})
 public final class HomeServlet extends AbstractDatabaseServlet {
 
     @Override
@@ -38,6 +39,8 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             userTier = (int) o;
         }
 
+        String filterTag = req.getParameter("tag");
+
         Message m = null;
 
         List<Event> events = null;
@@ -46,7 +49,10 @@ public final class HomeServlet extends AbstractDatabaseServlet {
 
         try {
 
-            events = new UserEventsListDAO(getConnection(), userTier).access().getOutputParam();
+            if (filterTag != null)
+                events = new EventsFromTagAndTierDAO(getConnection(), new Tag(filterTag.trim()), userTier).access().getOutputParam();
+            else
+                events = new UserEventsListDAO(getConnection(), userTier).access().getOutputParam();
 
             LOGGER.info("Events successfully retrieved by tier %d.", userTier);
 
