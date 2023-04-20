@@ -46,7 +46,7 @@
     </servlet>
 
     <servlet>
-        <servlet-name>EmailConfirmatioServlet</servlet-name>
+        <servlet-name>EmailConfirmationServlet</servlet-name>
         <servlet-class>com.essentls.servlet.EmailConfirmatioServlet</servlet-class>
     </servlet>
 
@@ -62,7 +62,7 @@
 
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern></url-pattern>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
 

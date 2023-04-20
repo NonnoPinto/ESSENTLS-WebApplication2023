@@ -32,8 +32,8 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("Users");
-            if(false && (user == null || user.getTier() < e.getVisibility())){
+            User user = (User) session.getAttribute("user");
+            if(user == null || user.getTier() < e.getVisibility()){ //Auth check
                 request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
             }else {
                 List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
