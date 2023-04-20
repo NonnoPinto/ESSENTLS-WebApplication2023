@@ -27,7 +27,6 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * UserID
      * TODO: decide how to get this data
      */
-//    private long infoID; //final id?
     private final long id;
 
     /**

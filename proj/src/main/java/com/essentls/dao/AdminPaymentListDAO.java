@@ -31,13 +31,13 @@ public class AdminPaymentListDAO extends AbstractDAO<List<Payment>>{
             while (rs.next()) {
                 users.add(
                         new Payment(
-                                rs.getLong("id"),
-                                rs.getLong("userId"),
-                                rs.getLong("eventId"),
-                                rs.getString("method"),
-                                rs.getFloat("amount"),
-                                rs.getDate("date"),
-                                rs.getString("notes")
+                            rs.getLong("id"),
+                            rs.getLong("userId"),
+                            rs.getLong("eventId"),
+                            rs.getString("method"),
+                            rs.getFloat("amount"),
+                            rs.getDate("date"),
+                            rs.getString("notes")
                         )
                 );
             }
