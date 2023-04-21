@@ -22,7 +22,14 @@ public class LoginServlet extends AbstractDatabaseServlet {
         LogContext.setResource(req.getRequestURI());
         LogContext.setAction("LOGIN");
 
-        req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+        HttpSession session = req.getSession();
+        LOGGER.info("session %s:", session);
+        if (session.getAttribute("userId") == null){
+            req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+        }
+        else{
+            req.getRequestDispatcher("/home").forward(req, res);
+        }
     }
 
 
