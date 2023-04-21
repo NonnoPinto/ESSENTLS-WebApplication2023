@@ -1,4 +1,4 @@
-<h1>Navbar: add your jsp here </h1>
+<h1>Navbar</h1>
 
 <a rel="noopener noreferrer nofollow" href="<c:url value='/home'/>">home</a>
 <a rel="noopener noreferrer nofollow" href="<c:url value='/login'/>">login</a>
