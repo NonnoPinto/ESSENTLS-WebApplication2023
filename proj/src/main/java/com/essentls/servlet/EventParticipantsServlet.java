@@ -22,25 +22,23 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        if(user == null || user.getTier() < 3){ //Auth check
-            request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
-        }else {
-            Integer eventId = Integer.parseInt(request.getParameter("id").trim());
-            try {
+        try {
+            long userId = (long) session.getAttribute("userId");
+            User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            if(user == null || user.getTier() < 3){ //Auth check
+                request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
+            }else {
+                Integer eventId = Integer.parseInt(request.getParameter("id").trim());
                 Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
                 List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
-
-
                 request.setAttribute("event", event);
                 request.setAttribute("participants", participants);
                 request.getRequestDispatcher("/jsp/eventparticipants.jsp").forward(request, response);
-            } catch (SQLException e) {
-                LOGGER.error("stacktrace:", e);
-                throw new ServletException(e);
             }
+        } catch (SQLException e) {
+            LOGGER.error("stacktrace:", e);
+            throw new ServletException(e);
         }
-
     }
 
 }

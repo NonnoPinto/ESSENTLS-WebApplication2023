@@ -20,13 +20,12 @@ public class ProfileServlet extends AbstractDatabaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        long userId = user.getId();
+        long userId = (long)session.getAttribute("userId");
         LOGGER.info("userid: %s", userId);
 
 
         try {
-            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
             request.setAttribute("user", user);
             request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
         } catch (SQLException e) {

@@ -84,7 +84,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
                 } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
+                    session.setAttribute("userId", user.getId());
                     session.setAttribute("tier", user.getTier());
                     LOGGER.info("the USER %s LOGGED IN",user.getEmail());
     //
