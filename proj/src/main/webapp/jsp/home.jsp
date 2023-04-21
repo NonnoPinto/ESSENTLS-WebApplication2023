@@ -35,6 +35,9 @@
                     <li>Event Location: <c:out value="${event.getLocation()}"/></li>
                     <li>Event Price: <c:out value="${event.getPrice()}"/></li>
                     <li>Event Description: <c:out value="${event.getDescription()}"/></li>
+                    <form action="eventdetail">
+                        <button name="id" value="${event.getId()}">Details</button>
+                    </form>                    
                 </c:forEach>
             </c:otherwise>
         </c:choose>
