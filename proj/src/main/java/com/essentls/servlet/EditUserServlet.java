@@ -100,7 +100,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
 
             //creates a new user from the request parameters
             u = new User(
-                    //id,
+                    id,
                     email, password, cardId, tier, registrationDate, name, surname, sex, dateOfBirth,
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType,
                     documentNumber, documentFile, dietType, allergies,

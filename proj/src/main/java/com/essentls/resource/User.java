@@ -33,6 +33,7 @@ public class User {
 
     public User(){}
     public User(User user){
+        this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.cardId = user.getCardId();
@@ -57,11 +58,11 @@ public class User {
         this.emailConfirmed = user.getEmailConfirmed();
     }
 
-    public User(String email, String password, String cardId, int tier, Date registrationDate, String name,
+    public User(Long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
-        // this.id = 0;
+        this.id = id;
         this.email = email;
         this.password = password;
         this.cardId = cardId;
