@@ -16,6 +16,8 @@
   <title>User detail</title>
 </head>
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 <div>
   <h1>Profile Page</h1>
   <hr>

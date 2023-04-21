@@ -14,7 +14,7 @@
 <!--     <script src="${pageContext.request.contextPath}/js/login.js"></script> -->
 </head>
 <body>
-<%--jsp:include page="navbar.jsp"--%>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
 <div class="headerup"></div>
 <div class="container">
 

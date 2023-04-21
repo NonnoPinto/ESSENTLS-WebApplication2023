@@ -9,7 +9,9 @@
     <meta charset="ISO-8859-1">
     <title>Event participants</title>
 </head>
-<body>
+
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 
 <div class="container">
     <div>

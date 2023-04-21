@@ -16,6 +16,8 @@
 </head>
 
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 <h1>List of found Users</h1>
 <hr/>
 

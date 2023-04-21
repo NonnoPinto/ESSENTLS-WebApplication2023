@@ -18,6 +18,8 @@
 </head>
 
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+    
 <h1>Edit User</h1>
 
 <c:choose>

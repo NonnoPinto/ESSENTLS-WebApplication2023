@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 <h1>Search User</h1>
 
 <form method="POST" action="<c:url value="/search-users"/>">

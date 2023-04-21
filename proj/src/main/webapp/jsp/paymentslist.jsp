@@ -11,6 +11,7 @@
     <title>Payments List</title>
 </head>
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
 
 </body>
 </html>
