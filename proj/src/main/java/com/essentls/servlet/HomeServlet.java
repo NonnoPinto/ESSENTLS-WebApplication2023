@@ -33,12 +33,23 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         LogContext.setResource(req.getRequestURI());
         LogContext.setAction("RETRIVE EVENTS BY TIER AND TAGS");
 
+
         //get user of the current session
-        long userId = (long)session.getAttribute("userId");
-
+        long userId = -1;
         User user = null;
-
         Message m = null;
+        try {
+            userId = (long) session.getAttribute("userId");
+        }
+        catch (NullPointerException e){
+            LOGGER.error("Cannot search the User: id is not retrieved correctly.", e);
+
+            m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
+
+        }
+
+
+
 
         try {
 
