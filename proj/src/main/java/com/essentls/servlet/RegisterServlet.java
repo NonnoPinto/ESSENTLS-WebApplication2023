@@ -122,11 +122,14 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             LOGGER.warn(new StringFormattedMessage(
                     "User %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
         } catch (MessagingException ex) {
-            m = new Message(String.format("Employee %d successfully created but unable to send confirmation email.",
+            m = new Message(String.format("Employee %s successfully created but unable to send confirmation email.",
                     user.getEmail()));
+
+
 
             LOGGER.warn(new StringFormattedMessage(
                     "Employee %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
+            throw new ServletException(ex);
         }
     }
 
