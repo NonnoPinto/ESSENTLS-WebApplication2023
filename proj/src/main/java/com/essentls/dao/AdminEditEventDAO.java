@@ -1,6 +1,7 @@
 package com.essentls.dao;
 
 import com.essentls.resource.Event;
+import org.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.Date;
@@ -25,7 +26,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     private final String new_description;
     private final float new_price;
     private final int new_visibility;
-    private final String new_location;
+    private final JSONObject new_location;
     private final int new_maxParticipantsInternational;
     private final int new_maxParticipantsVolunteer;
     private final Date new_eventStart;
@@ -49,7 +50,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
                                                                       final String _newdescription,
                                                                       final float _newprice,
                                                                       final int _newvisibility,
-                                                                      final String _newlocation,
+                                                                      final JSONObject _newlocation,
                                                                       final int _newmaxParticipantsInternational,
                                                                       final int _newmaxParticipantsVolunteer,
                                                                       final Date _neweventStart,

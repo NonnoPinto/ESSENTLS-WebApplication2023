@@ -11,7 +11,7 @@ public class Event {
     private String description;
     private float price;
     private int visibility;
-    private String location;
+    private JSONObject location;
     private int maxParticipantsInternational;
     private int maxParticipantsVolunteer;
     private Date eventStart;
@@ -26,7 +26,7 @@ public class Event {
 
 
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
-    public Event(long id, String name, String description, float price, int visibility, String location,
+    public Event(long id, String name, String description, float price, int visibility, JSONObject location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
             Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
         this.id = id;
@@ -49,7 +49,7 @@ public class Event {
     }
 
     //Used in the home to get the list of events
-    public Event(long id, String name, String description, float price, String location, Date subscriptionEnd) {
+    public Event(long id, String name, String description, float price, JSONObject  location, Date subscriptionEnd) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -63,6 +63,26 @@ public class Event {
         this.id = id;
         this.name = name;
         this.eventStart = startDate;
+    }
+
+    public Event(String name, String description, float price, int visibility, JSONObject location, int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd, Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.visibility = visibility;
+        this.location = location;
+        this.maxParticipantsInternational = maxParticipantsInternational;
+        this.maxParticipantsVolunteer = maxParticipantsVolunteer;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
+        this.subscriptionStart = subscriptionStart;
+        this.subscriptionEnd = subscriptionEnd;
+        this.withdrawalEnd = withdrawalEnd;
+        this.maxWaitingList = maxWaitingList;
+        this.attributes = attributes;
+        this.thumbnail = thumbnail;
+        this.poster = poster;
+
     }
 
     public long getId() {
@@ -85,7 +105,7 @@ public class Event {
         return visibility;
     }
 
-    public String getLocation() {
+    public JSONObject getLocation() {
         return location;
     }
 
@@ -146,7 +166,7 @@ public class Event {
     public void setVisibility(int _visibility){
         visibility = _visibility;
     }
-    public void setLocation(String _location){
+    public void setLocation(JSONObject _location){
         location = _location;
     }
     public void setMaxParticipantsInternational(int _maxParticipantsInternational){

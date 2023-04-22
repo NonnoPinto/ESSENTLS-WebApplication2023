@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -44,7 +45,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         String description = null;
         float price = -1;
         int visibility = 0;
-        String location = null;
+        JSONObject location = null;
         int maxPartecipantsInternational = -1;
         int maxPartecipantVolunteer = -1;
         LocalDateTime eventStart = null;
@@ -70,9 +71,9 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             description = req.getParameter("description");
             price = Float.parseFloat(req.getParameter("price"));
             visibility = Integer.parseInt(req.getParameter("visibility"));
-            location = req.getParameter("location");
-            maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxPartecipantsInternational"));
-            maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxPartecipantVolunteer"));
+            location = new JSONObject(req.getParameter("location"));
+            maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
+            maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxParticipantsVolunteer"));
             eventStart = LocalDateTime.parse(req.getParameter("eventStart"), formatter);
             eventEnd = LocalDateTime.parse(req.getParameter("eventEnd"), formatter);
             subscriptionStart = LocalDateTime.parse(req.getParameter("subscriptionStart"), formatter);
@@ -87,7 +88,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             LogContext.setResource(req.getParameter("name"));
 
             // creates a new event from the request parameters
-            e = new Event(-1L, name, description, price, visibility, location, maxPartecipantsInternational, 
+            e = new Event(name, description, price, visibility, location, maxPartecipantsInternational,
                 maxPartecipantVolunteer, java.sql.Date.valueOf(eventStart.toLocalDate()), 
                 java.sql.Date.valueOf(eventEnd.toLocalDate()), java.sql.Date.valueOf(subscriptionStart.toLocalDate()),
                 java.sql.Date.valueOf(subscriptionEnd.toLocalDate()), java.sql.Date.valueOf(withdrawalEnd.toLocalDate()), 
