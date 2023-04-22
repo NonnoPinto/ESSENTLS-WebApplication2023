@@ -1,7 +1,6 @@
 package com.essentls.dao;
 
 import java.sql.*;
-
 import com.essentls.resource.User;
 
 /**
