@@ -28,7 +28,7 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
          LogContext.setAction("SELECT USER BY ID");
 
          //request parameter
-         Long id;
+         long id;
 
          //model
          List<User> ul= null;
@@ -42,13 +42,9 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
                     throw new NumberFormatException();
                 }
 
-                User user = new User(
-                        id,
-                        null, null, null, 0, null, null, null, null, null, null,
+                User user = new User( id, null, null, null, 0, null, null, null, null, null, null,
                 null, null, null, null, null, null, null, null,
-                null, null,
-                        //null,
-                        true);
+                null, null, true);
 
              //creates a new object for accessing the database and searching the users
              ul = new AdminUsersListDAO(getConnection(),user).access().getOutputParam();

@@ -13,28 +13,29 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />-->
 </head>
 <body>
-			<c:choose>
-				<c:when test="${message.isError()}">
-					<div>
-						<div role="alert">
-                                <span>
-                                    <c:out value="${message.message}"/>
-                                </span>
-                                <p>
-                                    Home: <a href="<c:url value="/home"/>" >Home</a>
-                                </p>
-						</div>
-					</div>
-				</c:when>
-				<c:otherwise>
-                    <span>
-                        <c:out value="${message.message}"/>
-                    </span>  
-                    <p>
-                        Login: <a href="<c:url value="/login"/>" >Login</a>
-                    </p>
-                </c:otherwise>
-			</c:choose>
+    <div class="navbar"><%@include file="navbar.jsp"%></div>
+    <c:choose>
+        <c:when test="${message.isError()}">
+            <div>
+                <div role="alert">
+                        <span>
+                            <c:out value="${message.message}"/>
+                        </span>
+                        <p>
+                            Home: <a href="<c:url value="/home"/>" >Home</a>
+                        </p>
+                </div>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <span>
+                <c:out value="${message.message}"/>
+            </span>  
+            <p>
+                Login: <a href="<c:url value="/login"/>" >Login</a>
+            </p>
+        </c:otherwise>
+    </c:choose>
 
 	<footer class="footer"><%-- @ include file="/html/footer.html" --%></footer>
 </body>

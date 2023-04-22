@@ -10,6 +10,7 @@
   <title>Event detail</title>
 </head>
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
 
 <div class="container">
   <div>

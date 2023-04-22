@@ -58,7 +58,7 @@ public class User {
         this.emailConfirmed = user.getEmailConfirmed();
     }
 
-    public User(Long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
+    public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
             String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
@@ -326,6 +326,7 @@ public class User {
         uJson.put("documentFile", documentFile);
         uJson.put("dietType", dietType);
         uJson.put("allergies", allergies);
+        uJson.put("emailHash", emailHash);
         uJson.put("emailConfirmed", emailConfirmed);
         return uJson;
     }

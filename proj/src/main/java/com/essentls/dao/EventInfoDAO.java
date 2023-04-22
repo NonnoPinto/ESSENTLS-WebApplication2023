@@ -1,6 +1,7 @@
 package com.essentls.dao;
 
 import com.essentls.resource.Event;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,7 +63,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
                             rs.getString("Description"),
                             rs.getFloat("Price"),
                             rs.getInt("Visibility"),
-                            rs.getString("Location"),
+                            (JSONObject) rs.getObject("Location"),
                             rs.getInt("MaxParticipantsInternational"),
                             rs.getInt("MaxParticipantsVolunteer"),
                             rs.getDate("EventStart"),

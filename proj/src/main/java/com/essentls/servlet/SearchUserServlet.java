@@ -67,12 +67,9 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
                 email=req.getParameter("userEmail");
             }
 
-            User user = new User(
-                    id,
-                    email,null, cardId,0,null, name, surname,
+            User user = new User(id, email,null, cardId,0,null, name, surname,
                     null, null,null,null,null,null,
                     null,null,null,null,null,null,
-                    //null,
                     null, true);
 
             //creates a new object for accessing the database and searching the users

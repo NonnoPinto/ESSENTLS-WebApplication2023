@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />-->
 </head>
 <body>
-	<%--<!--<jsp:include page="navbar.jsp" />-->--%>
+    <div class="navbar"><%@include file="navbar.jsp"%></div>
+
 	<div class="loginContainer">
 		<div class="loginTitle">
 			<h1>LOG IN</h1>

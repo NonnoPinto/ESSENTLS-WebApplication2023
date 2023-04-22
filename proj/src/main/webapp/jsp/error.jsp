@@ -11,7 +11,8 @@
 <title>Error Page</title>
 </head>
 <body>
-<!-- <jsp:include page="/navbar.jsp"/> TODO: still on doing-->
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 <div class="container">
 <div class="page-header">
     <h3>An error occurred within the application</h3>

@@ -17,6 +17,8 @@
 </head>
 
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 <h1>Select User by ID</h1>
 
 <form method="POST" action="<c:url value="/select-user-by-id"/>">
