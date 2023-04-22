@@ -60,6 +60,16 @@
         <servlet-class>com.essentls.servlet.EventParticipantsServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>EventParticipantsServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EventParticipantsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CreateEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CreateEventServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern></url-pattern>
@@ -115,6 +125,11 @@
     <servlet-mapping>
         <servlet-name>EventParticipantsServlet</servlet-name>
         <url-pattern>/eventparticipants</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CreateEventServlet</servlet-name>
+        <url-pattern>/create-event</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

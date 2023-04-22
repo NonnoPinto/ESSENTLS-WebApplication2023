@@ -19,7 +19,7 @@
         </div>
 
         <div class="form">
-            <form action="<c:url value="/createEvent/"/>" id="createEventForm" method="POST">
+            <form action="<c:url value="/create-event"/>" id="createEventForm" method="POST">
 
                 <!--Name-->
                 <div style="padding-top: 10px;">

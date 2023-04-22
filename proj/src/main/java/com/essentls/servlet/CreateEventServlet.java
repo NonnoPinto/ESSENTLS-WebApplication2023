@@ -4,6 +4,8 @@ import com.essentls.dao.*;
 import com.essentls.resource.*;
 import java.sql.*;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@WebServlet(name = "CreateEventServlet", urlPatterns = {"", "/create-event"})
 public final class CreateEventServlet extends AbstractDatabaseServlet {
 
     /**
@@ -21,7 +24,17 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
     *
     * @throws IOException if any error occurs in the client/server communication.
     */
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setAction("CREATE EVENT");
+
+        req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
+    }
+
+    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setAction("CREATE EVENT");
@@ -49,7 +62,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         Message m = null;
 
         //set datetime format
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-ddTHH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         try {
             // retrieves the request parameters
@@ -89,11 +102,11 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
 
         } catch (NumberFormatException ex) {
             m = new Message(
-                    "Cannot create the employee. Invalid input parameters.",
+                    "Cannot create the event. Invalid input parameters.",
                     "E100", ex.getMessage());
 
             LOGGER.error(
-                    "Cannot create the employee. Invalid input parameters.",
+                    "Cannot create the event. Invalid input parameters.",
                     ex);
         } catch (SQLException ex) {
             
