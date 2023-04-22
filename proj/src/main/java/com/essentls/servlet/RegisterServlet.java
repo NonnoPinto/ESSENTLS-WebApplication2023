@@ -68,7 +68,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String emailHash = email;//TODO: hashme
             Boolean emailConfirmed = false;
 
-            user= new User(email, password, cardId, tier, registrationDate, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
+            user= new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
 
             LOGGER.info("user {} is trying to register",email);
     

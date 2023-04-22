@@ -58,7 +58,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
             if (rs.next()) {
                 myUser = new User(
-                        //id,
+                        id,
 //                        myUser = new User(infoID,
                 rs.getString("email"),
                 rs.getString("password"),
