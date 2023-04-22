@@ -3,7 +3,8 @@ package com.essentls.resource;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import com.essentls.mail.MailManager;
+import jakarta.mail.MessagingException;
 import org.json.JSONObject;
 
 public class User {
@@ -207,6 +208,7 @@ public class User {
         else {
             //send some kind of error message
         }
+        
     }
 
     public void setPassword(String _password) {
