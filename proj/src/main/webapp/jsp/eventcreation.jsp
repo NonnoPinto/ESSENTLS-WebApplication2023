@@ -49,10 +49,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">Visibility</label>
                     <div class="inputContainer">
-                        <input type="radio" id="visible" name="visibility" value="visible">
-                        <label for="visible">Visible</label><br>
-                        <input type="radio" id="hidden" name="visibility" value="Hidden">
-                        <label for="hidden">Hidden</label><br>
+                         <input type="number" name="visibility" id="visibility" min="0" max="4" >
                     </div>
                 </div>
 
@@ -130,7 +127,7 @@
 
                 <!--attributes-->
                 <div style="padding-top: 10px;">
-                    <label for="">Notes</label>
+                    <label for="">Attributes</label>
                     <div class="inputContainer">
                         <input type="text" name="attributes" id="attributes">
                     </div>
