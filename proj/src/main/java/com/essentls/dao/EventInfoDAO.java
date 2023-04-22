@@ -63,7 +63,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
                             rs.getString("Description"),
                             rs.getFloat("Price"),
                             rs.getInt("Visibility"),
-                            (JSONObject) rs.getObject("Location"),
+                            new JSONObject(rs.getObject("Location").toString()),
                             rs.getInt("MaxParticipantsInternational"),
                             rs.getInt("MaxParticipantsVolunteer"),
                             rs.getDate("EventStart"),

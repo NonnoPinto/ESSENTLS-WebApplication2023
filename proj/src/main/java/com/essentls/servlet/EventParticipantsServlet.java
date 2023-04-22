@@ -28,7 +28,7 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
             if(user == null || user.getTier() < 3){ //Auth check
                 request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
             }else {
-                Integer eventId = Integer.parseInt(request.getParameter("id").trim());
+                int eventId = Integer.parseInt(request.getParameter("id").trim());
                 Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
                 List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
                 request.setAttribute("event", event);

@@ -21,16 +21,18 @@ public class ProfileServlet extends AbstractDatabaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        long userId = (long)session.getAttribute("userId");
-        LOGGER.info("userid: %s", userId);
-
-
-        try {
-            User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-            request.setAttribute("user", user);
-            request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
-        } catch (SQLException e) {
-            LOGGER.error("stacktrace:", e);
+        if(session.getAttribute("userId") != null) {
+            long userId = (long) session.getAttribute("userId");
+            LOGGER.info("userid: %s", userId);
+            try{
+                User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
+            }catch(SQLException e) {
+                LOGGER.error("stacktrace:", e);
+            }
+        }else{
+            response.sendRedirect(request.getContextPath() + "/login");
         }
 
     }

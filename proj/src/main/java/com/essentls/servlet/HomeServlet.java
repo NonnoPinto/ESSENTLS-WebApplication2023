@@ -56,7 +56,6 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
 
         } catch (SQLException e) {
-
             LOGGER.error("Cannot search the User: unexpected error while accessing the database.", e);
 
             m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
@@ -93,6 +92,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
                 LOGGER.error("Cannot search for events: unexpected error while accessing the database.", e);
 
                 m = new Message(true, "Cannot search for events: unexpected error while accessing the database.");
+                throw new ServletException(e);
             }
 
             try {
