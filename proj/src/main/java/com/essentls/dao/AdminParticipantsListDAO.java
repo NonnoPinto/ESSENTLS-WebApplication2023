@@ -45,6 +45,7 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                                 rs.getDate("date"),
                                 rs.getString("attributeValues"),
                                 new User(
+                                        rs.getLong("id"),
                                         rs.getString("email"),
                                         rs.getString("password"),
                                         rs.getString("cardId"),
