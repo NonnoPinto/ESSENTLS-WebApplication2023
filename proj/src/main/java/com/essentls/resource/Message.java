@@ -1,9 +1,19 @@
 package com.essentls.resource;
 
+import java.io.OutputStream;
+import java.io.IOException;
+
+
+
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import org.json.JSONObject;
+
 /**
  * Represents a message or an error message.
  */
-public class Message {
+public class Message extends AbstractResource{
 
     /**
      * The message
@@ -108,6 +118,34 @@ public class Message {
      */
     public final boolean isError() {
         return isError;
+    }
+
+    @Override
+    protected void writeJSON(final OutputStream out) throws IOException {
+
+        final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
+
+        jg.writeStartObject();
+
+        jg.writeFieldName("message");
+
+        jg.writeStartObject();
+
+        jg.writeStringField("message", message);
+
+        if(errorCode != null) {
+            jg.writeStringField("error-code", errorCode);
+        }
+
+        if(errorDetails != null) {
+            jg.writeStringField("error-details", errorDetails);
+        }
+
+        jg.writeEndObject();
+
+        jg.writeEndObject();
+
+        jg.flush();
     }
 
 }
