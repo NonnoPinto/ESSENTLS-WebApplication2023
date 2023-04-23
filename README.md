@@ -44,7 +44,7 @@ On your machine you must have installed:
 * Maven
 * PostgreSQL/pgAdmin 4
 
-## Configuring the environemt
+## Configuring the Database
 
 1. Clone the repo
 
