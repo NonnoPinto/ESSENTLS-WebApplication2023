@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.message.StringFormattedMessage;
+import org.json.JSONObject;
 
 
 import java.io.IOException;
@@ -59,11 +60,11 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String sex = req.getParameter("sex");
             java.sql.Date date2 = new java.sql.Date(format.parse(req.getParameter("birth-date")).getTime());//registration date
             String nationality = req.getParameter("nationality");
-            String homeCountryAddress = req.getParameter("home-country-address");
+            //String homeCountryAddress = req.getParameter("home-country-address");
             String homeCountryUniversity = req.getParameter("home-country-university");
             String periodOfStay = req.getParameter("period-of-stay");
             String phoneNumber = req.getParameter("phone-number");
-            String paduaAddress = req.getParameter("padua-address");
+            //String paduaAddress = req.getParameter("padua-address");
             String documentType = req.getParameter("document-type");
             String documentNumber = req.getParameter("document-number");
             String documentFile = req.getParameter("document-file");
@@ -71,6 +72,14 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String[] allergies = req.getParameter("allergies").split(",");
             String emailHash = email.hashCode()+"";//TODO: hashme
             Boolean emailConfirmed = false;
+            JSONObject paduaAddress = new JSONObject();
+            JSONObject homeCountryAddress = new JSONObject();
+            paduaAddress = paduaAddress.put("city", "citypad");
+            homeCountryAddress = homeCountryAddress.put("city", "cityhom");
+            paduaAddress = paduaAddress.put("street", "streetpad");
+            homeCountryAddress = homeCountryAddress.put("street", "streethom");
+            paduaAddress = paduaAddress.put("number", "numberpad");
+            homeCountryAddress = homeCountryAddress.put("number", "numberhom");
 
             if (email == null || email.equals("")) {
                 ErrorCode ec = ErrorCode.EMAIL_MISSING;
@@ -127,8 +136,9 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             throw new ServletException(ex);
         */
 
-        } catch (SQLException ex){
-            m = new Message(String.format("SQL Exception", ex));
+        } catch (final SQLException e) {
+            LOGGER.error("Exception SQL happened.", e);
+
         }
     }
 

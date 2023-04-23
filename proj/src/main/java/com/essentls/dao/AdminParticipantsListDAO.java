@@ -2,6 +2,8 @@ package com.essentls.dao;
 
 import com.essentls.resource.Participant;
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,11 +57,11 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                                         rs.getString("sex"),
                                         rs.getDate("dateOfBirth"),
                                         rs.getString("nationality"),
-                                        rs.getString("homeCountryAddress"),
+                                        new JSONObject(rs.getObject("homeCountryAddress", PGobject.class)),
                                         rs.getString("homeCountryUniversity"),
                                         rs.getString("periodOfStay"),
                                         rs.getString("phoneNumber"),
-                                        rs.getString("paduaAddress"),
+                                        new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
                                         rs.getString("documentType"),
                                         rs.getString("documentNumber"),
                                         rs.getString("documentFile"),

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 
 /**
@@ -18,12 +20,52 @@ import com.essentls.resource.User;
  * @since 1.00
  */
 public class UserRegistrationDAO extends AbstractDAO  {
-    private static final String STATEMENT_REGISTRATION = "insert into public.\"Users\"(email, password, cardID, tier, date, name, " +
-                                "surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, " +
-                                "phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed) " +
-                                "values (?, ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String STATEMENT_REGISTRATION = "INSERT INTO public.\"Users\"(" +
+            "email, password, \"cardID\", tier, \"registrationDate\", name, surname, sex, \"dateOfBirth\", " +
+            "nationality, \"homeCountryAddress\", \"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", " +
+            "\"paduaAddress\", \"documentType\", \"documentNumber\", \"documentFile\", \"dietType\", allergies, " +
+            "\"emailHash\", \"emailConfirmed\")" +
+            "VALUES (?, ?, ?, 0, ?, ?, ?, CAST(? as gen), ?, ?, ?, ?, ?, ?, ?, CAST (? as identity), ?, ?, CAST (? as diet), ?, ?, ?);";
+
 
     private final User user;
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     */
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+        PGobject pgobj = new PGobject();
+        pgobj.setType("json");
+        pgobj.setValue(j.toString());
+        return pgobj;
+    }
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     */
+    public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException{
+
+        PGobject pgobj = new PGobject();
+        pgobj.setType("text[]");
+
+        //return empty if so
+        if(s.length ==0){
+            pgobj.setValue("");
+            return pgobj;
+        }
+
+        //String[] to String
+        String text ="{" + "\"" + s[0];
+        for(int i=1; i<s.length; i++){
+            text += "\", ";
+            text += "\"";
+            text += s[i];
+        }
+        text += "\"}";
+        //set value of PGObject
+        pgobj.setValue(text);
+        return pgobj;
+    }
 
     public UserRegistrationDAO(Connection con, User user) {
         super(con);
@@ -51,11 +93,14 @@ public class UserRegistrationDAO extends AbstractDAO  {
             pstmt.setString(7, user.getSex());
             pstmt.setDate(8, user.getDateOfBirth());
             pstmt.setString(9, user.getNationality());
-            pstmt.setString(10, user.getHomeCountryAddress());
+            //stmt.setObject(5, jsonToPGobj(this.event.getLocation()));
+
+            pstmt.setObject(10,  jsonToPGobj(user.getHomeCountryAddress()));
             pstmt.setString(11, user.getHomeCountryUniversity());
-            pstmt.setString(12, user.getPeriodOfStay());
+            //pstmt.setInt(12, user.getPeriodOfStay());
+            pstmt.setInt(12, 2);
             pstmt.setString(13, user.getPhoneNumber());
-            pstmt.setString(14, user.getPaduaAddress());
+            pstmt.setObject(14, jsonToPGobj(user.getPaduaAddress()));
             pstmt.setString(15, user.getDocumentType());
             pstmt.setString(16, user.getDocumentNumber());
             pstmt.setString(17, user.getDocumentFile());

@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.message.StringFormattedMessage;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -40,11 +41,11 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         String sex = null;
         Date dateOfBirth = null;
         String nationality = null;
-        String homeCountryAddress = null;
+        JSONObject homeCountryAddress = null;
         String homeCountryUniversity = null;
         String periodOfStay = null;
         String phoneNumber = null;
-        String paduaAddress = null;
+        JSONObject paduaAddress = null;
         String documentType = null;
         String documentNumber = null;
         String documentFile = null;
@@ -81,17 +82,27 @@ public class EditUserServlet extends AbstractDatabaseServlet {
                 dateOfBirth = null;
             }
             nationality = req.getParameter("userNationality");
-            homeCountryAddress = req.getParameter("userHomeCountryAddress");
+            //homeCountryAddress = new JSONObject(req.getParameter("userHomeCountryAddress"));
             homeCountryUniversity = req.getParameter("userHomeCountryUniversity");
             periodOfStay = req.getParameter("userPeriodOfStay");
             phoneNumber = req.getParameter("userPhoneNumber");
-            paduaAddress = req.getParameter("userPaduaAddress");
+            //paduaAddress = new JSONObject(req.getParameter("userPaduaAddress"));
             documentType = req.getParameter("userDocumentType");
             documentNumber = req.getParameter("userDocumentNumber");
             documentFile = req.getParameter("userDocumentFile");
             dietType = req.getParameter("userDietType");
             allergies = req.getParameter("userAllergies").replace(", ",",").split(",");
             emailHash = req.getParameter("userEmailHash");
+
+            paduaAddress = new JSONObject();
+            homeCountryAddress = new JSONObject();
+            paduaAddress = paduaAddress.put("city", "citypad");
+            homeCountryAddress = homeCountryAddress.put("city", "cityhom");
+            paduaAddress = paduaAddress.put("street", "streetpad");
+            homeCountryAddress = homeCountryAddress.put("street", "streethom");
+            paduaAddress = paduaAddress.put("number", "numberpad");
+            homeCountryAddress = homeCountryAddress.put("number", "numberhom");
+
             try {
             emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}
             catch (Exception e){

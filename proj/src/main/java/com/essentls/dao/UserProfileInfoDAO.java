@@ -1,5 +1,7 @@
 package com.essentls.dao;
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import java.sql.*;
 
@@ -34,13 +36,14 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * Creates a new object for gather info about user.
      *
      * @param con    the connection to the database.
-     * @param user   the user that made the payments.
+     * @param id      the user that made the payments.
      */
     public UserProfileInfoDAO(final Connection con, final long id) {
         super(con);
 //        this.user = user;
         this.id = id;
     }
+
 
     @Override
     protected void doAccess() throws Exception {
@@ -70,11 +73,11 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("sex"),
                 rs.getDate("dateOfBirth"),
                 rs.getString("nationality"),
-                rs.getString("homeCountryAddress"),
+                new JSONObject (rs.getObject("homeCountryAddress", PGobject.class)),
                 rs.getString("homeCountryUniversity"),
                 rs.getString("periodOfStay"),
                 rs.getString("phoneNumber"),
-                rs.getString("paduaAddress"),
+                new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
                 rs.getString("documentType"),
                 rs.getString("documentNumber"),
                 rs.getString("documentFile"),

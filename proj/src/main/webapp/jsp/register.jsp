@@ -55,6 +55,11 @@
             <label for="phone-number">Phone number:</label>
             <input name="phone-number" type="text" required><br><br>
             <label for="padua-address">Padua address:</label>
+             <div class="inputContainer">
+                <input type="text" name="province" id="province" placeholder="Enter province...">
+                <input type="text" name="city" id="city" placeholder="Enter city...">
+                <input type="text" name="street" id="street" placeholder="Enter Street...">
+            </div>
             <input name="padua-address" type="text" required><br><br>
             <label for="document-type">Document type:</label>
             <select name="document-type">

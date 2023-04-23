@@ -19,11 +19,11 @@ public class User {
     private String sex;
     private Date dateOfBirth;
     private String nationality;
-    private String homeCountryAddress;
+    private JSONObject homeCountryAddress;
     private String homeCountryUniversity;
     private String periodOfStay;
     private String phoneNumber;
-    private String paduaAddress;
+    private JSONObject paduaAddress;
     private String documentType;
     private String documentNumber;
     private String documentFile;
@@ -60,8 +60,8 @@ public class User {
     }
 
     public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
-            String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
-            String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
+            String surname, String sex, Date dateOfBirth, String nationality, JSONObject homeCountryAddress,
+            String homeCountryUniversity, String periodOfStay, String phoneNumber, JSONObject paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String[] allergies, String emailHash, boolean emailConfirmed) {
         this.id = id;
         this.email = email;
@@ -132,7 +132,7 @@ public class User {
         return nationality;
     }
 
-    public String getHomeCountryAddress() {
+    public JSONObject getHomeCountryAddress() {
         return homeCountryAddress;
     }
 
@@ -148,7 +148,7 @@ public class User {
         return phoneNumber;
     }
 
-    public String getPaduaAddress() {
+    public JSONObject getPaduaAddress() {
         return paduaAddress;
     }
 
@@ -261,7 +261,7 @@ public class User {
         this.nationality = nationality;
     }
 
-    public void setHomeCountryAddress(String homeCountryAddress) {
+    public void setHomeCountryAddress(JSONObject homeCountryAddress) {
         this.homeCountryAddress = homeCountryAddress;
     }
 
@@ -277,7 +277,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setPaduaAddress(String paduaAddress) {
+    public void setPaduaAddress(JSONObject paduaAddress) {
         this.paduaAddress = paduaAddress;
     }
 
