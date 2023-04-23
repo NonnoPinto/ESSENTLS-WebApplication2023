@@ -53,7 +53,7 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getFloat("price"),
-                        (JSONObject) rs.getObject("location"),
+                        new JSONObject(rs.getObject("location").toString()),
                         rs.getDate("subscriptionEnd")));
 }
         

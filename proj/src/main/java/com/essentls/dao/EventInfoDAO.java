@@ -34,7 +34,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
      * Creates a new object for gathering the event by id.
      *
      * @param con    the connection to the database.
-     * @param tier  the thier of the current user.
+     * @param id     the id of the current user.
      */
     public EventInfoDAO(final Connection con, final int id) {
         super(con);
@@ -72,7 +72,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
                             rs.getDate("SubscriptionEnd"),
                             rs.getDate("WithdrawalEnd"),
                             rs.getInt("MaxWaitingList"),
-                            rs.getString("Attributes"),
+                            (String[]) rs.getArray("attributes").getArray(),
                             rs.getString("Thumbnail"),
                             rs.getString("Poster")
                         );

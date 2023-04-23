@@ -33,13 +33,14 @@ public class AdminEventsListDAO extends AbstractDAO<List<Event>> {
 
             while (rs.next()) {
                 events.add(
+
                         new Event(
                                 rs.getLong("id"),
                                 rs.getString("name"),
                                 rs.getString("description"),
                                 rs.getFloat("price"),
                                 rs.getInt("visibility"),
-                                (JSONObject) rs.getObject("location"),
+                                new JSONObject(rs.getObject("location").toString()),
                                 rs.getInt("maxParticipantsInternational"),
                                 rs.getInt("maxParticipantsVolunteer"),
                                 rs.getDate("eventStart"),
@@ -48,7 +49,7 @@ public class AdminEventsListDAO extends AbstractDAO<List<Event>> {
                                 rs.getDate("subscriptionEnd"),
                                 rs.getDate("withdrawalEnd"),
                                 rs.getInt("maxWaitingList"),
-                                rs.getString("attributes"),
+                                (String[]) rs.getArray("attributes").getArray(),
                                 rs.getString("thumbnail"),
                                 rs.getString("poster")));
             }

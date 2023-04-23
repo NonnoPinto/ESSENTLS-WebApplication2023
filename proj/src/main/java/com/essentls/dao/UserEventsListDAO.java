@@ -72,7 +72,7 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
                                 rs.getDate("SubscriptionEnd"),
                                 rs.getDate("WithdrawalEnd"),
                                 rs.getInt("MaxWaitingList"),
-                                rs.getString("Attributes"),
+                                (String[]) rs.getArray("Attributes").getArray(),
                                 rs.getString("Thumbnail"),
                                 rs.getString("Poster")
                         )
