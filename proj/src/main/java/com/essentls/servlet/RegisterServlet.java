@@ -2,7 +2,10 @@ package com.essentls.servlet;
 
 import com.essentls.dao.*;
 import com.essentls.resource.*;
+import com.essentls.mail.MailManager;
+
 import com.essentls.utils.ErrorCode;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,7 +34,6 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
@@ -68,10 +70,6 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String emailHash = email;//TODO: hashme
             Boolean emailConfirmed = false;
 
-            user= new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
-
-            LOGGER.info("user {} is trying to register",email);
-    
             if (email == null || email.equals("")) {
                 //the email is null (was not set on the parameters) or an empty string
                 //notify this to the user
@@ -91,18 +89,23 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
     
-            } else{
-                //the email and password are not null, we can try to register the user and set the value email confirmation to false until the user confirms the email
-                
-                email = email.toLowerCase();
-                LOGGER.info("User is about to be registered %s",email);
-                //sendCreationConfirmationEmail(user);
-                LOGGER.info("Creation confirmation email for user %d successfully sent.", user.getEmail());
+            } else {
+            //the email and password are not null, we can try to register the user and set the value email confirmation to false until the user confirms the email
+            user= new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
 
-                m = new Message(String.format("user %d successfully created and confirmation email successfully sent.",
-                        user.getEmail()));
-                // try to find the user in the database
-                //user = new UserLoginDAO(getConnection(),email, password).access().getOutputParam();
+            LOGGER.info("user {} is trying to register",email);
+
+            sendCreationConfirmationEmail(user);
+
+            email = email.toLowerCase();
+            LOGGER.info("User is about to be registered %s",email);
+            //sendCreationConfirmationEmail(user);
+            LOGGER.info("Creation confirmation email for user %d successfully sent.", user.getEmail());
+
+            m = new Message(String.format("user %d successfully created and confirmation email successfully sent.",
+                    user.getEmail()));
+            // try to find the user in the database
+            //user = new UserLoginDAO(getConnection(),email, password).access().getOutputParam();
             }
         } catch (NumberFormatException ex) {
             m = new Message(
@@ -118,29 +121,36 @@ public class RegisterServlet extends AbstractDatabaseServlet {
 
             LOGGER.warn(new StringFormattedMessage(
                     "User %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
+        } catch (MessagingException ex) {
+            m = new Message(String.format("Employee %s successfully created but unable to send confirmation email.",
+                    user.getEmail()));
+
+
+
+            LOGGER.warn(new StringFormattedMessage(
+                    "Employee %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
+            throw new ServletException(ex);
         }
-    /*
+    }
+
     private void sendCreationConfirmationEmail(User u) throws MessagingException {
 
-		final StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         //TODO: test this
-		sb.append(String.format("<p>Welcome %s,</p>%n", u.getSurname(), u.getName()));
-		sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been created.</p>%n"));
-		sb.append(String.format("<p>Please, verify your mail by clicking the link below.</p>%n"));
+        sb.append(String.format("<p>Welcome %s,</p>%n", u.getSurname(), u.getName()));
+        sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been created.</p>%n"));
+        sb.append(String.format("<p>Please, verify your mail by clicking the link below.</p>%n"));
         sb.append(String.format("<p><a href=\"%s\">Verify your mail</a></p>%n", "http://localhost:8080/essentls/verify?email=" + u.getEmail()));
-		sb.append(String.format("<p>Best regards,<br>The ESN Padua Team</p>%n"));
-		sb.append(String.format("<p>Remember, to fully enrol you must visit our office!</p>%n"));
-		sb.append(String.format("<p>You can find our office at , Padua. We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
-		sb.append(String.format("<a href=\"https://g.page/esnpadova\" target=\"_blank\" rel=\"noopener noreferral nofollow\" data-saferedirecturl=\"https://www.google.com/url?q=https://g.page/esnpadova&amp;source=gmail&amp;ust=1681817791169000&amp;usg=AOvVaw01EBgGYLow4nqz6_FdOcJ-\">Via Galileo Galilei, 42</a>%n"));
-		sb.append(String.format("<p>We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
-		sb.append(String.format("<p>MUST: bring with yourself a valid document.</p>%n"));
+        sb.append(String.format("<p>Best regards,<br>The ESN Padua Team</p>%n"));
+        sb.append(String.format("<p>Remember, to fully enrol you must visit our office!</p>%n"));
+        sb.append(String.format("<p>You can find our office at , Padua. We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
+        sb.append(String.format("<a href=\"https://g.page/esnpadova\" target=\"_blank\" rel=\"noopener noreferral nofollow\" data-saferedirecturl=\"https://www.google.com/url?q=https://g.page/esnpadova&amp;source=gmail&amp;ust=1681817791169000&amp;usg=AOvVaw01EBgGYLow4nqz6_FdOcJ-\">Via Galileo Galilei, 42</a>%n"));
+        sb.append(String.format("<p>We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
+        sb.append(String.format("<p>MUST: bring with yourself a valid document.</p>%n"));
         sb.append(String.format(""));
 
-		MailManager.sendMail(u.getEmail(), String.format("User %s successfully created.", u.getId()),
-				sb.toString(), "text/html;charset=UTF-8");
-
-	}*/
-
+        MailManager.sendMail(u.getEmail(), String.format("User %s successfully created.", u.getId()),
+                sb.toString(), "text/html;charset=UTF-8");
 
     }
 }

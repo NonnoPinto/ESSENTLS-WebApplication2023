@@ -2,6 +2,7 @@ package com.essentls.resource;
 
 import java.awt.image.BufferedImage;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import org.json.JSONObject;
 
@@ -11,24 +12,24 @@ public class Event {
     private String description;
     private float price;
     private int visibility;
-    private String location;
+    private JSONObject location;
     private int maxParticipantsInternational;
     private int maxParticipantsVolunteer;
-    private Date eventStart;
-    private Date eventEnd;
-    private Date subscriptionStart;
-    private Date subscriptionEnd;
-    private Date withdrawalEnd;
+    private Timestamp eventStart;
+    private Timestamp eventEnd;
+    private Timestamp subscriptionStart;
+    private Timestamp subscriptionEnd;
+    private Timestamp withdrawalEnd;
     private int maxWaitingList;
-    private String attributes;
+    private String[] attributes;
     private String thumbnail;
     private String poster;
 
 
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
-    public Event(long id, String name, String description, float price, int visibility, String location,
-            int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
-            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
+    public Event(long id, String name, String description, float price, int visibility, JSONObject location,
+            int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd,
+                 Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -49,7 +50,7 @@ public class Event {
     }
 
     //Used in the home to get the list of events
-    public Event(long id, String name, String description, float price, String location, Date subscriptionEnd) {
+    public Event(long id, String name, String description, float price, JSONObject  location, Timestamp subscriptionEnd) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -59,10 +60,33 @@ public class Event {
     }
 
     // Used in the profile to get a list of the joined events 
-    public Event(long id, String name, Date startDate) {
+    public Event(long id, String name, Timestamp startDate) {
         this.id = id;
         this.name = name;
         this.eventStart = startDate;
+    }
+
+    /**
+        Constructor without id
+     */
+    public Event(String name, String description, float price, int visibility, JSONObject location, int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd, Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.visibility = visibility;
+        this.location = location;
+        this.maxParticipantsInternational = maxParticipantsInternational;
+        this.maxParticipantsVolunteer = maxParticipantsVolunteer;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
+        this.subscriptionStart = subscriptionStart;
+        this.subscriptionEnd = subscriptionEnd;
+        this.withdrawalEnd = withdrawalEnd;
+        this.maxWaitingList = maxWaitingList;
+        this.attributes = attributes;
+        this.thumbnail = thumbnail;
+        this.poster = poster;
+
     }
 
     public long getId() {
@@ -85,7 +109,7 @@ public class Event {
         return visibility;
     }
 
-    public String getLocation() {
+    public JSONObject getLocation() {
         return location;
     }
 
@@ -97,23 +121,23 @@ public class Event {
         return maxParticipantsVolunteer;
     }
 
-    public Date getEventStart() {
+    public Timestamp getEventStart() {
         return eventStart;
     }
 
-    public Date getEventEnd() {
+    public Timestamp getEventEnd() {
         return eventEnd;
     }
 
-    public Date getSubscriptionStart() {
+    public Timestamp getSubscriptionStart() {
         return subscriptionStart;
     }
 
-    public Date getSubscriptionEnd() {
+    public Timestamp getSubscriptionEnd() {
         return subscriptionEnd;
     }
 
-    public Date getWithdrawalEnd() {
+    public Timestamp getWithdrawalEnd() {
         return withdrawalEnd;
     }
 
@@ -121,7 +145,7 @@ public class Event {
         return maxWaitingList;
     }
 
-    public String getAttributes() {
+    public String[] getAttributes() {
         return attributes;
     }
 
@@ -146,7 +170,7 @@ public class Event {
     public void setVisibility(int _visibility){
         visibility = _visibility;
     }
-    public void setLocation(String _location){
+    public void setLocation(JSONObject _location){
         location = _location;
     }
     public void setMaxParticipantsInternational(int _maxParticipantsInternational){
@@ -155,25 +179,25 @@ public class Event {
     public void setMaxParticipantsVolunteer(int _maxParticipantsVolunteer){
         maxParticipantsVolunteer = _maxParticipantsVolunteer;
     }
-    public void setEventStart(Date _eventStart){
+    public void setEventStart(Timestamp _eventStart){
         eventStart = _eventStart;
     }
-    public void setEventEnd(Date _eventEnd){
+    public void setEventEnd(Timestamp _eventEnd){
         eventEnd = _eventEnd;
     }
-    public void setSubscriptionStart(Date _subscriptionStart){
+    public void setSubscriptionStart(Timestamp _subscriptionStart){
         subscriptionStart = _subscriptionStart;
     }
-    public void setSubscriptionEnd(Date _subscriptionEnd){
+    public void setSubscriptionEnd(Timestamp _subscriptionEnd){
         subscriptionEnd = _subscriptionEnd;
     }
-    public void setWithdrawalEnd(Date _withdrawalEnd){
+    public void setWithdrawalEnd(Timestamp _withdrawalEnd){
         withdrawalEnd = _withdrawalEnd;
     }
     public void setMaxWaitingList(int _maxWaitingList){
         maxWaitingList = _maxWaitingList;
     }
-    public void setAttributes(String _attributes){
+    public void setAttributes(String[] _attributes){
         attributes = _attributes;
     }
     public void setThumbnail(String _thumbnail){

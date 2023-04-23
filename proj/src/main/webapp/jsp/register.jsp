@@ -10,7 +10,7 @@
     <div class="navbar"><%@include file="navbar.jsp"%></div>
     
 
-    <form method="POST" action="<c:url value="/user/register"/>">
+    <form method="POST" action="<c:url value="/register"/>">
     <!-- TODO: check all types and names (19 params) -->
         <div>
             <label for="email">Enter your email:</label>
