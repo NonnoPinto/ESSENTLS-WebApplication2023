@@ -85,7 +85,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             subscriptionEnd = LocalDateTime.parse(req.getParameter("subscriptionEnd"), formatter);
             withdrawalEnd = LocalDateTime.parse(req.getParameter("withdrawalEnd"), formatter);
             maxWaitingList = Integer.parseInt(req.getParameter("maxWaitingList"));
-            attributes = req.getParameter("attributes").split(", ");
+            attributes = req.getParameter("attributes").replace(", ",",").split(",");
             thumbnail = req.getParameter("thumbnail");
             poster = req.getParameter("poster");
 

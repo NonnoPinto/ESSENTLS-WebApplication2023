@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 @WebServlet(name = "RegisterServlet", value = "/register")
 public class RegisterServlet extends AbstractDatabaseServlet {
@@ -67,7 +68,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String documentNumber = req.getParameter("document-number");
             String documentFile = req.getParameter("document-file");
             String dietType = req.getParameter("diet-type");
-            String[] allergies = req.getParameter("allergies").split(" ");
+            String[] allergies = req.getParameter("allergies").split(",");
             String emailHash = email.hashCode()+"";//TODO: hashme
             Boolean emailConfirmed = false;
 

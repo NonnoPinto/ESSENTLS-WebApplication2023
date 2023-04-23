@@ -90,7 +90,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             documentNumber = req.getParameter("userDocumentNumber");
             documentFile = req.getParameter("userDocumentFile");
             dietType = req.getParameter("userDietType");
-            allergies = req.getParameter("userAllergies").split(" ");
+            allergies = req.getParameter("userAllergies").replace(", ",",").split(",");
             emailHash = req.getParameter("userEmailHash");
             try {
             emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}

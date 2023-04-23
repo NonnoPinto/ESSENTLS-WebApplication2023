@@ -1,10 +1,13 @@
 package com.essentls.dao;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import com.essentls.resource.User;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import com.essentls.resource.User;
 
 
 /**
@@ -56,8 +59,11 @@ public class UserRegistrationDAO extends AbstractDAO  {
             pstmt.setString(15, user.getDocumentType());
             pstmt.setString(16, user.getDocumentNumber());
             pstmt.setString(17, user.getDocumentFile());
-            pstmt.setObject(18, user.getDietType());
-            pstmt.setObject(19, user.getAllergies());
+            pstmt.setString(18, user.getDietType());
+            String[] allergies = user.getAllergies();
+            Object[] values = Arrays.stream(allergies).map(i -> String.valueOf(i)).toArray();
+            Array array = con.createArrayOf("text", values);
+            pstmt.setArray(19, array);
             pstmt.setString(20, user.getEmailHash());
             pstmt.setBoolean(21, user.getEmailConfirmed());
 
