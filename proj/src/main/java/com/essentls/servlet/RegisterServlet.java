@@ -15,6 +15,7 @@ import org.apache.logging.log4j.message.StringFormattedMessage;
 
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -45,8 +46,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
 
         try {
             //take from the request the parameters
-            long id = 0;//TODO: delete me when user class is fixed
-            String email = req.getParameter("email");
+            long id = 0;
+            String email = req.getParameter("email").toLowerCase();
             String password = req.getParameter("password");
             String cardId = req.getParameter("card-id");
             Integer tier = 0;
@@ -66,23 +67,19 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String documentNumber = req.getParameter("document-number");
             String documentFile = req.getParameter("document-file");
             String dietType = req.getParameter("diet-type");
-            String allergies = req.getParameter("allergies");
-            String emailHash = email;//TODO: hashme
+            String[] allergies = req.getParameter("allergies").split(" ");
+            String emailHash = email.hashCode()+"";//TODO: hashme
             Boolean emailConfirmed = false;
 
             if (email == null || email.equals("")) {
-                //the email is null (was not set on the parameters) or an empty string
-                //notify this to the user
                 ErrorCode ec = ErrorCode.EMAIL_MISSING;
                 res.setStatus(ec.getHTTPCode());
                 m = new Message(true, "missing email");
     
-                //we used jsp for the register page: thus we forward the request
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
     
             } else if (password == null || password.equals("")) {
-                //the password was empty
                 ErrorCode ec = ErrorCode.PASSWORD_MISSING;
                 res.setStatus(ec.getHTTPCode());
                 m = new Message(true, "missing password");
@@ -90,46 +87,47 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
     
             } else {
-            //the email and password are not null, we can try to register the user and set the value email confirmation to false until the user confirms the email
-            user= new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailConfirmed);
+            user= new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, date2,
+                    nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress,
+                    documentType, documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed);
 
-            LOGGER.info("user {} is trying to register",email);
 
-            sendCreationConfirmationEmail(user);
-
-            email = email.toLowerCase();
-            LOGGER.info("User is about to be registered %s",email);
             //sendCreationConfirmationEmail(user);
-            LOGGER.info("Creation confirmation email for user %d successfully sent.", user.getEmail());
+            //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
-            m = new Message(String.format("user %d successfully created and confirmation email successfully sent.",
+            m = new Message(String.format("user %s successfully created and confirmation email successfully sent.",
                     user.getEmail()));
             // try to find the user in the database
-            //user = new UserLoginDAO(getConnection(),email, password).access().getOutputParam();
+            new UserRegistrationDAO(getConnection(), user).doAccess();
+            LOGGER.info("user {} is trying to register",email);
+
             }
+
         } catch (NumberFormatException ex) {
             m = new Message(
-                    "Cannot create the employee. Invalid input parameters: badge, age, and salary must be integer.",
+                    "Cannot create the user. Invalid input parameters.",
                     "E100", ex.getMessage());
 
             LOGGER.error(
-                    "Cannot create the employee. Invalid input parameters: badge, age, and salary must be integer.",
+                    "Cannot create the user. Invalid input parameters.",
                     ex);
         } catch (ParseException ex) {
             m = new Message(String.format("Unable to set the date.",
                     user.getEmail()));
 
             LOGGER.warn(new StringFormattedMessage(
-                    "User %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
+                    "User %s successfully created but unable to send confirmation email.", user.getEmail()), ex);
+        /*
         } catch (MessagingException ex) {
-            m = new Message(String.format("Employee %s successfully created but unable to send confirmation email.",
+            m = new Message(String.format("User %s successfully created but unable to send confirmation email.",
                     user.getEmail()));
-
-
-
             LOGGER.warn(new StringFormattedMessage(
-                    "Employee %d successfully created but unable to send confirmation email.", user.getEmail()), ex);
+                    "User %s successfully created but unable to send confirmation email.", user.getEmail()), ex);
             throw new ServletException(ex);
+        */
+
+        } catch (SQLException ex){
+            m = new Message(String.format("SQL Exception", ex));
         }
     }
 

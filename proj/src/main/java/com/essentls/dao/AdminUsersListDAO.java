@@ -95,8 +95,8 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
-                                rs.getString("allergies"),
-                                //rs.getString("emailHash"),
+                                (String[]) rs.getArray("allergies").getArray(),
+                                rs.getString("emailHash"),
                                 rs.getBoolean("emailConfirmed")));
             }
 

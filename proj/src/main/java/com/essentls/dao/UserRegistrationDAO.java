@@ -2,7 +2,7 @@ package com.essentls.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
+import java.sql.SQLException;
 import com.essentls.resource.User;
 
 
@@ -15,10 +15,10 @@ import com.essentls.resource.User;
  * @since 1.00
  */
 public class UserRegistrationDAO extends AbstractDAO  {
-    private static final String STATEMENT_REGISTRATION = "insert into public.\"Users\"(email, password, tier, date, name, " + 
+    private static final String STATEMENT_REGISTRATION = "insert into public.\"Users\"(email, password, cardID, tier, date, name, " +
                                 "surname, sex, date2, nationality, \"homeCountryAddress\", \"homeCountryUniversity\", \"periodOfStay\", " + 
                                 "phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies) " +
-                                "values (?, md5(?), 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                                "values (?, md5(?), ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     //19 parameters
     private final User user;
 
@@ -33,7 +33,7 @@ public class UserRegistrationDAO extends AbstractDAO  {
     }
 
     @Override
-    protected void doAccess() throws Exception {
+    public void doAccess() throws SQLException {
         
         PreparedStatement pstmt = null;
 
@@ -41,22 +41,23 @@ public class UserRegistrationDAO extends AbstractDAO  {
             pstmt = con.prepareStatement(STATEMENT_REGISTRATION);
             pstmt.setString(1, user.getEmail());
             pstmt.setString(2, user.getPassword());
-            pstmt.setDate(3, user.getRegistrationDate());
-            pstmt.setString(4, user.getName());
-            pstmt.setString(5, user.getSurname());
-            pstmt.setString(6, user.getSex());
-            pstmt.setDate(7, user.getDateOfBirth());
-            pstmt.setString(8, user.getNationality());
-            pstmt.setString(9, user.getHomeCountryAddress());
-            pstmt.setString(10, user.getHomeCountryUniversity());
-            pstmt.setString(11, user.getPeriodOfStay());
-            pstmt.setString(12, user.getPhoneNumber());
-            pstmt.setString(13, user.getPaduaAddress());
-            pstmt.setString(14, user.getDocumentType());
-            pstmt.setString(15, user.getDocumentNumber());
-            pstmt.setString(16, user.getDocumentFile());
-            pstmt.setString(17, user.getDietType());
-            pstmt.setString(18, user.getAllergies());
+            pstmt.setString(3, user.getCardId());
+            pstmt.setDate(4, user.getRegistrationDate());
+            pstmt.setString(5, user.getName());
+            pstmt.setString(6, user.getSurname());
+            pstmt.setString(7, user.getSex());
+            pstmt.setDate(8, user.getDateOfBirth());
+            pstmt.setString(9, user.getNationality());
+            pstmt.setString(10, user.getHomeCountryAddress());
+            pstmt.setString(11, user.getHomeCountryUniversity());
+            pstmt.setString(12, user.getPeriodOfStay());
+            pstmt.setString(13, user.getPhoneNumber());
+            pstmt.setString(14, user.getPaduaAddress());
+            pstmt.setString(15, user.getDocumentType());
+            pstmt.setString(16, user.getDocumentNumber());
+            pstmt.setString(17, user.getDocumentFile());
+            pstmt.setObject(18, user.getDietType());
+            pstmt.setObject(19, user.getAllergies());
 
             pstmt.execute();
 

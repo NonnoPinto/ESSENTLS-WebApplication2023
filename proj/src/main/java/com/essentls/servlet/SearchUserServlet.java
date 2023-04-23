@@ -70,7 +70,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
             User user = new User(id, email,null, cardId,0,null, name, surname,
                     null, null,null,null,null,null,
                     null,null,null,null,null,null,
-                    null, true);
+                    null, null, true);
 
             //creates a new object for accessing the database and searching the users
             ul= new AdminUsersListDAO(getConnection(),user).access().getOutputParam();

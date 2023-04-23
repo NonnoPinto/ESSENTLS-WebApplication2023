@@ -36,7 +36,6 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-
                 participants.add(
                         new Participant(
                                 rs.getLong("userId"),
@@ -65,7 +64,8 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                                         rs.getString("documentNumber"),
                                         rs.getString("documentFile"),
                                         rs.getString("dietType"),
-                                        rs.getString("allergies"),
+                                        (String[]) rs.getArray("allergies").getArray(),
+                                        rs.getString("emailHash"),
                                         rs.getBoolean("emailConfirmed")
                                 )
                         )

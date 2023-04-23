@@ -79,8 +79,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("documentNumber"),
                 rs.getString("documentFile"),
                 rs.getString("dietType"),
-                rs.getString("allergies"),
-                //rs.getString("emailhash"),
+                (String[]) rs.getArray("allergies").getArray(),
+                rs.getString("emailhash"),
                 rs.getBoolean("emailConfirmed"));
             }
 

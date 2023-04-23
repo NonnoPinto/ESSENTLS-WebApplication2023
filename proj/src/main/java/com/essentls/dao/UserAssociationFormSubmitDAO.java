@@ -62,7 +62,7 @@ public class UserAssociationFormSubmitDAO extends AbstractDAO<User> {
             stmt.setString(13, user.getDocumentNumber());
             stmt.setString(14, user.getDocumentFile());
             stmt.setString(15, user.getDietType());
-            stmt.setString(16, user.getAllergies());
+            stmt.setObject(16, user.getAllergies());
 
             stmt.executeUpdate();   // the update
 

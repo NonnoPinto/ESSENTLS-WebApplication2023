@@ -30,6 +30,9 @@
                 <option value="female">Female</option>
                 <option value="others">Others</option>
             </select><br><br>
+            
+            <label for="card-id">Card ID:</label>
+            <input name="card-id" type="text" required><br><br>
             <label for="first_name">First Name:</label>
             <input name="first_name" type="text" required><br><br>
             <label for="last_name">Last Name:</label>
@@ -65,7 +68,7 @@
             <label for="document-number">Document number:</label>
             <input name="document-number" type="text" required><br><br>
             <label for="document-file">Document file:</label>
-            <input type="document-file" accept="image/*,.pdf" required/><br><br>
+            <input name="document-file" type="text" required/><br><br>
             <label for="diet-type">Diet type:</label>
             <select name="diet-type">
                 <option value="No specific">No specific</option>

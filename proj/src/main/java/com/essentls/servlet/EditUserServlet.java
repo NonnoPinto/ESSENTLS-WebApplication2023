@@ -49,7 +49,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         String documentNumber = null;
         String documentFile = null;
         String dietType = null;
-        String allergies = null;
+        String[] allergies = null;
         String emailHash = null;
         boolean emailConfirmed = false;
 
@@ -90,7 +90,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             documentNumber = req.getParameter("userDocumentNumber");
             documentFile = req.getParameter("userDocumentFile");
             dietType = req.getParameter("userDietType");
-            allergies = req.getParameter("userAllergies");
+            allergies = req.getParameter("userAllergies").split(" ");
             emailHash = req.getParameter("userEmailHash");
             try {
             emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}
@@ -102,7 +102,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             u = new User(
                     id, email, password, cardId, tier, registrationDate, name, surname, sex, dateOfBirth,
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType,
-                    documentNumber, documentFile, dietType, allergies, emailConfirmed);
+                    documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed);
 
             //creates a new object for accessing the database and updates the user
             new AdminEditUserDAO(getConnection(), u).access();
