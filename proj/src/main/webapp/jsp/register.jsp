@@ -57,8 +57,6 @@
             <input name="phone-number" type="text" required><br><br>
             <label for="padua-address">Padua address:</label>
             <input name="padua-address" type="text" required><br><br>
-            <label for="card-id">Card ID:</label>
-            <input name="card-id" type="text" required><br><br>
             <label for="document-type">Document type:</label>
             <select name="document-type">
                 <option value="ID">ID</option>

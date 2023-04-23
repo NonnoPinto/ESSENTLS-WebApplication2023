@@ -16,10 +16,10 @@ import com.essentls.resource.User;
  */
 public class UserRegistrationDAO extends AbstractDAO  {
     private static final String STATEMENT_REGISTRATION = "insert into public.\"Users\"(email, password, cardID, tier, date, name, " +
-                                "surname, sex, date2, nationality, \"homeCountryAddress\", \"homeCountryUniversity\", \"periodOfStay\", " + 
-                                "phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies) " +
-                                "values (?, md5(?), ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    //19 parameters
+                                "surname, sex, date2, nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, " +
+                                "phoneNumber, paduaAddress, documentType, documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed) " +
+                                "values (?, ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     private final User user;
 
     public UserRegistrationDAO(Connection con, User user) {
@@ -58,6 +58,8 @@ public class UserRegistrationDAO extends AbstractDAO  {
             pstmt.setString(17, user.getDocumentFile());
             pstmt.setObject(18, user.getDietType());
             pstmt.setObject(19, user.getAllergies());
+            pstmt.setString(20, user.getEmailHash());
+            pstmt.setBoolean(21, user.getEmailConfirmed());
 
             pstmt.execute();
 
