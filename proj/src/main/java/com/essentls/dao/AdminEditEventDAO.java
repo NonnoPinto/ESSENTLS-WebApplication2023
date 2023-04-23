@@ -3,11 +3,7 @@ package com.essentls.dao;
 import com.essentls.resource.Event;
 import org.json.JSONObject;
 
-import java.sql.ResultSet;
-import java.sql.Date;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Admin Edit Event DAO, to modify details of an event
@@ -29,11 +25,11 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     private final JSONObject new_location;
     private final int new_maxParticipantsInternational;
     private final int new_maxParticipantsVolunteer;
-    private final Date new_eventStart;
-    private final Date new_eventEnd;
-    private final Date new_subscriptionStart;
-    private final Date new_subscriptionEnd;
-    private final Date new_withdrawalEnd;
+    private final Timestamp new_eventStart;
+    private final Timestamp new_eventEnd;
+    private final Timestamp new_subscriptionStart;
+    private final Timestamp new_subscriptionEnd;
+    private final Timestamp new_withdrawalEnd;
     private final int new_maxWaitingList;
     private final String[] new_attributes;
     private final String new_thumbnail;
@@ -53,11 +49,11 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
                                                                       final JSONObject _newlocation,
                                                                       final int _newmaxParticipantsInternational,
                                                                       final int _newmaxParticipantsVolunteer,
-                                                                      final Date _neweventStart,
-                                                                      final Date _neweventEnd,
-                                                                      final Date _newsubscriptionStart,
-                                                                      final Date _newsubscriptionEnd,
-                                                                      final Date _newwithdrawalEnd,
+                                                                      final Timestamp _neweventStart,
+                                                                      final Timestamp _neweventEnd,
+                                                                      final Timestamp _newsubscriptionStart,
+                                                                      final Timestamp _newsubscriptionEnd,
+                                                                      final Timestamp _newwithdrawalEnd,
                                                                       final int _newmaxWaitingList,
                                                                       final String[] _newattributes,
                                                                       final String _newthumbnail,
