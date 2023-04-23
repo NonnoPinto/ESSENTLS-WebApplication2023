@@ -35,7 +35,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     private final Date new_subscriptionEnd;
     private final Date new_withdrawalEnd;
     private final int new_maxWaitingList;
-    private final String new_attributes;
+    private final String[] new_attributes;
     private final String new_thumbnail;
     private final String new_poster;
 
@@ -59,7 +59,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
                                                                       final Date _newsubscriptionEnd,
                                                                       final Date _newwithdrawalEnd,
                                                                       final int _newmaxWaitingList,
-                                                                      final String _newattributes,
+                                                                      final String[] _newattributes,
                                                                       final String _newthumbnail,
                                                                       final String _newposter){
 

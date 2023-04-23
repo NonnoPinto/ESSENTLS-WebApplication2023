@@ -20,7 +20,7 @@ public class Event {
     private Date subscriptionEnd;
     private Date withdrawalEnd;
     private int maxWaitingList;
-    private String attributes;
+    private String[] attributes;
     private String thumbnail;
     private String poster;
 
@@ -28,7 +28,7 @@ public class Event {
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
     public Event(long id, String name, String description, float price, int visibility, JSONObject location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd,
-            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
+            Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -65,7 +65,7 @@ public class Event {
         this.eventStart = startDate;
     }
 
-    public Event(String name, String description, float price, int visibility, JSONObject location, int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd, Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String attributes, String thumbnail, String poster) {
+    public Event(String name, String description, float price, int visibility, JSONObject location, int maxParticipantsInternational, int maxParticipantsVolunteer, Date eventStart, Date eventEnd, Date subscriptionStart, Date subscriptionEnd, Date withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -141,7 +141,7 @@ public class Event {
         return maxWaitingList;
     }
 
-    public String getAttributes() {
+    public String[] getAttributes() {
         return attributes;
     }
 
@@ -193,7 +193,7 @@ public class Event {
     public void setMaxWaitingList(int _maxWaitingList){
         maxWaitingList = _maxWaitingList;
     }
-    public void setAttributes(String _attributes){
+    public void setAttributes(String[] _attributes){
         attributes = _attributes;
     }
     public void setThumbnail(String _thumbnail){

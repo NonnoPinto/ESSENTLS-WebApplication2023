@@ -14,6 +14,13 @@
 
 
     <div class="containter">
+
+        <div>
+            <p>
+                <c:out value="${message.message}"/>
+            </p>
+        </div>
+
         <div class="title">
             <h2>Create Event</h2>
         </div>
@@ -57,7 +64,9 @@
                 <div style="padding-top: 10px;">
                     <label for="">Location</label>
                     <div class="inputContainer">
-                        <input type="text" name="location" id="location" >
+                        <input type="text" name="city" id="city" placeholder="Enter city...">
+                        <input type="text" name="street" id="street" placeholder="Enter Street...">
+                        <input type="text" name="number" id="number" placeholder="Enter house number...">
                     </div>
                 </div>
 
@@ -81,7 +90,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">Event Start</label>
                     <div class="inputContainer">
-                        <input type="datetime" name="eventStart" id="eventStart" >  
+                        <input type="datetime-local" name="eventStart" id="eventStart" >  
                     </div>
                 </div>
 
@@ -89,7 +98,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">Event End</label>
                     <div class="inputContainer">
-                        <input type="datetime" name="eventEnd" id="eventEnd" > 
+                        <input type="datetime-local" name="eventEnd" id="eventEnd" > 
                     </div>
                 </div>
 
@@ -97,7 +106,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">Subscription Start</label>
                     <div class="inputContainer">
-                        <input type="datetime" name="subscriptionStart" id="subscriptionStart" >
+                        <input type="datetime-local" name="subscriptionStart" id="subscriptionStart" >
                     </div>
                 </div>
 
@@ -105,7 +114,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">Subscription End</label>
                     <div class="inputContainer">
-                        <input type="datetime" name="subscriptionEnd" id="subscriptionEnd" >
+                        <input type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" >
                     </div>
                 </div>
 
@@ -113,7 +122,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">Withdrawal End</label>
                     <div class="inputContainer">
-                        <input type="datetime" name="withdrawalEnd" id="withdrawalEnd"> 
+                        <input type="datetime-local" name="withdrawalEnd" id="withdrawalEnd"> 
                     </div>
                 </div>
 
@@ -160,20 +169,7 @@
                         <button type="reset">Reset the form</button>
                     </div>
                 </div>
-                
-                
-                <c:choose>
-                    <c:when test="${message.isError()}">
-                        <div>
-                            <div role="alert">
-                                    <span>
-                                        <c:out value="${message.message}"/>
-                                    </span>
-                            </div>
-                        </div>
-                    </c:when>
-                    <c:otherwise></c:otherwise>
-                </c:choose>
+
 
             </form>
         </div>
