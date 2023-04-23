@@ -94,11 +94,11 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
             stmt.setObject(5, jsonToPGobj(this.event.getLocation()));
             stmt.setInt(6, this.event.getMaxParticipantsInternational());
             stmt.setInt(7, this.event.getMaxParticipantsVolunteer());
-            stmt.setDate(8, this.event.getEventStart());
-            stmt.setDate(9, this.event.getEventEnd());
-            stmt.setDate(10, this.event.getSubscriptionStart());
-            stmt.setDate(11, this.event.getSubscriptionEnd());
-            stmt.setDate(12, this.event.getWithdrawalEnd());
+            stmt.setTimestamp(8, this.event.getEventStart());
+            stmt.setTimestamp(9, this.event.getEventEnd());
+            stmt.setTimestamp(10, this.event.getSubscriptionStart());
+            stmt.setTimestamp(11, this.event.getSubscriptionEnd());
+            stmt.setTimestamp(12, this.event.getWithdrawalEnd());
             stmt.setInt(13, this.event.getMaxWaitingList());
             stmt.setObject(14, stringArrayToPGobj(this.event.getAttributes()));
             stmt.setString(15, this.event.getThumbnail());

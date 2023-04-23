@@ -101,10 +101,9 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
 
             // creates a new event from the request parameters
             e = new Event(name, description, price, visibility, location, maxPartecipantsInternational,
-                maxPartecipantVolunteer, java.sql.Date.valueOf(eventStart.toLocalDate()), 
-                java.sql.Date.valueOf(eventEnd.toLocalDate()), java.sql.Date.valueOf(subscriptionStart.toLocalDate()),
-                java.sql.Date.valueOf(subscriptionEnd.toLocalDate()), java.sql.Date.valueOf(withdrawalEnd.toLocalDate()), 
-                 maxWaitingList, attributes, thumbnail, poster);
+                maxPartecipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
+                Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
+                maxWaitingList, attributes, thumbnail, poster);
 
             // creates a new object for accessing the database and stores the event
             new AdminCreateEventDAO(getConnection(), e).access();
