@@ -16,7 +16,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                                         " WHERE (? IS NULL OR name = ?)" +
                                                         " AND (? IS NULL OR surname = ?)" +
                                                         " AND (? = -1 OR id = ?)" +
-                                                        " AND (? IS NULL OR cardId = ?)" +
+                                                        " AND (? IS NULL OR \"cardID\" = ?)" +
                                                         " AND (? IS NULL OR email = ?)";
 
     private String name;
@@ -88,11 +88,11 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("sex"),
                                 rs.getDate("dateOfBirth"),
                                 rs.getString("nationality"),
-                                new JSONObject(rs.getObject("homeCountryAddress", PGobject.class)),
+                                new JSONObject(new JSONObject (rs.getObject("homeCountryAddress")).getString("value")),
                                 rs.getString("homeCountryUniversity"),
                                 rs.getInt("periodOfStay"),
                                 rs.getString("phoneNumber"),
-                                new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
+                                new JSONObject(new JSONObject (rs.getObject("paduaAddress")).getString("value")),
                                 rs.getString("documentType"),
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
