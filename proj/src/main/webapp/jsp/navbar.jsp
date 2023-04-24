@@ -8,6 +8,7 @@
 </c:if>
 <c:if test="${sessionScope.userId != null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/profile'/>">Profile</a>
+    <a rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">Logout</a>
 </c:if>
 <c:if test="${sessionScope.userId != null}">

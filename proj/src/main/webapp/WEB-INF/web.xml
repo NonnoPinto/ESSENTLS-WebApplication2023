@@ -75,6 +75,11 @@
         <servlet-class>com.essentls.servlet.LogoutServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>UserEventsListServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UserEventsListServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -146,6 +151,11 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserEventsListServlet</servlet-name>
+        <url-pattern>/joined-events</url-pattern>
     </servlet-mapping>
 
     <resource-ref>
