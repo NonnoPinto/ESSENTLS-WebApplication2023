@@ -95,7 +95,7 @@ public class UserAssociationFormSubmitDAO extends AbstractDAO<User> {
             stmt.setString(6, user.getNationality());
             stmt.setObject(7, jsonToPGobj(user.getHomeCountryAddress()));
             stmt.setString(8, user.getHomeCountryUniversity());
-            stmt.setString(9, user.getPeriodOfStay());
+            stmt.setInt(9, user.getPeriodOfStay());
             stmt.setString(10, user.getPhoneNumber());
             stmt.setObject(11, jsonToPGobj(user.getPaduaAddress()));
             stmt.setString(12, user.getDocumentType());

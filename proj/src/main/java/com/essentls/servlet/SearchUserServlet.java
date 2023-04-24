@@ -68,7 +68,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
             }
 
             User user = new User(id, email,null, cardId,0,null, name, surname,
-                    null, null,null,null,null,null,
+                    null, null,null,null,null,0,
                     null,null,null,null,null,null,
                     null, null, true);
 

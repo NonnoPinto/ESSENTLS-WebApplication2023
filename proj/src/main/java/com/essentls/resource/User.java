@@ -21,7 +21,7 @@ public class User {
     private String nationality;
     private JSONObject homeCountryAddress;
     private String homeCountryUniversity;
-    private String periodOfStay;
+    private int periodOfStay;
     private String phoneNumber;
     private JSONObject paduaAddress;
     private String documentType;
@@ -61,7 +61,7 @@ public class User {
 
     public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, JSONObject homeCountryAddress,
-            String homeCountryUniversity, String periodOfStay, String phoneNumber, JSONObject paduaAddress,
+            String homeCountryUniversity, int periodOfStay, String phoneNumber, JSONObject paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String[] allergies, String emailHash, boolean emailConfirmed) {
         this.id = id;
         this.email = email;
@@ -140,7 +140,7 @@ public class User {
         return homeCountryUniversity;
     }
 
-    public String getPeriodOfStay() {
+    public int getPeriodOfStay() {
         return periodOfStay;
     }
 
@@ -201,7 +201,12 @@ public class User {
 
     //in case of email change (not allowed by now)
     public void setMailAndHash(String _mail) {
-        if (validate(_mail)) {
+        if (_mail.isEmpty() || _mail == null)
+        {
+            this.email= null;
+            this.emailHash= null;
+        }
+        else if (validate(_mail)) {
             this.email = _mail;
             this.emailHash = _mail.hashCode()+"";
         }
@@ -269,7 +274,7 @@ public class User {
         this.homeCountryUniversity = homeCountryUniversity;
     }
 
-    public void setPeriodOfStay(String periodOfStay) {
+    public void setPeriodOfStay(int periodOfStay) {
         this.periodOfStay = periodOfStay;
     }
 

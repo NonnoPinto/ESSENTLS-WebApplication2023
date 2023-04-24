@@ -50,7 +50,7 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
             pstmt.setString(9, this.user.getNationality());
             //pstmt.setString(10, this.user.getHomeCountryAddress());
             pstmt.setString(10, this.user.getHomeCountryUniversity());
-            pstmt.setString(11, this.user.getPeriodOfStay());
+            pstmt.setInt(11, this.user.getPeriodOfStay());
             pstmt.setString(12, this.user.getPhoneNumber());
             //pstmt.setString(13, this.user.getPaduaAddress());
             pstmt.setString(13, this.user.getDocumentType());

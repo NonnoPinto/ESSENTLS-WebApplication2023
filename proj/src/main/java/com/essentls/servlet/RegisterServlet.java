@@ -65,7 +65,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String homeContryAddressCity = req.getParameter("home-contry-address-city");
             String homeContryAddressStreet = req.getParameter("home-contry-address-street");
             String homeCountryUniversity = req.getParameter("home-country-university");
-            String periodOfStay = req.getParameter("period-of-stay");
+            int periodOfStay = Integer.parseInt(req.getParameter("period-of-stay"));
             String phoneNumber = req.getParameter("phone-number");
             String paduaAddressProvince = req.getParameter("padua-address-province");
             String paduaAddressCity = req.getParameter("padua-address-city");

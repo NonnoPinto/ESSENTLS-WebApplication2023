@@ -74,7 +74,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("nationality"),
                 new JSONObject (rs.getObject("homeCountryAddress", PGobject.class)),
                 rs.getString("homeCountryUniversity"),
-                rs.getString("periodOfStay"),
+                rs.getInt("periodOfStay"),
                 rs.getString("phoneNumber"),
                 new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
                 rs.getString("documentType"),

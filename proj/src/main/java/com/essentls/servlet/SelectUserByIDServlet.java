@@ -43,7 +43,7 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
                 }
 
                 User user = new User( id, null, null, null, 0, null, null, null, null, null, null,
-                null, null, null, null, null, null, null, null,
+                null, null, 0, null, null, null, null, null,
                 null, null, null, true);
 
              //creates a new object for accessing the database and searching the users

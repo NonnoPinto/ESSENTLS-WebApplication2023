@@ -43,7 +43,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         String nationality = null;
         JSONObject homeCountryAddress = null;
         String homeCountryUniversity = null;
-        String periodOfStay = null;
+        int periodOfStay = 0;
         String phoneNumber = null;
         JSONObject paduaAddress = null;
         String documentType = null;
@@ -84,7 +84,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             nationality = req.getParameter("userNationality");
             //homeCountryAddress = new JSONObject(req.getParameter("userHomeCountryAddress"));
             homeCountryUniversity = req.getParameter("userHomeCountryUniversity");
-            periodOfStay = req.getParameter("userPeriodOfStay");
+            periodOfStay = Integer.parseInt(req.getParameter("userPeriodOfStay"));
             phoneNumber = req.getParameter("userPhoneNumber");
             //paduaAddress = new JSONObject(req.getParameter("userPaduaAddress"));
             documentType = req.getParameter("userDocumentType");
