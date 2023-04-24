@@ -17,22 +17,27 @@
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-
 <div>
   <h1>Profile Page</h1>
   <hr>
-  <h3>${user.name} ${user.surname}</h3>
-  <h5>${user.dateOfBirth}</h5>
-  <h5>${user.nationality}</h5>
+  <h3>${Users.name} ${Users.surname}</h3>
+  <h5>${Users.dateOfBirth}</h5>
+  <h5>${Users.nationality}</h5>
   <hr>
-  <p>${user.homeCountryAddress}</p>
+  <p>${Users.homeCountryAddress}</p>
   <hr>
-  <p>${user.paduaAddress}</p>
+  <p>${Users.paduaAddress}</p>
   <hr>
-  <p>${user.dietType}</p>
+  <p>${Users.dietType}</p>
   <hr>
-  <p>${user.allergies}</p>
+  <p>${Users.allergies}</p>
 </div>
+
+<form action="<c:url value="/paymentslist"/>" method="POST">
+  <div>
+    <button type="submit">Show Payment List</button>
+  </div>
+</form>
 
 </body>
 </html>
