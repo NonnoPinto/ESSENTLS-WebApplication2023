@@ -28,7 +28,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
     /**
      * The id of the event
      */
-    private final int id;
+    private final long id;
 
     /**
      * Creates a new object for gathering the event by id.
@@ -36,7 +36,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
      * @param con    the connection to the database.
      * @param id     the id of the current user.
      */
-    public EventInfoDAO(final Connection con, final int id) {
+    public EventInfoDAO(final Connection con, final long id) {
         super(con);
         this.id = id;
     }
@@ -53,7 +53,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
-            pstmt.setInt(1, this.id);
+            pstmt.setLong(1, this.id);
 
             rs = pstmt.executeQuery();
             if(rs.next()){

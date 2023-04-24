@@ -7,7 +7,8 @@
         <title>Home</title>
     </head>
     <body>
-
+        <div class="navbar"><%@include file="navbar.jsp"%></div>
+        <div class="container">
         <c:choose>
             <c:when test="${message.isError()}">
                 <ul>
@@ -41,5 +42,6 @@
                 </c:forEach>
             </c:otherwise>
         </c:choose>
+        </div>
     </body>
 </html>

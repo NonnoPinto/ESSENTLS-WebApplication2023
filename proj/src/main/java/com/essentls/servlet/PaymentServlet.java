@@ -16,7 +16,6 @@ public class PaymentServlet extends AbstractDatabaseServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Payment payment = (Payment) session.getAttribute("Payments");
         String action = request.getParameter("action");
         switch (action){
             case "event":

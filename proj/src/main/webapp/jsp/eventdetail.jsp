@@ -23,6 +23,15 @@
     <p>Cost: ${event.price}</p>
     <p>Current participants: ${nParticipants}</p>
     <p>Waiting List: ${nWaiting}</p>
+    <p>Location: ${event.location}</p>
+    <c:choose>
+      <c:when test="${nParticipants < event.maxParticipantsInternational or nWaiting < maxWaitingList}">
+        <a href="payment?action=event&id=${event.id}"><button>Join the event</button></a>
+      </c:when>
+      <c:otherwise>
+        Sorry, the event is full
+      </c:otherwise>
+    </c:choose>
   </div>
 
 
