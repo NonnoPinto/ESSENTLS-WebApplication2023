@@ -10,7 +10,7 @@
     <a rel="noopener noreferrer nofollow" href="<c:url value='/profile'/>">profile</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">logout</a>
 </c:if>
-<c:if test="${sessionScope.userId != null && sessionScope.user.tier > 1}">
+<c:if test="${sessionScope.userId != null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/edit-user'/>">Edit user</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/create-event'/>">Admin Create event</a>
 </c:if>

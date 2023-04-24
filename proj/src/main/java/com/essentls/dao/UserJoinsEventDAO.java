@@ -69,7 +69,7 @@ public class UserJoinsEventDAO extends AbstractDAO<Boolean> {
                 }
                 if(rs_participants.getString("role").equals("WaitingList"))
                     waitingList++;
-                else if(rs_participants.getString("role").equals("Organizer") || rs_participants.getString("role").equals("Volunteer"))
+                else if(rs_participants.getString("role").equals("Organizer"))
                     volunteers++;
                 else
                     internationals++;

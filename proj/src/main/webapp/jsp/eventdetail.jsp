@@ -33,7 +33,7 @@
       </c:when>
       <c:otherwise>
         <c:choose>
-          <c:when test="${nParticipants < event.maxParticipantsInternational or nWaiting < maxWaitingList}">
+          <c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
             <a href="payment?action=event&id=${event.id}"><button>Join the event</button></a>
           </c:when>
           <c:otherwise>
