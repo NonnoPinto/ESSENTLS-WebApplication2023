@@ -61,10 +61,15 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             java.sql.Date date2 = new java.sql.Date(format.parse(req.getParameter("birth-date")).getTime());//registration date
             String nationality = req.getParameter("nationality");
             //String homeCountryAddress = req.getParameter("home-country-address");
+            String homeContryAddressProvince = req.getParameter("home-contry-address-province");
+            String homeContryAddressCity = req.getParameter("home-contry-address-city");
+            String homeContryAddressStreet = req.getParameter("home-contry-address-street");
             String homeCountryUniversity = req.getParameter("home-country-university");
             String periodOfStay = req.getParameter("period-of-stay");
             String phoneNumber = req.getParameter("phone-number");
-            //String paduaAddress = req.getParameter("padua-address");
+            String paduaAddressProvince = req.getParameter("padua-address-province");
+            String paduaAddressCity = req.getParameter("padua-address-city");
+            String paduaAddressStreet = req.getParameter("padua-address-street");
             String documentType = req.getParameter("document-type");
             String documentNumber = req.getParameter("document-number");
             String documentFile = req.getParameter("document-file");
@@ -72,6 +77,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String[] allergies = req.getParameter("allergies").split(",");
             String emailHash = email.hashCode()+"";//TODO: hashme
             Boolean emailConfirmed = false;
+
+            //TODO: remove those lines and replace with values in form
             JSONObject paduaAddress = new JSONObject();
             JSONObject homeCountryAddress = new JSONObject();
             paduaAddress = paduaAddress.put("city", "citypad");
