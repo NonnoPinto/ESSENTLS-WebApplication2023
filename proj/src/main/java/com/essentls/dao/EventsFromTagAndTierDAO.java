@@ -19,9 +19,9 @@ import org.json.JSONObject;
  */
 public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
 
-    private static final String STATEMENT_JOINED_EVENTS = "SELECT e.id, e.name, e.description, e.price, e.location, e.\"subscriptionEnd\" " + 
+    private static final String STATEMENT_JOINED_EVENTS = "SELECT * " +
         "FROM public.\"EventTags\" AS et INNER JOIN public.\"Events\" AS e ON et.\"eventId\" = e.id " +
-        "WHERE et.\"tagId\" = ? AND e.visibility <= ?;";
+        "WHERE et.\"tag\" = ? AND e.visibility <= ?;";
 
     private final Tag tag;
     private final int tier;
