@@ -51,6 +51,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             long id = 0;
             String email = req.getParameter("email").toLowerCase();
             String password = req.getParameter("password");
+            String passwordRepeated = req.getParameter("rpassword");
             String cardId = req.getParameter("card-id");
             Integer tier = 0;
             java.util.Date utilDate = new java.util.Date();
@@ -61,15 +62,23 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             java.sql.Date date2 = new java.sql.Date(format.parse(req.getParameter("birth-date")).getTime());//registration date
             String nationality = req.getParameter("nationality");
             //String homeCountryAddress = req.getParameter("home-country-address");
-            String homeContryAddressProvince = req.getParameter("home-contry-address-province");
-            String homeContryAddressCity = req.getParameter("home-contry-address-city");
-            String homeContryAddressStreet = req.getParameter("home-contry-address-street");
+            JSONObject homeCountryAddress = new JSONObject();
+            String homeCountryAddressProvince = req.getParameter("home-contry-address-province");
+            String homeCountryAddressCity = req.getParameter("home-contry-address-city");
+            String homeCountryAddressStreet = req.getParameter("home-contry-address-street");
             String homeCountryUniversity = req.getParameter("home-country-university");
+            homeCountryAddress = homeCountryAddress.put("province", homeCountryAddressProvince);
+            homeCountryAddress = homeCountryAddress.put("city", homeCountryAddressCity);
+            homeCountryAddress = homeCountryAddress.put("street",  homeCountryAddressStreet);
             int periodOfStay = Integer.parseInt(req.getParameter("period-of-stay"));
             String phoneNumber = req.getParameter("phone-number");
+            JSONObject paduaAddress = new JSONObject();
             String paduaAddressProvince = req.getParameter("padua-address-province");
             String paduaAddressCity = req.getParameter("padua-address-city");
             String paduaAddressStreet = req.getParameter("padua-address-street");
+            paduaAddress = paduaAddress.put("city", paduaAddressCity);
+            paduaAddress = paduaAddress.put("street",  paduaAddressStreet);
+            paduaAddress = paduaAddress.put("province", paduaAddressProvince);
             String documentType = req.getParameter("document-type");
             String documentNumber = req.getParameter("document-number");
             String documentFile = req.getParameter("document-file");
@@ -78,20 +87,10 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String emailHash = email.hashCode()+"";//TODO: hashme
             Boolean emailConfirmed = false;
 
-            //TODO: remove those lines and replace with values in form
-            JSONObject paduaAddress = new JSONObject();
-            JSONObject homeCountryAddress = new JSONObject();
-            paduaAddress = paduaAddress.put("city", "citypad");
-            homeCountryAddress = homeCountryAddress.put("city", "cityhom");
-            paduaAddress = paduaAddress.put("street", "streetpad");
-            homeCountryAddress = homeCountryAddress.put("street", "streethom");
-            paduaAddress = paduaAddress.put("number", "numberpad");
-            homeCountryAddress = homeCountryAddress.put("number", "numberhom");
-
             if (email == null || email.equals("")) {
                 ErrorCode ec = ErrorCode.EMAIL_MISSING;
                 res.setStatus(ec.getHTTPCode());
-                m = new Message(true, "missing email");
+                m = new Message(true, "Email field cannot be empty.");
     
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
@@ -99,10 +98,16 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             } else if (password == null || password.equals("")) {
                 ErrorCode ec = ErrorCode.PASSWORD_MISSING;
                 res.setStatus(ec.getHTTPCode());
-                m = new Message(true, "missing password");
+                m = new Message(true, "The password is missing.");
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
-    
+
+            } else if (!password.equals(passwordRepeated)) {
+                ErrorCode ec = ErrorCode.WRONG_INTERVALS;
+                res.setStatus(ec.getHTTPCode());
+                m = new Message(true, "The two passwords must coincide.");
+                req.setAttribute("message", m);
+                req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
             } else {
             user= new User(id, email, password, cardId, tier, registrationDate, name, surname, sex, date2,
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress,
@@ -115,8 +120,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             m = new Message(String.format("user %s successfully created and confirmation email successfully sent.",
                     user.getEmail()));
             // try to find the user in the database
+            LOGGER.info("user %s is trying to register",email);
             new UserRegistrationDAO(getConnection(), user).doAccess();
-            LOGGER.info("user {} is trying to register",email);
 
             }
 

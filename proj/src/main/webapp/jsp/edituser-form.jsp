@@ -79,6 +79,7 @@
 
             <label for="userPeriodOfStay">Period of Stay (currently ${user.getPeriodOfStay()}):</label>
             <input id="userPeriodOfStay" value="${user.getPeriodOfStay()}" name="userPeriodOfStay" type="number" min="0" max="2"/><br/><br/>
+            <p>1=first semester; 2=both semesters</p>
 
             <label for="userPhoneNumber">Phone Number (currently ${user.getPhoneNumber()}):</label>
             <input id="userPhoneNumber" value="${user.getPhoneNumber()}" name="userPhoneNumber" type="text"/><br/><br/>
