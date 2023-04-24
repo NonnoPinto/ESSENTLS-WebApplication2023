@@ -114,7 +114,7 @@ public class UserRegistrationDAO extends AbstractDAO  {
 
             pstmt.execute();
 
-            LOGGER.info("User %l successfully registered", user.getId());
+            LOGGER.info("User %s successfully registered", user.getEmail());
 
         } finally {
             if (pstmt != null)

@@ -8,7 +8,13 @@
 </head>
 <body>
     <div class="navbar"><%@include file="navbar.jsp"%></div>
-    
+
+     <c:choose>
+        <c:when test="${message.error}">
+            <p><c:out value="${message.message}"/></p>
+        </c:when>
+        <c:otherwise></c:otherwise>
+    </c:choose>
 
     <form method="POST" action="<c:url value="/register"/>">
         <div>
@@ -39,22 +45,19 @@
             <input name="birth-date" type="date" required><br><br>
             <label for="nationality">Nationality:</label>
             <input name="nationality" type="text" required><br><br>
-            <label for="home-country-address">Home country address:</label>
+            <label for="home-country-university">From which university are you from?</label>
+            <input name="home-country-university" type="text" required><br><br>
+            <label for="home-country-address">Please insert here your home-country address:</label>
             <div class="inputContainer">
                 <input type="text" name="home-country-address-province" id="home-country-address-province" placeholder="Enter province...">
                 <input type="text" name="home-country-address-city" id="home-country-address-city" placeholder="Enter city...">
                 <input type="text" name="home-country-address-street" id="home-country-address-street" placeholder="Enter Street...">
             </div>
-            <label for="home-country-university">Home country university:</label>
-            <input name="home-country-university" type="text" required><br><br>
-            <!-- TODO: decide if we want to use a double field or a single input,let's keep it -->
-            <!-- <p>Period of stay:</p>
-            <label for="period-of-stay-from">Period of stay from:</label>
-            <input name="period-of-stay-from" type="date" type="text" required><br><br>
-            <label for="period-of-stay-to">Period of stay to:</label>
-            <input name="period-of-stay-to" type="date" type="text" required><br><br> -->
-            <label for="period-of-stay">Period of stay (type number of semester):</label>
-            <input name="period-of-stay" type="text" required><br><br>
+            <label for="period-of-stay">Period of stay (consider only this academic year):</label>
+            <select name="period-of-stay">
+                <option value="1">One Semester</option>
+                <option value="2">Both semesters</option>
+            </select><br><br>
             <label for="phone-number">Phone number:</label>
             <input name="phone-number" type="text" required><br><br>
             <label for="padua-address">Padua address:</label>
@@ -93,11 +96,6 @@
 
     </form>
 
-    <c:choose>
-        <c:when test="${message.error}">
-            <p><c:out value="${message.message}"/></p>
-        </c:when>
-        <c:otherwise></c:otherwise>
-    </c:choose>
+
 </body>
 </html>

@@ -51,7 +51,7 @@
         <br/>
         <c:out value="Period of Stay: ${user.getPeriodOfStay()}"/>
         <br/>
-        <c:out value="Phone Nuumber: ${user.getPhoneNumber()}"/>
+        <c:out value="Phone Number: ${user.getPhoneNumber()}"/>
         <br/>
         <c:out value="Padua Address: ${user.getPaduaAddress()}"/>
         <br/>

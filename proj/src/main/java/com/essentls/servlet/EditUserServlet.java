@@ -85,6 +85,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             //homeCountryAddress = new JSONObject(req.getParameter("userHomeCountryAddress"));
             homeCountryUniversity = req.getParameter("userHomeCountryUniversity");
             periodOfStay = Integer.parseInt(req.getParameter("userPeriodOfStay"));
+
             phoneNumber = req.getParameter("userPhoneNumber");
             //paduaAddress = new JSONObject(req.getParameter("userPaduaAddress"));
             documentType = req.getParameter("userDocumentType");
