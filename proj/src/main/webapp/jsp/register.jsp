@@ -49,9 +49,11 @@
             <input name="home-country-university" type="text" required><br><br>
             <label for="home-country-address">Please insert here your home-country address:</label>
             <div class="inputContainer">
-                <input type="text" name="home-country-address-province" id="home-country-address-province" placeholder="Enter province...">
-                <input type="text" name="home-country-address-city" id="home-country-address-city" placeholder="Enter city...">
                 <input type="text" name="home-country-address-street" id="home-country-address-street" placeholder="Enter Street...">
+                <input type="text" name="home-country-address-number" id="home-country-address-number" placeholder="Enter number...">
+                <input type="text" name="home-country-address-city" id="home-country-address-city" placeholder="Enter city...">
+                <input type="text" name="home-country-address-zip" id="home-country-address-zip" placeholder="Enter zip...">
+                <input type="text" name="home-country-address-country" id="home-country-address-country" placeholder="Enter country...">
             </div>
             <label for="period-of-stay">Period of stay (consider only this academic year):</label>
             <select name="period-of-stay">
@@ -62,9 +64,11 @@
             <input name="phone-number" type="text" required><br><br>
             <label for="padua-address">Padua address:</label>
             <div class="inputContainer">
-                <input type="text" name="padua-address-province" id="padua-address-province" placeholder="Enter province...">
-                <input type="text" name="padua-address-city" id="padua-address-city" placeholder="Enter city...">
                 <input type="text" name="padua-address-street" id="padua-address-street" placeholder="Enter Street...">
+                <input type="text" name="padua-address-number" id="padua-address-number" placeholder="Enter number...">
+                <input type="text" name="padua-address-city" id="padua-address-city" placeholder="Enter city...">
+                <input type="text" name="padua-address-zip" id="padua-address-zip" placeholder="Enter zip...">
+                <input type="text" name="padua-address-country" id="padua-address-country" placeholder="Enter country...">
             </div>
             <!-- <input name="padua-address" type="text" required><br><br> -->
             <label for="document-type">Document type:</label>

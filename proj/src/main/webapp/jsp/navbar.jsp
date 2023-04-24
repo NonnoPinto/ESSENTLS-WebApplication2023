@@ -4,7 +4,6 @@
 <a rel="noopener noreferrer nofollow" href="<c:url value='/signup'/>">Sign up</a>
 <c:if test="${sessionScope.userId == null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/login'/>">Login</a>
-    <a rel="noopener noreferrer nofollow" href="<c:url value='/register'/>">Register</a>
 </c:if>
 <c:if test="${sessionScope.userId != null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/profile'/>">Profile</a>
