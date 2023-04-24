@@ -30,31 +30,31 @@
 
                 <!--Name-->
                 <div style="padding-top: 10px;">
-                    <label for="">Name</label>
+                    <label for="">Event's name:</label>
                     <div class="inputContainer">
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" placeholder="Name..">
                     </div>
                 </div>
 
                 <!--Description-->
                 <div style="padding-top: 10px;">
-                    <label for="">Description</label>
+                    <label for="">Some details:</label>
                     <div class="inputContainer">
-                        <input type="text" name="description" id="description"  style="height:200px;">
+                        <input type="text" name="description" id="description"  style="height:200px;", placeholder="Description..">
                     </div>
                 </div>
 
                 <!--Price-->
                 <div style="padding-top: 10px;">
-                    <label for="">Price</label>
+                    <label for="">How much does the event cost?</label>
                     <div class="inputContainer">
-                        <input type="number" name="price" id="price" min="0" >
+                        <input type="number" name="price" id="price" min="0" placeholder="0">
                     </div>
                 </div>
 
                 <!--Visibility-->
                 <div style="padding-top: 10px;">
-                    <label for="">Visibility</label>
+                    <label for="">Do you want to make it visible?</label>
                     <div class="inputContainer">
                          <input type="number" name="visibility" id="visibility" min="0" max="4" >
                     </div>
@@ -62,7 +62,7 @@
 
                 <!--Location-->
                 <div style="padding-top: 10px;">
-                    <label for="">Location</label>
+                    <label for="">Where does it take place?</label>
                     <div class="inputContainer">
                         <input type="text" name="city" id="city" placeholder="Enter city...">
                         <input type="text" name="street" id="street" placeholder="Enter Street...">
@@ -72,7 +72,7 @@
 
                 <!--maxParticipantsInternational-->
                 <div style="padding-top: 10px;">
-                    <label for="">Max participants International</label>
+                    <label for="">Number of Max International participants:</label>
                     <div class="inputContainer">
                         <input type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" min="0" >
                     </div>
@@ -80,7 +80,7 @@
 
                 <!--MaxParticipantsVolunteer-->
                 <div style="padding-top: 10px;">
-                    <label for="">Max participants Volunteer</label>
+                    <label for="">Number of Max Volunteer participants:</label>
                     <div class="inputContainer">
                         <input type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" min="0" >
                     </div>
@@ -88,7 +88,7 @@
 
                 <!--eventStart-->
                 <div style="padding-top: 10px;">
-                    <label for="">Event Start</label>
+                    <label for="">When does the event start?</label>
                     <div class="inputContainer">
                         <input type="datetime-local" name="eventStart" id="eventStart" >  
                     </div>
@@ -96,7 +96,7 @@
 
                 <!--eventEnd-->
                 <div style="padding-top: 10px;">
-                    <label for="">Event End</label>
+                    <label for="">When does the event end?</label>
                     <div class="inputContainer">
                         <input type="datetime-local" name="eventEnd" id="eventEnd" > 
                     </div>
@@ -104,7 +104,7 @@
 
                 <!--subscriptionStart-->
                 <div style="padding-top: 10px;">
-                    <label for="">Subscription Start</label>
+                    <label for="">When can the subscription start?</label>
                     <div class="inputContainer">
                         <input type="datetime-local" name="subscriptionStart" id="subscriptionStart" >
                     </div>
@@ -112,7 +112,7 @@
 
                 <!--subscriptionEnd-->
                 <div style="padding-top: 10px;">
-                    <label for="">Subscription End</label>
+                    <label for="">And when can the subscription end?</label>
                     <div class="inputContainer">
                         <input type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" >
                     </div>
@@ -120,7 +120,7 @@
 
                 <!--withdrawalEnd-->
                 <div style="padding-top: 10px;">
-                    <label for="">Withdrawal End</label>
+                    <label for="">When does the withdrawal End?</label>
                     <div class="inputContainer">
                         <input type="datetime-local" name="withdrawalEnd" id="withdrawalEnd"> 
                     </div>
@@ -128,7 +128,7 @@
 
                 <!--maxWaitingList-->
                 <div style="padding-top: 10px;">
-                    <label for="">Max waiting list</label>
+                    <label for="">Insert the number of the size of the waiting list:</label>
                     <div class="inputContainer">
                         <input type="number" name="maxWaitingList" id="maxWaitingList" min="0">
                     </div>
@@ -136,7 +136,7 @@
 
                 <!--attributes-->
                 <div style="padding-top: 10px;">
-                    <label for="">Attributes</label>
+                    <label for="">Attributes:</label>
                     <div class="inputContainer">
                         <input type="text" name="attributes" id="attributes">
                     </div>
@@ -144,7 +144,7 @@
 
                 <!--thumbnail-->
                 <div style="padding-top: 10px;">
-                    <label for="">Thumbnail</label>
+                    <label for="">Thumbnail:</label>
                     <div class="inputContainer">
                         <input type="text" name="thumbnail" id="thumbnail" >
                     </div>
@@ -152,7 +152,7 @@
 
                 <!--poster-->
                 <div style="padding-top: 10px;">
-                    <label for="">Poster</label>
+                    <label for="">Poster:</label>
                     <div class="inputContainer">
                         <input type="text" name="poster" id="poster">
                     </div>

@@ -24,17 +24,17 @@
 
 			<!-- ---------------- EMAIL -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
-				<label>Email</label>
+				<label>Insert your Email</label>
 				<div class="inputContainer">
-					<input type="text" name="email" id="email" placeholder="Email..." required>
+					<input type="text" name="email" id="email" placeholder="Email.." required>
 					<span id="infoEmail"></span>
 				</div>
 			</div>
 			<!-- ---------------- PASSWORD -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
-				<label>Password</label>
+				<label>Insert your Password</label>
 				<div class="inputContainer">
-					<input type="password" name="password" id="password" placeholder="Password..." required>
+					<input type="password" name="password" id="password" placeholder="Password.." required>
 					<span id="infoPassword"></span>
 				</div>
 			</div>

@@ -13,24 +13,24 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="ISO-8859-1">
-  <title>User detail</title>
+  <title>User details</title>
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 <div>
-  <h1>Profile Page</h1>
+  <h1>Profile page</h1>
   <hr>
   <h3>${Users.name} ${Users.surname}</h3>
-  <h5>${Users.dateOfBirth}</h5>
-  <h5>${Users.nationality}</h5>
+  <h5>Date of birth: ${Users.dateOfBirth}</h5>
+  <h5>Nationality: ${Users.nationality}</h5>
   <hr>
-  <p>${Users.homeCountryAddress}</p>
+  <p>Home country address: ${Users.homeCountryAddress}</p>
   <hr>
-  <p>${Users.paduaAddress}</p>
+  <p>Italian address: ${Users.paduaAddress}</p>
   <hr>
-  <p>${Users.dietType}</p>
+  <p>Type of diet: ${Users.dietType}</p>
   <hr>
-  <p>${Users.allergies}</p>
+  <p>Allergies: ${Users.allergies}</p>
 </div>
 
 <form action="<c:url value="/paymentslist"/>" method="POST">

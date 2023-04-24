@@ -12,19 +12,19 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
-    <title>Payments List</title>
+    <title>Payments list</title>
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-<h1>Payments List</h1>
+<h1>Payments list</h1>
 <table>
     <thead>
-    <tr>
-        <th>UserId</th>
-        <th>method</th>
-        <th>amount</th>
-        <th>note</th>
+    <tr> 
+        <th>User ID</th>
+        <th>Payment's method</th>
+        <th>Amount</th>
+        <th>Note</th>
     </tr>
     </thead>
     <tbody>

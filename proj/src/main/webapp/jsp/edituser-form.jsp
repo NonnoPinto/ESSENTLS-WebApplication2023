@@ -54,9 +54,9 @@
             <label for="userSex">Sex (currently ${user.getSex()}):</label>
             <select id="userSex" name="userSex">
                 <option value="${user.getSex()}" selected disabled hidden>${user.getSex()}</option>
-                <option value="male">male</option>
-                <option value="female">female</option>
-                <option value="others">others</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
             </select><br><br>
 
             <label for="userDateOfBirth">Date of Birth (currently ${user.getDateOfBirth().toString()}):</label>

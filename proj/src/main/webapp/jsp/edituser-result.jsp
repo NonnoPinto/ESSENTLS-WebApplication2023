@@ -21,7 +21,7 @@
 
 <c:choose>
     <c:when test="${user==null}">
-        <h2>Fail</h2>
+        <h2>Something went wrong.</h2>
         <c:out value="${message}"/>
     </c:when>
     <c:otherwise>

@@ -28,7 +28,7 @@
         </p>
     </c:when>
     <c:otherwise>
-        Error
+        <p>Something did not work :(</p>
     </c:otherwise>
 </c:choose>
 

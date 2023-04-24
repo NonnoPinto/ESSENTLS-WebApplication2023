@@ -30,7 +30,7 @@
 
         <div>
             <label for="sex">Please select your gender:</label>
-            <select name="sex">
+            <select name="sex"> 
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="others">Others</option>
