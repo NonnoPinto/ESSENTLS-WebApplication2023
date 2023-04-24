@@ -63,9 +63,9 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String nationality = req.getParameter("nationality");
             //String homeCountryAddress = req.getParameter("home-country-address");
             JSONObject homeCountryAddress = new JSONObject();
-            String homeCountryAddressProvince = req.getParameter("home-contry-address-province");
-            String homeCountryAddressCity = req.getParameter("home-contry-address-city");
-            String homeCountryAddressStreet = req.getParameter("home-contry-address-street");
+            String homeCountryAddressProvince = req.getParameter("home-country-address-province");
+            String homeCountryAddressCity = req.getParameter("home-country-address-city");
+            String homeCountryAddressStreet = req.getParameter("home-country-address-street");
             String homeCountryUniversity = req.getParameter("home-country-university");
             homeCountryAddress = homeCountryAddress.put("province", homeCountryAddressProvince);
             homeCountryAddress = homeCountryAddress.put("city", homeCountryAddressCity);
