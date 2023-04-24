@@ -18,16 +18,10 @@
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
 <h1>Payments List</h1>
-
-
-<form action="<c:url value="/paymentslist"/>" method="POST">
-    <div>
-        <button type="submit">Show My Payment Details</button>
-    </div>
-</form>
 <table>
     <thead>
     <tr>
+        <th>UserId</th>
         <th>method</th>
         <th>amount</th>
         <th>note</th>
@@ -36,6 +30,7 @@
     <tbody>
     <c:forEach var="payment" items="${Payments}">
         <tr>
+            <td><c:out value="${payment.getUserId()}"/></td>
             <td><c:out value="${payment.getMethod()}"/></td>
             <td><c:out value="${payment.getAmount()}"/></td>
             <td><c:out value="${payment.getNotes()}"/></td>
