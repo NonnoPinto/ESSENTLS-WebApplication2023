@@ -48,7 +48,7 @@ public class ProfileServlet extends AbstractDatabaseServlet {
             session.setAttribute("tier", user.getTier());
             session.setAttribute("id", user.getId());
             LOGGER.info("The Login User tier: %s", user.getTier());
-            response.sendRedirect(request.getContextPath()+"/jsp/profile.jsp");
+            request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);
         }
