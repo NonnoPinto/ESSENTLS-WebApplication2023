@@ -72,7 +72,11 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             catch (Exception e){
                 tier = 0;
             }
-            registrationDate = Date.valueOf(req.getParameter("userRegistrationDate"));
+            try {
+            registrationDate = Date.valueOf(req.getParameter("userRegistrationDate"));}
+            catch (Exception e){
+                registrationDate = null;
+            }
             name = req.getParameter("userName");
             surname = req.getParameter("userSurname");
             sex = req.getParameter("userSex");
@@ -82,27 +86,27 @@ public class EditUserServlet extends AbstractDatabaseServlet {
                 dateOfBirth = null;
             }
             nationality = req.getParameter("userNationality");
-            //homeCountryAddress = new JSONObject(req.getParameter("userHomeCountryAddress"));
+            homeCountryAddress = new JSONObject()
+                    .put("street", req.getParameter("userHomeCountryAddress-street"))
+                    .put("number", req.getParameter("userHomeCountryAddress-number"))
+                    .put("city", req.getParameter("userHomeCountryAddress-city"))
+                    .put("zip", req.getParameter("userHomeCountryAddress-zip"))
+                    .put("country", req.getParameter("userHomeCountryAddress-country"));
             homeCountryUniversity = req.getParameter("userHomeCountryUniversity");
             periodOfStay = Integer.parseInt(req.getParameter("userPeriodOfStay"));
-
             phoneNumber = req.getParameter("userPhoneNumber");
-            //paduaAddress = new JSONObject(req.getParameter("userPaduaAddress"));
+            paduaAddress = new JSONObject()
+                    .put("street", req.getParameter("userPaduaAddress-street"))
+                    .put("number", req.getParameter("userPaduaAddress-number"))
+                    .put("city", req.getParameter("userPaduaAddress-city"))
+                    .put("zip", req.getParameter("userPaduaAddress-zip"))
+                    .put("country", req.getParameter("userPaduaAddress-country"));
             documentType = req.getParameter("userDocumentType");
             documentNumber = req.getParameter("userDocumentNumber");
             documentFile = req.getParameter("userDocumentFile");
             dietType = req.getParameter("userDietType");
             allergies = req.getParameter("userAllergies").replace(", ",",").split(",");
             emailHash = req.getParameter("userEmailHash");
-
-            paduaAddress = new JSONObject();
-            homeCountryAddress = new JSONObject();
-            paduaAddress = paduaAddress.put("city", "citypad");
-            homeCountryAddress = homeCountryAddress.put("city", "cityhom");
-            paduaAddress = paduaAddress.put("street", "streetpad");
-            homeCountryAddress = homeCountryAddress.put("street", "streethom");
-            paduaAddress = paduaAddress.put("number", "numberpad");
-            homeCountryAddress = homeCountryAddress.put("number", "numberhom");
 
             try {
             emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}
@@ -115,7 +119,6 @@ public class EditUserServlet extends AbstractDatabaseServlet {
                     id, email, password, cardId, tier, registrationDate, name, surname, sex, dateOfBirth,
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress, documentType,
                     documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed);
-
             //creates a new object for accessing the database and updates the user
             new AdminEditUserDAO(getConnection(), u).access();
 

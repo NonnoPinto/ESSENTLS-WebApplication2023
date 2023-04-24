@@ -53,7 +53,7 @@
 
             <label for="userSex">Sex (currently ${user.getSex()}):</label>
             <select id="userSex" name="userSex">
-                <option value="${user.getSex()}" selected disabled hidden>${user.getSex()}</option>
+                <option value="${user.getSex()}" selected hidden>${user.getSex()}</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="others">Others</option>
@@ -65,37 +65,40 @@
             <label for="userNationality">Nationality (currently ${user.getNationality()}):</label>
             <input id="userNationality" value="${user.getNationality()}" name="userNationality" type="text"/><br/><br/>
 
-            <label for="userHomeCountryAddress">Home Country Address (currently Street: ${user.getHomeCountryAddress().getString("street")} | Number: ${user.getHomeCountryAddress().getString("number")} | City: ${user.getHomeCountryAddress().getString("city")} | ZIP: ${user.getHomeCountryAddress().getString("zip")} | Country: ${user.getHomeCountryAddress().getString("country")}:</label>
+            <label for="userHomeCountryAddress">Home Country Address (currently Street: ${user.getHomeCountryAddress().getString("street")} | Number: ${user.getHomeCountryAddress().getString("number")} | City: ${user.getHomeCountryAddress().getString("city")} | ZIP: ${user.getHomeCountryAddress().getString("zip")} | Country: ${user.getHomeCountryAddress().getString("country")}):</label>
             <div class="inputContainer" id="userHomeCountryAddress">
-                <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" placeholder="${user.getHomeCountryAddress().getString("street")}">
-                <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" placeholder="${user.getHomeCountryAddress().getString("number")}">
-                <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" placeholder="${user.getHomeCountryAddress().getString("city")}">
-                <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" placeholder="${user.getHomeCountryAddress().getString("zip")}">
-                <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" placeholder="${user.getHomeCountryAddress().getString("country")}">
+                <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" value="${user.getHomeCountryAddress().getString("street")}">
+                <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" value="${user.getHomeCountryAddress().getString("number")}">
+                <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" value="${user.getHomeCountryAddress().getString("city")}">
+                <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" value="${user.getHomeCountryAddress().getString("zip")}">
+                <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" value="${user.getHomeCountryAddress().getString("country")}">
             </div><br>
 
             <label for="userHomeCountryUniversity">Home Country University (currently ${user.getHomeCountryUniversity()}):</label>
             <input id="userHomeCountryUniversity" value="${user.getHomeCountryUniversity()}" name="userHomeCountryUniversity" type="text"/><br/><br/>
 
             <label for="userPeriodOfStay">Period of Stay (currently ${user.getPeriodOfStay()}):</label>
-            <input id="userPeriodOfStay" value="${user.getPeriodOfStay()}" name="userPeriodOfStay" type="number" min="0" max="2"/><br/><br/>
-            <p>1=first semester; 2=both semesters</p>
+            <select id="userPeriodOfStay" name="userPeriodOfStay">
+                <option value="${user.getPeriodOfStay().toString()}" selected hidden>${user.getPeriodOfStay().toString()}</option>
+                <option value="1">1 (one semester)</option>
+                <option value="2">2 (both semesters)</option>
+            </select><br><br>
 
             <label for="userPhoneNumber">Phone Number (currently ${user.getPhoneNumber()}):</label>
             <input id="userPhoneNumber" value="${user.getPhoneNumber()}" name="userPhoneNumber" type="text"/><br/><br/>
 
-            <label for="userPaduaAddress">Padua Address (currently Street: ${user.getPaduaAddress().getString("street")} | Number: ${user.getPaduaAddress().getString("number")} | City: ${user.getPaduaAddress().getString("city")} | ZIP: ${user.getPaduaAddress().getString("zip")} | Country: ${user.getPaduaAddress().getString("country")}:</label>
+            <label for="userPaduaAddress">Padua Address (currently Street: ${user.getPaduaAddress().getString("street")} | Number: ${user.getPaduaAddress().getString("number")} | City: ${user.getPaduaAddress().getString("city")} | ZIP: ${user.getPaduaAddress().getString("zip")} | Country: ${user.getPaduaAddress().getString("country")}):</label>
             <div class="inputContainer" id="userPaduaAddress">
-                <input type="text" name="userPaduaAddress-street" id="userPaduaAddress-street" placeholder="${user.getPaduaAddress().getString("street")}">
-                <input type="text" name="userPaduaAddress-number" id="userPaduaAddress-number" placeholder="${user.getPaduaAddress().getString("number")}">
-                <input type="text" name="userPaduaAddress-city" id="userPaduaAddress-city" placeholder="${user.getPaduaAddress().getString("city")}">
-                <input type="text" name="userPaduaAddress-zip" id="userPaduaAddress-zip" placeholder="${user.getPaduaAddress().getString("zip")}">
-                <input type="text" name="userPaduaAddress-country" id="userPaduaAddress-country" placeholder="${user.getPaduaAddress().getString("country")}">
+                <input type="text" name="userPaduaAddress-street" id="userPaduaAddress-street" value="${user.getPaduaAddress().getString("street")}">
+                <input type="text" name="userPaduaAddress-number" id="userPaduaAddress-number" value="${user.getPaduaAddress().getString("number")}">
+                <input type="text" name="userPaduaAddress-city" id="userPaduaAddress-city" value="${user.getPaduaAddress().getString("city")}">
+                <input type="text" name="userPaduaAddress-zip" id="userPaduaAddress-zip" value="${user.getPaduaAddress().getString("zip")}">
+                <input type="text" name="userPaduaAddress-country" id="userPaduaAddress-country" value="${user.getPaduaAddress().getString("country")}">
             </div><br>
 
             <label for="userDocumentType">Document Type (currently ${user.getDocumentType()}):</label>
             <select id="userDocumentType" name="userDocumentType">
-                <option value="${user.getDocumentType()}" selected disabled hidden>${user.getDocumentType()}</option>
+                <option value="${user.getDocumentType()}" selected hidden>${user.getDocumentType()}</option>
                 <option value="ID">ID</option>
                 <option value="Passport">Passport</option>
                 <option value="Driver license">Driver license</option>
@@ -109,7 +112,7 @@
 
             <label for="userDietType">Diet (currently ${user.getDietType()}):</label>
             <select id="userDietType" name="userDietType">
-                <option value="${user.getDietType()}" selected disabled hidden>${user.getDietType()}</option>
+                <option value="${user.getDietType()}" selected hidden>${user.getDietType()}</option>
                 <option value="No specific">No specific</option>
                 <option value="Vegetarian">Vegetarian</option>
                 <option value="Vegan">Vegan</option>
@@ -125,7 +128,7 @@
 
             <label for="userEmailConfirmed">Email Confirmed (currently ${user.getEmailConfirmed()}):</label>
             <select id="userEmailConfirmed" name="userEmailConfirmed">
-                <option value="${user.getEmailConfirmed()}" selected disabled hidden>${user.getEmailConfirmed()}</option>
+                <option value="${user.getEmailConfirmed()}" selected hidden>${user.getEmailConfirmed()}</option>
                 <option value="true">true</option>
                 <option value="false">false</option>
             </select><br><br>

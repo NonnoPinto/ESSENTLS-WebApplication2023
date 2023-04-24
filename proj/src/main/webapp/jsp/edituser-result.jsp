@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Arrays" %>
 
 
 <!DOCTYPE html>
@@ -63,7 +64,7 @@
         <br/>
         <c:out value="Diet Type: ${user.getDietType()}"/>
         <br/>
-        <c:out value="Allergies: ${user.getAllergies()}"/>
+        <c:out value="Allergies: ${Arrays.toString(user.getAllergies())}"/>
         <br/>
         <c:out value="Email Confirmed: ${user.getEmailConfirmed()}"/>
         <br/>

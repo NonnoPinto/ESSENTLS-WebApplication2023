@@ -7,6 +7,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page import="java.util.Arrays" %>
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,7 @@
   <hr>
   <p>Type of diet: ${Users.dietType}</p>
   <hr>
-  <p>Allergies: ${Users.allergies}</p>
+  <p>Allergies: ${Arrays.toString(Users.getAllergies())}</p>
 </div>
 
 <form action="<c:url value="/paymentslist"/>" method="POST">
