@@ -29,7 +29,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
             req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
         }
         else{
-            req.getRequestDispatcher("/home").forward(req, res);
+            res.sendRedirect(req.getContextPath() + "/home");
         }
     }
 

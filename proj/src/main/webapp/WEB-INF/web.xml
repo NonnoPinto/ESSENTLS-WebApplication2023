@@ -70,6 +70,11 @@
         <servlet-class>com.essentls.servlet.TagRestDispatcherServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -136,6 +141,11 @@
     <servlet-mapping>
         <servlet-name>CreateEventServlet</servlet-name>
         <url-pattern>/create-event</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

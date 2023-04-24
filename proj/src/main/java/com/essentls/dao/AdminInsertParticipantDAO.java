@@ -28,7 +28,7 @@ public class AdminInsertParticipantDAO extends AbstractDAO<Participant> {
             stmt.setLong(1, this.participant.getUserId());
             stmt.setLong(2, this.participant.getEventId());
             stmt.setString(3, this.participant.getRole());
-            stmt.setDate(4, this.participant.getDate());
+            stmt.setTimestamp(4, this.participant.getDate());
             stmt.setString(5, this.participant.getAttributeValues());
 
             stmt.executeUpdate();

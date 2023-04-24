@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 @WebServlet(name = "JoinEventServlet", value = "/joinEvent")
 public class JoinEventServlet extends AbstractDatabaseServlet{
@@ -34,12 +35,13 @@ public class JoinEventServlet extends AbstractDatabaseServlet{
                 if (user == null || user.getTier() < event.getVisibility()) { //Auth check
                     request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
                 } else {
-                    Participant p = new Participant(user.getId(), eventId, "WaitingList", new Date(System.currentTimeMillis()), "{}");
                     try {
+                        Participant p = new Participant(user.getId(), eventId, null, new Timestamp(System.currentTimeMillis()), "{}", user);
+
                         if ((new UserJoinsEventDAO(getConnection(), p)).access().getOutputParam()) {
                             response.sendRedirect(request.getContextPath() + "/eventdetail?id=" + eventId);
                         } else {
-                            throw new ServletException("Error during event participation");
+                            throw new ServletException("The event is full");
                         }
                     } catch (SQLException e) {
                         LOGGER.error(e);

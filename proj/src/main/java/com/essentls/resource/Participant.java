@@ -1,6 +1,8 @@
 package com.essentls.resource;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,10 +15,10 @@ public class Participant extends User{
     private long userId;
     private long eventId;
     private String role;
-    private Date date;
+    private Timestamp date;
     private String attributeValues;
 
-    public Participant(long userId, long eventId, String role, Date date, String attributeValues) {
+    public Participant(long userId, long eventId, String role, Timestamp date, String attributeValues) {
         super();
         this.userId = userId;
         this.eventId = eventId;
@@ -25,7 +27,7 @@ public class Participant extends User{
         this.attributeValues = attributeValues;
     }
 
-    public Participant(long userId, long eventId, String role, Date date, String attributeValues, User user) {
+    public Participant(long userId, long eventId, String role, Timestamp date, String attributeValues, User user) {
         super(user);
         this.userId = userId;
         this.eventId = eventId;
@@ -46,7 +48,7 @@ public class Participant extends User{
         return role;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
@@ -74,5 +76,9 @@ public class Participant extends User{
         uJson.put("date", date);
         uJson.put("attributeValues", attributeValues);
         return uJson;
+    }
+
+    public void setRole(String role){
+        this.role = role;
     }
 }

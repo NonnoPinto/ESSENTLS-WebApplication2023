@@ -25,11 +25,21 @@
     <p>Waiting List: ${nWaiting}</p>
     <p>Location: ${event.location}</p>
     <c:choose>
-      <c:when test="${nParticipants < event.maxParticipantsInternational or nWaiting < maxWaitingList}">
-        <a href="payment?action=event&id=${event.id}"><button>Join the event</button></a>
+      <c:when test="${currentIsPartecipating}">
+        You are partecipating at the event
+      </c:when>
+      <c:when test="${currentIsWaiting}">
+        You are actually in the waiting list for this event
       </c:when>
       <c:otherwise>
-        Sorry, the event is full
+        <c:choose>
+          <c:when test="${nParticipants < event.maxParticipantsInternational or nWaiting < maxWaitingList}">
+            <a href="payment?action=event&id=${event.id}"><button>Join the event</button></a>
+          </c:when>
+          <c:otherwise>
+            Sorry, the event is full
+          </c:otherwise>
+        </c:choose>
       </c:otherwise>
     </c:choose>
   </div>

@@ -42,16 +42,24 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
                 List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
                 int nParticipants = 0;
                 int nWaiting = 0;
+                boolean currentIsWaiting = false;
+                boolean currentIsPartecipating = false;
                 for (Participant p : participants) {
                     if (!p.getRole().equals("WaitingList")) {
+                        if(p.getUserId() == user.getId())
+                            currentIsPartecipating = true;
                         nParticipants++;
                     } else {
+                        if(p.getUserId() == user.getId())
+                            currentIsWaiting = true;
                         nWaiting++;
                     }
                 }
                 request.setAttribute("event", e);
                 request.setAttribute("nParticipants", nParticipants);
                 request.setAttribute("nWaiting", nWaiting);
+                request.setAttribute("currentIsWaiting", currentIsWaiting);
+                request.setAttribute("currentIsPartecipating", currentIsPartecipating);
                 request.getRequestDispatcher("/jsp/eventdetail.jsp").forward(request, response);
             }
         } catch (Exception e) {

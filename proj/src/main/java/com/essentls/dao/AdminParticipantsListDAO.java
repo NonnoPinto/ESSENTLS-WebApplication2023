@@ -43,7 +43,7 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                                 rs.getLong("userId"),
                                 rs.getLong("eventId"),
                                 rs.getString("role"),
-                                rs.getDate("date"),
+                                rs.getTimestamp("date"),
                                 rs.getString("attributeValues"),
                                 new User(
                                         rs.getLong("id"),
