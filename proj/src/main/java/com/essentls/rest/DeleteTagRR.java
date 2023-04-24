@@ -47,7 +47,7 @@ public class DeleteTagRR extends AbstractRR{
 
             // parse the URI path to extract the name
             String path = req.getRequestURI();
-            path = path.substring(path.lastIndexOf("tags") + 5).replace("+"," ");
+            path = path.substring(path.lastIndexOf("tags") + 5).replace("%20"," ");
             LogContext.setResource(path);
 
 

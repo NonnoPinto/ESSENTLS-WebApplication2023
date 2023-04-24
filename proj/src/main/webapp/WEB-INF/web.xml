@@ -67,7 +67,7 @@
 
     <servlet>
         <servlet-name>RestDispatcherServlet</servlet-name>
-        <servlet-class>com.essentls.servlet.TagRestDispatcherServlet</servlet-class>
+        <servlet-class>com.essentls.servlet.RestDispatcherServlet</servlet-class>
     </servlet>
 
     <servlet>

@@ -24,6 +24,7 @@ import java.util.List;
  */
 public final class ListTagsRR extends AbstractRR {
 
+    String subTag;
     /**
      * Creates a new REST resource for searching {@code Student}s.
      *
@@ -31,8 +32,9 @@ public final class ListTagsRR extends AbstractRR {
      * @param res the HTTP response.
      * @param con the connection to the database.
      */
-    public ListTagsRR(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
+    public ListTagsRR(final HttpServletRequest req, final HttpServletResponse res, Connection con, String subTag) {
         super("LIST_TAGS", req, res, con);
+        this.subTag = subTag;
     }
 
 
@@ -47,7 +49,7 @@ public final class ListTagsRR extends AbstractRR {
             LogContext.setResource("tags");
 
             // creates a new DAO for accessing the database and searches the Student(s)
-            el = new TagsListDAO(con).access().getOutputParam();
+            el = new TagsListDAO(con, subTag).access().getOutputParam();
             LOGGER.info("tag %s",el);
 
             if (el != null) {

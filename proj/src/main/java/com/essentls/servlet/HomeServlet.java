@@ -97,7 +97,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
 
             try {
 
-                tags = new TagsListDAO(getConnection()).access().getOutputParam();
+                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
 
                 LOGGER.info("Tags successfully retrieved in the home");
 

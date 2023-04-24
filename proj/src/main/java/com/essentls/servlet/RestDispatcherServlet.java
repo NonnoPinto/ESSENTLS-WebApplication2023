@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 
-public final class TagRestDispatcherServlet extends AbstractDatabaseServlet {
+public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
     /**
      * The JSON UTF-8 MIME media type
@@ -95,7 +95,7 @@ public final class TagRestDispatcherServlet extends AbstractDatabaseServlet {
 
             switch (method) {
                 case "GET":
-                    new ListTagsRR(req, res, getConnection()).serve();
+                    new ListTagsRR(req, res, getConnection(), "").serve();
                     break;
                 case "POST":
                     new CreateTagRR(req, res, getConnection()).serve();
@@ -111,11 +111,14 @@ public final class TagRestDispatcherServlet extends AbstractDatabaseServlet {
 
             }
         } else {
-            // the request URI is: /tags/name
+            // the request URI is: /tags/name or /tags/subtag
 
             //TODO make RegEx to check if tagname only contains alphanumerical characters
 
             switch (method) {
+                case "GET":
+                    new ListTagsRR(req, res, getConnection(), path).serve();
+                    break;
                 case "DELETE":
                     new DeleteTagRR(req, res, getConnection()).serve();
                     break;
