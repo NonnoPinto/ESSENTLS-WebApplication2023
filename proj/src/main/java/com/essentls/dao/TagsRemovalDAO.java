@@ -2,12 +2,11 @@ package com.essentls.dao;
 
 import com.essentls.resource.Tag;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
 /**
  * Add a tag to the tag's table
  *
@@ -18,7 +17,7 @@ import java.sql.SQLException;
 
 public class TagsRemovalDAO extends AbstractDAO<Tag> {
 
-private static final String STATEMENT = "DELETE FROM Tags WHERE name = ?";
+private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name = ? RETURNING *";
     /**
      * The payment that must be added
      */
@@ -40,18 +39,31 @@ private static final String STATEMENT = "DELETE FROM Tags WHERE name = ?";
     protected void doAccess() throws Exception {
 
         PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        Tag t = null;
 
         try {
             stmt = con.prepareStatement(STATEMENT);
             stmt.setString(1, name);
 
-            stmt.executeUpdate();   //add to payment's table
+            rs = stmt.executeQuery();   //add to payment's table
 
-            LOGGER.info("Tag %l successfully deleted", name);
+            if (rs.next()) {
+                t = new Tag(rs.getString("name"));
+
+                LOGGER.info("Tag %s successfully deleted", t.getName());
+            }
         } finally {
+            if (rs != null)
+                rs.close();
+
+
             if (stmt != null)
                 stmt.close();
         }
+
+        outputParam = t;
 
         con.close();
 

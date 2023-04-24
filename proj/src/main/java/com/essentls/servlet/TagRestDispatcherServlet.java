@@ -97,6 +97,9 @@ public final class TagRestDispatcherServlet extends AbstractDatabaseServlet {
                 case "GET":
                     new ListTagsRR(req, res, getConnection()).serve();
                     break;
+                case "POST":
+                    new CreateTagRR(req, res, getConnection()).serve();
+                    break;
                 default:
                     LOGGER.warn("Unsupported operation for URI /tags: %s.", method);
 
@@ -113,11 +116,8 @@ public final class TagRestDispatcherServlet extends AbstractDatabaseServlet {
             //TODO make RegEx to check if tagname only contains alphanumerical characters
 
             switch (method) {
-                case "POST":
-                    new CreateTagRR(req, res, getConnection()).serve();
-                    break;
                 case "DELETE":
-                    new CreateTagRR(req, res, getConnection()).serve();
+                    new DeleteTagRR(req, res, getConnection()).serve();
                     break;
                 default:
                     LOGGER.warn("Unsupported operation for URI /tags/{name}: %s.", method);

@@ -65,7 +65,7 @@ public class Tag extends AbstractResource{
                     switch (jp.getCurrentName()) {
                         case "name":
                             jp.nextToken();
-                            name = String.valueOf(jp.getLongValue());
+                            name = jp.getText().replaceAll("[^a-zA-Z0-9]", "");
                             break;
 
 
