@@ -1,6 +1,8 @@
 package com.essentls.dao;
 
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +16,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                                         " WHERE (? IS NULL OR name = ?)" +
                                                         " AND (? IS NULL OR surname = ?)" +
                                                         " AND (? = -1 OR id = ?)" +
-                                                        " AND (? IS NULL OR cardId = ?)" +
+                                                        " AND (? IS NULL OR \"cardID\" = ?)" +
                                                         " AND (? IS NULL OR email = ?)";
 
     private String name;
@@ -75,7 +77,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
             while (rs.next()) {
                 users.add(
                         new User(
-                                //rs.getLong("id"),
+                                rs.getLong("id"),
                                 rs.getString("email"),
                                 rs.getString("password"),
                                 rs.getString("cardId"),
@@ -86,17 +88,17 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("sex"),
                                 rs.getDate("dateOfBirth"),
                                 rs.getString("nationality"),
-                                rs.getString("homeCountryAddress"),
+                                new JSONObject(((PGobject)rs.getObject("homeCountryAddress")).getValue()),
                                 rs.getString("homeCountryUniversity"),
-                                rs.getString("periodOfStay"),
+                                rs.getInt("periodOfStay"),
                                 rs.getString("phoneNumber"),
-                                rs.getString("paduaAddress"),
+                                new JSONObject(((PGobject)rs.getObject("paduaAddress")).getValue()),
                                 rs.getString("documentType"),
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
-                                rs.getString("allergies"),
-                                //rs.getString("emailHash"),
+                                (String[]) rs.getArray("allergies").getArray(),
+                                rs.getString("emailHash"),
                                 rs.getBoolean("emailConfirmed")));
             }
 

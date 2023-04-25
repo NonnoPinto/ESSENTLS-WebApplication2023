@@ -1,5 +1,7 @@
 package com.essentls.dao;
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import java.sql.*;
 
@@ -28,18 +30,18 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * TODO: decide how to get this data
      */
     private final long id;
-
     /**
      * Creates a new object for gather info about user.
      *
      * @param con    the connection to the database.
-     * @param user   the user that made the payments.
+     * @param id      the user that made the payments.
      */
     public UserProfileInfoDAO(final Connection con, final long id) {
         super(con);
 //        this.user = user;
         this.id = id;
     }
+
 
     @Override
     protected void doAccess() throws Exception {
@@ -57,8 +59,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
             if (rs.next()) {
                 myUser = new User(
-                        //id,
 //                        myUser = new User(infoID,
+                rs.getLong("id"),
                 rs.getString("email"),
                 rs.getString("password"),
                 rs.getString("cardId"),
@@ -69,17 +71,17 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("sex"),
                 rs.getDate("dateOfBirth"),
                 rs.getString("nationality"),
-                rs.getString("homeCountryAddress"),
+                new JSONObject(((PGobject)rs.getObject("homeCountryAddress")).getValue()),
                 rs.getString("homeCountryUniversity"),
-                rs.getString("periodOfStay"),
+                rs.getInt("periodOfStay"),
                 rs.getString("phoneNumber"),
-                rs.getString("paduaAddress"),
+                new JSONObject(((PGobject)rs.getObject("paduaAddress")).getValue()),
                 rs.getString("documentType"),
                 rs.getString("documentNumber"),
                 rs.getString("documentFile"),
                 rs.getString("dietType"),
-                rs.getString("allergies"),
-                //rs.getString("emailhash"),
+                (String[]) rs.getArray("allergies").getArray(),
+                rs.getString("emailhash"),
                 rs.getBoolean("emailConfirmed"));
             }
 

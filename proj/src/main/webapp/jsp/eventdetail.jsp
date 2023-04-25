@@ -10,6 +10,7 @@
   <title>Event detail</title>
 </head>
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
 
 <div class="container">
   <div>
@@ -22,6 +23,25 @@
     <p>Cost: ${event.price}</p>
     <p>Current participants: ${nParticipants}</p>
     <p>Waiting List: ${nWaiting}</p>
+    <p>Location: ${event.location}</p>
+    <c:choose>
+      <c:when test="${currentIsPartecipating}">
+        You are partecipating at the event.
+      </c:when>
+      <c:when test="${currentIsWaiting}">
+        You are actually in the waiting list for this event.
+      </c:when>
+      <c:otherwise>
+        <c:choose>
+          <c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
+            <a href="payment?action=event&id=${event.id}"><button>Join the event!</button></a>
+          </c:when>
+          <c:otherwise>
+            Sorry, the event is full.
+          </c:otherwise>
+        </c:choose>
+      </c:otherwise>
+    </c:choose>
   </div>
 
 

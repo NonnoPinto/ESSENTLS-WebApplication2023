@@ -80,5 +80,4 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
             throw e;
         }
     }
-
 }

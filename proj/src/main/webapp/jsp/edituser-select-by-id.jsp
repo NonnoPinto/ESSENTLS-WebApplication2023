@@ -17,11 +17,13 @@
 </head>
 
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
 <h1>Select User by ID</h1>
 
 <form method="POST" action="<c:url value="/select-user-by-id"/>">
     <label for="userId">Id:</label>
-    <input id="userId" name="userId" type="text"/><br/><br/>
+    <input id="userId" name="userId" type="text" placeholder="Insert iD.."/><br/><br/>
 
     <button type="submit">Submit</button><br/>
     <button type="reset">Reset the form</button>

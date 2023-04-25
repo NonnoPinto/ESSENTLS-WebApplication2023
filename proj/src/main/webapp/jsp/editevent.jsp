@@ -13,7 +13,7 @@
     </head> 
 
     <body>
-        <%--<!--<jsp:include page="navbar.jsp" />-->--%>
+        <div class="navbar"><%@include file="navbar.jsp"%></div>
 
         <div class="containter">
             <div class="title">
@@ -54,7 +54,7 @@
 
                             <!--Visibility-->
                             <div style="padding-top: 10px;">
-                                <label for="">Visibility</label>
+                                <label for="">Visibility:</label>
                                 <div class="inputContainer">
                                     <input type="radio" id="visible" name="visibility" value="visible">
                                     <label for="visible">Visible</label><br>
@@ -137,7 +137,7 @@
 
                             <!--attributes-->
                             <div style="padding-top: 10px;">
-                                <label for="">Note (currently ${event.getAttributes()}):s</label>
+                                <label for="">Notes (currently ${event.getAttributes()}):</label>
                                 <div class="inputContainer">
                                     <input type="text" name="attributes" id="attributes" value="${event.getAttributes()}">
                                 </div>

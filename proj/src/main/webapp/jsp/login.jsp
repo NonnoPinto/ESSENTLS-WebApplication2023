@@ -13,27 +13,28 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />-->
 </head>
 <body>
-	<%--<!--<jsp:include page="navbar.jsp" />-->--%>
+    <div class="navbar"><%@include file="navbar.jsp"%></div>
+
 	<div class="loginContainer">
 		<div class="loginTitle">
 			<h1>LOG IN</h1>
 			<hr>
 		</div>
-		<form action="<c:url value="/login/"/>" id="loginForm" method="POST">
+		<form action="<c:url value="/login"/>" id="loginForm" method="POST">
 
 			<!-- ---------------- EMAIL -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
-				<label>Email</label>
+				<label>Insert your Email</label>
 				<div class="inputContainer">
-					<input type="text" name="email" id="email" placeholder="Email..." required>
+					<input type="text" name="email" id="email" placeholder="Email.." required>
 					<span id="infoEmail"></span>
 				</div>
 			</div>
 			<!-- ---------------- PASSWORD -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
-				<label>Password</label>
+				<label>Insert your Password</label>
 				<div class="inputContainer">
-					<input type="password" name="password" id="password" placeholder="Password..." required>
+					<input type="password" name="password" id="password" placeholder="Password.." required>
 					<span id="infoPassword"></span>
 				</div>
 			</div>
@@ -58,7 +59,7 @@
 
 
 		<p>
-			Don't have an account? <a href="<c:url value="/signup/"/>" >Sign up</a>
+			Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
 		</p>
 	</div>
 	<footer class="footer"><%-- @ include file="/html/footer.html" --%></footer>

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Arrays" %>
 
 
 <!DOCTYPE html>
@@ -16,11 +17,12 @@
 </head>
 
 <body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
 <h1>User Edit</h1>
 
 <c:choose>
     <c:when test="${user==null}">
-        <h2>Fail</h2>
+        <h2>Something went wrong.</h2>
         <c:out value="${message}"/>
     </c:when>
     <c:otherwise>
@@ -50,7 +52,7 @@
         <br/>
         <c:out value="Period of Stay: ${user.getPeriodOfStay()}"/>
         <br/>
-        <c:out value="Phone Nuumber: ${user.getPhoneNumber()}"/>
+        <c:out value="Phone Number: ${user.getPhoneNumber()}"/>
         <br/>
         <c:out value="Padua Address: ${user.getPaduaAddress()}"/>
         <br/>
@@ -62,7 +64,7 @@
         <br/>
         <c:out value="Diet Type: ${user.getDietType()}"/>
         <br/>
-        <c:out value="Allergies: ${user.getAllergies()}"/>
+        <c:out value="Allergies: ${Arrays.toString(user.getAllergies())}"/>
         <br/>
         <c:out value="Email Confirmed: ${user.getEmailConfirmed()}"/>
         <br/>

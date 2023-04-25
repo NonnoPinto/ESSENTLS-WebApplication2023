@@ -1,6 +1,8 @@
 package com.essentls.dao;
 
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +22,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     /**
 	 * The SQL statement to be executed
 	 */
-    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE email=? AND password=?;"; //md5() not secure?
+    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE LOWER(email)=? AND password=?;"; //md5() not secure?
 
 	/**
 	 * The email of the user to be authenticated
@@ -73,29 +75,29 @@ public final class UserLoginDAO extends AbstractDAO<User> {
             if(rs.next()){
 
                 user = new User(
-                            //rs.getLong("id"),
-                            rs.getString("email"),
-                            rs.getString("password"),
-                            rs.getString("cardId"),
-                            rs.getInt("tier"),
-                            rs.getDate("registrationDate"),
-                            rs.getString("name"),
-                            rs.getString("surname"),
-                            rs.getString("sex"),
-                            rs.getDate("dateOfBirth"),
-                            rs.getString("nationality"),
-                            rs.getString("homeCountryAddress"),
-                            rs.getString("homeCountryUniversity"),
-                            rs.getString("periodOfStay"),
-                            rs.getString("phoneNumber"),
-                            rs.getString("paduaAddress"),
-                            rs.getString("documentType"),
-                            rs.getString("documentNumber"),
-                            rs.getString("documentFile"),
-                            rs.getString("dietType"),
-                            rs.getString("allergies"),
-                            //rs.getString("emailhash"),
-                            rs.getBoolean("emailConfirmed")
+                    rs.getLong("id"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                    rs.getString("cardId"),
+                    rs.getInt("tier"),
+                    rs.getDate("registrationDate"),
+                    rs.getString("name"),
+                    rs.getString("surname"),
+                    rs.getString("sex"),
+                    rs.getDate("dateOfBirth"),
+                    rs.getString("nationality"),
+                    new JSONObject(rs.getObject("homeCountryAddress", PGobject.class)),
+                    rs.getString("homeCountryUniversity"),
+                    rs.getInt("periodOfStay"),
+                    rs.getString("phoneNumber"),
+                    new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
+                    rs.getString("documentType"),
+                    rs.getString("documentNumber"),
+                    rs.getString("documentFile"),
+                    rs.getString("dietType"),
+                    (String[]) rs.getArray("allergies").getArray(),
+                    rs.getString("emailhash"),
+                    rs.getBoolean("emailConfirmed")
                 ); 
 
                 LOGGER.info("User logged in {}.", user.getEmail());

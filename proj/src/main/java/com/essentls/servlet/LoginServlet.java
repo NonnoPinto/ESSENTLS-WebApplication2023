@@ -10,13 +10,28 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 
-@WebServlet(name = "LoginServlet", value = "/login/")
+@WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends AbstractDatabaseServlet {
 
     //public final static String LOGIN_JSP = "/jsp/login.jsp";
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setAction("LOGIN");
+
+        HttpSession session = req.getSession();
+        LOGGER.info("session %s:", session);
+        if (session.getAttribute("userId") == null){
+            req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+        }
+        else{
+            res.sendRedirect(req.getContextPath() + "/home");
+        }
+    }
 
 
 
@@ -35,7 +50,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
             String email = req.getParameter("email");
             String password = req.getParameter("password");
     
-            LOGGER.info("user {} is trying to login",email);
+            LOGGER.info("user %s is trying to login",email);
     
             if (email == null || email.equals("")) {
                 //the email is null (was not set on the parameters) or an empty string
@@ -66,25 +81,28 @@ public class LoginServlet extends AbstractDatabaseServlet {
     
                 //the UserLoginDAO will tell us if the email exists and the password
                 //matches
-                if (user == null){
-                    LOGGER.info("User null %s",email);
+                if (user == null) {
+                    LOGGER.info("User null %s", email);
                     //if not, tell it to the user, forward an error message
                     ErrorCode ec = ErrorCode.WRONG_CREDENTIALS;
                     res.setStatus(ec.getHTTPCode());
                     m = new Message(true, "Credentials are wrong");
                     req.setAttribute("message", m);
                     req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
-                }
-                else{
+                }else if(!user.getEmailConfirmed()){
+                    m = new Message(true, "Mail must be confirmed");
+                    req.setAttribute("message", m);
+                    req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+                } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
-                    session.setAttribute("user", user);
+                    session.setAttribute("userId", user.getId());
                     session.setAttribute("tier", user.getTier());
-                    LOGGER.info("the USER {} LOGGED IN",user.getEmail());
+                    LOGGER.info("the USER %s LOGGED IN",user.getEmail());
     //
                     // login credentials were correct: we redirect the user to the profile page
                     // now the session is active and its data can used to change the profile page
-                    res.sendRedirect(req.getContextPath()+"/jsp/profile.jsp");
+                    res.sendRedirect(req.getContextPath()+"/profile");
     
     //                    req.getRequestDispatcher("/jsp/user/home.jsp").forward(req, res);
                 }

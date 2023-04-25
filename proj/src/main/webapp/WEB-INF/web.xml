@@ -46,6 +46,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>EmailConfirmationServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EmailConfirmatioServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>EventDetailServlet</servlet-name>
         <servlet-class>com.essentls.servlet.EventDetailServlet</servlet-class>
     </servlet>
@@ -55,9 +60,36 @@
         <servlet-class>com.essentls.servlet.EventParticipantsServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>CreateEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CreateEventServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserEventsListServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UserEventsListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern></url-pattern>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -67,23 +99,23 @@
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login/</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
-        <url-pattern>/profile/</url-pattern>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>PaymentsListServlet</servlet-name>
-        <url-pattern>/paymentslist/</url-pattern>
+        <url-pattern>/paymentslist</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register/</url-pattern>
-        <url-pattern>/signup/</url-pattern>
+        <url-pattern>/register</url-pattern>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -97,6 +129,11 @@
     </servlet-mapping>
 
     <servlet-mapping>
+        <servlet-name>EmailConfirmationServlet</servlet-name>
+        <url-pattern>/email-confirmation/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
         <servlet-name>EventDetailServlet</servlet-name>
         <url-pattern>/eventdetail</url-pattern>
     </servlet-mapping>
@@ -104,6 +141,21 @@
     <servlet-mapping>
         <servlet-name>EventParticipantsServlet</servlet-name>
         <url-pattern>/eventparticipants</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CreateEventServlet</servlet-name>
+        <url-pattern>/create-event</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserEventsListServlet</servlet-name>
+        <url-pattern>/joined-events</url-pattern>
     </servlet-mapping>
 
     <resource-ref>

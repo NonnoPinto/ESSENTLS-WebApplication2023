@@ -7,7 +7,8 @@
         <title>Home</title>
     </head>
     <body>
-
+        <div class="navbar"><%@include file="navbar.jsp"%></div>
+        <div class="container">
         <c:choose>
             <c:when test="${message.isError()}">
                 <ul>
@@ -21,7 +22,7 @@
                     <label for="tag">Filter:</label>
                     <select name="tag">
                         <c:forEach items="${tags}" var="tag" varStatus="loop">
-                            <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></li>
+                            <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></option>
                         </c:forEach>
                     </select>
                     <br><br>
@@ -35,8 +36,12 @@
                     <li>Event Location: <c:out value="${event.getLocation()}"/></li>
                     <li>Event Price: <c:out value="${event.getPrice()}"/></li>
                     <li>Event Description: <c:out value="${event.getDescription()}"/></li>
+                    <form action="eventdetail">
+                        <button name="id" value="${event.getId()}">Details</button>
+                    </form>                    
                 </c:forEach>
             </c:otherwise>
         </c:choose>
+        </div>
     </body>
 </html>

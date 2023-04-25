@@ -7,9 +7,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "EventParticipantsServlet", value = "/eventparticipants")
@@ -19,18 +21,24 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer eventId = Integer.parseInt(request.getParameter("id").trim());
+        HttpSession session = request.getSession();
         try {
-            Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
-            List<Participant> participants = new AdminParticipantsListDAO(getConnection(),eventId).access().getOutputParam();
-            request.setAttribute("event", event);
-            request.setAttribute("participants", participants);
-            request.getRequestDispatcher("/jsp/eventparticipants.jsp").forward(request, response);
+            long userId = (long) session.getAttribute("userId");
+            User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            if(user == null || user.getTier() < 3){ //Auth check
+                request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
+            }else {
+                int eventId = Integer.parseInt(request.getParameter("id").trim());
+                Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
+                List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
+                request.setAttribute("event", event);
+                request.setAttribute("participants", participants);
+                request.getRequestDispatcher("/jsp/eventparticipants.jsp").forward(request, response);
+            }
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);
             throw new ServletException(e);
         }
-
     }
 
 }

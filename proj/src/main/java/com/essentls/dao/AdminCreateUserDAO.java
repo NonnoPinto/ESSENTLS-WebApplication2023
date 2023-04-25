@@ -2,6 +2,8 @@ package com.essentls.dao;
 
 import java.sql.*;
 import com.essentls.resource.User;
+import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 public class AdminCreateUserDAO extends AbstractDAO<User>{
     
@@ -22,12 +24,49 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
      * Creates a new object for creating an User
      *
      * @param con    the connection to the database.
-     * @param event   the user to delete
+     * @param _user   the user to delete
      */
     public AdminCreateUserDAO(final Connection con, User _user) {
         
         super(con);
         this.user = _user;
+    }
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     */
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+        PGobject pgobj = new PGobject();
+        pgobj.setType("json");
+        pgobj.setValue(j.toString());
+        return pgobj;
+    }
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     */
+    public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException{
+
+        PGobject pgobj = new PGobject();
+        pgobj.setType("text[]");
+
+        //return empty if so
+        if(s.length ==0){
+            pgobj.setValue("");
+            return pgobj;
+        }
+
+        //String[] to String
+        String text ="{" + "\"" + s[0];
+        for(int i=1; i<s.length; i++){
+            text += "\", ";
+            text += "\"";
+            text += s[i];
+        }
+        text += "\"}";
+        //set value of PGObject
+        pgobj.setValue(text);
+        return pgobj;
     }
     
     @Override
@@ -35,6 +74,8 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+
+
 
 		try {
 			pstmt = con.prepareStatement(STATEMENT);
@@ -49,16 +90,16 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
             pstmt.setString(9, this.user.getSex());
             pstmt.setDate(10, this.user.getDateOfBirth());
             pstmt.setString(11, this.user.getNationality());
-            pstmt.setString(12, this.user.getHomeCountryAddress());
+            pstmt.setObject(12, jsonToPGobj(this.user.getHomeCountryAddress()));
             pstmt.setString(13, this.user.getHomeCountryUniversity());
-            pstmt.setString(14, this.user.getPeriodOfStay());
+            pstmt.setInt(14, this.user.getPeriodOfStay());
             pstmt.setString(15, this.user.getPhoneNumber());
-            pstmt.setString(16, this.user.getPaduaAddress());
+            pstmt.setObject(16, jsonToPGobj(this.user.getPaduaAddress()));
             pstmt.setString(17, this.user.getDocumentType());
             pstmt.setString(18, this.user.getDocumentNumber());
             pstmt.setString(19, this.user.getDocumentFile());
             pstmt.setString(20, this.user.getDietType());
-            pstmt.setString(21, this.user.getAllergies());
+            pstmt.setObject(21, this.user.getAllergies());
 
 			rs = pstmt.executeQuery();
 

@@ -134,5 +134,36 @@ CONSTRAINT fk_Event
 
 );
 
+CREATE TABLE public."EventTags" (
+"eventId" INT,
+tag VARCHAR(255),
+
+PRIMARY KEY ("eventId", tag),
+CONSTRAINT fk_Event
+    FOREIGN KEY("eventId")
+    REFERENCES public."Events"(id)
+    ON DELETE SET NULL,
+
+CONSTRAINT fk_Tag
+    FOREIGN KEY(tag)
+    REFERENCES public."Tags"(name)
+    ON DELETE SET NULL
+);
+
+CREATE TABLE public."EventCauses" (
+"eventId" INT,
+"causeId" INT,
+
+PRIMARY KEY ("eventId", "causeId"),
+CONSTRAINT fk_Event
+    FOREIGN KEY("eventId")
+    REFERENCES public."Events"(id)
+    ON DELETE SET NULL,
+
+CONSTRAINT fk_Cause
+    FOREIGN KEY("causeId")
+    REFERENCES public."Causes"(id)
+    ON DELETE SET NULL
+);
 
 

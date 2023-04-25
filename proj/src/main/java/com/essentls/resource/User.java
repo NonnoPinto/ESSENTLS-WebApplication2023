@@ -3,7 +3,8 @@ package com.essentls.resource;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import com.essentls.mail.MailManager;
+import jakarta.mail.MessagingException;
 import org.json.JSONObject;
 
 public class User {
@@ -18,24 +19,51 @@ public class User {
     private String sex;
     private Date dateOfBirth;
     private String nationality;
-    private String homeCountryAddress;
+    private JSONObject homeCountryAddress;
     private String homeCountryUniversity;
-    private String periodOfStay;
+    private int periodOfStay;
     private String phoneNumber;
-    private String paduaAddress;
+    private JSONObject paduaAddress;
     private String documentType;
     private String documentNumber;
     private String documentFile;
     private String dietType;
-    private String allergies;
+    private String[] allergies;
     private String emailHash;
     private boolean emailConfirmed;
 
-    public User(String email, String password, String cardId, int tier, Date registrationDate, String name,
-            String surname, String sex, Date dateOfBirth, String nationality, String homeCountryAddress,
-            String homeCountryUniversity, String periodOfStay, String phoneNumber, String paduaAddress,
-            String documentType, String documentNumber, String documentFile, String dietType, String allergies, boolean emailConfirmed) {
-        // this.id = 0;
+    public User(){}
+    public User(User user){
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.cardId = user.getCardId();
+        this.tier = user.getTier();
+        this.registrationDate = user.getRegistrationDate();
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.sex = user.getSex();
+        this.dateOfBirth = user.getDateOfBirth();
+        this.nationality = user.getNationality();
+        this.homeCountryAddress = user.getHomeCountryAddress();
+        this.homeCountryUniversity = user.getHomeCountryUniversity();
+        this.periodOfStay = user.getPeriodOfStay();
+        this.phoneNumber = user.getPhoneNumber();
+        this.paduaAddress = user.getPaduaAddress();
+        this.documentType = user.getDocumentType();
+        this.documentNumber = user.getDocumentNumber();
+        this.documentFile = user.getDocumentFile();
+        this.dietType = user.getDietType();
+        this.allergies = user.getAllergies();
+        this.emailHash = user.getEmailHash();
+        this.emailConfirmed = user.getEmailConfirmed();
+    }
+
+    public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
+            String surname, String sex, Date dateOfBirth, String nationality, JSONObject homeCountryAddress,
+            String homeCountryUniversity, int periodOfStay, String phoneNumber, JSONObject paduaAddress,
+            String documentType, String documentNumber, String documentFile, String dietType, String[] allergies, String emailHash, boolean emailConfirmed) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.cardId = cardId;
@@ -56,7 +84,7 @@ public class User {
         this.documentFile = documentFile;
         this.dietType = dietType;
         this.allergies = allergies;
-        this.emailHash = email;//TODO: hash the email
+        this.emailHash = emailHash;
         this.emailConfirmed = emailConfirmed;
     }
 
@@ -104,7 +132,7 @@ public class User {
         return nationality;
     }
 
-    public String getHomeCountryAddress() {
+    public JSONObject getHomeCountryAddress() {
         return homeCountryAddress;
     }
 
@@ -112,7 +140,7 @@ public class User {
         return homeCountryUniversity;
     }
 
-    public String getPeriodOfStay() {
+    public int getPeriodOfStay() {
         return periodOfStay;
     }
 
@@ -120,7 +148,7 @@ public class User {
         return phoneNumber;
     }
 
-    public String getPaduaAddress() {
+    public JSONObject getPaduaAddress() {
         return paduaAddress;
     }
 
@@ -140,7 +168,7 @@ public class User {
         return dietType;
     }
 
-    public String getAllergies() {
+    public String[] getAllergies() {
         return allergies;
     }
 
@@ -164,12 +192,28 @@ public class User {
     }
 
     public void setMail(String _mail) {
-        if (validate(_mail)) {
-            email = _mail;
+        this.setMailAndHash(_mail);
+    }
+
+    public void setEmail(String _mail) {
+        this.setMailAndHash(_mail);
+    }
+
+    //in case of email change (not allowed by now)
+    public void setMailAndHash(String _mail) {
+        if (_mail.isEmpty() || _mail == null)
+        {
+            this.email= null;
+            this.emailHash= null;
+        }
+        else if (validate(_mail)) {
+            this.email = _mail;
+            this.emailHash = _mail.hashCode()+"";
         }
         else {
             //send some kind of error message
         }
+        
     }
 
     public void setPassword(String _password) {
@@ -188,10 +232,6 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setCardId(String cardId) {
@@ -226,7 +266,7 @@ public class User {
         this.nationality = nationality;
     }
 
-    public void setHomeCountryAddress(String homeCountryAddress) {
+    public void setHomeCountryAddress(JSONObject homeCountryAddress) {
         this.homeCountryAddress = homeCountryAddress;
     }
 
@@ -234,7 +274,7 @@ public class User {
         this.homeCountryUniversity = homeCountryUniversity;
     }
 
-    public void setPeriodOfStay(String periodOfStay) {
+    public void setPeriodOfStay(int periodOfStay) {
         this.periodOfStay = periodOfStay;
     }
 
@@ -242,7 +282,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setPaduaAddress(String paduaAddress) {
+    public void setPaduaAddress(JSONObject paduaAddress) {
         this.paduaAddress = paduaAddress;
     }
 
@@ -262,13 +302,10 @@ public class User {
         this.dietType = dietType;
     }
 
-    public void setAllergies(String allergies) {
+    public void setAllergies(String allergies[]) {
         this.allergies = allergies;
     }
 
-    public void setEmailHash(String emailHash) {
-        this.emailHash = emailHash;
-    }
     public void setEmailConfirmed(boolean emailConfirmed) {
         this.emailConfirmed = emailConfirmed;
     }
@@ -296,6 +333,7 @@ public class User {
         uJson.put("documentFile", documentFile);
         uJson.put("dietType", dietType);
         uJson.put("allergies", allergies);
+        uJson.put("emailHash", emailHash);
         uJson.put("emailConfirmed", emailConfirmed);
         return uJson;
     }
