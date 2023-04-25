@@ -92,7 +92,7 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
             pstmt.setString(11, this.user.getNationality());
             pstmt.setObject(12, jsonToPGobj(this.user.getHomeCountryAddress()));
             pstmt.setString(13, this.user.getHomeCountryUniversity());
-            pstmt.setString(14, this.user.getPeriodOfStay());
+            pstmt.setInt(14, this.user.getPeriodOfStay());
             pstmt.setString(15, this.user.getPhoneNumber());
             pstmt.setObject(16, jsonToPGobj(this.user.getPaduaAddress()));
             pstmt.setString(17, this.user.getDocumentType());
@@ -115,7 +115,6 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
 			}
 
 		}
-        con.close();
 
 	}
 

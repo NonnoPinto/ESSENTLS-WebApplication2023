@@ -28,10 +28,11 @@
         </p>
     </c:when>
     <c:otherwise>
-        Error
+        <p>Something did not work :(</p>
     </c:otherwise>
 </c:choose>
 
+<a href="joinEvent?id=${event.id}"><button>Payed</button></a>
 <!-- Set up a container element for the button -->
 <div id="paypal-button-container"></div>
 

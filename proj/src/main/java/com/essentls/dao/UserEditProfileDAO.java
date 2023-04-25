@@ -66,7 +66,6 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
                 stmnt.close();
             }
         }
-        con.close();
     }
     
 }

@@ -1,26 +1,24 @@
 package com.essentls.servlet;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-
-import com.essentls.dao.EventsFromTagAndTierDAO;
-import com.essentls.dao.TagsListDAO;
 import com.essentls.dao.UserEventsListDAO;
+import com.essentls.dao.UserJoinedEventsListDAO;
 import com.essentls.dao.UserProfileInfoDAO;
 import com.essentls.resource.Event;
 import com.essentls.resource.Message;
 import com.essentls.resource.Tag;
 import com.essentls.resource.User;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "HomeServlet", urlPatterns = {"", "/home"})
-public final class HomeServlet extends AbstractDatabaseServlet {
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
+@WebServlet(name = "UserEventsListServlet", urlPatterns = {"", "/joined-events"})
+public final class UserEventsListServlet extends AbstractDatabaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,6 +38,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         Message m = null;
         try {
             userId = (long) session.getAttribute("sessionUserId");
+            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
         }
         catch (NullPointerException e){
             LOGGER.error("Cannot search the User: id is not retrieved correctly.", e);
@@ -47,19 +46,8 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
 
         }
-
-
-
-
-        try {
-
-            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-
-        } catch (SQLException e) {
-            LOGGER.error("Cannot search the User: unexpected error while accessing the database.", e);
-
-            m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
-
+        catch(SQLException e){
+            LOGGER.error("Database error", e);
         }
 
         //authentication check
@@ -68,22 +56,14 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         }
         else {
 
-            int userTier = user.getTier();
-
-            String filterTag = req.getParameter("tag");
-
             List<Event> events = null;
 
             List<Tag> tags = null;
 
             try {
+                events = new UserJoinedEventsListDAO(getConnection(), user.getId()).access().getOutputParam();
 
-                if (filterTag != null)
-                    events = new EventsFromTagAndTierDAO(getConnection(), new Tag(filterTag.trim()), userTier).access().getOutputParam();
-                else
-                    events = new UserEventsListDAO(getConnection(), userTier).access().getOutputParam();
-
-                LOGGER.info("Events successfully retrieved by tier %d.", userTier);
+                LOGGER.info("Events successfully retrieved for user %d", user.getId());
 
                 m = new Message("Events successfully searched.");
 
@@ -96,26 +76,13 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             }
 
             try {
-
-                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
-
-                LOGGER.info("Tags successfully retrieved in the home");
-
-            } catch (SQLException e) {
-                
-                LOGGER.error("Cannot search for tags: unexpected error while accessing the database.", e);
-
-                m = new Message(true, "Cannot search for tags: unexpected error while accessing the database.");
-            }
-
-            try {
                 req.setAttribute("events", events);
                 req.setAttribute("tags", tags);
                 req.setAttribute("message", m);
-                req.getRequestDispatcher("/jsp/home.jsp").forward(req, resp);
+                req.getRequestDispatcher("/jsp/joinedevents.jsp").forward(req, resp);
             } catch (Exception e) {
                 
-                LOGGER.error("Cannot forward the request searching events by tier %d", userTier);
+                LOGGER.error("Cannot forward the request searching events by user %d", user.getId());
                 throw e;
             }
         }

@@ -22,22 +22,24 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT * FROM Payment WHERE userID = ?";
+    private static final String STATEMENT = "SELECT * FROM public.\"Payments\" WHERE \"userId\" = ?;";
 
     /**
      * The user that made the payments
      */
-    private final User user;
+//    private final User user;
+    private final long userId;
 
     /**
      * Creates a new object for gather payments by user.
      *
      * @param con    the connection to the database.
-     * @param user   the user that made the payments.
+     * @param userId   the user that made the payments.
      */
-    public UserPaymentsListDAO(final Connection con, final User user) {
+    public UserPaymentsListDAO(final Connection con, final long userId) {
         super(con);
-        this.user = user;
+//        this.user = user;
+        this.userId = userId;
     }
 
     @Override
@@ -45,11 +47,11 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        final List<Payment> payments = new ArrayList<Payment>();
+        final List<Payment> payments = new ArrayList<>();
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setLong(1, this.user.getId());
+            stmt.setLong(1, userId);
 
             rs = stmt.executeQuery();
 
@@ -67,7 +69,7 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
                 );
             }
 
-            LOGGER.info("Payment(s) related to user %s successfully listed.", this.user.getEmail());
+            LOGGER.info("Payment(s) related to user %s successfully listed.");
 
         } finally {
             if (rs != null) {
@@ -81,6 +83,5 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
         }
 
         this.outputParam = payments;
-        con.close();
     }
 }

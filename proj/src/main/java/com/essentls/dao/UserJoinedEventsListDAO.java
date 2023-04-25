@@ -17,33 +17,27 @@ import java.util.List;
  * @version 1.00
  * @since 1.00
  */
-public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
+public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
 
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "SELECT * FROM  public.\"Events\" WHERE Visibility <= ?";
+    private static final String STATEMENT = "SELECT public.\"Events\".* FROM public.\"Events\" INNER JOIN public.\"Participants\" ON public.\"Events\".\"id\" = public.\"Participants\".\"eventId\" WHERE public.\"Participants\".\"userId\" = ?";
 
     /**
-     * The tier of the current user
+     * The id of the current user
      */
-    private final int tier;
+    private final long userId;
 
     /**
-     * Creates a new object for gather events by tier.
+     * Creates a new object for gather events by userId.
      *
      * @param con    the connection to the database.
-     * @param tier  the thier of the current user.
+     * @param userId  the id of the current user
      */
-    public UserEventsListDAO(final Connection con, final int tier) {
+    public UserJoinedEventsListDAO(final Connection con, final long userId) {
         super(con);
-        if(tier < 0){
-            this.tier = 0; 
-         } else if (tier > 4) {
-             this.tier = 4;
-         } else{
-             this.tier = tier;
-         }
+        this.userId = userId;
     }
 
     @Override
@@ -57,7 +51,7 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
-            pstmt.setInt(1, this.tier);
+            pstmt.setLong(1, this.userId);
 
             rs = pstmt.executeQuery();
 
@@ -85,7 +79,6 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
                 );
             }
 
-            LOGGER.info("Event(s) with visibility lower than tier %d successfully listed.", this.tier);
         } finally {
             if (rs != null) {
                 rs.close();

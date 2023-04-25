@@ -40,7 +40,7 @@ public class CreateTagRR extends AbstractRR{
     @Override
     protected void doServe() throws IOException {
         Message m = null;
-        Tag newtag;
+        Tag newtag = null;
 
         try {
 
@@ -52,14 +52,14 @@ public class CreateTagRR extends AbstractRR{
 
 
             // creates a new DAO for accessing the database and creating a new tag
-            newtag=new TagsCreationDAO(con,tag.getName()).access().getOutputParam();
+            newtag = new TagsCreationDAO(con,tag.getName()).access().getOutputParam();
             LOGGER.info("tag %s creation",req.getAttribute("name"));
 
             if (newtag != null) {
-                LOGGER.info("Tag(s) successfully created");
+                LOGGER.info("Tag successfully created");
 
-                res.setStatus(HttpServletResponse.SC_OK);
-                new ResourceList((Iterable) newtag).toJSON(res.getOutputStream());
+                res.setStatus(HttpServletResponse.SC_CREATED);
+                newtag.toJSON(res.getOutputStream());
             } else { // it should not happen
                 LOGGER.error("Fatal error while creating Tag.");
 

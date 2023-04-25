@@ -33,7 +33,5 @@ public class UserEmailConfirmationDAO extends AbstractDAO<User>{
             if (stmt != null)
                 stmt.close();
         }
-
-        con.close();
     }
 }

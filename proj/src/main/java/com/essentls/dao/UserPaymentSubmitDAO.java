@@ -28,7 +28,7 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
 
 
     /**
-     * Creates a new object for the updating of the tier of a user
+     * Creates a new object for payment
      *
      * @param con    the connection to the database.
      * @param payment  the payment that must be added
@@ -61,7 +61,6 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
                 stmt.close();
         }
 
-        con.close();
 
     }
 

@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 @WebServlet(name = "ProfileServlet", value = "/profile")
@@ -19,21 +18,43 @@ public class ProfileServlet extends AbstractDatabaseServlet {
     public final static String USER_SESSION_KEY = "user";
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //take the request uri
+        LogContext.setIPAddress(request.getRemoteAddr());
+        LogContext.setResource(request.getRequestURI());
+        LogContext.setAction("PROFILE");
+
         HttpSession session = request.getSession();
-        if(session.getAttribute("userId") != null) {
-            long userId = (long) session.getAttribute("userId");
-            LOGGER.info("userid: %s", userId);
-            try{
-                User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-                request.setAttribute("user", user);
-                request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
-            }catch(SQLException e) {
-                LOGGER.error("stacktrace:", e);
-            }
-        }else{
-            response.sendRedirect(request.getContextPath() + "/login");
+        LOGGER.info("session: %s", session);
+
+        long userId = (long) session.getAttribute("sessionUserId"); // retrieve the user id string from session
+//        long userId = Long.parseLong(userIdStr);
+
+        User user = null;
+//        String userEmail = user.getEmail();
+//        long userId = user.getId();
+        LOGGER.info("UserId: %s", userId);
+
+//        LOGGER.info("tier: %s", user.getTier());
+//        LOGGER.info("email: %s", userEmail);
+
+        try {
+
+            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            request.setAttribute("Users", user);
+
+            //Passing data to Payment List page
+            //session.setAttribute("Users", user);
+            //session.setAttribute("tier", user.getTier());
+            //session.setAttribute("id", user.getId());
+            LOGGER.info("The Login User tier: %s", user.getTier());
+            request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
+        } catch (SQLException e) {
+            LOGGER.error("stacktrace:", e);
         }
+
+
+
 
     }
 }

@@ -4,6 +4,7 @@ import com.essentls.resource.Tag;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,42 +19,55 @@ import java.sql.SQLException;
 
 public class TagsCreationDAO extends AbstractDAO<Tag> {
 
-        private static final String STATEMENT = "INSERT INTO Tags (name) VALUES (?)";
+        private static final String STATEMENT = "INSERT INTO public.\"Tags\" (name) VALUES (?) RETURNING *";
         /**
-         * The payment that must be added
+         *  the tag name
          */
         private final String name;
 
 
         /**
-         * Creates a new object for the updating of the tier of a user
+         * Creates a new tag for events.
          *
          * @param con    the connection to the database.
-         * @param name  the payment that must be added
+         * @param name   the tag name
          */
         public TagsCreationDAO(Connection con, final String name) {
             super(con);
-            this.name = name;
+            this.name = name.replaceAll("[^a-zA-Z0-9]", "");
         }
 
         @Override
         protected void doAccess() throws Exception {
 
             PreparedStatement stmt = null;
+            ResultSet rs = null;
+
+            Tag t = null;
 
             try {
                 stmt = con.prepareStatement(STATEMENT);
                 stmt.setString(1, name);
 
-                stmt.executeUpdate();   //add to payment's table
+                rs = stmt.executeQuery();   //add to payment's table
 
-                LOGGER.info("Tag %l successfully added", name);
+                if (rs.next()) {
+                    t = new Tag(rs.getString("name"));
+
+                    LOGGER.info("Tag %s successfully added", t.getName());
+                }
+
             } finally {
+                if (rs != null)
+                    rs.close();
+
+
                 if (stmt != null)
                     stmt.close();
             }
 
-            con.close();
+            outputParam = t;
+
 
         }
 

@@ -25,11 +25,11 @@ public class LoginServlet extends AbstractDatabaseServlet {
 
         HttpSession session = req.getSession();
         LOGGER.info("session %s:", session);
-        if (session.getAttribute("userId") == null){
+        if (session.getAttribute("sessionUserId") == null){
             req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
         }
         else{
-            req.getRequestDispatcher("/home").forward(req, res);
+            res.sendRedirect(req.getContextPath() + "/home");
         }
     }
 
@@ -81,19 +81,23 @@ public class LoginServlet extends AbstractDatabaseServlet {
     
                 //the UserLoginDAO will tell us if the email exists and the password
                 //matches
-                if (user == null || !user.getEmailConfirmed()) {
-                    LOGGER.info("User null %s",email);
+                if (user == null) {
+                    LOGGER.info("User null %s", email);
                     //if not, tell it to the user, forward an error message
                     ErrorCode ec = ErrorCode.WRONG_CREDENTIALS;
                     res.setStatus(ec.getHTTPCode());
                     m = new Message(true, "Credentials are wrong");
                     req.setAttribute("message", m);
                     req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+                }else if(!user.getEmailConfirmed()){
+                    m = new Message(true, "Mail must be confirmed");
+                    req.setAttribute("message", m);
+                    req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
                 } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
-                    session.setAttribute("userId", user.getId());
-                    session.setAttribute("tier", user.getTier());
+                    session.setAttribute("sessionUserId", user.getId());
+                    session.setAttribute("sessionUserTier", user.getTier());
                     LOGGER.info("the USER %s LOGGED IN",user.getEmail());
     //
                     // login credentials were correct: we redirect the user to the profile page
@@ -107,6 +111,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
             //something unexpected happened: we write it into the LOGGER
             //writeError(res, ErrorCode.INTERNAL_ERROR);
             LOGGER.error("stacktrace:", e);
+            throw new ServletException(e);
         }
     }
 

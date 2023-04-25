@@ -109,14 +109,13 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
 
             LOGGER.info("Event {} successfully created.", this.event.getId());
 
-        }finally{
-            if(stmt != null){
+        }finally {
+            if (stmt != null) {
                 stmt.close();
             }
-            if(rs != null){
+            if (rs != null) {
                 rs.close();
             }
         }
-        con.close();
     }
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Home</title>
+        <title>Event List</title>
     </head>
     <body>
         <div class="navbar"><%@include file="navbar.jsp"%></div>
@@ -16,18 +16,7 @@
                 </ul>
             </c:when>
             <c:otherwise>
-                <h1>All the Events</h1>
-
-                <form action="">
-                    <label for="tag">Filter:</label>
-                    <select name="tag">
-                        <c:forEach items="${tags}" var="tag" varStatus="loop">
-                            <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></option>
-                        </c:forEach>
-                    </select>
-                    <br><br>
-                    <input type="submit" value="Submit">
-                </form>
+                <h1>Joined Events</h1>
 
                 <c:forEach items="${events}" var="event" varStatus="loop">
                     <hr>

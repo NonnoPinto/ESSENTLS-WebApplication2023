@@ -7,32 +7,38 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page import="java.util.Arrays" %>
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="ISO-8859-1">
-  <title>User detail</title>
+  <title>User details</title>
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-
 <div>
-  <h1>Profile Page</h1>
+  <h1>Profile page</h1>
   <hr>
-  <h3>${user.name} ${user.surname}</h3>
-  <h5>${user.dateOfBirth}</h5>
-  <h5>${user.nationality}</h5>
+  <h3>${Users.name} ${Users.surname}</h3>
+  <h5>Date of birth: ${Users.dateOfBirth}</h5>
+  <h5>Nationality: ${Users.nationality}</h5>
   <hr>
-  <p>${user.homeCountryAddress}</p>
+  <p>Home country address: ${Users.homeCountryAddress}</p>
   <hr>
-  <p>${user.paduaAddress}</p>
+  <p>Italian address: ${Users.paduaAddress}</p>
   <hr>
-  <p>${user.dietType}</p>
+  <p>Type of diet: ${Users.dietType}</p>
   <hr>
-  <p>${user.allergies}</p>
+  <p>Allergies: ${Arrays.toString(Users.getAllergies())}</p>
 </div>
+
+<form action="<c:url value="/paymentslist"/>" method="POST">
+  <div>
+    <button type="submit">Show Payment List</button>
+  </div>
+</form>
 
 </body>
 </html>

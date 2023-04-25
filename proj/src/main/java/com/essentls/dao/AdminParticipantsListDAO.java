@@ -38,19 +38,25 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
+                int partecipantTier = rs.getInt("tier");
+                if(partecipantTier < 0){
+                    partecipantTier = 0;
+                } else if(partecipantTier > 4){
+                    partecipantTier = 4;
+                }
                 participants.add(
                         new Participant(
                                 rs.getLong("userId"),
                                 rs.getLong("eventId"),
                                 rs.getString("role"),
-                                rs.getDate("date"),
+                                rs.getTimestamp("date"),
                                 rs.getString("attributeValues"),
                                 new User(
                                         rs.getLong("id"),
                                         rs.getString("email"),
                                         rs.getString("password"),
                                         rs.getString("cardId"),
-                                        rs.getInt("tier"),
+                                        partecipantTier,
                                         rs.getDate("registrationDate"),
                                         rs.getString("name"),
                                         rs.getString("surname"),
@@ -59,7 +65,7 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                                         rs.getString("nationality"),
                                         new JSONObject(rs.getObject("homeCountryAddress", PGobject.class)),
                                         rs.getString("homeCountryUniversity"),
-                                        rs.getString("periodOfStay"),
+                                        rs.getInt("periodOfStay"),
                                         rs.getString("phoneNumber"),
                                         new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
                                         rs.getString("documentType"),

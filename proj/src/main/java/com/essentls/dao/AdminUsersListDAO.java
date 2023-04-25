@@ -16,7 +16,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                                         " WHERE (? IS NULL OR name = ?)" +
                                                         " AND (? IS NULL OR surname = ?)" +
                                                         " AND (? = -1 OR id = ?)" +
-                                                        " AND (? IS NULL OR cardId = ?)" +
+                                                        " AND (? IS NULL OR \"cardID\" = ?)" +
                                                         " AND (? IS NULL OR email = ?)";
 
     private String name;
@@ -75,24 +75,30 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
+                int userTier = rs.getInt("tier");
+                if(userTier < 0){
+                    userTier = 0;
+                } else if(userTier > 4){
+                    userTier = 4;
+                }
                 users.add(
                         new User(
                                 rs.getLong("id"),
                                 rs.getString("email"),
                                 rs.getString("password"),
                                 rs.getString("cardId"),
-                                rs.getInt("tier"),
+                                userTier,
                                 rs.getDate("registrationDate"),
                                 rs.getString("name"),
                                 rs.getString("surname"),
                                 rs.getString("sex"),
                                 rs.getDate("dateOfBirth"),
                                 rs.getString("nationality"),
-                                new JSONObject(rs.getObject("homeCountryAddress", PGobject.class)),
+                                new JSONObject(((PGobject)rs.getObject("homeCountryAddress")).getValue()),
                                 rs.getString("homeCountryUniversity"),
-                                rs.getString("periodOfStay"),
+                                rs.getInt("periodOfStay"),
                                 rs.getString("phoneNumber"),
-                                new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
+                                new JSONObject(((PGobject)rs.getObject("paduaAddress")).getValue()),
                                 rs.getString("documentType"),
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),

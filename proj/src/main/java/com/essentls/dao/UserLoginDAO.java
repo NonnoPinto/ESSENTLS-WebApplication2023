@@ -22,7 +22,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     /**
 	 * The SQL statement to be executed
 	 */
-    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE email=? AND password=?;"; //md5() not secure?
+    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE LOWER(email)=? AND password=?;"; //md5() not secure?
 
 	/**
 	 * The email of the user to be authenticated
@@ -73,13 +73,19 @@ public final class UserLoginDAO extends AbstractDAO<User> {
             rs = stmnt.executeQuery();
 
             if(rs.next()){
-
+                int userTier = 0;
+                userTier= rs.getInt("tier");
+                if(userTier < 0){
+                    userTier = 0;
+                } else if(userTier > 4){
+                    userTier = 4;
+                }
                 user = new User(
                     rs.getLong("id"),
                     rs.getString("email"),
                     rs.getString("password"),
                     rs.getString("cardId"),
-                    rs.getInt("tier"),
+                    userTier,
                     rs.getDate("registrationDate"),
                     rs.getString("name"),
                     rs.getString("surname"),
@@ -88,7 +94,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                     rs.getString("nationality"),
                     new JSONObject(rs.getObject("homeCountryAddress", PGobject.class)),
                     rs.getString("homeCountryUniversity"),
-                    rs.getString("periodOfStay"),
+                    rs.getInt("periodOfStay"),
                     rs.getString("phoneNumber"),
                     new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
                     rs.getString("documentType"),
@@ -117,8 +123,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                 stmnt.close();
             }
 
-            this.outputParam = user; 
-            con.close();
+            this.outputParam = user;
         }
 
     }

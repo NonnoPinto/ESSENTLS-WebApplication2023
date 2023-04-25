@@ -1,6 +1,7 @@
 package com.essentls.rest;
 import com.essentls.dao.TagsCreationDAO;
 import com.essentls.dao.TagsListDAO;
+import com.essentls.dao.TagsRemovalDAO;
 import com.essentls.resource.Message;
 import com.essentls.resource.ResourceList;
 import com.essentls.resource.Tag;
@@ -33,7 +34,7 @@ public class DeleteTagRR extends AbstractRR{
      * @param con the connection to the database.
      */
     public DeleteTagRR(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
-        super("DELETe_TAG", req, res, con);
+        super("DELETE_TAG", req, res, con);
     }
 
 
@@ -45,21 +46,20 @@ public class DeleteTagRR extends AbstractRR{
         try {
 
             // parse the URI path to extract the name
-            final Tag tag = Tag.fromJSON(req.getInputStream());
             String path = req.getRequestURI();
-            path = path.substring(path.lastIndexOf("tags") + 5);
+            path = path.substring(path.lastIndexOf("tags") + 5).replace("%20"," ");
             LogContext.setResource(path);
 
 
             // creates a new DAO for accessing the database and creating a new tag
-            deltag=new TagsCreationDAO(con,tag.getName()).access().getOutputParam();
+            deltag=new TagsRemovalDAO(con,path).access().getOutputParam();
             LOGGER.info("tag %s removal",req.getAttribute("name"));
 
             if (deltag != null) {
                 LOGGER.info("Tag(s) successfully removed");
 
                 res.setStatus(HttpServletResponse.SC_OK);
-                new ResourceList((Iterable) deltag).toJSON(res.getOutputStream());
+                deltag.toJSON(res.getOutputStream());
             } else { // it should not happen
                 LOGGER.error("Fatal error while deleting Tag.");
 

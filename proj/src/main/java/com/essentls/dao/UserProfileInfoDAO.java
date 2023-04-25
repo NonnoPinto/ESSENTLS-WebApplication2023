@@ -31,7 +31,6 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      */
 //    private long infoID; //final id?
     private final long id;
-
     /**
      * Creates a new object for gather info about user.
      *
@@ -73,11 +72,11 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("sex"),
                 rs.getDate("dateOfBirth"),
                 rs.getString("nationality"),
-                new JSONObject (rs.getObject("homeCountryAddress", PGobject.class)),
+                new JSONObject(((PGobject)rs.getObject("homeCountryAddress")).getValue()),
                 rs.getString("homeCountryUniversity"),
-                rs.getString("periodOfStay"),
+                rs.getInt("periodOfStay"),
                 rs.getString("phoneNumber"),
-                new JSONObject (rs.getObject("paduaAddress", PGobject.class)),
+                new JSONObject(((PGobject)rs.getObject("paduaAddress")).getValue()),
                 rs.getString("documentType"),
                 rs.getString("documentNumber"),
                 rs.getString("documentFile"),
@@ -103,7 +102,6 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
 //        this.outputParam = user;
         this.outputParam = myUser;
-        con.close();
     }
     
 }

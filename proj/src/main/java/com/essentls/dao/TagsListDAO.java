@@ -17,10 +17,13 @@ import com.essentls.resource.Tag;
  */
 public class TagsListDAO extends AbstractDAO<List<Tag>> {
 
-    private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\"";
+    private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\" WHERE name LIKE ?;";
 
-    public TagsListDAO(Connection con) {
+    String subTag;
+
+    public TagsListDAO(Connection con, String subTag) {
         super(con);
+        this.subTag = subTag;
     }
 
     @Override
@@ -33,6 +36,7 @@ public class TagsListDAO extends AbstractDAO<List<Tag>> {
 
         try {
             pstmt = con.prepareStatement(STATEMENT_TAG_LIST);
+            pstmt.setString(1, "%" + subTag + "%");
         
             rs = pstmt.executeQuery();
 
