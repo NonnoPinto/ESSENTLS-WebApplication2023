@@ -31,25 +31,26 @@ public class PaymentsListServlet extends AbstractDatabaseServlet{
         //Getting user
         HttpSession session = request.getSession();
         LOGGER.info("session: %s", session);
-        User user = (User) session.getAttribute("Users");
-        String userEmail = user.getEmail();
-        int tier = user.getTier();
-        LOGGER.info("Users: %s", user);
-        LOGGER.info("tier: %s", tier);
-        LOGGER.info("email: %s", userEmail);
+        //User user = (User) session.getAttribute("Users");
+        //String userEmail = user.getEmail();
+        long userId = (long) session.getAttribute("sessionUserId");
+        int tier = (int) session.getAttribute("sessionUserTier");
+        LOGGER.info("User: %d", userId);
+        LOGGER.info("Tier: %d", tier);
+        //LOGGER.info("email: %s", userEmail);
 
 
 
-        List<Payment> payment = (List<Payment>) session.getAttribute("Payments");
+        List<Payment> payment;
 
         if(tier == 4){
 
             //Admin Payment List
             try {
                 payment = new AdminPaymentListDAO(getConnection()).access().getOutputParam();
-                request.getSession().setAttribute("Payments", payment);
+                request.setAttribute("Payments", payment);
                 LOGGER.info("Admin PaymentsList: %s", payment);
-                request.getSession().setAttribute("message", "Everything is fine with parameter passing");
+                request.setAttribute("message", "Everything is fine with parameter passing");
 
                 request.getRequestDispatcher("/jsp/paymentslist.jsp").forward(request, response);
             } catch (SQLException e) {
@@ -60,10 +61,10 @@ public class PaymentsListServlet extends AbstractDatabaseServlet{
 
             //Only for User, Not for admin
             try {
-                payment = new UserPaymentsListDAO(getConnection(), user.getId()).access().getOutputParam();
-                request.getSession().setAttribute("Payments", payment);
+                payment = new UserPaymentsListDAO(getConnection(), userId).access().getOutputParam();
+                request.setAttribute("Payments", payment);
                 LOGGER.info("User PaymentsList: %s", payment);
-                request.getSession().setAttribute("message", "Everything is fine with parameter passing");
+                request.setAttribute("message", "Everything is fine with parameter passing");
                 request.getRequestDispatcher("/jsp/paymentslist.jsp").forward(request, response);
 
             } catch (SQLException e) {

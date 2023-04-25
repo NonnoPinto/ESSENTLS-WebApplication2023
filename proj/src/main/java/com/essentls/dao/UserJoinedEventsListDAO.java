@@ -25,12 +25,12 @@ public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
     private static final String STATEMENT = "SELECT public.\"Events\".* FROM public.\"Events\" INNER JOIN public.\"Participants\" ON public.\"Events\".\"id\" = public.\"Participants\".\"eventId\" WHERE public.\"Participants\".\"userId\" = ?";
 
     /**
-     * The tier of the current user
+     * The id of the current user
      */
     private final long userId;
 
     /**
-     * Creates a new object for gather events by tier.
+     * Creates a new object for gather events by userId.
      *
      * @param con    the connection to the database.
      * @param userId  the id of the current user

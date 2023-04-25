@@ -38,6 +38,12 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
+                int partecipantTier = rs.getInt("tier");
+                if(partecipantTier < 0){
+                    partecipantTier = 0;
+                } else if(partecipantTier > 4){
+                    partecipantTier = 4;
+                }
                 participants.add(
                         new Participant(
                                 rs.getLong("userId"),
@@ -50,7 +56,7 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                                         rs.getString("email"),
                                         rs.getString("password"),
                                         rs.getString("cardId"),
-                                        rs.getInt("tier"),
+                                        partecipantTier,
                                         rs.getDate("registrationDate"),
                                         rs.getString("name"),
                                         rs.getString("surname"),

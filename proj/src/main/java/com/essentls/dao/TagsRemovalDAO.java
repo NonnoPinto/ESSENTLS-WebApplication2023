@@ -18,14 +18,11 @@ import java.sql.PreparedStatement;
 public class TagsRemovalDAO extends AbstractDAO<Tag> {
 
 private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name = ? RETURNING *";
-    /**
-     * The payment that must be added
-     */
     private final String name;
 
 
     /**
-     * Creates a new object for the updating of the tier of a user
+     * Creates a new object for the removing of a tag.
      *
      * @param con    the connection to the database.
      * @param name  the payment that must be added

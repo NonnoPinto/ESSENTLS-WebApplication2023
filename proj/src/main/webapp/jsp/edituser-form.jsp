@@ -66,7 +66,7 @@
             <input id="userNationality" value="${user.getNationality()}" name="userNationality" type="text"/><br/><br/>
 
             <label for="userHomeCountryAddress">Home Country Address (currently Street: ${user.getHomeCountryAddress().getString("street")} | Number: ${user.getHomeCountryAddress().getString("number")} | City: ${user.getHomeCountryAddress().getString("city")} | ZIP: ${user.getHomeCountryAddress().getString("zip")} | Country: ${user.getHomeCountryAddress().getString("country")}):</label>
-            <div class="inputContainer" id="userHomeCountryAddress">
+            <div class="input-container" id="userHomeCountryAddress">
                 <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" value="${user.getHomeCountryAddress().getString("street")}">
                 <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" value="${user.getHomeCountryAddress().getString("number")}">
                 <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" value="${user.getHomeCountryAddress().getString("city")}">
@@ -88,7 +88,7 @@
             <input id="userPhoneNumber" value="${user.getPhoneNumber()}" name="userPhoneNumber" type="text"/><br/><br/>
 
             <label for="userPaduaAddress">Padua Address (currently Street: ${user.getPaduaAddress().getString("street")} | Number: ${user.getPaduaAddress().getString("number")} | City: ${user.getPaduaAddress().getString("city")} | ZIP: ${user.getPaduaAddress().getString("zip")} | Country: ${user.getPaduaAddress().getString("country")}):</label>
-            <div class="inputContainer" id="userPaduaAddress">
+            <div class="input-container" id="userPaduaAddress">
                 <input type="text" name="userPaduaAddress-street" id="userPaduaAddress-street" value="${user.getPaduaAddress().getString("street")}">
                 <input type="text" name="userPaduaAddress-number" id="userPaduaAddress-number" value="${user.getPaduaAddress().getString("number")}">
                 <input type="text" name="userPaduaAddress-city" id="userPaduaAddress-city" value="${user.getPaduaAddress().getString("city")}">
