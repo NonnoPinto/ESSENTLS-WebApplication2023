@@ -25,6 +25,15 @@ public class Cause extends AbstractResource{
     public Long getId() {
         return id;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Cause [id=" +id + "] [name=" + name + "]";
