@@ -16,65 +16,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A REST resource for searching {@link Tag}s .
+ * A REST resource for searching {@link Cause}s .
  *
  * @author Laura Pallante
  * @version 1.00
  * @since 1.00
  */
-public final class ListTagsRR extends AbstractRR {
+public final class ListCausesRR extends AbstractRR {
 
-    String subTag;
+    String subCause;
+    long id=-1;
     /**
-     * Creates a new REST resource for searching {@code Tag}s.
+     * Creates a new REST resource for searching {@code Cause}s.
      *
      * @param req the HTTP request.
      * @param res the HTTP response.
      * @param con the connection to the database.
      */
-    public ListTagsRR(final HttpServletRequest req, final HttpServletResponse res, Connection con, String subTag) {
-        super("LIST_TAGS", req, res, con);
-        this.subTag = subTag;
+    public ListCausesRR(final HttpServletRequest req, final HttpServletResponse res, Connection con, long id, String subCause) {
+        super("LIST_CAUSES", req, res, con);
+        this.subCause = subCause;
+        this.id=id;
     }
 
 
     @Override
     protected void doServe() throws IOException {
 
-        List<Tag> el = null;
+        List<Cause> el = null;
         Message m = null;
 
         try {
 
-            LogContext.setResource("tags");
+            LogContext.setResource("causes");
 
             // creates a new DAO for accessing the database and searches the Student(s)
-            el = new TagsListDAO(con, subTag).access().getOutputParam();
-            LOGGER.info("tag %s",el);
+            el = new CausesListDAO(con, id, subCause).access().getOutputParam();
+            LOGGER.info("cause %s",el);
 
             if (el != null) {
-                LOGGER.info("Tag(s) successfully retrieved");
+                LOGGER.info("Cause(s) successfully retrieved");
 
                 res.setStatus(HttpServletResponse.SC_OK);
                 new ResourceList(el).toJSON(res.getOutputStream());
             } else { // it should not happen
-                LOGGER.error("Fatal error while searching Tag(s).");
+                LOGGER.error("Fatal error while searching Cause(s).");
 
-                m = new Message("Cannot search Tag(s): unexpected error.", "E5A1", null);
+                m = new Message("Cannot search Cause(s): unexpected error.", "E5A1", null);
                 res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 m.toJSON(res.getOutputStream());
             }
         } catch (IndexOutOfBoundsException | NumberFormatException ex) {
-            LOGGER.warn("Cannot search Tag(s): wrong format for URI", ex);
+            LOGGER.warn("Cannot search Cause(s): wrong format for URI", ex);
 
-            m = new Message("Cannot search Tag(s): wrong format for URI", "E4A7",
+            m = new Message("Cannot search Cause(s): wrong format for URI", "E4A7",
                     ex.getMessage());
             res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             m.toJSON(res.getOutputStream());
         } catch (SQLException ex) {
-            LOGGER.error("Cannot search Tag(s): unexpected database error.", ex);
+            LOGGER.error("Cannot search Cause(s): unexpected database error.", ex);
 
-            m = new Message("Cannot search Tag(s): unexpected database error.", "E5A1", ex.getMessage());
+            m = new Message("Cannot search Cause(s): unexpected database error.", "E5A1", ex.getMessage());
             res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             m.toJSON(res.getOutputStream());
         }

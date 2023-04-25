@@ -23,7 +23,10 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
 	 */
 	private final User user;
 
-    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
         PGobject pgobj = new PGobject();
         pgobj.setType("json");
         pgobj.setValue(j.toString());

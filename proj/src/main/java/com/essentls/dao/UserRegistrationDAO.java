@@ -33,7 +33,10 @@ public class UserRegistrationDAO extends AbstractDAO  {
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
      */
-    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
         PGobject pgobj = new PGobject();
         pgobj.setType("json");
         pgobj.setValue(j.toString());
@@ -81,7 +84,12 @@ public class UserRegistrationDAO extends AbstractDAO  {
     public void doAccess() throws SQLException {
         
         PreparedStatement pstmt = null;
-
+        String[] allergies = user.getAllergies();
+        Array arrayAllergies = null;
+        if(allergies!=null){
+            Object[] values = (allergies.length>0)? Arrays.stream(allergies).map(i -> String.valueOf(i)).toArray(): null;
+            arrayAllergies = con.createArrayOf("text", values);
+        }
         try {
             pstmt = con.prepareStatement(STATEMENT_REGISTRATION);
             pstmt.setString(1, user.getEmail());
@@ -93,22 +101,17 @@ public class UserRegistrationDAO extends AbstractDAO  {
             pstmt.setString(7, user.getSex());
             pstmt.setDate(8, user.getDateOfBirth());
             pstmt.setString(9, user.getNationality());
-            //stmt.setObject(5, jsonToPGobj(this.event.getLocation()));
-
             pstmt.setObject(10,  jsonToPGobj(user.getHomeCountryAddress()));
             pstmt.setString(11, user.getHomeCountryUniversity());
-            //pstmt.setInt(12, user.getPeriodOfStay());
-            pstmt.setInt(12, 2);
+            pstmt.setInt(12, user.getPeriodOfStay());
+            //pstmt.setInt(12, 2);
             pstmt.setString(13, user.getPhoneNumber());
             pstmt.setObject(14, jsonToPGobj(user.getPaduaAddress()));
             pstmt.setString(15, user.getDocumentType());
             pstmt.setString(16, user.getDocumentNumber());
             pstmt.setString(17, user.getDocumentFile());
             pstmt.setString(18, user.getDietType());
-            String[] allergies = user.getAllergies();
-            Object[] values = Arrays.stream(allergies).map(i -> String.valueOf(i)).toArray();
-            Array array = con.createArrayOf("text", values);
-            pstmt.setArray(19, array);
+            pstmt.setArray(19, arrayAllergies);
             pstmt.setString(20, user.getEmailHash());
             pstmt.setBoolean(21, user.getEmailConfirmed());
 

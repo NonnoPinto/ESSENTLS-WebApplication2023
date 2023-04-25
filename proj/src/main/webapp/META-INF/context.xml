@@ -25,5 +25,6 @@
               removeAbandonedTimeout="60"
               removeAbandoned="true"
               closeMethod="close"
+              antiResourceLocking="true"
     />
 </Context>
