@@ -27,7 +27,7 @@ public class ProfileServlet extends AbstractDatabaseServlet {
         HttpSession session = request.getSession();
         LOGGER.info("session: %s", session);
 
-        long userId = (long) session.getAttribute("userId"); // retrieve the user id string from session
+        long userId = (long) session.getAttribute("sessionUserId"); // retrieve the user id string from session
 //        long userId = Long.parseLong(userIdStr);
 
         User user = null;
@@ -44,9 +44,9 @@ public class ProfileServlet extends AbstractDatabaseServlet {
             request.setAttribute("Users", user);
 
             //Passing data to Payment List page
-            session.setAttribute("Users", user);
-            session.setAttribute("tier", user.getTier());
-            session.setAttribute("id", user.getId());
+            //session.setAttribute("Users", user);
+            //session.setAttribute("tier", user.getTier());
+            //session.setAttribute("id", user.getId());
             LOGGER.info("The Login User tier: %s", user.getTier());
             request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
         } catch (SQLException e) {

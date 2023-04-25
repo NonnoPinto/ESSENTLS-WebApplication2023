@@ -19,6 +19,8 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
+<c:out value="user tier is: ${Users.getTier()}"/>
+
 <h1>Select User by ID</h1>
 
 <form method="POST" action="<c:url value="/select-user-by-id"/>">

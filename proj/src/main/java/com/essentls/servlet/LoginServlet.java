@@ -25,7 +25,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
 
         HttpSession session = req.getSession();
         LOGGER.info("session %s:", session);
-        if (session.getAttribute("userId") == null){
+        if (session.getAttribute("sessionUserId") == null){
             req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
         }
         else{
@@ -96,8 +96,8 @@ public class LoginServlet extends AbstractDatabaseServlet {
                 } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
-                    session.setAttribute("userId", user.getId());
-                    session.setAttribute("tier", user.getTier());
+                    session.setAttribute("sessionUserId", user.getId());
+                    session.setAttribute("sessionUserTier", user.getTier());
                     LOGGER.info("the USER %s LOGGED IN",user.getEmail());
     //
                     // login credentials were correct: we redirect the user to the profile page
