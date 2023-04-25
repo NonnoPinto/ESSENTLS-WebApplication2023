@@ -74,11 +74,19 @@ public class DeleteCauseRR extends AbstractRR{
             res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             m.toJSON(res.getOutputStream());
         } catch (SQLException ex) {
-            LOGGER.error("Cannot delete Cause: unexpected database error.", ex);
+            if ("23503".equals(ex.getSQLState())) {
+                LOGGER.warn("Cannot delete the cause: other resources depend on it.");
 
-            m = new Message("Cannot delete Cause: unexpected database error.", "E5A1", ex.getMessage());
-            res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            m.toJSON(res.getOutputStream());
+                m = new Message("Cannot delete the cause: other resources depend on it.", "E5A4", ex.getMessage());
+                res.setStatus(HttpServletResponse.SC_CONFLICT);
+                m.toJSON(res.getOutputStream());
+            } else {
+                LOGGER.error("Cannot delete Cause: unexpected database error.", ex);
+
+                m = new Message("Cannot delete Cause: unexpected database error.", "E5A1", ex.getMessage());
+                res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                m.toJSON(res.getOutputStream());
+            }
         }
     }
 }

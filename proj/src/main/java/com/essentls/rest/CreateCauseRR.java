@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A REST resource for searching {@link Cause}s .
+ * A REST resource for creating {@link Cause}s .
  *
  * @author Laura Pallante
  * @version 1.00

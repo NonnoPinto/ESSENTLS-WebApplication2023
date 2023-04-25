@@ -181,6 +181,9 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     case "DELETE" ->
                         // delete a cause
                             new DeleteCauseRR(req, res, getConnection()).serve();
+                    case "PUT" ->
+                        // update a cause
+                            new UpdateCauseRR(req, res, getConnection()).serve();
                     default -> {
                         // method not allowed
                         LOGGER.warn("Unsupported method for URI /causes/id/: %s.", method);
