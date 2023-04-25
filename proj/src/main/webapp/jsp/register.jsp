@@ -48,7 +48,7 @@
             <label for="home-country-university">From which university are you from?</label>
             <input name="home-country-university" type="text" required><br><br>
             <label for="home-country-address">Please insert here your home-country address:</label>
-            <div class="inputContainer">
+            <div class="input-container">
                 <input type="text" name="home-country-address-street" id="home-country-address-street" placeholder="Enter Street...">
                 <input type="text" name="home-country-address-number" id="home-country-address-number" placeholder="Enter number...">
                 <input type="text" name="home-country-address-city" id="home-country-address-city" placeholder="Enter city...">
@@ -63,7 +63,7 @@
             <label for="phone-number">Phone number:</label>
             <input name="phone-number" type="text" required><br><br>
             <label for="padua-address">Padua address:</label>
-            <div class="inputContainer">
+            <div class="input-container">
                 <input type="text" name="padua-address-street" id="padua-address-street" placeholder="Enter Street...">
                 <input type="text" name="padua-address-number" id="padua-address-number" placeholder="Enter number...">
                 <input type="text" name="padua-address-city" id="padua-address-city" placeholder="Enter city...">

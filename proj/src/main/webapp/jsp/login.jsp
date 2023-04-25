@@ -25,7 +25,7 @@
 			<!-- ---------------- EMAIL -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
 				<label>Insert your Email</label>
-				<div class="inputContainer">
+				<div class="input-container">
 					<input type="text" name="email" id="email" placeholder="Email.." required>
 					<span id="infoEmail"></span>
 				</div>
@@ -33,7 +33,7 @@
 			<!-- ---------------- PASSWORD -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
 				<label>Insert your Password</label>
-				<div class="inputContainer">
+				<div class="input-container">
 					<input type="password" name="password" id="password" placeholder="Password.." required>
 					<span id="infoPassword"></span>
 				</div>
