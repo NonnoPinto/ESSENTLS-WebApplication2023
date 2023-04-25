@@ -14,7 +14,14 @@
 
 <div class="container">
   <div>
-    <img src="${event.thumbnail}"/>
+    <div>
+        <h3>Thumbnail</h3>
+        <img src="${event.thumbnail}" width="200" height="200"/>
+    </div>
+    <div>
+        <h3>Poster</h3>
+        <img src="${event.poster}" width="1280" height="300"/>
+    </div>
     <h2>${event.name}</h2>
     <hr>
     <p>
