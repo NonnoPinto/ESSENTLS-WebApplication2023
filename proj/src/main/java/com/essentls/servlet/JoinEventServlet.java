@@ -25,12 +25,12 @@ public class JoinEventServlet extends AbstractDatabaseServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession session = request.getSession();
-            if (request.getParameter("id") == null || session.getAttribute("userId") == null){
+            if (request.getParameter("id") == null || session.getAttribute("sessionUserId") == null){
                 request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
             }else {
                 long eventId = Long.parseLong(request.getParameter("id"));
                 Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
-                long userId = (long) session.getAttribute("userId");
+                long userId = (long) session.getAttribute("sessionUserId");
                 User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
                 if (user == null || user.getTier() < event.getVisibility()) { //Auth check
                     request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);

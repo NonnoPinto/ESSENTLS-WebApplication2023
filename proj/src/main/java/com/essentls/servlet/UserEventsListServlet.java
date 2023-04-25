@@ -37,7 +37,7 @@ public final class UserEventsListServlet extends AbstractDatabaseServlet {
         User user = null;
         Message m = null;
         try {
-            userId = (long) session.getAttribute("userId");
+            userId = (long) session.getAttribute("sessionUserId");
             user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
         }
         catch (NullPointerException e){
