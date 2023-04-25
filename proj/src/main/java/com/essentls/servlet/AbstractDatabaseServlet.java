@@ -74,7 +74,9 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
      */
     protected final Connection getConnection() throws SQLException {
         try {
-            return ds.getConnection();
+            Connection conn = ds.getConnection();
+            conn.setAutoCommit(true);
+            return conn;
         } catch (final SQLException e) {
             LOGGER.error("Unable to acquire the connection from the pool.", e);
             throw e;

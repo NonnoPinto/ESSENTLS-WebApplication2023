@@ -80,6 +80,11 @@
         <servlet-class>com.essentls.servlet.UserEventsListServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ConfirmEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.ConfirmEventServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -156,6 +161,11 @@
     <servlet-mapping>
         <servlet-name>UserEventsListServlet</servlet-name>
         <url-pattern>/joined-events</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConfirmEventServlet</servlet-name>
+        <url-pattern>/confirmEvent</url-pattern>
     </servlet-mapping>
 
     <resource-ref>
