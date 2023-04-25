@@ -32,7 +32,7 @@
     </c:otherwise>
 </c:choose>
 
-<a href="joinEvent?id=${event.id}"><button>Payed</button></a>
+<a href="confirmEvent?id=${event.id}"><button>Payed</button></a>
 <!-- Set up a container element for the button -->
 <div id="paypal-button-container"></div>
 
