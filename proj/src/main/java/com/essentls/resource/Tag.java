@@ -74,13 +74,9 @@ public class Tag extends AbstractResource{
 
                 if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {
 
-                    switch (jp.getCurrentName()) {
-                        case "name":
-                            jp.nextToken();
-                            name = jp.getText().replaceAll("[^a-zA-Z0-9]", "");
-                            break;
-
-
+                    if (jp.getCurrentName().equals("name")) {
+                        jp.nextToken();
+                        name = jp.getText().replaceAll("[^a-zA-Z0-9]", "");
                     }
                 }
             }

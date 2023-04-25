@@ -54,7 +54,7 @@ public class CauseRemovalDAO extends AbstractDAO<Cause> {
             if (rs.next()) {
                 c = new Cause(this.id,null);
 
-                LOGGER.info("Cause %l successfully deleted", c.getId());
+                LOGGER.info("Cause %d successfully deleted", c.getId());
             }
         } finally {
             if (rs != null)

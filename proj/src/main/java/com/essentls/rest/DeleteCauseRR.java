@@ -46,12 +46,12 @@ public class DeleteCauseRR extends AbstractRR{
 
             // parse the URI path to extract the name
             String path = req.getRequestURI();
-            path = path.substring(path.lastIndexOf("id") + 3);
+            path = path.substring(path.lastIndexOf("id/") + 3);
             LogContext.setResource(path);
 
 
             // creates a new DAO for accessing the database and deleting a cause
-            delCause=new CauseRemovalDAO(con,Long.getLong(path)).access().getOutputParam();
+            delCause=new CauseRemovalDAO(con, Long.parseLong(path)).access().getOutputParam();
             LOGGER.info("cause %s removal", path);
 
             if (delCause != null) {

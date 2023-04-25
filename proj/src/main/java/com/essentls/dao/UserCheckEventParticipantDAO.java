@@ -95,7 +95,7 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
                 this.outputParam = null;
             }
 
-            LOGGER.info("User %l checks event %l.", participant.getUserId(), participant.getEventId());
+            LOGGER.info("User %d checks event %d.", participant.getUserId(), participant.getEventId());
 
         } finally {
             if (pstmt_event != null)

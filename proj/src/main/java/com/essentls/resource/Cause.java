@@ -86,16 +86,16 @@ public class Cause extends AbstractResource{
                 if (jp.getCurrentToken() == JsonToken.FIELD_NAME) {
 
                     switch (jp.getCurrentName()) {
-                        case "id":
+                        case "id" -> {
                             jp.nextToken();
                             id = jp.getLongValue();
-                        case "name":
+                        }
+                        case "name" -> {
                             jp.nextToken();
                             name = jp.getText();
-                            break;
-
-
+                        }
                     }
+                    LOGGER.info("id: " + id + " name: " + name);
                 }
             }
         } catch(IOException e) {

@@ -51,7 +51,7 @@ public class UserJoinsEventDAO extends AbstractDAO<Boolean> {
                 this.outputParam = false;
             }
 
-            LOGGER.info("User %l successfully join event %l.", participant.getUserId(), participant.getEventId());
+            LOGGER.info("User %d successfully join event %d.", participant.getUserId(), participant.getEventId());
 
         } finally {
             if (pstmt_joinEvent != null)

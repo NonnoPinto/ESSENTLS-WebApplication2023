@@ -55,7 +55,7 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
 
             stmt.executeUpdate();   //add to payment's table
 
-            LOGGER.info("Payment %l successfully added to the payment's list.", payment.getId());
+            LOGGER.info("Payment %d successfully added to the payment's list.", payment.getId());
         } finally {
             if (stmt != null)
                 stmt.close();
