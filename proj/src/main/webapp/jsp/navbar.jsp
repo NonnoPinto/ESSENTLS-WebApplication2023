@@ -5,6 +5,10 @@
     <a rel="noopener noreferrer nofollow" href="<c:url value='/login'/>">Login</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/signup'/>">Sign up</a>
 </c:if>
+<!-- TODO: when membership is done we can hide it! -->
+<c:if test="${sessionScope.sessionUserTier == 0}">
+    <a rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
+</c:if>
 <c:if test="${sessionScope.sessionUserId != null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/profile'/>">Profile</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>

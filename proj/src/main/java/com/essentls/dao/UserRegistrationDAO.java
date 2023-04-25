@@ -43,33 +43,6 @@ public class UserRegistrationDAO extends AbstractDAO  {
         return pgobj;
     }
 
-    /**
-     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
-     */
-    public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException{
-
-        PGobject pgobj = new PGobject();
-        pgobj.setType("text[]");
-
-        //return empty if so
-        if(s.length ==0){
-            pgobj.setValue("");
-            return pgobj;
-        }
-
-        //String[] to String
-        String text ="{" + "\"" + s[0];
-        for(int i=1; i<s.length; i++){
-            text += "\", ";
-            text += "\"";
-            text += s[i];
-        }
-        text += "\"}";
-        //set value of PGObject
-        pgobj.setValue(text);
-        return pgobj;
-    }
-
     public UserRegistrationDAO(Connection con, User user) {
         super(con);
 

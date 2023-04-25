@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Register</title>
+    <title>Membership</title>
 </head>
 <body>
     <div class="navbar"><%@include file="navbar.jsp"%></div>
@@ -14,7 +14,7 @@
         </c:when>
         <c:otherwise></c:otherwise>
     </c:choose>
-    <form method="POST" action="<c:url value="/register"/>">
+    <form method="POST" action="<c:url value="/membership"/>">
         <div>
             <label for="sex">Please select your gender:</label>
             <select name="sex"> 
@@ -57,7 +57,6 @@
                 <input type="text" name="padua-address-zip" id="padua-address-zip" placeholder="Enter zip...">
                 <input type="text" name="padua-address-country" id="padua-address-country" placeholder="Enter country...">
             </div>
-            <!-- <input name="padua-address" type="text" required><br><br> -->
             <label for="document-type">Document type:</label>
             <select name="document-type">
                 <option value="ID">ID</option>

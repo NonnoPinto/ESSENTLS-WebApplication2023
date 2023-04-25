@@ -10,6 +10,8 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
     /**
 	 * The SQL statement to be executed
 	 */
+
+     //TODO: DOB is not a column of db
 	private static final String STATEMENT = "INSERT INTO Users(ID,  Email,  Password,  CardID,  Tier,  RegistrationDate,"+
         "  Name,  Surname,  Sex,  DOB,  Nationality,  HomeCountryAddress,  HomeCountryUniversity,  PeriodOfStay,  PhoneNumber,"+
         "  PadovaAddress,  DocumentType,  DocumentNumber,  DocumentFile,  DietType,  Allergies) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,"+
