@@ -34,7 +34,15 @@ public class Tag extends AbstractResource{
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
         jg.writeStartObject();
+
+        jg.writeFieldName("esntag");
+
+        jg.writeStartObject();
+
         jg.writeStringField("name", name);
+
+        jg.writeEndObject();
+
         jg.writeEndObject();
 
         jg.flush();
@@ -53,7 +61,7 @@ public class Tag extends AbstractResource{
 
             // while we are not on the start of an element or the element is not
             // a token element, advance to the next element (if any)
-            while (jp.getCurrentToken() != JsonToken.FIELD_NAME || !"tag".equals(jp.getCurrentName())) {
+            while (jp.getCurrentToken() != JsonToken.FIELD_NAME || !"esntag".equals(jp.getCurrentName())) {
 
                 // there are no more events
                 if (jp.nextToken() == null) {

@@ -53,7 +53,7 @@ public class DeleteTagRR extends AbstractRR{
 
             // creates a new DAO for accessing the database and creating a new tag
             deltag=new TagsRemovalDAO(con,path).access().getOutputParam();
-            LOGGER.info("tag %s removal",req.getAttribute("name"));
+            LOGGER.info("tag %s removal", path);
 
             if (deltag != null) {
                 LOGGER.info("Tag(s) successfully removed");

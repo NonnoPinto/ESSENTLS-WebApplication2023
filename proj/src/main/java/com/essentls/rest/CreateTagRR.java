@@ -53,7 +53,7 @@ public class CreateTagRR extends AbstractRR{
 
             // creates a new DAO for accessing the database and creating a new tag
             newtag = new TagsCreationDAO(con,tag.getName()).access().getOutputParam();
-            LOGGER.info("tag %s creation",req.getAttribute("name"));
+            LOGGER.info("tag %s creation", tag.toString());
 
             if (newtag != null) {
                 LOGGER.info("Tag successfully created");

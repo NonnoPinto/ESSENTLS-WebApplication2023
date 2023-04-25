@@ -53,8 +53,8 @@ public class CreateCauseRR extends AbstractRR{
 
 
             // creates a new DAO for accessing the database and creating a new cause
-            newcause = new CausesCreationDAO(con,cause.getName()).access().getOutputParam();
-            LOGGER.info("cause %s creation",req.getAttribute("name"));
+            newcause = new CausesCreationDAO(con, cause.getName()).access().getOutputParam();
+            LOGGER.info("cause %s creation", cause.toString());
 
             if (newcause != null) {
                 LOGGER.info("Cause successfully created");
