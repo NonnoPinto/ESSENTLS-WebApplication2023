@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "HomeServlet", urlPatterns = {"", "/home"})
+@WebServlet(name = "HomeServlet", value = "/home")
 public final class HomeServlet extends AbstractDatabaseServlet {
 
     @Override
