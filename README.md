@@ -1,4 +1,5 @@
 # ESN Padova Web Application
+[TOC]
 
 This repository contains the source code of the essentls project, due to implement a better user and event
 management for ESN Padova.
@@ -11,31 +12,33 @@ management for ESN Padova.
 
 of the  [Department of Information Engineering](https://www.dei.unipd.it/en/), [University of Padua](https://www.unipd.it/en/), Italy. *Web Applications* is part of the teaching activities of the [Intelligent Interactive Information Access (IIIA) Hub](http://iiia.dei.unipd.it/).
 
-Description on the project: this project is intended to be a Web App that will be used by [ESN Padova](https://padova.esn.it/).
+## Project description
+
+This project is intended to be a Web App that will be used by [ESN Padova](https://padova.esn.it/).
 It would help them to streamline and facilitate tasks of registering members and maintaining a membership list different every year (currently made by volunteers).  
 Overall goal is to facilitate the process and build a stronger database.
 
 The project is developed in PostgreSQL, Java, HTML, JavaScript and CSS.
 
-Developers of the project are:
-
-Borsato Alessandro 2089108  
-Campagnol Andrea 2091178  
-Cardillo Vittorio 2091429  
-Lenartavicius Vaidas 2092135  
-Maglie Mattia 2095330  
-Marcato Francesco 2082155  
-Pallante Laura 2092566  
-Talukder Md Imran Faruck 2041440  
-Villani Matteo 2090299  
-Zago Giovanni 2087645
-
+## Developers
+Full Name | ID
+--: | :--
+Borsato Alessandro | 2089108  
+Campagnol Andrea | 2091178  
+Cardillo Vittorio | 2091429  
+Lenartavicius Vaidas | 2092135  
+Maglie Mattia | 2095330  
+Marcato Francesco | 2082155  
+Pallante Laura | 2092566  
+Talukder Md Imran Faruck | 2041440  
+Villani Matteo | 2090299  
+Zago Giovanni | 2087645
 
 # Getting Started
 
 Below a list of steps to follow in order to run the ESN Padova Web Application on your local machine.
 
-## Prerequisites:
+## Prerequisites
 
 On your machine you must have installed:
 
@@ -55,11 +58,11 @@ On your machine you must have installed:
 
    &nbsp;
 
-   ![createDB](/readme_assets/createDB.png){width=50%}
+   ![createDB](/readme_assets/createDB.png)
 
    &nbsp;
 
-   <img src="readme_assets/nameDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![nameDB](/readme_assets/nameDB.png)
 
    &nbsp;
 
@@ -67,11 +70,11 @@ On your machine you must have installed:
 
    &nbsp;
 
-   <img src="readme_assets/restoreDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![restoreDB](/readme_assets/restoreDB.png)
 
    &nbsp;
 
-   <img src="readme_assets/fileDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![fileDB](/readme_assets/fileDB.png)
 
    &nbsp;
 
@@ -79,19 +82,19 @@ On your machine you must have installed:
 
    &nbsp;
 
-   <img src="readme_assets/createUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![createUserDB](/readme_assets/createUserDB.png)
 
    &nbsp;
 
-   <img src="readme_assets/nameUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![nameUserDB](/readme_assets/nameUserDB.png)
 
    &nbsp;
 
-   <img src="readme_assets/passwordUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![passwordUserDB](/readme_assets/passwordUserDB.png)
 
    &nbsp;
 
-   <img src="readme_assets/privilegesUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![privilegesUserDB](/readme_assets/privilegesUserDB.png)
 
    &nbsp;
 
@@ -99,15 +102,15 @@ On your machine you must have installed:
 
    &nbsp;
 
-   <img src="readme_assets/proprietiesDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![proprietiesDB](/readme_assets/proprietiesDB.png)
 
    &nbsp;
 
-   <img src="readme_assets/ownerDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![ownerDB](/readme_assets/ownerDB.png)
 
    &nbsp;
 
-### Alternative:
+### Alternative
 
 4. Follow the previous steps (from 1 to 3)
 
@@ -115,10 +118,11 @@ On your machine you must have installed:
 
    &nbsp;
 
-   <img src="readme_assets/changeContextDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![changeContextDB](/readme_assets/changeContextDB.png)
 
 
-## Build the application
+
+# Build the application
 
 1. Open terminal and change directory to `essentls/proj`
 
@@ -129,7 +133,7 @@ On your machine you must have installed:
     ```
 You can find the compiled `.war` file in `essentls/proj/target`
 
-## Running the application
+# Run the application
 
 1. Startup your local version of Apache Tomcat
 
@@ -138,5 +142,9 @@ You can find the compiled `.war` file in `essentls/proj/target`
 3. Deploy the `.war` file in `essentls/proj/target` generated in the building phase
 
 4. Start the app by clicking on the link
+
+[Contact Us](mailto:essentls.padova@gmail.com)
+
+Essenlts® 2023
 
 
