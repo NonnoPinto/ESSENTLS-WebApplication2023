@@ -19,7 +19,6 @@ The project is developed in PostgreSQL, Java, HTML, JavaScript and CSS.
 
 Developers of the project are:
 
-Asgharian Shirvan Saeid 2089602  
 Borsato Alessandro 2089108  
 Campagnol Andrea 2091178  
 Cardillo Vittorio 2091429  
@@ -56,11 +55,11 @@ On your machine you must have installed:
 
    &nbsp;
 
-   ![My image](/readme_assets/createDB.png)
+   <img src="readme_assets/createDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
-   ![My image](/readme_assets/nameDB.png)
+   <img src="readme_assets/nameDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
@@ -68,11 +67,11 @@ On your machine you must have installed:
 
    &nbsp;
 
-   ![My image](/readme_assets/restoreDB.png)
+   <img src="readme_assets/restoreDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
-   ![My image](/readme_assets/fileDB.png)
+   <img src="readme_assets/fileDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
@@ -80,19 +79,19 @@ On your machine you must have installed:
 
    &nbsp;
 
-   ![My image](/readme_assets/createUserDB.png)
+   <img src="readme_assets/createUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
-   ![My image](/readme_assets/nameUserDB.png)
+   <img src="readme_assets/nameUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
-   ![My image](/readme_assets/passwordUserDB.png)
+   <img src="readme_assets/passwordUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
-   ![My image](/readme_assets/privilegesUserDB.png)
+   <img src="readme_assets/privilegesUserDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
@@ -100,11 +99,11 @@ On your machine you must have installed:
 
    &nbsp;
 
-   ![My image](/readme_assets/proprietiesDB.png)
+   <img src="readme_assets/proprietiesDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
-   ![My image](/readme_assets/ownerDB.png)
+   <img src="readme_assets/ownerDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
    &nbsp;
 
@@ -116,8 +115,7 @@ On your machine you must have installed:
 
    &nbsp;
 
-   ![My image](/readme_assets/changeContextDB.png)
-
+   <img src="readme_assets/changeContextDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
 
 ## Build the application
