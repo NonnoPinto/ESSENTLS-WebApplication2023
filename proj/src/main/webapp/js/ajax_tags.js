@@ -109,19 +109,22 @@ function processResponse(xhr) {
     const resourceList = JSON.parse(xhr.responseText)["resource-list"];
 
     for (let i = 0; i < resourceList.length; ++i) {
+
+        let esntag = resourceList[i].esntag;
+
         // the row in the table body
         ee = document.createElement("tr");
         e.appendChild(ee); // append the row to the table body
 
         // a generic element of the table body row
         eee = document.createElement("td");
-        eee.appendChild(document.createTextNode(resourceList[i]["name"]));
+        eee.appendChild(document.createTextNode(esntag["name"]));
         ee.appendChild(eee); // append the cell to the row
 
         eee = document.createElement("td");
         const button = document.createElement("button");
         button.appendChild(document.createTextNode("Delete"));
-        button.addEventListener("click", function() { deleteTag(resourceList[i]["name"]); });
+        button.addEventListener("click", function() { deleteTag(esntag["name"]); });
         eee.appendChild(button);
         ee.appendChild(eee); // append the cell to the row
     }

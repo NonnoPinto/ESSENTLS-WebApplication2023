@@ -16,14 +16,14 @@ public class Cause extends AbstractResource{
 
     public Cause(long id, String name) {
         this.name = name;
-        this.id=id;
+        this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setName(String name) {
@@ -36,7 +36,7 @@ public class Cause extends AbstractResource{
 
     @Override
     public String toString() {
-        return "Cause [id=" +id + "] [name=" + name + "]";
+        return "Cause [id=" +this.id + "] [name=" + this.name + "]";
     }
 
     @Override
@@ -44,8 +44,16 @@ public class Cause extends AbstractResource{
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
 
         jg.writeStartObject();
-        jg.writeStringField("id", String.valueOf(id));
-        jg.writeStringField("name", name);
+
+        jg.writeFieldName("esncause");
+
+        jg.writeStartObject();
+
+        jg.writeNumberField("id", this.id);
+        jg.writeStringField("name", this.name);
+
+        jg.writeEndObject();
+
         jg.writeEndObject();
 
         jg.flush();
@@ -64,7 +72,7 @@ public class Cause extends AbstractResource{
 
             // while we are not on the start of an element or the element is not
             // a token element, advance to the next element (if any)
-            while (jp.getCurrentToken() != JsonToken.FIELD_NAME || !"cause".equals(jp.getCurrentName())) {
+            while (jp.getCurrentToken() != JsonToken.FIELD_NAME || !"esncause".equals(jp.getCurrentName())) {
 
                 // there are no more events
                 if (jp.nextToken() == null) {
@@ -80,10 +88,10 @@ public class Cause extends AbstractResource{
                     switch (jp.getCurrentName()) {
                         case "id":
                             jp.nextToken();
-                            id=jp.getLongValue();
+                            id = jp.getLongValue();
                         case "name":
                             jp.nextToken();
-                            name = jp.getText().replaceAll("[^a-zA-Z0-9]", "");
+                            name = jp.getText();
                             break;
 
 

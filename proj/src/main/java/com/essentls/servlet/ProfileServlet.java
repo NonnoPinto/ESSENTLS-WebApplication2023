@@ -26,30 +26,35 @@ public class ProfileServlet extends AbstractDatabaseServlet {
 
         HttpSession session = request.getSession();
         LOGGER.info("session: %s", session);
+        long userId=-1;
+        try{
+            userId = (long) session.getAttribute("sessionUserId"); // retrieve the user id string from session
+        } catch (NullPointerException e) {
+            LOGGER.error("stacktrace:", e);
 
-        long userId = (long) session.getAttribute("sessionUserId"); // retrieve the user id string from session
-//        long userId = Long.parseLong(userIdStr);
+        }
 
         User user = null;
-//        String userEmail = user.getEmail();
-//        long userId = user.getId();
         LOGGER.info("UserId: %s", userId);
 
-//        LOGGER.info("tier: %s", user.getTier());
-//        LOGGER.info("email: %s", userEmail);
-
+        
         try {
 
             user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
             request.setAttribute("Users", user);
-
-            //Passing data to Payment List page
-            //session.setAttribute("Users", user);
-            //session.setAttribute("tier", user.getTier());
-            //session.setAttribute("id", user.getId());
-            LOGGER.info("The Login User tier: %s", user.getTier());
+            if(user == null){
+                request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
+            } else {
+                //Passing data to Payment List page
+                //session.setAttribute("Users", user);
+                //session.setAttribute("tier", user.getTier());
+                //session.setAttribute("id", user.getId());
+                LOGGER.info("The Login User tier: %s", user.getTier());
+            }
             request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
         } catch (SQLException e) {
+            LOGGER.error("stacktrace:", e);
+        } catch (NullPointerException e) {
             LOGGER.error("stacktrace:", e);
         }
 
