@@ -56,7 +56,6 @@ On your machine you must have installed:
 
    &nbsp;
 
-   <img src="/readme_assets/createDB.png" alt="createDB" width="200"/>
    ![My image](/readme_assets/createDB.png)
 
    &nbsp;
