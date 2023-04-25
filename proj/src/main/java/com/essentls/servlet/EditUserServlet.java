@@ -34,7 +34,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         String email = null;
         String password = null;
         String cardId = null;
-        int tier = -1;
+        int tier = 0;
         Date registrationDate = null;
         String name = null;
         String surname = null;

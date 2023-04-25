@@ -47,7 +47,6 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            //take from the request the parameters
             long id = 0;
             String email = req.getParameter("email").toLowerCase();
             String password = req.getParameter("password");
@@ -120,7 +119,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                     nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress,
                     documentType, documentNumber, documentFile, dietType, allergies, emailHash, emailConfirmed);
 
-
+            //uncomment when smtp service is set
             //sendCreationConfirmationEmail(user);
             //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
@@ -157,7 +156,9 @@ public class RegisterServlet extends AbstractDatabaseServlet {
 
         } catch (final SQLException e) {
             LOGGER.error("Exception SQL happened.", e);
-
+            m = new Message(true, "Is not possible to register this user. Please try to fill the form again, if problem persist contact us!");
+            req.setAttribute("message", m);
+            req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
         }
     }
 

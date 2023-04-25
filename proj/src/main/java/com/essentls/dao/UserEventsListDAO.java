@@ -37,7 +37,13 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
      */
     public UserEventsListDAO(final Connection con, final int tier) {
         super(con);
-        this.tier = tier;
+        if(tier < 0){
+            this.tier = 0; 
+         } else if (tier > 4) {
+             this.tier = 4;
+         } else{
+             this.tier = tier;
+         }
     }
 
     @Override

@@ -75,13 +75,19 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
+                int userTier = rs.getInt("tier");
+                if(userTier < 0){
+                    userTier = 0;
+                } else if(userTier > 4){
+                    userTier = 4;
+                }
                 users.add(
                         new User(
                                 rs.getLong("id"),
                                 rs.getString("email"),
                                 rs.getString("password"),
                                 rs.getString("cardId"),
-                                rs.getInt("tier"),
+                                userTier,
                                 rs.getDate("registrationDate"),
                                 rs.getString("name"),
                                 rs.getString("surname"),

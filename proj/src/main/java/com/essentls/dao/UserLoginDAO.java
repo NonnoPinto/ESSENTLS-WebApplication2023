@@ -73,13 +73,19 @@ public final class UserLoginDAO extends AbstractDAO<User> {
             rs = stmnt.executeQuery();
 
             if(rs.next()){
-
+                int userTier = 0;
+                userTier= rs.getInt("tier");
+                if(userTier < 0){
+                    userTier = 0;
+                } else if(userTier > 4){
+                    userTier = 4;
+                }
                 user = new User(
                     rs.getLong("id"),
                     rs.getString("email"),
                     rs.getString("password"),
                     rs.getString("cardId"),
-                    rs.getInt("tier"),
+                    userTier,
                     rs.getDate("registrationDate"),
                     rs.getString("name"),
                     rs.getString("surname"),
