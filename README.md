@@ -22,7 +22,7 @@ The project is developed in PostgreSQL, Java, HTML, JavaScript and CSS.
 
 ## Developers
 Full Name | ID
---: | :--
+--|--
 Borsato Alessandro | 2089108  
 Campagnol Andrea | 2091178  
 Cardillo Vittorio | 2091429  
@@ -143,8 +143,8 @@ You can find the compiled `.war` file in `essentls/proj/target`
 
 4. Start the app by clicking on the link
 
-[Contact Us](mailto:essentls.padova@gmail.com)
-
-Essenlts® 2023
+| |
+| :--: |
+| [Contact Us](mailto:essentls.padova@gmail.com) - Essenlts® 2023 |
 
 

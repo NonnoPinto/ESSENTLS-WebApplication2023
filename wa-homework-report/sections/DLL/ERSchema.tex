@@ -1,12 +1,36 @@
 \subsection{Entity-Relationship Schema}
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{images/ERSchema.png}
     \caption{Database ER schema}
     \label{fig:er_schema}
 \end{figure}
+Our database has 5 main entities, plus an important relation. Other relations are auxiliary
+and will explained shortly at the end. Except only one entity, all entities has an integer ID
+as primary key. Main entities are:
+\begin{itemize}
+    \item \textbf{Users:} this entity contains all the information about every kind of users, from
+    tier 0 to system admin. This table has new entries every time registration form is filled: the dummy
+    form will generate a tier 0 user, while the real form will generate a tier 1 user. Every attribute 
+    is self-explanatory and stored in a very intuitive way: name and surname are varchar(50), all dates
+    are type date with local time zone and so on.\\
+    Here, just as examples, some attributes with their SQL code and few information about them.
+\begin{lstlisting}[language=SQL]
+CREATE TYPE diet AS ENUM ('No specific', 'Vegetarian',
+                        'Vegan', 'Halal', 'Kosher', 'Pescatarian');
 
-%Describe here your ER schema
-
-\lipsum[1]
+CREATE TABLE public."Users" (
+id SERIAL PRIMARY KEY,
+email VARCHAR(255) NOT NULL UNIQUE CHECK 
+        email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
+...
+"homeCountryAddress" json,
+...
+"documentFile" text,
+"dietType" diet,
+)
+\end{lstlisting}
+    In the above snippet, we can see few special features: RegExpr is used to check mail spelling,
+    addresses and similar variables are stores as json, for an easier data access. Diet 
+    
+\end{itemize}
