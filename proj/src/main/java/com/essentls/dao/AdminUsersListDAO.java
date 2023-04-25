@@ -21,7 +21,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
     private String name;
     private String surname;
-    private Long id;
+    private long id;
     private String cardId;
     private String email;
 
