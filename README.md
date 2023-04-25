@@ -55,7 +55,7 @@ On your machine you must have installed:
 
    &nbsp;
 
-   <img src="readme_assets/createDB.png" alt="createDB" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+   ![createDB](/readme_assets/createDB.png){width=50%}
 
    &nbsp;
 
