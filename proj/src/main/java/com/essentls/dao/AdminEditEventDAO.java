@@ -131,6 +131,5 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
                 stmt.close();
             }
         }
-        con.close();
     }
 }

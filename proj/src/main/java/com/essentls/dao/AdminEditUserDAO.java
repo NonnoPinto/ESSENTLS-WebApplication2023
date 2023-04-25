@@ -86,7 +86,6 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
 			}
 
 		}
-        con.close();
 
 	}
 

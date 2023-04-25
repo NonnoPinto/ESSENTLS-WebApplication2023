@@ -65,8 +65,6 @@ private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name 
 
         outputParam = t;
 
-        con.close();
-
     }
 
 

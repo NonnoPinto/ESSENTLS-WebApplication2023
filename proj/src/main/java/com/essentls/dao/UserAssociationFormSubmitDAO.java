@@ -113,7 +113,6 @@ public class UserAssociationFormSubmitDAO extends AbstractDAO<User> {
                 stmt.close();
         }
 
-        con.close();
 
     }
 }

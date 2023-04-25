@@ -117,8 +117,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                 stmnt.close();
             }
 
-            this.outputParam = user; 
-            con.close();
+            this.outputParam = user;
         }
 
     }

@@ -102,7 +102,6 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
 //        this.outputParam = user;
         this.outputParam = myUser;
-        con.close();
     }
     
 }

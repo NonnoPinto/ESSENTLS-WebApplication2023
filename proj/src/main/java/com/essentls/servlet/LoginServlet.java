@@ -111,6 +111,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
             //something unexpected happened: we write it into the LOGGER
             //writeError(res, ErrorCode.INTERNAL_ERROR);
             LOGGER.error("stacktrace:", e);
+            throw new ServletException(e);
         }
     }
 

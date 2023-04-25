@@ -55,7 +55,6 @@ public class UserUpgradeTierDAO extends AbstractDAO<User> {
                 stmt.close();
         }
 
-        con.close();
 
     }
 

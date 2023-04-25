@@ -52,7 +52,7 @@ public class AdminDeleteUserDAO extends AbstractDAO<User>{
 			}
 
 		}
-        con.close();
+
 
 	}
     

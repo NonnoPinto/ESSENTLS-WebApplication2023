@@ -26,7 +26,6 @@ public class UserJoinsEventDAO extends AbstractDAO<Boolean> {
             LOGGER.error("The participant cannot be null.");
             throw new NullPointerException("The participant cannot be null.");
         }
-        con.setAutoCommit(false);
         this.participant = participant;
     }
 
@@ -103,7 +102,6 @@ public class UserJoinsEventDAO extends AbstractDAO<Boolean> {
             }else{
                 this.outputParam = false;
             }
-            con.commit();
 
             LOGGER.info("User %l successfully join event %l.", participant.getUserId(), participant.getEventId());
 

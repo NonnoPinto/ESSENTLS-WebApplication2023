@@ -111,6 +111,11 @@ public abstract class AbstractDAO<T> implements DataAccessObject<T> {
 
     }
 
+    public final DataAccessObject<T> access(boolean autocommit) throws SQLException {
+        this.con.setAutoCommit(autocommit);
+        return this.access();
+    }
+
     public final DataAccessObject<T> access() throws SQLException {
 
         synchronized (lock) {
@@ -128,7 +133,9 @@ public abstract class AbstractDAO<T> implements DataAccessObject<T> {
             doAccess();
 
             try {
-                con.close();
+                if (!con.isClosed() && con.getAutoCommit()) {
+                    con.close();
+                }
                 LOGGER.debug("Connection successfully closed.");
             } catch (final SQLException e) {
                 LOGGER.error("Unable to close the connection to the database.", e);
@@ -139,7 +146,7 @@ public abstract class AbstractDAO<T> implements DataAccessObject<T> {
             LOGGER.error("Unable to perform the requested database access operation.", t);
 
             try {
-                if (!con.getAutoCommit()) {
+                if (!con.isClosed() && !con.getAutoCommit()) {
                     // autoCommit == false => transaction needs to be rolled back
                     con.rollback();
                     LOGGER.info("Transaction successfully rolled-back.");
@@ -148,7 +155,9 @@ public abstract class AbstractDAO<T> implements DataAccessObject<T> {
                 LOGGER.error("Unable to roll-back the transaction.", e);
             } finally {
                 try {
-                    con.close();
+                    if (!con.isClosed() && con.getAutoCommit()) {
+                        con.close();
+                    }
                     LOGGER.debug("Connection successfully closed.");
                 } catch (final SQLException e) {
                     LOGGER.error("Unable to close the connection to the database.", e);

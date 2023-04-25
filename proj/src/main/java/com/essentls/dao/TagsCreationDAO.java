@@ -68,7 +68,6 @@ public class TagsCreationDAO extends AbstractDAO<Tag> {
 
             outputParam = t;
 
-            con.close();
 
         }
 

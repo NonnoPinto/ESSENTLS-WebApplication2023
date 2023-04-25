@@ -61,7 +61,6 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
                 stmt.close();
         }
 
-        con.close();
 
     }
 

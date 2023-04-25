@@ -46,6 +46,5 @@ public class AdminDeleteEventDAO extends AbstractDAO<Event>{
                 stmnt.close();
             }
         }
-        con.close();
     }
 }

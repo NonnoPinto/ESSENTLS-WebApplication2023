@@ -115,7 +115,6 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
 			}
 
 		}
-        con.close();
 
 	}
 
