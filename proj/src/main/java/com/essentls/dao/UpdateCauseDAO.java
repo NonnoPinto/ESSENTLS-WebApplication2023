@@ -43,6 +43,7 @@ public class UpdateCauseDAO extends AbstractDAO<Cause>{
         Cause c = null;
 
         try{
+            pstmt = con.prepareStatement(STATEMENT_UPDATE_CAUSE);
             pstmt.setString(1, cause.getName());
             pstmt.setLong(2, cause.getId());
 

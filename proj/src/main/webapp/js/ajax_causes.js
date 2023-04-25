@@ -1,18 +1,20 @@
 document.getElementById("ajaxButton")
-    .addEventListener("click", searchTag);
+    .addEventListener("click", searchCause);
 console.log("Event listener added to ajaxButton.")
 
-function searchTag() {
+function searchCause() {
     const id = document.getElementById("causeId").value;
     const subCause = document.getElementById("subCause").value;
 
+    url = "http://localhost:8080/proj-1.0/rest/causes/";
+
     if (id !== "") {
         console.log("id: " + id);
-        const url = "http://localhost:8080/proj-1.0/rest/causes/id/" + id;
+        url = "http://localhost:8080/proj-1.0/rest/causes/id/" + id;
         console.log("Request URL: " + url);
     } else {
         console.log("subCause: " + subCause);
-        const url = "http://localhost:8080/proj-1.0/rest/causes/srch/" + subCause;
+        url = "http://localhost:8080/proj-1.0/rest/causes/srch/" + subCause;
         console.log("Request URL: " + url);
     }
 
@@ -26,7 +28,7 @@ function searchTag() {
     }
 
     xhr.onreadystatechange = function() {
-        processResponse(this);
+        processGetResponse(this);
     }
 
     console.log("Performing GET request to URL: " + url);
@@ -39,30 +41,30 @@ function searchTag() {
 
 function editCause(id, name) {
 
-        console.log("Editing cause: " + id);
+    console.log("Editing cause: " + id);
 
-        const url = "http://localhost:8080/proj-1.0/rest/causes/id/" + id;
+    const url = "http://localhost:8080/proj-1.0/rest/causes/id/" + id;
 
-        console.log("Request URL: " + url);
+    console.log("Request URL: " + url);
 
-        const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
 
-        if (!xhr) {
-            alert("Cannot create an XMLHTTP instance.");
+    if (!xhr) {
+        alert("Cannot create an XMLHTTP instance.");
 
-            alert("Giving up :( Cannot create an XMLHttpRequest instance");
-            return false;
-        }
+        alert("Giving up :( Cannot create an XMLHttpRequest instance");
+        return false;
+    }
 
-        xhr.onreadystatechange = function() {
-            processResponse(this);
-        }
+    xhr.onreadystatechange = function() {
+        processPutResponse(this);
+    }
 
-        console.log("Performing PUT request to URL: " + url);
-        xhr.open("PUT", url);
-        xhr.send(JSON.stringify({id: id, name: name}));
+    console.log("Performing PUT request to URL: " + url);
+    xhr.open("PUT", url);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({esncause: {id: id, name: name}}));
 
-        console.log("Request sent. Waiting for response...");
 }
 
 function deleteCause(id) {
@@ -83,17 +85,16 @@ function deleteCause(id) {
     }
 
     xhr.onreadystatechange = function() {
-        processResponse(this);
+        processDeleteResponse(this);
     }
 
     console.log("Performing DELETE request to URL: " + url);
     xhr.open("DELETE", url);
     xhr.send();
 
-    console.log("Request sent. Waiting for response...");
 }
 
-function processResponse(xhr) {
+function processGetResponse(xhr) {
 
     if(xhr.readyState !== XMLHttpRequest.DONE) {
         console.log("Request state: %d. [0 = UNSENT; 1 = OPENED; 2 = HEADERS_RECEIVED; 3 = LOADING]",
@@ -101,7 +102,18 @@ function processResponse(xhr) {
         return;
     }
 
-    const table = document.getElementById("table");
+    const div = document.getElementById("results");
+
+    div.replaceChildren();
+
+    if (xhr.status !== 200) {
+        console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
+        console.log(xhr.response);
+        div.appendChild(document.createTextNode("Unable to perform the AJAX request."));
+        return;
+    }
+
+    const table = document.createElement("table");
     div.appendChild(table);
 
     let e, ee, eee;
@@ -178,4 +190,48 @@ function processResponse(xhr) {
         eee.appendChild(deleteButton);
         ee.appendChild(eee); //append the element to the row
     }
+}
+
+function processPutResponse(xhr) {
+
+    if(xhr.readyState !== XMLHttpRequest.DONE) {
+        console.log("Request state: %d. [0 = UNSENT; 1 = OPENED; 2 = HEADERS_RECEIVED; 3 = LOADING]",
+            xhr.readyState);
+        return;
+    }
+
+    const div = document.getElementById("results");
+
+    div.replaceChildren();
+
+    if (xhr.status !== 200) {
+        console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
+        console.log(xhr.response);
+        div.appendChild(document.createTextNode("Unable to perform the AJAX request."));
+        return;
+    }
+
+    div.appendChild(document.createTextNode("Cause { id: " + JSON.parse(xhr.response).esncause["id"] + ", name: " + JSON.parse(xhr.response).esncause["name"] + " } updated successfully."));
+}
+
+function processDeleteResponse(xhr) {
+
+    if(xhr.readyState !== XMLHttpRequest.DONE) {
+        console.log("Request state: %d. [0 = UNSENT; 1 = OPENED; 2 = HEADERS_RECEIVED; 3 = LOADING]",
+            xhr.readyState);
+        return;
+    }
+
+    const div = document.getElementById("results");
+
+    div.replaceChildren();
+
+    if (xhr.status !== 200) {
+        console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
+        console.log(xhr.response);
+        div.appendChild(document.createTextNode("Unable to perform the AJAX request."));
+        return;
+    }
+
+    div.appendChild(document.createTextNode("Cause " + JSON.parse(xhr.response).esncause["id"] + " deleted successfully."));
 }

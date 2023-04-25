@@ -21,7 +21,7 @@ function searchTag() {
     }
 
     xhr.onreadystatechange = function() {
-        processResponse(this);
+        processGetResponse(this);
     }
 
     console.log("Performing GET request to URL: " + url);
@@ -49,7 +49,7 @@ function deleteTag(name) {
     }
 
     xhr.onreadystatechange = function() {
-        processResponse(this);
+        processDeleteResponse(this);
     }
 
     console.log("Performing DELETE request to URL: " + url);
@@ -59,7 +59,7 @@ function deleteTag(name) {
     console.log("Request sent. Waiting for response...");
 }
 
-function processResponse(xhr) {
+function processGetResponse(xhr) {
 
     if(xhr.readyState !== XMLHttpRequest.DONE) {
         console.log("Request state: %d. [0 = UNSENT; 1 = OPENED; 2 = HEADERS_RECEIVED; 3 = LOADING]",
@@ -128,4 +128,26 @@ function processResponse(xhr) {
         eee.appendChild(button);
         ee.appendChild(eee); // append the cell to the row
     }
+}
+
+function processDeleteResponse(xhr) {
+
+    if(xhr.readyState !== XMLHttpRequest.DONE) {
+        console.log("Request state: %d. [0 = UNSENT; 1 = OPENED; 2 = HEADERS_RECEIVED; 3 = LOADING]",
+            xhr.readyState);
+        return;
+    }
+
+    const div = document.getElementById("results");
+
+    div.replaceChildren();
+
+    if (xhr.status !== 200) {
+        console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
+        console.log(xhr.response);
+        div.appendChild(document.createTextNode("Unable to perform the AJAX request."));
+        return;
+    }
+
+    div.appendChild(document.createTextNode("Tag " + JSON.parse(xhr.response).esntag["name"] + " deleted successfully."));
 }
