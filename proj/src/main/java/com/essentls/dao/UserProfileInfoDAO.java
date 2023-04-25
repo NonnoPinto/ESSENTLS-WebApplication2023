@@ -59,8 +59,20 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
             rs = stmnt.executeQuery();
 
             if (rs.next()) {
+                JSONObject paduaAddress=new JSONObject();
+                if(!(rs.getObject("paduaAddress")==null)){
+                    paduaAddress=new JSONObject(rs.getObject("paduaAddress", PGobject.class));
+                }
+                JSONObject homeCountryAddress= new JSONObject();
+                if(!(rs.getObject("homeCountryAddress")==null)){
+                    homeCountryAddress=new JSONObject(rs.getObject("homeCountryAddress", PGobject.class));
+                }
+                String[] allergies= {};
+                if(!(rs.getArray("allergies")==null)){
+                    allergies= (String[]) rs.getArray("allergies").getArray();
+                }
+
                 myUser = new User(
-//                        myUser = new User(infoID,
                 rs.getLong("id"),
                 rs.getString("email"),
                 rs.getString("password"),
@@ -72,16 +84,17 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 rs.getString("sex"),
                 rs.getDate("dateOfBirth"),
                 rs.getString("nationality"),
-                new JSONObject(((PGobject)rs.getObject("homeCountryAddress")).getValue()),
+                homeCountryAddress,
                 rs.getString("homeCountryUniversity"),
                 rs.getInt("periodOfStay"),
                 rs.getString("phoneNumber"),
-                new JSONObject(((PGobject)rs.getObject("paduaAddress")).getValue()),
+                paduaAddress,
                 rs.getString("documentType"),
                 rs.getString("documentNumber"),
                 rs.getString("documentFile"),
                 rs.getString("dietType"),
-                (String[]) rs.getArray("allergies").getArray(),
+//                (String[]) rs.getArray("allergies").getArray(),
+                allergies,
                 rs.getString("emailhash"),
                 rs.getBoolean("emailConfirmed"));
             }

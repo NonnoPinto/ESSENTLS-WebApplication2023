@@ -35,7 +35,10 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
      */
-    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
         PGobject pgobj = new PGobject();
         pgobj.setType("json");
         pgobj.setValue(j.toString());
