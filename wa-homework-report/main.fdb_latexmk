@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1682538693 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1682538720 0
+["pdflatex"] 1682540028 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1682540037 0
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbr10.pk" 1679843005 9388 ce5773ae3c25f206fd357f851c0301ec ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbrbx10.pk" 1679843002 9396 15cf81d8730d03d4020f8fb73d753ca4 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbrsy10.pk" 1682433497 13592 f96f22628f12d8b7be90c86f6bfde1ef ""
@@ -91,13 +91,19 @@
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1463135581 57049 34128738f682d033422ca125f82e5d62 ""
   "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" 1682451083 404 2e7b20110c435995793d39d4e581634d ""
   "groupdata.tex" 1682415685 1046 f8b885fa71f3e80c820371109cfc7f31 ""
+  "images/ChangeUserDetail.png" 1682525110 42248 9f46ff87a0019cfd386afb1d95c57408 ""
   "images/ERSchema.png" 1682538647 124137 b138002effb0920b81b969bb11f6bf8f ""
+  "images/EventList.png" 1682525110 545711 ab716b1050f0b2e5fc8eaebe414501ef ""
+  "images/JoinEvent.png" 1682525110 435146 2779fe4252642fd1c6c85ecc5f184514 ""
+  "images/PaymentMethod.png" 1682525110 46738 33d1d826537239b27debcdf428d1ba64 ""
+  "images/form.png" 1682525110 41373 db48db497c287be22343b96d54ed2693 ""
+  "images/signup.png" 1682525110 37582 50c8d5e074b7c38ea82b577dd126b7f3 ""
   "images/tiers.jpg" 1682415685 136655 cdd7941346cb445e0affca7f9a953c2e ""
   "local_macros.tex" 1682451083 1809 2232631213dd46db24e8e9661e41c761 ""
   "logos/DEI.pdf" 1680731118 295786 945427f4b2d699ba59e1be94beb88bb2 ""
   "logos/logo-unipd800.pdf" 1680731118 394708 68ef9087516729fe260e52a859f0e9dc ""
-  "main.aux" 1682538716 3890 004a3b4541c313161524793aa8f13782 "pdflatex"
-  "main.out" 1682538716 2364 9dd7c0c8bc36ab96ff3731fd869e3216 "pdflatex"
+  "main.aux" 1682540037 5655 0c7a675c7e7fcdc7f8821b04039501a1 "pdflatex"
+  "main.out" 1682540037 3078 9427da188d2bc52597eac89317efa6a8 "pdflatex"
   "main.tex" 1682451083 404 2e7b20110c435995793d39d4e581634d ""
   "sections/BLL/ClassDiagram.tex" 1682415685 133 38461e2e3b05f17c418986f9cb73de01 ""
   "sections/BLL/RESTAPIDetails.tex" 1682415685 422 f77e730787616eb08bb1f33f86317d06 ""
@@ -111,7 +117,7 @@
   "sections/DataLogicLayer.tex" 1682451083 108 e5042e11dfd64b66bfd0924310d417d5 ""
   "sections/MainFunctionalities.tex" 1682451083 3605 60ff1b666e962fbe55f792eceb8272cc ""
   "sections/Objectives.tex" 1680778783 1411 2c023aa9a1bf70fc9030b414332a8999 ""
-  "sections/PresentationLogicLayer.tex" 1682451598 431 b41b4ab049fb002995d85fffa8e082f9 ""
+  "sections/PresentationLogicLayer.tex" 1682540018 1587 9593af1a6b791459a5a384e19f42c3f7 ""
   (generated)
   "main.aux"
   "main.log"
