@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <meta charset="utf-8">
     <title>Select User by ID</title>
 </head>
@@ -19,7 +21,12 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-<h1>Select User by ID</h1>
+<c:out value="user tier is: ${Users.getTier()}"/>
+
+<div class="title">
+  <h1>Select User by ID</h1>
+  <hr>
+</div>
 
 <form method="POST" action="<c:url value="/select-user-by-id"/>">
     <label for="userId">Id:</label>

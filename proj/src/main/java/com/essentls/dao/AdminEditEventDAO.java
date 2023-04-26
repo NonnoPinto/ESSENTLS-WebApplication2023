@@ -2,6 +2,7 @@ package com.essentls.dao;
 
 import com.essentls.resource.Event;
 import org.json.JSONObject;
+import org.postgresql.util.PGobject;
 
 import java.sql.*;
 
@@ -16,24 +17,55 @@ import java.sql.*;
 public class AdminEditEventDAO extends AbstractDAO<Event>{
 
     /**
-     * new attributes
+     * The SQL statement to be executed
      */
-    private final String new_name;
-    private final String new_description;
-    private final float new_price;
-    private final int new_visibility;
-    private final JSONObject new_location;
-    private final int new_maxParticipantsInternational;
-    private final int new_maxParticipantsVolunteer;
-    private final Timestamp new_eventStart;
-    private final Timestamp new_eventEnd;
-    private final Timestamp new_subscriptionStart;
-    private final Timestamp new_subscriptionEnd;
-    private final Timestamp new_withdrawalEnd;
-    private final int new_maxWaitingList;
-    private final String[] new_attributes;
-    private final String new_thumbnail;
-    private final String new_poster;
+    private static final String STATEMENT = "UPDATE \"Events\" SET id=?, name=?, description=?, price=?, visibility=?, location=?, \"maxParticipantsInternational\"=?, \"maxParticipantsVolunteer\"=?, \"eventStart\"=?, \"eventEnd\"=?, \"subscriptionStart\"=?,  \"subscriptionEnd\"=?, \"withdrawalEnd\"=?, \"maxWaitingList\"=?, attributes=?, thumbnail=?, poster=? WHERE id = ?";
+
+    /**
+     * The event selected to be edited by the Admin
+     */
+    private final Event event;
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     */
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
+        PGobject pgobj = new PGobject();
+        pgobj.setType("json");
+        pgobj.setValue(j.toString());
+        return pgobj;
+    }
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     */
+    public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException, NullPointerException{
+
+        PGobject pgobj = new PGobject();
+        pgobj.setType("text[]");
+
+        //return empty if so
+        if(s.length ==0){
+            pgobj.setValue("");
+            return pgobj;
+        }
+
+        //String[] to String
+        String text ="{" + "\"" + s[0];
+        for(int i=1; i<s.length; i++){
+            text += "\", ";
+            text += "\"";
+            text += s[i];
+        }
+        text += "\"}";
+        //set value of PGObject
+        pgobj.setValue(text);
+        return pgobj;
+    }
+
 
 
     /**
@@ -42,56 +74,12 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
      * @param con    the connection to the database.
      * @param event   the event selected.
      */
-    public AdminEditEventDAO(final Connection con, final Event event, final String _newname,
-                                                                      final String _newdescription,
-                                                                      final float _newprice,
-                                                                      final int _newvisibility,
-                                                                      final JSONObject _newlocation,
-                                                                      final int _newmaxParticipantsInternational,
-                                                                      final int _newmaxParticipantsVolunteer,
-                                                                      final Timestamp _neweventStart,
-                                                                      final Timestamp _neweventEnd,
-                                                                      final Timestamp _newsubscriptionStart,
-                                                                      final Timestamp _newsubscriptionEnd,
-                                                                      final Timestamp _newwithdrawalEnd,
-                                                                      final int _newmaxWaitingList,
-                                                                      final String[] _newattributes,
-                                                                      final String _newthumbnail,
-                                                                      final String _newposter){
+    public AdminEditEventDAO(final Connection con, final Event event){
 
         super(con);
         this.event = event;
-
-        new_name = _newname;
-        new_description =_newdescription;
-        new_price =_newprice;
-        new_visibility = _newvisibility;
-        new_location = _newlocation;
-        new_maxParticipantsInternational = _newmaxParticipantsInternational;
-        new_maxParticipantsVolunteer = _newmaxParticipantsVolunteer;
-        new_eventStart = _neweventStart;    
-        new_eventEnd = _neweventEnd;
-        new_subscriptionStart = _newsubscriptionStart;
-        new_subscriptionEnd = _newsubscriptionEnd;
-        new_withdrawalEnd = _newwithdrawalEnd;
-        new_maxWaitingList = _newmaxWaitingList;
-        new_attributes = _newattributes;
-        new_thumbnail = _newthumbnail;
-        new_poster = _newposter;
     }
 
-
-    /**
-     * The SQL statement to be executed
-     */
-    private static final String STATEMENT = "SELECT name, description, price, visibility, location,maxParticipantsInternational, maxParticipantsVolunteer, eventStart, eventEnd, subscriptionStart, subscriptionEnd, withdrawalEnd, maxWaitingList, attributes, thumbnail, poster FROM Events WHERE id = ?";
-  
-
-
-    /**
-     * The event selected to be edited by the Admin
-     */
-    private final Event event;
 
     @Override
     public final void doAccess() throws SQLException{
@@ -103,24 +91,25 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
 
             stmt = con.prepareStatement(STATEMENT);
             stmt.setLong(1, this.event.getId());
+            stmt.setString(2, this.event.getName());
+            stmt.setString(3, this.event.getDescription());
+            stmt.setFloat(4, this.event.getPrice());
+            stmt.setInt(5, this.event.getVisibility());
+            stmt.setObject(6, jsonToPGobj(this.event.getLocation()));
+            stmt.setInt(7, this.event.getMaxParticipantsInternational());
+            stmt.setInt(8, this.event.getMaxParticipantsVolunteer());
+            stmt.setTimestamp(9, this.event.getEventStart());
+            stmt.setTimestamp(10, this.event.getEventEnd());
+            stmt.setTimestamp(11, this.event.getSubscriptionStart());
+            stmt.setTimestamp(12, this.event.getSubscriptionEnd());
+            stmt.setTimestamp(13, this.event.getWithdrawalEnd());
+            stmt.setInt(14, this.event.getMaxWaitingList());
+            stmt.setObject(15, stringArrayToPGobj(this.event.getAttributes()));
+            stmt.setString(16, this.event.getThumbnail());
+            stmt.setString(17, this.event.getPoster());
+            stmt.setLong(18, this.event.getId());
 
-
-            this.event.setName(new_name);
-            this.event.setDescription(new_description);
-            this.event.setPrice(new_price);
-            this.event.setVisibility(new_visibility);
-            this.event.setLocation(new_location);
-            this.event.setMaxParticipantsInternational(new_maxParticipantsInternational);
-            this.event.setMaxParticipantsVolunteer(new_maxParticipantsVolunteer);
-            this.event.setEventStart(new_eventStart);
-            this.event.setEventEnd(new_eventEnd);
-            this.event.setSubscriptionStart(new_subscriptionStart);
-            this.event.setSubscriptionEnd(new_subscriptionEnd);
-            this.event.setWithdrawalEnd(new_withdrawalEnd);
-            this.event.setMaxWaitingList(new_maxWaitingList);
-            this.event.setAttributes(new_attributes);
-            this.event.setThumbnail(new_thumbnail);
-            this.event.setPoster(new_poster);
+            stmt.executeUpdate();
 
             LOGGER.info("Details of event {} successifully changed.", this.event.getId());
         }finally{
@@ -131,6 +120,5 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
                 stmt.close();
             }
         }
-        con.close();
     }
 }

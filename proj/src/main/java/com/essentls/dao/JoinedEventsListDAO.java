@@ -44,7 +44,7 @@ public class JoinedEventsListDAO extends AbstractDAO<List<Event>> {
             while (rs.next())
                 joinedEvents.add(new Event(rs.getLong("id"), rs.getString("name"), rs.getTimestamp("date")));
         
-            LOGGER.info("Event(s) joined by user %l successfully listed.", userId);
+            LOGGER.info("Event(s) joined by user %d successfully listed.", userId);
             
         } finally {
             if (rs != null) {

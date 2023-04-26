@@ -79,8 +79,7 @@ public final class EmailConfirmationDAO extends AbstractDAO<Boolean> {
                 stmnt.close();
             }
 
-            this.outputParam = to_be_verified; 
-            con.close();
+            this.outputParam = to_be_verified;
         }
 
     }

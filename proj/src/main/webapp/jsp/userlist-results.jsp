@@ -12,15 +12,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>List of found Users</title>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
+    <title>List of found Users</title>
 </head>
 
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-<h1>List of found Users</h1>
-<hr/>
-
+<div class="title">
+  <h1>List of found Users</h1>
+  <hr/>
+</div>
 
 <!-- display the list of found users, if any -->
 <c:if test='${not empty userList}'>

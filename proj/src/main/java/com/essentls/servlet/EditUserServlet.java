@@ -7,6 +7,7 @@ import java.sql.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.json.JSONObject;
 
@@ -34,7 +35,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         String email = null;
         String password = null;
         String cardId = null;
-        int tier = -1;
+        int tier = 0;
         Date registrationDate = null;
         String name = null;
         String surname = null;

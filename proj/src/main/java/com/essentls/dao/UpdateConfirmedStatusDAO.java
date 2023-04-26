@@ -102,8 +102,7 @@ public final class UpdateConfirmedStatusDAO extends AbstractDAO<Boolean> {
                 stmnt.close();
             }
 
-            this.outputParam = verified; 
-            con.close();
+            this.outputParam = verified;
         }
 
     }

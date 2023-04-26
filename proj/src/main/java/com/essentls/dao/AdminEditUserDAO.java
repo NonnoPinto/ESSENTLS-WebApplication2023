@@ -23,7 +23,10 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
 	 */
 	private final User user;
 
-    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
         PGobject pgobj = new PGobject();
         pgobj.setType("json");
         pgobj.setValue(j.toString());
@@ -46,13 +49,19 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
 	protected final void doAccess() throws SQLException {
 
 		PreparedStatement pstmt = null;
-
+        int tier = this.user.getTier();
+        if(tier < 0){
+            tier = 0;
+        } else if(tier > 4){
+            tier = 4;
+        }
+        
 		try {
 			pstmt = con.prepareStatement(STATEMENT);
             pstmt.setString(1, this.user.getEmail());
             pstmt.setString(2, this.user.getPassword());
             pstmt.setString(3, this.user.getCardId());
-            pstmt.setInt(4, this.user.getTier());
+            pstmt.setInt(4, tier);
             pstmt.setDate(5, this.user.getRegistrationDate());
             pstmt.setString(6, this.user.getName());
             pstmt.setString(7, this.user.getSurname());
@@ -86,7 +95,6 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
 			}
 
 		}
-        con.close();
 
 	}
 

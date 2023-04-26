@@ -32,7 +32,10 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
      */
-    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
         PGobject pgobj = new PGobject();
         pgobj.setType("json");
         pgobj.setValue(j.toString());
@@ -42,7 +45,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
      */
-    public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException{
+    public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException, NullPointerException{
 
         PGobject pgobj = new PGobject();
         pgobj.setType("text[]");
@@ -109,14 +112,13 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
 
             LOGGER.info("Event {} successfully created.", this.event.getId());
 
-        }finally{
-            if(stmt != null){
+        }finally {
+            if (stmt != null) {
                 stmt.close();
             }
-            if(rs != null){
+            if (rs != null) {
                 rs.close();
             }
         }
-        con.close();
     }
 }

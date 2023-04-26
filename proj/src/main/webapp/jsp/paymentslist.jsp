@@ -10,14 +10,17 @@
 
 <!DOCTYPE html><html>
 <head>
+    <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Payments list</title>
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-
-<h1>Payments list</h1>
+<div class="title">
+    <h1>Payments list</h1>
+    <hr>
+</div>
 <table>
     <thead>
     <tr> 

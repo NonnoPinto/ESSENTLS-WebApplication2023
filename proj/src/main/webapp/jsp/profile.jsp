@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="description" content="ESN Padova application">
+  <meta name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="ISO-8859-1">
   <title>User details</title>
@@ -19,7 +21,10 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 <div>
-  <h1>Profile page</h1>
+  <div class="title">
+    <h1>Profile page</h1>
+    <hr>
+  </div>
   <hr>
   <h3>${Users.name} ${Users.surname}</h3>
   <h5>Date of birth: ${Users.dateOfBirth}</h5>

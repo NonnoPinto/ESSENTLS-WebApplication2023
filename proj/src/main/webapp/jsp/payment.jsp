@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <title>Payments</title>
 </head>
 <body>
@@ -19,12 +21,14 @@
         <h1>Event Payment</h1>
         <p>
             You are paying: &euro; ${event.price}
+            <a href="add_payment?action=${action}&id=${event.id}"><button>Payed</button></a>
         </p>
     </c:when>
     <c:when test="${action.equals(\"sub\")}">
         <h1>Association Payment</h1>
         <p>
             You are paying: &euro; ${subPrice}
+            <a href="add_payment?action=${action}"><button>Payed</button></a>
         </p>
     </c:when>
     <c:otherwise>
@@ -32,7 +36,6 @@
     </c:otherwise>
 </c:choose>
 
-<a href="joinEvent?id=${event.id}"><button>Payed</button></a>
 <!-- Set up a container element for the button -->
 <div id="paypal-button-container"></div>
 

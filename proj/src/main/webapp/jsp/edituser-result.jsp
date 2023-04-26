@@ -13,12 +13,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <title>User Edit</title>
 </head>
 
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-<h1>User Edit</h1>
+<div class="title">
+    <h1>User Edit</h1>
+    <hr>
+</div>
 
 <c:choose>
     <c:when test="${user==null}">

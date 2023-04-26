@@ -27,8 +27,8 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
         try {
 
-            // if the requested resource was a tag, delegate its processing and return
-            if (processTag(req, res)) {
+            // if the requested resource was a tag or a cause, delegate its processing and return
+            if (processTag(req, res) || processCause(req, res)) {
                 return;
             }
 
@@ -62,11 +62,10 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
     /**
      * Checks whether the request
+     *
      * @param req the HTTP request.
      * @param res the HTTP response.
-     *
-     * @return {@code true} if the request was for an {@code Employee}; {@code false} otherwise.
-     *
+     * @return {@code true} if the request was for a {@code Tag}; {@code false} otherwise.
      * @throws Exception if any error occurs.
      */
     private boolean processTag(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
@@ -81,61 +80,156 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
             return false;
         }
 
-        // strip everything until after the /employee
-        path = path.substring(path.lastIndexOf("tags/") + 5);
+        // strip everything until after the /tags/ part
+        path = path.substring(path.lastIndexOf("rest/tags/") + 10);
 
-        // I can have multiple paths. Split on "/"
-        String[] splitted_path = path.split("/");
-
-
-
-        // the request URI is: /tags
-        // if method GET, list tags
-        if (path.length() == 0) {
+        // if the path is empty, the request URI is: /tags/
+        if (path.isEmpty()) {
 
             switch (method) {
-                case "GET":
-                    new ListTagsRR(req, res, getConnection(), "").serve();
-                    break;
-                case "POST":
-                    new CreateTagRR(req, res, getConnection()).serve();
-                    break;
-                default:
-                    LOGGER.warn("Unsupported operation for URI /tags: %s.", method);
+                case "GET" ->
+                    // get all tags
+                        new ListTagsRR(req, res, getConnection(), "").serve();
+                case "POST" ->
+                    // create a new tag
+                        new CreateTagRR(req, res, getConnection()).serve();
+                default -> {
+                    // method not allowed
+                    LOGGER.warn("Unsupported method for URI /tags/: %s.", method);
 
-                    m = new Message("Unsupported operation for URI /tags.", "E4A5",
-                            String.format("Requested operation %s.", method));
+                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
-                    break;
-
+                }
             }
         } else {
             // the request URI is: /tags/name or /tags/subtag
 
-            //TODO make RegEx to check if tagname only contains alphanumerical characters
-
             switch (method) {
-                case "GET":
-                    new ListTagsRR(req, res, getConnection(), path).serve();
-                    break;
-                case "DELETE":
-                    new DeleteTagRR(req, res, getConnection()).serve();
-                    break;
-                default:
-                    LOGGER.warn("Unsupported operation for URI /tags/{name}: %s.", method);
+                case "GET" ->
+                    // get a tag
+                        new ListTagsRR(req, res, getConnection(), path).serve();
+                case "DELETE" ->
+                    // delete a tag
+                        new DeleteTagRR(req, res, getConnection()).serve();
+                default -> {
+                    // method not allowed
+                    LOGGER.warn("Unsupported method for URI /tags/name/ or /tags/subtag/: %s.", method);
 
-                    m = new Message("Unsupported operation for URI /tags/{name}.", "E4A5",
-                            String.format("Requested operation %s.", method));
+                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
-                    break;
+                }
             }
-
-
         }
 
         return true;
-
     }
+
+
+    /**
+     * Checks whether the request
+     *
+     * @param req the HTTP request.
+     * @param res the HTTP response.
+     * @return {@code true} if the request was for a {@code Cause}; {@code false} otherwise.
+     * @throws Exception if any error occurs.
+     */
+    private boolean processCause(final HttpServletRequest req, final HttpServletResponse res) throws Exception {
+
+        final String method = req.getMethod();
+        String path = req.getRequestURI();
+        Message m = null;
+
+        // the requested resource was not a cause
+        if (path.lastIndexOf("rest/causes/") <= 0) {
+            return false;
+        }
+
+        // strip everything until after the /causes/ part
+        path = path.substring(path.lastIndexOf("rest/causes/") + 12);
+
+        // if the path is empty, the request URI is: /causes/
+        if (path.isEmpty()) {
+
+            switch (method) {
+                case "GET" ->
+                    // get all causes
+                        new ListCausesRR(req, res, getConnection(), -1, "").serve();
+                case "POST" ->
+                    // create a new cause
+                        new CreateCauseRR(req, res, getConnection()).serve();
+                default -> {
+                    // method not allowed
+                    LOGGER.warn("Unsupported method for URI /causes/: %s.", method);
+
+                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                }
+            }
+            //the request URI is: /causes/id/causeId
+        } else if (path.contains("id/")) {
+            // strip everything until after the /id/ part
+            path = path.substring(path.lastIndexOf("id/") + 3);
+
+            if (!path.isEmpty()) {
+                switch (method) {
+                    case "GET" ->
+                        // get a cause
+                            new ListCausesRR(req, res, getConnection(), Integer.parseInt(path), "").serve();
+                    case "DELETE" ->
+                        // delete a cause
+                            new DeleteCauseRR(req, res, getConnection()).serve();
+                    case "PUT" ->
+                        // update a cause
+                            new UpdateCauseRR(req, res, getConnection()).serve();
+                    default -> {
+                        // method not allowed
+                        LOGGER.warn("Unsupported method for URI /causes/id/: %s.", method);
+
+                        m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                        res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                        m.toJSON(res.getOutputStream());
+                    }
+                }
+            } else {
+                //operation not allowed
+                LOGGER.warn("Unsupported operation for URI /causes/id/: %s.", method);
+
+                m = new Message("Operation not allowed.", "E4A3", String.format("Operation not allowed."));
+                res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                m.toJSON(res.getOutputStream());
+
+            }
+            //the request URI is: /causes/srch/name or /causes/srch/subcause
+        } else if (path.contains("srch/")) {
+            // strip everything until after the /srch/ part
+            path = path.substring(path.lastIndexOf("srch/") + 5);
+
+            switch (method) {
+                case "GET" ->
+                    // get a cause
+                        new ListCausesRR(req, res, getConnection(), -1, path).serve();
+                default -> {
+                    // method not allowed
+                    LOGGER.warn("Unsupported method for URI /causes/srch/: %s.", method);
+
+                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                    res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+                    m.toJSON(res.getOutputStream());
+                }
+            }
+
+        } else {
+            //unknown resourse requested
+            LOGGER.warn("Unknown resource requested: %s.", path);
+
+            m = new Message("Unknown resource.", "E4A1", String.format("Resource %s is unknown.", path));
+            res.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            m.toJSON(res.getOutputStream());
+        }
+        return true;
+    }
+
 }

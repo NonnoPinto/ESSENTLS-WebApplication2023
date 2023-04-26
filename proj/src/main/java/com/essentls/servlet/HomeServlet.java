@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(name = "HomeServlet", urlPatterns = {"", "/home"})
+@WebServlet(name = "HomeServlet", value = "/home")
 public final class HomeServlet extends AbstractDatabaseServlet {
 
     @Override
@@ -39,7 +39,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         User user = null;
         Message m = null;
         try {
-            userId = (long) session.getAttribute("userId");
+            userId = (long) session.getAttribute("sessionUserId");
         }
         catch (NullPointerException e){
             LOGGER.error("Cannot search the User: id is not retrieved correctly.", e);

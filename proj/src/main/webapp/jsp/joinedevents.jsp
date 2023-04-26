@@ -4,10 +4,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="description" content="ESN Padova application">
+        <meta name="viewport">
         <title>Event List</title>
     </head>
     <body>
         <div class="navbar"><%@include file="navbar.jsp"%></div>
+        <div class="title">
+            <h1>Event List</h1>
+            <hr>
+        </div>
         <div class="container">
         <c:choose>
             <c:when test="${message.isError()}">

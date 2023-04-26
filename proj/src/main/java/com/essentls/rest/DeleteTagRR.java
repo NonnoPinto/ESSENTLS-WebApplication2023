@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A REST resource for searching {@link tag}s .
+ * A REST resource for searching {@link Tag}s .
  *
  * @author Laura Pallante
  * @version 1.00
@@ -53,7 +53,7 @@ public class DeleteTagRR extends AbstractRR{
 
             // creates a new DAO for accessing the database and creating a new tag
             deltag=new TagsRemovalDAO(con,path).access().getOutputParam();
-            LOGGER.info("tag %s removal",req.getAttribute("name"));
+            LOGGER.info("tag %s removal", path);
 
             if (deltag != null) {
                 LOGGER.info("Tag(s) successfully removed");
@@ -75,11 +75,19 @@ public class DeleteTagRR extends AbstractRR{
             res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             m.toJSON(res.getOutputStream());
         } catch (SQLException ex) {
-            LOGGER.error("Cannot delete Tag: unexpected database error.", ex);
+            if ("23503".equals(ex.getSQLState())) {
+                LOGGER.warn("Cannot delete the tag: other resources depend on it.");
 
-            m = new Message("Cannot delete Tag: unexpected database error.", "E5A1", ex.getMessage());
-            res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            m.toJSON(res.getOutputStream());
+                m = new Message("Cannot delete the tag: other resources depend on it.", "E5A4", ex.getMessage());
+                res.setStatus(HttpServletResponse.SC_CONFLICT);
+                m.toJSON(res.getOutputStream());
+            } else {
+                LOGGER.error("Cannot delete Tag: unexpected database error.", ex);
+
+                m = new Message("Cannot delete Tag: unexpected database error.", "E5A1", ex.getMessage());
+                res.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                m.toJSON(res.getOutputStream());
+            }
         }
     }
 }

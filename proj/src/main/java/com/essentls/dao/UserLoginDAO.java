@@ -73,13 +73,24 @@ public final class UserLoginDAO extends AbstractDAO<User> {
             rs = stmnt.executeQuery();
 
             if(rs.next()){
+                int userTier = 0;
+                userTier= rs.getInt("tier");
+                if(userTier < 0){
+                    userTier = 0;
+                } else if(userTier > 4){
+                    userTier = 4;
+                }
+                String[] allergies=null;
+                if(!(rs.getArray("allergies")==null)){
 
+                    allergies=(String[]) rs.getArray("allergies").getArray();
+                }
                 user = new User(
                     rs.getLong("id"),
                     rs.getString("email"),
                     rs.getString("password"),
                     rs.getString("cardId"),
-                    rs.getInt("tier"),
+                    userTier,
                     rs.getDate("registrationDate"),
                     rs.getString("name"),
                     rs.getString("surname"),
@@ -95,7 +106,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                     rs.getString("documentNumber"),
                     rs.getString("documentFile"),
                     rs.getString("dietType"),
-                    (String[]) rs.getArray("allergies").getArray(),
+                    allergies,
                     rs.getString("emailhash"),
                     rs.getBoolean("emailConfirmed")
                 ); 
@@ -117,8 +128,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                 stmnt.close();
             }
 
-            this.outputParam = user; 
-            con.close();
+            this.outputParam = user;
         }
 
     }

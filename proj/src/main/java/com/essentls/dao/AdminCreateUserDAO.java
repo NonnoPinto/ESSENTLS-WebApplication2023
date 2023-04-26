@@ -10,6 +10,8 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
     /**
 	 * The SQL statement to be executed
 	 */
+
+     //TODO: DOB is not a column of db
 	private static final String STATEMENT = "INSERT INTO Users(ID,  Email,  Password,  CardID,  Tier,  RegistrationDate,"+
         "  Name,  Surname,  Sex,  DOB,  Nationality,  HomeCountryAddress,  HomeCountryUniversity,  PeriodOfStay,  PhoneNumber,"+
         "  PadovaAddress,  DocumentType,  DocumentNumber,  DocumentFile,  DietType,  Allergies) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,"+
@@ -35,7 +37,10 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
      */
-    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException{
+    public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
+        if(j==null){
+            return null;
+        }
         PGobject pgobj = new PGobject();
         pgobj.setType("json");
         pgobj.setValue(j.toString());
@@ -115,7 +120,6 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
 			}
 
 		}
-        con.close();
 
 	}
 

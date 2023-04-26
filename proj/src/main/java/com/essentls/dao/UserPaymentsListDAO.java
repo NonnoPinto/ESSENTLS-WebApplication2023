@@ -83,6 +83,5 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
         }
 
         this.outputParam = payments;
-        con.close();
     }
 }

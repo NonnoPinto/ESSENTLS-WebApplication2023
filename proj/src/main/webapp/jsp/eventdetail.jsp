@@ -5,16 +5,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="ISO-8859-1">
-  <title>Event detail</title>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="ISO-8859-1">
+    <title>Event detail</title>
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
+<div class="title">
+  <h1>Event detail</h1>
+  <hr>
+</div>
 
 <div class="container">
   <div>
-    <img src="${event.thumbnail}"/>
+    <div>
+        <h3>Thumbnail</h3>
+        <img src="${event.thumbnail}" alt="Image of the event" width="200" height="200"/>
+    </div>
+    <div>
+        <h3>Poster</h3>
+        <img src="${event.poster}" alt="Poster of the event" width="1280" height="300"/>
+    </div>
     <h2>${event.name}</h2>
     <hr>
     <p>

@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <meta charset="utf-8">
     <title>Welcome</title>
 <!--     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"> -->
@@ -16,6 +18,10 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 <div class="headerup"></div>
+<div class="title">
+    <h1>Login</h1>
+    <hr>
+</div>
 <div class="container">
 
        <div style="margin: 30px 0">

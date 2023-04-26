@@ -5,6 +5,7 @@ import com.essentls.resource.Payment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 /**
  * Add a user payment to the payment's table
@@ -14,12 +15,12 @@ import java.sql.SQLException;
  * @since 1.00
  */
 
-public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
+public class UserPaymentSubmitDAO extends AbstractDAO<Boolean> {
 
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "INSERT INTO Payments (id, userId, eventId, method, amount, date, notes) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String STATEMENT = "INSERT INTO public.\"Payments\" (\"userId\", \"eventId\", \"method\", \"amount\", \"date\", \"notes\") VALUES (?, ?, ?, ?, ?, ?)";
 
     /**
      * The payment that must be added
@@ -28,7 +29,7 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
 
 
     /**
-     * Creates a new object for the updating of the tier of a user
+     * Creates a new object for payment
      *
      * @param con    the connection to the database.
      * @param payment  the payment that must be added
@@ -42,26 +43,25 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Payment> {
     protected void doAccess() throws Exception {
 
         PreparedStatement stmt = null;
+        this.outputParam = false;
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setLong(1, payment.getId());
-            stmt.setLong(2, payment.getUserId());
-            stmt.setLong(3, payment.getEventId());
-            stmt.setString(4, payment.getMethod());
-            stmt.setFloat(5, payment.getAmount());
-            stmt.setDate(6, payment.getDate());
-            stmt.setString(7, payment.getNotes());
+            stmt.setLong(1, payment.getUserId());
+            stmt.setLong(2, payment.getEventId());
+            stmt.setObject(3, payment.getMethod(), Types.OTHER);
+            stmt.setFloat(4, payment.getAmount());
+            stmt.setDate(5, payment.getDate());
+            stmt.setString(6, payment.getNotes());
 
-            stmt.executeUpdate();   //add to payment's table
+            this.outputParam = (stmt.executeUpdate() == 1);
 
-            LOGGER.info("Payment %l successfully added to the payment's list.", payment.getId());
+            LOGGER.info("Payment %d successfully added to the payment's list.", payment.getId());
         } finally {
             if (stmt != null)
                 stmt.close();
         }
 
-        con.close();
 
     }
 

@@ -25,7 +25,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
 
         HttpSession session = req.getSession();
         LOGGER.info("session %s:", session);
-        if (session.getAttribute("userId") == null){
+        if (session.getAttribute("sessionUserId") == null){
             req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
         }
         else{
@@ -96,13 +96,13 @@ public class LoginServlet extends AbstractDatabaseServlet {
                 } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
-                    session.setAttribute("userId", user.getId());
-                    session.setAttribute("tier", user.getTier());
+                    session.setAttribute("sessionUserId", user.getId());
+                    session.setAttribute("sessionUserTier", user.getTier());
                     LOGGER.info("the USER %s LOGGED IN",user.getEmail());
     //
                     // login credentials were correct: we redirect the user to the profile page
                     // now the session is active and its data can used to change the profile page
-                    res.sendRedirect(req.getContextPath()+"/profile");
+                    res.sendRedirect(req.getContextPath()+"/home");
     
     //                    req.getRequestDispatcher("/jsp/user/home.jsp").forward(req, res);
                 }
@@ -111,6 +111,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
             //something unexpected happened: we write it into the LOGGER
             //writeError(res, ErrorCode.INTERNAL_ERROR);
             LOGGER.error("stacktrace:", e);
+            throw new ServletException(e);
         }
     }
 

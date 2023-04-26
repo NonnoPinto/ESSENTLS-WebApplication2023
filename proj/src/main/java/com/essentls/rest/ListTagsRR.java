@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A REST resource for searching {@link tag}s .
+ * A REST resource for searching {@link Tag}s .
  *
  * @author Laura Pallante
  * @version 1.00
@@ -26,7 +26,7 @@ public final class ListTagsRR extends AbstractRR {
 
     String subTag;
     /**
-     * Creates a new REST resource for searching {@code Student}s.
+     * Creates a new REST resource for searching {@code Tag}s.
      *
      * @param req the HTTP request.
      * @param res the HTTP response.

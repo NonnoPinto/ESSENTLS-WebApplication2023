@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Event participants</title>
@@ -12,7 +13,10 @@
 
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-
+<div>
+    <h1>Event participants</h1>
+    <hr>
+</div>
 <div class="container">
     <div>
         <h2>${event.name}</h2>
