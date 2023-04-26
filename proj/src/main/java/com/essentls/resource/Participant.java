@@ -11,6 +11,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static com.essentls.resource.AbstractResource.LOGGER;
+
 public class Participant extends User{
     private long userId;
     private long eventId;
@@ -58,12 +60,16 @@ public class Participant extends User{
 
     public List<EventAttribute> getAttributeList() {
         List<EventAttribute> attributeList = new ArrayList<>();
-        JSONObject attributes = new JSONObject(this.attributeValues);
-        Iterator<String> attributesKeys = attributes.keys();
-        while(attributesKeys.hasNext()){
-            String key = attributesKeys.next();
-            String value = attributes.getString(key);
-            attributeList.add(new EventAttribute(key, value));
+        try {
+            JSONObject attributes = new JSONObject(this.attributeValues);
+            Iterator<String> attributesKeys = attributes.keys();
+            while (attributesKeys.hasNext()) {
+                String key = attributesKeys.next();
+                String value = attributes.getString(key);
+                attributeList.add(new EventAttribute(key, value));
+            }
+        }catch(Exception e){
+            LOGGER.error("Invalid attributes on database");
         }
         return attributeList;
     }
