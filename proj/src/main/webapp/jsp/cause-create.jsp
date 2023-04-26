@@ -14,7 +14,10 @@
   <title>Cause Create</title>
 </head>
 <body>
-<h1>Cause Create</h1>
+  <div class="title">
+    <h1>Cause Create</h1>
+    <hr>
+  </div>
 
 <div>
   <label for="causeName">Insert Cause Name:</label>

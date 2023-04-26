@@ -23,6 +23,7 @@
 
         <div class="title">
             <h2>Create Event</h2>
+            <hr>
         </div>
 
         <div class="form">

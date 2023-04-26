@@ -14,7 +14,10 @@
   <title>Cause Search</title>
 </head>
 <body>
-<h1>Cause Search</h1>
+  <div class="title">
+    <h1>Cause Search</h1>
+    <hr>
+  </div>
 
 <div>
   <label for="causeId">Insert ID:</label>

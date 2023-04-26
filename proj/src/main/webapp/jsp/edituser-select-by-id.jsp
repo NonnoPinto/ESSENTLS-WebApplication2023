@@ -21,7 +21,10 @@
 
 <c:out value="user tier is: ${Users.getTier()}"/>
 
-<h1>Select User by ID</h1>
+<div class="title">
+  <h1>Select User by ID</h1>
+  <hr>
+</div>
 
 <form method="POST" action="<c:url value="/select-user-by-id"/>">
     <label for="userId">Id:</label>

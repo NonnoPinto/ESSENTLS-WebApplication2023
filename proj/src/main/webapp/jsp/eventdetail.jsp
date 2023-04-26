@@ -11,6 +11,10 @@
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
+<div class="title">
+  <h1>Event detail</h1>
+  <hr>
+</div>
 
 <div class="container">
   <div>

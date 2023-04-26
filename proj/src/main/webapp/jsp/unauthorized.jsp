@@ -16,6 +16,10 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 <div class="headerup"></div>
+<div class="title">
+    <h1>Login</h1>
+    <hr>
+</div>
 <div class="container">
 
        <div style="margin: 30px 0">

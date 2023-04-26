@@ -12,7 +12,10 @@
 
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-
+<div>
+    <h1>Event participants</h1>
+    <hr>
+</div>
 <div class="container">
     <div>
         <h2>${event.name}</h2>
