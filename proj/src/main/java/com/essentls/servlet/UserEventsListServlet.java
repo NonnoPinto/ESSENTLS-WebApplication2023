@@ -1,12 +1,10 @@
 package com.essentls.servlet;
 
+import com.essentls.dao.ParticipantInfoDAO;
 import com.essentls.dao.UserEventsListDAO;
 import com.essentls.dao.UserJoinedEventsListDAO;
 import com.essentls.dao.UserProfileInfoDAO;
-import com.essentls.resource.Event;
-import com.essentls.resource.Message;
-import com.essentls.resource.Tag;
-import com.essentls.resource.User;
+import com.essentls.resource.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,11 +31,11 @@ public final class UserEventsListServlet extends AbstractDatabaseServlet {
 
 
         //get user of the current session
-        long userId = -1;
+        int userId = -1;
         User user = null;
         Message m = null;
         try {
-            userId = (long) session.getAttribute("sessionUserId");
+            userId = (int) session.getAttribute("sessionUserId");
             user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
         }
         catch (NullPointerException e){

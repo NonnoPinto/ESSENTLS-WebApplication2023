@@ -30,7 +30,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
         LogContext.setAction("EDIT USER");
 
         // request parameters
-        long id = -1;
+        int id = -1;
         String email = null;
         String password = null;
         String cardId = null;
@@ -63,7 +63,7 @@ public class EditUserServlet extends AbstractDatabaseServlet {
 
         try{
             //retrieves the request parameters
-            id = Long.parseLong(req.getParameter("userId"));
+            id = Integer.parseInt(req.getParameter("userId"));
             email = req.getParameter("userEmail");
             password = req.getParameter("userPassword");
             cardId = req.getParameter("userCardId");

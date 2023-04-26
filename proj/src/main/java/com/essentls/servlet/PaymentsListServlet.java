@@ -33,7 +33,7 @@ public class PaymentsListServlet extends AbstractDatabaseServlet{
         LOGGER.info("session: %s", session);
         //User user = (User) session.getAttribute("Users");
         //String userEmail = user.getEmail();
-        long userId = (long) session.getAttribute("sessionUserId");
+        int userId = (int) session.getAttribute("sessionUserId");
         int tier = (int) session.getAttribute("sessionUserTier");
         LOGGER.info("User: %d", userId);
         LOGGER.info("Tier: %d", tier);

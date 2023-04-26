@@ -29,15 +29,15 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
      * UserID
      * TODO: decide how to get this data
      */
-//    private long infoID; //final id?
-    private final long id;
+//    private int infoID; //final id?
+    private final int id;
     /**
      * Creates a new object for gather info about user.
      *
      * @param con    the connection to the database.
      * @param id      the user that made the payments.
      */
-    public UserProfileInfoDAO(final Connection con, final long id) {
+    public UserProfileInfoDAO(final Connection con, final int id) {
         super(con);
 //        this.user = user;
         this.id = id;
@@ -53,8 +53,8 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
         try {
             stmnt = con.prepareStatement(STATEMENT);
-//            stmnt.setLong(1, infoID);
-            stmnt.setLong(1, id);
+//            stmnt.setInt(1, infoID);
+            stmnt.setInt(1, id);
 
             rs = stmnt.executeQuery();
 
@@ -73,7 +73,7 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                 }
 
                 myUser = new User(
-                rs.getLong("id"),
+                rs.getInt("id"),
                 rs.getString("email"),
                 rs.getString("password"),
                 rs.getString("cardId"),

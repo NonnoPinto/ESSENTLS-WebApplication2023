@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import org.json.JSONObject;
 
 public class Event {
-    private long id;
+    private int id;
     private String name;
     private String description;
     private float price;
@@ -27,7 +27,7 @@ public class Event {
 
 
     //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
-    public Event(long id, String name, String description, float price, int visibility, JSONObject location,
+    public Event(int id, String name, String description, float price, int visibility, JSONObject location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd,
                  Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
         this.id = id;
@@ -50,7 +50,7 @@ public class Event {
     }
 
     //Used in the home to get the list of events
-    public Event(long id, String name, String description, float price, JSONObject  location, Timestamp subscriptionEnd) {
+    public Event(int id, String name, String description, float price, JSONObject  location, Timestamp subscriptionEnd) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -60,7 +60,7 @@ public class Event {
     }
 
     // Used in the profile to get a list of the joined events 
-    public Event(long id, String name, Timestamp startDate) {
+    public Event(int id, String name, Timestamp startDate) {
         this.id = id;
         this.name = name;
         this.eventStart = startDate;
@@ -89,7 +89,7 @@ public class Event {
 
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

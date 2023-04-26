@@ -48,9 +48,9 @@ public class UpdateCauseRR extends AbstractRR {
             String path = req.getRequestURI();
             path = path.substring(path.lastIndexOf("causes/id/") + 10);
 
-            final long id = Long.parseLong(path);
+            final int id = Integer.parseInt(path);
 
-            LogContext.setResource(Long.toString(id));
+            LogContext.setResource(Integer.toString(id));
 
             final Cause cause = Cause.fromJSON(req.getInputStream());
 

@@ -28,11 +28,14 @@ public final class IndexServlet extends AbstractDatabaseServlet {
         HttpSession session = req.getSession();
 
         //get user of the current session
-        long userId = -1;
+        int userId = -1;
         User user = null;
         Message m = null;
         try {
-            userId = (long) session.getAttribute("sessionUserId");
+            if(session.getAttribute("sessionUserId") != null) {
+                userId = (int) session.getAttribute("sessionUserId");
+                user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            }
         }
         catch (NullPointerException e){
             LOGGER.error("Cannot search the User: id is not retrieved correctly.", e);
@@ -40,16 +43,12 @@ public final class IndexServlet extends AbstractDatabaseServlet {
             m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
 
         }
-
-        try {
-            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-        } catch (SQLException e) {
+        catch (SQLException e) {
             LOGGER.error("Cannot search the User: unexpected error while accessing the database.", e);
 
             m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
 
         }
-
         //authentication check
         if(user != null){
             resp.sendRedirect(req.getContextPath() + "/home");

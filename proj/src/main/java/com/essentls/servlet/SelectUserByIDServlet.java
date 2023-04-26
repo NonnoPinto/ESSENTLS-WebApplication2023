@@ -28,7 +28,7 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
          LogContext.setAction("SELECT USER BY ID");
 
          //request parameter
-         long id;
+         int id;
 
          //model
          List<User> ul= null;
@@ -37,7 +37,7 @@ public class SelectUserByIDServlet extends AbstractDatabaseServlet {
          try {
                 //creates a user with the request parameter
                 if(!(req.getParameter("userId").equals(""))){
-                    id=Long.parseLong(req.getParameter("userId"));
+                    id=Integer.parseInt(req.getParameter("userId"));
                 }else{
                     throw new NumberFormatException();
                 }

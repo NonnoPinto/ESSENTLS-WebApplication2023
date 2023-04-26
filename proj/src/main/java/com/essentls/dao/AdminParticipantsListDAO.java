@@ -17,9 +17,9 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
 
     private static final String STATEMENT_PARTICIPANTS_LIST = "SELECT * FROM public.\"Participants\" INNER JOIN public.\"Users\" ON public.\"Participants\".\"userId\" = public.\"Users\".\"id\" WHERE \"eventId\" = ?";
 
-    private final long eventId;
+    private final int eventId;
 
-    public AdminParticipantsListDAO(final Connection con, final long eventId) {
+    public AdminParticipantsListDAO(final Connection con, final int eventId) {
         super(con);
         this.eventId = eventId;
     }
@@ -33,7 +33,7 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
 
         try {
             stmt = con.prepareStatement(STATEMENT_PARTICIPANTS_LIST);
-            stmt.setLong(1, this.eventId);
+            stmt.setInt(1, this.eventId);
 
             rs = stmt.executeQuery();
 
@@ -46,13 +46,13 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
                 }
                 participants.add(
                         new Participant(
-                                rs.getLong("userId"),
-                                rs.getLong("eventId"),
+                                rs.getInt("userId"),
+                                rs.getInt("eventId"),
                                 rs.getString("role"),
                                 rs.getTimestamp("date"),
                                 rs.getString("attributeValues"),
                                 new User(
-                                        rs.getLong("id"),
+                                        rs.getInt("id"),
                                         rs.getString("email"),
                                         rs.getString("password"),
                                         rs.getString("cardId"),

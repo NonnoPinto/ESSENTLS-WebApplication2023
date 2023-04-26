@@ -8,7 +8,7 @@ import jakarta.mail.MessagingException;
 import org.json.JSONObject;
 
 public class User {
-    private long id;
+    private int id;
     private String email;
     private String password;
     private String cardId;
@@ -59,7 +59,7 @@ public class User {
         this.emailConfirmed = user.getEmailConfirmed();
     }
 
-    public User(long id, String email, String password, String cardId, int tier, Date registrationDate, String name,
+    public User(int id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, JSONObject homeCountryAddress,
             String homeCountryUniversity, int periodOfStay, String phoneNumber, JSONObject paduaAddress,
             String documentType, String documentNumber, String documentFile, String dietType, String[] allergies, String emailHash, boolean emailConfirmed) {
@@ -88,7 +88,7 @@ public class User {
         this.emailConfirmed = emailConfirmed;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -217,7 +217,7 @@ public class User {
     }
 
     public void setPassword(String _password) {
-        //password longer than 5 char
+        //password inter than 5 char
         if(_password.length() < 5) {
             //send some kind of error message
         }
@@ -230,7 +230,7 @@ public class User {
         }
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

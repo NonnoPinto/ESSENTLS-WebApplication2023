@@ -21,7 +21,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
     private String name;
     private String surname;
-    private long id;
+    private int id;
     private String cardId;
     private String email;
 
@@ -61,8 +61,8 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
             stmt.setString(4, surname);
 
             //search by id
-            stmt.setLong(5, id);
-            stmt.setLong(6, id);
+            stmt.setInt(5, id);
+            stmt.setInt(6, id);
 
             //search by cardID
             stmt.setString(7, cardId);
@@ -83,7 +83,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                 }
                 users.add(
                         new User(
-                                rs.getLong("id"),
+                                rs.getInt("id"),
                                 rs.getString("email"),
                                 rs.getString("password"),
                                 rs.getString("cardId"),

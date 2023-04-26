@@ -90,7 +90,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
         try{
 
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setLong(1, this.event.getId());
+            stmt.setInt(1, this.event.getId());
             stmt.setString(2, this.event.getName());
             stmt.setString(3, this.event.getDescription());
             stmt.setFloat(4, this.event.getPrice());
@@ -107,7 +107,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
             stmt.setObject(15, stringArrayToPGobj(this.event.getAttributes()));
             stmt.setString(16, this.event.getThumbnail());
             stmt.setString(17, this.event.getPoster());
-            stmt.setLong(18, this.event.getId());
+            stmt.setInt(18, this.event.getId());
 
             stmt.executeUpdate();
 

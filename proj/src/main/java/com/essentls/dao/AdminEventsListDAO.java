@@ -35,7 +35,7 @@ public class AdminEventsListDAO extends AbstractDAO<List<Event>> {
                 events.add(
 
                         new Event(
-                                rs.getLong("id"),
+                                rs.getInt("id"),
                                 rs.getString("name"),
                                 rs.getString("description"),
                                 rs.getFloat("price"),

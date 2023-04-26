@@ -39,7 +39,7 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
             if (request.getParameter("id") != null && session.getAttribute("sessionUserId") != null){
 
                 int eventId = Integer.parseInt(request.getParameter("id"));
-                long userId = (long) session.getAttribute("sessionUserId");
+                int userId = (int) session.getAttribute("sessionUserId");
                 User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
                 Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
 
@@ -51,6 +51,8 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
                     }else{
                         throw new SQLException("Error during payment insert");
                     }
+                }else{
+                    response.sendRedirect(request.getContextPath() + "/confirmEvent?id=" + eventId);
                 }
             }
         }catch(Exception e){

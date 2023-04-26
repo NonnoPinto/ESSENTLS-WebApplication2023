@@ -50,7 +50,7 @@ public class CausesCreationDAO extends AbstractDAO<Cause> {
             rs = stmt.executeQuery();   //add to causes' table
 
             if (rs.next()) {
-                c = new Cause(rs.getLong("id"),rs.getString("name"));
+                c = new Cause(rs.getInt("id"),rs.getString("name"));
 
                 LOGGER.info("Cause %s successfully added", c.getName());
             }

@@ -71,9 +71,9 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
             HttpSession session = req.getSession();
-            long userId = -1;
+            int userId = -1;
             if(session.getAttribute("sessionUserId") != null)
-                userId = (long)session.getAttribute("sessionUserId");
+                userId = (int)session.getAttribute("sessionUserId");
             User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
             if(user == null || user.getTier() < 3){ //Auth check TODO make three dynamic
                 req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);

@@ -44,7 +44,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            long id = 0;
+            int id = 0;
             String email = req.getParameter("email").toLowerCase();
             String password = req.getParameter("password");
             String passwordRepeated = req.getParameter("rpassword");

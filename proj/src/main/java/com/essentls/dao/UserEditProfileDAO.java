@@ -49,7 +49,7 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
 
         try {
             stmnt = con.prepareStatement(STATEMENT);
-            stmnt.setLong(1, this.user.getId());
+            stmnt.setInt(1, this.user.getId());
 
             // Initialize mail and pass with old ones
             this.user.setMail(newMail);

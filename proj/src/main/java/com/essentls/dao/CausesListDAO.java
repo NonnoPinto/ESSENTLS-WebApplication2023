@@ -23,9 +23,9 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
                                                         " AND (? = -1 OR id = ?);";
 
     String subCause;
-    long id;
+    int id;
 
-    public CausesListDAO(Connection con, long id, String subCause) {
+    public CausesListDAO(Connection con, int id, String subCause) {
         super(con);
         this.subCause = subCause;
         this.id=id;
@@ -43,15 +43,15 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
             //TODO separate id and tag
             pstmt = con.prepareStatement(STATEMENT_CAUSE_LIST);
             pstmt.setString(1, "%" + subCause + "%");
-            pstmt.setLong(2, id);
-            pstmt.setLong(3, id);
+            pstmt.setInt(2, id);
+            pstmt.setInt(3, id);
 
 
 
             rs = pstmt.executeQuery();
 
             while (rs.next())
-                causes.add(new Cause(rs.getLong("id"),rs.getString("name")));
+                causes.add(new Cause(rs.getInt("id"),rs.getString("name")));
 
             LOGGER.info("%d Cause(s) successfully listed.", causes.size());
 

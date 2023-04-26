@@ -86,7 +86,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                     allergies=(String[]) rs.getArray("allergies").getArray();
                 }
                 user = new User(
-                    rs.getLong("id"),
+                    rs.getInt("id"),
                     rs.getString("email"),
                     rs.getString("password"),
                     rs.getString("cardId"),

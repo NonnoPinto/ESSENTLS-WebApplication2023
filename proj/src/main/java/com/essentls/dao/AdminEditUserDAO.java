@@ -80,7 +80,7 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
             pstmt.setArray(20, con.createArrayOf("text", Arrays.stream(this.user.getAllergies()).map(i -> String.valueOf(i)).toArray()));
             pstmt.setString(21, this.user.getEmailHash());
             pstmt.setBoolean(22, this.user.getEmailConfirmed());
-            pstmt.setLong(23, this.user.getId());
+            pstmt.setInt(23, this.user.getId());
 
 			pstmt.executeUpdate();
 

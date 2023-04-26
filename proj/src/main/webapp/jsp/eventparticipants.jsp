@@ -56,8 +56,8 @@
                     <td>${p.date}</td>
                     <td>
                         <ul>
-                            <c:forEach items="${p.attributeList}" var="att">
-                                <li>${att.name}: ${att.value}</li>
+                            <c:forEach items="${p.attributeMap}" var="att">
+                                <li>${att.key}: ${att.value}</li>
                             </c:forEach>
                         </ul>
                     </td>

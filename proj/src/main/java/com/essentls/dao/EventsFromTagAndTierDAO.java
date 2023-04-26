@@ -55,7 +55,7 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
 
             while (rs.next()) {
                 events.add(new Event(
-                        rs.getLong("id"),
+                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getFloat("price"),

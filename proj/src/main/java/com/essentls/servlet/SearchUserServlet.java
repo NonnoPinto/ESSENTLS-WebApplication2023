@@ -36,7 +36,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
         //request parameter
         String name=null;
         String surname=null;
-        Long id;
+        int id;
         String cardId=null;
         String email=null;
         //model
@@ -46,9 +46,9 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
         try{
             //creates a user with the  request parameter
             if(!(req.getParameter("userId").equals(""))){
-                id=Long.parseLong(req.getParameter("userId"));
+                id=Integer.parseInt(req.getParameter("userId"));
             }else{
-                id= (long) -1;
+                id= (int) -1;
             }
 
             if(!(req.getParameter("userName").equals(""))){

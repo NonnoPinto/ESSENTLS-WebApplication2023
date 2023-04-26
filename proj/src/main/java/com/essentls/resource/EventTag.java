@@ -1,15 +1,15 @@
 package com.essentls.resource;
 
 public class EventTag {
-    private long eventId;
+    private int eventId;
     private String tagName;
     
-    public EventTag(long eventId, String tagName) {
+    public EventTag(int eventId, String tagName) {
         this.eventId = eventId;
         this.tagName = tagName;
     }
 
-    public long getEventId() {
+    public int getEventId() {
         return eventId;
     }
 

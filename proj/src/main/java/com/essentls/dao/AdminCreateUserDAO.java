@@ -84,7 +84,7 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
 
 		try {
 			pstmt = con.prepareStatement(STATEMENT);
-            pstmt.setLong(1, this.user.getId());
+            pstmt.setInt(1, this.user.getId());
             pstmt.setString(2, this.user.getEmail());
             pstmt.setString(3, this.user.getPassword());
             pstmt.setString(4, this.user.getCardId());

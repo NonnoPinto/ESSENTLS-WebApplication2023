@@ -28,7 +28,7 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
      * The user that made the payments
      */
 //    private final User user;
-    private final long userId;
+    private final int userId;
 
     /**
      * Creates a new object for gather payments by user.
@@ -36,7 +36,7 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
      * @param con    the connection to the database.
      * @param userId   the user that made the payments.
      */
-    public UserPaymentsListDAO(final Connection con, final long userId) {
+    public UserPaymentsListDAO(final Connection con, final int userId) {
         super(con);
 //        this.user = user;
         this.userId = userId;
@@ -51,16 +51,16 @@ public final class UserPaymentsListDAO extends AbstractDAO<List<Payment>> {
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setLong(1, userId);
+            stmt.setInt(1, userId);
 
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 payments.add(
                         new Payment(
-                                rs.getLong("id"),
-                                rs.getLong("userId"),
-                                rs.getLong("eventId"),
+                                rs.getInt("id"),
+                                rs.getInt("userId"),
+                                rs.getInt("eventId"),
                                 rs.getString("method"),
                                 rs.getFloat("amount"),
                                 rs.getDate("date"),

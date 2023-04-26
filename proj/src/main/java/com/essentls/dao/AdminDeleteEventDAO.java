@@ -31,7 +31,7 @@ public class AdminDeleteEventDAO extends AbstractDAO<Event>{
 
         try {
             stmnt = con.prepareStatement(STATEMENT);
-            stmnt.setLong(1, this.event.getId());
+            stmnt.setInt(1, this.event.getId());
 
             rs = stmnt.executeQuery();
 

@@ -56,7 +56,7 @@ public final class UpdateConfirmedStatusDAO extends AbstractDAO<Boolean> {
 
                 /* 
                 user = new User(
-                    //rs.getLong("id"),
+                    //rs.getInt("id"),
                     rs.getString("email"),
                     rs.getString("password"),
                     rs.getString("cardId"),

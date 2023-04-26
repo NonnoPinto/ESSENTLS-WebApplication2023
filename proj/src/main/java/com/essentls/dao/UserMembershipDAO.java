@@ -83,13 +83,13 @@ public class UserMembershipDAO extends AbstractDAO<User> {
             pstmt.setString(15, user.getDocumentFile());
             pstmt.setString(16, user.getDietType());
             pstmt.setArray(17, arrayAllergies);
-            pstmt.setLong(18, user.getId());
+            pstmt.setInt(18, user.getId());
 
             rs= pstmt.executeQuery();
 
             if(rs.next()){
                 newUser= new User(
-                        rs.getLong("id"),
+                        rs.getInt("id"),
                         rs.getString("email"),
                         rs.getString("password"),
                         rs.getString("cardId"),
