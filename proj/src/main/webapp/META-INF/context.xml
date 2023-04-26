@@ -12,9 +12,9 @@
               type="javax.sql.DataSource"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://localhost:5433/ESSENTLSDB"
-              username="postgres"
-              password="admin"
+              url="jdbc:postgresql://localhost:5432/essentls"
+              username="essentls"
+              password="essentls"
               testOnBorrow="true"
               validationQuery="SELECT 1"
               timeBetweenEvictionRunsMillis="30000"
@@ -26,6 +26,5 @@
               removeAbandoned="true"
               closeMethod="close"
               antiResourceLocking="true"
-              antiJARLocking="true"
     />
 </Context>
