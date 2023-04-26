@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <meta charset="utf-8">
     <title>Select User by ID</title>
 </head>

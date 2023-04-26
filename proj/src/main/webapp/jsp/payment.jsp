@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <title>Payments</title>
 </head>
 <body>

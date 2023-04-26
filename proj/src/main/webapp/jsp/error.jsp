@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
 <!-- <%@include file="cdn.html" > -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="ISO-8859-1">

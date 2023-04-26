@@ -6,8 +6,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Search User</title>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
+    <meta charset="utf-8">
+    <title>Search User</title>
 </head>
 
 <body>

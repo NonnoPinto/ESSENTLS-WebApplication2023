@@ -13,6 +13,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
     <title>User Edit</title>
 </head>
 
