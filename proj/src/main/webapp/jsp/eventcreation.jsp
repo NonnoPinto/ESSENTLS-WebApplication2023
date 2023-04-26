@@ -56,9 +56,14 @@
 
                 <!--Visibility-->
                 <div style="padding-top: 10px;">
-                    <label for="">Do you want to make it visible?</label>
+                    <label for="">To whom do you want to make it visible?</label>
                     <div class="input-container">
-                         <input type="number" name="visibility" id="visibility" min="0" max="4" required>
+                        <select name="visibility" id="visibility" required>
+                          <option value="0">Tier 0 Users</option>
+                          <option value="1">Tier 1 Users</option>
+                          <option value="2">Tier 2 Users</option>
+                          <option value="3">Tier 3 Users</option>
+                        </select>
                     </div>
                 </div>
 
