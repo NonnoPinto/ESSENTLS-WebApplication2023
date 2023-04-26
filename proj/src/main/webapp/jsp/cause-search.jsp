@@ -11,6 +11,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="description" content="ESN Padova application">
+  <meta name="viewport">
   <title>Cause Search</title>
 </head>
 <body>

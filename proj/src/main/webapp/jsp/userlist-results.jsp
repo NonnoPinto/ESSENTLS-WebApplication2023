@@ -12,7 +12,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>List of found Users</title>
+    <meta name="description" content="ESN Padova application">
+    <meta name="viewport">
+    <title>List of found Users</title>
 </head>
 
 <body>

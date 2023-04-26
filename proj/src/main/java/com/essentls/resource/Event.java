@@ -156,6 +156,18 @@ public class Event {
     public String getPoster() {
         return poster;
     }
+
+    public String getAttributes_asString(){
+        String s = "";
+        if (this.attributes.length == 0){ return "";}
+        if (this.attributes.length ==1){ return this.attributes[0];}
+        s += this.attributes[0];
+        for (int i=2; i<this.attributes.length; i++) {
+            s += ", ";
+            s += this.attributes[i];
+        }
+        return s;
+    }
     
 
     public void setName(String _name){

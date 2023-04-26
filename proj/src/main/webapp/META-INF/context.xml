@@ -26,5 +26,6 @@
               removeAbandoned="true"
               closeMethod="close"
               antiResourceLocking="true"
+              antiJARLocking="true"
     />
 </Context>
