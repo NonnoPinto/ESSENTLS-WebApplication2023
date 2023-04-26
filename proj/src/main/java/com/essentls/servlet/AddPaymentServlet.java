@@ -1,9 +1,6 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.EventInfoDAO;
-import com.essentls.dao.UserCheckEventParticipantDAO;
-import com.essentls.dao.UserJoinsEventDAO;
-import com.essentls.dao.UserProfileInfoDAO;
+import com.essentls.dao.*;
 import com.essentls.resource.Event;
 import com.essentls.resource.Participant;
 import com.essentls.resource.Payment;
@@ -16,11 +13,12 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-@WebServlet(name = "PaymentServlet", value = "/payment")
-public class PaymentServlet extends AbstractDatabaseServlet{
+@WebServlet(name = "AddPaymentServlet", value = "/add_payment")
+public class AddPaymentServlet extends AbstractDatabaseServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -39,24 +37,19 @@ public class PaymentServlet extends AbstractDatabaseServlet{
         try {
             HttpSession session = request.getSession();
             if (request.getParameter("id") != null && session.getAttribute("sessionUserId") != null){
-                Connection transConn = getConnection(); //Connection for transaction
+
                 int eventId = Integer.parseInt(request.getParameter("id"));
                 long userId = (long) session.getAttribute("sessionUserId");
-                User user = new UserProfileInfoDAO(transConn, userId).access(false).getOutputParam();
-                Event event = new EventInfoDAO(transConn, eventId).access(false).getOutputParam();
-                Participant p = new Participant(userId, eventId, null, new Timestamp(System.currentTimeMillis()), "{}", user);
-                /*
-                    If there is place
-                 */
-                if(new UserCheckEventParticipantDAO(transConn, p, false).access(false).getOutputParam() != null) {
-                    if (event.getPrice() > 0) {
-                        session.setAttribute("event_"+eventId, "not_payed");
-                        request.setAttribute("action", "event");
-                        request.setAttribute("event", event);
-                        request.getRequestDispatcher("/jsp/payment.jsp").forward(request, response);
-                    } else { //The event is free, I can redirect to the confirmEvent page
+                User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+                Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
+
+                if(user != null && event != null && session.getAttribute("event_"+eventId).equals("not_payed")) {
+
+                    if (new UserPaymentSubmitDAO(getConnection(), new Payment(0, userId, eventId, "Card", event.getPrice(), new Date(System.currentTimeMillis()), "")).access().getOutputParam()) {
                         session.setAttribute("event_"+eventId, "payed");
                         response.sendRedirect(request.getContextPath() + "/confirmEvent?id=" + eventId);
+                    }else{
+                        throw new SQLException("Error during payment insert");
                     }
                 }
             }
@@ -67,13 +60,5 @@ public class PaymentServlet extends AbstractDatabaseServlet{
 
     private void subPayment(HttpServletRequest request, HttpServletResponse response){
         //TODO Payment of subscription
-        try {
-            request.setAttribute("action", "sub");
-            request.setAttribute("subPrice", 5.00);
-            request.getRequestDispatcher("/jsp/payment.jsp").forward(request, response);
-
-        }catch(Exception e){
-
-        }
     }
 }

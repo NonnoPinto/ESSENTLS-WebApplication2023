@@ -33,17 +33,21 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
             } else {
                 int eventId = Integer.parseInt(request.getParameter("id"));
                 long userId = (long) session.getAttribute("sessionUserId");
-                if(!this.startPartecipation(transConn, eventId, userId)){
-                    transConn.rollback();
-                    transConn.close();
-                }else {
-                    transConn.commit(); //Partecipation confirmed, event payed
-                    transConn.close();
-                    Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
-                    String[] attributes = event.getAttributes();
-                    request.setAttribute("event", event);
-                    request.setAttribute("attributes", attributes);
-                    request.getRequestDispatcher("/jsp/home.jsp").forward(request, response);
+                if(session.getAttribute("event_" + eventId) != null && session.getAttribute("event_" + eventId).equals("payed")) {
+                    if (!this.startPartecipation(transConn, eventId, userId)) {
+                        transConn.rollback();
+                        transConn.close();
+                    } else {
+                        transConn.commit(); //Partecipation confirmed, event payed
+                        transConn.close();
+                        Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
+                        String[] attributes = event.getAttributes();
+                        request.setAttribute("event", event);
+                        request.setAttribute("attributes", attributes);
+                        request.getRequestDispatcher("/jsp/askattributes.jsp").forward(request, response);
+                    }
+                }else{
+                    throw new ServletException("Event not payed");
                 }
             }
         }catch(SQLException e){
