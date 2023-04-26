@@ -13,7 +13,10 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-<h1>Search User</h1>
+<div class="title">
+  <h1>Search User</h1>
+  <hr>
+</div>
 
 <form method="POST" action="<c:url value="/search-users"/>">
   <label for="userId">Id:</label>

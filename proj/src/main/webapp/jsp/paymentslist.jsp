@@ -16,8 +16,10 @@
 </head>
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-
-<h1>Payments list</h1>
+<div class="title">
+    <h1>Payments list</h1>
+    <hr>
+</div>
 <table>
     <thead>
     <tr> 

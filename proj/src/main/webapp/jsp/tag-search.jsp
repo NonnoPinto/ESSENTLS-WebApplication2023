@@ -15,7 +15,10 @@
     <title>Tag Search</title>
 </head>
 <body>
-    <h1>Tag Search</h1>
+    <div class="title">
+        <h1>Tag Search</h1>
+        <hr>
+    </div>
 
     <div>
         <label for="subTag">Insert (part of) Tag, empty for all tags:</label>

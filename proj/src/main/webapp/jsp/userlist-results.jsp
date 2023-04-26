@@ -18,9 +18,10 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 
-<h1>List of found Users</h1>
-<hr/>
-
+<div class="title">
+  <h1>List of found Users</h1>
+  <hr/>
+</div>
 
 <!-- display the list of found users, if any -->
 <c:if test='${not empty userList}'>

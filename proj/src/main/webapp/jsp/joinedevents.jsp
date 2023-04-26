@@ -8,6 +8,10 @@
     </head>
     <body>
         <div class="navbar"><%@include file="navbar.jsp"%></div>
+        <div class="title">
+            <h1>Event List</h1>
+            <hr>
+        </div>
         <div class="container">
         <c:choose>
             <c:when test="${message.isError()}">
