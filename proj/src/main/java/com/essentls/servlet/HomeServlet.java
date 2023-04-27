@@ -71,6 +71,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             int userTier = user.getTier();
 
             String filterTag = req.getParameter("tag");
+            if ("".equals(filterTag)) filterTag = null;
 
             List<Event> events = null;
 
