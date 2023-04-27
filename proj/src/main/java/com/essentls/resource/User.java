@@ -1,5 +1,6 @@
 package com.essentls.resource;
 
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,6 +32,7 @@ public class User {
     private String[] allergies;
     private String emailHash;
     private boolean emailConfirmed;
+    private byte[] documentBytes;
 
     public User(){}
     public User(User user){
@@ -86,6 +88,7 @@ public class User {
         this.allergies = allergies;
         this.emailHash = emailHash;
         this.emailConfirmed = emailConfirmed;
+        this.documentBytes = null;
     }
 
     public int getId() {
@@ -178,6 +181,10 @@ public class User {
 
     public boolean getEmailConfirmed(){
         return emailConfirmed;
+    }
+
+    public byte[] getDocumentBytes() {
+        return documentBytes;
     }
 
     //Mail and password modifers
@@ -308,6 +315,10 @@ public class User {
 
     public void setEmailConfirmed(boolean emailConfirmed) {
         this.emailConfirmed = emailConfirmed;
+    }
+
+    public void setDocumentBytes(byte[] documentBytes) {
+        this.documentBytes = documentBytes;
     }
 
     public JSONObject toJSON() {
