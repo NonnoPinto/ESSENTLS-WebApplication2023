@@ -43,6 +43,13 @@
     <button type="submit">Show Payment List</button>
   </div>
 </form>
+
+<form action="<c:url value="/edit-profile"/>" method="POST">
+  <div>
+    <button type="submit">Edit Profile</button>
+  </div>
+</form>
+
 <footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

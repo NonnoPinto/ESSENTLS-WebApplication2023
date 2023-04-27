@@ -130,6 +130,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>EditUserProfileServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EditUserProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>DocumentDownloadServlet</servlet-name>
         <servlet-class>com.essentls.servlet.DocumentDownloadServlet</servlet-class>
     </servlet>
@@ -260,6 +265,11 @@
         <url-pattern>/download-user-document</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>EditUserProfileServlet</servlet-name>
+        <url-pattern>/edit-profile</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>LoginFilter</filter-name>
@@ -272,6 +282,7 @@
         <url-pattern>/paymentslist</url-pattern>
         <url-pattern>/membership</url-pattern>
         <url-pattern>/edit-user</url-pattern>
+        <url-pattern>/edit-profile</url-pattern>
         <url-pattern>/eventdetail</url-pattern>
         <url-pattern>/joined-events</url-pattern>
         <url-pattern>/confirmEvent</url-pattern>
