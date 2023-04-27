@@ -144,9 +144,6 @@ public class EditUserProfileServlet extends AbstractDatabaseServlet {
                 LOGGER.info("User %d successfully updated.", u.getId());
 
 
-//                req.getRequestDispatcher("/jsp/profile.jsp").forward(req,res);
-
-
             } catch (NumberFormatException e) {
                 m = new Message("Invalid req parameters.");
                 LOGGER.error("Invalid req parameters.", e);
@@ -156,13 +153,15 @@ public class EditUserProfileServlet extends AbstractDatabaseServlet {
             }
 
 
+
+
             if(user == null){
                 req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
             } else {
                 LOGGER.info("User : %s", user);
                 LOGGER.info("User tier: %s", user.getName());
             }
-            req.getRequestDispatcher("/jsp/profile.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/editprofile.jsp").forward(req, res);
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);
         } catch (NullPointerException e) {
