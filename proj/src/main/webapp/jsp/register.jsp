@@ -33,5 +33,6 @@
         </div>
         <button type="submit">Submit</button><br/>
     </form>
+    <footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

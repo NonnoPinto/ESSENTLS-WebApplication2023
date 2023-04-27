@@ -41,5 +41,6 @@
     </c:forEach>
     </tbody>
 </table>
+<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

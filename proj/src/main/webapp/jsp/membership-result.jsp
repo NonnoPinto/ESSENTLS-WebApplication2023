@@ -69,6 +69,6 @@
 
         </c:otherwise>
     </c:choose>
-
+    <footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

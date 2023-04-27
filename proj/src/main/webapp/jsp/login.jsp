@@ -63,6 +63,6 @@
 			Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
 		</p>
 	</div>
-	<footer class="footer"><%-- @ include file="/html/footer.html" --%></footer>
+	<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

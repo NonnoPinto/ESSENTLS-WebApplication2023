@@ -55,5 +55,6 @@
     </tbody>
   </table>
 </c:if>
+<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>
