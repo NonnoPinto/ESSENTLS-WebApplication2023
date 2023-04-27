@@ -40,6 +40,11 @@ public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
         this.userId = userId;
     }
 
+    /**
+     * Execute the query
+     *
+     * @throws SQLException
+     */
     @Override
     public final void doAccess() throws SQLException {
 

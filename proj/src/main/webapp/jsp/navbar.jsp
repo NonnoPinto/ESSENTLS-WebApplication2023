@@ -21,12 +21,14 @@ alt="Logo of ESN Padova" style="max-width: 200px; height: auto;">
 <c:if test="${sessionScope.sessionUserId != null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/profile'/>">Profile</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
-    <a rel="noopener noreferrer nofollow" href="<c:url value='/edit-user'/>">Edit user</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">Logout</a>
 </c:if>
+<br/>
 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/create-event'/>">(Admin) Create event</a>
-</c:if>
-<c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/search-users'/>">(Admin) Search User</a>
+</c:if>
+<c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier >= 4}">
+    <a rel="noopener noreferrer nofollow" href="<c:url value='/cause-create'/>">(Admin) Create cause</a>
+    <a rel="noopener noreferrer nofollow" href="<c:url value='/cause-search'/>">(Admin) Search cause</a>
 </c:if>

@@ -1,27 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vaidas
-  Date: 26/04/2023
-  Time: 01:47
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta name="description" content="ESN Padova application">
-  <meta name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="ISO-8859-1">
   <title>Cause Create</title>
 </head>
-<body>
-  <div class="title">
-    <h1>Cause Create</h1>
-    <hr>
-  </div>
 
-<div>
+<body>
+<div class="navbar"><%@include file="navbar.jsp"%></div>
+
+<div class="containter">
   <label for="causeName">Insert Cause Name:</label>
   <input id="causeName" name="causeName" type="text"/><br/><br/>
 
