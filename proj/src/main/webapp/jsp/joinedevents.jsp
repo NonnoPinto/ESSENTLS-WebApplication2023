@@ -11,7 +11,7 @@
     <body>
         <div class="navbar"><%@include file="navbar.jsp"%></div>
         <div class="title">
-            <h1>Event List</h1>
+            <h1>Joined Events</h1>
             <hr>
         </div>
         <div class="container">
@@ -22,8 +22,6 @@
                 </ul>
             </c:when>
             <c:otherwise>
-                <h1>Joined Events</h1>
-
                 <c:forEach items="${events}" var="event" varStatus="loop">
                     <hr>
                     <li>Event ID: <c:out value="${event.id}"/></li>
