@@ -2,18 +2,23 @@ package com.essentls.servlet;
 
 import com.essentls.dao.*;
 import com.essentls.resource.*;
+
+import java.io.InputStream;
 import java.sql.*;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+@MultipartConfig
 public class EditUserServlet extends AbstractDatabaseServlet {
 
     /**
@@ -109,6 +114,21 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             allergies = req.getParameter("userAllergies").replace(", ",",").split(",");
             emailHash = req.getParameter("userEmailHash");
 
+
+            Part documentBytesPart = req.getPart("userDocumentBytes");
+            byte[] documentBytes = null;
+
+            if (documentBytesPart != null) {
+
+                InputStream documentBytesStream = documentBytesPart.getInputStream();
+
+                documentBytes = new byte[10*1024*1024];
+
+                documentBytesStream.read(documentBytes);
+            }
+
+
+
             try {
             emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}
             catch (Exception e){
@@ -128,6 +148,12 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             LOGGER.info("User %d successfully updated.", u.getId());
 
             u = new AdminUsersListDAO(getConnection(), u).access().getOutputParam().get(0);
+
+            if(documentBytes != null) {
+                u.setDocumentBytes(documentBytes);
+            	new UploadUserDocumentDAO(getConnection(), u).access();
+                u.setDocumentBytes(null);
+            }
 
         } catch (NumberFormatException e) {
             m = new Message("Invalid request parameters.");
