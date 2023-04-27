@@ -20,7 +20,7 @@ public class CauseRemovalDAO extends AbstractDAO<Cause> {
 
     private static final String STATEMENT = "DELETE FROM public.\"Causes\"" +
                                             " WHERE id = ? RETURNING *";
-    private long id=-1;
+    private int id=-1;
 
 
     /**
@@ -30,7 +30,7 @@ public class CauseRemovalDAO extends AbstractDAO<Cause> {
      * @param id   the id of the cause to remove
      *
      */
-    public CauseRemovalDAO(Connection con, final long id) {
+    public CauseRemovalDAO(Connection con, final int id) {
         super(con);
         this.id=id;
 
@@ -46,7 +46,7 @@ public class CauseRemovalDAO extends AbstractDAO<Cause> {
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setLong(1, id);
+            stmt.setInt(1, id);
 
 
             rs = stmt.executeQuery();

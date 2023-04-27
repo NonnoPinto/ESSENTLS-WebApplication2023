@@ -25,7 +25,7 @@ import java.util.List;
 public final class ListCausesRR extends AbstractRR {
 
     String subCause;
-    long id=-1;
+    int id=-1;
     /**
      * Creates a new REST resource for searching {@code Cause}s.
      *
@@ -33,7 +33,7 @@ public final class ListCausesRR extends AbstractRR {
      * @param res the HTTP response.
      * @param con the connection to the database.
      */
-    public ListCausesRR(final HttpServletRequest req, final HttpServletResponse res, Connection con, long id, String subCause) {
+    public ListCausesRR(final HttpServletRequest req, final HttpServletResponse res, Connection con, int id, String subCause) {
         super("LIST_CAUSES", req, res, con);
         this.subCause = subCause;
         this.id=id;

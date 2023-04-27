@@ -51,7 +51,7 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
 
         try {
             pstmt_event = con.prepareStatement(STATEMENT_GET_EVENT);
-            pstmt_event.setLong(1, participant.getEventId());
+            pstmt_event.setInt(1, participant.getEventId());
             rs_event = pstmt_event.executeQuery();
             if(rs_event.next()){
                 maxParticipantsInternational = rs_event.getInt("maxParticipantsInternational");
@@ -60,11 +60,11 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
             }
 
             pstmt_participants = con.prepareStatement(STATEMENT_GET_PARTICIPANTS);
-            pstmt_participants.setLong(1, participant.getEventId());
+            pstmt_participants.setInt(1, participant.getEventId());
             rs_participants = pstmt_participants.executeQuery();
 
             while (rs_participants.next()) {
-                if(rs_participants.getLong("userId") == participant.getUserId()){
+                if(rs_participants.getInt("userId") == participant.getUserId()){
                     alreadyPartecipating = true;
                 }
                 if(rs_participants.getString("role").equals("WaitingList"))

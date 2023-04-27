@@ -26,9 +26,9 @@ public class ProfileServlet extends AbstractDatabaseServlet {
 
         HttpSession session = request.getSession();
         LOGGER.info("session: %s", session);
-        long userId=-1;
+        int userId=-1;
         try{
-            userId = (long) session.getAttribute("sessionUserId"); // retrieve the user id string from session
+            userId = (int) session.getAttribute("sessionUserId"); // retrieve the user id string from session
         } catch (NullPointerException e) {
             LOGGER.error("stacktrace:", e);
 

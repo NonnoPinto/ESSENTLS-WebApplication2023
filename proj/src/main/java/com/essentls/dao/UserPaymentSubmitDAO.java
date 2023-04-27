@@ -47,8 +47,11 @@ public class UserPaymentSubmitDAO extends AbstractDAO<Boolean> {
 
         try {
             stmt = con.prepareStatement(STATEMENT);
-            stmt.setLong(1, payment.getUserId());
-            stmt.setLong(2, payment.getEventId());
+            stmt.setInt(1, payment.getUserId());
+            if(payment.getEventId() != 0)
+                stmt.setInt(2, payment.getEventId());
+            else
+                stmt.setNull(2, Types.INTEGER);
             stmt.setObject(3, payment.getMethod(), Types.OTHER);
             stmt.setFloat(4, payment.getAmount());
             stmt.setDate(5, payment.getDate());

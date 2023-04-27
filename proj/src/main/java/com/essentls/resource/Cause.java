@@ -11,10 +11,10 @@ import java.io.OutputStream;
 
 public class Cause extends AbstractResource{
 
-    private long id;
+    private int id;
     private String name;
 
-    public Cause(long id, String name) {
+    public Cause(int id, String name) {
         this.name = name;
         this.id = id;
     }
@@ -22,7 +22,7 @@ public class Cause extends AbstractResource{
     public String getName() {
         return this.name;
     }
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
 
@@ -30,7 +30,7 @@ public class Cause extends AbstractResource{
         this.name = name;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -63,7 +63,7 @@ public class Cause extends AbstractResource{
     public static Cause fromJSON(final InputStream in) throws IOException  {
 
         // the fields read from JSON
-        long id = -1;
+        int id = -1;
         String name = null;
 
 
@@ -88,7 +88,7 @@ public class Cause extends AbstractResource{
                     switch (jp.getCurrentName()) {
                         case "id" -> {
                             jp.nextToken();
-                            id = jp.getLongValue();
+                            id = jp.getIntValue();
                         }
                         case "name" -> {
                             jp.nextToken();

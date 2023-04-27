@@ -36,8 +36,8 @@ public class UserJoinsEventDAO extends AbstractDAO<Boolean> {
         try {
             if(participant.getRole() != null){
                 pstmt_joinEvent = con.prepareStatement(STATEMENT_JOIN_EVENT);
-                pstmt_joinEvent.setLong(1, participant.getUserId());
-                pstmt_joinEvent.setLong(2, participant.getEventId());
+                pstmt_joinEvent.setInt(1, participant.getUserId());
+                pstmt_joinEvent.setInt(2, participant.getEventId());
                 pstmt_joinEvent.setObject(3, participant.getRole(), Types.OTHER);
                 pstmt_joinEvent.setTimestamp(4, participant.getDate());
                 pstmt_joinEvent.setObject(5, participant.getAttributeValues(), Types.OTHER);

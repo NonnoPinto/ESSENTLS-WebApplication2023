@@ -6,15 +6,15 @@ import java.sql.Timestamp;
 import org.json.JSONObject;
 
 public class Payment {
-    private long id;
-    private long userId;
-    private long eventId;
+    private int id;
+    private int userId;
+    private int eventId;
     private String method;
     private float amount;
     private Date date;
     private String notes;
     
-    public Payment(long id, long userId, long eventId, String method, float amount, Date date, String notes) {
+    public Payment(int id, int userId, int eventId, String method, float amount, Date date, String notes) {
         this.id = id;
         this.userId = userId;
         this.eventId = eventId;
@@ -24,15 +24,15 @@ public class Payment {
         this.notes = notes;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public long getEventId() {
+    public int getEventId() {
         return eventId;
     }
 

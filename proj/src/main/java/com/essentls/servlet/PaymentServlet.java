@@ -41,7 +41,7 @@ public class PaymentServlet extends AbstractDatabaseServlet{
             if (request.getParameter("id") != null && session.getAttribute("sessionUserId") != null){
                 Connection transConn = getConnection(); //Connection for transaction
                 int eventId = Integer.parseInt(request.getParameter("id"));
-                long userId = (long) session.getAttribute("sessionUserId");
+                int userId = (int) session.getAttribute("sessionUserId");
                 User user = new UserProfileInfoDAO(transConn, userId).access(false).getOutputParam();
                 Event event = new EventInfoDAO(transConn, eventId).access(false).getOutputParam();
                 Participant p = new Participant(userId, eventId, null, new Timestamp(System.currentTimeMillis()), "{}", user);

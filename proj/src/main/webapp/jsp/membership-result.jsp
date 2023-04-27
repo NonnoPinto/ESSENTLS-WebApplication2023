@@ -20,8 +20,8 @@
             <c:out value="${message}"/>
         </c:when>
         <c:otherwise>
-            <c:out value="${user.getId()} successfully edited."/>
-            <br/>
+            <c:out value="Membership request added."/>
+            <!--<br/>
             <c:out value="Email: ${user.getEmail()}"/>
             <br/>
             <c:out value="CardId: ${user.getCardId()}"/>
@@ -61,7 +61,12 @@
             <c:out value="Allergies: ${Arrays.toString(user.getAllergies())}"/>
             <br/>
             <c:out value="Email Confirmed: ${user.getEmailConfirmed()}"/>
-            <br/>
+            <br/>-->
+
+            How do you want to pay for the membership?<br/>
+            <a href="payment?action=sub"><button>ONLINE</button></a>
+            <a href="home"><button>CASH</button></a>
+
         </c:otherwise>
     </c:choose>
 

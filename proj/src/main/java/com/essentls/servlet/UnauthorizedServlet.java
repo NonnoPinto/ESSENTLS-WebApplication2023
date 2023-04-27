@@ -1,12 +1,7 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.EventsFromTagAndTierDAO;
-import com.essentls.dao.TagsListDAO;
-import com.essentls.dao.UserEventsListDAO;
 import com.essentls.dao.UserProfileInfoDAO;
-import com.essentls.resource.Event;
 import com.essentls.resource.Message;
-import com.essentls.resource.Tag;
 import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,10 +11,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet(name = "IndexServlet", urlPatterns = {"", "/index"})
-public final class IndexServlet extends AbstractDatabaseServlet {
+public final class UnauthorizedServlet extends AbstractDatabaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,7 +49,7 @@ public final class IndexServlet extends AbstractDatabaseServlet {
         }
         else {
             try {
-                req.getRequestDispatcher("/jsp/index.jsp").forward(req, resp);
+                req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, resp);
             } catch (Exception e) {
                 throw e;
             }

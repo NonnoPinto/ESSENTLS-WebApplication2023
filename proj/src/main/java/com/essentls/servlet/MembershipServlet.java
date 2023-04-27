@@ -39,7 +39,7 @@ public class MembershipServlet extends AbstractDatabaseServlet {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            long id = (long) req.getSession().getAttribute("sessionUserId");
+            int id = (int) req.getSession().getAttribute("sessionUserId");
 //            String email = req.getParameter("email").toLowerCase();
 //            String password = req.getParameter("password");
 //            String passwordRepeated = req.getParameter("rpassword");

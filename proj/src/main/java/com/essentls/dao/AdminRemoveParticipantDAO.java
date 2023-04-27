@@ -25,8 +25,8 @@ public class AdminRemoveParticipantDAO extends AbstractDAO<Participant>{
         try {
 
             stmt = con.prepareStatement(STATEMENT_REMOVE_PARTICIPANT);
-            stmt.setLong(1, this.participant.getUserId());
-            stmt.setLong(2, this.participant.getEventId());
+            stmt.setInt(1, this.participant.getUserId());
+            stmt.setInt(2, this.participant.getEventId());
 
             stmt.executeUpdate();
 

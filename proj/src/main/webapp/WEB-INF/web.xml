@@ -70,6 +70,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>EditEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EditEventServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>EditUserServlet</servlet-name>
         <servlet-class>com.essentls.servlet.EditUserServlet</servlet-class>
     </servlet>
@@ -102,6 +107,11 @@
     <servlet>
         <servlet-name>AddPaymentServlet</servlet-name>
         <servlet-class>com.essentls.servlet.AddPaymentServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UnauthorizedServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UnauthorizedServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -204,6 +214,12 @@
         <servlet-name>AddPaymentServlet</servlet-name>
         <url-pattern>/add_payment</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UnauthorizedServlet</servlet-name>
+        <url-pattern>/unauthorized</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>LoginFilter</filter-name>

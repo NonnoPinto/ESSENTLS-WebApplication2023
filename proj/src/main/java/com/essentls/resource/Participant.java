@@ -1,26 +1,20 @@
 package com.essentls.resource;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static com.essentls.resource.AbstractResource.LOGGER;
 
 public class Participant extends User{
-    private long userId;
-    private long eventId;
+    private int userId;
+    private int eventId;
     private String role;
     private Timestamp date;
     private String attributeValues;
 
-    public Participant(long userId, long eventId, String role, Timestamp date, String attributeValues) {
+    public Participant(int userId, int eventId, String role, Timestamp date, String attributeValues) {
         super();
         this.userId = userId;
         this.eventId = eventId;
@@ -29,7 +23,7 @@ public class Participant extends User{
         this.attributeValues = attributeValues;
     }
 
-    public Participant(long userId, long eventId, String role, Timestamp date, String attributeValues, User user) {
+    public Participant(int userId, int eventId, String role, Timestamp date, String attributeValues, User user) {
         super(user);
         this.userId = userId;
         this.eventId = eventId;
@@ -38,11 +32,11 @@ public class Participant extends User{
         this.attributeValues = attributeValues;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public long getEventId() {
+    public int getEventId() {
         return eventId;
     }
 
@@ -58,15 +52,15 @@ public class Participant extends User{
         return attributeValues;
     }
 
-    public List<EventAttribute> getAttributeList() {
-        List<EventAttribute> attributeList = new ArrayList<>();
+    public Map<String, String> getAttributeMap() {
+        Map<String, String> attributeList = new HashMap<>();
         try {
             JSONObject attributes = new JSONObject(this.attributeValues);
             Iterator<String> attributesKeys = attributes.keys();
             while (attributesKeys.hasNext()) {
                 String key = attributesKeys.next();
                 String value = attributes.getString(key);
-                attributeList.add(new EventAttribute(key, value));
+                attributeList.put(key, value);
             }
         }catch(Exception e){
             LOGGER.error("Invalid attributes on database");

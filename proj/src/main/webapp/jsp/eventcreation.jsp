@@ -32,7 +32,9 @@
 
                 <!--Name-->
                 <div style="padding-top: 10px;">
-                    <label for="">Event's name:</label>
+                    <label>
+                        Event's name
+                    </label>
                     <div class="input-container">
                         <input type="text" name="name" id="name" placeholder="Name.." required>
                     </div>

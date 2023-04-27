@@ -51,7 +51,7 @@ public class DeleteCauseRR extends AbstractRR{
 
 
             // creates a new DAO for accessing the database and deleting a cause
-            delCause=new CauseRemovalDAO(con, Long.parseLong(path)).access().getOutputParam();
+            delCause=new CauseRemovalDAO(con, Integer.parseInt(path)).access().getOutputParam();
             LOGGER.info("cause %s removal", path);
 
             if (delCause != null) {

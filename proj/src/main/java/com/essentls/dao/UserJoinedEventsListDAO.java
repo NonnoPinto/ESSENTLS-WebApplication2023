@@ -27,7 +27,7 @@ public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
     /**
      * The id of the current user
      */
-    private final long userId;
+    private final int userId;
 
     /**
      * Creates a new object for gather events by userId.
@@ -35,7 +35,7 @@ public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
      * @param con    the connection to the database.
      * @param userId  the id of the current user
      */
-    public UserJoinedEventsListDAO(final Connection con, final long userId) {
+    public UserJoinedEventsListDAO(final Connection con, final int userId) {
         super(con);
         this.userId = userId;
     }
@@ -51,7 +51,7 @@ public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
 
         try {
             pstmt = con.prepareStatement(STATEMENT);
-            pstmt.setLong(1, this.userId);
+            pstmt.setInt(1, this.userId);
 
             rs = pstmt.executeQuery();
 

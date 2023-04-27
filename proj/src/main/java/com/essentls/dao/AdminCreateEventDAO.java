@@ -89,7 +89,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
 
         try{
             stmt = con.prepareStatement(STATEMENT);
-            //stmt.setLong(1, this.event.getId());
+            //stmt.setInt(1, this.event.getId());
             stmt.setString(1, this.event.getName());
             stmt.setString(2, this.event.getDescription());
             stmt.setFloat(3, this.event.getPrice());

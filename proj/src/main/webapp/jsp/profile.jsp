@@ -23,7 +23,6 @@
 <div>
   <div class="title">
     <h1>Profile page</h1>
-    <hr>
   </div>
   <hr>
   <h3>${Users.name} ${Users.surname}</h3>

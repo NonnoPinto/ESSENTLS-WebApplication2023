@@ -20,9 +20,9 @@ public class JoinedEventsListDAO extends AbstractDAO<List<Event>> {
     private static final String STATEMENT_JOINED_EVENTS = "SELECT e.id, e.name, e.\"startDate\" from public.\"Participants\" AS p INNER JOIN public.\"Events\" AS e " +
     "on p.\"eventId\" = e.id where p.\"userId\" = ?;";
 
-    private final long userId;
+    private final int userId;
 
-    public JoinedEventsListDAO(Connection con, long userId) {
+    public JoinedEventsListDAO(Connection con, int userId) {
         super(con);
         this.userId = userId;
     }
@@ -37,12 +37,12 @@ public class JoinedEventsListDAO extends AbstractDAO<List<Event>> {
 
         try {
             pstmt = con.prepareStatement(STATEMENT_JOINED_EVENTS);
-            pstmt.setLong(1, userId);
+            pstmt.setInt(1, userId);
         
             rs = pstmt.executeQuery();
 
             while (rs.next())
-                joinedEvents.add(new Event(rs.getLong("id"), rs.getString("name"), rs.getTimestamp("date")));
+                joinedEvents.add(new Event(rs.getInt("id"), rs.getString("name"), rs.getTimestamp("date")));
         
             LOGGER.info("Event(s) joined by user %d successfully listed.", userId);
             

@@ -35,11 +35,11 @@ public final class HomeServlet extends AbstractDatabaseServlet {
 
 
         //get user of the current session
-        long userId = -1;
+        int userId = -1;
         User user = null;
         Message m = null;
         try {
-            userId = (long) session.getAttribute("sessionUserId");
+            userId = (int) session.getAttribute("sessionUserId");
         }
         catch (NullPointerException e){
             LOGGER.error("Cannot search the User: id is not retrieved correctly.", e);

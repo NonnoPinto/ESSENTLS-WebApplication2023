@@ -44,7 +44,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            long id = 0;
+            int id = 0;
             String email = req.getParameter("email").toLowerCase();
             String password = req.getParameter("password");
             String passwordRepeated = req.getParameter("rpassword");
@@ -79,14 +79,14 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                         null,null,null,null,null,
                         null,null,emailHash,emailConfirmed);
 
-            //uncomment when smtp service is set
-            //sendCreationConfirmationEmail(user);
-            //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
+                //uncomment when smtp service is set
+                // sendCreationConfirmationEmail(user);
+                //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
-            //m = new Message(String.format("user %s successfully created and confirmation email successfully sent.", user.getEmail()));
-            // try to find the user in the database
-            LOGGER.info("user %s is trying to register",email);
-            new UserRegistrationDAO(getConnection(), user).doAccess();
+                //m = new Message(String.format("user %s successfully created and confirmation email successfully sent.", user.getEmail()));
+                // try to find the user in the database
+                LOGGER.info("user %s is trying to register",email);
+                new UserRegistrationDAO(getConnection(), user).doAccess();
 
             }
 
@@ -118,6 +118,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             m = new Message(true, "Is not possible to register this user. Please try to fill the form again, if problem persist contact us!");
             req.setAttribute("message", m);
             req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
+//        } catch (MessagingException e) {
+//            throw new RuntimeException(e);
         }
         try{
             //stores the users list and the message as a request attribute

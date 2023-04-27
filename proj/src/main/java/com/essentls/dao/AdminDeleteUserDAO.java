@@ -13,7 +13,7 @@ public class AdminDeleteUserDAO extends AbstractDAO<User>{
     /**
 	 * The id of the user
 	 */
-	private final long user_id;
+	private final int user_id;
 
     /**
      * Creates a new object for deleting an User
@@ -36,7 +36,7 @@ public class AdminDeleteUserDAO extends AbstractDAO<User>{
 
 		try {
 			pstmt = con.prepareStatement(STATEMENT);
-            pstmt.setLong(1, this.user_id);
+            pstmt.setInt(1, this.user_id);
 
 			rs = pstmt.executeQuery();
 
