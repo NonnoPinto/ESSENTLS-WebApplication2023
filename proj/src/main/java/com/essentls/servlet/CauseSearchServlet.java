@@ -24,7 +24,7 @@ public final class CauseSearchServlet extends AbstractDatabaseServlet {
 
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
-        LogContext.setAction("CREATE CAUSE");
+        LogContext.setAction("SEARCH CAUSE");
 
         req.getRequestDispatcher("/jsp/cause-search.jsp").forward(req, res);
     }
