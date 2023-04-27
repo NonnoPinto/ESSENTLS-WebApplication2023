@@ -20,7 +20,7 @@
         </c:when>
         <c:otherwise></c:otherwise>
     </c:choose>
-    <form method="POST" action="<c:url value="/membership"/>">
+    <form method="POST" action="<c:url value="/membership"/>" enctype="multipart/form-data">
         <div>
             <label for="sex">Please select your gender:</label>
             <select name="sex"> 
@@ -82,8 +82,10 @@
                 <option value="Kosher">Kosher</option>
                 <option value="Pescatarian">Pescatarian</option>
             </select><br><br>
-            <label for="allergies">Allergies: (please use commas to separate them)</label>
+            <label for="allergies">Allergies: (please use commas to separate them):</label>
             <input name="allergies" type="text"><br><br>
+            <label for="document-bytes">Upload Document:</label>
+            <input id="document-bytes" name="document-bytes" type="file" required/><br/><br/>
         </div>
         <button type="submit">Submit</button><br/>
     </form>

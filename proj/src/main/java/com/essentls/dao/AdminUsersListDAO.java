@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
-    private static final String STATEMENT_USERS_LIST = "SELECT * FROM public.\"Users\"" +
+    private static final String STATEMENT_USERS_LIST = "SELECT id, email, password, \"cardID\", tier, \"registrationDate\", " +
+                                                        "name, surname, sex, \"dateOfBirth\", nationality, \"homeCountryAddress\", " +
+                                                        "\"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", \"paduaAddress\", " +
+                                                        "\"documentType\", \"documentNumber\", \"documentFile\", \"dietType\", allergies, " +
+                                                        "\"emailHash\", \"emailConfirmed\" FROM public.\"Users\"" +
                                                         " WHERE (? IS NULL OR name = ?)" +
                                                         " AND (? IS NULL OR surname = ?)" +
                                                         " AND (? = -1 OR id = ?)" +

@@ -30,7 +30,7 @@
   <table>
     <thead>
     <tr>
-      <th>id</th><th>name</th><th>surname</th><th>sex</th><th>dateOfBirth</th><th>cardId</th><th>tier</th><th>edit</th>
+      <th>id</th><th>name</th><th>surname</th><th>sex</th><th>dateOfBirth</th><th>cardId</th><th>tier</th>
     </tr>
     </thead>
 
@@ -49,6 +49,11 @@
             <input type="hidden" name="userId" value="${user.getId()}"/>
             <button type="submit">Edit</button>
           </form>
+        </td>
+        <td>
+          <form method="POST" action="<c:url value="/download-user-document"/>">
+            <input type="hidden" name="userId" value="${user.getId()}"/>
+            <button type="submit">Document</button>
         </td>
       </tr>
     </c:forEach>

@@ -1,13 +1,16 @@
 package com.essentls.servlet;
 
+import com.essentls.dao.UploadUserDocumentDAO;
 import com.essentls.dao.UserMembershipDAO;
 import com.essentls.resource.Message;
 import com.essentls.resource.User;
 import com.essentls.utils.ErrorCode;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.json.JSONObject;
 
@@ -16,6 +19,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+@MultipartConfig
 @WebServlet(name = "MembershipServlet", value = "/membership")
 public class MembershipServlet extends AbstractDatabaseServlet {
 
@@ -94,7 +98,10 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 String dietType = req.getParameter("diet-type");
                 String[] allergies = req.getParameter("allergies").split(",");
                 //String emailHash = email.hashCode()+"";//TODO: hashme
-                Boolean emailConfirmed = false;
+                Boolean emailConfirmed = true;
+
+                Part documentBytesPart = req.getPart("document-bytes");
+                byte[] documentBytes = documentBytesPart.getInputStream().readAllBytes();
 
                 user = new User(id, null, null, cardId, tier, registrationDate, name, surname, sex, date2,
                         nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress,
@@ -104,6 +111,12 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 LOGGER.info("user %s is trying to membership", user.getEmail());
                 if(new UserMembershipDAO(getConnection(), user).access().getOutputParam() != null) {
                     req.getSession().setAttribute("sessionUserTier", 1);
+                }
+
+                if(documentBytes.length > 0) {
+                    user.setDocumentBytes(documentBytes);
+                    new UploadUserDocumentDAO(getConnection(), user).access().getOutputParam();
+                    user.setDocumentBytes(null);
                 }
             }
 
