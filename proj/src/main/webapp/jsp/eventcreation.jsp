@@ -183,6 +183,6 @@
             </form>
         </div>
     </div>
-    <footer class="footer"><%-- @ include file="/html/footer.html" --%></footer>       
+    <footer class="footer"><%@include file="/html/footer.html"%></footer>  
 </body>
 </html>
