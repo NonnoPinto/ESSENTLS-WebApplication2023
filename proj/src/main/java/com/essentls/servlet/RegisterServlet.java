@@ -74,6 +74,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
             } else {
+                emailConfirmed = true; //Forcing confirmation until mail works
                 user= new User(id,email,password,null,tier,null,null,null,null,
                         null,null,null,null,0,
                         null,null,null,null,null,
