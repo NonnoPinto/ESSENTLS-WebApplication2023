@@ -60,12 +60,12 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
 
             if (rs.next()) {
                 JSONObject paduaAddress=new JSONObject();
-                if(!(rs.getObject("paduaAddress")==null)){
-                    paduaAddress=new JSONObject(rs.getObject("paduaAddress", PGobject.class));
+                if(!(rs.getObject("paduaAddress", PGobject.class)==null)){
+                    paduaAddress=new JSONObject(rs.getObject("paduaAddress", PGobject.class).getValue());
                 }
                 JSONObject homeCountryAddress= new JSONObject();
                 if(!(rs.getObject("homeCountryAddress")==null)){
-                    homeCountryAddress=new JSONObject(rs.getObject("homeCountryAddress", PGobject.class));
+                    homeCountryAddress=new JSONObject(rs.getObject("homeCountryAddress", PGobject.class).getValue());
                 }
                 String[] allergies= {};
                 if(!(rs.getArray("allergies")==null)){
