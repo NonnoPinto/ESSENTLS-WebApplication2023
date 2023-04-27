@@ -176,15 +176,17 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                     Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
                     maxWaitingList, attributes, thumbnail, poster);
 
+
             // creates a new object for accessing the database and stores the event
-            new AdminCreateEventDAO(getConnection(), e).access();
+            int eventID = new AdminCreateEventDAO(getConnection(), e).access().getOutputParam();
 
             m = new Message(String.format("Event \""+e.getName()+"\" successfully created."));
 
             LOGGER.info("Event \""+e.getName()+"\" successfully created in the database.");
 
-            req.setAttribute("message", m);
-            req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
+            req.getSession().setAttribute("organizer", eventID);
+
+            res.sendRedirect(req.getContextPath()+"/payment?action=event&id="+eventID);
 
         } catch (NumberFormatException ex) {
             m = new Message(
