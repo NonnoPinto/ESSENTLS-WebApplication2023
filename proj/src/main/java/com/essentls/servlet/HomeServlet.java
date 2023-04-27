@@ -2,7 +2,10 @@ package com.essentls.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.essentls.dao.*;
 import com.essentls.resource.*;
@@ -78,11 +81,12 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             if(filterSrch == null) filterSrch="";
             else filterSrch=filterSrch.trim();
 
-            List<Event> events = null;
+            List<Event> events = new ArrayList<>();
 
             List<Tag> tags = null;
             List<Cause> causes = null;
             Cause cause = null;
+            Map<Integer,Boolean> isOrganizer = new HashMap<>();
 
             try {
 
@@ -91,6 +95,16 @@ public final class HomeServlet extends AbstractDatabaseServlet {
 
                 else
                     events = new UserEventsListDAO(getConnection(), userTier).access().getOutputParam();
+
+                for(Event e: events){
+                    List<Participant> participantsList = new AdminParticipantsListDAO(getConnection(), e.getId()).access().getOutputParam();
+                    isOrganizer.put(e.getId(), false);
+                    for(Participant p: participantsList){
+                        if(p.getRole().equals("Organizer")){
+                            isOrganizer.put(e.getId(), p.getUserId() == userId);
+                        }
+                    }
+                }
 
                 LOGGER.info("Events successfully retrieved by tier %d.", userTier);
 
@@ -131,6 +145,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
                 req.setAttribute("srch", filterSrch);
                 req.setAttribute("causes", causes);
                 req.setAttribute("message", m);
+                req.setAttribute("isOrganizer", isOrganizer);
                 req.getRequestDispatcher("/jsp/home.jsp").forward(req, resp);
             } catch (Exception e) {
                 

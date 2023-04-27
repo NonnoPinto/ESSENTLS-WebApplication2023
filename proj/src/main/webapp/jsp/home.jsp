@@ -54,8 +54,12 @@
                         <button name="id" value="${event.id}">Details</button>
                     </form>
                     <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 1}">
-                        <a href="eventparticipants?id=${event.id}"><button>(Admin) Participants List</button></a>
-                        <a href="editEvent?id=${event.id}"><button>(Admin) Edit</button></a>
+                        <c:forEach items="${isOrganizer}" var="org" varStatus="loop">
+                            <c:if test="${org.key==event.id && org.value}">
+                                <a href="eventparticipants?id=${event.id}"><button>(Organizer) Participants List</button></a>
+                                <a href="editEvent?id=${event.id}"><button>(Organizer) Edit</button></a>
+                            </c:if>
+                        </c:forEach>
                     </c:if>
                 </c:forEach>
             </c:otherwise>

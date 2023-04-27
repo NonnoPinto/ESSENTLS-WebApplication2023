@@ -25,8 +25,6 @@ public class Event {
     private String thumbnail;
     private String poster;
 
-
-    //TODO: in JoinedEventsList, Event has less argouments: maybe a default constructor?
     public Event(int id, String name, String description, float price, int visibility, JSONObject location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd,
                  Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
