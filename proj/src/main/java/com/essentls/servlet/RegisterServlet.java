@@ -80,7 +80,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                         null,null,emailHash,emailConfirmed);
 
                 //uncomment when smtp service is set
-                sendCreationConfirmationEmail(user);
+                //sendCreationConfirmationEmail(user);
                 //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
                 //m = new Message(String.format("user %s successfully created and confirmation email successfully sent.", user.getEmail()));
@@ -118,8 +118,6 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             m = new Message(true, "Is not possible to register this user. Please try to fill the form again, if problem persist contact us!");
             req.setAttribute("message", m);
             req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
         }
         try{
             //stores the users list and the message as a request attribute

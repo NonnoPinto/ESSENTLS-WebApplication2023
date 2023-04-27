@@ -45,14 +45,17 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
 
                 if(user != null && event != null && session.getAttribute("event_"+eventId).equals("not_payed")) {
 
-                    if (new UserPaymentSubmitDAO(getConnection(), new Payment(0, userId, eventId, "Card", event.getPrice(), new Date(System.currentTimeMillis()), "")).access().getOutputParam()) {
+                    if (new UserPaymentSubmitDAO(getConnection(), new Payment(0, userId, eventId, "Card", event.getPrice(), new Date(System.currentTimeMillis()), "Event")).access().getOutputParam()) {
                         session.setAttribute("event_"+eventId, "payed");
                         response.sendRedirect(request.getContextPath() + "/confirmEvent?id=" + eventId);
                     }else{
                         throw new SQLException("Error during payment insert");
                     }
                 }else{
-                    response.sendRedirect(request.getContextPath() + "/confirmEvent?id=" + eventId);
+                    if(user != null && event != null)
+                        response.sendRedirect(request.getContextPath() + "/confirmEvent?id=" + eventId);
+                    else
+                        throw new ServletException("Unexpected error");
                 }
             }
         }catch(Exception e){
@@ -60,7 +63,17 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
         }
     }
 
-    private void subPayment(HttpServletRequest request, HttpServletResponse response){
-        //TODO Payment of subscription
+    private void subPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try {
+            HttpSession session = request.getSession();
+            if (session.getAttribute("sessionUserId") != null) {
+                int userId = (int) session.getAttribute("sessionUserId");
+                if (new UserPaymentSubmitDAO(getConnection(), new Payment(0, userId, 0, "Card", 5, new Date(System.currentTimeMillis()), "Membership")).access().getOutputParam()) {
+                    response.sendRedirect(request.getContextPath() + "/home");
+                }
+            }
+        }catch(Exception e){
+            throw new ServletException(e);
+        }
     }
 }
