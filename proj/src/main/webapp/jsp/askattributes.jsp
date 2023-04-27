@@ -6,7 +6,6 @@
 <html>
 <head>
     <meta name="description" content="ESN Padova application">
-    <meta name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Event registration: additional information required</title>

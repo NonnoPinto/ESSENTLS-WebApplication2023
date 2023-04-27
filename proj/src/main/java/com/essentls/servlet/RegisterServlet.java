@@ -80,7 +80,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                         null,null,emailHash,emailConfirmed);
 
                 //uncomment when smtp service is set
-                //sendCreationConfirmationEmail(user);
+                // sendCreationConfirmationEmail(user);
                 //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
                 //m = new Message(String.format("user %s successfully created and confirmation email successfully sent.", user.getEmail()));

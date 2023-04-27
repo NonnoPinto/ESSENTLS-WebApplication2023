@@ -5,7 +5,6 @@
 <html lang="en">
 <head>
     <meta name="description" content="ESN Padova application">
-    <meta name="viewport">
     <meta charset="utf-8">
     <title>Welcome</title>
 <!--     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"> -->
