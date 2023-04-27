@@ -85,6 +85,24 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                 } else if(userTier > 4){
                     userTier = 4;
                 }
+                JSONObject homeCountryAddress = null;
+                JSONObject paduaAddress = null;
+                String[] allergies = null;
+                try{
+                    paduaAddress=new JSONObject(rs.getObject("paduaAddress", PGobject.class).getValue());
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing paduaAddress for user with id: " + rs.getInt("id"));
+                }
+                try{
+                    homeCountryAddress=new JSONObject(rs.getObject("homeCountryAddress", PGobject.class).getValue());
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing homeCountryAddress for user with id: " + rs.getInt("id"));
+                }
+                try{
+                    allergies=(String[]) rs.getArray("allergies").getArray();
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing allergies for user with id: " + rs.getInt("id"));
+                }
                 users.add(
                         new User(
                                 rs.getInt("id"),
@@ -98,16 +116,16 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("sex"),
                                 rs.getDate("dateOfBirth"),
                                 rs.getString("nationality"),
-                                new JSONObject(((PGobject)rs.getObject("homeCountryAddress")).getValue()),
+                                homeCountryAddress,
                                 rs.getString("homeCountryUniversity"),
                                 rs.getInt("periodOfStay"),
                                 rs.getString("phoneNumber"),
-                                new JSONObject(((PGobject)rs.getObject("paduaAddress")).getValue()),
+                                paduaAddress,
                                 rs.getString("documentType"),
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
-                                (String[]) rs.getArray("allergies").getArray(),
+                                allergies,
                                 rs.getString("emailHash"),
                                 rs.getBoolean("emailConfirmed")));
             }
