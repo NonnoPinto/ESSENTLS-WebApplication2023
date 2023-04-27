@@ -118,8 +118,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             m = new Message(true, "Is not possible to register this user. Please try to fill the form again, if problem persist contact us!");
             req.setAttribute("message", m);
             req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
+//        } catch (MessagingException e) {
+//            throw new RuntimeException(e);
         }
         try{
             //stores the users list and the message as a request attribute
