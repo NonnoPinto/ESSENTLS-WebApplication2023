@@ -29,7 +29,7 @@
                 <c:otherwise>
                     <c:out value="ID: ${event.getId().toString()}"/>
                     <div class="form">
-                        <form action="<c:url value="/editEvent/"/>" id="editEventForm" method="POST">
+                        <form action="" id="editEventForm" method="POST" enctype="multipart/form-data" >
                             <!--Name-->
                             <div style="padding-top: 10px;">
                                 <label for="">Name (currently ${event.getName()}):</label>
@@ -59,7 +59,7 @@
                                 <label for="">To whom do you want to make it visible?</label>
                                 <div class="input-container">
                                     <select name="visibility" id="visibility" >
-                                      <option value="${event.getVisibility()}" selected disabled hidden>Tier "${event.getVisibility()}" Users</option>
+                                      <option value=${event.getVisibility()} selected disabled hidden>Tier ${event.getVisibility()} Users</option>
                                       <option value="0">Tier 0 Users</option>
                                       <option value="1">Tier 1 Users</option>
                                       <option value="2">Tier 2 Users</option>
@@ -175,9 +175,6 @@
                             </div>
 
                             <div class="buttons">
-                                <div>
-                                    <a href="">Close</a>    
-                                </div>
                                 <div>
                                     <button type="submit">Continue</button>
                                 </div>

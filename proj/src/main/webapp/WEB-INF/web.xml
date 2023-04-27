@@ -70,6 +70,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>EditEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EditEventServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>EditUserServlet</servlet-name>
         <servlet-class>com.essentls.servlet.EditUserServlet</servlet-class>
     </servlet>

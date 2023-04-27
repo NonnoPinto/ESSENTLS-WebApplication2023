@@ -6,6 +6,7 @@ import com.essentls.resource.Message;
 import com.essentls.resource.Participant;
 import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet(name = "EditEventServlet", urlPatterns = {"", "/editEvent"})
+@MultipartConfig
 public final class EditEventServlet extends AbstractDatabaseServlet {
 
     private String getFileName(final Part part) {
@@ -68,9 +70,12 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         LogContext.setAction("EDIT EVENT");
 
         Integer eventId = Integer.parseInt(req.getParameter("id").trim());
+
+        HttpSession session = req.getSession();
+        session.setAttribute("sessionEventId", eventId);
+
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
-            HttpSession session = req.getSession();
             int userId = -1;
             if(session.getAttribute("sessionUserId") != null)
                 userId = (int)session.getAttribute("sessionUserId");
@@ -100,6 +105,15 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
         HttpSession session = req.getSession();
         Integer eventID = (Integer)session.getAttribute("sessionEventId");
+        Event oldEvent = null;
+        try {
+            oldEvent = new EventInfoDAO(getConnection(), eventID).access().getOutputParam();
+        }catch (SQLException sqle){
+            Message m = new Message("Cannot edit the event: unexpected error while accessing the database.");
+
+            LOGGER.error("Cannot edit the event: unexpected error while accessing the database.");
+
+        }
 
         // request parameters
         String name = null;
@@ -134,7 +148,11 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             name = req.getParameter("name");
             description = req.getParameter("description");
             price = Float.parseFloat(req.getParameter("price"));
-            visibility = Integer.parseInt(req.getParameter("visibility"));
+            if(req.getParameter("visibility") == null){
+                visibility = oldEvent.getVisibility();
+            }else{
+                visibility = Integer.parseInt(req.getParameter("visibility"));
+            }
             city= req.getParameter("city");
             street= req.getParameter("street");
             number= req.getParameter("number");
@@ -205,8 +223,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
                 poster = relative_path + File.separator + posterName;
             }else{
-                e = new EventInfoDAO(getConnection(),eventID).access().getOutputParam();
-                poster = e.getPoster();
+                poster = oldEvent.getPoster();
             }
 
             if(isThereAThumbnail){
@@ -229,8 +246,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
                 thumbnail = relative_path + File.separator + thumbnailName;
             }else{
-                e = new EventInfoDAO(getConnection(),eventID).access().getOutputParam();
-                thumbnail = e.getThumbnail();
+                thumbnail = oldEvent.getThumbnail();
             }
 
             // creates a new event from the request parameters
@@ -242,26 +258,26 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             // creates a new object for accessing the database and stores the event
             new AdminEditEventDAO(getConnection(), e).access();
 
-            m = new Message(String.format("Event \""+e.getName()+"\" successfully created."));
+            m = new Message(String.format("Event \""+e.getName()+"\" successfully edited."));
 
-            LOGGER.info("Event \""+e.getName()+"\" successfully created in the database.");
+            LOGGER.info("Event \""+e.getName()+"\" successfully edited in the database.");
             req.setAttribute("message", m);
             req.getRequestDispatcher("/jsp/home.jsp").forward(req, res);
 
         } catch (NumberFormatException ex) {
             m = new Message(
-                    "Cannot create the event. Invalid input parameters.",
+                    "Cannot edit the event. Invalid input parameters.",
                     "E100", ex.getMessage());
 
             LOGGER.error(
-                    "Cannot create the event. Invalid input parameters.",
+                    "Cannot edit the event. Invalid input parameters.",
                     ex);
         } catch (SQLException ex) {
 
-            m = new Message("Cannot create the event: unexpected error while accessing the database.", "E200",
+            m = new Message("Cannot edit the event: unexpected error while accessing the database.", "E200",
                     ex.getMessage());
 
-            LOGGER.error("Cannot create the event: unexpected error while accessing the database.", ex);
+            LOGGER.error("Cannot edit the event: unexpected error while accessing the database.", ex);
 
         } catch (FileNotFoundException fne) {
             LOGGER.info("You either did not specify a file to upload or are "
