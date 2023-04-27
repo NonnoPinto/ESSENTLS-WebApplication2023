@@ -10,6 +10,7 @@ alt="Logo of ESN Padova" style="max-width: 200px; height: auto;">
 </a>
 <h3>Navbar</h3>
 
+<a rel="noopener noreferrer nofollow" href="<c:url value='/home'/>">Home</a>
 <c:if test="${sessionScope.sessionUserId == null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/login'/>">Login</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/signup'/>">Sign up</a>
