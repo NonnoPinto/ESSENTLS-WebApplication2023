@@ -18,6 +18,13 @@
   <input id="causeName" name="causeName" type="text"/><br/><br/>
 
   <button type="submit" id="ajaxButton">Submit</button><br/>
+  <div>
+    <h3>Here the causes already present!</h3><br>
+    <c:forEach items="${causes}" var="cause">
+        <p>${cause.name}</p><br>
+    </c:forEach>
+
+</div>
 
 </div>
 

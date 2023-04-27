@@ -19,7 +19,7 @@ import org.postgresql.util.PGobject;
  * @version 1.00
  * @since 1.00
  */
-public class UserRegistrationDAO extends AbstractDAO  {
+public class UserRegistrationDAO extends AbstractDAO<User>  {
     private static final String STATEMENT_REGISTRATION = "INSERT INTO public.\"Users\"(" +
             "email, password, \"cardID\", tier, \"registrationDate\", name, surname, sex, \"dateOfBirth\", " +
             "nationality, \"homeCountryAddress\", \"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", " +

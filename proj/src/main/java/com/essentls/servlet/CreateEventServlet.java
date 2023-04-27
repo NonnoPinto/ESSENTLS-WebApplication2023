@@ -128,60 +128,60 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
 
             File file = new java.io.File(url.getFile());
             File parent = file.getParentFile();
-            while (!"proj-1.0".equals(parent.getName()))
-            {
-                parent = parent.getParentFile();
+            if(!(parent==null)) {
+                while (!"proj-1.0".equals(parent.getName())){
+                    parent = parent.getParentFile();
+                }
+
+                //create path
+                final String path = (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
+                final String relative_path = "ESSENTLS_Cloud";
+
+                //create folder if doesn't exists
+                new File(path).mkdirs();
+
+                // get file
+                final Part posterPart = req.getPart("poster");
+                final Part thumbnailPart = req.getPart("thumbnail");
+                final String posterName = getFileName(posterPart);
+                final String thumbnailName = getFileName(thumbnailPart);
+
+                OutputStream out1 = null;
+                InputStream filecontent = null;
+
+                //save poster
+
+                out1 = new FileOutputStream(new File(path + File.separator + posterName));
+                filecontent = posterPart.getInputStream();
+
+                int read = 0;
+                final byte[] posterBytes = new byte[1024];
+                final byte[] thumbnailBytes = new byte[1024];
+
+                while ((read = filecontent.read(posterBytes)) != -1) {
+                    out1.write(posterBytes, 0, read);
+                }
+                LOGGER.info("New file " + posterName + " created at " + path);
+
+                poster = relative_path + File.separator + posterName;
+
+                //save thumbnail
+
+                OutputStream out = null;
+
+                out = new FileOutputStream(new File(path + File.separator + thumbnailName));
+                filecontent = thumbnailPart.getInputStream();
+
+                read = 0;
+
+                while ((read = filecontent.read(thumbnailBytes)) != -1) {
+                    out.write(thumbnailBytes, 0, read);
+                }
+                LOGGER.info("New file " + thumbnailName + " created at " + path);
+
+                poster = relative_path + File.separator + posterName;
+                thumbnail = relative_path + File.separator + thumbnailName;
             }
-
-            //create path
-            final String path = (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
-            final String relative_path = "ESSENTLS_Cloud";
-
-            //create folder if doesn't exists
-            new File(path).mkdirs();
-
-            // get file
-            final Part posterPart = req.getPart("poster");
-            final Part thumbnailPart = req.getPart("thumbnail");
-            final String posterName = getFileName(posterPart);
-            final String thumbnailName = getFileName(thumbnailPart);
-
-            OutputStream out1 = null;
-            InputStream filecontent = null;
-
-            //save poster
-
-            out1 = new FileOutputStream(new File(path + File.separator + posterName));
-            filecontent = posterPart.getInputStream();
-
-            int read = 0;
-            final byte[] posterBytes = new byte[1024];
-            final byte[] thumbnailBytes = new byte[1024];
-
-            while ((read = filecontent.read(posterBytes)) != -1) {
-                out1.write(posterBytes, 0, read);
-            }
-            LOGGER.info("New file " + posterName + " created at " + path);
-
-            poster = relative_path + File.separator + posterName;
-
-            //save thumbnail
-
-            OutputStream out = null;
-
-            out = new FileOutputStream(new File(path + File.separator + thumbnailName));
-            filecontent = thumbnailPart.getInputStream();
-
-            read = 0;
-
-            while ((read = filecontent.read(thumbnailBytes)) != -1) {
-                out.write(thumbnailBytes, 0, read);
-            }
-            LOGGER.info("New file " + thumbnailName + " created at " + path);
-
-            poster = relative_path + File.separator + posterName;
-            thumbnail = relative_path + File.separator + thumbnailName;
-
             // creates a new event from the request parameters
             e = new Event(name, description, price, visibility, location, maxPartecipantsInternational,
                     maxPartecipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
@@ -199,9 +199,12 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 LOGGER.info("Unexpected Database error: "+sqle.getMessage());
             }
 
+            new EventCausesDeleteDAO(getConnection(), eventID);
             for (Cause cause:causes) {
+                int causeId= cause.getId();
+                EventCause ec= new EventCause(eventID, causeId);
                 if (cause.getName().equals(req.getParameter("cs_"+cause.getName()))){
-                    new EventCausesCreationDAO(getConnection(), eventID, cause.getId());
+                    new EventCausesCreationDAO(getConnection(), ec);
                 }
             }
 

@@ -1,6 +1,6 @@
 package com.essentls.dao;
 
-import com.essentls.resource.Tag;
+import com.essentls.resource.EventCause;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,14 +9,15 @@ import java.sql.ResultSet;
 /**
  * Add a tag to the tag's table
  *
- * @author Francesco Marcato (francesco.marcato.2@studenti.unipd.it)
+ * @author Alessandro Borsato (alessandro.borsato.1@studenti.unipd.it)
  * @version 1.00
  * @since 1.00
  */
 
-public class EventCausesCreationDAO extends AbstractDAO<Tag> {
+public class EventCausesCreationDAO extends AbstractDAO<EventCause> {
 
-        private static final String STATEMENT = "INSERT INTO public.\"EventCauses\" (\"eventId\", \"causeId\") VALUES (?, ?)";
+
+        private static final String INSERT_STATEMENT = "INSERT INTO public.\"EventCauses\" (\"eventId\", \"causeId\") VALUES (?, ?)";
         /**
          *  the basic attributes
          */
@@ -27,34 +28,36 @@ public class EventCausesCreationDAO extends AbstractDAO<Tag> {
         /**
          * Creates a new EventCauses
          */
-        public EventCausesCreationDAO(Connection con, int _eventID, int _causesID) {
+        public EventCausesCreationDAO(Connection con, EventCause eventCause) {
             super(con);
-            this.eventID = _eventID;
-            this.causeID = _causesID;
+            this.eventID = eventCause.getEventId();
+            this.causeID = eventCause.getCauseId();
         }
 
         @Override
         protected void doAccess() throws Exception {
 
-            PreparedStatement stmt = null;
+            PreparedStatement stmtInsert = null;
             ResultSet rs = null;
 
-            Tag t = null;
+
 
             try {
-                stmt = con.prepareStatement(STATEMENT);
-                stmt.setInt(1, eventID);
-                stmt.setInt(2, causeID);
+                if(causeID>0&&eventID>0){
+                    stmtInsert = con.prepareStatement(INSERT_STATEMENT);
+                    stmtInsert.setInt(1, eventID);
+                    stmtInsert.setInt(2, causeID);
 
-                stmt.executeQuery();
+                    stmtInsert.executeQuery();
+                }
 
             } finally {
                 if (rs != null)
                     rs.close();
 
 
-                if (stmt != null)
-                    stmt.close();
+                if (stmtInsert != null)
+                    stmtInsert.close();
             }
         }
     }
