@@ -14,7 +14,7 @@
 <html lang="en">
 <head>
     <meta name="description" content="ESN Padova application">
-    <meta name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Edit User</title>
 </head>
