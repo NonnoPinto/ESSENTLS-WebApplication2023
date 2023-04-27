@@ -27,11 +27,12 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "UPDATE public.\"Users\" SET email = ?, "+
-            "password = ?, \"cardID\" = ?,  \"registrationDate\" = ?,  name = ?,  surname = ?, "+
-            "sex = CAST(? as gen),  \"dateOfBirth\" = ?,  nationality = ?,  \"homeCountryUniversity\" = ?, "+
-            "\"periodOfStay\" = ?,  \"phoneNumber\" = ?,  \"documentType\" = CAST (? as identity),  \"documentNumber\" = ?, "+
-            "\"documentFile\" = ?,  \"dietType\" = CAST (? as diet),  allergies = ? WHERE id = ?;";
+    private static final String STATEMENT = "UPDATE public.\"Users\" SET "+
+            "name = ?,  surname = ?, "+
+            "sex = CAST(? as gen),  \"dateOfBirth\" = ?,  nationality = ?, " +
+            "\"homeCountryAddress\" = ?,  \"homeCountryUniversity\" = ?, "+
+            "\"periodOfStay\" = ?,  \"phoneNumber\" = ?, \"paduaAddress\" = ?, "+
+            "\"dietType\" = CAST (? as diet),  allergies = ? WHERE id = ?;";
 
 
     private final User user;
@@ -92,29 +93,19 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
 
             stmt = con.prepareStatement(STATEMENT);
 
-            stmt.setString(1, this.user.getEmail());
-            stmt.setString(2, this.user.getPassword());
-            stmt.setString(3, this.user.getCardId());
-            stmt.setInt(4, this.user.getTier());
-            stmt.setDate(5, this.user.getRegistrationDate());
-            stmt.setString(6, this.user.getName());
-            stmt.setString(7, this.user.getSurname());
-            stmt.setString(8, this.user.getSex());
-            stmt.setDate(9, this.user.getDateOfBirth());
-            stmt.setString(10, this.user.getNationality());
-            stmt.setObject(11, jsonToPGobj(this.user.getHomeCountryAddress()));
-            stmt.setString(12, this.user.getHomeCountryUniversity());
-            stmt.setInt(13, this.user.getPeriodOfStay());
-            stmt.setString(14, this.user.getPhoneNumber());
-            stmt.setObject(15, jsonToPGobj(this.user.getPaduaAddress()));
-            stmt.setString(16, this.user.getDocumentType());
-            stmt.setString(17, this.user.getDocumentNumber());
-            stmt.setString(18, this.user.getDocumentFile());
-            stmt.setString(19, this.user.getDietType());
-            stmt.setArray(20, con.createArrayOf("text", Arrays.stream(this.user.getAllergies()).map(i -> String.valueOf(i)).toArray()));
-            stmt.setString(21, this.user.getEmailHash());
-            stmt.setBoolean(22, this.user.getEmailConfirmed());
-            stmt.setInt(23, this.user.getId());
+            stmt.setString(1, this.user.getName());
+            stmt.setString(2, this.user.getSurname());
+            stmt.setString(3, this.user.getSex());
+            stmt.setDate(4, this.user.getDateOfBirth());
+            stmt.setString(5, this.user.getNationality());
+            stmt.setObject(6, jsonToPGobj(this.user.getHomeCountryAddress()));
+            stmt.setString(7, this.user.getHomeCountryUniversity());
+            stmt.setInt(8, this.user.getPeriodOfStay());
+            stmt.setString(9, this.user.getPhoneNumber());
+            stmt.setObject(10, jsonToPGobj(this.user.getPaduaAddress()));
+            stmt.setString(11, this.user.getDietType());
+            stmt.setArray(12, con.createArrayOf("text", Arrays.stream(this.user.getAllergies()).map(i -> String.valueOf(i)).toArray()));
+            stmt.setInt(13, this.user.getId());
 
 
             stmt.executeUpdate();

@@ -38,23 +38,8 @@
         <p>User not found</p>
     </c:when>
     <c:otherwise>
-        <c:out value="ID: ${user.getId().toString()}"/><br><br>
-        <form method="POST" action="<c:url value="/edit-user"/>">
+        <form method="POST" action="<c:url value="/edit-profile"/>">
             <input type="hidden" name="userId" value="${user.getId()}"/>
-
-            <label for="userEmail">Email (currently ${user.getEmail()}):</label>
-            <input id="userEmail" value="${user.getEmail()}" name="userEmail" type="text"/><br/><br/>
-
-            <input type="hidden" name="userPassword" value="${user.getPassword()}"/>
-
-            <label for="userCardId">CardId (currently ${user.getCardId()}):</label>
-            <input id="userCardId" value="${user.getCardId()}" name="userCardId" type="text"/><br/><br/>
-
-            <label for="userTier">Tier (currently ${user.getTier()}):</label>
-            <input id="userTier" value="${user.getTier()}" name="userTier" type="number" min="0" max="4"/><br/><br/>
-
-            <label for="userRegistrationDate">Registration Date (currently ${user.getRegistrationDate().toString()}):</label>
-            <input id="userRegistrationDate" value="${user.getRegistrationDate()}" name="userRegistrationDate" type="date"/><br/><br/>
 
             <label for="userName">Name (currently ${user.getName()}):</label>
             <input id="userName" value="${user.getName()}" name="userName" type="text"/><br/><br/>
@@ -76,14 +61,14 @@
             <label for="userNationality">Nationality (currently ${user.getNationality()}):</label>
             <input id="userNationality" value="${user.getNationality()}" name="userNationality" type="text"/><br/><br/>
 
-<%--            <label for="userHomeCountryAddress">Home Country Address (currently Street: ${user.getHomeCountryAddress().getString("street")} | Number: ${user.getHomeCountryAddress().getString("number")} | City: ${user.getHomeCountryAddress().getString("city")} | ZIP: ${user.getHomeCountryAddress().getString("zip")} | Country: ${user.getHomeCountryAddress().getString("country")}):</label>--%>
-<%--            <div class="input-container" id="userHomeCountryAddress">--%>
-<%--                <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" value="${user.getHomeCountryAddress().getString("street")}">--%>
-<%--                <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" value="${user.getHomeCountryAddress().getString("number")}">--%>
-<%--                <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" value="${user.getHomeCountryAddress().getString("city")}">--%>
-<%--                <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" value="${user.getHomeCountryAddress().getString("zip")}">--%>
-<%--                <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" value="${user.getHomeCountryAddress().getString("country")}">--%>
-<%--            </div><br>--%>
+            <label for="userHomeCountryAddress">Home Country Address (currently Street: ${user.getHomeCountryAddress().getString("street")} | Number: ${user.getHomeCountryAddress().getString("number")} | City: ${user.getHomeCountryAddress().getString("city")} | ZIP: ${user.getHomeCountryAddress().getString("zip")} | Country: ${user.getHomeCountryAddress().getString("country")}):</label>--%>
+            <div class="input-container" id="userHomeCountryAddress">--%>
+                <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" value="${user.getHomeCountryAddress().getString("street")}">
+                <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" value="${user.getHomeCountryAddress().getString("number")}">
+                <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" value="${user.getHomeCountryAddress().getString("city")}">
+                <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" value="${user.getHomeCountryAddress().getString("zip")}">
+                <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" value="${user.getHomeCountryAddress().getString("country")}">
+            </div><br>
 
             <label for="userHomeCountryUniversity">Home Country University (currently ${user.getHomeCountryUniversity()}):</label>
             <input id="userHomeCountryUniversity" value="${user.getHomeCountryUniversity()}" name="userHomeCountryUniversity" type="text"/><br/><br/>
@@ -98,28 +83,14 @@
             <label for="userPhoneNumber">Phone Number (currently ${user.getPhoneNumber()}):</label>
             <input id="userPhoneNumber" value="${user.getPhoneNumber()}" name="userPhoneNumber" type="text"/><br/><br/>
 
-<%--            <label for="userPaduaAddress">Padua Address (currently Street: ${user.getPaduaAddress().getString("street")} | Number: ${user.getPaduaAddress().getString("number")} | City: ${user.getPaduaAddress().getString("city")} | ZIP: ${user.getPaduaAddress().getString("zip")} | Country: ${user.getPaduaAddress().getString("country")}):</label>--%>
-<%--            <div class="input-container" id="userPaduaAddress">--%>
-<%--                <input type="text" name="userPaduaAddress-street" id="userPaduaAddress-street" value="${user.getPaduaAddress().getString("street")}">--%>
-<%--                <input type="text" name="userPaduaAddress-number" id="userPaduaAddress-number" value="${user.getPaduaAddress().getString("number")}">--%>
-<%--                <input type="text" name="userPaduaAddress-city" id="userPaduaAddress-city" value="${user.getPaduaAddress().getString("city")}">--%>
-<%--                <input type="text" name="userPaduaAddress-zip" id="userPaduaAddress-zip" value="${user.getPaduaAddress().getString("zip")}">--%>
-<%--                <input type="text" name="userPaduaAddress-country" id="userPaduaAddress-country" value="${user.getPaduaAddress().getString("country")}">--%>
-<%--            </div><br>--%>
-
-            <label for="userDocumentType">Document Type (currently ${user.getDocumentType()}):</label>
-            <select id="userDocumentType" name="userDocumentType">
-                <option value="${user.getDocumentType()}" selected hidden>${user.getDocumentType()}</option>
-                <option value="ID">ID</option>
-                <option value="Passport">Passport</option>
-                <option value="Driver license">Driver license</option>
-            </select><br><br>
-
-            <label for="userDocumentNumber">Document Number (currently ${user.getDocumentNumber()}):</label>
-            <input id="userDocumentNumber" value="${user.getDocumentNumber()}" name="userDocumentNumber" type="text"/><br/><br/>
-
-            <label for="userDocumentFile">Document File (currently ${user.getDocumentFile()}):</label>
-            <input id="userDocumentFile" value="${user.getDocumentFile()}" name="userDocumentFile" type="text" style="width:600px;"/><br/><br/>
+            <label for="userPaduaAddress">Padua Address (currently Street: ${user.getPaduaAddress().getString("street")} | Number: ${user.getPaduaAddress().getString("number")} | City: ${user.getPaduaAddress().getString("city")} | ZIP: ${user.getPaduaAddress().getString("zip")} | Country: ${user.getPaduaAddress().getString("country")}):</label>--%>
+            <div class="input-container" id="userPaduaAddress">--%>
+                <input type="text" name="userPaduaAddress-street" id="userPaduaAddress-street" value="${user.getPaduaAddress().getString("street")}">
+                <input type="text" name="userPaduaAddress-number" id="userPaduaAddress-number" value="${user.getPaduaAddress().getString("number")}">
+                <input type="text" name="userPaduaAddress-city" id="userPaduaAddress-city" value="${user.getPaduaAddress().getString("city")}">
+                <input type="text" name="userPaduaAddress-zip" id="userPaduaAddress-zip" value="${user.getPaduaAddress().getString("zip")}">
+                <input type="text" name="userPaduaAddress-country" id="userPaduaAddress-country" value="${user.getPaduaAddress().getString("country")}">
+            </div><br>
 
             <label for="userDietType">Diet (currently ${user.getDietType()}):</label>
             <select id="userDietType" name="userDietType">
@@ -134,15 +105,6 @@
 
             <label for="userAllergies">Allergies (currently ${Arrays.toString(user.getAllergies())}. Separate by comma):</label>
             <input id="userAllergies" value="${Arrays.toString(user.getAllergies()).replaceAll("[^a-zA-Z\\p{Zs},]", "")}" name="userAllergies" type="text" style="width:1000px;"/><br/><br/>
-
-            <input type="hidden" name="userEmailHash" value="${user.getEmailHash()}"/>
-
-            <label for="userEmailConfirmed">Email Confirmed (currently ${user.getEmailConfirmed()}):</label>
-            <select id="userEmailConfirmed" name="userEmailConfirmed">
-                <option value="${user.getEmailConfirmed()}" selected hidden>${user.getEmailConfirmed()}</option>
-                <option value="true">true</option>
-                <option value="false">false</option>
-            </select><br><br>
 
             <button type="submit">Submit</button><br/>
             <button type="reset">Reset the form</button>
