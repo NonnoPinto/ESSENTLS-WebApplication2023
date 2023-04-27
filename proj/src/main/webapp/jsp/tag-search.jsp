@@ -24,7 +24,7 @@
 
     <div>
         <label for="subTag">Insert (part of) Tag, empty for all tags:</label>
-        <input id="subTag" type="text"/><br/><br/>
+        <input id="subTag" type="text" name="subTag"/><br/><br/>
 
         <button type="submit" id="ajaxButton">Submit</button><br/>
 

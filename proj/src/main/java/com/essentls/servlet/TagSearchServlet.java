@@ -1,19 +1,15 @@
 package com.essentls.servlet;
 
-
-import com.essentls.dao.*;
-import com.essentls.resource.Message;
-import com.essentls.resource.Tag;
-
 import java.io.IOException;
-import java.sql.SQLException;
-import java.sql.Connection;
-import java.util.List;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet(name = "TagSearchServlet", urlPatterns = {"", "/tag-search"})
+@MultipartConfig
 public final class TagSearchServlet extends AbstractDatabaseServlet {
 
     /**
