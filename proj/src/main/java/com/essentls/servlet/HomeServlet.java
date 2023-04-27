@@ -4,14 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.essentls.dao.EventsFromTagAndTierDAO;
-import com.essentls.dao.TagsListDAO;
-import com.essentls.dao.UserEventsListDAO;
-import com.essentls.dao.UserProfileInfoDAO;
-import com.essentls.resource.Event;
-import com.essentls.resource.Message;
-import com.essentls.resource.Tag;
-import com.essentls.resource.User;
+import com.essentls.dao.*;
+import com.essentls.resource.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -71,16 +65,30 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             int userTier = user.getTier();
 
             String filterTag = req.getParameter("tag");
-            if ("".equals(filterTag)) filterTag = null;
+            if (filterTag == null) filterTag = "";
+            else filterTag = filterTag.trim();
+
+
+            int id = -1;
+            String filterCause = req.getParameter("cause");
+            if (!(filterCause == null || "".equals(filterCause))) id = Integer.parseInt(filterCause);
+
+
+            String filterSrch=req.getParameter("srch");
+            if(filterSrch == null) filterSrch="";
+            else filterSrch=filterSrch.trim();
 
             List<Event> events = null;
 
             List<Tag> tags = null;
+            List<Cause> causes = null;
+            Cause cause = null;
 
             try {
 
-                if (filterTag != null)
-                    events = new EventsFromTagAndTierDAO(getConnection(), new Tag(filterTag.trim()), userTier).access().getOutputParam();
+                if (true) //tag name is "" if not filtered, "<filter>" otherwise. cause id is -1 if not filtered, <id> otherwise, cause name is always "". search is "" if not filtered, "<filter>" otherwise
+                    events = new EventsFromTagAndTierDAO(getConnection(), new Tag(filterTag), userTier,new Cause(id,""),filterSrch.toLowerCase()).access().getOutputParam();
+
                 else
                     events = new UserEventsListDAO(getConnection(), userTier).access().getOutputParam();
 
@@ -99,20 +107,29 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             try {
 
                 tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+                causes = new CausesListDAO(getConnection(),-1,"").access().getOutputParam();
 
-                LOGGER.info("Tags successfully retrieved in the home");
+                if (id == -1)
+                    cause = new Cause(-1, "");
+                else
+                    cause = new CausesListDAO(getConnection(),id,"").access().getOutputParam().get(0);
+
+                LOGGER.info("Tags and causes successfully retrieved in the home");
 
             } catch (SQLException e) {
                 
-                LOGGER.error("Cannot search for tags: unexpected error while accessing the database.", e);
+                LOGGER.error("Cannot search for tags and causes: unexpected error while accessing the database.", e);
 
-                m = new Message(true, "Cannot search for tags: unexpected error while accessing the database.");
+                m = new Message(true, "Cannot search for tags and causes: unexpected error while accessing the database.");
             }
 
             try {
                 req.setAttribute("tag", filterTag);
                 req.setAttribute("events", events);
                 req.setAttribute("tags", tags);
+                req.setAttribute("cause", cause);
+                req.setAttribute("srch", filterSrch);
+                req.setAttribute("causes", causes);
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/home.jsp").forward(req, resp);
             } catch (Exception e) {
