@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "CreateEventServlet", urlPatterns = {"", "/create-event"})
 @MultipartConfig
@@ -48,6 +50,14 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
         LogContext.setAction("CREATE EVENT");
+        List<Cause> causes = null;
+        try {
+            causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
+        }catch (SQLException sqle){
+            LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+        }
+
+        req.setAttribute("causes", causes);
 
         req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
     }
@@ -181,6 +191,19 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
 
             // creates a new object for accessing the database and stores the event
             int eventID = new AdminCreateEventDAO(getConnection(), e).access().getOutputParam();
+
+            List<Cause> causes = new ArrayList<>();
+            try {
+                causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
+            }catch (SQLException sqle){
+                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+            }
+
+            for (Cause cause:causes) {
+                if (cause.getName().equals(req.getParameter("cs_"+cause.getName()))){
+                    new EventCausesCreationDAO(getConnection(), eventID, cause.getId());
+                }
+            }
 
             m = new Message(String.format("Event \""+e.getName()+"\" successfully created."));
 

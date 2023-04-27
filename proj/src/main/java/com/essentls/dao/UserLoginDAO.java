@@ -111,11 +111,11 @@ public final class UserLoginDAO extends AbstractDAO<User> {
                     rs.getBoolean("emailConfirmed")
                 ); 
 
-                LOGGER.info("User logged in {}.", user.getEmail());
+                LOGGER.info("User logged in %s.", user.getEmail());
 
             }else{
 
-                LOGGER.error("error logging in the user {}.", this.email);
+                LOGGER.error("error logging in the user %s.", this.email);
 
             }
 
