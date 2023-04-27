@@ -5,7 +5,330 @@
 
     <display-name>ESSENTLS</display-name>
     <welcome-file-list>
-        <welcome-file>html/helloworld.html</welcome-file>
+        <welcome-file>HomeServlet</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.HomeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentsListServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.PaymentsListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MembershipServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.MembershipServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SearchUserServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.SearchUserServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SelectUserByIDServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.SelectUserByIDServlet</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>EmailConfirmationServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EmailConfirmationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EventDetailServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EventDetailServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EventParticipantsServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EventParticipantsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CreateEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CreateEventServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EditEventServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EditUserServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserEventsListServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UserEventsListServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConfirmEventServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.ConfirmEventServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.IndexServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddPaymentServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.AddPaymentServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UnauthorizedServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UnauthorizedServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CauseCreateServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CauseCreateServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CauseSearchServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CauseSearchServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>TagSearchServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.TagSearchServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EditUserProfileServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.EditUserProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DocumentDownloadServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.DocumentDownloadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SearchUserServlet</servlet-name>
+        <url-pattern>/search-users</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PaymentsListServlet</servlet-name>
+        <url-pattern>/paymentslist</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MembershipServlet</servlet-name>
+        <url-pattern>/membership</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SelectUserByIDServlet</servlet-name>
+        <url-pattern>/select-user-by-id</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/edit-user</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EmailConfirmationServlet</servlet-name>
+        <url-pattern>/email-confirmation/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EventDetailServlet</servlet-name>
+        <url-pattern>/eventdetail</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EventParticipantsServlet</servlet-name>
+        <url-pattern>/eventparticipants</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CreateEventServlet</servlet-name>
+        <url-pattern>/create-event</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditEventServlet</servlet-name>
+        <url-pattern>/editEvent</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserEventsListServlet</servlet-name>
+        <url-pattern>/joined-events</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConfirmEventServlet</servlet-name>
+        <url-pattern>/confirmEvent</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddPaymentServlet</servlet-name>
+        <url-pattern>/add_payment</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UnauthorizedServlet</servlet-name>
+        <url-pattern>/unauthorized</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CauseCreateServlet</servlet-name>
+        <url-pattern>/cause-create</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CauseSearchServlet</servlet-name>
+        <url-pattern>/cause-search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>TagSearchServlet</servlet-name>
+        <url-pattern>/tag-search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DocumentDownloadServlet</servlet-name>
+        <url-pattern>/download-user-document</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EditUserProfileServlet</servlet-name>
+        <url-pattern>/edit-profile</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.essentls.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/home</url-pattern>
+        <url-pattern>/profile</url-pattern>
+        <url-pattern>/paymentslist</url-pattern>
+        <url-pattern>/membership</url-pattern>
+        <url-pattern>/edit-user</url-pattern>
+        <url-pattern>/edit-profile</url-pattern>
+        <url-pattern>/eventdetail</url-pattern>
+        <url-pattern>/joined-events</url-pattern>
+        <url-pattern>/confirmEvent</url-pattern>
+        <url-pattern>/logout</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>VolunteerFilter</filter-name>
+        <filter-class>com.essentls.filter.VolunteerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>VolunteerFilter</filter-name>
+        <url-pattern>/search-users</url-pattern>
+        <url-pattern>/select-user-by-id</url-pattern>
+        <url-pattern>/eventparticipants</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ActiveVolunteerFilter</filter-name>
+        <filter-class>com.essentls.filter.ActiveVolunteerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ActiveVolunteerFilter</filter-name>
+        <url-pattern>/create-event</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.essentls.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/cause-create</url-pattern>
+        <url-pattern>/cause-search</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>DenyFilter</filter-name>
+        <filter-class>com.essentls.filter.DenyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>DenyFilter</filter-name>
+        <url-pattern>/jsp/*</url-pattern>
+    </filter-mapping>
+
+    <resource-ref>
+        <description>Connection pool to the database</description>
+        <res-ref-name>jdbc/public</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 
 </web-app>
