@@ -23,6 +23,7 @@
                 <form action="">
                     <label for="tag">Filter:</label>
                     <select name="tag">
+                        <option value="${tag}" selected hidden>${tag}</option>
                         <c:forEach items="${tags}" var="tag" varStatus="loop">
                             <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></option>
                         </c:forEach>

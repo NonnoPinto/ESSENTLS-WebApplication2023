@@ -109,6 +109,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
             }
 
             try {
+                req.setAttribute("tag", filterTag);
                 req.setAttribute("events", events);
                 req.setAttribute("tags", tags);
                 req.setAttribute("message", m);
