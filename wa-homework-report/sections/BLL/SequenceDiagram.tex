@@ -12,7 +12,7 @@ start subscription date, end subscription date, withdrawal end date, size of wai
 thumbnail image and poster image. \\
 The web server instantiates the CreateEventServlet which calls its doPost method, passing the HttpServletRequest
 and HttpServletResponse. This method handles some POST data packing city, street and number in a unique location JSON
-Object and storing the two images (thumbnail and poster) in the “ESSENTLS_Cloud” folder.
+Object and storing the two images (thumbnail and poster) in the “ESSENTLS\_Cloud” folder.
 A new Event object is created, containing the other POST data, the generated location JSON object and the paths that
 represent the images. The control is passed to the AdminCreateEventDAO which receives as arguments the connection
 (defined in the AbstractDatabaseServlet extended by the CreateEventServlet) and the instantiated Event.
