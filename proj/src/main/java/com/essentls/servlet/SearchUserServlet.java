@@ -1,7 +1,7 @@
 package com.essentls.servlet;
 
 
-import com.essentls.dao.AdminUsersListDAO;
+import com.essentls.dao.*;
 import com.essentls.resource.User;
 import com.essentls.resource.Message;
 
@@ -17,6 +17,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.message.StringFormattedMessage;
+import jakarta.servlet.http.HttpSession;
 
 import javax.swing.*;
 
@@ -28,6 +29,42 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
     @throws ServletException    //exception servlet
     @throws IOException     //exceptionIO
     */
+
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setAction("SEARCH USER");
+
+        HttpSession session = req.getSession();
+
+        if (session.getAttribute("sessionUserTier") != null){
+            int tier = (int) session.getAttribute("sessionUserTier");
+            if( tier < 3){
+                req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
+            } else {
+                req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req, res);
+            }
+        }
+        else {
+            /* */
+            try {
+                int userId = -1;
+                if(session.getAttribute("sessionUserId") != null)
+                    userId = (Integer) session.getAttribute("sessionUserId");
+                User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+                if(user == null || user.getTier() < 3){ //Auth check TODO make three dynamic
+                    req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
+                } else {
+                    req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req, res);
+                }
+            } catch (Exception e) {
+                LOGGER.error("stacktrace:", e);
+                throw new ServletException(e);
+            }
+        }
+    }
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         LogContext.setIPAddress(req.getRemoteAddr());
