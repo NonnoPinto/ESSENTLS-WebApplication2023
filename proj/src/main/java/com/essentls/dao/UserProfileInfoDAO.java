@@ -23,7 +23,12 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
     /**
      * The SQL statement to be executed
      */
-    private final String STATEMENT = "SELECT * FROM public.\"Users\" WHERE id = ?;";
+    private final String STATEMENT = "SELECT id, email, password, \"cardID\", tier, \"registrationDate\", " +
+                                    "name, surname, sex, \"dateOfBirth\", nationality, \"homeCountryAddress\", " +
+                                    "\"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", \"paduaAddress\", " +
+                                    "\"documentType\", \"documentNumber\", \"documentFile\", \"dietType\", allergies, " +
+                                    "\"emailHash\", \"emailConfirmed\" FROM public.\"Users\"" +
+                                    " WHERE id = ?;";
 
     /**
      * UserID
