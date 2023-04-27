@@ -48,8 +48,9 @@ public class PaymentServlet extends AbstractDatabaseServlet{
                 /*
                     If there is place
                  */
+                boolean isOrganizer = (session.getAttribute("organizer") != null && (int)session.getAttribute("organizer") == eventId);
                 if(new UserCheckEventParticipantDAO(transConn, p, false).access(false).getOutputParam() != null) {
-                    if (event.getPrice() > 0) {
+                    if (event.getPrice() > 0 && !isOrganizer) {
                         session.setAttribute("event_"+eventId, "not_payed");
                         request.setAttribute("action", "event");
                         request.setAttribute("event", event);
@@ -66,7 +67,7 @@ public class PaymentServlet extends AbstractDatabaseServlet{
     }
 
     private void subPayment(HttpServletRequest request, HttpServletResponse response){
-        //TODO Payment of subscription
+
         try {
             request.setAttribute("action", "sub");
             request.setAttribute("subPrice", 5.00);

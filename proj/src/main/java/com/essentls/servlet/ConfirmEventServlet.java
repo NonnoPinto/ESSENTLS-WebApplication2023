@@ -65,11 +65,12 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
             } else {
                 int eventId = Integer.parseInt(request.getParameter("id"));
                 int userId = (int) session.getAttribute("sessionUserId");
+                boolean isOrganizer = (session.getAttribute("organizer") != null && (int)session.getAttribute("organizer") == eventId);
                 Participant p = new ParticipantInfoDAO(transConn, userId, eventId).access().getOutputParam();
                 if (p == null && (
                         session.getAttribute("event_" + eventId) == null ||
                                 !session.getAttribute("event_" + eventId).equals("payed") ||
-                                !this.startPartecipation(transConn, eventId, userId))) {
+                                !this.startPartecipation(transConn, eventId, userId, isOrganizer))) {
                     transConn.rollback();
                     transConn.close();
                     throw new ServletException("Can't participate at the event");
@@ -109,7 +110,7 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
         }
     }
 
-    protected synchronized boolean startPartecipation(Connection transConn, int eventId, int userId) throws ServletException {
+    protected synchronized boolean startPartecipation(Connection transConn, int eventId, int userId, boolean isOrganizer) throws ServletException {
         try {
             Event event = new EventInfoDAO(transConn, eventId).access(false).getOutputParam();
             User user = new UserProfileInfoDAO(transConn, userId).access(false).getOutputParam();
@@ -117,7 +118,7 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
                 return false;
             } else {
                 try {
-                    Participant p = new Participant(user.getId(), eventId, null, new Timestamp(System.currentTimeMillis()), "{}", user);
+                    Participant p = new Participant(user.getId(), eventId, (isOrganizer ? "Organizer" : null), new Timestamp(System.currentTimeMillis()), "{}", user);
                     p = new UserCheckEventParticipantDAO(transConn, p, (event.getPrice() > 0)).access(false).getOutputParam();
                     if (p != null) {
                         if ((new UserJoinsEventDAO(transConn, p)).access(false).getOutputParam()) {
