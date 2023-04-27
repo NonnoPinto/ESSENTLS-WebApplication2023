@@ -18,3 +18,6 @@
 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/create-event'/>">(Admin) Create event</a>
 </c:if>
+<c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
+    <a rel="noopener noreferrer nofollow" href="<c:url value='/search-users'/>">(Admin) Serach User</a>
+</c:if>
