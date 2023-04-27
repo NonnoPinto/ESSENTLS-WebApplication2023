@@ -162,7 +162,7 @@ public class Event {
         if (this.attributes.length == 0){ return "";}
         if (this.attributes.length ==1){ return this.attributes[0];}
         s += this.attributes[0];
-        for (int i=2; i<this.attributes.length; i++) {
+        for (int i=1; i<this.attributes.length; i++) {
             s += ", ";
             s += this.attributes[i];
         }

@@ -52,7 +52,7 @@
                 <div style="padding-top: 10px;">
                     <label for="">How much does the event cost?</label>
                     <div class="input-container">
-                        <input type="number" name="price" id="price" min="0" placeholder="0"required>
+                        <input type="number" name="price" id="price" min="0" placeholder="0" step=".01" required>
                     </div>
                 </div>
 

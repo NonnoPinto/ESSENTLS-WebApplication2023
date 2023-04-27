@@ -262,7 +262,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
             LOGGER.info("Event \""+e.getName()+"\" successfully edited in the database.");
             req.setAttribute("message", m);
-            req.getRequestDispatcher("/jsp/home.jsp").forward(req, res);
+            res.sendRedirect(req.getContextPath()+"/home");
 
         } catch (NumberFormatException ex) {
             m = new Message(

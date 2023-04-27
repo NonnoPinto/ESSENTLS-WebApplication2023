@@ -49,7 +49,7 @@
                             <div style="padding-top: 10px;">
                                 <label for="">Price (currently ${event.getPrice()}):</label>
                                 <div class="input-container">
-                                    <input type="number" name="price" id="price" min="0" value="${event.getPrice()}">
+                                    <input type="number" name="price" id="price" min="0" step=".01" value="${event.getPrice()}">
                                 </div>
                             </div>
 

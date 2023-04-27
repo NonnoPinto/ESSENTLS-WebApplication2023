@@ -134,14 +134,14 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             final Part posterPart = req.getPart("poster");
             final Part thumbnailPart = req.getPart("thumbnail");
             final String posterName = getFileName(posterPart);
-            final String thumbnailName = getFileName(posterPart);
+            final String thumbnailName = getFileName(thumbnailPart);
 
-            OutputStream out = null;
+            OutputStream out1 = null;
             InputStream filecontent = null;
 
             //save poster
 
-            out = new FileOutputStream(new File(path + File.separator + posterName));
+            out1 = new FileOutputStream(new File(path + File.separator + posterName));
             filecontent = posterPart.getInputStream();
 
             int read = 0;
@@ -149,13 +149,15 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             final byte[] thumbnailBytes = new byte[1024];
 
             while ((read = filecontent.read(posterBytes)) != -1) {
-                out.write(posterBytes, 0, read);
+                out1.write(posterBytes, 0, read);
             }
             LOGGER.info("New file " + posterName + " created at " + path);
 
             poster = relative_path + File.separator + posterName;
 
             //save thumbnail
+
+            OutputStream out = null;
 
             out = new FileOutputStream(new File(path + File.separator + thumbnailName));
             filecontent = thumbnailPart.getInputStream();
