@@ -30,7 +30,8 @@ nationality VARCHAR(100),
 "dietType" diet,
 allergies text ARRAY,
 "emailHash" VARCHAR(255),
-"emailConfirmed" Boolean DEFAULT FALSE
+"emailConfirmed" Boolean DEFAULT FALSE,
+"documentBytes" bytea
 );
 
 
