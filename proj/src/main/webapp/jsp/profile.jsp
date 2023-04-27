@@ -44,7 +44,7 @@
   </div>
 </form>
 
-<form action="<c:url value="/edit-profile"/>" method="POST">
+<form action="<c:url value="/edit-profile"/>" method="GET">
   <div>
     <button type="submit">Edit Profile</button>
   </div>

@@ -54,6 +54,7 @@
           <form method="POST" action="<c:url value="/download-user-document"/>">
             <input type="hidden" name="userId" value="${user.getId()}"/>
             <button type="submit">Document</button>
+          </form>
         </td>
       </tr>
     </c:forEach>
