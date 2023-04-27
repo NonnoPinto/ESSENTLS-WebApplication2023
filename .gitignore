@@ -50,3 +50,11 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Latex auxiliary files
+*.fdb_latexmk
+*.fls
+*.out
+*.log
+*.gz
+*.aux
+

@@ -114,6 +114,21 @@
         <servlet-class>com.essentls.servlet.UnauthorizedServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>CauseCreateServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CauseCreateServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CauseSearchServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CauseSearchServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>TagSearchServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.TagSearchServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -218,6 +233,21 @@
     <servlet-mapping>
         <servlet-name>UnauthorizedServlet</servlet-name>
         <url-pattern>/unauthorized</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CauseCreateServlet</servlet-name>
+        <url-pattern>/cause-create</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CauseSearchServlet</servlet-name>
+        <url-pattern>/cause-search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>TagSearchServlet</servlet-name>
+        <url-pattern>/tag-search</url-pattern>
     </servlet-mapping>
 
 

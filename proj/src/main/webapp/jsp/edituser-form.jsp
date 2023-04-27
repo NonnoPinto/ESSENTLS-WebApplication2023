@@ -33,7 +33,7 @@
     </c:when>
     <c:otherwise>
         <c:out value="ID: ${user.getId().toString()}"/><br><br>
-        <form method="POST" action="<c:url value="/edit-user"/>">
+        <form method="POST" action="<c:url value="/edit-user"/>" enctype="multipart/form-data">
             <input type="hidden" name="userId" value="${user.getId()}"/>
 
             <label for="userEmail">Email (currently ${user.getEmail()}):</label>
@@ -138,10 +138,15 @@
                 <option value="false">false</option>
             </select><br><br>
 
+            <label for="userDocumentBytes">Upload New Document:</label>
+            <input id="userDocumentBytes" name="userDocumentBytes" type="file"/><br/><br/>
+
             <button type="submit">Submit</button><br/>
             <button type="reset">Reset the form</button>
         </form>
     </c:otherwise>
 </c:choose>
+    
+    <footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

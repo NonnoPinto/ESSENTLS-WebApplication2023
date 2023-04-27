@@ -43,6 +43,6 @@
     <button type="submit">Show Payment List</button>
   </div>
 </form>
-
+<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

@@ -1,13 +1,11 @@
 package com.essentls.dao;
 
 import com.essentls.resource.Event;
+import com.essentls.resource.Participant;
 import org.json.JSONObject;
 import org.postgresql.util.PGobject;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Admin Create Event DAO, to create an event
@@ -17,11 +15,11 @@ import java.sql.SQLException;
  * @since 1.00
  */
 
-public class AdminCreateEventDAO extends AbstractDAO<Event>{
+public class AdminCreateEventDAO extends AbstractDAO<Integer>{
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT = "INSERT INTO \"Events\" (name, description, price, visibility, location, \"maxParticipantsInternational\", \"maxParticipantsVolunteer\", \"eventStart\", \"eventEnd\", \"subscriptionStart\",  \"subscriptionEnd\", \"withdrawalEnd\", \"maxWaitingList\", attributes, thumbnail, poster) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String STATEMENT = "INSERT INTO \"Events\" (name, description, price, visibility, location, \"maxParticipantsInternational\", \"maxParticipantsVolunteer\", \"eventStart\", \"eventEnd\", \"subscriptionStart\",  \"subscriptionEnd\", \"withdrawalEnd\", \"maxWaitingList\", attributes, thumbnail, poster) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id";
 
 
     /**
@@ -107,8 +105,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
             stmt.setString(15, this.event.getThumbnail());
             stmt.setString(16, this.event.getPoster());
 
-            stmt.executeUpdate();
-            //rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
 
             LOGGER.info("Event {} successfully created.", this.event.getId());
 
@@ -119,6 +116,9 @@ public class AdminCreateEventDAO extends AbstractDAO<Event>{
             if (rs != null) {
                 rs.close();
             }
+        }
+        if(rs != null){
+            this.outputParam = rs.getInt("id");
         }
     }
 }

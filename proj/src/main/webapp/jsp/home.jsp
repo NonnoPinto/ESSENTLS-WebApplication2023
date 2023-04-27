@@ -21,14 +21,24 @@
                 <h1>All the Events</h1>
 
                 <form action="">
-                    <label for="tag">Filter:</label>
+                    <label for="tag">Tag:</label>
                     <select name="tag">
                         <option value="${tag}" selected hidden>${tag}</option>
-                        <option value="">---no filter---</option>
+                        <option value="">---no tag---</option>
                         <c:forEach items="${tags}" var="tag" varStatus="loop">
                             <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></option>
                         </c:forEach>
                     </select>
+                    <label for="cause">Cause:</label>
+                    <select name="cause">
+                        <option value="${cause.getId()}" selected hidden>${cause.getName()}</option>
+                        <option value="">---no cause---</option>
+                        <c:forEach items="${causes}" var="cause" varStatus="loop">
+                            <option value="${cause.getId()}"><c:out value="${cause.getName()}"/></option>
+                        </c:forEach>
+                    </select>
+                    <label for="srch">Search:</label>
+                    <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" style="width: 400px"/>
                     <br><br>
                     <input type="submit" value="Submit">
                 </form>
@@ -51,5 +61,6 @@
             </c:otherwise>
         </c:choose>
         </div>
+        <footer class="footer"><%@include file="/html/footer.html"%></footer>
     </body>
 </html>

@@ -35,5 +35,6 @@
   <button type="submit">Submit</button><br/>
   <button type="reset">Reset the form</button>
 </form>
+<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

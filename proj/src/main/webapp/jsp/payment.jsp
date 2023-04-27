@@ -69,5 +69,6 @@
 
     }).render('#paypal-button-container');
 </script>
+<footer class="footer"><%@include file="/html/footer.html"%></footer>
 </body>
 </html>

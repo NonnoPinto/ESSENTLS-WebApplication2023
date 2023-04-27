@@ -1,6 +1,15 @@
+<style>
+body {
+  background-image: url("https://padova.esn.it/profiles/satellite/themes/esnbase/img/header_topbg.png");
+  background-repeat: repeat-x;
+}
+</style>
+<a href="<c:url value='/'/>">
+<img src="https://padova.esn.it/sites/esnpadova.it/files/esn_padova_logo_full_color_2.png"
+alt="Logo of ESN Padova" style="max-width: 200px; height: auto;">
+</a>
 <h3>Navbar</h3>
 
-<a rel="noopener noreferrer nofollow" href="<c:url value='/home'/>">Home</a>
 <c:if test="${sessionScope.sessionUserId == null}">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/login'/>">Login</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/signup'/>">Sign up</a>

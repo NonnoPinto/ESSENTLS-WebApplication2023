@@ -16,5 +16,7 @@
             <a href="<c:url value='/login'/>"><button>Sign in</button></a>
             <a href="<c:url value='/signup'/>"><button>Sign up</button></a>
         </div>
+
+        <footer class="footer"><%@include file="/html/footer.html"%></footer>
     </body>
 </html>
