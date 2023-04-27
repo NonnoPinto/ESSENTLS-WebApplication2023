@@ -76,7 +76,7 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
             }
 
             if(participant.getTier() > 1) { //Is a Volunteer
-                if(!participant.getRole().equals("Organizer")){
+                if(participant.getRole()==null || !participant.getRole().equals("Organizer")){
                     if(volunteers < maxParticipantsVolunteer){
                         participant.setRole("Volunteer");
                     }else if(this.alwaysWaitingList){ //The user has payed so always put in waitingList

@@ -84,6 +84,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Integer>{
         
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        this.outputParam = 0;
 
         try{
             stmt = con.prepareStatement(STATEMENT);
@@ -107,6 +108,10 @@ public class AdminCreateEventDAO extends AbstractDAO<Integer>{
 
             rs = stmt.executeQuery();
 
+            if(rs != null && rs.next()){
+                this.outputParam = rs.getInt("id");
+            }
+
             LOGGER.info("Event {} successfully created.", this.event.getId());
 
         }finally {
@@ -116,9 +121,6 @@ public class AdminCreateEventDAO extends AbstractDAO<Integer>{
             if (rs != null) {
                 rs.close();
             }
-        }
-        if(rs != null){
-            this.outputParam = rs.getInt("id");
         }
     }
 }
