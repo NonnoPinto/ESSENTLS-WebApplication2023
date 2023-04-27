@@ -87,11 +87,21 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                 }
                 JSONObject homeCountryAddress = null;
                 JSONObject paduaAddress = null;
-                if(!(rs.getObject("paduaAddress", PGobject.class)==null)){
+                String[] allergies = null;
+                try{
                     paduaAddress=new JSONObject(rs.getObject("paduaAddress", PGobject.class).getValue());
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing paduaAddress for user with id: " + rs.getInt("id"));
                 }
-                if(!(rs.getObject("homeCountryAddress", PGobject.class)==null)){
+                try{
                     homeCountryAddress=new JSONObject(rs.getObject("homeCountryAddress", PGobject.class).getValue());
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing homeCountryAddress for user with id: " + rs.getInt("id"));
+                }
+                try{
+                    allergies=(String[]) rs.getArray("allergies").getArray();
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing allergies for user with id: " + rs.getInt("id"));
                 }
                 users.add(
                         new User(
@@ -115,7 +125,7 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                 rs.getString("documentNumber"),
                                 rs.getString("documentFile"),
                                 rs.getString("dietType"),
-                                (String[]) rs.getArray("allergies").getArray(),
+                                allergies,
                                 rs.getString("emailHash"),
                                 rs.getBoolean("emailConfirmed")));
             }

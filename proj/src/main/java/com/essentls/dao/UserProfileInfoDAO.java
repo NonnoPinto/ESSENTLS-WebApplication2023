@@ -64,17 +64,23 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
             rs = stmnt.executeQuery();
 
             if (rs.next()) {
-                JSONObject paduaAddress=new JSONObject();
-                if(!(rs.getObject("paduaAddress", PGobject.class)==null)){
+                JSONObject homeCountryAddress = null;
+                JSONObject paduaAddress = null;
+                String[] allergies = null;
+                try{
                     paduaAddress=new JSONObject(rs.getObject("paduaAddress", PGobject.class).getValue());
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing paduaAddress for user with id: " + rs.getInt("id"));
                 }
-                JSONObject homeCountryAddress= new JSONObject();
-                if(!(rs.getObject("homeCountryAddress")==null)){
+                try{
                     homeCountryAddress=new JSONObject(rs.getObject("homeCountryAddress", PGobject.class).getValue());
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing homeCountryAddress for user with id: " + rs.getInt("id"));
                 }
-                String[] allergies= {};
-                if(!(rs.getArray("allergies")==null)){
-                    allergies= (String[]) rs.getArray("allergies").getArray();
+                try{
+                    allergies=(String[]) rs.getArray("allergies").getArray();
+                } catch (Exception e){
+                    LOGGER.error("Error while parsing allergies for user with id: " + rs.getInt("id"));
                 }
 
                 myUser = new User(
