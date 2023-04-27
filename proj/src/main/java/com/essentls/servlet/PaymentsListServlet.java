@@ -22,7 +22,7 @@ public class PaymentsListServlet extends AbstractDatabaseServlet{
 
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //take the request uri
         LogContext.setIPAddress(request.getRemoteAddr());
         LogContext.setResource(request.getRequestURI());

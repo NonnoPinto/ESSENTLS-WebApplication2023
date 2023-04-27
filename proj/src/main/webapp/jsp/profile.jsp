@@ -38,7 +38,7 @@
   <p>Allergies: ${Arrays.toString(Users.getAllergies())}</p>
 </div>
 
-<form action="<c:url value="/paymentslist"/>" method="POST">
+<form action="<c:url value="/paymentslist"/>" method="GET">
   <div>
     <button type="submit">Show Payment List</button>
   </div>
