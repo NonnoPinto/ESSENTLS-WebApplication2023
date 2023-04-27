@@ -44,7 +44,7 @@ public class EventCausesDeleteDAO extends AbstractDAO<EventCause> {
                 if(eventID>0){
                     stmtDelete = con.prepareStatement(DELETE_STATEMENT);
                     stmtDelete.setInt(1, eventID);
-                    stmtDelete.executeQuery();
+                    stmtDelete.executeUpdate();
 
                 }
 

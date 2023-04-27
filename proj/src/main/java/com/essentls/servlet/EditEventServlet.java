@@ -1,10 +1,7 @@
 package com.essentls.servlet;
 
 import com.essentls.dao.*;
-import com.essentls.resource.Event;
-import com.essentls.resource.Message;
-import com.essentls.resource.Participant;
-import com.essentls.resource.User;
+import com.essentls.resource.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "EditEventServlet", urlPatterns = {"", "/editEvent"})
@@ -42,24 +40,29 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
         File file = new java.io.File(url.getFile());
         File parent = file.getParentFile();
-        while (!"proj-1.0".equals(parent.getName()))
-        {
-            parent = parent.getParentFile();
-        }
+        if(!(parent==null)) {
+            while (!"proj-1.0".equals(parent.getName()))
+            {
+                parent = parent.getParentFile();
+            }
+            return (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
 
-        return (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
+        }
+        return "";
     }
 
     private String getProjectPath(){
         URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
         File file = new java.io.File(url.getFile());
         File parent = file.getParentFile();
-        while (!"proj-1.0".equals(parent.getName()))
-        {
-            parent = parent.getParentFile();
-        }
+        if(!(parent==null)) {
+            while (!"proj-1.0".equals(parent.getName())) {
+                parent = parent.getParentFile();
+            }
 
-        return (parent.getPath()).replaceAll("%20", " ");
+            return (parent.getPath()).replaceAll("%20", " ");
+        }
+        return "";
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -77,6 +80,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
             int userId = -1;
+            List<Cause> causes = null;
             if(session.getAttribute("sessionUserId") != null)
                 userId = (int)session.getAttribute("sessionUserId");
             User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
@@ -89,6 +93,14 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 req.setAttribute("number", e.getLocation().getString("number"));
                 req.setAttribute("thumbnail", ""+getProjectPath()+e.getThumbnail());
                 req.setAttribute("poster", ""+getProjectPath()+e.getPoster());
+
+                try {
+                    causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
+                }catch (SQLException sqle){
+                    LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+                }
+
+                req.setAttribute("causes", causes);
                 req.getRequestDispatcher("/jsp/editevent.jsp").forward(req, res);
             }
         } catch (Exception e) {
@@ -257,6 +269,22 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
             // creates a new object for accessing the database and stores the event
             new AdminEditEventDAO(getConnection(), e).access();
+
+            List<Cause> causes = new ArrayList<>();
+            try {
+                causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
+            }catch (SQLException sqle){
+                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+            }
+
+            new EventCausesDeleteDAO(getConnection(), eventID).access();
+            for (Cause cause:causes) {
+                int causeId= cause.getId();
+                EventCause ec= new EventCause(eventID, causeId);
+                if (cause.getName().equals(req.getParameter("cs_"+causeId))){
+                    new EventCausesCreationDAO(getConnection(), ec).access();
+                }
+            }
 
             m = new Message(String.format("Event \""+e.getName()+"\" successfully edited."));
 

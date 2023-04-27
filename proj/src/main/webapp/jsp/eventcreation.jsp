@@ -73,7 +73,7 @@
                 <div>
                     <label for="">Which causes does the event include?</label><br>
                     <c:forEach items="${causes}" var="cause">
-                        <input type="checkbox" id="${cause}" name="cs_${cause.name}" value="${cause}">
+                        <input type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
                         <label for="${cause.name}">${cause.name}</label><br>
                     </c:forEach>
 

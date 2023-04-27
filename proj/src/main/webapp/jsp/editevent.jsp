@@ -67,6 +67,16 @@
                                 </div>
                             </div>
 
+                            <!--Causes-->
+                            <div>
+                                <label for="">Which causes does the event include?</label><br>
+                                <c:forEach items="${causes}" var="cause">
+                                    <input type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
+                                    <label for="${cause.name}">${cause.name}</label><br>
+                                </c:forEach>
+
+                            </div>
+
                             <!--Location-->
                             <div style="padding-top: 10px;">
                                 <label for="">Where does it take place?</label>

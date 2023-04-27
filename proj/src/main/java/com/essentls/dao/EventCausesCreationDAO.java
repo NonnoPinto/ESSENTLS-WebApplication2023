@@ -48,7 +48,7 @@ public class EventCausesCreationDAO extends AbstractDAO<EventCause> {
                     stmtInsert.setInt(1, eventID);
                     stmtInsert.setInt(2, causeID);
 
-                    stmtInsert.executeQuery();
+                    stmtInsert.executeUpdate();
                 }
 
             } finally {

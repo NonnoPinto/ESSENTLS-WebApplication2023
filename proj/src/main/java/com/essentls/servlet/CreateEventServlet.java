@@ -50,6 +50,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
         LogContext.setAction("CREATE EVENT");
+
         List<Cause> causes = null;
         try {
             causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
@@ -58,7 +59,6 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         }
 
         req.setAttribute("causes", causes);
-
         req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
     }
 
@@ -199,12 +199,12 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 LOGGER.info("Unexpected Database error: "+sqle.getMessage());
             }
 
-            new EventCausesDeleteDAO(getConnection(), eventID);
+            //new EventCausesDeleteDAO(getConnection(), eventID).access();
             for (Cause cause:causes) {
                 int causeId= cause.getId();
                 EventCause ec= new EventCause(eventID, causeId);
-                if (cause.getName().equals(req.getParameter("cs_"+cause.getName()))){
-                    new EventCausesCreationDAO(getConnection(), ec);
+                if (cause.getName().equals(req.getParameter("cs_"+causeId))){
+                    new EventCausesCreationDAO(getConnection(), ec).access();
                 }
             }
 
