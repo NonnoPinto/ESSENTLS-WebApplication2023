@@ -5,7 +5,6 @@
 <html>
     <head>
         <meta name="description" content="ESN Padova application">
-        <meta name="viewport">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Edit Event</title>
@@ -18,15 +17,15 @@
         <div class="navbar"><%@include file="navbar.jsp"%></div>
 
         <div class="containter">
-            <div class="title">
-                <h2>Edit the event <c:out value="${event.getName()}"/></h2>
-            </div>
-
+            
             <c:choose>
                 <c:when test="${event == null}">
                     <p>Event not found!</p>
                 </c:when>
                 <c:otherwise>
+                    <div class="title">
+                        <h2>Edit the event <c:out value="${event.getName()}"/></h2>
+                    </div>
                     <c:out value="ID: ${event.getId().toString()}"/>
                     <div class="form">
                         <form action="" id="editEventForm" method="POST" enctype="multipart/form-data" >
