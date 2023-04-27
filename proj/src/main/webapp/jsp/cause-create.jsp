@@ -23,7 +23,7 @@
 
 <div>
   <label for="causeName">Insert Cause Name:</label>
-  <input id="causeName" type="text"/><br/><br/>
+  <input id="causeName" name="causeName" type="text"/><br/><br/>
 
   <button type="submit" id="ajaxButton">Submit</button><br/>
 
