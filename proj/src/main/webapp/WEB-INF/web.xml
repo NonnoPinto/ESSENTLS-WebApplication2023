@@ -129,6 +129,11 @@
         <servlet-class>com.essentls.servlet.TagSearchServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>DocumentDownloadServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.DocumentDownloadServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -248,6 +253,11 @@
     <servlet-mapping>
         <servlet-name>TagSearchServlet</servlet-name>
         <url-pattern>/tag-search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DocumentDownloadServlet</servlet-name>
+        <url-pattern>/download-user-document</url-pattern>
     </servlet-mapping>
 
 

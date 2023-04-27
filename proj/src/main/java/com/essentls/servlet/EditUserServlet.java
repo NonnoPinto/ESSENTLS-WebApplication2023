@@ -119,15 +119,8 @@ public class EditUserServlet extends AbstractDatabaseServlet {
             byte[] documentBytes = null;
 
             if (documentBytesPart != null) {
-
-                InputStream documentBytesStream = documentBytesPart.getInputStream();
-
-                documentBytes = new byte[10*1024*1024];
-
-                documentBytesStream.read(documentBytes);
+                documentBytes = documentBytesPart.getInputStream().readAllBytes();
             }
-
-
 
             try {
             emailConfirmed = Boolean.parseBoolean(req.getParameter("userEmailConfirmed"));}
