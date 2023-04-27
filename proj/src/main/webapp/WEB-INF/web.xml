@@ -114,6 +114,11 @@
         <servlet-class>com.essentls.servlet.UnauthorizedServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>CauseCreateServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.CauseCreateServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -218,6 +223,11 @@
     <servlet-mapping>
         <servlet-name>UnauthorizedServlet</servlet-name>
         <url-pattern>/unauthorized</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CauseCreateServlet</servlet-name>
+        <url-pattern>/cause-create</url-pattern>
     </servlet-mapping>
 
 
