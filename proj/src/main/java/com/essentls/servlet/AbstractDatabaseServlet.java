@@ -16,6 +16,10 @@ import java.sql.SQLException;
 /**
  * Gets the {@code DataSource} for managing the connection pool to the database.
  *
+ *
+ * @author Andrea Campagnol
+ * @version 1.00
+ * @since 1.00
  */
 public abstract class AbstractDatabaseServlet extends HttpServlet {
 

@@ -10,14 +10,27 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
-
+/**
+ * Logs in the user.
+ *
+ * @author Andrea Campagnol
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends AbstractDatabaseServlet {
 
-    //public final static String LOGIN_JSP = "/jsp/login.jsp";
+    /**
+     * Handles the HTTP {@code GET} method. If the user is not logged in, redirects to the login page, otherwise
+     * redirects to the home page.
+     *
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
@@ -33,8 +46,15 @@ public class LoginServlet extends AbstractDatabaseServlet {
         }
     }
 
-
-
+    /**
+     * Handles the HTTP {@code POST} method. Authenticates the user and redirects to the home page if successful,
+     * otherwise redirects to the login page.
+     *
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the POST could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the POST request
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         //take the request uri
@@ -99,17 +119,15 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     session.setAttribute("sessionUserId", user.getId());
                     session.setAttribute("sessionUserTier", user.getTier());
                     LOGGER.info("the USER %s LOGGED IN",user.getEmail());
-    //
+
                     // login credentials were correct: we redirect the user to the profile page
                     // now the session is active and its data can used to change the profile page
                     res.sendRedirect(req.getContextPath()+"/home");
     
-    //                    req.getRequestDispatcher("/jsp/user/home.jsp").forward(req, res);
                 }
             }
         } catch (SQLException e){
             //something unexpected happened: we write it into the LOGGER
-            //writeError(res, ErrorCode.INTERNAL_ERROR);
             LOGGER.error("stacktrace:", e);
             throw new ServletException(e);
         }

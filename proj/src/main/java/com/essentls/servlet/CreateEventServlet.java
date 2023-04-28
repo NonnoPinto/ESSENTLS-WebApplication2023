@@ -20,10 +20,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Creates a new event and inserts it into the database.
+ *
+ * @author Francesco Marcato
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "CreateEventServlet", urlPatterns = {"", "/create-event"})
 @MultipartConfig
 public final class CreateEventServlet extends AbstractDatabaseServlet {
 
+    /**
+     * A method that processes a file to retrieve its name without the preceding path.
+     *
+     * @param part a {@code Part} object that contains the file to be processed.
+     * @return a {@code String} object that contains the name of the file.
+     */
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
         LOGGER.info("Part Header = {0}", partHeader);
@@ -37,10 +50,10 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
     }
 
     /**
-     * Creates a new event into the database.
+     * Handles the HTTP {@code GET} method. Redirects the user to the event creation page.
     *
-    * @param req the HTTP request from the client.
-    * @param res the HTTP response from the server.
+    * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+    * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
     *
     * @throws IOException if any error occurs in the client/server communication.
     */
@@ -62,6 +75,16 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
     }
 
+
+    /**
+     * Handles the HTTP {@code POST} method. Retrieves the parameters inserted by the user, creates a new event and
+     * inserts it into the database.
+     *
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     *
+     * @throws IOException if any error occurs in the client/server communication.
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -137,10 +160,10 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 final String path = (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
                 final String relative_path = "ESSENTLS_Cloud";
 
-                //create folder if doesn't exists
+                //create folder if it doesn't exist
                 new File(path).mkdirs();
 
-                // get file
+                //get file
                 final Part posterPart = req.getPart("poster");
                 final Part thumbnailPart = req.getPart("thumbnail");
                 final String posterName = getFileName(posterPart);
@@ -199,7 +222,6 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 LOGGER.info("Unexpected Database error: "+sqle.getMessage());
             }
 
-            //new EventCausesDeleteDAO(getConnection(), eventID).access();
             for (Cause cause:causes) {
                 int causeId= cause.getId();
                 EventCause ec= new EventCause(eventID, causeId);

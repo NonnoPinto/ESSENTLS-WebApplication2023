@@ -4,7 +4,6 @@ import com.essentls.dao.UploadUserDocumentDAO;
 import com.essentls.dao.UserMembershipDAO;
 import com.essentls.resource.Message;
 import com.essentls.resource.User;
-import com.essentls.utils.ErrorCode;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,9 +18,26 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * Edits a user into the database in the instance where the user is making a membership request.
+ *
+ * @author Alessandro Borsato
+ * @version 1.00
+ * @since 1.00
+ */
 @MultipartConfig
 @WebServlet(name = "MembershipServlet", value = "/membership")
 public class MembershipServlet extends AbstractDatabaseServlet {
+
+    /**
+     * Handles the HTTP {@code GET} method. Retrieves the session user tier and redirects to the membership form
+     * submission page if the user is tier 0, otherwise redirects to the profile page.
+     *
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the GET could not be handled.
+     * @throws IOException if any error occurs in the client/server communication.
+     */
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         //take the request uri
@@ -38,6 +54,16 @@ public class MembershipServlet extends AbstractDatabaseServlet {
         }
     }
 
+    /**
+     * Handles the HTTP {@code POST} method. Retrieves the session user id and tier, and the membership form data.
+     * If the user is tier 0, the membership request is submitted to the database, otherwise the user is redirected
+     * to the profile page.
+     *
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the POST could not be handled.
+     * @throws IOException if any error occurs in the client/server communication.
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -55,9 +81,6 @@ public class MembershipServlet extends AbstractDatabaseServlet {
             if(userTier > 0){
                 res.sendRedirect(req.getContextPath() + "/profile");
             }else {
-                //            String email = req.getParameter("email").toLowerCase();
-                //            String password = req.getParameter("password");
-                //            String passwordRepeated = req.getParameter("rpassword");
                 String cardId = req.getParameter("card-id");
                 Integer tier = 0;
                 java.util.Date utilDate = new java.util.Date();

@@ -5,11 +5,7 @@ import com.essentls.dao.*;
 import com.essentls.resource.User;
 import com.essentls.resource.Message;
 
-//eventualmente spostare logContext in resources
-
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,15 +17,23 @@ import jakarta.servlet.http.HttpSession;
 
 import javax.swing.*;
 
+/**
+ * Filters the user list by the given parameters and displays the results.
+ *
+ * @author Laura Pallante
+ * @version 1.00
+ * @since 1.00
+ */
 public final class SearchUserServlet extends AbstractDatabaseServlet{
 
-    /**
-    @param req  //request
-    @param res  //response
-    @throws ServletException    //exception servlet
-    @throws IOException     //exceptionIO
-    */
 
+    /**
+     * Handles the HTTP {@code GET} method. Redirects to the user search form page.
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the GET could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request.
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -48,7 +52,6 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
             }
         }
         else {
-            /* */
             try {
                 int userId = -1;
                 if(session.getAttribute("sessionUserId") != null)
@@ -66,6 +69,13 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
         }
     }
 
+    /**
+     * Handles the HTTP {@code POST} method. Filters the user list by the given parameters and displays the results.
+     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the POST could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the POST request.
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setAction("SEARCH USER");
