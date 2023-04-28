@@ -1,17 +1,17 @@
 \section{Presentation Logic Layer}
 
-Web application is mainly developed in eight pages; not all of them are accessible by all users, it depends on their tier (see \ref{fig:users_tiers}). Also pages functionalities depends on tier, i.e. when searching for an event, tier 1 users can see only events for tier 1 or lower, tier 2 users can see events for tier 2 or lower and so on. More restrictions are made to users that hasn't confirmed their mail yet.\\
-Here above most important pages are listed, some are missing, s.e. login, signup pages or the form to complete the registration.
+Our Web application is mainly developed in eight pages; not all of them are accessible by all users, it depends on their tier (see \ref{fig:users_tiers}). Also page functionalities depend on tier, i.e. when searching for an event, tier 1 users can see only events for tier 1 or lower, tier 2 users can see events for tier 2 or lower, and so on. More restrictions are made to users that haven't confirmed their mail yet.\\
+Here above most important pages are listed, some are missing, s.e. login, signup pages, or the form to complete the registration.
 
 \begin{itemize}
-    \item \texttt{Home}: it's the landing page, when an user is logged it shows a list of events and a search bar. Otherwise it shows the login page. It's accessible by all users.
-    \item \texttt{Profile}: it shows user's profile info and allows to change them. It's accessible by all users.
-    \item \texttt{My events}: it shows a list of events the user is participating to. It's accessible by all users.
-    \item \texttt{Logout}: it allows to logout. It's accessible by all users.
-    \item \texttt{(Admin) Create Event}: it allows to create a new event and eventually change some information about them. It's accessible by tier 2 or above users.
-    \item \texttt{(Admin) Search User}: it allows to search for a user and eventually modify his profile. It's accessible by administrators.
-    \item \texttt{(Admin) Create cause}: it allows to create a new cause. It's accessible by administrators.
-    \item \texttt{(Admin) Search cause}: it allows to search for a cause and eventually modify or delete it. It's accessible by administrators.
+    \item \texttt{Home}: it's the landing page, when a user is logged it shows a list of events and a search bar. Otherwise, it shows the login page. It's accessible to all users.
+    \item \texttt{Profile}: it shows the user's profile info and allows them to change them. It's accessible to all users.
+    \item \texttt{My events}: it shows a list of events the user is participating in. It's accessible to all users.
+    \item \texttt{Logout}: it allows to logout. It's accessible to all users.
+    \item \texttt{(Admin) Create Event}: it allows one to create a new event and eventually change some information about them. It's accessible by tier 2 or above users.
+    \item \texttt{(Admin) Search User}: it allows one to search for a user and eventually modify his profile. It's accessible by administrators.
+    \item \texttt{(Admin) Create cause}: it allows one to create a new cause. It's accessible by administrators.
+    \item \texttt{(Admin) Search cause}: it allows one to search for a cause and eventually modify or delete it. It's accessible by administrators.
 \end{itemize}
 
 \subsection{Signup page}
@@ -21,9 +21,9 @@ Here above most important pages are listed, some are missing, s.e. login, signup
     \caption{Sign up page}
     \label{fig:signup page}
 \end{figure}
-Users can sign up just with mail and password. They will not have access only to their
-0 events. For a better experience and more opportunities
-they are asked to complete their profile with a more detailed form, including these from
+Users can sign up just with their mail and password. They will not have access only to their
+0 events. For a better experience and more opportunities,
+they are asked to complete their profile with a more detailed form, including those from
 their hometown. This form is shown in \ref{fig:form} and described in next section.
 \subsection{Registration form}
 \begin{figure}[H]
@@ -33,7 +33,7 @@ their hometown. This form is shown in \ref{fig:form} and described in next secti
     \label{fig:form}
 \end{figure}
 When user wants to upgrade to tier 1 they have to pay their subscription (as shown in \ref{fig:payment}).
-The form for a full profile asks for many information, here just a few are displayed, but the 
+The form for a full profile asks for any information, here just a few are displayed, but the 
 real form will have more than 10 input boxes. 
 \subsection{Payment page}
 \begin{figure}[H]
@@ -42,8 +42,8 @@ real form will have more than 10 input boxes.
     \caption{Payment page}
     \label{fig:payment}
 \end{figure}
-When a user pays his subscription, he will become a tier 1 user. He will be able to participate to more
-events. Still he cannot create an event (only tier 3 or above users can do that). 
+When a user pays his subscription, he will become a tier 1 user. He will be able to participate in more
+events. Still, he cannot create an event (only tier 3 or above users can do that). 
 \subsection{Events list page}
 \begin{figure}[H]
     \centering

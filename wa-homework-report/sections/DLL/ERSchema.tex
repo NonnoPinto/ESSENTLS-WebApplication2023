@@ -6,15 +6,15 @@
     \label{fig:er_schema}
 \end{figure}
 Our database has 3 main entities, plus an important relation. Others are auxiliary
-and will be explained shortly at the end. Except only one entity, all entities has an integer ID
-as primary key. Main entities are:
+and will be explained shortly at the end. Except for only one entity, all entities have an integer ID
+as the primary key. The main entities are:
 \begin{itemize}
-    \item \textbf{Users:} this entity contains all the information about every kind of users, from
-    tier 0 to system admin. This table has new entries every time registration form is filled: the dummy
+    \item \textbf{Users:} this entity contains all the information about every kind of user, from
+    tier 0 to system admin. This table has new entries every time the registration form is filled: the dummy
     form will generate a tier 0 user, while the real form will generate a tier 1 user. Every attribute 
     is self-explanatory and stored in a very intuitive way: name and surname are varchar(50), all dates
-    are type date with local time zone and so on.\\
-    Here, just as examples, some attributes with their SQL code and few information about them.
+    are type date with local time zone, and so on.\\
+    Here, just as examples, some attributes with their SQL code and little information about them.
 \begin{lstlisting}[language=SQL]
 CREATE TYPE diet AS ENUM ('No specific', 'Vegetarian',
                         'Vegan', 'Halal', 'Kosher', 'Pescetarian');
@@ -30,21 +30,21 @@ email VARCHAR(255) NOT NULL UNIQUE CHECK
 "dietType" diet,
 )
 \end{lstlisting}
-    In the above snippet, we can see few special features: RegExpr is used to check mail spelling,
-    addresses and similar variables are stores as json, for an easier data access. Diet and others
-    are stored as enum, to avoid user typo and having more readable attributes. %TODO: images!!!!
+    In the above snippet, we can see a few special features: RegExpr is used to check mail spelling,
+    addresses, and similar variables are stored as json, for easier data access. Diet and others
+    are stored as enum, to avoid user typos and have more readable attributes.
     \item \textbf{Events:} as for users entity, event has a long list of attributes, wisely chosen
-    in relation how events are actually organized. Some events are restricted to certain users, based
+    about how events are organized. Some events are restricted to certain users, based
     on tiers, or have a limited number of participants. All these particularities are fully represented
     in the entity.
     \item \textbf{Payment:} this entity contains all the information about payment for event participation.
     Of course the actual web application isn't linked to real payment methods, but once il will be, this Entity
-    will be related to real payments, in order to tracing them, know most favorite payment methods etc.
+    will be related to real payments, in order to trace them, know most favorite payment methods, etc.
     \item \textbf{Participants:} opposed to previous entities, this is a relation between users and events,
     collecting user role, as listed in this snippet:
 \begin{lstlisting}[language=SQL]
 CREATE TYPE roleTypes AS ENUM ('Organizer', 'Participant',
                             'Volunteer', 'WaitingList');
 \end{lstlisting}
-    Furthermore, date helps managing waiting list and attributes %TODO: why is it needed?
+    Furthermore, date helps managing waiting list and attributes.
 \end{itemize}
