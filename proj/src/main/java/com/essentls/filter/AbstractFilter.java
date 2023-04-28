@@ -19,6 +19,9 @@ import java.io.IOException;
 
 public class AbstractFilter extends HttpFilter {
 
+    /**
+     * A LOGGER available for all the subclasses.
+     */
     Logger logger;
 
     /**

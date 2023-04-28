@@ -18,9 +18,13 @@ import java.io.IOException;
  */
 public class LoginFilter extends AbstractFilter {
 
+    /**
+     * A LOGGER available for all the subclasses.
+     */
     final static Logger logger = LogManager.getLogger(LoginFilter.class);
 
     /**
+     * Checks if the user is logged in.
      * @param req   the request
      * @param res   the response
      * @param chain the filter chain

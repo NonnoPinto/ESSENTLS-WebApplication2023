@@ -20,10 +20,13 @@ import java.io.IOException;
  */
 public class ActiveVolunteerFilter extends AbstractFilter {
 
+    /**
+     * A LOGGER available for all the subclasses.
+     */
     final static Logger logger = LogManager.getLogger(ActiveVolunteerFilter.class);
 
     /**
-     * Checks if the user is logged in and if he is an active volunteer.
+     * Checks if the user is logged in and if he is an active volunteer or an admin.
      * If not, it redirects to the unauthorized page.
      * If the user is logged in and is an active volunteer, it continues the request.
      * @param req the request
