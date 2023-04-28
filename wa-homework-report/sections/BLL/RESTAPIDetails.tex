@@ -16,17 +16,29 @@ Returns JSON data about all Causes that contain a certain substring in the Name 
     \item URL Parameters: \texttt{\\Required: subCause=[String] }
     \item Data Parameters: \texttt{\\None}
     \item Success Response: \texttt{\\Code: 200 \\Content: \{ esncause: \{id : 1, name : "examplecause"\}\}} 
-    \item Error Response: \texttt{\\Code:400 \\Content: \{ error: "Cannot search Cause(s): wrong format for URI"\}
-                                \\\\OR \\\\Code:404 \\Content: \{ error: "Unknown resource."\}
-                                 \\\\OR \\\\Code:405 \\Content: \{ error: "Unsupported method for URI /causes/srch/: ..."\}
-                                  \\\\OR \\\\Code:500 \\Content: \{ error: "Cannot search Cause(s): unexpected error."\}}
-    \item Sample Call: \texttt{\\\$.ajax(\{
-                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} url: "/causes/srch/examplecause",
-                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} datatype: "json",
-                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} type : "GET",
-                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} success : function(r) \{
-                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} console.log(r);
-                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \}
-                        \\ \});}
+    \item Error Response:
+    \begin{verbatim}
+Code:400
+Content: { error: "Cannot search Cause(s): wrong format for URI"}
+OR
+Code:404
+Content: { error: "Unknown resource."}
+OR
+Code:405
+Content: { error: "Unsupported method for URI /causes/srch/: ..."}
+OR
+Code:500
+Content: { error: "Cannot search Cause(s): unexpected error."}
+    \end{verbatim}
+    \item Sample Call: \begin{lstlisting}[language = Java]
+$.ajax({
+    url: "/causes/srch/examplecause",
+    datatype: "json",
+    type : "GET",
+    success : function(r) {
+        console.log(r);
+    }
+});
+    \end{lstlisting}
 \end{itemize}
 

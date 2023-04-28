@@ -42,7 +42,7 @@ email VARCHAR(255) NOT NULL UNIQUE CHECK
     will be related to real payments, in order to tracing them, know most favorite payment methods etc.
     \item \textbf{Participants:} opposed to previous entities, this is a relation between users and events,
     collecting user role, as listed in this snippet:
-\begin{lstlisting}
+\begin{lstlisting}[language=SQL]
 CREATE TYPE roleTypes AS ENUM ('Organizer', 'Participant',
                             'Volunteer', 'WaitingList');
 \end{lstlisting}
