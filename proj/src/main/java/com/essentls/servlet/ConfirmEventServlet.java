@@ -36,8 +36,8 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
      * retrieves the event id , the user id and the values of the attributes from the request and uses the
      * {@link ParticipantEditDAO} to add these attribute values to the participant in the database.
      *
-     * @param request  a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      *
      * @throws ServletException if the request for the POST could not be handled
      * @throws IOException      if an input or output error is detected when the servlet handles the POST request
@@ -77,8 +77,8 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
      * Handles the HTTP {@code GET} method. Checks if the eventual payment is confirmed and then calls the
      * {@Link #startPartecipation(Connection, int, int, boolean)} method to try to insert the participant in the database.
      *
-     * @param request  a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      *
      * @throws ServletException if the request for the GET could not be handled
      * @throws IOException      if an input or output error is detected when the servlet handles the GET request
@@ -145,7 +145,7 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
     /**
      * Checks if there is availability in the event and then inserts the participant in the database.
      *
-     * @param transConn a {@code Connection} object that contains the connection to the database
+     * @param transConn a {@link Connection} object that contains the connection to the database
      * @param eventId a {@code int} that contains the id of the event
      * @param userId a {@code int} that contains the id of the user
      * @param isOrganizer a {@code boolean} that contains the value of the organizer flag

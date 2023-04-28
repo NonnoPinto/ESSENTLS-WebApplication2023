@@ -63,7 +63,7 @@ public final class MailManager {
 	private static final Session session;
 
 	/**
-	 * Loads the configuration from {@code CONFIG_FILE} and initializes the mailer.
+	 * Loads the configuration from {@link CONFIG_FILE} and initializes the mailer.
 	 */
 	static {
 		Properties cfg = loadConfiguration();
@@ -295,9 +295,9 @@ public final class MailManager {
 
 
 	/**
-	 * Loads the configuration for the {@code MailManager}.
+	 * Loads the configuration for the {@link MailManager}.
 	 *
-	 * @return the configuration for the {@code MailManager}.
+	 * @return the configuration for the {@link MailManager}.
 	 */
 
 	private static Properties loadConfiguration() {

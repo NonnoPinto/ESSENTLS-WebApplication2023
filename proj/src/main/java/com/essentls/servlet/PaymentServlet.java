@@ -29,8 +29,8 @@ public class PaymentServlet extends AbstractDatabaseServlet{
     /**
      * Handles the HTTP {@code GET} method. Redirects to the correct method based on the action parameter.
      *
-     * @param request a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException if the request for the GET could not be handled
      * @throws IOException if an input or output error is detected when the servlet handles the GET request
      */
@@ -50,8 +50,8 @@ public class PaymentServlet extends AbstractDatabaseServlet{
     /**
      * Method that handles the payment of an event.
      *
-     * @param request a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException if the request for the GET could not be handled
      */
     private void eventPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException {
@@ -88,8 +88,8 @@ public class PaymentServlet extends AbstractDatabaseServlet{
     /**
      * Method that handles the payment of a subscription.
      *
-     * @param request a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      */
     private void subPayment(HttpServletRequest request, HttpServletResponse response){
 

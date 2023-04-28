@@ -1,12 +1,7 @@
 package com.essentls.rest;
 
-import com.essentls.dao.CausesCreationDAO;
-import com.essentls.dao.TagsCreationDAO;
-import com.essentls.dao.TagsListDAO;
 import com.essentls.dao.UpdateCauseDAO;
 import com.essentls.resource.Message;
-import com.essentls.resource.ResourceList;
-import com.essentls.resource.Tag;
 import com.essentls.servlet.LogContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,18 +21,22 @@ import java.sql.SQLException;
 
 
 public class UpdateCauseRR extends AbstractRR {
-    /**
-     * Creates a new REST resource for updating {@code Cause}s.
-     *
-     * @param req the HTTP request.
-     * @param res the HTTP response.
-     * @param con the connection to the database.
-     */
 
+    /**
+     * Creates a new REST resource for updating {@link Cause}s.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param con a {@link Connection} object that represents a connection to the database.
+     */
     public UpdateCauseRR(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
         super("UPDATE_CAUSE", req, res, con);
     }
 
+    /**
+     * Updates a {@link Cause} and returns it in the response.
+     * @throws IOException if an I/O error occurs while writing the response.
+     */
     @Override
     protected void doServe() throws IOException {
         Message m = null;

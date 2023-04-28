@@ -31,8 +31,8 @@ public class EditUserServlet extends AbstractDatabaseServlet {
      * Handles the HTTP {@code POST} method. Retrieves the parameters from the request and edits a user into the
      * database.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
-     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
      *
      * @throws IOException if any error occurs in the client/server communication.
      * @throws ServletException if the request for the POST could not be handled.

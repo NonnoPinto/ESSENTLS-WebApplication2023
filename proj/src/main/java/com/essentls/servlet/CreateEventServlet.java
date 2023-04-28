@@ -34,8 +34,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
     /**
      * A method that processes a file to retrieve its name without the preceding path.
      *
-     * @param part a {@code Part} object that contains the file to be processed.
-     * @return a {@code String} object that contains the name of the file.
+     * @param part a {@link Part} object that contains the file to be processed.
+     * @return a {@link String} object that contains the name of the file.
      */
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
@@ -52,8 +52,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
     /**
      * Handles the HTTP {@code GET} method. Redirects the user to the event creation page.
     *
-    * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
-    * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+    * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+    * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
     *
     * @throws IOException if any error occurs in the client/server communication.
     */
@@ -80,8 +80,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
      * Handles the HTTP {@code POST} method. Retrieves the parameters inserted by the user, creates a new event and
      * inserts it into the database.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
-     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
      *
      * @throws IOException if any error occurs in the client/server communication.
      */

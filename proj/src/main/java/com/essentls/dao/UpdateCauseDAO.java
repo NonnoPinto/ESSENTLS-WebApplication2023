@@ -27,10 +27,10 @@ public class UpdateCauseDAO extends AbstractDAO<Cause>{
     final Cause cause;
 
     /**
-     * Creates a new object to update a cause
+     * Creates a new DAO for updating a {@link Cause}.
      *
      * @param con the connection to the database.
-     * @param cause the cause to be updated in the database
+     * @param cause the {@link Cause} to update.
      */
     public UpdateCauseDAO(final Connection con, final Cause cause) {
         super(con);

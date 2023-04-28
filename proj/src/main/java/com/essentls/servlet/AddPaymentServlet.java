@@ -29,8 +29,8 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
      * Handles the HTTP {@code GET} method. Checks if the payment is for an event or a subscription and redirects to the
      * correct method.
      *
-     * @param request  a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      *
      * @throws ServletException if the request for the GET could not be handled
      * @throws IOException      if an input or output error is detected when the servlet handles the GET request
@@ -53,8 +53,8 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
      * Retrieves the payment information from the request and inserts it in the database. Redirects to the event
      * confirmation page.
      *
-     * @param request  a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      *
      * @throws ServletException if the request for the POST could not be handled
      */
@@ -92,8 +92,8 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
     /**
      * Retrieves the payment information from the request and inserts it in the database. Redirects to the home page.
      *
-     * @param request  a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      *
      * @throws ServletException if the request for the POST could not be handled
      */

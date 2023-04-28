@@ -27,8 +27,8 @@ public class EmailConfirmationServlet extends AbstractDatabaseServlet {
      * stored in the database. If it does, the user is verified and redirected to the login page, otherwise an error
      * message is displayed.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException if the request for the GET could not be handled
      * @throws IOException if an input or output error is detected when the servlet handles the GET request
      */

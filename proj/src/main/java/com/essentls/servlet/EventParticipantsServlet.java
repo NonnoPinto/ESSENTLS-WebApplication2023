@@ -27,8 +27,8 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
      * Handles the HTTP {@code GET} method. Retrieves the list of participants for an event and redirects to the event
      * participants page.
      *
-     * @param request a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param response a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException if the request for the GET could not be handled
      * @throws IOException if an input or output error is detected when the servlet handles the GET request
      */

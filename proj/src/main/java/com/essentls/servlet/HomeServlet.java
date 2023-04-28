@@ -30,8 +30,8 @@ public final class HomeServlet extends AbstractDatabaseServlet {
      * Handles the HTTP {@code GET} method. Retrieves the list of events visible to the user and redirects to the home
      * page.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet
-     * @param resp a {@code HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param resp a {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException if the request for the GET could not be handled
      * @throws IOException if an input or output error is detected when the servlet handles the GET request
      */

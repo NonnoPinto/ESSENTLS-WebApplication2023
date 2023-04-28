@@ -33,8 +33,8 @@ public class MembershipServlet extends AbstractDatabaseServlet {
      * Handles the HTTP {@code GET} method. Retrieves the session user tier and redirects to the membership form
      * submission page if the user is tier 0, otherwise redirects to the profile page.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
-     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
      * @throws ServletException if the request for the GET could not be handled.
      * @throws IOException if any error occurs in the client/server communication.
      */
@@ -59,8 +59,8 @@ public class MembershipServlet extends AbstractDatabaseServlet {
      * If the user is tier 0, the membership request is submitted to the database, otherwise the user is redirected
      * to the profile page.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
-     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
      * @throws ServletException if the request for the POST could not be handled.
      * @throws IOException if any error occurs in the client/server communication.
      */

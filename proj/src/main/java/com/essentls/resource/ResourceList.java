@@ -10,20 +10,20 @@ import java.io.*;
  * @version 1.00
  * @since 1.00
  *
- * @param <T> the type of the actual class extending {@code AbstractResource}.
+ * @param <T> the type of the actual class extending {@link AbstractResource}.
  *
  */
 public final class ResourceList<T extends Resource> extends AbstractResource {
 
     /**
-     * The list of {@code AbstractResource}s.
+     * The list of {@link AbstractResource}s.
      */
     private final Iterable<T> list;
 
     /**
-     * Creates a list of {@code AbstractResource}s.
+     * Creates a list of {@link AbstractResource}s.
      *
-     * @param list the list of {@code AbstractResource}s.
+     * @param list the list of {@link AbstractResource}s.
      */
     public ResourceList(final Iterable<T> list) {
 

@@ -37,7 +37,7 @@ public abstract class AbstractResource implements Resource {
     }
 
     /**
-     * Serializes the {@code Resource} to JSON and writes it to the specified output stream.
+     * Serializes the {@link Resource} to JSON and writes it to the specified output stream.
      * @param out
      * @throws IOException
      */
@@ -61,10 +61,10 @@ public abstract class AbstractResource implements Resource {
     /**
      * Performs the actual writing of JSON.
      *
-     * Subclasses have to implement this method to provide the actual logic needed for representing the {@code
+     * Subclasses have to implement this method to provide the actual logic needed for representing the {@link
      * Resource} to JSON.
      *
-     * @param out the stream to which the JSON representation of the {@code Resource} has to be written.
+     * @param out the stream to which the JSON representation of the {@link Resource} has to be written.
      *
      * @throws Exception if something goes wrong during writing.
      */

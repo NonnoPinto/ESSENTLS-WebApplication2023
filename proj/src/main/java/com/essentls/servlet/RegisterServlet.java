@@ -29,8 +29,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     /**
      * Handles the HTTP {@code GET} method. Redirects to the registration page.
      *
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
-     * @param res a {@code HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
      * @throws ServletException if the request for the GET could not be handled.
      * @throws IOException if an input or output error is detected when the servlet handles the GET request.
      */
@@ -46,7 +46,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     /**
      * Handles the HTTP {@code POST} method. Registers a new user and redirects to the home page if successful,
      * otherwise redirects to the registration page.
-     * @param req a {@code HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
      * @param res
      * @throws ServletException
      * @throws IOException
