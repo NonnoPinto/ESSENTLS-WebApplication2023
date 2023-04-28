@@ -1,13 +1,23 @@
 \section{Presentation Logic Layer}
 
-%What pages will be present in your project? briefly indicate how your web site will be organized
+Web application is mainly developed in eight pages; not all of them are accessible by all users, it depends on their tier (see \ref{fig:users_tiers}). Also pages functionalities depends on tier, i.e. when searching for an event, tier 1 users can see only events for tier 1 or lower, tier 2 users can see events for tier 2 or lower and so on. More restrictions are made to users that hasn't confirmed their mail yet.\\
+Here above most important pages are listed, some are missing, s.e. login, signup pages or the form to complete the registration.
 
-\lipsum[1]
+\begin{itemize}
+    \item \texttt{Home}: it's the landing page, when an user is logged it shows a list of events and a search bar. Otherwise it shows the login page. It's accessible by all users.
+    \item \texttt{Profile}: it shows user's profile info and allows to change them. It's accessible by all users.
+    \item \texttt{My events}: it shows a list of events the user is participating to. It's accessible by all users.
+    \item \texttt{Logout}: it allows to logout. It's accessible by all users.
+    \item \texttt{(Admin) Create Event}: it allows to create a new event and eventually change some information about them. It's accessible by tier 2 or above users.
+    \item \texttt{(Admin) Search User}: it allows to search for a user and eventually modify his profile. It's accessible by administrators.
+    \item \texttt{(Admin) Create cause}: it allows to create a new cause. It's accessible by administrators.
+    \item \texttt{(Admin) Search cause}: it allows to search for a cause and eventually modify or delete it. It's accessible by administrators.
+\end{itemize}
 
 \subsection{Signup page}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/signup.png}
+    \includegraphics[width=0.5\textwidth]{images/signup.png}
     \caption{Sign up page}
     \label{fig:signup page}
 \end{figure}
@@ -18,7 +28,7 @@ their hometown. This form is shown in \ref{fig:form} and described in next secti
 \subsection{Registration form}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/form.png}
+    \includegraphics[width=0.5\textwidth]{images/form.png}
     \caption{Form for the full registration}
     \label{fig:form}
 \end{figure}
@@ -28,7 +38,7 @@ real form will have more than 10 input boxes.
 \subsection{Payment page}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/PaymentMethod.png}
+    \includegraphics[width=0.5\textwidth]{images/PaymentMethod.png}
     \caption{Payment page}
     \label{fig:payment}
 \end{figure}
@@ -37,7 +47,7 @@ events. Still he cannot create an event (only tier 3 or above users can do that)
 \subsection{Events list page}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/EventList.png}
+    \includegraphics[width=0.5\textwidth]{images/EventList.png}
     \caption{Sign up page}
     \label{fig:events}
 \end{figure}
@@ -49,7 +59,7 @@ can also use DELETE to delete an event. With a POST request, a new event can be 
 \subsection{Join event page}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/JoinEvent.png}
+    \includegraphics[width=0.5\textwidth]{images/JoinEvent.png}
     \caption{Sign up page}
     \label{fig:joinEvent}
 \end{figure}
@@ -60,7 +70,7 @@ but linked to tickets for cinema, party etc.
 \subsection{Change user info}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/ChangeUserDetail.png}
+    \includegraphics[width=0.5\textwidth]{images/ChangeUserDetail.png}
     \caption{Change user's info}
     \label{fig:change info}
 \end{figure}

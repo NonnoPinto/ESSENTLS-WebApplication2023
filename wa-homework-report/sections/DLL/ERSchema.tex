@@ -17,7 +17,7 @@ as primary key. Main entities are:
     Here, just as examples, some attributes with their SQL code and few information about them.
 \begin{lstlisting}[language=SQL]
 CREATE TYPE diet AS ENUM ('No specific', 'Vegetarian',
-                        'Vegan', 'Halal', 'Kosher', 'Pescatarian');
+                        'Vegan', 'Halal', 'Kosher', 'Pescetarian');
 
 CREATE TABLE public."Users" (
 id SERIAL PRIMARY KEY,
@@ -35,9 +35,9 @@ email VARCHAR(255) NOT NULL UNIQUE CHECK
     are stored as enum, to avoid user typo and having more readable attributes. %TODO: images!!!!
     \item \textbf{Events:} as for users entity, event has a long list of attributes, wisely chosen
     in relation how events are actually organized. Some events are restricted to certain users, based
-    on tiers, or have a limited number of participants. All these particularities are fully rapresented
+    on tiers, or have a limited number of participants. All these particularities are fully represented
     in the entity.
-    \item \textbf{Payment:} this entity contains all the informations about payment for event partecipation.
+    \item \textbf{Payment:} this entity contains all the information about payment for event participation.
     Of course the actual web application isn't linked to real payment methods, but once il will be, this Entity
     will be related to real payments, in order to tracing them, know most favorite payment methods etc.
     \item \textbf{Participants:} opposed to previous entities, this is a relation between users and events,
