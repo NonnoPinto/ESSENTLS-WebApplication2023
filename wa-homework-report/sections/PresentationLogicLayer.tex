@@ -1,7 +1,7 @@
 \section{Presentation Logic Layer}
 
 Our Web application is mainly developed in eight pages; not all of them are accessible by all users, it depends on their tier (see \ref{fig:users_tiers}). Also page functionalities depend on tier, i.e. when searching for an event, tier 1 users can see only events for tier 1 or lower, tier 2 users can see events for tier 2 or lower, and so on. More restrictions are made to users that haven't confirmed their mail yet.\\
-Here above most important pages are listed, some are missing, s.e. login, signup pages, or the form to complete the registration.
+Here above most important pages are listed, some are missing, i.e. login, signup pages, or the form to complete the registration.
 
 \begin{itemize}
     \item \texttt{Home}: it's the landing page, when a user is logged it shows a list of events and a search bar. Otherwise, it shows the login page. It's accessible to all users.
@@ -21,7 +21,7 @@ Here above most important pages are listed, some are missing, s.e. login, signup
     \caption{Sign up page}
     \label{fig:signup page}
 \end{figure}
-Users can sign up just with their mail and password. They will not have access only to their
+Users can sign up just with their mail and password. They will have access only to tier
 0 events. For a better experience and more opportunities,
 they are asked to complete their profile with a more detailed form, including those from
 their hometown. This form is shown in \ref{fig:form} and described in next section.
@@ -42,8 +42,8 @@ real form will have more than 10 input boxes.
     \caption{Payment page}
     \label{fig:payment}
 \end{figure}
-When a user pays his subscription, he will become a tier 1 user. He will be able to participate in more
-events. Still, he cannot create an event (only tier 3 or above users can do that). 
+When a user pays his subscription, they will become a tier 1 user. They will be able to participate in more
+events. Still, they cannot create an event (only tier 3 or above users can do that).
 \subsection{Events list page}
 \begin{figure}[H]
     \centering
@@ -52,7 +52,7 @@ events. Still, he cannot create an event (only tier 3 or above users can do that
     \label{fig:events}
 \end{figure}
 Here all events are listed or filtered by tag or cause. Users are allowed to see only events for their tier
-or lower ones. Since all events have a location, we decided -according to ESN volunteers- to keep
+or lower ones. Since all events have a location, we decided "according to ESN volunteers" to keep
 events automatically filtered by tier.\\
 Searching by tag or by cause is actually made by a REST API: using GET, events are listed, and an administrator
 can also use DELETE to delete an event. With a POST request, a new event can be created.\\
@@ -63,8 +63,8 @@ can also use DELETE to delete an event. With a POST request, a new event can be 
     \caption{Sign up page}
     \label{fig:joinEvent}
 \end{figure}
-When a user wants to join an event, he can see all the details and the list of participants. Here
-he can also see more detailed info about the event and confirm his participation. In case some events
+When a user wants to join an event, they can see all the details and the list of participants. Here
+they can also see more detailed info about the event and confirm his participation. In case some events
 will ask for a ticket one day, this page will redirect to a payment page, similar to \ref{fig:payment},
 but linked to tickets for cinemas, parties etc.
 \subsection{Change user info}
@@ -74,5 +74,5 @@ but linked to tickets for cinemas, parties etc.
     \caption{Change user's info}
     \label{fig:change info}
 \end{figure}
-Users can change their profile info. This page can be accessed by each user for his own profile or 
+Users can change their profile info. This page can be accessed by each user for his own profile or
 by an admin for any user.
