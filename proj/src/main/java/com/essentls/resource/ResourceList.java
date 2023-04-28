@@ -52,7 +52,6 @@ public final class ResourceList<T extends Resource> extends AbstractResource {
 
         for (final Resource r : list) {
 
-            // very bad work-around to add commas between resources
             if (firstElement) {
                 r.toJSON(out);
                 jg.flush();

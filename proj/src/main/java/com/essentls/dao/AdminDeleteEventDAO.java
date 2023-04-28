@@ -10,6 +10,8 @@ import java.sql.*;
  * @since 1.00
  */
 public class AdminDeleteEventDAO extends AbstractDAO<Event>{
+
+    //TODO: need to create servlet and jsp page for admin event removal functionality and update statement with new database format
     /**
      * The SQL statement to be executed
      */

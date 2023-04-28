@@ -16,6 +16,7 @@ import java.sql.SQLException;
  */
 public class AdminRemoveParticipantDAO extends AbstractDAO<Participant>{
 
+    //TODO: need to create servlet and jsp page for admin participant removal functionality and update statement with new database format
     /**
      * The SQL statement to be executed
      */

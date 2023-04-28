@@ -120,7 +120,7 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 String documentFile = req.getParameter("document-file");
                 String dietType = req.getParameter("diet-type");
                 String[] allergies = req.getParameter("allergies").split(",");
-                //String emailHash = email.hashCode()+"";//TODO: hashme
+                //String emailHash = email.hashCode()+"";
                 Boolean emailConfirmed = true;
 
                 Part documentBytesPart = req.getPart("document-bytes");

@@ -266,10 +266,6 @@ public class User {
             this.email = mail;
             this.emailHash = mail.hashCode()+"";
         }
-        else {
-            //send some kind of error message
-        }
-        
     }
 
     /**
@@ -278,17 +274,7 @@ public class User {
      *
      */
     public void setPassword(String password) {
-        //password inter than 5 char
-        if(password.length() < 5) {
-            //send some kind of error message
-        }
-        //not the same password
-        else if(password.equals(password)) {
-            //send some kind of error message
-        }
-        else {
-            password = password;
-        }
+        this.password = password;
     }
 
     public void setId(int id) {

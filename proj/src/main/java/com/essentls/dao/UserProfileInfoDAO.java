@@ -31,7 +31,6 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                                     " WHERE id = ?;";
 
 
-//    private int infoID; //final id?
     /**
      * the user ID
      */

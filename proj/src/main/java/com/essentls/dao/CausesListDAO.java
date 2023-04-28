@@ -58,7 +58,6 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
         final List<Cause> causes = new ArrayList<Cause>();
 
         try {
-            //TODO separate id and tag
             pstmt = con.prepareStatement(STATEMENT_CAUSE_LIST);
             pstmt.setString(1, "%" + subCause + "%");
             pstmt.setInt(2, id);

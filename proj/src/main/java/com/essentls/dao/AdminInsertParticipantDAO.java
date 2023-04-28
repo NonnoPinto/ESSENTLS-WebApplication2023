@@ -15,6 +15,7 @@ import java.sql.SQLException;
  */
 public class AdminInsertParticipantDAO extends AbstractDAO<Participant> {
 
+    //TODO: need to create servlet and jsp page for admin participant insertion functionality and update statement with new database format
     /**
      * The SQL statement to be executed
      */

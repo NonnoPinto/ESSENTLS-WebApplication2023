@@ -12,6 +12,7 @@ import com.essentls.resource.User;
  */
 public class AdminDeleteUserDAO extends AbstractDAO<User>{
 
+	//TODO: need to create servlet and jsp page for user account deletion functionality and update statement with new database format
     /**
 	 * The SQL statement to be executed
 	 */

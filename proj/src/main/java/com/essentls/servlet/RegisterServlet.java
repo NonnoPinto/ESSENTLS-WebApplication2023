@@ -67,7 +67,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String password = req.getParameter("password");
             String passwordRepeated = req.getParameter("rpassword");
             Integer tier = 0;
-            String emailHash = email.hashCode()+"";//TODO: hashme
+            String emailHash = email.hashCode()+"";
             Boolean emailConfirmed = false;
 
             if (email == null || email.equals("")) {
