@@ -1,7 +1,7 @@
 package com.essentls.resource;
 
 /**
- * @author Alessandro Borsato
+ * @author Alessandro Borsato (alessandro.borsato.1@studenti.unipd.it)
  * @version 1.0
  * @since 1.0
  * EventCause class
