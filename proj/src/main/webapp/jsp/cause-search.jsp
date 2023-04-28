@@ -12,8 +12,10 @@
 
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-
 <div class="containter">
+  <div class="title">
+    <h2>Create Cause</h2>
+  </div>
   <label for="causeId">Insert ID:</label>
   <input id="causeId" type="text"/><br/><br/>
 

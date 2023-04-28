@@ -21,7 +21,7 @@
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
 <div class="title">
-    <h1>User Edit</h1>
+    <h2>User Edit</h2>
     <hr>
 </div>
 

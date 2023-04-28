@@ -32,3 +32,4 @@ alt="Logo of ESN Padova" style="max-width: 200px; height: auto;">
     <a rel="noopener noreferrer nofollow" href="<c:url value='/cause-create'/>">(Admin) Create cause</a>
     <a rel="noopener noreferrer nofollow" href="<c:url value='/cause-search'/>">(Admin) Search cause</a>
 </c:if>
+<br>
