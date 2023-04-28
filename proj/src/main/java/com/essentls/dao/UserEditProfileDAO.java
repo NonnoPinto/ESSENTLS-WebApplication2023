@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import org.postgresql.util.PGobject;
 
 /**
- * User edit profile DAO, to modify mail and pass
+ * User edit profile DAO, to modify mail and password
  *
  * @author Giovanni Zago (giovanni.zago.3@studenti.unipd.it)
  * @version 1.00
@@ -16,13 +16,6 @@ import org.postgresql.util.PGobject;
  */
 
 public final class UserEditProfileDAO extends AbstractDAO<User> {
-
-    /**
-     * Creates a new object for gather info about user.
-     *
-     * @param con    the connection to the database.
-     * @param user   the user that made the payments.
-     */
 
     /**
      * The SQL statement to be executed
@@ -35,10 +28,18 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
             "\"dietType\" = CAST (? as diet),  allergies = ? WHERE id = ?;";
 
 
+    /**
+     * The user to be edited
+     */
     private final User user;
 
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     *
+     * @param j  the JSONObject to be converted
+     * @return  the converted PGobject
+     * @throws SQLException an error during an interaction with the database
+     * @throws NullPointerException try to access to a null object
      */
     public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
         if(j==null){
@@ -51,7 +52,13 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
     }
 
     /**
-     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     * Convert a String array to a PGobject, format that can be recognized by the Postgres DB.
+     *
+     * @param s the input string array
+     * @throws SQLException an error during an interaction with the database
+     * @throws NullPointerException try to access to a null object
+     * @return  the converted PGobject
+     *
      */
     public PGobject stringArrayToPGobj(String[] s) throws java.sql.SQLException, NullPointerException{
 
@@ -77,7 +84,12 @@ public final class UserEditProfileDAO extends AbstractDAO<User> {
         return pgobj;
     }
 
-
+    /**
+     * Creates a new object to store the modifications into the database.
+     *
+     * @param con    the connection to the database.
+     * @param user   the user to be modified.
+     */
     public UserEditProfileDAO(final Connection con, final User user) {
         super(con);
         this.user = user;

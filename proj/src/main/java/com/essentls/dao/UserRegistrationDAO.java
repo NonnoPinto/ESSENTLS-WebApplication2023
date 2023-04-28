@@ -20,6 +20,10 @@ import org.postgresql.util.PGobject;
  * @since 1.00
  */
 public class UserRegistrationDAO extends AbstractDAO<User>  {
+
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_REGISTRATION = "INSERT INTO public.\"Users\"(" +
             "email, password, \"cardID\", tier, \"registrationDate\", name, surname, sex, \"dateOfBirth\", " +
             "nationality, \"homeCountryAddress\", \"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", " +
@@ -28,10 +32,18 @@ public class UserRegistrationDAO extends AbstractDAO<User>  {
             "VALUES (?, ?, ?, 0, ?, ?, ?, CAST(? as gen), ?, ?, ?, ?, ?, ?, ?, CAST (? as identity), ?, ?, CAST (? as diet), ?, ?, ?);";
 
 
+    /**
+     * The user to be registered
+     */
     private final User user;
 
     /**
      * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     *
+     * @param j  the JSONObject to be converted
+     * @return  the converted PGobject
+     * @throws SQLException an error during an interaction with the database
+     * @throws NullPointerException try to access to a null object
      */
     public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
         if(j==null){
@@ -43,6 +55,12 @@ public class UserRegistrationDAO extends AbstractDAO<User>  {
         return pgobj;
     }
 
+    /**
+     * Creates a new object for registering the user.
+     *
+     * @param con    the connection to the database.
+     * @param user   the user to be registered.
+     */
     public UserRegistrationDAO(Connection con, User user) {
         super(con);
 

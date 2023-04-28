@@ -33,7 +33,7 @@ public final class UserEventsListDAO extends AbstractDAO<List<Event>> {
      * Creates a new object for gather events by tier.
      *
      * @param con    the connection to the database.
-     * @param tier  the thier of the current user.
+     * @param tier  the tier of the current user.
      */
     public UserEventsListDAO(final Connection con, final int tier) {
         super(con);
