@@ -112,7 +112,6 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
             pstmt.setString(18, this.user.getDocumentNumber());
             pstmt.setString(19, this.user.getDocumentFile());
             pstmt.setString(20, this.user.getDietType());
-            pstmt.setObject(21, this.user.getAllergies());
 
 			rs = pstmt.executeQuery();
 
