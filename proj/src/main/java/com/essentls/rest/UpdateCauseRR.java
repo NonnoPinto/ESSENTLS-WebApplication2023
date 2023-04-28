@@ -73,7 +73,7 @@ public class UpdateCauseRR extends AbstractRR {
             } else {
                 LOGGER.warn("Cause not found");
 
-                m = new Message("Cannot update the cause: cause not found.", "E4A9",
+                m = new Message("Cannot update the cause: cause not found.", "E5A3",
                         String.format("Cause id %d not found.", id));
                 res.setStatus(HttpServletResponse.SC_NOT_FOUND);
                 m.toJSON(res.getOutputStream());
