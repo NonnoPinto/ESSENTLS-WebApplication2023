@@ -1,6 +1,5 @@
 package com.essentls.filter;
 
-import com.essentls.dao.UserProfileInfoDAO;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +10,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-
+/**
+ * @author Mattia Maglie
+ * @version 1.0
+ * @since  1.0
+ * Volunteer filter
+ */
 public class VolunteerFilter extends AbstractFilter {
 
     final static Logger logger = LogManager.getLogger(VolunteerFilter.class);

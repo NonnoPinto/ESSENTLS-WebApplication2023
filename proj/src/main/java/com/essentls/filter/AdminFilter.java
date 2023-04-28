@@ -7,9 +7,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.IOException;
 
+/**
+ * @author Mattia Maglie
+ * @version 1.0
+ * @since 1.0
+ * Filter for active volunteers.
+ */
 
 public class AdminFilter extends AbstractFilter {
 

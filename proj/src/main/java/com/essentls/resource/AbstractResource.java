@@ -11,6 +11,12 @@ import org.apache.logging.log4j.message.StringFormatterMessageFactory;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * Represents a generic resource.
+ * @author Laura Pallante
+ * @version 1.00
+ * @since 1.00
+ */
 public abstract class AbstractResource implements Resource {
     protected static final Logger LOGGER = LogManager.getLogger(AbstractResource.class, StringFormatterMessageFactory.INSTANCE);
 
@@ -19,8 +25,10 @@ public abstract class AbstractResource implements Resource {
      */
     protected static final JsonFactory JSON_FACTORY;
 
+    /**
+     * Initializes the JSON factory.
+     */
     static {
-        // set up the JSON factory
         JSON_FACTORY = new JsonFactory();
         JSON_FACTORY.disable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
         JSON_FACTORY.disable(JsonParser.Feature.AUTO_CLOSE_SOURCE);
@@ -28,6 +36,11 @@ public abstract class AbstractResource implements Resource {
         LOGGER.debug("JSON factory successfully setup.");
     }
 
+    /**
+     * Serializes the {@code Resource} to JSON and writes it to the specified output stream.
+     * @param out
+     * @throws IOException
+     */
     @Override
     public void toJSON(final OutputStream out) throws IOException {
 

@@ -2,10 +2,14 @@ package com.essentls.resource;
 
 import java.sql.Timestamp;
 import java.util.*;
-
 import org.json.JSONObject;
-
 import static com.essentls.resource.AbstractResource.LOGGER;
+/**
+ * @author Mattia Maglie
+ * @version 1.0
+ * @since 1.0
+ * Represents a participant.
+ */
 
 public class Participant extends User{
     private int userId;
@@ -14,6 +18,20 @@ public class Participant extends User{
     private Timestamp date;
     private String attributeValues;
 
+    /**
+     * Creates a participant.
+     *
+     * @param userId the id of the user.
+     *
+     * @param eventId the id of the event.
+     *
+     * @param role the role of the participant.
+     *
+     * @param date the date of the subscription.
+     *
+     * @param attributeValues the attribute values of the participant.
+     *
+     */
     public Participant(int userId, int eventId, String role, Timestamp date, String attributeValues) {
         super();
         this.userId = userId;
@@ -23,6 +41,22 @@ public class Participant extends User{
         this.attributeValues = attributeValues;
     }
 
+    /**
+     * Creates a participant.
+     *
+     * @param userId the id of the user.
+     *
+     * @param eventId the id of the event.
+     *
+     * @param role the role of the participant.
+     *
+     * @param date the date of the subscrition to event.
+     *
+     * @param attributeValues the attribute values of the participant.
+     *
+     * @param user the user.
+     *
+     */
     public Participant(int userId, int eventId, String role, Timestamp date, String attributeValues, User user) {
         super(user);
         this.userId = userId;
@@ -52,6 +86,11 @@ public class Participant extends User{
         return attributeValues;
     }
 
+    /**
+     * Returns the attribute values as a map.
+     *
+     * @return the attribute values as a map.
+     */
     public Map<String, String> getAttributeMap() {
         Map<String, String> attributeList = new HashMap<>();
         try {
@@ -67,6 +106,12 @@ public class Participant extends User{
         }
         return attributeList;
     }
+
+    /**
+     * Returns the attribute values as a JSON.
+     *
+     * @return the attribute values as a JSON.
+     */
 
     public JSONObject toJSON() {
         JSONObject uJson = new JSONObject();

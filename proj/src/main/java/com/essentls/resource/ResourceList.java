@@ -6,12 +6,12 @@ import java.io.*;
 /**
  * Represents a list of {@link AbstractResource} objects.
  *
- * @author Nicola Ferro (ferro@dei.unipd.it)
+ * @author Laura Pallante
  * @version 1.00
  * @since 1.00
  *
- * @param <T>
- *            the type of the actual class extending {@code AbstractResource}.
+ * @param <T> the type of the actual class extending {@code AbstractResource}.
+ *
  */
 public final class ResourceList<T extends Resource> extends AbstractResource {
 
