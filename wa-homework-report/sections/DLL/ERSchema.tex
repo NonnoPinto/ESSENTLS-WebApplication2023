@@ -6,7 +6,7 @@
     \label{fig:er_schema}
 \end{figure}
 Our database has 3 main entities, plus an important relation. Others are auxiliary
-and will explained shortly at the end. Except only one entity, all entities has an integer ID
+and will be explained shortly at the end. Except only one entity, all entities has an integer ID
 as primary key. Main entities are:
 \begin{itemize}
     \item \textbf{Users:} this entity contains all the information about every kind of users, from
@@ -22,7 +22,7 @@ CREATE TYPE diet AS ENUM ('No specific', 'Vegetarian',
 CREATE TABLE public."Users" (
 id SERIAL PRIMARY KEY,
 email VARCHAR(255) NOT NULL UNIQUE CHECK 
-        email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
+        (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
 ...
 "homeCountryAddress" json,
 ...
