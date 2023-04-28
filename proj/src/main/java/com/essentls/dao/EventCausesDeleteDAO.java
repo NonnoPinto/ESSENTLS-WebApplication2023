@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Add a tag to the tag's table
+ * Deletes an event-cause relation from the database
  *
  * @author Alessandro Borsato (alessandro.borsato.1@studenti.unipd.it)
  * @version 1.00
@@ -16,6 +16,9 @@ import java.sql.ResultSet;
 
 public class EventCausesDeleteDAO extends AbstractDAO<EventCause> {
 
+        /**
+        * The SQL statement to be executed
+        */
         private static final String DELETE_STATEMENT = "DELETE FROM public.\"EventCauses\" WHERE (\"eventId\"=?)";
 
         /**
@@ -24,9 +27,12 @@ public class EventCausesDeleteDAO extends AbstractDAO<EventCause> {
         private int eventID = -1;
 
 
-        /**
-         * Creates a new EventCauses
-         */
+    /**
+     * Creates a new object for deleting an event-cause relation.
+     *
+     * @param con the connection to the database.
+     * @param eventID the id of the event.
+     */
         public EventCausesDeleteDAO(Connection con, int eventID) {
             super(con);
             this.eventID = eventID;

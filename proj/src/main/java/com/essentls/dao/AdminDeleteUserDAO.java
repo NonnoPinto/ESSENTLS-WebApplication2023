@@ -3,6 +3,13 @@ package com.essentls.dao;
 import java.sql.*;
 import com.essentls.resource.User;
 
+/**
+ * Deletes a user from the database.
+ *
+ * @author Francesco Marcato
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminDeleteUserDAO extends AbstractDAO<User>{
 
     /**
@@ -16,10 +23,10 @@ public class AdminDeleteUserDAO extends AbstractDAO<User>{
 	private final int user_id;
 
     /**
-     * Creates a new object for deleting an User
+     * Creates a new object for deleting a user
      *
      * @param con    the connection to the database.
-     * @param event   the user to delete
+     * @param _user   the user to delete
      */
     public AdminDeleteUserDAO(final Connection con, User _user) {
         super(con);

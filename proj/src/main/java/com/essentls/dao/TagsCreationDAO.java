@@ -6,11 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 /**
- * Add a tag to the tag's table
+ * Creates a new tag into the database
  *
  * @author Laura Pallante (laura.pallante@studenti.unipd.it
  * @version 1.00
@@ -19,18 +16,22 @@ import java.sql.SQLException;
 
 public class TagsCreationDAO extends AbstractDAO<Tag> {
 
-        private static final String STATEMENT = "INSERT INTO public.\"Tags\" (name) VALUES (?) RETURNING *";
         /**
-         *  the tag name
+        *The SQL statement to be executed
+         */
+        private static final String STATEMENT = "INSERT INTO public.\"Tags\" (name) VALUES (?) RETURNING *";
+
+        /**
+         *  the tag name to be stored into the database
          */
         private final String name;
 
 
         /**
-         * Creates a new tag for events.
+         * Creates a new object for storing a tag into the database.
          *
          * @param con    the connection to the database.
-         * @param name   the tag name
+         * @param name   the tag name to be stored into the database
          */
         public TagsCreationDAO(Connection con, final String name) {
             super(con);
@@ -43,6 +44,7 @@ public class TagsCreationDAO extends AbstractDAO<Tag> {
             PreparedStatement stmt = null;
             ResultSet rs = null;
 
+            //the created tag
             Tag t = null;
 
             try {

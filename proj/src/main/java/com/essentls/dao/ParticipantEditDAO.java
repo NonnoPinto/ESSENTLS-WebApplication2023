@@ -1,15 +1,12 @@
 package com.essentls.dao;
 
-import com.essentls.resource.User;
-import org.json.JSONObject;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Types;
 
 /**
- * Participant edit attributes DAO
+ * Updates a participant in the database
  *
  * @author Mattia Maglie (mattia.maglie@studenti.unipd.it)
  * @version 1.00
@@ -19,10 +16,18 @@ import java.sql.Types;
 public final class ParticipantEditDAO extends AbstractDAO<Boolean> {
 
     /**
-     * new mail and pass
+     * the id of the user
      */
     private final int userId;
+
+    /**
+     * the id of the event
+     */
     private final int eventId;
+
+    /**
+     * the values of attributes to set
+     */
     private final String attributeValues;
 
     /**
@@ -32,10 +37,12 @@ public final class ParticipantEditDAO extends AbstractDAO<Boolean> {
 
 
     /**
-     * Creates a new object for gather info about user.
+     * Creates a new object to update a participant
      *
      * @param con    the connection to the database.
-     * @param user   the user that made the payments.
+     * @param userId   the id of the user.
+     * @param eventId   the id of the event.
+     * @param attributeValues   the value of attributes to set
      */
     public ParticipantEditDAO(final Connection con, int userId, int eventId, String attributeValues) {
         super(con);

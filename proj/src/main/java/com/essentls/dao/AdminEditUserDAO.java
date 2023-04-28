@@ -7,6 +7,13 @@ import com.essentls.resource.User;
 import org.json.JSONObject;
 import org.postgresql.util.PGobject;
 
+/**
+ * Updates a user in the database.
+ *
+ * @author Francesco Marcato
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminEditUserDAO extends AbstractDAO<User>{
     
     /**
@@ -19,7 +26,7 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
     "\"documentFile\" = ?,  \"dietType\" = CAST (? as diet),  allergies = ?,  \"emailHash\" = ?,  \"emailConfirmed\" = ? WHERE id = ?";
 
     /**
-	 * The all the user attributes
+	 * The user to be updated in the database
 	 */
 	private final User user;
 
@@ -34,10 +41,10 @@ public class AdminEditUserDAO extends AbstractDAO<User>{
     }
 
     /**
-     * Creates a new object for editing an User
+     * Creates a new object to update a user
      *
      * @param con    the connection to the database.
-     * @param user   the user to edit
+     * @param user   the user to be updated in the database
      */
     public AdminEditUserDAO(final Connection con, User user) {
         

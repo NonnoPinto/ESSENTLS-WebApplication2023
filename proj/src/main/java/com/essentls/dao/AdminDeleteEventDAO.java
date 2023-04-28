@@ -2,6 +2,13 @@ package com.essentls.dao;
 import com.essentls.resource.Event;
 import java.sql.*;
 
+/**
+ * Deletes an event from the database
+ *
+ * @author Giovanni Zago
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminDeleteEventDAO extends AbstractDAO<Event>{
     /**
      * The SQL statement to be executed
@@ -14,10 +21,10 @@ public class AdminDeleteEventDAO extends AbstractDAO<Event>{
     private final Event event;
 
     /**
-     * Creates a new object for gather info about user.
+     * Creates a new object for deleting an event
      *
      * @param con    the connection to the database.
-     * @param event   the event to delete
+     * @param _event   the event to delete
      */
     public AdminDeleteEventDAO(final Connection con, Event _event) {
         super(con);
@@ -35,7 +42,7 @@ public class AdminDeleteEventDAO extends AbstractDAO<Event>{
 
             rs = stmnt.executeQuery();
 
-            LOGGER.info("Event %s successfully deleted.", this.event.getId());
+            LOGGER.info("Event %s successfully deleted from the database.", this.event.getId());
 
         }   finally {
             if (rs != null) {

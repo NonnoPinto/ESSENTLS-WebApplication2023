@@ -12,13 +12,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Lists all the participants (to an event) in the database.
+ *
+ * @author Vaidas Lenartavicius
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_PARTICIPANTS_LIST = "SELECT * FROM public.\"Participants\" INNER JOIN public.\"Users\" ON public.\"Participants\".\"userId\" = public.\"Users\".\"id\" WHERE \"eventId\" = ?";
 
+    /**
+     * The id of the event
+     */
     private final int eventId;
 
+    /**
+     * Creates a new object for listing all the participant to an event.
+     *
+     * @param con the connection to the database.
+     * @param eventId the id of the event
+     */
     public AdminParticipantsListDAO(final Connection con, final int eventId) {
         super(con);
         this.eventId = eventId;
@@ -29,6 +47,8 @@ public class AdminParticipantsListDAO extends AbstractDAO<List<Participant>> {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
+
+        //the results of the search
         final List<Participant> participants = new ArrayList<>();
 
         try {

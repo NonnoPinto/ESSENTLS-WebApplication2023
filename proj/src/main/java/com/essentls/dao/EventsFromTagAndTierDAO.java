@@ -12,7 +12,7 @@ import com.essentls.resource.Tag;
 import org.json.JSONObject;
 
 /**
- * Return the list of Events corresponding to a tag in [Home Format]
+ * Searches events by their tag, cause, tier, name, description, location
  *
  * @author Vittorio Cardillo (vittorio.cardillo@studenti.unipd.it)
  * @version 1.00
@@ -20,6 +20,9 @@ import org.json.JSONObject;
  */
 public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_JOINED_EVENTS = "SELECT * FROM public.\"Events\" " +
             "WHERE (? = '' OR id IN (SELECT \"eventId\" FROM \"EventTags\" WHERE tag = ?)) " +
             "AND (? = -1 OR id IN (SELECT \"eventId\" FROM \"EventCauses\" WHERE \"causeId\" = ?)) " +
@@ -29,12 +32,35 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
             "(LOWER(location#>>'{city}') LIKE ?) OR (LOWER(location#>>'{street}') LIKE ?)))";
 
 
+    /**
+     * The tag of the event
+     */
     private final Tag tag;
+
+    /**
+     * The tier of the user executing the query
+     */
     private final int tier;
+
+    /**
+     * The cause of the event
+     */
     private final Cause cause;
+
+    /**
+     * The name or description or location of the event
+     */
     private final String srch;
 
-
+    /**
+     * Creates a new object for searching events by tag, cause, user's tier, name, description, location.
+     *
+     * @param con    the connection to the database.
+     * @param tag   the tag of the event
+     * @param tier  the tier of the user executing the query
+     * @param cause the cause of the event
+     * @param srch  the name or description or location of the event
+     */
     public EventsFromTagAndTierDAO(Connection con, Tag tag, int tier, Cause cause,String srch) {
         super(con);
         this.tag = tag;
@@ -55,7 +81,8 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
         
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        
+
+        //the results of the search
         final List<Event> events = new ArrayList<Event>();
 
         try {

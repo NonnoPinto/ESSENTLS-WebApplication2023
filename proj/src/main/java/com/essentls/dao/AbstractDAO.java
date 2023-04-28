@@ -101,14 +101,6 @@ public abstract class AbstractDAO<T> implements DataAccessObject<T> {
         }
         this.con = con;
 
-        /*try {
-            // ensure that autocommit is true
-            con.setAutoCommit(true);
-            LOGGER.debug("Auto-commit set to default value true.");
-        } catch (final SQLException e) {
-            LOGGER.warn("Unable to set connection auto-commit to true.", e);
-        }*/
-
     }
 
     public final DataAccessObject<T> access(boolean autocommit) throws SQLException {

@@ -1,8 +1,6 @@
 package com.essentls.dao;
 
 import com.essentls.resource.User;
-import com.oracle.wls.shaded.org.apache.xpath.operations.Bool;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +26,7 @@ public final class EmailConfirmationDAO extends AbstractDAO<Boolean> {
 	private final String hashCode;
 
      /**
-	 * Creates a new object for loggin in a user by its email and password.
+	 * Creates a new object for logging in a user by its email and password.
 	 *
 	 * @param con      the connection to the database.
 	 * @param hashCode    the hashCode of the user to be to_be_verified.

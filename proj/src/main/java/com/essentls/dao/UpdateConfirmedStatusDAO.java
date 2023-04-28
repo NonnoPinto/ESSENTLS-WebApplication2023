@@ -1,8 +1,6 @@
 package com.essentls.dao;
 
 import com.essentls.resource.User;
-import com.oracle.wls.shaded.org.apache.xpath.operations.Bool;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,10 +26,10 @@ public final class UpdateConfirmedStatusDAO extends AbstractDAO<Boolean> {
 	private final String hashCode;
 
      /**
-	 * Creates a new object for loggin in a user by its email and password.
+	 * Creates a new object for logging in a user by its email and password.
 	 *
 	 * @param con      the connection to the database.
-	 * @param hashCode    the hashCode of the user to be verified.
+	 * @param hash    the hashCode of the user to be verified.
 	 */
     public UpdateConfirmedStatusDAO(final Connection con, final String hash) {
         super(con);
@@ -54,34 +52,6 @@ public final class UpdateConfirmedStatusDAO extends AbstractDAO<Boolean> {
 
             if(result == 1){
 
-                /* 
-                user = new User(
-                    //rs.getInt("id"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getString("cardId"),
-                    rs.getInt("tier"),
-                    rs.getDate("registrationDate"),
-                    rs.getString("name"),
-                    rs.getString("surname"),
-                    rs.getString("sex"),
-                    rs.getDate("dateOfBirth"),
-                    rs.getString("nationality"),
-                    rs.getString("homeCountryAddress"),
-                    rs.getString("homeCountryUniversity"),
-                    rs.getString("periodOfStay"),
-                    rs.getString("phoneNumber"),
-                    rs.getString("paduaAddress"),
-                    rs.getString("documentType"),
-                    rs.getString("documentNumber"),
-                    rs.getString("documentFile"),
-                    rs.getString("dietType"),
-                    rs.getString("allergies"),
-                    //rs.getString("emailhash"),
-                    rs.getBoolean("emailConfirmed")
-                ); 
-                */
- 
                LOGGER.info("User status updated.");
                 verified = true;
                //call insert bool true on verified

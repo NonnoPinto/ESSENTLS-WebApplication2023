@@ -1,19 +1,34 @@
 package com.essentls.dao;
 
-import com.essentls.resource.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * Retrieves documents file from the database.
+ *
+ * @author Vaidas Lenartavicius
+ * @version 1.00
+ * @since 1.00
+ */
 public class DocumentDownloadDAO extends AbstractDAO<byte[]>{
 
     /**
      * The SQL statement to be executed
      */
     private static final String STATEMENT = "SELECT \"documentBytes\" FROM public.\"Users\" WHERE id = ?";
+
+    /**
+     * The id of the user
+     */
     long id;
 
+    /**
+     * Creates a new object for retrieving the document of the user.
+     *
+     * @param con the connection to the database.
+     * @param id the id of the user
+     */
     public DocumentDownloadDAO(final Connection con, long id) {
         super(con);
         this.id = id;

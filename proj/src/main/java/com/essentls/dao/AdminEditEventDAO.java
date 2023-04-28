@@ -7,13 +7,12 @@ import org.postgresql.util.PGobject;
 import java.sql.*;
 
 /**
- * Admin Edit Event DAO, to modify details of an event
+ * Updates an event into the database
  *
  * @author Matteo VIllani (matteo.villani@studenti.unipd.it)
  * @version 1.00
  * @since 1.00
  */
-
 public class AdminEditEventDAO extends AbstractDAO<Event>{
 
     /**
@@ -22,7 +21,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
     private static final String STATEMENT = "UPDATE \"Events\" SET id=?, name=?, description=?, price=?, visibility=?, location=?, \"maxParticipantsInternational\"=?, \"maxParticipantsVolunteer\"=?, \"eventStart\"=?, \"eventEnd\"=?, \"subscriptionStart\"=?,  \"subscriptionEnd\"=?, \"withdrawalEnd\"=?, \"maxWaitingList\"=?, attributes=?, thumbnail=?, poster=? WHERE id = ?";
 
     /**
-     * The event selected to be edited by the Admin
+     * The event to be updated in the database
      */
     private final Event event;
 
@@ -69,10 +68,10 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
 
 
     /**
-     * Creates a new object for gather info about the event.
+     * Creates a new object to update an event.
      *
      * @param con    the connection to the database.
-     * @param event   the event selected.
+     * @param event   the event to be updated in the database.
      */
     public AdminEditEventDAO(final Connection con, final Event event){
 

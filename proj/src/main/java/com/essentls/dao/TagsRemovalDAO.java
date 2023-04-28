@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 /**
- * Add a tag to the tag's table
+ * Deletes a tag from the database
  *
  * @author Laura Pallante (laura.pallante@studenti.unipd.it
  * @version 1.00
@@ -17,15 +17,22 @@ import java.sql.PreparedStatement;
 
 public class TagsRemovalDAO extends AbstractDAO<Tag> {
 
-private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name = ? RETURNING *";
+    /**
+     * The SQL statement to be executed
+     */
+    private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name = ? RETURNING *";
+
+    /**
+     * The name of the tag to be deleted
+     */
     private final String name;
 
 
     /**
-     * Creates a new object for the removing of a tag.
+     * Creates a new object for deleting a tag.
      *
      * @param con    the connection to the database.
-     * @param name  the payment that must be added
+     * @param name  the name of the tag
      */
     public TagsRemovalDAO(Connection con, final String name) {
         super(con);
@@ -38,6 +45,7 @@ private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name 
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
+        //the deleted tag
         Tag t = null;
 
         try {
