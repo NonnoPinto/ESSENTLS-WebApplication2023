@@ -1,5 +1,6 @@
 \subsection{REST API Details}
 
+The following is the detailed description of one of the resources of our REST API, the resource used for searching Causes.
 %List here a few resources retrievable via REST API
 
 \subsubsection*{Search Causes}
@@ -19,7 +20,13 @@ Returns JSON data about all Causes that contain a certain substring in the Name 
                                 \\\\OR \\\\Code:404 \\Content: \{ error: "Unknown resource."\}
                                  \\\\OR \\\\Code:405 \\Content: \{ error: "Unsupported method for URI /causes/srch/: ..."\}
                                   \\\\OR \\\\Code:500 \\Content: \{ error: "Cannot search Cause(s): unexpected error."\}}
-    \item Sample Call: \texttt{}
-    
+    \item Sample Call: \texttt{\\\$.ajax(\{
+                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} url: "/causes/srch/examplecause",
+                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} datatype: "json",
+                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} type : "GET",
+                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} success : function(r) \{
+                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} console.log(r);
+                        \\ \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \mbox{\texttt{}} \}
+                        \\ \});}
 \end{itemize}
 

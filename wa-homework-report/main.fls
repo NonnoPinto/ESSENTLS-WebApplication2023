@@ -910,6 +910,11 @@ INPUT .\sections\BLL\RESTAPIDetails.tex
 INPUT .\sections\BLL\RESTAPIDetails.tex
 INPUT .\sections\BLL\RESTAPIDetails.tex
 INPUT sections\BLL\RESTAPIDetails.tex
+INPUT C:\Users\User\AppData\Local\Programs\MiKTeX\tex\latex\cmbright\ts1cmtl.fd
+INPUT C:\Users\User\AppData\Local\Programs\MiKTeX\tex\latex\cmbright\ts1cmtl.fd
+INPUT C:\Users\User\AppData\Local\Programs\MiKTeX\tex\latex\cmbright\ts1cmtl.fd
+INPUT C:\Users\User\AppData\Local\Programs\MiKTeX\tex\latex\cmbright\ts1cmtl.fd
+INPUT C:\Users\User\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cmbright\tbtl10.tfm
 INPUT .\sections\Contributions.tex
 INPUT .\sections\Contributions.tex
 INPUT .\sections\Contributions.tex
@@ -924,6 +929,8 @@ INPUT sections\Contributions.tex
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
+INPUT C:\Users\User\AppData\Local\MiKTeX\fonts\pk\ljfour\public\cmbright\dpi600\tbtl10.pk
+INPUT C:\Users\User\AppData\Local\MiKTeX\fonts\pk\ljfour\public\cmbright\dpi600\tbtl10.pk
 INPUT C:\Users\User\AppData\Local\MiKTeX\fonts\pk\ljfour\public\cmbright\dpi600\cmtl10.pk
 INPUT C:\Users\User\AppData\Local\MiKTeX\fonts\pk\ljfour\public\cmbright\dpi600\cmtl10.pk
 INPUT C:\Users\User\AppData\Local\MiKTeX\fonts\pk\ljfour\public\cmbright\dpi600\cmbrsy10.pk
