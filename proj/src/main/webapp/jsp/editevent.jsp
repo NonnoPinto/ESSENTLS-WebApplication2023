@@ -8,9 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Edit Event</title>
-        <!-- js and css -->
-        <!--<script src="${pageContext.request.contextPath}/js/login.js"></script>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css"/>-->
     </head> 
 
     <body>
@@ -107,7 +104,7 @@
                             <div style="padding-top: 10px;">
                                 <label for="">Event Start (currently ${event.getEventStart().toString()}):</label>
                                 <div class="input-container">
-                                    <input type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}"> <!--value could not work, check type-->
+                                    <input type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}"> 
                                 </div>
                             </div>
 
@@ -115,7 +112,7 @@
                             <div style="padding-top: 10px;">
                                 <label for="">Event End (currently ${event.getEventEnd().toString()}):</label>
                                 <div class="input-container">
-                                    <input type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}"><!--value could not work, check type-->
+                                    <input type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}">
                                 </div>
                             </div>
 
@@ -123,7 +120,7 @@
                             <div style="padding-top: 10px;">
                                 <label for="">Subscription Start (currently ${event.getSubscriptionStart().toString()}):</label>
                                 <div class="input-container">
-                                    <input type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}"><!--value could not work, check type-->
+                                    <input type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}">
                                 </div>
                             </div>
 
@@ -131,7 +128,7 @@
                             <div style="padding-top: 10px;">
                                 <label for="">Subscription End (currently ${event.getSubscriptionEnd().toString()}):</label>
                                 <div class="input-container">
-                                    <input type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}"><!--value could not work, check type-->
+                                    <input type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}">
                                 </div>
                             </div>
 
@@ -139,7 +136,7 @@
                             <div style="padding-top: 10px;">
                                 <label for="">Withdrawal End (currently ${event.getWithdrawalEnd().toString()}):</label>
                                 <div class="input-container">
-                                    <input type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}"><!--value could not work, check type-->
+                                    <input type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}">
                                 </div>
                             </div>
 

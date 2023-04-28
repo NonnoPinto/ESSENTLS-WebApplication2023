@@ -2,9 +2,7 @@ package com.essentls.servlet;
 
 import com.essentls.dao.AdminPaymentListDAO;
 import com.essentls.dao.UserPaymentsListDAO;
-import com.essentls.dao.UserProfileInfoDAO;
 import com.essentls.resource.Payment;
-import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,14 +11,27 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Retrieves the list of payments of a user or of all users based on user tier.
+ *
+ * @author Md Imran Faruck Talukder
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "PaymentsListServlet", value = "/paymentslist")
 public class PaymentsListServlet extends AbstractDatabaseServlet{
-    public final static String PAYMENT_SESSION_KEY = "payment";
 
-
+    /**
+     * Handles the HTTP {@code GET} method. Retrieves the list of payments of a user or of all users based on user tier
+     * and redirects to the payments list page.
+     *
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //take the request uri
@@ -31,14 +42,10 @@ public class PaymentsListServlet extends AbstractDatabaseServlet{
         //Getting user
         HttpSession session = request.getSession();
         LOGGER.info("session: %s", session);
-        //User user = (User) session.getAttribute("Users");
-        //String userEmail = user.getEmail();
         int userId = (int) session.getAttribute("sessionUserId");
         int tier = (int) session.getAttribute("sessionUserTier");
         LOGGER.info("User: %d", userId);
         LOGGER.info("Tier: %d", tier);
-        //LOGGER.info("email: %s", userEmail);
-
 
 
         List<Payment> payment;

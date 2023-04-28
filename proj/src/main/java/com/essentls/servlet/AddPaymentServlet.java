@@ -2,7 +2,6 @@ package com.essentls.servlet;
 
 import com.essentls.dao.*;
 import com.essentls.resource.Event;
-import com.essentls.resource.Participant;
 import com.essentls.resource.Payment;
 import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
@@ -12,13 +11,30 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+
+/**
+ * Inserts a payment in the database.
+ *
+ * @author Mattia Maglie
+ * @version 1.00
+ * @since 1.00
+ */
 
 @WebServlet(name = "AddPaymentServlet", value = "/add_payment")
 public class AddPaymentServlet extends AbstractDatabaseServlet{
+
+    /**
+     * Handles the HTTP {@code GET} method. Checks if the payment is for an event or a subscription and redirects to the
+     * correct method.
+     *
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     *
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException      if an input or output error is detected when the servlet handles the GET request
+     */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -32,6 +48,16 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
                 break;
         }
     }
+
+    /**
+     * Retrieves the payment information from the request and inserts it in the database. Redirects to the event
+     * confirmation page.
+     *
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     *
+     * @throws ServletException if the request for the POST could not be handled
+     */
 
     private void eventPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
@@ -62,6 +88,15 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
             throw new ServletException(e);
         }
     }
+
+    /**
+     * Retrieves the payment information from the request and inserts it in the database. Redirects to the home page.
+     *
+     * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     *
+     * @throws ServletException if the request for the POST could not be handled
+     */
 
     private void subPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {

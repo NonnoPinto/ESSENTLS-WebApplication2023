@@ -9,9 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="ISO-8859-1">
 <title>Email Confirmation</title>
-<!--  JAVASCRIPT AND STYLE  -->
-<!--<script src="${pageContext.request.contextPath}/js/login.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />-->
 </head>
 <body>
     <div class="title">

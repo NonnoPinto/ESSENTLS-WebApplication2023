@@ -313,6 +313,8 @@
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/cause-create</url-pattern>
         <url-pattern>/cause-search</url-pattern>
+        <url-pattern>/tag-search</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </filter-mapping>
 
     <filter>

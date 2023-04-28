@@ -1,11 +1,15 @@
 package com.essentls.resource;
 
-import java.awt.image.BufferedImage;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import org.json.JSONObject;
 
+/**
+ * Event class
+ * @author Vittorio Cardillo
+ * @version 1.0
+ * @since 1.0
+ */
 public class Event {
     private int id;
     private String name;
@@ -25,6 +29,9 @@ public class Event {
     private String thumbnail;
     private String poster;
 
+    /**
+     * Constructor of event
+     */
     public Event(int id, String name, String description, float price, int visibility, JSONObject location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd,
                  Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
@@ -46,8 +53,10 @@ public class Event {
         this.thumbnail = thumbnail;
         this.poster = poster;
     }
+    /**
+     * Constructor of event, Used in the home to get the list of events
+     */
 
-    //Used in the home to get the list of events
     public Event(int id, String name, String description, float price, JSONObject  location, Timestamp subscriptionEnd) {
         this.id = id;
         this.name = name;
@@ -57,7 +66,9 @@ public class Event {
         this.subscriptionEnd = subscriptionEnd;
     }
 
-    // Used in the profile to get a list of the joined events 
+    /**
+     * Constructor of event, Used in the profile to get a list of the joined events
+     */
     public Event(int id, String name, Timestamp startDate) {
         this.id = id;
         this.name = name;
@@ -65,7 +76,7 @@ public class Event {
     }
 
     /**
-        Constructor without id
+     *   Constructor of event, without id
      */
     public Event(String name, String description, float price, int visibility, JSONObject location, int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd, Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
         this.name = name;

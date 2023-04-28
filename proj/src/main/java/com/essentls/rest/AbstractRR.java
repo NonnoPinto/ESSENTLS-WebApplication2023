@@ -59,7 +59,7 @@ public abstract class AbstractRR implements RestResource {
     protected final Connection con;
 
     /**
-     * The {@link Actions} performed by this REST resource.
+     * The {@code Actions} performed by this REST resource.
      */
     private final String action;
 
@@ -103,7 +103,7 @@ public abstract class AbstractRR implements RestResource {
 
         try {
             // if the request method and/or the MIME media type are not allowed, return.
-            // Appropriate error message sent by {@code checkMethodMediaType}
+            // Appropriate error message sent by {@link checkMethodMediaType}
             if (!checkMethodMediaType(req, res)) {
                 return;
             }

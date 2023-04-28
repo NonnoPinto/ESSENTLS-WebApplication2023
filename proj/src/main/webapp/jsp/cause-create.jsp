@@ -12,19 +12,15 @@
 
 <body>
 <div class="navbar"><%@include file="navbar.jsp"%></div>
-
 <div class="containter">
+  <div class="title">
+    <h2>Create Cause</h2>
+    <hr>
+  </div>
   <label for="causeName">Insert Cause Name:</label>
   <input id="causeName" name="causeName" type="text"/><br/><br/>
 
   <button type="submit" id="ajaxButton">Submit</button><br/>
-  <div>
-    <h3>Here the causes already present!</h3><br>
-    <c:forEach items="${causes}" var="cause">
-        <p>${cause.name}</p><br>
-    </c:forEach>
-
-</div>
 
 </div>
 

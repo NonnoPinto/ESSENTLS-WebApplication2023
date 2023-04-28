@@ -9,9 +9,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lists all the payments in the database.
+ *
+ * @author Giovanni Zago
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminPaymentListDAO extends AbstractDAO<List<Payment>>{
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_USERS_LIST = "SELECT * FROM public.\"Payments\";";
 
+    /**
+     * Creates a new object for listing all the payments.
+     *
+     * @param con the connection to the database.
+     */
     public AdminPaymentListDAO(final Connection con) {
         super(con);
     }

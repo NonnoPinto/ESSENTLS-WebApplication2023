@@ -42,6 +42,15 @@ public class UserMembershipDAO extends AbstractDAO<User> {
         super(con);
         this.user = user;
     }
+
+    /**
+     * Convert a JSONObject to a PGobject, format that can be recognized by the Postgres DB.
+     *
+     * @param j  the JSONObject to be converted
+     * @return  the converted PGobject
+     * @throws SQLException an error during an interaction with the database
+     * @throws NullPointerException try to access to a null object
+     */
     public PGobject jsonToPGobj(JSONObject j) throws java.sql.SQLException, NullPointerException{
         if(j==null){
             return null;

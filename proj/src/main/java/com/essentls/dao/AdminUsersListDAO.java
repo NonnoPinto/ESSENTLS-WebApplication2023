@@ -10,8 +10,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Lists all the users in the database.
+ *
+ * @author Alessandro Borsato
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_USERS_LIST = "SELECT id, email, password, \"cardID\", tier, \"registrationDate\", " +
                                                         "name, surname, sex, \"dateOfBirth\", nationality, \"homeCountryAddress\", " +
                                                         "\"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", \"paduaAddress\", " +
@@ -23,14 +34,33 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                                                         " AND (? IS NULL OR \"cardID\" = ?)" +
                                                         " AND (? IS NULL OR email = ?)";
 
+    /**
+     * The name of the user
+     */
     private String name;
+
+    /**
+     * The surname of the user
+     */
     private String surname;
+
+    /**
+     * The id of the user
+     */
     private int id;
+
+    /**
+     * The cardId of the user
+     */
     private String cardId;
+
+    /**
+     * The email of the user
+     */
     private String email;
 
     /**
-     * Creates a new object for the updating of the tier of a user
+     * Creates a new object for listing all the users
      *
      * @param con    the connection to the database.
      * @param user  the user to search for
@@ -52,6 +82,8 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
+
+        //the results of the search
         final List<User> users = new ArrayList<>();
 
         try {

@@ -6,9 +6,8 @@
 <html>
 <head>
     <meta name="description" content="ESN Padova application">
-<!-- <%@include file="cdn.html" > -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="ISO-8859-1">
 <title>Error Page</title>
 </head>
 <body>
@@ -18,15 +17,12 @@
 <div class="page-header">
     <h3>An error occurred within the application</h3>
 </div>
-<!-- <%
-    if(exception instanceof ClassNotFoundException){
-%> -->
 <div class="panel panel-danger">
     <div class="panel-heading">
-        <h3>General error<!-- ClassNotFoundException --></h3>
+        <h3>General error</h3>
     </div>
     <div class="panel-body">
-        <p>OPS... Something went wrong!<!-- <%= exception.getMessage() %> --></p>
+        <p>OPS... Something went wrong!</p>
         <p>
         <input type="button" class="btn btn-danger"
         value="Back" onclick="window.history.back()">

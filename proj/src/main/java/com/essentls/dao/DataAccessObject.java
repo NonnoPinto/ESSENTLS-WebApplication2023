@@ -18,7 +18,7 @@ public interface DataAccessObject<T> {
     /**
      * Accesses the database.
      *
-     * @return a reference to this {@code DataAccessObject} object.
+     * @return a reference to this {@link DataAccessObject} object.
      *
      * @throws SQLException if something goes wrong while accessing the database.
      */

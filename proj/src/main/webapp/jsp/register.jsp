@@ -24,8 +24,6 @@
         <div>
             <label for="email">Enter your email:</label>
             <input name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="email"/><br/><br/>
-            <!-- if we want to block mails with + in the first argument, this can be a trick to register multiple with gmail,.. -->
-            <!-- <input name="email" pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="text"/><br/><br/> -->
             <label for="password">password:</label>
             <input name="password" type="password"/><br/><br/>
             <label for="rpassword">repeat password:</label>

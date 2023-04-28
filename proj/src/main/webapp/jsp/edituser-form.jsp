@@ -23,7 +23,7 @@
 <div class="navbar"><%@include file="navbar.jsp"%></div>
     
 <div>
-    <h1>Edit User</h1>
+    <h2 class="title">Edit User</h2>
     <hr>    
 </div>
 

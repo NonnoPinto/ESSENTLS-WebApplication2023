@@ -3,31 +3,39 @@ package com.essentls.servlet;
 import com.essentls.dao.*;
 import com.essentls.resource.*;
 
-import java.io.InputStream;
 import java.sql.*;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+/**
+ * Edits a user into the database.
+ *
+ * @author Vaidas Lenartavicius
+ * @version 1.00
+ * @since 1.00
+ */
 @MultipartConfig
+@WebServlet(name = "EditUserServlet", value = "/edit-user")
 public class EditUserServlet extends AbstractDatabaseServlet {
 
     /**
-     * Creates a new event into the database.
+     * Handles the HTTP {@code POST} method. Retrieves the parameters from the request and edits a user into the
+     * database.
      *
-     * @param req the HTTP request from the client.
-     * @param res the HTTP response from the server.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
      *
      * @throws IOException if any error occurs in the client/server communication.
+     * @throws ServletException if the request for the POST could not be handled.
      */
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {

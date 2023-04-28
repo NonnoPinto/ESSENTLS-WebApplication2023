@@ -7,12 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-// TODO: to keep?
-// import java.util.ArrayList; 
-// import java.util.List;
 
 /**
- * Gather an event by ID
+ * Searches events by their id.
  *
  * @author Mattia Maglie (mattia.maglie@studenti.unipd.it)
  * @version 1.00
@@ -34,7 +31,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
      * Creates a new object for gathering the event by id.
      *
      * @param con    the connection to the database.
-     * @param id     the id of the current user.
+     * @param id     the id of the event.
      */
     public EventInfoDAO(final Connection con, final int id) {
         super(con);
@@ -48,8 +45,7 @@ public final class EventInfoDAO extends AbstractDAO<Event> {
         ResultSet rs = null;
 
         // the results of the search
-
-        Event event = null; //is finally very fundamental?
+        Event event = null;
 
         try {
             pstmt = con.prepareStatement(STATEMENT);

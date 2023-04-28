@@ -3,16 +3,15 @@ package com.essentls.resource;
 import java.io.OutputStream;
 import java.io.IOException;
 
-
-
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-import org.json.JSONObject;
 
 /**
+ * @author Andrea Campagnol
+ * @version 1.0
+ * @since 1.0
  * Represents a message or an error message.
  */
+
 public class Message extends AbstractResource{
 
     /**
@@ -39,12 +38,12 @@ public class Message extends AbstractResource{
     /**
      * Creates an error message.
      *
-     * @param message
-     *            the message.
-     * @param errorCode
-     *            the code of the error.
-     * @param errorDetails
-     *            additional details about the error.
+     * @param message the message.
+     *
+     * @param errorCode the code of the error.
+     *
+     * @param errorDetails additional details about the error.
+     *
      */
     public Message(final String message, final String errorCode, final String errorDetails) {
         this.message = message;

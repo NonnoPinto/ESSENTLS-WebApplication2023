@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Return participant from DB
+ * Searches participants by their id and event id
  *
  * @author Mattia Maglie (mattia.maglie@studenti.unipd.it)
  * @version 1.00
@@ -21,27 +21,26 @@ import java.sql.SQLException;
 public final class ParticipantInfoDAO extends AbstractDAO<Participant>{
 
     /**
-     * The user to get info about
-     */
-//    private final User user;
-
-    /**
      * The SQL statement to be executed
      */
     private final String STATEMENT = "SELECT * FROM public.\"Participants\" INNER JOIN public.\"Users\" ON public.\"Participants\".\"userId\" = public.\"Users\".\"id\" WHERE public.\"Users\".\"id\" = ? AND public.\"Participants\".\"eventId\" = ?;";
 
     /**
-     * UserID
-     * TODO: decide how to get this data
+     * id of the user
      */
-//    private int infoID; //final id?
     private final int userId;
-    private final int eventId;
+
     /**
-     * Creates a new object for gather info about user.
+     * the id of the event
+     */
+    private final int eventId;
+
+    /**
+     * Creates a new object for searching participants by user id end event id.
      *
      * @param con    the connection to the database.
-     * @param id      the user that made the payments.
+     * @param userId    the user id of the participant
+     * @param eventId   the event id of the participant
      */
     public ParticipantInfoDAO(final Connection con, final int userId, final int eventId) {
         super(con);

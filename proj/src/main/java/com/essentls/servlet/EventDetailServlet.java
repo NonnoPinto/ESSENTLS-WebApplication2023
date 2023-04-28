@@ -10,24 +10,30 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Retrieves the details of an event from the database and redirects to the event detail page.
+ *
+ * @author Mattia Maglie
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "EventDetailServlet", value = "/eventdetail")
 public class EventDetailServlet extends AbstractDatabaseServlet {
 
-    public final static String USER_SESSION_KEY = "user";
-
+    /**
+     * Handles the HTTP {@code GET} method. Retrieves the details of an event from the database and redirects to the
+     * event detail page.
+     *
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //PrintWriter out = response.getWriter();
 
-        // write the HTML page
-        /*out.printf("test: " + Integer.getInteger(request.getParameter("id").trim()));
-        out.flush();
-        out.close();*/
         Integer eventId = Integer.parseInt(request.getParameter("id").trim());
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();

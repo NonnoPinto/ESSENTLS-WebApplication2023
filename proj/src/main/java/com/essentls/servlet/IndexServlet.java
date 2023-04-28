@@ -1,12 +1,7 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.EventsFromTagAndTierDAO;
-import com.essentls.dao.TagsListDAO;
-import com.essentls.dao.UserEventsListDAO;
 import com.essentls.dao.UserProfileInfoDAO;
-import com.essentls.resource.Event;
 import com.essentls.resource.Message;
-import com.essentls.resource.Tag;
 import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,11 +11,25 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
+/**
+ * Redirects to the index page.
+ *
+ * @author Mattia Maglie
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "IndexServlet", urlPatterns = {"", "/index"})
 public final class IndexServlet extends AbstractDatabaseServlet {
 
+    /**
+     * Handles the HTTP {@code GET} method. Redirects to the index page.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param resp a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

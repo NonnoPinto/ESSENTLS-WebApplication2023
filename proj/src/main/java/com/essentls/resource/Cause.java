@@ -5,15 +5,22 @@ import java.io.*;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.json.JSONObject;
-
 import java.io.OutputStream;
 
+/**
+ * Cause class
+ * @author Laura Pallante
+ * @version 1.0
+ * @since 1.0
+ */
 public class Cause extends AbstractResource{
 
     private int id;
     private String name;
 
+    /**
+     * Default constructor
+     */
     public Cause(int id, String name) {
         this.name = name;
         this.id = id;
@@ -39,6 +46,11 @@ public class Cause extends AbstractResource{
         return "Cause [id=" +this.id + "] [name=" + this.name + "]";
     }
 
+    /**
+     * Writes the cause object to JSON
+     * @param out the output stream to write to
+     * @throws IOException if an error occurs while writing to the stream
+     */
     @Override
     protected void writeJSON(final OutputStream out) throws IOException {
         final JsonGenerator jg = JSON_FACTORY.createGenerator(out);
@@ -59,6 +71,12 @@ public class Cause extends AbstractResource{
         jg.flush();
     }
 
+    /**
+     * Reads a cause object from JSON
+     * @param in the input stream to read from
+     * @return the cause object
+     * @throws IOException if an error occurs while reading from the stream
+     */
 
     public static Cause fromJSON(final InputStream in) throws IOException  {
 

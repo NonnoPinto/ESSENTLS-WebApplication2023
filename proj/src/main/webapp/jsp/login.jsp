@@ -9,9 +9,6 @@
 <%-- @ include file="/html/cdn.html"--%>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<!--  JAVASCRIPT AND STYLE  -->
-<!--<script src="${pageContext.request.contextPath}/js/login.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />-->
 </head>
 <body>
     <div class="navbar"><%@include file="navbar.jsp"%></div>

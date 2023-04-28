@@ -12,18 +12,28 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.message.StringFormattedMessage;
-import org.json.JSONObject;
-
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
+/**
+ * Handles the registration of a new user.
+ *
+ * @author Alessandro Borsato
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "RegisterServlet", value = "/register")
 public class RegisterServlet extends AbstractDatabaseServlet {
 
+    /**
+     * Handles the HTTP {@code GET} method. Redirects to the registration page.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the GET could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request.
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -33,6 +43,14 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
     }
 
+    /**
+     * Handles the HTTP {@code POST} method. Registers a new user and redirects to the home page if successful,
+     * otherwise redirects to the registration page.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res
+     * @throws ServletException
+     * @throws IOException
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -49,7 +67,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             String password = req.getParameter("password");
             String passwordRepeated = req.getParameter("rpassword");
             Integer tier = 0;
-            String emailHash = email.hashCode()+"";//TODO: hashme
+            String emailHash = email.hashCode()+"";
             Boolean emailConfirmed = false;
 
             if (email == null || email.equals("")) {
@@ -141,13 +159,22 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         }
     }
 
+    /**
+     * Sends a confirmation email to the user with an url containing the hash for the email verification.
+     * The url will be something like: http://localhost:8080/proj-1.0//email-confirmation/hashMail=1234567890
+     *
+     * This method is currently unused, but ready for deployment when the SMTP service is set.
+     *
+     * @param u the user to send the email to
+     * @throws MessagingException if an error occurs while sending the email
+     */
     private void sendCreationConfirmationEmail(User u) throws MessagingException {
 
         final StringBuilder sb = new StringBuilder();
         sb.append(String.format("<p>Welcome %s,</p>%n", u.getSurname(), u.getName()));
         sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been created.</p>%n"));
         sb.append(String.format("<p>Please, verify your mail by clicking the link below.</p>%n"));
-        sb.append(String.format("<p><a href=\"%s\">Verify your mail</a></p>%n", "http://localhost:8080/essentls/verify?email=" + u.getEmail()));
+        sb.append(String.format("<p><a href=\"%s\">Verify your mail</a></p>%n", "http://localhost:8080/proj-1.0/email-confirmation/hashMail=" + u.getEmailHash()));
         sb.append(String.format("<p>Best regards,<br>The ESN Padua Team</p>%n"));
         sb.append(String.format("<p>Remember, to fully enrol you must visit our office!</p>%n"));
         sb.append(String.format("<p>You can find our office at , Padua. We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));

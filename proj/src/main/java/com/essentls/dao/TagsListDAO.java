@@ -9,7 +9,7 @@ import java.util.List;
 import com.essentls.resource.Tag;
 
 /**
- * Return the list of Tags
+ * Lists all the tags in the database
  *
  * @author Vittorio Cardillo (vittorio.cardillo@studenti.unipd.it)
  * @version 1.00
@@ -17,10 +17,23 @@ import com.essentls.resource.Tag;
  */
 public class TagsListDAO extends AbstractDAO<List<Tag>> {
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\" WHERE name LIKE ?;";
 
+    /**
+     * The name of the tag to be listed
+     */
     String subTag;
 
+
+    /**
+     * Creates a new object for listing all the tags.
+     *
+     * @param con the connection to the database.
+     * @param subTag name of the tag to be listed
+     */
     public TagsListDAO(Connection con, String subTag) {
         super(con);
         this.subTag = subTag;
@@ -31,7 +44,8 @@ public class TagsListDAO extends AbstractDAO<List<Tag>> {
         
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        
+
+        //the results of the set
         final List<Tag> tags = new ArrayList<Tag>();
 
         try {

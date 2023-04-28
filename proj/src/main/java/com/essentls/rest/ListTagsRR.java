@@ -7,16 +7,14 @@ import com.essentls.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A REST resource for searching {@link Tag}s .
+ * A REST resource for listing {@link Tag}s .
  *
  * @author Laura Pallante
  * @version 1.00
@@ -24,20 +22,28 @@ import java.util.List;
  */
 public final class ListTagsRR extends AbstractRR {
 
-    String subTag;
     /**
-     * Creates a new REST resource for searching {@code Tag}s.
+     * The sub-string to search inside Tag names. Leave it "" to search all Tags.
+     */
+    String subTag;
+
+    /**
+     * Creates a new REST resource for listing {@link Tag}s.
      *
-     * @param req the HTTP request.
-     * @param res the HTTP response.
-     * @param con the connection to the database.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @param con a {@link Connection} object that represents a connection to the database.
+     * @param subTag the {@code String} to search inside {@link Tag} names. Leave it "" to list all {@link Tag}s.
      */
     public ListTagsRR(final HttpServletRequest req, final HttpServletResponse res, Connection con, String subTag) {
         super("LIST_TAGS", req, res, con);
         this.subTag = subTag;
     }
 
-
+    /**
+     * Lists {@link Tag}s and returns them in the response.
+     * @throws IOException if an I/O error occurs while writing the response.
+     */
     @Override
     protected void doServe() throws IOException {
 

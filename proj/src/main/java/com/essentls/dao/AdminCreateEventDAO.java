@@ -1,14 +1,13 @@
 package com.essentls.dao;
 
 import com.essentls.resource.Event;
-import com.essentls.resource.Participant;
 import org.json.JSONObject;
 import org.postgresql.util.PGobject;
 
 import java.sql.*;
 
 /**
- * Admin Create Event DAO, to create an event
+ * Creates a new event in the database
  *
  * @author Matteo VIllani (matteo.villani@studenti.unipd.it)
  * @version 1.00
@@ -69,10 +68,10 @@ public class AdminCreateEventDAO extends AbstractDAO<Integer>{
 
 
     /**
-     * Creates a new object.
+     * Creates a new object for storing an event into the database.
      *
      * @param con    the connection to the database.
-     * @param event   the event to create.
+     * @param event   the event to be stored into the database.
      */
     public AdminCreateEventDAO(final Connection con, final Event event){
         super(con);

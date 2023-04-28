@@ -13,12 +13,33 @@ import java.sql.*;
  * @since 1.00
  */
 public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
+    /**
+     * The SQL statement to be executed to get partecipants to an event
+     */
     private static final String STATEMENT_GET_PARTICIPANTS = "SELECT * FROM public.\"Participants\" INNER JOIN public.\"Users\" ON public.\"Participants\".\"userId\" = public.\"Users\".\"id\" WHERE \"eventId\" = ?";
+    /**
+     * The SQL statement to be executed to get an event from its id
+     */
     private static final String STATEMENT_GET_EVENT = "SELECT * FROM public.\"Events\" WHERE \"id\" = ?";
-
+    /**
+     * The particpant to be checked
+     */
     private final Participant participant;
+    /**
+     * States if the user should be added to the waiting list
+     */
     private final boolean alwaysWaitingList;
 
+    /**
+     * Creates a new object for storing an employee into the database.
+     *
+     * @param con
+     *            the connection to the database.
+     * @param participant
+     *            the user to be checked.
+     * @param alwaysWaitingList
+     *            States if the user should be added to the waiting list
+     */
     public UserCheckEventParticipantDAO(Connection con, Participant participant, boolean alwaysWaitingList) throws SQLException {
         super(con);
 

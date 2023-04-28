@@ -10,7 +10,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 
-
+/**
+ * Dispatches the REST requests to the correct servlets
+ *
+ * @author Laura Pallante
+ * @version 1.00
+ * @since 1.00
+ */
 public final class RestDispatcherServlet extends AbstractDatabaseServlet {
 
     /**
