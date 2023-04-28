@@ -2,14 +2,22 @@
 
 %describe the REST API. If needed, add a few lines of text here, describing the content of the table.
 
-\begin{longtable}{|p{.375\columnwidth}|p{.1\columnwidth} |p{.35\columnwidth}|p{.1\columnwidth}|} 
+For this homework, we implemented REST APIs on the paths "/rest/causes/" and "/rest/tags/" for the Causes and Tags resources. These resources are used as properties of the Events resource to facilitate retrieval and help categorization. \\
+Specifically the REST API is used in the "/tag-search", "/cause-search" and "/cause-create" pages accessible to administrators to manage these resources.
+To match future development needs or just uniform the methods of information retrieval between pages we will probably extend the area of coverage of REST APIs.
+The following table shows the structure we followed to implement "/rest/causes/".
+
+\begin{longtable}{|p{.30\columnwidth}|p{.10\columnwidth} |p{.25\columnwidth}|p{.25\columnwidth}|} 
 \hline
 \textbf{URI} & \textbf{Method} & \textbf{Description} & \textbf{Filter} \\\hline
-What is the URI? & GET & It returns information about a user searched by id & is it behind a filter?\\\hline
-What is the URI? & GET & It returns a list of events with a certain tag & is it behind a filter?\\\hline
-What is the URI? & POST & It modifies event information & is it behind a filter?\\\hline
-What is the URI? & PUT & It create smt (TODO:) & is it behind a filter?\\\hline
-What is the URI? & DELETE & Il delete an event by its id & is it behind a filter?\\\hline
-\caption{Describe in this table your REST API}
+/rest/causes/ & GET & It returns a list of all Causes in the database & Behind AdminFilter (only accessible to tier 4 users)\\\hline
+/rest/causes/id/*id* & GET & It returns the Cause with the corresponding *id*, if *id* is empty it returns all Causes & Behind AdminFilter (only accessible to tier 4 users)\\\hline
+/rest/causes/srch/*subCause* & GET & It returns the Causes that contain the string *subCause* in the name field & Behind AdminFilter (only accessible to tier 4 users)\\\hline
+/rest/causes/ & POST & It creates a new Cause contained in the request, inserts it into the database and returns it & Behind AdminFilter (only accessible to tier 4 users)\\\hline
+/rest/causes/id/*id* & PUT & It updates the Cause with the corresponding id with the values contained in the request and returns it & Behind AdminFilter (only accessible to tier 4 users)\\\hline
+/rest/causes/id/*id* & DELETE & It deletes the Cause with the corresponding id and returns it & Behind AdminFilter (only accessible to tier 4 users)\\\hline
+\caption{REST API for the Causes resource}
 \label{tab:termGlossary}
 \end{longtable}
+
+\pagebreak

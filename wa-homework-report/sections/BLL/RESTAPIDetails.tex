@@ -2,20 +2,24 @@
 
 %List here a few resources retrievable via REST API
 
-\subsubsection*{A resource}
+\subsubsection*{Search Causes}
 
 % the description of the resource
 
-\lipsum[1]
+Returns JSON data about all Causes that contain a certain substring in the Name attribute 
 
 
 \begin{itemize}
-    \item URL: \texttt{the URL to retrieve it}
-    \item Method: \texttt{Method to retrieve it}
-    \item URL Parameters:
-    \item Data Parameters: 
-    \item Success Response:
-    \item Error Response:
+    \item URL: \texttt{/causes/srch/*subCause*}
+    \item Method: \texttt{GET}
+    \item URL Parameters: \texttt{\\Required: subCause=[String] }
+    \item Data Parameters: \texttt{\\None}
+    \item Success Response: \texttt{\\Code: 200 \\Content: \{ esncause: \{id : 1, name : "examplecause"\}\}} 
+    \item Error Response: \texttt{\\Code:400 \\Content: \{ error: "Cannot search Cause(s): wrong format for URI"\}
+                                \\\\OR \\\\Code:404 \\Content: \{ error: "Unknown resource."\}
+                                 \\\\OR \\\\Code:405 \\Content: \{ error: "Unsupported method for URI /causes/srch/: ..."\}
+                                  \\\\OR \\\\Code:500 \\Content: \{ error: "Cannot search Cause(s): unexpected error."\}}
+    \item Sample Call: \texttt{}
     
 \end{itemize}
 
