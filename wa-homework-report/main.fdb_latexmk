@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1682705117 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1682705124 0
+["pdflatex"] 1682708234 "c:/Users/User/Documents/Unipd/Magistrale/I_anno_SecondoSemestre/Web Application/essentls/wa-homework-report/main.tex" "main.pdf" "main" 1682708244 0
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbr10.pk" 1679843005 9388 ce5773ae3c25f206fd357f851c0301ec ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbrbx10.pk" 1679843002 9396 15cf81d8730d03d4020f8fb73d753ca4 ""
   "C:/Users/User/AppData/Local/MiKTeX/fonts/pk/ljfour/public/cmbright/dpi600/cmbrsy10.pk" 1682433497 13592 f96f22628f12d8b7be90c86f6bfde1ef ""
@@ -20,6 +20,7 @@
   "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cmbright/cmbrsy8.tfm" 864662942 1120 90e1ff57236ed6769cdb8e6d58469358 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cmbright/cmtl10.tfm" 864662942 768 a723c4266cb3fba12f4a46cc38c2802e ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cmbright/tbmr10.tfm" 1022280362 1476 1d92fe70b3c834a471e5789b0cf798ef ""
+  "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580393758 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/generic/atbegshi/atbegshi.sty" 1575574700 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc.sty" 1576437202 40635 c40361e206be584d448876bba8a64a3b ""
@@ -104,13 +105,13 @@
   "local_macros.tex" 1682689654 1829 c348dc87926aba907c834867635092d5 ""
   "logos/DEI.pdf" 1680731118 295786 945427f4b2d699ba59e1be94beb88bb2 ""
   "logos/logo-unipd800.pdf" 1680731118 394708 68ef9087516729fe260e52a859f0e9dc ""
-  "main.aux" 1682705124 5914 79cd310268d00615fd1becc40065d54d "pdflatex"
-  "main.out" 1682705124 3083 0df04f779a77970280223cccf2e096e5 "pdflatex"
+  "main.aux" 1682708243 5889 1d0f61f40696d5e06561d16cbac28247 "pdflatex"
+  "main.out" 1682708243 3083 0df04f779a77970280223cccf2e096e5 "pdflatex"
   "main.tex" 1682705073 425 a007cc8544c4487465d60ff70f11479f ""
   "sections/BLL/ClassDiagram.tex" 1682415685 133 38461e2e3b05f17c418986f9cb73de01 ""
-  "sections/BLL/RESTAPIDetails.tex" 1682415685 422 f77e730787616eb08bb1f33f86317d06 ""
-  "sections/BLL/RESTAPISummary.tex" 1682689654 894 b057c85084381b22841cf513bb8126fe ""
-  "sections/BLL/RESTErrorCodes.tex" 1682689654 466 8ce6d3334aa545f42ce5347ae71b002e ""
+  "sections/BLL/RESTAPIDetails.tex" 1682708215 1092 c76cbe2f251e62ec736aa095e801f181 ""
+  "sections/BLL/RESTAPISummary.tex" 1682708215 2095 699432b3b15c735139fdad526fa0607b ""
+  "sections/BLL/RESTErrorCodes.tex" 1682708215 1122 72128c86d140372d683677423b4e366d ""
   "sections/BLL/SequenceDiagram.tex" 1682704960 1942 30fb27622c5ba934e73fe8a21f957b05 ""
   "sections/BusinessLogicLayer.tex" 1680731118 214 169c2de0ac00180552a26aae0721dfea ""
   "sections/Contributions.tex" 1682704783 2600 73283ffe2999abc3835bb0fcea7bfc3e ""
