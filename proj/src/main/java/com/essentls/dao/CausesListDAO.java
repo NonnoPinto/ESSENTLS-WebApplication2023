@@ -10,21 +10,38 @@ import com.essentls.resource.Cause;
 
 
 /**
- * Return the list of Tags
+ * Lists all the causes in the database
  *
- * @author Laura Pallante (laura.pallante@studenti.unipd.it
+ * @author Laura Pallante (laura.pallante@studenti.unipd.it)
  * @version 1.00
  * @since 1.00
  */
 public class CausesListDAO extends AbstractDAO<List<Cause>> {
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_CAUSE_LIST = "SELECT * from public.\"Causes\"" +
                                                         " WHERE name LIKE ?" +
                                                         " AND (? = -1 OR id = ?);";
 
+    /**
+     * The name of the cause to search for
+     */
     String subCause;
+
+    /**
+     * The id of the cause to search for
+     */
     int id;
 
+    /**
+     * Creates a new object for listing all the causes.
+     *
+     * @param con the connection to the database.
+     * @param id the id of the cause
+     * @param subCause the name od the cause
+     */
     public CausesListDAO(Connection con, int id, String subCause) {
         super(con);
         this.subCause = subCause;
@@ -37,10 +54,10 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
+        //the results of the search
         final List<Cause> causes = new ArrayList<Cause>();
 
         try {
-            //TODO separate id and tag
             pstmt = con.prepareStatement(STATEMENT_CAUSE_LIST);
             pstmt.setString(1, "%" + subCause + "%");
             pstmt.setInt(2, id);

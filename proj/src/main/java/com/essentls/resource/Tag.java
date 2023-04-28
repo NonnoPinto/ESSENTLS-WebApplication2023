@@ -1,14 +1,17 @@
 package com.essentls.resource;
 
 import java.io.*;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.json.JSONObject;
-
 import java.io.OutputStream;
 
+/**
+ * Represents a tag.
+ * @author Laura Pallante
+ * @version 1.00
+ * @since 1.00
+ */
 public class Tag extends AbstractResource{
     private String name;
 
@@ -49,6 +52,12 @@ public class Tag extends AbstractResource{
     }
 
 
+    /**
+     * Reads a tag object from JSON
+     * @param in the input stream to read from
+     * @return the tag object
+     * @throws IOException if an error occurs while reading from the stream
+     */
     public static Tag fromJSON(final InputStream in) throws IOException  {
 
         // the fields read from JSON

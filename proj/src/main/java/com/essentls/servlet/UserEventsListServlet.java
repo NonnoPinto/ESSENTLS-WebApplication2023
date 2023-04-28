@@ -1,7 +1,5 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.ParticipantInfoDAO;
-import com.essentls.dao.UserEventsListDAO;
 import com.essentls.dao.UserJoinedEventsListDAO;
 import com.essentls.dao.UserProfileInfoDAO;
 import com.essentls.resource.*;
@@ -15,9 +13,24 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Lists all the events a user has joined.
+ *
+ * @author Mattia Maglie
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "UserEventsListServlet", urlPatterns = {"", "/joined-events"})
 public final class UserEventsListServlet extends AbstractDatabaseServlet {
 
+    /**
+     * Handles the HTTP {@code GET} method. Retrieves all the events a user has joined through the participant table
+     * and passes them to the joined events page.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param resp a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

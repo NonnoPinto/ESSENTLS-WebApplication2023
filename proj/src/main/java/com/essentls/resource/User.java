@@ -8,6 +8,12 @@ import com.essentls.mail.MailManager;
 import jakarta.mail.MessagingException;
 import org.json.JSONObject;
 
+/**
+ * @author Vittorio Cardillo
+ * @version 1.00
+ * @since 1.00
+ * Represents a user of the application.
+ */
 public class User {
     private int id;
     private String email;
@@ -34,6 +40,9 @@ public class User {
     private boolean emailConfirmed;
     private byte[] documentBytes;
 
+    /**
+     * Creates a new user.
+     */
     public User(){}
     public User(User user){
         this.id = user.getId();
@@ -61,6 +70,32 @@ public class User {
         this.emailConfirmed = user.getEmailConfirmed();
     }
 
+    /**
+     * Creates a new user.
+     * @param id user id
+     * @param email email for login and contact
+     * @param password password for login
+     * @param cardId card id (identity card)
+     * @param tier tier of the user
+     * @param registrationDate date of registration
+     * @param name first name of the user
+     * @param surname last name of the user
+     * @param sex gender of the user
+     * @param dateOfBirth date of birth of the user
+     * @param nationality nationality of the user
+     * @param homeCountryAddress home country address of the user
+     * @param homeCountryUniversity home country university of the user
+     * @param periodOfStay period of stay in Padua
+     * @param phoneNumber phone number of the user
+     * @param paduaAddress address in Padua
+     * @param documentType type of document provided in registration
+     * @param documentNumber number of the document provided in registration
+     * @param documentFile file of the document provided in registration
+     * @param dietType diet type of the user
+     * @param allergies allergies of the user
+     * @param emailHash hash of the email
+     * @param emailConfirmed true if the email is confirmed, false otherwise
+     */
     public User(int id, String email, String password, String cardId, int tier, Date registrationDate, String name,
             String surname, String sex, Date dateOfBirth, String nationality, JSONObject homeCountryAddress,
             String homeCountryUniversity, int periodOfStay, String phoneNumber, JSONObject paduaAddress,
@@ -198,43 +233,48 @@ public class User {
         return matcher.matches();
     }
 
-    public void setMail(String _mail) {
-        this.setMailAndHash(_mail);
+    /**
+     * Calls the method that sets the email and hashMail of the user (duplicated)
+     * @param mail email to set
+     *
+     */
+    public void setMail(String mail) {
+        this.setMailAndHash(mail);
     }
 
-    public void setEmail(String _mail) {
-        this.setMailAndHash(_mail);
+    /**
+     * Calls the method that sets the email and hashMail of the user (duplicated)
+     * @param mail email to set
+     *
+     */
+    public void setEmail(String mail) {
+        this.setMailAndHash(mail);
     }
 
-    //in case of email change (not allowed by now)
-    public void setMailAndHash(String _mail) {
-        if (_mail.isEmpty() || _mail == null)
+    /**
+     * Sets the email and the hash of the user.
+     * @param mail email to set
+     *
+     */
+    public void setMailAndHash(String mail) {
+        if (mail.isEmpty() || mail == null)
         {
             this.email= null;
             this.emailHash= null;
         }
-        else if (validate(_mail)) {
-            this.email = _mail;
-            this.emailHash = _mail.hashCode()+"";
+        else if (validate(mail)) {
+            this.email = mail;
+            this.emailHash = mail.hashCode()+"";
         }
-        else {
-            //send some kind of error message
-        }
-        
     }
 
-    public void setPassword(String _password) {
-        //password inter than 5 char
-        if(_password.length() < 5) {
-            //send some kind of error message
-        }
-        //not the same password
-        else if(_password.equals(password)) {
-            //send some kind of error message
-        }
-        else {
-            password = _password;
-        }
+    /**
+     * Sets the password of the user.
+     * @param password password to set
+     *
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setId(int id) {
@@ -321,6 +361,10 @@ public class User {
         this.documentBytes = documentBytes;
     }
 
+    /**
+     * Converts the user to a JSON object
+     * @return the JSON object
+     */
     public JSONObject toJSON() {
         JSONObject uJson = new JSONObject();
         uJson.put("id", id);

@@ -20,10 +20,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Retrieves an event from the database and redirects the user to the event edit page. Saves the changes input by the
+ * user to the event in the database.
+ *
+ * @author Francesco Marcato
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "EditEventServlet", urlPatterns = {"", "/editEvent"})
 @MultipartConfig
 public final class EditEventServlet extends AbstractDatabaseServlet {
 
+    /**
+     * A method that processes a file to retrieve its name without the preceding path.
+     *
+     * @param part a {@link Part} object that contains the file to be processed.
+     * @return a {@link String} object that contains the name of the file.
+     */
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
         LOGGER.info("Part Header = {0}", partHeader);
@@ -36,6 +50,12 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         return null;
     }
 
+    /**
+     * Explores the file system to find the absolute path of the cloud folder. The cloud folder is a placeholder for
+     * an actual cloud storage service.
+     *
+     * @return a {@link String} object that contains the absolute path of the cloud folder.
+     */
     private String getAbsoluteCloudPath(){
         URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
         File file = new java.io.File(url.getFile());
@@ -51,6 +71,11 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         return "";
     }
 
+    /**
+     * Explores the file system to find the absolute path of the project folder.
+     *
+     * @return a {@link String} object that contains the absolute path of the project folder.
+     */
     private String getProjectPath(){
         URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
         File file = new java.io.File(url.getFile());
@@ -65,6 +90,16 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         return "";
     }
 
+    /**
+     * Handles the HTTP {@code GET} method. Retrieves the event from the database and redirects the user to the event
+     * edit page.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     *
+     * @throws ServletException if the request for the GET could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request.
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -111,6 +146,14 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
     }
 
+    /**
+     * Handles the HTTP {@code POST} method. Saves the changes input by the user to the event in the database.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the POST could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the POST request.
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setAction("EDIT EVENT");

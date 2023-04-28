@@ -5,13 +5,21 @@ import com.essentls.resource.User;
 import org.json.JSONObject;
 import org.postgresql.util.PGobject;
 
+/**
+ * Creates a new user into the database.
+ *
+ * @author Francesco Marcato
+ * @version 1.00
+ * @since 1.00
+ */
+
 public class AdminCreateUserDAO extends AbstractDAO<User>{
-    
+
+    //TODO: need to create servlet and jsp page for admin user creation functionality and update statement with new database format
+
     /**
 	 * The SQL statement to be executed
 	 */
-
-     //TODO: DOB is not a column of db
 	private static final String STATEMENT = "INSERT INTO Users(ID,  Email,  Password,  CardID,  Tier,  RegistrationDate,"+
         "  Name,  Surname,  Sex,  DOB,  Nationality,  HomeCountryAddress,  HomeCountryUniversity,  PeriodOfStay,  PhoneNumber,"+
         "  PadovaAddress,  DocumentType,  DocumentNumber,  DocumentFile,  DietType,  Allergies) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,"+
@@ -23,10 +31,10 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
 	private final User user;
 
     /**
-     * Creates a new object for creating an User
+     * Creates a new object for storing a user into the database.
      *
      * @param con    the connection to the database.
-     * @param _user   the user to delete
+     * @param _user   the user to be stored into the database
      */
     public AdminCreateUserDAO(final Connection con, User _user) {
         
@@ -104,11 +112,10 @@ public class AdminCreateUserDAO extends AbstractDAO<User>{
             pstmt.setString(18, this.user.getDocumentNumber());
             pstmt.setString(19, this.user.getDocumentFile());
             pstmt.setString(20, this.user.getDietType());
-            pstmt.setObject(21, this.user.getAllergies());
 
 			rs = pstmt.executeQuery();
 
-			LOGGER.info("User %d successfully edited in the database.", this.user.getId());
+			LOGGER.info("User %d successfully stored into the database.", this.user.getId());
 
 		} finally {
 			if (rs != null) {

@@ -1,10 +1,7 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.AdminEditUserDAO;
-import com.essentls.dao.AdminUsersListDAO;
 import com.essentls.dao.UserEditProfileDAO;
 import com.essentls.dao.UserProfileInfoDAO;
-import com.essentls.resource.Message;
 import com.essentls.resource.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,21 +9,31 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.logging.log4j.core.jackson.Log4jJsonObjectMapper;
-import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 
+/**
+ * Servlet that handles the user changing his own profile information.
+ *
+ * @author Vaidas Lenartavicius
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "EditUserProfileServlet", value = "/edit-profile")
 public class EditUserProfileServlet extends AbstractDatabaseServlet {
 
-    public final static String USER_SESSION_KEY = "edit-profile";
-
-    @Override
+    /**
+     * Handles the HTTP {@code GET} method. Retrieves the user information from the database and redirects to the edit
+     * profile page.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //take the req uri
         LogContext.setIPAddress(req.getRemoteAddr());
@@ -60,7 +67,14 @@ public class EditUserProfileServlet extends AbstractDatabaseServlet {
         }
     }
 
-    @Override
+    /**
+     * Handles the HTTP {@code POST} method. Retrieves the user information from the request and updates the database.
+     *
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the POST could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the POST request
+     */
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //take the req uri
         LogContext.setIPAddress(req.getRemoteAddr());

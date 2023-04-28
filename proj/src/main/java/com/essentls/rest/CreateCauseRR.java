@@ -1,21 +1,14 @@
 package com.essentls.rest;
+
 import com.essentls.dao.CausesCreationDAO;
-import com.essentls.dao.TagsCreationDAO;
-import com.essentls.dao.TagsListDAO;
 import com.essentls.resource.Message;
-import com.essentls.resource.ResourceList;
-import com.essentls.resource.Tag;
 import com.essentls.servlet.LogContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.essentls.resource.Cause;
-import java.io.EOFException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A REST resource for creating {@link Cause}s .
@@ -27,17 +20,22 @@ import java.util.List;
 public class CreateCauseRR extends AbstractRR{
 
     /**
-     * Creates a new REST resource for creating {@code Cause}s.
+     * Creates a new REST resource for creating {@link Cause}s.
      *
-     * @param req the HTTP request.
-     * @param res the HTTP response.
-     * @param con the connection to the database.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @param con a {@link Connection} object that represents a connection to the database
      */
     public CreateCauseRR(final HttpServletRequest req, final HttpServletResponse res, Connection con) {
         super("CREATE_CAUSE", req, res, con);
     }
 
 
+    /**
+     * Creates a new {@link Cause} and returns it in the response.
+     *
+     * @throws IOException if an I/O error occurs while writing the response
+     */
     @Override
     protected void doServe() throws IOException {
         Message m = null;

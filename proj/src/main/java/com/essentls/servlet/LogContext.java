@@ -4,6 +4,10 @@ import org.apache.logging.log4j.ThreadContext;
 
 /**
  * Provides the log context for the application on a per-thread basis.
+ *
+ * @author Andrea Campagnol
+ * @version 1.00
+ * @since 1.00
  */
 public final class LogContext {
 
@@ -42,7 +46,7 @@ public final class LogContext {
     }
 
     /**
-     * Removes the {@code User} currently performing actions.
+     * Removes the {@code user} currently performing actions.
      */
     public static void removeUser() {
         ThreadContext.remove(USER);

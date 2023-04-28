@@ -1,8 +1,6 @@
 package com.essentls.servlet;
 
-import com.essentls.dao.EventInfoDAO;
 import com.essentls.dao.UserProfileInfoDAO;
-import com.essentls.resource.Event;
 import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,10 +11,24 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Displays the profile page of the user.
+ *
+ * @author Md Imran Faruck Talukder
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "ProfileServlet", value = "/profile")
 public class ProfileServlet extends AbstractDatabaseServlet {
-    public final static String USER_SESSION_KEY = "user";
 
+    /**
+     * Handles the HTTP {@code GET} method. Passes the user attribute to the profile page and redirects the user.
+     *
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //take the request uri
@@ -45,10 +57,6 @@ public class ProfileServlet extends AbstractDatabaseServlet {
             if(user == null){
                 request.getRequestDispatcher("/jsp/unauthorized.jsp").forward(request, response);
             } else {
-                //Passing data to Payment List page
-                //session.setAttribute("Users", user);
-                //session.setAttribute("tier", user.getTier());
-                //session.setAttribute("id", user.getId());
                 LOGGER.info("The Login User tier: %s", user.getTier());
             }
             request.getRequestDispatcher("/jsp/profile.jsp").forward(request, response);
@@ -57,9 +65,5 @@ public class ProfileServlet extends AbstractDatabaseServlet {
         } catch (NullPointerException e) {
             LOGGER.error("stacktrace:", e);
         }
-
-
-
-
     }
 }

@@ -14,8 +14,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Gets the {@code DataSource} for managing the connection pool to the database.
+ * Gets the {@link DataSource} for managing the connection pool to the database.
  *
+ *
+ * @author Andrea Campagnol
+ * @version 1.00
+ * @since 1.00
  */
 public abstract class AbstractDatabaseServlet extends HttpServlet {
 
@@ -31,9 +35,9 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
     private DataSource ds;
 
     /**
-     * Gets the {@code DataSource} for managing the connection pool to the database.
+     * Gets the {@link DataSource} for managing the connection pool to the database.
      *
-     * @param config a {@code ServletConfig} object containing the servlet's configuration and initialization
+     * @param config a {@link ServletConfig} object containing the servlet's configuration and initialization
      *               parameters.
      *
      * @throws ServletException if an exception has occurred that interferes with the servlet's normal operation
@@ -58,7 +62,7 @@ public abstract class AbstractDatabaseServlet extends HttpServlet {
     }
 
     /**
-     * Releases the {@code DataSource} for managing the connection pool to the database.
+     * Releases the {@link DataSource} for managing the connection pool to the database.
      */
     public void destroy() {
         ds = null;

@@ -2,11 +2,9 @@ package com.essentls.servlet;
 
 import com.essentls.dao.EventInfoDAO;
 import com.essentls.dao.UserCheckEventParticipantDAO;
-import com.essentls.dao.UserJoinsEventDAO;
 import com.essentls.dao.UserProfileInfoDAO;
 import com.essentls.resource.Event;
 import com.essentls.resource.Participant;
-import com.essentls.resource.Payment;
 import com.essentls.resource.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,14 +14,27 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
+/**
+ * Manages the payment of an event or a subscription
+ *
+ * @author Mattia Maglie
+ * @version 1.00
+ * @since 1.00
+ */
 @WebServlet(name = "PaymentServlet", value = "/payment")
 public class PaymentServlet extends AbstractDatabaseServlet{
 
+    /**
+     * Handles the HTTP {@code GET} method. Redirects to the correct method based on the action parameter.
+     *
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         String action = request.getParameter("action");
         switch (action){
             case "event":
@@ -35,6 +46,14 @@ public class PaymentServlet extends AbstractDatabaseServlet{
         }
     }
 
+
+    /**
+     * Method that handles the payment of an event.
+     *
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     */
     private void eventPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             HttpSession session = request.getSession();
@@ -66,6 +85,12 @@ public class PaymentServlet extends AbstractDatabaseServlet{
         }
     }
 
+    /**
+     * Method that handles the payment of a subscription.
+     *
+     * @param request a {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     */
     private void subPayment(HttpServletRequest request, HttpServletResponse response){
 
         try {

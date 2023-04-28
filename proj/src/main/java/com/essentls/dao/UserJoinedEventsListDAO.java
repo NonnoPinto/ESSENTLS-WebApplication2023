@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Gather events by their visibility.
+ * Gather events joined by a user.
  *
  * @author Mattia Maglie (mattia.maglie@studenti.unipd.it)
  * @version 1.00

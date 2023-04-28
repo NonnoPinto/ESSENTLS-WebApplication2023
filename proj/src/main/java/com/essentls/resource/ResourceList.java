@@ -6,24 +6,24 @@ import java.io.*;
 /**
  * Represents a list of {@link AbstractResource} objects.
  *
- * @author Nicola Ferro (ferro@dei.unipd.it)
+ * @author Laura Pallante
  * @version 1.00
  * @since 1.00
  *
- * @param <T>
- *            the type of the actual class extending {@code AbstractResource}.
+ * @param <T> the type of the actual class extending {@link AbstractResource}.
+ *
  */
 public final class ResourceList<T extends Resource> extends AbstractResource {
 
     /**
-     * The list of {@code AbstractResource}s.
+     * The list of {@link AbstractResource}s.
      */
     private final Iterable<T> list;
 
     /**
-     * Creates a list of {@code AbstractResource}s.
+     * Creates a list of {@link AbstractResource}s.
      *
-     * @param list the list of {@code AbstractResource}s.
+     * @param list the list of {@link AbstractResource}s.
      */
     public ResourceList(final Iterable<T> list) {
 
@@ -52,7 +52,6 @@ public final class ResourceList<T extends Resource> extends AbstractResource {
 
         for (final Resource r : list) {
 
-            // very bad work-around to add commas between resources
             if (firstElement) {
                 r.toJSON(out);
                 jg.flush();

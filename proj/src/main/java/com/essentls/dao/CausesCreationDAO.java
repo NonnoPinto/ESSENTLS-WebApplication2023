@@ -1,34 +1,36 @@
 package com.essentls.dao;
 
 import com.essentls.resource.Cause;
-import com.essentls.resource.Tag;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * Add a cause to the cause table
+ * Creates a new cause into the database
  *
- * @author Laura Pallante (laura.pallante@studenti.unipd.it
+ * @author Laura Pallante (laura.pallante@studenti.unipd.it)
  * @version 1.00
  * @since 1.00
  */
 
 public class CausesCreationDAO extends AbstractDAO<Cause> {
 
-    private static final String STATEMENT = "INSERT INTO public.\"Causes\" (name) VALUES (?) RETURNING *";
     /**
-     *  the cause name
+     * The SQL statement to be executed
+     */
+    private static final String STATEMENT = "INSERT INTO public.\"Causes\" (name) VALUES (?) RETURNING *";
+
+    /**
+     *  the name of the cause to be stored into the database
      */
     private final String name;
 
 
     /**
-     * Creates a new tag for events.
+     * Creates a new object for storing a cause into the database
      *
      * @param con    the connection to the database.
-     * @param name   the cause name
+     * @param name   the cause (name) to be stored into the database
      */
     public CausesCreationDAO(Connection con, final String name) {
         super(con);
@@ -41,6 +43,7 @@ public class CausesCreationDAO extends AbstractDAO<Cause> {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
+        //the created cause
         Cause c = null;
 
         try {

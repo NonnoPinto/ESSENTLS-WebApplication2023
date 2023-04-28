@@ -6,12 +6,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Creates a new participant into the database.
+ *
+ * @author Vaidas Lenartavicius
+ * @version 1.00
+ * @since 1.00
+ */
 public class AdminInsertParticipantDAO extends AbstractDAO<Participant> {
 
+    //TODO: need to create servlet and jsp page for admin participant insertion functionality and update statement with new database format
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_INSERT_PARTICIPANT = "INSERT INTO participants (userId, eventId, role, date, attributeValues) VALUES (?, ?, ?, ?, ?)";
 
+    /**
+     * The participant to be stored into the database
+     */
     private final Participant participant;
 
+    /**
+     * Creates a new object for storing a participant into the database.
+     *
+     * @param con the connection to the database.
+     * @param participant the participant to be stored into the database.
+     */
     public AdminInsertParticipantDAO(final Connection con, final Participant participant) {
         super(con);
         this.participant = participant;

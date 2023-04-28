@@ -10,11 +10,27 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-
+/**
+ * @author Mattia Maglie
+ * @version 1.0
+ * @since 1.0
+ * Login filter
+ */
 public class LoginFilter extends AbstractFilter {
 
+    /**
+     * A LOGGER available for all the subclasses.
+     */
     final static Logger logger = LogManager.getLogger(LoginFilter.class);
 
+    /**
+     * Checks if the user is logged in.
+     * @param req   the request
+     * @param res   the response
+     * @param chain the filter chain
+     * @throws IOException      if an I/O error occurs
+     * @throws ServletException if a servlet error occurs
+     */
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
 

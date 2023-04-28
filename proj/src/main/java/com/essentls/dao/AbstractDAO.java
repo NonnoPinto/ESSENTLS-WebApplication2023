@@ -11,7 +11,7 @@ import java.sql.SQLException;
  * Provides support for the actual implementation of a DAO object.
  *
  * <p>
- * {@code AbstractDAO} is designed to achieve the following goals:
+ * {@link AbstractDAO} is designed to achieve the following goals:
  * <ol>
  * <li>a consistent way of accessing the database and managing exceptions is
  * guaranteed for all of the classes that need to directly interact with the
@@ -24,14 +24,14 @@ import java.sql.SQLException;
  * </p>
  *
  * <p>
- * With respect to the first goal, {@code AbstractDAO}
+ * With respect to the first goal, {@link AbstractDAO}
  * provides a basic infrastructure which manages the connection, the commitment
  * of transactions (or the roll-back), if needed, and any exception that may be
  * thrown while accessing the database.
  * </p>
  *
  * <p>
- * With respect to the second goal,{@code AbstractDAO} is the
+ * With respect to the second goal,{@link AbstractDAO} is the
  * root of a hierarchy of helper classes, which isolate as much as possible the
  * DBMS-dependent code.
  * </p>
@@ -100,14 +100,6 @@ public abstract class AbstractDAO<T> implements DataAccessObject<T> {
             throw new NullPointerException("The connection cannot be null.");
         }
         this.con = con;
-
-        /*try {
-            // ensure that autocommit is true
-            con.setAutoCommit(true);
-            LOGGER.debug("Auto-commit set to default value true.");
-        } catch (final SQLException e) {
-            LOGGER.warn("Unable to set connection auto-commit to true.", e);
-        }*/
 
     }
 

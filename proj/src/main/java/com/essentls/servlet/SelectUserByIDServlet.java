@@ -3,9 +3,7 @@ package com.essentls.servlet;
 import com.essentls.dao.AdminUsersListDAO;
 import com.essentls.resource.User;
 import com.essentls.resource.Message;
-
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,13 +12,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 
+/**
+ * Handles the selection of a user by ID for redirecting to the correct admin edit use page.
+ *
+ * @author Vaidas Lenartavicius
+ * @version 1.00
+ * @since 1.00
+ */
 public class SelectUserByIDServlet extends AbstractDatabaseServlet {
 
-     /**
-     @param req  //request
-     @param res  //response
-     @throws ServletException    //exception servlet
-     @throws IOException     //exceptionIO
+    /**
+     * Handles the HTTP {@code POST} method. Selects a user by ID and redirects to the admin user edit page
+     * if successful.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the GET could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the POST request.
      */
 
      public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

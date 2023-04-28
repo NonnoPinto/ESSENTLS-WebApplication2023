@@ -2,9 +2,17 @@ package com.essentls.resource;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-
 import org.json.JSONObject;
+/**
+ * @author Vittorio Cardillo
+ * @version 1.0
+ * @since 1.0
+ */
 
+
+/**
+ * Represents a payment.
+ */
 public class Payment {
     private int id;
     private int userId;
@@ -13,7 +21,25 @@ public class Payment {
     private float amount;
     private Date date;
     private String notes;
-    
+
+    /**
+     * Creates a payment.
+     *
+     * @param id the id of the payment.
+     *
+     * @param userId the id of the user.
+     *
+     * @param eventId the id of the event.
+     *
+     * @param method the method of the payment.
+     *
+     * @param amount the amount of the payment.
+     *
+     * @param date the date of the payment.
+     *
+     * @param notes the notes of the payment.
+     *
+     */
     public Payment(int id, int userId, int eventId, String method, float amount, Date date, String notes) {
         this.id = id;
         this.userId = userId;
@@ -51,6 +77,12 @@ public class Payment {
     public String getNotes() {
         return notes;
     }
+
+    /**
+     * Returns a JSON representation of the payment.
+     *
+     * @return a JSON representation of the payment.
+     */
 
     public JSONObject toJSON() {
         JSONObject uJson = new JSONObject();

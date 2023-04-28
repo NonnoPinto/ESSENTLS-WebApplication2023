@@ -6,7 +6,7 @@ import org.postgresql.util.PGobject;
 import java.sql.*;
 
 /**
- * User profile info DAO, to get infos about any user
+ * User profile info DAO, to get infos about a user
  *
  * @author Giovanni Zago (giovanni.zago.3@studenti.unipd.it)
  * @version 1.00
@@ -30,17 +30,17 @@ public final class UserProfileInfoDAO extends AbstractDAO<User>{
                                     "\"emailHash\", \"emailConfirmed\" FROM public.\"Users\"" +
                                     " WHERE id = ?;";
 
+
     /**
-     * UserID
-     * TODO: decide how to get this data
+     * the user ID
      */
-//    private int infoID; //final id?
     private final int id;
+
     /**
      * Creates a new object for gather info about user.
      *
      * @param con    the connection to the database.
-     * @param id      the user that made the payments.
+     * @param id      the id of the user.
      */
     public UserProfileInfoDAO(final Connection con, final int id) {
         super(con);

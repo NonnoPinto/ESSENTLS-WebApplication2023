@@ -13,9 +13,21 @@ import com.essentls.resource.Participant;
  * @since 1.00
  */
 public class UserJoinsEventDAO extends AbstractDAO<Boolean> {
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_JOIN_EVENT = "INSERT INTO public.\"Participants\" (\"userId\", \"eventId\", role, date, \"attributeValues\") VALUES (?, ?, ?, ?, ?)";
+    /**
+     * The user who wants to join the event
+     */
     private final Participant participant;
 
+    /**
+     * Creates a new object to insert participation into the database.
+     *
+     * @param con    the connection to the database.
+     * @param participant  the current user who joins the event
+     */
     public UserJoinsEventDAO(Connection con, Participant participant) throws SQLException {
         super(con);
 

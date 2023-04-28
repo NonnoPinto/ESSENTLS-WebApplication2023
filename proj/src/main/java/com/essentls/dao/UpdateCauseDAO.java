@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * A DAO for updating a {@link Cause}.
+ * Updates a cause in the database
  *
  * @author Vaidas Lenartavicius
  * @version 1.00
@@ -16,15 +16,21 @@ import java.sql.SQLException;
 
 public class UpdateCauseDAO extends AbstractDAO<Cause>{
 
+    /**
+     * The SQL statement to be executed
+     */
     private static final String STATEMENT_UPDATE_CAUSE = "UPDATE public.\"Causes\" SET name = ? WHERE id = ? RETURNING *";
 
+    /**
+     * The cause to be updated in the database
+     */
     final Cause cause;
 
     /**
-     * Creates a new DAO for updating a {@code Cause}.
+     * Creates a new DAO for updating a {@link Cause}.
      *
      * @param con the connection to the database.
-     * @param cause the {@code Cause} to update.
+     * @param cause the {@link Cause} to update.
      */
     public UpdateCauseDAO(final Connection con, final Cause cause) {
         super(con);
@@ -40,6 +46,7 @@ public class UpdateCauseDAO extends AbstractDAO<Cause>{
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
+        //the updated cause
         Cause c = null;
 
         try{
