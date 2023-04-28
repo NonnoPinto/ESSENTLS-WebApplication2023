@@ -103,7 +103,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     // method not allowed
                     LOGGER.warn("Unsupported method for URI /tags/: %s.", method);
 
-                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                    m = new Message("Method not allowed.", "E4A5", String.format("Method %s is not allowed.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
                 }
@@ -122,7 +122,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     // method not allowed
                     LOGGER.warn("Unsupported method for URI /tags/name/ or /tags/subtag/: %s.", method);
 
-                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                    m = new Message("Method not allowed.", "E4A5", String.format("Method %s is not allowed.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
                 }
@@ -169,7 +169,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     // method not allowed
                     LOGGER.warn("Unsupported method for URI /causes/: %s.", method);
 
-                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                    m = new Message("Method not allowed.", "E4A5", String.format("Method %s is not allowed.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
                 }
@@ -194,7 +194,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                         // method not allowed
                         LOGGER.warn("Unsupported method for URI /causes/id/: %s.", method);
 
-                        m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                        m = new Message("Method not allowed.", "E4A5", String.format("Method %s is not allowed.", method));
                         res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                         m.toJSON(res.getOutputStream());
                     }
@@ -203,7 +203,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                 //operation not allowed
                 LOGGER.warn("Unsupported operation for URI /causes/id/: %s.", method);
 
-                m = new Message("Operation not allowed.", "E4A3", String.format("Operation not allowed."));
+                m = new Message("Operation not allowed.", "E4A5", String.format("Operation not allowed."));
                 res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                 m.toJSON(res.getOutputStream());
 
@@ -221,7 +221,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
                     // method not allowed
                     LOGGER.warn("Unsupported method for URI /causes/srch/: %s.", method);
 
-                    m = new Message("Method not allowed.", "E4A2", String.format("Method %s is not allowed.", method));
+                    m = new Message("Method not allowed.", "E4A5", String.format("Method %s is not allowed.", method));
                     res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
                     m.toJSON(res.getOutputStream());
                 }
@@ -231,7 +231,7 @@ public final class RestDispatcherServlet extends AbstractDatabaseServlet {
             //unknown resourse requested
             LOGGER.warn("Unknown resource requested: %s.", path);
 
-            m = new Message("Unknown resource.", "E4A1", String.format("Resource %s is unknown.", path));
+            m = new Message("Unknown resource.", "E4A6", String.format("Resource %s is unknown.", path));
             res.setStatus(HttpServletResponse.SC_NOT_FOUND);
             m.toJSON(res.getOutputStream());
         }
