@@ -10,6 +10,7 @@
 <%@ page import="java.util.Arrays" %>
 
 
+<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

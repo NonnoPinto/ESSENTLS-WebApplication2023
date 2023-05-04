@@ -2,6 +2,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
+<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html>
 <head>
