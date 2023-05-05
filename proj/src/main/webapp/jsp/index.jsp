@@ -12,12 +12,11 @@
     <body>
         <div class="container">
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESN-logo.png" alt="Logo of ESN Padova"><br/><br/>
-            Welcome to ESN!
+            <h1>Welcome to ESN!</h1>
 
             <a href="<c:url value='/login'/>"><button>Sign in</button></a>
             <a href="<c:url value='/signup'/>"><button>Sign up</button></a>
         </div>
-
         <footer class="footer"><%@include file="/html/footer.html"%></footer>
     </body>
 </html>

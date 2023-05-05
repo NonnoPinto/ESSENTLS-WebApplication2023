@@ -1,0 +1,20 @@
+/* HERE OUR CUSTOM CLASSES, TO BE USED EVERYWHERE IN PROJECT */
+
+/* here are some examples */
+/* .custom-class-style{
+    color: red;
+}
+
+#custom-id-style{
+    border: 2px solid blue;
+} */
+
+/* INSERT BELOW ALL OTHER CLASSES */
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Oswald', sans-serif;
+}
+
+*{
+    font-family: 'Lato', sans-serif;
+}
