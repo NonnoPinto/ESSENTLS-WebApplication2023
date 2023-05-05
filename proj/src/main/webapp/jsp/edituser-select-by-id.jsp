@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <div class="navbar"><%@include file="navbar.jsp"%></div>
+  <%@include file="navbar.jsp"%>
 
   <c:out value="user tier is: ${Users.getTier()}"/>
 

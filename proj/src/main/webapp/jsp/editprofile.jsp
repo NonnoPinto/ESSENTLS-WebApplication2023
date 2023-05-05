@@ -12,7 +12,7 @@
     <title>Edit Profile</title>
 </head>
 <body>
-<div class="navbar"><%@include file="navbar.jsp"%></div>
+<%@include file="navbar.jsp"%>
 <div class="title">
     <h2>Edit Profile</h2>
     <hr>

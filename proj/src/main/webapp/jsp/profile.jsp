@@ -19,7 +19,7 @@
   <title>User details</title>
 </head>
 <body>
-<div class="navbar"><%@include file="navbar.jsp"%></div>
+<%@include file="navbar.jsp"%>
 <div>
   <div class="title">
     <h1>Profile page</h1>

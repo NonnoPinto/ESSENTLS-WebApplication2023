@@ -12,7 +12,7 @@
 <title>Login</title>
 </head>
 <body>
-    <div class="navbar"><%@include file="navbar.jsp"%></div>
+    <%@include file="navbar.jsp"%>
 
 	<div class="loginContainer">
 		<div class="loginTitle">

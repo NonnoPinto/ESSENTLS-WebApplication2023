@@ -10,9 +10,18 @@
         <title>ESN</title>
     </head>
     <body>
+        <%@include file="navbar.jsp"%>
+
+        <!-- <img class="top-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESN-logo.png" alt="Logo of ESN Padova"><br/><br/> -->
         <div class="container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESN-logo.png" alt="Logo of ESN Padova"><br/><br/>
             <h1>Welcome to ESN!</h1>
+
+            <div class="row">
+                <div class="card">
+                    <div class="card-title">Login to continue</div>
+
+                </div>
+            </div>
 
             <a href="<c:url value='/login'/>"><button>Sign in</button></a>
             <a href="<c:url value='/signup'/>"><button>Sign up</button></a>

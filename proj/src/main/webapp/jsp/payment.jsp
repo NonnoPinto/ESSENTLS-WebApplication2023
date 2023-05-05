@@ -14,7 +14,7 @@
     <title>Payments</title>
 </head>
 <body>
-<div class="navbar"><%@include file="navbar.jsp"%></div>
+<%@include file="navbar.jsp"%>
 
 <c:choose>
     <c:when test="${action.equals(\"event\")}">

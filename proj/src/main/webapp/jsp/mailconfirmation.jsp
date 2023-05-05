@@ -16,7 +16,7 @@
         <h1>Email Confirmation</h1>
         <hr>
     </div>
-    <div class="navbar"><%@include file="navbar.jsp"%></div>
+    <%@include file="navbar.jsp"%>
     <c:choose>
         <c:when test="${message.isError()}">
             <div>

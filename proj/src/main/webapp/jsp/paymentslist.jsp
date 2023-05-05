@@ -17,7 +17,7 @@
     <title>Payments list</title>
 </head>
 <body>
-<div class="navbar"><%@include file="navbar.jsp"%></div>
+<%@include file="navbar.jsp"%>
 <div class="title">
     <h1>Payments list</h1>
     <hr>

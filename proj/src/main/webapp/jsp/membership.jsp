@@ -10,7 +10,7 @@
     <title>Membership</title>
 </head>
 <body>
-    <div class="navbar"><%@include file="navbar.jsp"%></div>
+    <%@include file="navbar.jsp"%>
     <div class="title">
         <h1>Membership</h1>
         <hr>

@@ -12,7 +12,7 @@
     </head> 
 
     <body>
-        <div class="navbar"><%@include file="navbar.jsp"%></div>
+        <%@include file="navbar.jsp"%>
 
         <div class="containter">
             

@@ -10,7 +10,7 @@
         <title>Home</title>
     </head>
     <body>
-        <div class="navbar"><%@include file="navbar.jsp"%></div>
+        <%@include file="navbar.jsp"%>
         <div class="container">
         <c:choose>
             <c:when test="${message.isError()}">

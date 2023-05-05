@@ -19,7 +19,7 @@
 </head>
 
 <body>
-<div class="navbar"><%@include file="navbar.jsp"%></div>
+<%@include file="navbar.jsp"%>
 <div class="title">
     <h2>User Edit</h2>
     <hr>
