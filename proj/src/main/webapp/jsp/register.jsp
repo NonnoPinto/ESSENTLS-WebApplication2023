@@ -21,7 +21,7 @@
         </c:when>
         <c:otherwise></c:otherwise>
     </c:choose>
-    <form method="POST" action="<c:url value="/register"/>">
+    <form method="POST" action="<c:url value="/register"/>" enctype="multipart/form-data">
         <div>
             <label for="email">Enter your email:</label>
             <input name="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="email"/><br/><br/>

@@ -19,7 +19,7 @@
 			<h1>LOG IN</h1>
 			<hr>
 		</div>
-		<form action="<c:url value="/login"/>" id="loginForm" method="POST">
+		<form action="<c:url value="/login"/>" id="loginForm" method="POST" enctype="multipart/form-data">
 
 			<!-- ---------------- EMAIL -------------------- -->
 			<div class="formDiv" style="padding-top: 10px;">
