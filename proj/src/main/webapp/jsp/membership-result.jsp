@@ -70,6 +70,6 @@
 
         </c:otherwise>
     </c:choose>
-    <footer class="footer"><%@include file="/html/footer.html"%></footer>
+    <%@include file="/html/footer.html"%>
 </body>
 </html>

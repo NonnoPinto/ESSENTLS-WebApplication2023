@@ -32,6 +32,6 @@
         </div>
         <button type="submit">Submit</button><br/>
     </form>
-    <footer class="footer"><%@include file="/html/footer.html"%></footer>
+    <%@include file="/html/footer.html"%>
 </body>
 </html>

@@ -16,16 +16,16 @@
             <div class="row justify-content-center my-4">
                 <div class="col-md-6">
                     <div class="card text-center border-orange">
-                        <h2 class="card-title bg-orange color-white p-2"> Please login to continue.</h2>
+                        <h2 class="card-title bg-orange color-white p-4"> Please login to continue.</h2>
                         <div class="card-body">
-                            <a href="<c:url value='/login'/>"><button class="button bg-orange text-white border-orange">Log in</button></a>
+                            <a href="<c:url value='/login'/>"><button class="button bg-orange text-white border-orange px-4 py-2">Log in</button></a>
                             <p class="card-text p-2">Don't have an account?</p>
-                            <a href="<c:url value='/signup'/>"><button class="button bg-cyan text-white border-cyan">Sign up!</button></a>
+                            <a href="<c:url value='/signup'/>"><button class="button bg-cyan text-white border-cyan px-4 py-2">Sign up!</button></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="footer"><%@include file="/html/footer.html"%></footer>
+        <%@include file="/html/footer.html"%>
     </body>
 </html>

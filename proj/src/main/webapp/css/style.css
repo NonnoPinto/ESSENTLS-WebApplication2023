@@ -5,6 +5,9 @@
 /* ESN SUGGESTED FONTS */
 
 *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
 
@@ -112,9 +115,7 @@ button{
     border-radius: 5px;
 }
 
-
 /* NAVBAR */
-
 .navbar-decoration{
     max-width: 200px;
     height: auto;
@@ -127,4 +128,15 @@ button{
 .top-logo-navbar{
     height: 4rem;
     width: auto;
+}
+
+
+.justify-between{
+    justify-content: space-between;
+    /* justify-content: space-evenly; */
+}
+
+/*FOOTER*/
+.footer{
+    background-color: #dbdbdb;
 }
