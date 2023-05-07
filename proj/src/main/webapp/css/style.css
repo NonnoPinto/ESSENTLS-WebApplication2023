@@ -107,6 +107,11 @@ body {
 
 /* BELOW THE OTHER CLASSES */
 
+/*BUTTON*/
+button{
+    border-radius: 5px;
+}
+
 
 /* NAVBAR */
 

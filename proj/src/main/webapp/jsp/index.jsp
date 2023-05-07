@@ -11,20 +11,20 @@
     </head>
     <body>
         <%@include file="navbar.jsp"%>
-
-        <!-- <img class="top-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESN-logo.png" alt="Logo of ESN Padova"><br/><br/> -->
         <div class="container">
-            <h1>Welcome to ESN!</h1>
-
-            <div class="row">
-                <div class="card">
-                    <div class="card-title">Login to continue</div>
-
+            <h1 class="page-title text-center p-2">Welcome to ESN!</h1>
+            <div class="row justify-content-center my-4">
+                <div class="col-md-6">
+                    <div class="card text-center border-orange">
+                        <h2 class="card-title bg-orange color-white p-2"> Please login to continue.</h2>
+                        <div class="card-body">
+                            <a href="<c:url value='/login'/>"><button class="button bg-orange text-white border-orange">Log in</button></a>
+                            <p class="card-text p-2">Don't have an account?</p>
+                            <a href="<c:url value='/signup'/>"><button class="button bg-cyan text-white border-cyan">Sign up!</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <a href="<c:url value='/login'/>"><button>Sign in</button></a>
-            <a href="<c:url value='/signup'/>"><button>Sign up</button></a>
         </div>
         <footer class="footer"><%@include file="/html/footer.html"%></footer>
     </body>
