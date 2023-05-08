@@ -6,40 +6,42 @@
 <html>
 <head>
     <meta name="description" content="ESN Padova application">
-<%-- @ include file="/html/cdn.html"--%>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="ISO-8859-1">
-<title>Email Confirmation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="ISO-8859-1">
+    <title>Email Confirmation</title>
 </head>
+
 <body>
-    <div class="title">
-        <h1>Email Confirmation</h1>
-        <hr>
-    </div>
-    <%@include file="navbar.jsp"%>
-    <c:choose>
-        <c:when test="${message.isError()}">
-            <div>
-                <div role="alert">
-                        <span>
+<%@include file="navbar.jsp"%>
+<div class="container">
+    <h1 class="page-title text-center p-2">Email Confirmation</h1>
+    <div class="row justify-content-center my-4">
+        <div class="col-md-6 text-center">
+            <c:choose>
+                <c:when test="${message.isError()}">
+                    <div>
+                        <div class="alert alert-danger" role="alert">
                             <c:out value="${message.message}"/>
-                        </span>
+                        </div>
                         <p>
                             Home: <a href="<c:url value="/home"/>" >Home</a>
                         </p>
-                </div>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <span>
-                <c:out value="${message.message}"/>
-            </span>  
-            <p>
-                Login: <a href="<c:url value="/login"/>" >Login</a>
-            </p>
-        </c:otherwise>
-    </c:choose>
-
-	<%@include file="/html/footer.html"%>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div>
+                        <div class="alert alert-success" role="alert">
+                            <c:out value="${message.message}"/>
+                        </div>
+                        <p>
+                            Login: <a href="<c:url value="/login"/>" >Login</a>
+                        </p>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+</div>
+<%@include file="/html/footer.html"%>
 </body>
 </html>
