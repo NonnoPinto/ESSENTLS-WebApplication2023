@@ -40,6 +40,7 @@
 							</div>
 							<div class="input-container">
 								<input class="form-control" type="password" name="password" id="password" placeholder="Password.." required>
+								<i class="togglePassword far fa-eye" id="togglePassword"></i>
 								<span id="infoPassword"></span>
 							</div>
 						</div>
@@ -59,7 +60,7 @@
 							<button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Log in</button>
 						</div>
 						<p class="card-text p-2">
-							<small id="passwordHelpBlock" class="form-text text-muted">
+							<small class="form-text text-muted">
 								Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
 							</small>
 						</p>
@@ -69,6 +70,7 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="<c:url value="/js/toggle_password.js"/>"></script>
 <%@include file="/html/footer.html"%>
 </body>
 </html>
