@@ -31,12 +31,12 @@
             <table class="table table-hover mh-75 align-middle">
               <thead>
               <tr>
-                <th class="py-3" scope="col">id</th>
+                <th class="py-3 px-4" scope="col">id</th>
                 <th class="py-3" scope="col">name</th>
                 <th class="py-3" scope="col">surname</th>
                 <th class="py-3" scope="col">sex</th>
                 <th class="py-3" scope="col">dateOfBirth</th>
-                <th class="py-3"scope="col">cardId</th>
+                <th class="py-3" scope="col">cardId</th>
                 <th class="py-3" scope="col">tier</th>
                 <th class="py-3" scope="col"></th>
                 <th class="py-3" scope="col"></th>
@@ -46,7 +46,7 @@
               <tbody>
               <c:forEach var="user" items="${userList}">
                 <tr>
-                  <td scope="row"><c:out value="${user.getId()}"/></td>
+                  <td scope="row" class="px-4"><c:out value="${user.getId()}"/></td>
                   <td><c:out value="${user.getName()}"/></td>
                   <td><c:out value="${user.getSurname()}"/></td>
                   <td><c:out value="${user.getSex()}"/></td>
