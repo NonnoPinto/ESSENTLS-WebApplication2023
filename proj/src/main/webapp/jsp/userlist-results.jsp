@@ -13,55 +13,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="description" content="ESN Padova application">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>List of found Users</title>
+  <meta name="description" content="ESN Padova application">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List of found Users</title>
 </head>
 
 <body>
 <%@include file="navbar.jsp"%>
+<div class="container">
+  <h1 class="page-title p-2">List of found Users</h1>
+  <div class="row justify-content-center my-4">
+    <div class="col">
+      <div class="card text-center border-orange">
+        <!-- display the list of found users, if any -->
+        <c:if test='${not empty userList}'>
+          <div class="table-responsive">
+            <table class="table table-hover mh-75 align-middle">
+              <thead>
+              <tr>
+                <th class="py-3" scope="col">id</th>
+                <th class="py-3" scope="col">name</th>
+                <th class="py-3" scope="col">surname</th>
+                <th class="py-3" scope="col">sex</th>
+                <th class="py-3" scope="col">dateOfBirth</th>
+                <th class="py-3"scope="col">cardId</th>
+                <th class="py-3" scope="col">tier</th>
+                <th class="py-3" scope="col"></th>
+                <th class="py-3" scope="col"></th>
+              </tr>
+              </thead>
 
-<div class="title">
-  <h1>List of found Users</h1>
-  <hr/>
+              <tbody>
+              <c:forEach var="user" items="${userList}">
+                <tr>
+                  <td scope="row"><c:out value="${user.getId()}"/></td>
+                  <td><c:out value="${user.getName()}"/></td>
+                  <td><c:out value="${user.getSurname()}"/></td>
+                  <td><c:out value="${user.getSex()}"/></td>
+                  <td><c:out value="${user.getDateOfBirth()}"/></td>
+                  <td><c:out value="${user.getCardId()}"/></td>
+                  <td><c:out value="${user.getTier()}"/></td>
+                  <td>
+                    <form method="POST" action="<c:url value="/select-user-by-id"/>">
+                      <input type="hidden" name="userId" value="${user.getId()}"/>
+                      <button type="submit" class="button bg-orange text-white border-orange px-2 py-1">Edit</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form method="POST" action="<c:url value="/download-user-document"/>">
+                      <input type="hidden" name="userId" value="${user.getId()}"/>
+                      <button type="submit" class="button bg-cyan text-white border-cyan px-2 py-1">Document</button>
+                    </form>
+                  </td>
+                </tr>
+              </c:forEach>
+              </tbody>
+            </table>
+          </div>
+        </c:if>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- display the list of found users, if any -->
-<c:if test='${not empty userList}'>
-  <table>
-    <thead>
-    <tr>
-      <th>id</th><th>name</th><th>surname</th><th>sex</th><th>dateOfBirth</th><th>cardId</th><th>tier</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <c:forEach var="user" items="${userList}">
-      <tr>
-        <td><c:out value="${user.getId()}"/></td>
-        <td><c:out value="${user.getName()}"/></td>
-        <td><c:out value="${user.getSurname()}"/></td>
-        <td><c:out value="${user.getSex()}"/></td>
-        <td><c:out value="${user.getDateOfBirth()}"/></td>
-        <td><c:out value="${user.getCardId()}"/></td>
-        <td><c:out value="${user.getTier()}"/></td>
-        <td>
-          <form method="POST" action="<c:url value="/select-user-by-id"/>">
-            <input type="hidden" name="userId" value="${user.getId()}"/>
-            <button type="submit">Edit</button>
-          </form>
-        </td>
-        <td>
-          <form method="POST" action="<c:url value="/download-user-document"/>">
-            <input type="hidden" name="userId" value="${user.getId()}"/>
-            <button type="submit">Document</button>
-          </form>
-        </td>
-      </tr>
-    </c:forEach>
-    </tbody>
-  </table>
-</c:if>
 <%@include file="/html/footer.html"%>
 </body>
 </html>
