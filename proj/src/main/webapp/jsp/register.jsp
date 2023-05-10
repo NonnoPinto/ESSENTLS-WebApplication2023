@@ -81,6 +81,7 @@
         </div>
     </div>
     <script type="text/javascript" src="<c:url value="/js/toggle_password.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/toggle_repeat_password.js"/>"></script>
     <%@include file="/html/footer.html"%>
 </body>
 </html> 
