@@ -49,4 +49,7 @@ function processPostResponse(xhr) {
     }
 
     div.appendChild(document.createTextNode("Cause { id: " + JSON.parse(xhr.response).esncause["id"] + ", name: " + JSON.parse(xhr.response).esncause["name"] + " } created successfully."));
+    
+    //for nicer visualization
+    //div.appendChild(document.createTextNode("Cause "+ JSON.parse(xhr.response).esncause["name"] + "created successfully."));
 }

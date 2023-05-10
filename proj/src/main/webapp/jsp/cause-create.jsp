@@ -12,23 +12,37 @@
 </head>
 
 <body>
-<%@include file="navbar.jsp"%>
-<div class="containter">
-  <div class="title">
-    <h2>Create Cause</h2>
-    <hr>
+  <%@include file="navbar.jsp"%>
+
+  <div class="containter">
+    <div class="row justify-content-center my-4">
+      <div class="col-md-6">
+        <div class="card text-center border-orange">
+          <h2 class="card-title bg-orange color-white p-4">Create Cause</h2>
+
+          <div class="card-body">
+            <!--Cause Name-->
+            <div class="form-group mb-4">
+							<div class="d-flex justify-content-start">
+								<label for="causeName" class="mb-2 text-left">Insert Cause Name</label>
+							</div>
+							<div class="input-container">
+								<input class="form-control" type="text" name="causeName" id="causeName" placeholder="Cause name.." required>
+							</div>
+						</div>
+
+            <!--SUBMIT-->
+            <div>
+							<button type="submit" id="ajaxButton" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <label for="causeName">Insert Cause Name:</label>
-  <input id="causeName" name="causeName" type="text"/><br/><br/>
 
-  <button type="submit" id="ajaxButton">Submit</button><br/>
-
-</div>
-
-<div id="results" style="margin: 2em;">
-
-</div>
-
-<script type="text/javascript" src="<c:url value="/js/ajax_cause_create.js"/>"></script>
+  <div id="results" class="text-muted text-center">
+  </div>
+  <script type="text/javascript" src="<c:url value="/js/ajax_cause_create.js"/>"></script>
 </body>
 </html>
