@@ -21,30 +21,30 @@
 			<div class="card text-center border-orange">
 				<h2 class="card-title bg-orange color-white p-4"> Login to cotinue</h2>
 				<div class="card-body">
-					<form action="<c:url value="/login"/>" id="loginForm" method="POST">
-						<!--<form action="<c:url value="/login"/>" id="loginForm" method="POST" enctype="multipart/form-data">-->
-						<!-- ---------------- EMAIL -------------------- -->
-						<div class="form-group mb-4">
-							<div class="d-flex justify-content-start">
-								<label for="email" class="mb-2 text-left">Insert your Email</label>
-							</div>
-							<div class="input-container">
-								<input class="form-control" type="text" name="email" id="email" placeholder="Email.." required>
-								<span id="infoEmail"></span>
-							</div>
+
+					<!--<form action="<c:url value="/login"/>" id="loginForm" method="POST" enctype="multipart/form-data">-->
+					<!-- ---------------- EMAIL -------------------- -->
+					<div class="form-group mb-4">
+						<div class="d-flex justify-content-start">
+							<label for="email" class="mb-2 text-left">Insert your Email</label>
 						</div>
-						<!-- ---------------- PASSWORD -------------------- -->
-						<div class="form-group my-4">
-							<div class="d-flex justify-content-start">
-								<label for="password" class="mb-2 text-left">Insert your Password</label>
-							</div>
-							<div class="input-container">
-								<input class="form-control" type="password" name="password" id="password" placeholder="Password.." required>
-								<i class="togglePassword far fa-eye" id="togglePassword"></i>
-								<span id="infoPassword"></span>
-							</div>
+						<div class="input-container">
+							<input class="form-control" type="text" name="email" id="email" placeholder="Email.." required>
+							<span id="infoEmail"></span>
 						</div>
-						<!-- ---------------- MESSAGE -------------------- -->
+					</div>
+					<!-- ---------------- PASSWORD -------------------- -->
+					<div class="form-group my-4">
+						<div class="d-flex justify-content-start">
+							<label for="password" class="mb-2 text-left">Insert your Password</label>
+						</div>
+						<div class="input-container">
+							<input class="form-control" type="password" name="password" id="password" placeholder="Password.." required>
+							<i class="togglePassword far fa-eye" id="togglePassword"></i>
+							<span id="infoPassword"></span>
+						</div>
+					</div>
+					<!-- ---------------- MESSAGE --------------------
 						<c:choose>
 							<c:when test="${message.isError()}">
 								<div>
@@ -55,22 +55,27 @@
 							</c:when>
 							<c:otherwise></c:otherwise>
 						</c:choose>
-						<!-- ---------------- SUBMIT BUTTON -------------------- -->
-						<div>
-							<button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Log in</button>
-						</div>
-						<p class="card-text p-2">
-							<small class="form-text text-muted">
-								Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
-							</small>
-						</p>
-					</form>
+						-->
+					<div id="errorMessageDiv" style="visibility: hidden;">
+
+					</div>
+					<!-- ---------------- SUBMIT BUTTON -------------------- -->
+					<div>
+						<button type="submit" class="button bg-orange text-white border-orange px-4 py-2" id="loginButton">Log in</button>
+					</div>
+					<p class="card-text p-2">
+						<small class="form-text text-muted">
+							Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
+						</small>
+					</p>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript" src="<c:url value="/js/toggle_password.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/ajax_login.js"/>"></script>
 <%@include file="/html/footer.html"%>
 </body>
 </html>
