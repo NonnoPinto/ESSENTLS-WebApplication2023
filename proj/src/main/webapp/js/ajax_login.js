@@ -95,6 +95,11 @@ function processResponse(xhr){
         messageDiv.appendChild(messageText);
         errorMessageDiv.appendChild(messageDiv);
         errorMessageDiv.style.visibility = 'visible';
+        errorMessageDiv.classList.add("error-animation");
+        //errorMessageDiv.effect("shake", {times:1}, 500);
+        setTimeout(function(){
+            errorMessageDiv.classList.remove("error-animation");
+        },500);
 
         //errorMessageDiv.appendChild(document.createTextNode("Unable to perform the AJAX request."));
 
