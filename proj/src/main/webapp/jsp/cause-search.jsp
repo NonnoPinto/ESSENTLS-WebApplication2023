@@ -12,25 +12,46 @@
 </head>
 
 <body>
-<%@include file="navbar.jsp"%>
-<div class="containter">
-  <div class="title">
-    <h2>Create Cause</h2>
+  <%@include file="navbar.jsp"%>
+
+
+  <div class="containter">
+    <div class="row justify-content-center my-4">
+        <div class="col-md-6">
+          <div class="card text-center border-orange">
+            <h2 class="card-title bg-orange color-white p-4">Search Cause</h2>
+            <div class="card-body">
+
+              <!--ID-->
+              <div class="form-group mb-4">
+                <div class="d-flex justify-content-start">
+                  <label for="causeId" class="mb-2 text-left">Insert ID</label>
+                </div>
+                <div class="input-container">
+                  <input class="form-control" type="text" name="causeId" id="causeId" placeholder="ID.." required>
+                </div>
+              </div>
+
+              <!--Part of-->
+              <div class="form-group mb-4">
+                <div class="d-flex justify-content-start">
+                  <label for="subCause" class="mb-2 text-left">Insert (part of) Cause, empty for all causes</label>
+                </div>
+                <div class="input-container">
+                  <input class="form-control" type="text" name="subCause" id="subCause" placeholder="Sub-Cause.." required>
+                </div>
+              </div>
+
+              <!--SUBMIT BUTTON-->
+						<div>
+							<button type="submit" id="ajaxButton" class="button bg-orange text-white border-orange px-4 py-2">Search</button>
+						</div>
+          </div>
+        </div>
+      </div>
   </div>
-  <label for="causeId">Insert ID:</label>
-  <input id="causeId" type="text"/><br/><br/>
-
-  <label for="subCause">Insert (part of) Cause, empty for all causes:</label>
-  <input id="subCause" type="text"/><br/><br/>
-
-  <button type="submit" id="ajaxButton">Submit</button><br/>
-
-</div>
-
-<div id="results" style="margin: 2em;">
-
-</div>
-
-<script type="text/javascript" src="<c:url value="/js/ajax_causes.js"/>"></script>
+  <div id="results" class="text-muted text-center">
+  </div>
+  <script type="text/javascript" src="<c:url value="/js/ajax_causes.js"/>"></script>
 </body>
 </html>
