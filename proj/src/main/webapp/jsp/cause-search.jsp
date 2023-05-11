@@ -14,7 +14,6 @@
 <body>
   <%@include file="navbar.jsp"%>
 
-
   <div class="containter">
     <div class="row justify-content-center my-4">
         <div class="col-md-6">
@@ -53,5 +52,6 @@
   <div id="results" class="text-muted text-center">
   </div>
   <script type="text/javascript" src="<c:url value="/js/ajax_causes.js"/>"></script>
+  <%@include file="/html/footer.html"%>
 </body>
 </html>
