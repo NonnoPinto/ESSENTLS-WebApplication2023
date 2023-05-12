@@ -20,6 +20,9 @@ h1,h2,h3,h4,h5,h6, .card-title{
 body {
     background-image: url("/proj/src/main/webapp/media/header_topbg.png");
     background-repeat: repeat-x;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /*ESN COLORS*/
@@ -139,6 +142,7 @@ button{
 /*FOOTER*/
 .footer{
     background-color: #dbdbdb;
+    margin-top: auto;
 }
 
 /*PASSWORD EYE*/
