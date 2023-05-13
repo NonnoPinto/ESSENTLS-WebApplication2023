@@ -19,14 +19,13 @@
     <title>User details</title>
   </head>
   <body>
-    <%@include file="navbar.jsp"%>
+  <%@include file="navbar.jsp"%>
     <div class="container">
-        <div class="row justify-content-center my-4">
-          <div class="col-md-10">
-            <div class="card text-center border-orange">
-              <div class="bg-orange text-white">
-                <h1 class="page-title p-2">Profile Page</h1>
-              </div>
+      <div class="row justify-content-center my-4">
+        <div class="col-md-10">
+          <div class="card text-center border-orange">
+            <h1 class="card-title bg-orange color-white p-4">Profile Page</h1>
+            <div class="card-body">
               <div class="my-2 mx-4">
                 <div class="pb-2" style="border-bottom: 1px solid gray;">
                   <h3>${Users.getName()} ${Users.getSurname()}</h3>
@@ -65,7 +64,8 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
-    <%@include file="/html/footer.html"%>
+  <%@include file="/html/footer.html"%>
   </body>
 </html>
