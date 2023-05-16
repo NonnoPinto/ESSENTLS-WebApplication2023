@@ -5,7 +5,7 @@ Since: 1.0
 */
 
 //import { BASE_URL } from "constants";
-const URL = "http://localhost:8080/proj-1.0/login";
+const URL = "/proj-1.0/login";
 
 // Add an event listener to the button,
 // to invoke the function making the AJAX call

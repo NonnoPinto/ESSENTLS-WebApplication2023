@@ -109,7 +109,6 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
             stmt.setInt(18, this.event.getId());
 
             stmt.executeUpdate();
-
             LOGGER.info("Details of event {} successifully changed.", this.event.getId());
         }finally{
             if(rs != null){

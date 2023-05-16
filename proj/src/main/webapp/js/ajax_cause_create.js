@@ -5,7 +5,7 @@ console.log("Event listener added to ajaxButton.")
 function createCause() {
     const name = document.getElementById("causeName").value;
 
-    const url = "http://localhost:8080/proj-1.0/rest/causes/";
+    const url = "/proj-1.0/rest/causes/";
 
     console.log("Request URL: " + url);
 

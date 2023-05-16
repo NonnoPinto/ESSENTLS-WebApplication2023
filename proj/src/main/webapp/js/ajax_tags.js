@@ -7,7 +7,7 @@ function searchTag() {
 
     console.log("subTag: " + subTag);
 
-    const url = "http://localhost:8080/proj-1.0/rest/tags/" + subTag;
+    const url = "/proj-1.0/rest/tags/" + subTag;
 
     console.log("Request URL: " + url);
 
@@ -35,7 +35,7 @@ function deleteTag(name) {
 
     console.log("Deleting tag: " + name);
 
-    const url = "http://localhost:8080/proj-1.0/rest/tags/" + name;
+    const url = "/proj-1.0/rest/tags/" + name;
 
     console.log("Request URL: " + url);
 

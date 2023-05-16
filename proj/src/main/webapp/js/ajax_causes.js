@@ -6,15 +6,15 @@ function searchCause() {
     const id = document.getElementById("causeId").value;
     const subCause = document.getElementById("subCause").value;
 
-    url = "http://localhost:8080/proj-1.0/rest/causes/";
+    url = "/proj-1.0/rest/causes/";
 
     if (id !== "") {
         console.log("id: " + id);
-        url = "http://localhost:8080/proj-1.0/rest/causes/id/" + id;
+        url = "/proj-1.0/rest/causes/id/" + id;
         console.log("Request URL: " + url);
     } else {
         console.log("subCause: " + subCause);
-        url = "http://localhost:8080/proj-1.0/rest/causes/srch/" + subCause;
+        url = "/proj-1.0/rest/causes/srch/" + subCause;
         console.log("Request URL: " + url);
     }
 
@@ -43,7 +43,7 @@ function editCause(id, name) {
 
     console.log("Editing cause: " + id);
 
-    const url = "http://localhost:8080/proj-1.0/rest/causes/id/" + id;
+    const url = "/proj-1.0/rest/causes/id/" + id;
 
     console.log("Request URL: " + url);
 

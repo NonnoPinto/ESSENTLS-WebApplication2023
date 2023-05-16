@@ -159,6 +159,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         LogContext.setAction("EDIT EVENT");
 
         HttpSession session = req.getSession();
+
         Integer eventID = (Integer)session.getAttribute("sessionEventId");
         Event oldEvent = null;
         try {
@@ -305,7 +306,8 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             }
 
             // creates a new event from the request parameters
-            e = new Event(name, description, price, visibility, location, maxPartecipantsInternational,
+
+            e = new Event(oldEvent.getId(), name, description, price, visibility, location, maxPartecipantsInternational,
                     maxPartecipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
                     Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
                     maxWaitingList, attributes, thumbnail, poster);
