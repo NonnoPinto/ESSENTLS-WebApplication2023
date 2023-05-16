@@ -36,21 +36,21 @@
 
                                     <!--Name-->
                                     <div class="form-floating mb-3 pb-2">
-                                            <input type="text" name="name" id="floatingInput" placeholder="Event Name.." class="form-control" required>
-                                            <label for="floatingInput"> Event's name </label>
+                                            <input type="text" name="name" id="name" placeholder="Event Name.." class="form-control" required>
+                                            <label for="name"> Event's name </label>
                                     </div>
 
                                     <!--Description-->
                                     <div class="form-floating mb-3 pb-2">
-                                        <input class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="description" id="floatingInput"  placeholder="Description.." required>
-                                        <label for="floatingInput">Some details:</label>
+                                        <textarea class="form-control" id="description" type="text" name="description" id="description"  placeholder="Description.." rows="3"></textarea>
+                                        <label for="description">Some details:</label>
                                     </div>
                                     <div class="row d-flex justify-content-center">
                                         <div class="col">
                                             <!--Price-->
                                             <div class="form-floating mb-3 pb-2">
-                                                <input class="form-control" type="number" name="price" id="floatingInput" min="0" placeholder="0" step=".01" required>
-                                                <label for="floatingInput">How much does the event cost?</label>
+                                                <input class="form-control" type="number" name="price" id="price" min="0" placeholder="0" step=".01" required>
+                                                <label for="price">How much does the event cost?</label>
                                             </div>
                                             <!--Visibility-->
                                             <div style="form-floating mb-3 pb-2">
@@ -83,13 +83,22 @@
                                         <label class="form-label">Where does it take place?</label>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" class="form-control" name="city" id="city" placeholder="Enter city..." required>
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" name="city" id="city" placeholder="Enter city..." required>
+                                                    <label for="city"> Enter city.. </label>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                                <input type="text" class="form-control" name="street" id="street" placeholder="Enter Street..." required>
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" name="street" id="street" placeholder="Enter Street..." required>
+                                                    <label for="street"> Enter street.. </label>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                                <input type="text" class="form-control" name="number" id="number" placeholder="Enter house number..." required>
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" name="number" id="number" placeholder="Enter house number..." required>
+                                                    <label for="street"> Enter house number... </label>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -100,15 +109,15 @@
                                             <div class="col">
                                                 <!--maxParticipantsInternational-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="number" name="maxParticipantsInternational" id="floatingInput" min="0" required>
-                                                    <label for="floatingInput">Number of Max International participants:</label>
+                                                    <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" min="0" placeholder="0" required>
+                                                    <label for="maxParticipantsInternational">Number of Max International participants:</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <!--MaxParticipantsVolunteer-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="number" name="maxParticipantsVolunteer" id="floatingInput" min="0" required>
-                                                    <label for="floatingInput">Number of Max Volunteer participants:</label>
+                                                    <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" min="0" placeholder="0" required>
+                                                    <label for="maxParticipantsVolunteer">Number of Max Volunteer participants:</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,15 +125,15 @@
                                             <div class="col">
                                                 <!--eventStart-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="datetime-local" name="eventStart" id="floatingInput" required>
-                                                    <label for="floatingInput">When does the event start?</label>
+                                                    <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" required>
+                                                    <label for="eventStart">When does the event start?</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <!--eventEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" required>
-                                                    <label for="floatingInput">When does the event end?</label>
+                                                    <label for="eventEnd">When does the event end?</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,21 +143,21 @@
                                                 <!--subscriptionStart-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="subscriptionStart" id="subscriptionStart" required>
-                                                    <label for="floatingInput">When can the subscription start?</label>
+                                                    <label for="subscriptionStart">When can the subscription start?</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <!--subscriptionEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" required>
-                                                    <label for="">And when can the subscription end?</label>
+                                                    <label for="subscriptionEnd">When can the subscription end?</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <!--withdrawalEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" required>
-                                                    <label for="">When does the withdrawal End?</label>
+                                                    <label for="withdrawalEnd">When does the withdrawal End?</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -157,18 +166,16 @@
                                             <div class="col">
                                                 <!--maxWaitingList-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" min="0" required>
-                                                    <label for="">Insert the number of the size of the waiting list:</label>
-
+                                                    <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" min="0" placeholder="0" required>
+                                                    <label for="maxWaitingList">Insert the number of the size of the waiting list:</label>
                                                 </div>
                                             </div>
 
                                             <div class="col">
                                                 <!--attributes-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="text" name="attributes" id="attributes" required>
-                                                    <label for="">Attributes:</label>
-
+                                                    <input class="form-control" type="text" name="attributes" id="attributes" placeholder=" " required>
+                                                    <label for="attributes">Attributes:</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -178,7 +185,6 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="thumbnail">Thumbnail:</label>
                                                     <input type="file" class="form-control" id="thumbnail" name="thumbnail" required>
-
                                                 </div>
                                             </div>
                                             <div class="col">
@@ -192,14 +198,14 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col"></div>
+                                        <div class="col-4"></div>
                                         <div class="col">
-                                            <button type="reset" class="btn btn-outline-primary">Reset the form</button>
+                                            <button type="reset" class="btn btn-secondary">Reset the form</button>
                                         </div>
                                         <div class="col">
-                                            <button type="submit" class="btn btn-outline-primary">Continue</button>
+                                            <button type="submit" class="btn btn-primary">Continue</button>
                                         </div>
-                                        <div class="col"></div>
+                                        <div class="col-4"></div>
                                     </div>
                                 </form>
                             </div>
