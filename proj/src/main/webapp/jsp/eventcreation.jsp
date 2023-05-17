@@ -17,8 +17,6 @@
 
 
     <div class="containter">
-
-
         <div >
             <p>
                 <c:out value="${message.message}"/>
@@ -43,7 +41,7 @@
                                     <!--Description-->
                                     <div class="form-floating mb-3 pb-2">
                                         <textarea class="form-control" id="description" type="text" name="description" id="description"  placeholder="Description.." rows="3"></textarea>
-                                        <label for="description">Some details:</label>
+                                        <label for="description">Description:</label>
                                     </div>
                                     <div class="row d-flex justify-content-center">
                                         <div class="col">
