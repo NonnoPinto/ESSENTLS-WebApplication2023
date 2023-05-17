@@ -30,7 +30,7 @@
         </div>
 
         <div class="form">
-            <form action="<c:url value="/confirmEvent"/>" enctype="multipart/form-data" id="createEventForm" method="POST">
+            <form action="<c:url value="/confirmEvent"/>" id="createEventForm" method="POST">
                 <c:forEach items="${attributes}" var="att">
                     ${att.key}: <input type="text" name="att_${fn:replace(att.key,' ','')}" value="${att.value}"><br/>
                 </c:forEach>
