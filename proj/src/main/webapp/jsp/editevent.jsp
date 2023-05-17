@@ -15,184 +15,209 @@
         <%@include file="navbar.jsp"%>
 
         <div class="containter">
-            
-            <c:choose>
-                <c:when test="${event == null}">
-                    <p>Event not found!</p>
-                </c:when>
-                <c:otherwise>
-                    <div class="title">
-                        <h2>Edit the event <c:out value="${event.getName()}"/></h2>
-                    </div>
-                    <c:out value="ID: ${event.getId().toString()}"/>
-                    <div class="form">
-                        <form action="" id="editEventForm" method="POST" enctype="multipart/form-data" >
-                            <!--Name-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Name (currently ${event.getName()}):</label>
-                                <div class="input-container">
-                                    <input type="text" name="name" id="name" value="${event.getName()}">
-                                </div>
+        <div class="row justify-content-center my-4">
+            <div class="col-md-8">
+                <div class="card text-center border-cyan">
+                    <c:choose>
+                        <c:when test="${event == null}">
+                            <div class="alert alert-danger" role="alert">
+                              Event not found!
                             </div>
-        
-                            <!--Description-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Description (currently ${event.getDescription()}):</label>
-                                <div class="input-container">
-                                    <input type="text" name="description" id="description" value="${event.getDescription()}" style="height:200px;">
-                                </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="bg-cyan text-white">
+                                <h7 class="page-title p-2">Edit event</h7>
+                                <h2 class="page-title p-2"><c:out value="${event.getName()}"/></h2>
                             </div>
+                            <p><c:out value="Event ID: ${event.getId().toString()}"/></p>
+                            <div class="form my-4 card-body">
+                                <form action="" id="editEventForm" method="POST" enctype="multipart/form-data" >
 
-                            <!--Price-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Price (currently ${event.getPrice()}):</label>
-                                <div class="input-container">
-                                    <input type="number" name="price" id="price" min="0" step=".01" value="${event.getPrice()}">
-                                </div>
+                                    <!--Name-->
+                                    <div class="form-floating mb-3 pb-2">
+                                            <input type="text" name="name" id="name" value="${event.getName()}" placeholder="${event.getName()}" class="form-control" required>
+                                            <label for="name"> Name (currently ${event.getName()}): </label>
+                                    </div>
+
+                                    <!--Description-->
+                                    <div class="form-floating mb-3 pb-2">
+                                        <textarea class="form-control" id="description" type="text" name="description" id="description" value="${event.getDescription()}" placeholder="Description: " rows="3"></textarea>
+                                        <label for="description">Description:</label>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <!--Price-->
+                                            <div class="form-floating mb-3 pb-2">
+                                                <input class="form-control" type="number" name="price" id="price" min="0" placeholder="0" step=".01" value="${event.getPrice()}" required>
+                                                <label for="price">Price (currently ${event.getPrice()}):</label>
+                                            </div>
+                                            <!--Visibility-->
+                                            <div style="form-floating mb-3 pb-2">
+                                                <label for="">To whom do you want to make it visible?</label>
+                                                    <select class="form-select" name="visibility" id="visibility" required>
+                                                      <option value=${event.getVisibility()} selected disabled hidden>Tier ${event.getVisibility()} Users</option>
+                                                      <option value="0">Tier 0 Users</option>
+                                                      <option value="1">Tier 1 Users</option>
+                                                      <option value="2">Tier 2 Users</option>
+                                                      <option value="3">Tier 3 Users</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <!--Causes-->
+                                            <div class="mb-3 pb-2">
+                                                <label for="">Which causes does the event include?</label><br>
+                                                <div class="form-check">
+                                                    <c:forEach items="${causes}" var="cause">
+                                                        <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
+                                                        <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Location-->
+                                    <div class="mb-3 pb-2">
+                                        <label class="form-label">Where does it take place?</label>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" value="${city}" name="city" id="city" placeholder="Enter city..." required>
+                                                    <label for="city"> Enter city.. </label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" value="${street}" name="street" id="street" placeholder="Enter Street..." required>
+                                                    <label for="street"> Enter street.. </label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" value="${number}" name="number" id="number" placeholder="Enter house number..." required>
+                                                    <label for="street"> Enter house number... </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Additional Information Required</label>
+                                        <div class="row pb-2">
+                                            <div class="col">
+                                                <!--maxParticipantsInternational-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.getMaxParticipantsInternational()}" min="0" placeholder="0" required>
+                                                    <label for="maxParticipantsInternational">Number of Max International participants:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <!--MaxParticipantsVolunteer-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.getMaxParticipantsVolunteer()}" min="0" placeholder="0" required>
+                                                    <label for="maxParticipantsVolunteer">Number of Max Volunteer participants:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row pb-2">
+                                            <div class="col">
+                                                <!--eventStart-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}" required>
+                                                    <label for="eventStart">When does the event start?</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <!--eventEnd-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}" required>
+                                                    <label for="eventEnd">When does the event end?</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row pb-2">
+                                            <div class="col">
+                                                <!--subscriptionStart-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}" required>
+                                                    <label for="subscriptionStart">When can the subscription start?</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <!--subscriptionEnd-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}" required>
+                                                    <label for="subscriptionEnd">When can the subscription end?</label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <!--withdrawalEnd-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}" required>
+                                                    <label for="withdrawalEnd">When does the withdrawal End?</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row pb-2">
+                                            <div class="col">
+                                                <!--maxWaitingList-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" value="${event.getMaxWaitingList()}" min="0" placeholder="0" required>
+                                                    <label for="maxWaitingList">Insert the number of the size of the waiting list:</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col">
+                                                <!--attributes-->
+                                                <div class="form-floating mb-3">
+                                                    <input class="form-control" type="text" name="attributes" id="attributes" value="${event.getAttributes_asString()}" placeholder="${event.getAttributes_asString()}" required>
+                                                    <label for="attributes">Attributes:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <!--thumbnail-->
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="thumbnail">Thumbnail:</label>
+                                                    <c:if test="${!event.thumbnail.equals('')}">
+                                                        <img src="${event.thumbnail}" class="img-fluid mb-3"/>
+                                                    </c:if>
+                                                    <input type="file" class="form-control" id="thumbnail" name="thumbnail" value="${thumbnail}">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <!--poster-->
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="poster">Poster:</label>
+                                                    <c:if test="${!event.poster.equals('')}">
+                                                        <img src="${event.poster}" class="img-fluid mb-3"/>
+                                                    </c:if>
+                                                    <input type="file" class="form-control" id="poster" name="poster" value="${poster}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div class="col">
+                                            <button type="reset" class="btn btn-secondary">Reset the form</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary">Continue</button>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </form>
                             </div>
-
-                            <!--Visibility-->
-                            <div style="padding-top: 10px;">
-                                <label for="">To whom do you want to make it visible?</label>
-                                <div class="input-container">
-                                    <select name="visibility" id="visibility" >
-                                      <option value=${event.getVisibility()} selected disabled hidden>Tier ${event.getVisibility()} Users</option>
-                                      <option value="0">Tier 0 Users</option>
-                                      <option value="1">Tier 1 Users</option>
-                                      <option value="2">Tier 2 Users</option>
-                                      <option value="3">Tier 3 Users</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!--Causes-->
-                            <div>
-                                <label for="">Which causes does the event include?</label><br>
-                                <c:forEach items="${causes}" var="cause">
-                                    <input type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
-                                    <label for="${cause.name}">${cause.name}</label><br>
-                                </c:forEach>
-
-                            </div>
-
-                            <!--Location-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Where does it take place?</label>
-                                <div class="input-container">
-                                    <input type="text" name="city" id="city" value="${city}" >
-                                    <input type="text" name="street" id="street" value="${street}" >
-                                    <input type="text" name="number" id="number" value="${number}" >
-                                </div>
-                            </div>
-
-                            <!--maxParticipantsInternational-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Max participants International (currently ${event.getMaxParticipantsInternational()}):</label>
-                                <div class="input-container">
-                                    <input type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" min="0" value="${event.getMaxParticipantsInternational()}">
-                                </div>
-                            </div>
-
-                            <!--MaxParticipantsVolunteer-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Max participants Volunteer (currently ${event.getMaxParticipantsVolunteer()}):</label>
-                                <div class="input-container">
-                                    <input type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" min="0" value="${event.getMaxParticipantsVolunteer()}">
-                                </div>
-                            </div>
-
-                            <!--eventStart-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Event Start (currently ${event.getEventStart().toString()}):</label>
-                                <div class="input-container">
-                                    <input type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}"> 
-                                </div>
-                            </div>
-
-                            <!--eventEnd-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Event End (currently ${event.getEventEnd().toString()}):</label>
-                                <div class="input-container">
-                                    <input type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}">
-                                </div>
-                            </div>
-
-                            <!--subscriptionStart-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Subscription Start (currently ${event.getSubscriptionStart().toString()}):</label>
-                                <div class="input-container">
-                                    <input type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}">
-                                </div>
-                            </div>
-
-                            <!--subscriptionEnd-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Subscription End (currently ${event.getSubscriptionEnd().toString()}):</label>
-                                <div class="input-container">
-                                    <input type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}">
-                                </div>
-                            </div>
-
-                            <!--withdrawalEnd-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Withdrawal End (currently ${event.getWithdrawalEnd().toString()}):</label>
-                                <div class="input-container">
-                                    <input type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}">
-                                </div>
-                            </div>
-
-                            <!--maxWaitingList-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Max waiting list (currently ${event.getMaxWaitingList()}):</label>
-                                <div class="input-container">
-                                    <input type="number" name="maxWaitingList" id="maxWaitingList" min="0" value="${event.getMaxWaitingList()}">
-                                </div>
-                            </div>
-
-                            <!--attributes-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Attributes (currently ${event.getAttributes()}):</label>
-                                <div class="input-container">
-                                    <input type="text" name="attributes" id="attributes" value="${event.getAttributes_asString()}">
-                                </div>
-                            </div>
-
-                            <!--thumbnail-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Thumbnail:</label>
-                                <c:if test="${!event.thumbnail.equals('')}">
-                                    <img src="${event.thumbnail}" width="200" height="200"/>
-                                </c:if>
-                                <div class="input-container">
-                                    <input type="file" name="thumbnail" id="thumbnail" value="${thumbnail}">
-                                </div>
-                            </div>
-
-                            <!--poster-->
-                            <div style="padding-top: 10px;">
-                                <label for="">Poster:</label>
-                                <c:if test="${!event.poster.equals('')}">
-                                    <img src="${event.poster}" width="1280" height="300"/>
-                                </c:if>
-
-                                <p> Choose a new image </p>
-                                <div class="input-container">
-                                    <input type="file" name="poster" id="poster" value="${poster}">
-                                </div>
-                            </div>
-
-                            <div class="buttons">
-                                <div>
-                                    <button type="submit">Continue</button>
-                                </div>
-                                <div>
-                                    <button type="reset">Reset the form</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </c:otherwise>
-            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+        </div>
         <%@include file="/html/footer.html"%>       
     </body>
 </html>
