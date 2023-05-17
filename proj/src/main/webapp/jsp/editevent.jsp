@@ -31,7 +31,7 @@
                             </div>
                             <p><c:out value="Event ID: ${event.getId().toString()}"/></p>
                             <div class="form my-4 card-body">
-                                <form action="" id="editEventForm" method="POST" enctype="multipart/form-data" >
+                                <form action="<c:url value="/editEvent"/>" id="editEventForm" method="POST" enctype="multipart/form-data" >
 
                                     <!--Name-->
                                     <div class="form-floating mb-3 pb-2">
@@ -52,7 +52,7 @@
                                                 <label for="price">Price (currently ${event.getPrice()}):</label>
                                             </div>
                                             <!--Visibility-->
-                                            <div style="form-floating mb-3 pb-2">
+                                            <div class="form-floating mb-3 pb-2">
                                                 <label for="">To whom do you want to make it visible?</label>
                                                     <select class="form-select" name="visibility" id="visibility" required>
                                                       <option value=${event.getVisibility()} selected disabled hidden>Tier ${event.getVisibility()} Users</option>
