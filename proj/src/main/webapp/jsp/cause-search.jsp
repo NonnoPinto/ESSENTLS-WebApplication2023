@@ -49,7 +49,7 @@
         </div>
       </div>
   </div>
-  <div id="results" class="text-muted text-center">
+  <div id="results">
   </div>
   <script type="text/javascript" src="<c:url value="/js/ajax_causes.js"/>"></script>
   <%@include file="/html/footer.html"%>
