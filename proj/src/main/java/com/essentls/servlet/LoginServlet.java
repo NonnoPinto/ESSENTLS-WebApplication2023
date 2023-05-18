@@ -114,6 +114,8 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     */
                     m.toJSON(res.getOutputStream());
                 }else if(!user.getEmailConfirmed()){
+                    ErrorCode ec = ErrorCode.NOT_VERIFIED;
+                    res.setStatus(ec.getHTTPCode());
                     m = new Message(true, "Mail must be confirmed");
                     /*
                     req.setAttribute("message", m);
