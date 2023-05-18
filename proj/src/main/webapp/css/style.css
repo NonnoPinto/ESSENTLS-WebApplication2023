@@ -18,7 +18,7 @@ h1,h2,h3,h4,h5,h6, .card-title{
 /* TOP DECORATION */
 
 body {
-    background-image: url("/proj/src/main/webapp/media/header_topbg.png");
+    background-image: url("https://padova.esn.it/profiles/satellite/themes/esnbase/img/header_topbg.png");
     background-repeat: repeat-x;
     min-height: 100vh;
     display: flex;
@@ -119,6 +119,15 @@ button{
 }
 
 /* NAVBAR */
+.navbar-nav li{
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.navbar-nav li:last-child(){
+  margin-right: 5px;
+}
+
 .navbar-decoration{
     max-width: 200px;
     height: auto;
@@ -176,4 +185,9 @@ button{
     animation-duration: 0.5s;
     /* only one repetition */
     animation-iteration-count: infinite;
+}
+
+/* ICONS */
+.bi {
+    font-size: 1rem;
 }
