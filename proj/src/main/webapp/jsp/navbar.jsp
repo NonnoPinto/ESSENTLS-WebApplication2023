@@ -2,7 +2,7 @@
     <a href="<c:url value='/'/>">
         <img src="./media/esn_padova_logo_full_color_2.png" class="top-logo-navbar" alt="Logo of ESN Padova"">
     </a>
-    <a rel="noopener noreferrer nofollow" href="<c:url value='/home'/>"><h5>Home</a></h5>
+    <%--<a rel="noopener noreferrer nofollow" href="<c:url value='/home'/>"><h5>Home</a></h5>--%>
     <c:if test="${sessionScope.sessionUserId == null}">
         <a rel="noopener noreferrer nofollow" href="<c:url value='/login'/>"><h5>Login</a></h5>
         <a rel="noopener noreferrer nofollow" href="<c:url value='/signup'/>"><h5>Sign up</a></h5>
