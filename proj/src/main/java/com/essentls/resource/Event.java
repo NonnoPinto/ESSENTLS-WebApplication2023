@@ -1,8 +1,13 @@
 package com.essentls.resource;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.json.JSONObject;
+
+import static com.essentls.resource.AbstractResource.LOGGER;
 
 /**
  * Event class
@@ -226,6 +231,21 @@ public class Event {
     }
     public void setPoster(String _poster){
         poster = _poster;
+    }
+
+    public Map<String, String> getLocationMap() {
+        Map<String, String> locationMap = new HashMap<>();
+        try {
+            Iterator<String> locationKeys = this.location.keys();
+            while (locationKeys.hasNext()) {
+                String key = locationKeys.next();
+                String value = this.location.getString(key);
+                locationMap.put(key, value);
+            }
+        }catch(Exception e){
+            LOGGER.error("Invalid attributes on database");
+        }
+        return locationMap;
     }
 
     public JSONObject toJSON() {
