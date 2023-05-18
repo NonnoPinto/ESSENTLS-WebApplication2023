@@ -21,7 +21,7 @@
 			<div class="card text-center border-orange">
 				<h2 class="card-title bg-orange color-white p-4"> Login to continue</h2>
 				<div class="card-body">
-
+					<form action="javascript:;" onsubmit="loginRequest();">
 					<!--<form action="<c:url value="/login"/>" id="loginForm" method="POST" enctype="multipart/form-data">-->
 					<!-- ---------------- EMAIL -------------------- -->
 					<div class="form-group mb-4">
@@ -68,7 +68,7 @@
 							Don't have an account? <a href="<c:url value="/signup"/>" >Sign up</a>
 						</small>
 					</p>
-
+					</form>
 				</div>
 			</div>
 		</div>

@@ -32,7 +32,7 @@
                             <c:otherwise></c:otherwise>
                         </c:choose>
 
-                        <form method="POST" action="<c:url value="/register"/>" enctype="multipart/form-data">
+                        <form method="POST" action="<c:url value="/register"/>">
                             <div>
                                 <!--EMAIL-->
                                 <div class="form-group my-4">
