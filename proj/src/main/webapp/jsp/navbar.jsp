@@ -3,32 +3,39 @@
 <head>
 	<title>Navbar</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
-
+<div class="d-block px-3 py-2 skippy"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
     <a class="navbar-brand" href="<c:url value='/'/>"><img src="./media/esn_padova_logo_full_color_2.png" class="top-logo-navbar" alt="Logo of ESN Padova"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="collapse">
-            <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav"><!-- EMPTY --></ul>
+            <ul class="navbar-nav ml-auto w-100 justify-content-center">
                 <c:if test="${sessionScope.sessionUserTier == 0}">
                     <li class="nav-item">
-                        <a class="nav-link active" rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null}">
                     <li class="nav-item">
-                        <a class="nav-link active" rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/">Padova</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/esncard">ESNCard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/node/47">About Us</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
                     <li class="nav-item dropdown">
-                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle text-nowrap" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin Manage
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,24 +49,29 @@
                     </li>
                 </c:if>
             </ul>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ms-auto d-flex flex-row">
                 <c:if test="${sessionScope.sessionUserId == null}">
-                    <li class="nav-item">
+                    <li class="nav-item text-nowrap">
                         <a class="btn btn-outline-primary" href="<c:url value='/login'/>">Login</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-nowrap">
                         <a class="btn btn-primary" href="<c:url value='/signup'/>">Sign up</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null}">
-                    <li class="nav-item">
-                        <a class="nav-link active" rel="noopener noreferrer nofollow" href="<c:url value='/profile'/>"><i class="bi bi-person-circle"></i> Profile</a>
+                    <li class="nav-item dropdown">
+                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProfile">
+                            <li><a class="dropdown-item" href="<c:url value='/profile'/>">Profile Info</a></li>
+                            <li><a class="dropdown-item" rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">Logout</a></li>
+                        </ul>
                     </li>
-                    <a class="nav-link active" rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">Logout</a>
                 </c:if>
             </ul>
         </div>
     </div>
 </nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

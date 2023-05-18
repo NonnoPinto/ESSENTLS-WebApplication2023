@@ -121,11 +121,32 @@ button{
 /* NAVBAR */
 .navbar-nav li{
   margin-right: 20px;
+  font-size: medium;
+  /* TODO: sistemare il colore */
   display: inline-block;
 }
 
 .navbar-nav li:last-child(){
-  margin-right: 5px;
+  margin-right: 7px;
+}
+
+.skippy{
+    background-image: url("https://padova.esn.it/profiles/satellite/themes/esnbase/img/header_topbg.png");
+    background-repeat: repeat-x;
+}
+
+.py-2{
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+}
+
+.px-3 {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+}
+
+.d-block {
+    display: block !important;
 }
 
 .navbar-decoration{
@@ -189,5 +210,6 @@ button{
 
 /* ICONS */
 .bi {
-    font-size: 1rem;
+    font-size: 3rem;
+    color: #00aeef;
 }
