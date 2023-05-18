@@ -54,9 +54,9 @@
                                             <div>
                                                 <select id="userSex" name="userSex" class="form-select">
                                                     <option value="${user.getSex()}" selected hidden>${user.getSex()}</option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="others">Others</option>
+                                                    <option value="male">male</option>
+                                                    <option value="female">female</option>
+                                                    <option value="others">others</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -204,11 +204,8 @@
 
                                             <%--Button--%>
                                         <div class="row d-flex my-4">
-                                            <div class="pb-3">
-                                                <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
-                                            </div>
                                             <div>
-                                                <button type="reset" class="button bg-orange text-white border-orange px-4 py-2">Reset the form</button>
+                                                <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
                                             </div>
                                         </div>
                                     </form>
