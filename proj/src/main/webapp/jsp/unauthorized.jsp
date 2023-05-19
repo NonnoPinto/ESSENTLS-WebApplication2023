@@ -20,10 +20,10 @@
     <hr>
 </div>
 <div class="container">
-    <div style="margin: 30px 0">
-        <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div class="m-4">
+        <div class="alert alert-danger d-flex align-items-center text-center" role="alert">
             <div>
-                <p><i class="bi bi-exclamation-triangle-fill" style="color: red !important;"></i> You are not authorized.</p>
+                <p><i class="bi bi-exclamation-triangle-fill color-magenta"></i>You are not authorized.</p>
             </div>
         </div>
     </div>

@@ -27,10 +27,11 @@
             <h1 class="card-title bg-orange color-white p-4">Profile Page</h1>
             <div class="card-body">
               <div class="my-2 mx-4">
-                <div class="pb-2" style="border-bottom: 1px solid gray;">
+                <div class="pb-2">
                   <h3>${Users.getName()} ${Users.getSurname()}</h3>
                   <h5>Sex: ${Users.getSex()}</h5>
                   <h5>Nationality: ${Users.getNationality()}</h5>
+                  <hr>
                 </div>
                 <div class="my-4">
                   <p class="pb-2 border-bottom border-gray">Email: ${Users.getEmail()}</p>

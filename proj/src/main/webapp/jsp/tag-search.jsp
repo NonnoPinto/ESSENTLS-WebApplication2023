@@ -31,7 +31,7 @@
 
     </div>
 
-    <div id="results" style="margin: 2em;">
+    <div id="results" class="m-2">
 
     </div>
 

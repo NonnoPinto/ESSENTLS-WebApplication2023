@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Edit Event</title>
-    </head> 
+    </head>
 
     <body>
         <%@include file="navbar.jsp"%>
@@ -36,7 +36,7 @@
                                     <!--Name-->
                                     <div class="form-floating mb-3 pb-2">
                                             <input type="text" name="name" id="name" value="${event.getName()}" placeholder="${event.getName()}" class="form-control" required>
-                                            <label for="name"> Name (currently ${event.getName()}): </label>
+                                            <label for="name">Name (currently ${event.getName()}): </label>
                                     </div>
 
                                     <!--Description-->
@@ -84,19 +84,19 @@
                                             <div class="col">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" value="${city}" name="city" id="city" placeholder="Enter city..." required>
-                                                    <label for="city"> Enter city.. </label>
+                                                    <label for="city">Enter city..</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" value="${street}" name="street" id="street" placeholder="Enter Street..." required>
-                                                    <label for="street"> Enter street.. </label>
+                                                    <label for="street">Enter street..</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" value="${number}" name="number" id="number" placeholder="Enter house number..." required>
-                                                    <label for="street"> Enter house number... </label>
+                                                    <label for="street">Enter house number...</label>
                                                 </div>
                                             </div>
 
@@ -218,6 +218,6 @@
                 </div>
             </div>
         </div>
-        <%@include file="/html/footer.html"%>       
+        <%@include file="/html/footer.html"%>
     </body>
 </html>

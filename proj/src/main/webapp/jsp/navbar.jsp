@@ -1,10 +1,4 @@
-<%@ include file="../html/cdn.html"%>
-<!DOCTYPE html>
-<head>
-	<title>Navbar</title>
-	<meta charset="utf-8">
-</head>
-<div class="d-block px-3 py-2 skippy"></div>
+<div class="d-block p-2 skippy"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
     <a class="navbar-brand" href="<c:url value='/'/>"><img src="./media/esn_padova_logo_full_color_2.png" class="top-logo-navbar" alt="Logo of ESN Padova"></a>

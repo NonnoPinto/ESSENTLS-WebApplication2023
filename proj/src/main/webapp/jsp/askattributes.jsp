@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Event registration: additional information required</title>
-</head> 
+</head>
 
 <body>
 <%@include file="navbar.jsp"%>
@@ -39,6 +39,6 @@
             </form>
         </div>
     </div>
-    <%@include file="/html/footer.html"%>       
+    <%@include file="/html/footer.html"%>
 </body>
 </html>

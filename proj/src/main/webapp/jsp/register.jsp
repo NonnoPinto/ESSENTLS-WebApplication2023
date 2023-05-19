@@ -16,8 +16,8 @@
     <div class="container">
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
-                <div class="card text-center border-orange">
-                    <h2 class="card-title bg-orange color-white p-4"> Register</h2>
+                <div class="card text-center border-cyan">
+                    <h2 class="card-title bg-cyan color-white p-4">Register</h2>
                 
                     <div class="card-body">
                     
@@ -38,7 +38,7 @@
                                 <div class="form-group my-4">
                                     <div class="d-flex justify-content-start">
                                         <label label for="email" class="mb-2 text-left">Insert your Email</label>
-                                    </div>  
+                                    </div>
                                     <div class="input-container">
                                         <input name="email" id="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="email" class="form-control" placeholder="Email.." required/>
                                         <span id="infoEmail"></span>
@@ -71,7 +71,7 @@
 
                                 <!--SUBMIT BUTTON-->
                                 <div>
-                                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+                                    <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -80,8 +80,8 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="<c:url value="/js/toggle_password.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/js/toggle_repeat_password.js"/>"></script>
+    <script type="text/javascript" src="<c:url value='/js/toggle_password.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/js/toggle_repeat_password.js'/>"></script>
     <%@include file="/html/footer.html"%>
 </body>
-</html> 
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Create Event</title>
-</head> 
+</head>
 
 <body>
 <%@include file="navbar.jsp"%>
@@ -35,7 +35,7 @@
                                     <!--Name-->
                                     <div class="form-floating mb-3 pb-2">
                                             <input type="text" name="name" id="name" placeholder="Event Name.." class="form-control" required>
-                                            <label for="name"> Event's name </label>
+                                            <label for="name">Event's name </label>
                                     </div>
 
                                     <!--Description-->
@@ -51,7 +51,7 @@
                                                 <label for="price">How much does the event cost?</label>
                                             </div>
                                             <!--Visibility-->
-                                            <div style="form-floating mb-3 pb-2">
+                                            <div class="form-floating mb-3 pb-2">
                                                 <label for="">To whom do you want to make it visible?</label>
                                                     <select class="form-select" name="visibility" id="visibility" required>
                                                       <option value="0">Tier 0 Users</option>
@@ -83,19 +83,19 @@
                                             <div class="col">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" name="city" id="city" placeholder="Enter city..." required>
-                                                    <label for="city"> Enter city.. </label>
+                                                    <label for="city">Enter city.. </label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" name="street" id="street" placeholder="Enter Street..." required>
-                                                    <label for="street"> Enter street.. </label>
+                                                    <label for="street">Enter street..</label>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" name="number" id="number" placeholder="Enter house number..." required>
-                                                    <label for="street"> Enter house number... </label>
+                                                    <label for="street">Enter house number...</label>
                                                 </div>
                                             </div>
 
@@ -213,6 +213,6 @@
 
 
     </div>
-    <%@include file="/html/footer.html"%>  
+    <%@include file="/html/footer.html"%>
 </body>
 </html>
