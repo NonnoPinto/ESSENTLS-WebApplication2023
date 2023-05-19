@@ -135,18 +135,6 @@
         <servlet-class>com.essentls.servlet.DocumentDownloadServlet</servlet-class>
     </servlet>
 
-    <!-- TODO: TO BE REMOVED, JUST FOR TESTING PURPOSE -->
-    <servlet>
-        <servlet-name>UnauthorizedServlet</servlet-name>
-        <servlet-class>com.essentls.servlet.UnauthorizedServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>UnauthorizedServlet</servlet-name>
-        <url-pattern>/unauth</url-pattern>
-    </servlet-mapping>
-    <!-- TODO: END OF TESTING CODE -->
-
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -251,6 +239,7 @@
     <servlet-mapping>
         <servlet-name>UnauthorizedServlet</servlet-name>
         <url-pattern>/unauthorized</url-pattern>
+        <url-pattern>/unauth</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -289,7 +278,6 @@
         <url-pattern>/profile</url-pattern>
         <url-pattern>/paymentslist</url-pattern>
         <url-pattern>/membership</url-pattern>
-        <url-pattern>/edit-user</url-pattern>
         <url-pattern>/edit-profile</url-pattern>
         <url-pattern>/eventdetail</url-pattern>
         <url-pattern>/joined-events</url-pattern>
@@ -304,8 +292,8 @@
     <filter-mapping>
         <filter-name>VolunteerFilter</filter-name>
         <url-pattern>/search-users</url-pattern>
-        <url-pattern>/select-user-by-id</url-pattern>
         <url-pattern>/eventparticipants</url-pattern>
+        <url-pattern>/editEvent</url-pattern>
     </filter-mapping>
 
     <filter>
@@ -314,7 +302,10 @@
     </filter>
     <filter-mapping>
         <filter-name>ActiveVolunteerFilter</filter-name>
+        <url-pattern>/edit-user</url-pattern>
+        <url-pattern>/select-user-by-id</url-pattern>
         <url-pattern>/create-event</url-pattern>
+        <url-pattern>/download-user-document</url-pattern>
     </filter-mapping>
 
     <filter>
