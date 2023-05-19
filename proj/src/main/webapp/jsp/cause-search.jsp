@@ -14,7 +14,7 @@
 <body>
   <%@include file="navbar.jsp"%>
 
-  <div class="containter">
+  <div class="container">
     <div class="row justify-content-center my-4">
         <div class="col-md-6">
           <div class="card text-center border-orange">

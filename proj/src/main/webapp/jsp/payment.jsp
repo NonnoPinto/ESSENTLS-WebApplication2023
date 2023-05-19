@@ -19,37 +19,39 @@
 
 <div class="container">
 	<div class="row justify-content-center my-4">
-		<div class="col-xxl-10 col-12">
-			<div class="card">
-				<div class="card-body text-center">
+		<div class="col-md-8">
+			<div class="card text-center border-cyan">
+
+				<div class="bg-cyan text-white">
 					<c:choose>
 						<c:when test="${action.equals(\"event\")}">
-							<h1>Event Payment</h1>
+							<h1 class="page-title p-2">Event Payment</h1>
 						</c:when>
 						<c:when test="${action.equals(\"sub\")}">
-							<h1>Association Payment</h1>
+							<h1 class="page-title p-2">Association Payment</h1>
 						</c:when>
 						<c:otherwise>
-							<p>Something did not work :(</p>
+							<p class="page-title p-2">Something did not work :(</p>
 						</c:otherwise>
 					</c:choose>
-					<hr>
+				</div>
+				<div class="card-body text-center">
 					<div>
 						<c:choose>
 							<c:when test="${action.equals(\"event\")}">
 								<p>
 									You are paying: &euro; ${event.price}.
 									Choose a payment method:
-									<a href="add_payment?action=${action}&id=${event.id}">
-										<button>Payed</button>
+									<a class="btn btn-secondary" href="add_payment?action=${action}&id=${event.id}">
+										I've payed
 									</a>
 								</p>
 							</c:when>
 							<c:when test="${action.equals(\"sub\")}">
 								<p>
 									You are paying: &euro; ${subPrice}
-									<a href="add_payment?action=${action}">
-										<button>Payed</button>
+									<a class="btn" href="add_payment?action=${action}">
+										Payed
 									</a>
 								</p>
 							</c:when>

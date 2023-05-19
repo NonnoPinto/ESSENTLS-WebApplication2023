@@ -16,27 +16,33 @@
 <%@include file="navbar.jsp"%>
 
 
-    <div class="containter">
+    <div class="container">
+        <div class="row justify-content-center my-4">
+            <div class="col-xxl-10 col-12">
+                <div class="card text-center border-cyan">
+                    <div class="bg-cyan text-white">
+                        <h1 class="page-title p-2">Additional information required</h1>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <p>
+                                <c:out value="${message.message}"/>
+                            </p>
+                        </div>
 
-        <div>
-            <p>
-                <c:out value="${message.message}"/>
-            </p>
-        </div>
-
-        <div class="title">
-            <h2>Additional information required</h2>
-            <hr>
-        </div>
-
-        <div class="form">
-            <form action="<c:url value="/confirmEvent"/>" id="createEventForm" method="POST">
-                <c:forEach items="${attributes}" var="att">
-                    ${att.key}: <input type="text" name="att_${fn:replace(att.key,' ','')}" value="${att.value}"><br/>
-                </c:forEach>
-                <input type="hidden" name="eventId" value="${event.id}">
-                <input type="submit" name="submitAttr" value="Send">
-            </form>
+                        <div class="form" id="attributes_form">
+                            <form action="<c:url value="/confirmEvent"/>" id="createEventForm" method="POST">
+                                <c:forEach items="${attributes}" var="att">
+                                    <label for="${fn:replace(att.key,' ','')}" class="form-label">${att.key}</label>
+                                    <input type="text" id="${fn:replace(att.key,' ','')}" class="form-control" name="att_${fn:replace(att.key,' ','')}" value="${att.value}"><br/>
+                                </c:forEach>
+                                <input type="hidden" name="eventId" value="${event.id}">
+                                <input type="submit" name="submitAttr" class="btn btn-primary" value="Send">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <%@include file="/html/footer.html"%>

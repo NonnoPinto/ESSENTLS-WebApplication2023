@@ -16,7 +16,7 @@
 <%@include file="navbar.jsp"%>
 
 
-    <div class="containter">
+    <div class="container">
         <div >
             <p>
                 <c:out value="${message.message}"/>

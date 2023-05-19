@@ -194,6 +194,12 @@ button{
     width: 400px;
 }
 
+#attributes_form{
+    width: 200pt;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
 #event_card #event_header {
     min-height: 220pt;
     height: auto;
