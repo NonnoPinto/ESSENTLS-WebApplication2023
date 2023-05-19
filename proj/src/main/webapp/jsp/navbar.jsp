@@ -27,7 +27,7 @@
                         <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/esncard">ESNCard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/node/47">About Us</a>
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/association">About Us</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
