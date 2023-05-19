@@ -35,7 +35,7 @@ public class DenyFilter extends AbstractFilter {
 
         HttpSession session = req.getSession(false);
 
-        res.sendRedirect(req.getContextPath() + "/home"); // Not logged in, show login page.
+        res.sendRedirect(req.getContextPath() + "/unauthorized"); // Not logged in, show login page.
 
     }
 

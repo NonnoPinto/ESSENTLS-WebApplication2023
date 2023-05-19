@@ -40,6 +40,7 @@ public class ActiveVolunteerFilter extends AbstractFilter {
 
         HttpSession session = req.getSession(false);
         String unauthorizedURI = req.getContextPath() + "/unauthorized";
+        String loginURI = req.getContextPath() + "/login";
 
         boolean loggedIn = session != null && session.getAttribute("sessionUserId") != null;
         int tier = -1;
@@ -52,7 +53,10 @@ public class ActiveVolunteerFilter extends AbstractFilter {
             res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
             chain.doFilter(req, res); // User is logged in, just continue request.
         } else {
-            res.sendRedirect(unauthorizedURI); // Not logged in, show login page.
+            if(!loggedIn)
+                res.sendRedirect(loginURI);
+            else
+                res.sendRedirect(unauthorizedURI); // Not logged in, show login page.
         }
 
     }
