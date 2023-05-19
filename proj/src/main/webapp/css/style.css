@@ -124,7 +124,7 @@ button{
   display: inline-block;
 }
 
-.navbar-nav li:last-child(){
+.navbar-nav li:last-child{
   margin-right: 7px;
 }
 
@@ -192,4 +192,77 @@ button{
 
 #srch{
     width: 400px;
+}
+
+#event_card #event_header {
+    min-height: 220pt;
+    height: auto;
+    width: 100%;
+    background-size: cover;
+    padding: 20pt;
+    background-color: grey;
+    background-blend-mode: multiply;
+}
+
+#event_card #event_header #event_icon {
+    height: 180pt;
+    width: 180pt;
+    object-fit: cover;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+}
+
+#event_card #event_header #event_info {
+    color: white;
+    height: 100%;
+    min-width: 200pt;
+    margin-left: 20pt;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+    max-width: 300pt;
+}
+
+#event_card #event_header #event_info h2 {
+    color: white;
+    font-size: 30pt;
+}
+
+#event_card #event_header #event_buy {
+    width: 200pt;
+    margin-left: 15pt;
+    margin-top: 35pt;
+    max-width: 20%;
+}
+
+#event_card #event_header #event_buy p {
+    font-size: 20pt;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    #event_card #event_header #event_icon {
+        height: 150pt;
+        width: 150pt;
+    }
+
+    #event_card #event_header #event_buy{
+        margin-top: 15pt;
+        max-width: 100%;
+        margin-right: 60pt;
+    }
+}
+
+@media (max-width: 767px) {
+    #event_card #event_header #event_icon {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+    }
+
+    #event_card #event_header #event_info {
+        margin-top: 15pt;
+    }
+
+    #event_card #event_header #event_buy {
+        width: 100%;
+        margin: 10pt auto;
+    }
 }
