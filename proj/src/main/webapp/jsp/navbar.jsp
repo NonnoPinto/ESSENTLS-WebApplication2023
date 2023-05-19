@@ -34,7 +34,7 @@
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown admin">
                         <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle text-nowrap" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin Manage
                         </a>
@@ -60,7 +60,7 @@
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null}">
                     <li class="nav-item dropdown">
-                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProfile">
