@@ -19,7 +19,7 @@
 	<div class="row justify-content-center my-4">
 		<div class="col-md-6">
 			<div class="card text-center border-orange">
-				<h2 class="card-title bg-orange color-white p-4"> Login to continue</h2>
+				<h2 class="card-title bg-orange color-white p-4">Login to continue</h2>
 				<div class="card-body">
 					<form action="javascript:;" onsubmit="loginRequest();">
 					<!--<form action="<c:url value="/login"/>" id="loginForm" method="POST" enctype="multipart/form-data">-->
