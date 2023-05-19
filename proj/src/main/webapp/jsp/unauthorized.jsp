@@ -7,7 +7,7 @@
 <head>
     <meta name="description" content="ESN Padova application">
     <meta charset="utf-8">
-    <title>Welcome</title>
+    <title>Error 401 - Unauthorized</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Login</title>
@@ -15,16 +15,15 @@
 <body>
 <%@include file="navbar.jsp"%>
 <div class="headerup"></div>
-<div class="title">
-    <h1>Login</h1>
+<div class="alertTitle">
+    <h1>Error 401 - Unauthorized</h1>
     <hr>
 </div>
 <div class="container">
-
     <div style="margin: 30px 0">
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
             <div>
-                <p>You are not authorized.</p>
+                <p><i class="bi bi-exclamation-triangle-fill" style="color: red !important;"></i> You are not authorized.</p>
             </div>
         </div>
     </div>
