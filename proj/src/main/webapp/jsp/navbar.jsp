@@ -15,6 +15,9 @@
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null}">
                     <li class="nav-item">
+                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/'/>">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
                     </li>
                     <li class="nav-item">
