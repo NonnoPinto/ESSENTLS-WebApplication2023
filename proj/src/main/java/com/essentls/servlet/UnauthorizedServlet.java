@@ -19,7 +19,9 @@ import java.sql.SQLException;
  * @version 1.00
  * @since 1.00
  */
-@WebServlet(name = "IndexServlet", urlPatterns = {"", "/index"})
+/* TODO: CODE MODIFIED FOR TESTING PURPOSE */
+/* @WebServlet(name = "IndexServlet", urlPatterns = {"", "/index"}) */
+@WebServlet(name = "UnauthorizedServlet", urlPatterns = {"/unauth"})
 public final class UnauthorizedServlet extends AbstractDatabaseServlet {
 
     /**

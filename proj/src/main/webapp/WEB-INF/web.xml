@@ -135,6 +135,18 @@
         <servlet-class>com.essentls.servlet.DocumentDownloadServlet</servlet-class>
     </servlet>
 
+    <!-- TODO: TO BE REMOVED, JUST FOR TESTING PURPOSE -->
+    <servlet>
+        <servlet-name>UnauthorizedServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UnauthorizedServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UnauthorizedServlet</servlet-name>
+        <url-pattern>/unauth</url-pattern>
+    </servlet-mapping>
+    <!-- TODO: END OF TESTING CODE -->
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
