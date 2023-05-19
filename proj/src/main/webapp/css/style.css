@@ -230,6 +230,7 @@ button{
     margin-left: 15pt;
     margin-top: 35pt;
     max-width: 20%;
+    text-align: center;
 }
 
 #event_card #event_header #event_buy p {
