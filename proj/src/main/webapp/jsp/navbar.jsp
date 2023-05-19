@@ -1,9 +1,3 @@
-<%@ include file="../html/cdn.html"%>
-<!DOCTYPE html>
-<head>
-	<title>Navbar</title>
-	<meta charset="utf-8">
-</head>
 <div class="d-block p-2 skippy"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
