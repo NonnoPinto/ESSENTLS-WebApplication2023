@@ -244,6 +244,40 @@ button{
     text-align: center;
 }
 
+.container_event {
+    position: relative;
+    min-height: 9em;
+    border-radius: .8em;
+    display: flex;
+    padding-bottom: 1.5em;
+    padding-top: .8em;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.container_event:hover .container_event_bottom {
+    height: 100%;
+    opacity: .6;
+}
+
+.container_event_bottom {
+    display: flex;
+    justify-content: end;
+    height: 1.4em;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: .5s ease-in-out;
+    z-index: -1;
+    transform: translateX(-3rem);
+    opacity: 1;
+}
+
+.container_event_bottom p {
+    position: absolute;
+    bottom: 0;
+}
+
 @media (max-width: 991px) {
     #event_card #event_header #event_icon {
         height: 150pt;
