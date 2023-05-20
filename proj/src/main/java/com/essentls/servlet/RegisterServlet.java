@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -92,8 +93,9 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
             } else {
+                String password_sha1 = DigestUtils.sha1Hex(password);
                 emailConfirmed = true; //Forcing confirmation until mail works
-                user= new User(id,email,password,null,tier,null,null,null,null,
+                user= new User(id,email,password_sha1,null,tier,null,null,null,null,
                         null,null,null,null,0,
                         null,null,null,null,null,
                         null,null,emailHash,emailConfirmed);

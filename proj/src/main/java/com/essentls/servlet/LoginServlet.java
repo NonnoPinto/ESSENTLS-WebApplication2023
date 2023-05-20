@@ -84,7 +84,7 @@ public class LoginServlet extends AbstractDatabaseServlet {
                 //req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
                 m.toJSON(res.getOutputStream());
 
-            } else if (password == null || password.equals("")) {
+            } else if (password == null || password.trim().equals("")) {
                 //the password was empty
                 ErrorCode ec = ErrorCode.PASSWORD_MISSING;
                 res.setStatus(ec.getHTTPCode());

@@ -1,6 +1,7 @@
 package com.essentls.dao;
 
 import com.essentls.resource.User;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONObject;
 import org.postgresql.util.PGobject;
 
@@ -22,7 +23,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
     /**
 	 * The SQL statement to be executed
 	 */
-    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE LOWER(email)=? AND password=?;"; //md5() not secure?
+    private static final String STATEMENT_LOGIN = "SELECT * FROM \"Users\" WHERE LOWER(email)=? AND password=?;";
 
 	/**
 	 * The email of the user to be authenticated
@@ -56,7 +57,7 @@ public final class UserLoginDAO extends AbstractDAO<User> {
 			throw new NullPointerException("The password cannot be null or empty.");
 		}
 
-		this.password = password;
+		this.password = DigestUtils.sha1Hex(password);
     }
 
     @Override
