@@ -111,6 +111,11 @@ body {
 
 /* BELOW THE OTHER CLASSES */
 
+/*MIN WIDTH*/
+.min-width-12{
+    min-width: 12rem;
+}
+
 /*BUTTON*/
 button{
     border-radius: 5px;

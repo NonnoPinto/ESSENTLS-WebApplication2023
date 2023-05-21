@@ -16,7 +16,7 @@
 
   <div class="container">
     <div class="row justify-content-center my-4">
-      <div class="col-md-6">
+      <div class="col-md-10 col-lg-8 col-xl-6">
         <div class="card text-center border-orange">
           <h2 class="card-title bg-orange color-white p-4">Search Cause</h2>
           <div class="card-body">
@@ -49,8 +49,10 @@
         </div>
       </div>
     </div>
-  </div>
-  <div id="results">
+    <div class="row justify-content-center my-4">
+      <div id="results">
+      </div>
+    </div>
   </div>
   <script type="text/javascript" src="<c:url value="/js/ajax_causes.js"/>"></script>
   <%@include file="/html/footer.html"%>
