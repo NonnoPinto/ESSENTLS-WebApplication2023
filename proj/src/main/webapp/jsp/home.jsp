@@ -24,28 +24,48 @@
             <c:otherwise>
                 <h1>All the Events</h1>
 
-                <form action="">
-                    <label for="tag">Tag:</label>
-                    <select name="tag">
-                        <option value="${tag}" selected hidden>${tag}</option>
+
+                <form class="input-group mb-3" action="">
+
+                    <select class="form-select" aria-label="Tag filter dropdown" name="tag">
+                        <c:choose>
+                            <c:when test="${tag eq ''}">
+                                <option value="" selected hidden>Tag</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="${tag}" selected hidden>${tag}</option>
+                            </c:otherwise>
+                        </c:choose>
                         <option value="">---no tag---</option>
                         <c:forEach items="${tags}" var="tag" varStatus="loop">
                             <option value="${tag.getName()}"><c:out value="${tag.getName()}"/></option>
                         </c:forEach>
                     </select>
-                    <label for="cause">Cause:</label>
-                    <select name="cause">
-                        <option value="${cause.getId()}" selected hidden>${cause.getName()}</option>
+                    
+                    <select class="form-select" aria-label="Tag filter dropdown" name="cause">
+                        <c:choose>
+                            <c:when test="${cause.getId() eq -1}">
+                                <option value="" selected hidden>Cause</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="${cause.getId()}" selected hidden>${cause.getName()}</option>
+                            </c:otherwise>
+                        </c:choose>
                         <option value="">---no cause---</option>
                         <c:forEach items="${causes}" var="cause" varStatus="loop">
                             <option value="${cause.getId()}"><c:out value="${cause.getName()}"/></option>
                         </c:forEach>
                     </select>
-                    <label for="srch">Search:</label>
-                    <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" style="width: 400px"/>
-                    <br><br>
-                    <input type="submit" value="Submit">
+
+                    <div class="break_flex d-block d-lg-none my-2"></div>
+
+                    <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" class="form-control" aria-label="Text input">
+
+                    <button type="submit" class="btn btn-primary bg-cyan">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </form>
+
 
                 <c:forEach items="${events}" var="event" varStatus="loop">
                     <div class="border border-orange px-5 my-3 container_event" onclick="window.location='./eventdetail?id=${event.id}';">
