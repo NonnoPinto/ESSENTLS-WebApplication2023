@@ -26,7 +26,7 @@
                     <div class="row justify-content-start">
                         <c:forEach items="${events}" var="event" varStatus="loop">
                             <div class="col-lg-3 col-md-6 col-sm-12 my-2">
-                                <div class="card h-100 border-black container" onclick="window.location='./eventdetail?id=${event.id}';">
+                                <div class="card h-100 container" onclick="window.location='./eventdetail?id=${event.id}';">
                                     <img class="card-img-top event-preview-image" src="media/${event.thumbnail}" alt="Event thumbnail">
                                     <div class="card-body">
                                         <div class="row">
