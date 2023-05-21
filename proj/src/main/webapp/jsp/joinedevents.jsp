@@ -26,10 +26,35 @@
                     <div class="row justify-content-start">
                         <c:forEach items="${events}" var="event" varStatus="loop">
                             <div class="col-lg-3 col-md-6 col-sm-12 my-2">
-                                <div class="card border-black container">
+                                <div class="card h-100 border-black container" onclick="window.location='./eventdetail?id=${event.id}';">
                                     <img class="card-img-top event-preview-image" src="media/${event.thumbnail}" alt="Event thumbnail">
                                     <div class="card-body">
-                                        ${event.name}
+                                        <div class="row">
+                                            <div class="col-3 event-date">
+                                                <h4 class="text-center text-capitalize">
+                                                    <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
+                                                </h4>
+                                            </div>
+                                            <div class="col-9 event-infos">
+                                                <h4 class="event title">
+                                                    ${event.name}
+                                                </h4>
+                                                <h6 class="event-price">
+                                                    &euro; <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${event.price}"/>
+                                                </h6>
+                                                <h6 class="event-location">
+                                                    <p>
+                                                        <i class="bi bi-geo-alt"></i>
+                                                        <span class="text-capitalize">
+                                                            ${event.location.getString("city")},
+                                                        </span>
+                                                        <span class="text-capitalize">
+                                                            ${event.location.getString("country")}
+                                                        </span>
+                                                    </p>
+                                                </h6>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

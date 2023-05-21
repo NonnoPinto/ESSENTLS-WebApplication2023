@@ -54,19 +54,19 @@
                                 <div class="col-lg-8 col-12">
                                     <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b> · 
                                         <i class="bi bi-geo-alt ms-2"></i>&nbsp;
-                                        <span class="capital-text">
+                                        <span class="text-capitalize">
                                             ${event.locationMap.street},
                                         </span>
-                                        <span class="capital-text">
+                                        <span class="text-capitalize">
                                             ${event.locationMap.number}
                                         </span>
-                                        <span class="capital-text">
+                                        <span class="text-capitalize">
                                             ${event.locationMap.zip}
                                         </span>
-                                        <span class="capital-text">
+                                        <span class="text-capitalize">
                                             ${event.locationMap.city}
                                         </span>
-                                        <span class="capital-text">
+                                        <span class="text-capitalize">
                                             ${event.locationMap.country}
                                         </span>
                                     </p>

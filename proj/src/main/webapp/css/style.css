@@ -108,24 +108,18 @@ body {
 .border-black{
     border: 3px solid #000;
 }
+/*UTILITIES*/
+.min-width-12{
+    min-width: 12rem;
+}
+
 
 /* BELOW THE OTHER CLASSES */
 
-/*UTILITIES*/
-.capital-text{
-    text-transform: capitalize;
-}
-.hidden{
-    visibility: hidden;
-}
 .event-date{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-/*MIN WIDTH*/
-.min-width-12{
-    min-width: 12rem;
 }
 
 /*BUTTON*/
@@ -163,10 +157,6 @@ button{
     width: auto;
 }
 
-
-.justify-between{
-    justify-content: space-between;
-}
 
 /*FOOTER*/
 .footer{

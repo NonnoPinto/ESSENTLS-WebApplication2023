@@ -20,7 +20,7 @@ import java.util.List;
  * @version 1.00
  * @since 1.00
  */
-@WebServlet(name = "UserEventsListServlet", urlPatterns = {"", "/joined-events"})
+@WebServlet(name = "UserEventsListServlet", value = "/joined-events")
 public final class UserEventsListServlet extends AbstractDatabaseServlet {
 
     /**
@@ -40,25 +40,33 @@ public final class UserEventsListServlet extends AbstractDatabaseServlet {
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
-        LogContext.setAction("RETRIVE EVENTS BY TIER AND TAGS");
+        LogContext.setAction("RETRIEVE EVENTS BY TIER AND TAGS");
 
 
         //get user of the current session
         int userId = -1;
         User user = null;
         Message m = null;
+        
         try {
             userId = (int) session.getAttribute("sessionUserId");
-            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
         }
         catch (NullPointerException e){
+
             LOGGER.error("Cannot search the User: id is not retrieved correctly.", e);
 
             m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
+        }
 
+        try {
+            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
         }
         catch(SQLException e){
-            LOGGER.error("Database error", e);
+
+            LOGGER.error("Cannot search the User: unexpected error while accessing the database.", e);
+
+            m = new Message(true, "Cannot search the User: unexpected error while accessing the database.");
+            
         }
 
         //authentication check
@@ -79,11 +87,12 @@ public final class UserEventsListServlet extends AbstractDatabaseServlet {
                 m = new Message("Events successfully searched.");
 
             } catch (SQLException e) {
-                
+
                 LOGGER.error("Cannot search for events: unexpected error while accessing the database.", e);
 
                 m = new Message(true, "Cannot search for events: unexpected error while accessing the database.");
                 throw new ServletException(e);
+
             }
 
             try {
@@ -92,8 +101,9 @@ public final class UserEventsListServlet extends AbstractDatabaseServlet {
                 req.setAttribute("message", m);
                 req.getRequestDispatcher("/jsp/joinedevents.jsp").forward(req, resp);
             } catch (Exception e) {
-                
+
                 LOGGER.error("Cannot forward the request searching events by user %d", user.getId());
+                
                 throw e;
             }
         }

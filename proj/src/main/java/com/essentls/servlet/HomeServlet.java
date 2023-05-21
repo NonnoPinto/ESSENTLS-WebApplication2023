@@ -44,7 +44,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
         //take the request uri
         LogContext.setIPAddress(req.getRemoteAddr());
         LogContext.setResource(req.getRequestURI());
-        LogContext.setAction("RETRIVE EVENTS BY TIER AND TAGS");
+        LogContext.setAction("RETRIEVE EVENTS BY TIER AND TAGS");
 
 
         //get user of the current session

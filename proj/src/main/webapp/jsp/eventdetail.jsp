@@ -33,19 +33,19 @@
 							<br/>
 							<p>
 								<i class="bi bi-geo-alt"></i>&nbsp;
-								<span class="capital-text">
+								<span class="text-capitalize">
 									${event.locationMap.street},
 								</span>
-								<span class="capital-text">
+								<span class="text-capitalize">
 									${event.locationMap.number}
 								</span>
-								<span class="capital-text">
+								<span class="text-capitalize">
 									${event.locationMap.zip}
 								</span>
-								<span class="capital-text">
+								<span class="text-capitalize">
 									${event.locationMap.city}
 								</span>
-								<span class="capital-text">
+								<span class="text-capitalize">
 									${event.locationMap.country}
 								</span>
 							</p>
