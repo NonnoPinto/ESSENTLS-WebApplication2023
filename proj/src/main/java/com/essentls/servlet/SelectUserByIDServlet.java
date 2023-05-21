@@ -22,6 +22,26 @@ import org.apache.logging.log4j.message.StringFormattedMessage;
 public class SelectUserByIDServlet extends AbstractDatabaseServlet {
 
     /**
+     * Handles the HTTP {@code GET} method. Forwards to the user selection by ID page.
+     * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.
+     * @param res a {@link HttpServletResponse} object that contains the response the servlet sends to the client.
+     * @throws ServletException if the request for the GET could not be handled.
+     * @throws IOException if an input or output error is detected when the servlet handles the POST request.
+     */
+
+    public void doGet(HttpServletRequest req, HttpServletResponse res) {
+        LogContext.setIPAddress(req.getRemoteAddr());
+        LogContext.setResource(req.getRequestURI());
+        LogContext.setAction("SELECT USER BY ID");
+
+        try {
+            req.getRequestDispatcher("/jsp/edituser-select-by-id.jsp").forward(req, res);
+        } catch (ServletException | IOException e) {
+            LOGGER.error("stacktrace:", e);
+        }
+
+    }
+    /**
      * Handles the HTTP {@code POST} method. Selects a user by ID and redirects to the admin user edit page
      * if successful.
      * @param req a {@link HttpServletRequest} object that contains the request the client has made of the servlet.

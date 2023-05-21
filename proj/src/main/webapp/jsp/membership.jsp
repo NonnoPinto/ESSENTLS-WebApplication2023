@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../html/cdn.html"%>
+<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,86 +10,296 @@
     <title>Membership</title>
 </head>
 <body>
-    <%@include file="navbar.jsp"%>
-    <div class="title">
-        <h1>Membership</h1>
-        <hr>
-    </div>
-     <c:choose>
-        <c:when test="${message.error}">
-            <p><c:out value="${message.message}"/></p>
-        </c:when>
-        <c:otherwise></c:otherwise>
-    </c:choose>
-    <form method="POST" action="<c:url value="/membership"/>" enctype="multipart/form-data">
-        <div>
-            <label for="sex">Please select your gender:</label>
-            <select name="sex">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="others">Others</option>
-            </select><br><br>
-            <label for="card-id">Card ID:</label>
-            <input name="card-id" type="text" required><br><br>
-            <label for="first_name">First Name:</label>
-            <input name="first_name" type="text" required><br><br>
-            <label for="last_name">Last Name:</label>
-            <input name="last_name" type="text" required><br><br>
-            <label for="birth-date">Date of birth:</label>
-            <input name="birth-date" type="date" required><br><br>
-            <label for="nationality">Nationality:</label>
-            <input name="nationality" type="text" required><br><br>
-            <label for="home-country-university">From which university are you from?</label>
-            <input name="home-country-university" type="text" required><br><br>
-            <label for="home-country-address">Please insert here your home-country address:</label>
-            <div class="input-container">
-                <input type="text" name="home-country-address-street" id="home-country-address-street" placeholder="Enter Street...">
-                <input type="text" name="home-country-address-number" id="home-country-address-number" placeholder="Enter number...">
-                <input type="text" name="home-country-address-city" id="home-country-address-city" placeholder="Enter city...">
-                <input type="text" name="home-country-address-zip" id="home-country-address-zip" placeholder="Enter zip...">
-                <input type="text" name="home-country-address-country" id="home-country-address-country" placeholder="Enter country...">
+<%@include file="navbar.jsp" %>
+<div class="container">
+    <div class="row justify-content-center my-4">
+        <div class="col-md-10">
+            <div class="card text-center border-orange">
+                <h2 class="card-title bg-orange color-white p-4">Membership </h2>
+                <div class="card-body">
+                    <c:choose>
+                        <c:when test="${message.error}">
+                            <p><c:out value="${message.message}"/></p>
+                        </c:when>
+                        <c:otherwise>
+
+                            <form method="POST" action="<c:url value="/membership"/>" enctype="multipart/form-data">
+
+                                    <%--SEX--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="sex" class="mb-2 text-left">Please select your gender:</label>
+                                    </div>
+                                    <div>
+                                        <select name="sex" id="sex" class="form-select">
+                                            <option value="male">male</option>
+                                            <option value="female">female</option>
+                                            <option value="others">others</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                    <%--CardId--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="card-id" class="mb-2 text-left">Card ID:</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input name="card-id" id=card-id type="text" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                    <%--Name--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="first_name" class="mb-2 text-left">Name:</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input name="first_name" id="first_name" type="text" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                    <%--Surname--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="last_name" class="mb-2 text-left">Surname:</label>
+                                    </div>
+                                    <div class="input-container">
+                                        <input name="last_name" id="last_name" type="text" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                    <%--Date of Birth--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="birth-date" class="mb-2 text-left">Date of Birth:</label>
+                                    </div>
+                                    <div>
+                                        <input name="birth-date" id="birth-date" type="date" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+
+                                    <%--Nationality--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="nationality" class="mb-2 text-left">Nationality:</label>
+                                    </div>
+                                    <div>
+                                        <input name="nationality" id="nationality" type="text" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                    <%--Home Country University--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="home-country-university" class="mb-2 text-left">From which
+                                            university are you from?</label>
+                                    </div>
+                                    <div>
+                                        <input name="home-country-university" id="home-country-university" type="text"
+                                               class="form-control" required>
+                                    </div>
+                                </div>
+
+
+                                    <%--Home Country Address--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="home-country-address" class="mb-2 text-left">Please insert here your
+                                            home-country
+                                            address:</label>
+                                    </div>
+                                    <div class="row input-container" id="home-country-address">
+                                        <div class="col">
+                                            <label for="home-country-address-street" class="form-label">Street</label>
+                                            <input type="text" name="home-country-address-street"
+                                                   id="home-country-address-street" class="form-control"
+                                                   placeholder="Enter Street...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="home-country-address-number" class="form-label">Number</label>
+                                            <input type="text" name="home-country-address-number"
+                                                   id="home-country-address-number" class="form-control"
+                                                   placeholder="Enter number...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="home-country-address-city" class="form-label">City</label>
+                                            <input type="text" name="home-country-address-city"
+                                                   id="home-country-address-city" class="form-control"
+                                                   placeholder="Enter city...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="home-country-address-zip" class="form-label">ZIP</label>
+                                            <input type="text" name="home-country-address-zip"
+                                                   id="home-country-address-zip" class="form-control"
+                                                   placeholder="Enter zip...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="home-country-address-country" class="form-label">Country</label>
+                                            <input type="text" name="home-country-address-country"
+                                                   id="home-country-address-country" class="form-control"
+                                                   placeholder="Enter country...">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                    <%--Period of Stay--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="period-of-stay" class="mb-2 text-left">Period of stay (consider only
+                                            this
+                                            academic year):</label>
+                                    </div>
+                                    <div>
+                                        <select name="period-of-stay" id="period-of-stay" class="form-select">
+                                            <option value="1">(one semester)</option>
+                                            <option value="2">(both semesters)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                    <%--Phone Number--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="phone-number" class="mb-2 text-left">Phone number:</label>
+                                    </div>
+                                    <div>
+                                        <input id="phone-number" name="phone-number" type="text" class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+                                    <%--Padua Address--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="padua-address" class="mb-2 text-left">Padua address:</label>
+                                    </div>
+                                    <div class="row input-container" id="padua-address">
+                                        <div class="col">
+                                            <label for="padua-address-street">Street</label>
+                                            <input type="text" name="padua-address-street" id="padua-address-street"
+                                                   class="form-control" placeholder="Enter Street...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="padua-address-number">Number</label>
+                                            <input type="text" name="padua-address-number" id="padua-address-number"
+                                                   class="form-control" placeholder="Enter number...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="padua-address-city">City</label>
+                                            <input type="text" name="padua-address-city" id="padua-address-city"
+                                                   class="form-control" placeholder="Enter city...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="padua-address-zip">ZIP</label>
+                                            <input type="text" name="padua-address-zip" id="padua-address-zip"
+                                                   class="form-control" placeholder="Enter zip...">
+                                        </div>
+                                        <div class="col">
+                                            <label for="padua-address-country">Country</label>
+                                            <input type="text" name="padua-address-country" id="padua-address-country"
+                                                   class="form-control" placeholder="Enter country...">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                    <%--DocumentType--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="document-type" class="mb-2 text-left">Document type:</label>
+                                    </div>
+                                    <div>
+                                        <select name="document-type" id="document-type" class="form-select">
+                                            <option value="ID">ID</option>
+                                            <option value="Passport">Passport</option>
+                                            <option value="Driver license">Driver license</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                    <%--DocumentNumber--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="document-number" class="mb-2 text-left">Document number:</label>
+                                    </div>
+                                    <div>
+                                        <input name="document-number" id="document-number" type="text"
+                                               class="form-control"
+                                               required>
+                                    </div>
+                                </div>
+
+
+                                    <%--Document File--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="document-file" class="mb-2 text-left">Document file:</label>
+                                    </div>
+                                    <div>
+                                        <input name="document-file" id="document-file" type="text" class="form-control"
+                                               required/>
+                                    </div>
+                                </div>
+
+                                    <%--Diet Type--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="diet-type" class="mb-2 text-left">Diet type:</label>
+                                    </div>
+                                    <div>
+                                        <select id="diet-type" name="diet-type" class="form-select">
+                                            <option value="No specific">No specific</option>
+                                            <option value="Vegetarian">Vegetarian</option>
+                                            <option value="Vegan">Vegan</option>
+                                            <option value="Halal">Halal</option>
+                                            <option value="Kosher">Kosher</option>
+                                            <option value="Pescatarian">Pescatarian</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                    <%--Allergies--%>
+                                <div class="mx-2 my-2">
+                                    <div class="d-flex justify-content-start">
+                                        <label for="allergies" class="mb-2 text-left">Allergies: (please use commas to
+                                            separate
+                                            them):</label>
+                                    </div>
+                                    <div>
+                                        <input id="allergies" name="allergies" type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                                    <%--Upload New Document--%>
+                                <div class="mx-2 my-2 d-flex justify-content-start">
+                                    <label for="document-bytes">Upload Document:</label>
+                                    <input id="document-bytes" name="document-bytes" type="file" class="mx-2" required/>
+                                </div>
+
+                                    <%--Button--%>
+                                <div class="row d-flex my-4">
+                                    <div class="mb-3">
+                                        <button type="submit"
+                                                class="button bg-orange text-white border-orange px-4 py-2">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
             </div>
-            <label for="period-of-stay">Period of stay (consider only this academic year):</label>
-            <select name="period-of-stay">
-                <option value="1">One Semester</option>
-                <option value="2">Both semesters</option>
-            </select><br><br>
-            <label for="phone-number">Phone number:</label>
-            <input name="phone-number" type="text" required><br><br>
-            <label for="padua-address">Padua address:</label>
-            <div class="input-container">
-                <input type="text" name="padua-address-street" id="padua-address-street" placeholder="Enter Street...">
-                <input type="text" name="padua-address-number" id="padua-address-number" placeholder="Enter number...">
-                <input type="text" name="padua-address-city" id="padua-address-city" placeholder="Enter city...">
-                <input type="text" name="padua-address-zip" id="padua-address-zip" placeholder="Enter zip...">
-                <input type="text" name="padua-address-country" id="padua-address-country" placeholder="Enter country...">
-            </div>
-            <label for="document-type">Document type:</label>
-            <select name="document-type">
-                <option value="ID">ID</option>
-                <option value="Passport">Passport</option>
-                <option value="Driver license">Driver license</option>
-            </select><br><br>
-            <label for="document-number">Document number:</label>
-            <input name="document-number" type="text" required><br><br>
-            <label for="document-file">Document file:</label>
-            <input name="document-file" type="text" required/><br><br>
-            <label for="diet-type">Diet type:</label>
-            <select name="diet-type">
-                <option value="No specific">No specific</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Vegan">Vegan</option>
-                <option value="Halal">Halal</option>
-                <option value="Kosher">Kosher</option>
-                <option value="Pescatarian">Pescatarian</option>
-            </select><br><br>
-            <label for="allergies">Allergies: (please use commas to separate them):</label>
-            <input name="allergies" type="text"><br><br>
-            <label for="document-bytes">Upload Document:</label>
-            <input id="document-bytes" name="document-bytes" type="file" required/><br/><br/>
         </div>
-        <button type="submit">Submit</button><br/>
-    </form>
-    <%@include file="/html/footer.html"%>
+    </div>
+</div>
+<%@include file="/html/footer.html" %>
 </body>
 </html>

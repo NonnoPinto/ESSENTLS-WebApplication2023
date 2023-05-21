@@ -56,7 +56,7 @@
 							<c:otherwise></c:otherwise>
 						</c:choose>
 						-->
-					<div id="errorMessageDiv" style="visibility: hidden;">
+					<div id="errorMessageDiv" class="hidden">
 
 					</div>
 					<!-- ---------------- SUBMIT BUTTON -------------------- -->

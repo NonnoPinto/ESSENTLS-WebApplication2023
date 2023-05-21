@@ -41,6 +41,8 @@
                             <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier >= 4}">
                                 <li><a a class="dropdown-item" href="<c:url value='/cause-create'/>">Create cause</a></li>
                                 <li><a a class="dropdown-item" href="<c:url value='/cause-search'/>">Search cause</a></li>
+                                <li><a a class="dropdown-item" href="<c:url value='/tag-search'/>">Search tag</a></li>
+                                <li><a a class="dropdown-item" href="<c:url value='/select-user-by-id'/>">Edit user (select by id)</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -70,5 +72,3 @@
         </div>
     </div>
 </nav>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

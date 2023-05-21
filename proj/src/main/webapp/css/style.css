@@ -111,6 +111,18 @@ body {
 
 /* BELOW THE OTHER CLASSES */
 
+/*UTILITIES*/
+.capital-text{
+    text-transform: capitalize;
+}
+.hidden{
+    visibility: hidden;
+}
+.event-date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*MIN WIDTH*/
 .min-width-12{
     min-width: 12rem;
@@ -193,6 +205,10 @@ button{
     animation-duration: 0.5s;
     /* only one repetition */
     animation-iteration-count: infinite;
+}
+
+.event-preview-image{
+    height: 10rem;
 }
 
 #srch{
