@@ -202,7 +202,7 @@ button{
 }
 
 #srch{
-    width: 400px;
+    width: 325px;
 }
 
 #attributes_form{
@@ -287,6 +287,22 @@ button{
 .container_event_bottom p {
     position: absolute;
     bottom: 0;
+}
+
+.break_flex {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.home_banner {
+    background-image: url('../media/home_banner.webp');
+    height: 400px;
+    text-align: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
 }
 
 @media (max-width: 991px) {
