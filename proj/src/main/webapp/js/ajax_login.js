@@ -95,6 +95,7 @@ function processResponse(xhr){
         messageDiv.appendChild(messageText);
         errorMessageDiv.appendChild(messageDiv);
         errorMessageDiv.style.visibility = 'visible';
+        errorMessageDiv.classList.remove("invisible");
         errorMessageDiv.classList.add("error-animation");
         //errorMessageDiv.effect("shake", {times:1}, 500);
         setTimeout(function(){
