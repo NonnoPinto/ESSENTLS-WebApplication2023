@@ -69,6 +69,9 @@ function processGetResponse(xhr) {
 
     const div = document.getElementById("results");
 
+    //parse the response as JSON and extract the resource-list array
+    const resourceList = JSON.parse(xhr.responseText)["resource-list"];
+
     div.replaceChildren();
 
     if (xhr.status !== 200) {
@@ -78,55 +81,73 @@ function processGetResponse(xhr) {
         return;
     }
 
-    const table = document.createElement("table");
-    div.appendChild(table);
+    if(resourceList.length > 0) {
+        div.classList.add("container");
+        div.classList.add("justify-content-center", "my-4");
+        div.classList.add("col-md-10", "col-lg-8", "col-xl-6");
+        div.classList.add("card", "text-center", "border-orange");
+        div.classList.add("table-responsive");
 
-    let e, ee, eee;
+        const table = document.createElement("table");
+        div.appendChild(table);
+
+        table.classList.add("table-responsive", "table-hover", "mh-75", "align-middle");
+
+        let e, ee, eee;
 
 
-    // table header
-    e = document.createElement("thead");
-    table.appendChild(e); // append the table header to the table
+        // table header
+        e = document.createElement("thead");
+        table.appendChild(e); // append the table header to the table
 
-    // the row in the table header
-    ee = document.createElement("tr");
-    e.appendChild(ee); // append the row to the table header
-
-    // a generic element of the table header row
-    eee = document.createElement("th");
-    eee.appendChild(document.createTextNode("Tag"));
-    ee.appendChild(eee); // append the cell to the row
-
-    eee = document.createElement("th");
-    eee.appendChild(document.createTextNode("Delete"));
-    ee.appendChild(eee); // append the cell to the row
-
-    // table body
-    e = document.createElement("tbody");
-    table.appendChild(e); // append the table body to the table
-
-    //parse the response as JSON and extract the resource-list array
-    const resourceList = JSON.parse(xhr.responseText)["resource-list"];
-
-    for (let i = 0; i < resourceList.length; ++i) {
-
-        let esntag = resourceList[i].esntag;
-
-        // the row in the table body
+        // the row in the table header
         ee = document.createElement("tr");
-        e.appendChild(ee); // append the row to the table body
+        e.appendChild(ee); // append the row to the table header
 
-        // a generic element of the table body row
-        eee = document.createElement("td");
-        eee.appendChild(document.createTextNode(esntag["name"]));
+        // a generic element of the table header row
+        eee = document.createElement("th");
+        eee.appendChild(document.createTextNode("Tag"));
+        eee.classList.add("py-3");
         ee.appendChild(eee); // append the cell to the row
 
-        eee = document.createElement("td");
-        const button = document.createElement("button");
-        button.appendChild(document.createTextNode("Delete"));
-        button.addEventListener("click", function() { deleteTag(esntag["name"]); });
-        eee.appendChild(button);
+        eee = document.createElement("th");
+        eee.appendChild(document.createTextNode("Delete"));
+        eee.classList.add("py-3", "px-4");
         ee.appendChild(eee); // append the cell to the row
+
+        // table body
+        e = document.createElement("tbody");
+        table.appendChild(e); // append the table body to the table
+
+
+        for (let i = 0; i < resourceList.length; ++i) {
+
+            let esntag = resourceList[i].esntag;
+
+            // the row in the table body
+            ee = document.createElement("tr");
+            e.appendChild(ee); // append the row to the table body
+
+            // a generic element of the table body row
+            eee = document.createElement("td");
+            eee.classList.add("px-4");
+            eee.appendChild(document.createTextNode(esntag["name"]));
+            ee.appendChild(eee); // append the cell to the row
+
+            eee = document.createElement("td");
+            eee.classList.add("p-2");
+            const button = document.createElement("button");
+            button.appendChild(document.createTextNode("Delete"));
+            button.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
+            button.addEventListener("click", function () {
+                deleteTag(esntag["name"]);
+            });
+            eee.appendChild(button);
+            ee.appendChild(eee); // append the cell to the row
+        }
+    } else{
+        div.classList.add("text-muted", "text-center");
+        div.appendChild(document.createTextNode("No Tags found for the given parameters"));
     }
 }
 

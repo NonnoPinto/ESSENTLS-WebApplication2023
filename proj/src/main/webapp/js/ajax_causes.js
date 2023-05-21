@@ -119,14 +119,14 @@ function processGetResponse(xhr) {
     if(resourceList.length > 0){
         div.classList.add("container");
         div.classList.add("justify-content-center", "my-4");
-        div.classList.add("col-md-6");
+        div.classList.add("col-md-10", "col-lg-8", "col-xl-6");
         div.classList.add("card", "text-center", "border-orange");
         div.classList.add("table-responsive");
     
         const table = document.createElement("table");
         div.appendChild(table);
     
-        table.classList.add("table", "table-hover", "mh-75", "align-middle");
+        table.classList.add("table-responsive", "table-hover", "mh-75", "align-middle");
     
         let e, ee, eee;
     
@@ -180,7 +180,7 @@ function processGetResponse(xhr) {
             ee.appendChild(eee); //append the element to the row
     
             eee = document.createElement("td");
-            eee.classList.add("px-4");
+            eee.classList.add("px-4", "min-width-12");
             const nameInput = (document.createElement("input"));
             nameInput.setAttribute("type", "text");
             nameInput.setAttribute("value", esncause["name"]);
@@ -193,6 +193,7 @@ function processGetResponse(xhr) {
             //ee.appendChild(eee); //append the element to the row
     
             eee = document.createElement("td");
+            eee.classList.add("p-2");
             const editButton = document.createElement("button");
             editButton.appendChild(document.createTextNode("Edit"));
             editButton.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
@@ -201,6 +202,7 @@ function processGetResponse(xhr) {
             ee.appendChild(eee); //append the element to the row
     
             eee = document.createElement("td");
+            eee.classList.add("p-2");
             const deleteButton = document.createElement("button");
             deleteButton.appendChild(document.createTextNode("Delete"));
             deleteButton.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");

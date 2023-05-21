@@ -122,6 +122,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+/*MIN WIDTH*/
+.min-width-12{
+    min-width: 12rem;
 }
 
 /*BUTTON*/
