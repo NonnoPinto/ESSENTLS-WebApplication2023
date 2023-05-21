@@ -25,7 +25,7 @@
 				<div class="card-img-top position-relative" id="event_header"
 					 style="background-image: url('${event.poster}');">
 					<div class="clearfix">
-						<img src="${event.thumbnail}"
+						<img src="media/${event.thumbnail}"
 							 alt="Image of the event" class="rounded float-sm-start"
 							 id="event_icon"/>
 						<div id="event_info" class="float-sm-start">
@@ -33,19 +33,19 @@
 							<br/>
 							<p>
 								<i class="bi bi-geo-alt"></i>&nbsp;
-								<span style="text-transform: capitalize">
+								<span class="capital-text">
 									${event.locationMap.street},
 								</span>
-								<span style="text-transform: capitalize">
+								<span class="capital-text">
 									${event.locationMap.number}
 								</span>
-								<span style="text-transform: capitalize">
+								<span class="capital-text">
 									${event.locationMap.zip}
 								</span>
-								<span style="text-transform: capitalize">
+								<span class="capital-text">
 									${event.locationMap.city}
 								</span>
-								<span style="text-transform: capitalize">
+								<span class="capital-text">
 									${event.locationMap.country}
 								</span>
 							</p>
