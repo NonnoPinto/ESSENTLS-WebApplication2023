@@ -196,7 +196,7 @@ button{
 }
 
 #srch{
-    width: 400px;
+    width: 350px;
 }
 
 #attributes_form{
@@ -281,6 +281,11 @@ button{
 .container_event_bottom p {
     position: absolute;
     bottom: 0;
+}
+
+.break_flex {
+    flex-basis: 100%;
+    height: 0;
 }
 
 @media (max-width: 991px) {
