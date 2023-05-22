@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class CausesFromEventDAO extends AbstractDAO<ArrayList<Cause>> {
+public class CausesFromEventDAO extends AbstractDAO<ArrayList<Integer>> {
 
     private static final String STATEMENT_CAUSE_LIST = "SELECT * FROM \"EventCauses\" LEFT JOIN \"Causes\" ON \"EventCauses\".\"causeId\" = \"Causes\".id WHERE \"EventCauses\".\"eventId\" = ?";
 
@@ -24,7 +24,7 @@ public class CausesFromEventDAO extends AbstractDAO<ArrayList<Cause>> {
         ResultSet rs = null;
 
         //the results of the search by a given eventId
-        final ArrayList<Cause> causes = new ArrayList<Cause>();
+        final ArrayList<Integer> causes = new ArrayList<Integer>();
 
         try {
             pstmt = con.prepareStatement(STATEMENT_CAUSE_LIST);
@@ -33,7 +33,7 @@ public class CausesFromEventDAO extends AbstractDAO<ArrayList<Cause>> {
             rs = pstmt.executeQuery();
 
             while (rs.next()){
-                causes.add(new Cause(rs.getInt("id"),rs.getString("name")));
+                causes.add(rs.getInt("id"));
             }
 
             LOGGER.info("%d Cause(s) successfully listed for eventId: %d.", causes.size(), eventID);
