@@ -45,7 +45,7 @@
                                         <label for="description">Description:</label>
                                     </div>
                                     <div class="row d-flex justify-content-center">
-                                        <div class="col">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <!--Price-->
                                             <div class="form-floating mb-3 pb-2">
                                                 <input class="form-control" type="number" name="price" id="price" min="0" placeholder="0" step=".01" value="${event.getPrice()}" required>
@@ -63,8 +63,8 @@
                                                     </select>
                                             </div>
                                         </div>
-                                        <div class="col"></div>
-                                        <div class="col">
+                                        <div class="col-lg-4 col-md-6 col-sm-12"></div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <!--Causes-->
                                             <div class="mb-3 pb-2">
                                                 <label for="">Which causes does the event include?</label><br>
@@ -81,19 +81,19 @@
                                     <div class="mb-3 pb-2">
                                         <label class="form-label">Where does it take place?</label>
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" value="${city}" name="city" id="city" placeholder="Enter city..." required>
                                                     <label for="city">Enter city..</label>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" value="${street}" name="street" id="street" placeholder="Enter Street..." required>
                                                     <label for="street">Enter street..</label>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" class="form-control" value="${number}" name="number" id="number" placeholder="Enter house number..." required>
                                                     <label for="street">Enter house number...</label>
@@ -105,14 +105,14 @@
                                     <div>
                                         <label class="form-label">Additional Information Required</label>
                                         <div class="row pb-2">
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--maxParticipantsInternational-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.getMaxParticipantsInternational()}" min="0" placeholder="0" required>
                                                     <label for="maxParticipantsInternational">Number of Max International participants:</label>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--MaxParticipantsVolunteer-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.getMaxParticipantsVolunteer()}" min="0" placeholder="0" required>
@@ -121,14 +121,14 @@
                                             </div>
                                         </div>
                                         <div class="row pb-2">
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--eventStart-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}" required>
                                                     <label for="eventStart">When does the event start?</label>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--eventEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}" required>
@@ -138,21 +138,21 @@
                                         </div>
 
                                         <div class="row pb-2">
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--subscriptionStart-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}" required>
                                                     <label for="subscriptionStart">When can the subscription start?</label>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--subscriptionEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}" required>
                                                     <label for="subscriptionEnd">When can the subscription end?</label>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--withdrawalEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}" required>
@@ -162,7 +162,7 @@
                                         </div>
 
                                         <div class="row pb-2">
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--maxWaitingList-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" value="${event.getMaxWaitingList()}" min="0" placeholder="0" required>
@@ -170,7 +170,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--attributes-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="text" name="attributes" id="attributes" value="${event.getAttributes_asString()}" placeholder="${event.getAttributes_asString()}" required>
@@ -179,7 +179,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--thumbnail-->
                                                 <div class="mb-3">
                                                     <label class="form-label" for="thumbnail">Thumbnail:</label>
@@ -189,7 +189,7 @@
                                                     <input type="file" class="form-control" id="thumbnail" name="thumbnail" value="${thumbnail}">
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--poster-->
                                                 <div class="mb-3">
                                                     <label class="form-label" for="poster">Poster:</label>
@@ -202,14 +202,14 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4"></div>
-                                        <div class="col">
+                                        <div class="col-lg-4 col-md-6 col-sm-12"></div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <button type="reset" class="btn btn-secondary">Reset the form</button>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-lg-4 col-md-6 col-sm-12">
                                             <button type="submit" class="btn btn-primary">Continue</button>
                                         </div>
-                                        <div class="col-4"></div>
+                                        <div class="col-lg-4 col-md-6 col-sm-12"></div>
                                     </div>
                                 </form>
                             </div>

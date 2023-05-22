@@ -30,20 +30,19 @@
                                     <img class="card-img-top event-preview-image" src="media/${event.thumbnail}" alt="Event thumbnail">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-3 event-date">
-                                                <h4 class="text-center text-capitalize">
+                                            <div class="col-3 column-content-vertical-center">
+                                                <p class="event-date text-center text-capitalize m-0 p-0">
                                                     <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
-                                                </h4>
+                                                </p>
                                             </div>
                                             <div class="col-9 event-infos">
-                                                <h4 class="event title">
+                                                <p class="event-title m-0 p-0">
                                                     ${event.name}
-                                                </h4>
-                                                <h6 class="event-price">
+                                                </p>
+                                                <p class="event-price m-0 p-0">
                                                     &euro; <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${event.price}"/>
-                                                </h6>
-                                                <h6 class="event-location">
-                                                    <p>
+                                                </p>
+                                                <p class="event-location m-0 p-0">
                                                         <i class="bi bi-geo-alt"></i>
                                                         <span class="text-capitalize">
                                                             ${event.location.getString("city")},
@@ -51,8 +50,7 @@
                                                         <span class="text-capitalize">
                                                             ${event.location.getString("country")}
                                                         </span>
-                                                    </p>
-                                                </h6>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
