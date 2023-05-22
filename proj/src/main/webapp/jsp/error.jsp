@@ -23,9 +23,8 @@
     <div class="m-4">
         <div class="alert alert-danger d-flex align-items-center text-center" role="alert">
             <div>
-                <p><i class="bi bi-exclamation-triangle-fill color-magenta"></i>Sorry, something went wrong.</p>
+                <p><i class="bi bi-exclamation-triangle-fill color-magenta"></i>Sorry, something went wrong. <i class="bi bi-emoji-frown-fill"></i></p>
             </div>
-            <i class="bi bi-emoji-frown-fill d-flex align-items-center text-center"></i>
         </div>
     </div>
 </div>
