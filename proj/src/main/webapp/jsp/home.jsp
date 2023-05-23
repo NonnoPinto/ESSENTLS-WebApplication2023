@@ -87,8 +87,18 @@
                             <div class="container d-flex zindex-modal">          
                                 <div class="row align-self-center w-100">
                                     <div class="col-lg-7 col-12">
-                                        <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b> · 
-                                            <i class="bi bi-geo-alt ms-2"></i>&nbsp;
+                                        <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b> 
+                                            <span class="capital-text d-none d-lg-inline-block">
+                                                · <i class="bi bi-geo-alt ms-2"></i>&nbsp;
+                                                ${event.locationMap.street},
+                                                ${event.locationMap.number}
+                                                ${event.locationMap.zip}
+                                                ${event.locationMap.city}
+                                                ${event.locationMap.country}
+                                            </span>
+                                        </p>
+                                        <p class="mb-2 d-block d-lg-none fs-7">
+                                            <i class="bi bi-geo-alt"></i>&nbsp;
                                             <span class="capital-text">
                                                 ${event.locationMap.street},
                                             </span>
@@ -105,15 +115,16 @@
                                                 ${event.locationMap.country}
                                             </span>
                                         </p>
-                                        <p class="mb-2 d-block d-lg-none">Event date: 
-                                            <fmt:formatDate pattern="MMM dd, yyyy · HH:mm" value="${event.eventStart}"/>
+                                        <p class="mb-2 d-block d-lg-none fs-7">
+                                            <i class="bi bi-calendar-event"></i>&nbsp;
+                                            <fmt:formatDate pattern="dd/MMM/yy · HH:mm" value="${event.eventStart}"/>
                                             <span>-</span>
                                             <c:choose>
                                                 <c:when test="${dateStart eq dateEnd}">
                                                     <fmt:formatDate pattern="HH:mm" value="${event.eventEnd}"/>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <fmt:formatDate pattern="MMM dd · HH:mm" value="${event.eventEnd}"/>
+                                                    <fmt:formatDate pattern="dd/MMM · HH:mm" value="${event.eventEnd}"/>
                                                 </c:otherwise>
                                             </c:choose>
                                         </p>
@@ -122,15 +133,16 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-5 text-end d-none d-lg-block">
-                                        <p class="mb-2 d-none d-lg-block">Event date: 
-                                            <fmt:formatDate pattern="MMM dd, yyyy · HH:mm" value="${event.eventStart}"/>
+                                        <p class="mb-2 d-none d-lg-block">
+                                            <i class="bi bi-calendar-event"></i>&nbsp;
+                                            <fmt:formatDate pattern="dd/MMM/yy · HH:mm" value="${event.eventStart}"/>
                                             <span>-</span>
                                             <c:choose>
                                                 <c:when test="${dateStart eq dateEnd}">
                                                     <fmt:formatDate pattern="HH:mm" value="${event.eventEnd}"/>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <fmt:formatDate pattern="MMM dd · HH:mm" value="${event.eventEnd}"/>
+                                                    <fmt:formatDate pattern="dd/MMM · HH:mm" value="${event.eventEnd}"/>
                                                 </c:otherwise>
                                             </c:choose>
                                         </p>
