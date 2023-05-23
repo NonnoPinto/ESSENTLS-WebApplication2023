@@ -17,7 +17,7 @@
 
         <div class="container">
         <div class="row justify-content-center my-4">
-            <div class="col-md-8">
+            <div class="col-xxl-10 col-12">
                 <div class="card text-center border-cyan">
                     <c:choose>
                         <c:when test="${event == null}">
@@ -45,8 +45,8 @@
                                         <textarea class="form-control" id="description" type="text" name="description" id="description" value="${event.getDescription()}" placeholder="Description: " rows="3"></textarea>
                                         <label for="description">Description:</label>
                                     </div>
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="row d-flex justify-content-around mb-4 align-items-center">
+                                        <div class="col-lg-5 col-md-6 col-sm-12">
                                             <!--Price-->
                                             <div class="form-floating mb-3 pb-2">
                                                 <input class="form-control" type="number" name="price" id="price" min="0" placeholder="0" step=".01" value="${event.getPrice()}" required>
@@ -54,25 +54,33 @@
                                             </div>
                                             <!--Visibility-->
                                             <div class="form-floating mb-3 pb-2">
-                                                <label for="">To whom do you want to make it visible?</label>
-                                                    <select class="form-select" name="visibility" id="visibility" required>
-                                                      <option value=${event.getVisibility()} selected disabled hidden>Tier ${event.getVisibility()} Users</option>
-                                                      <option value="0">Tier 0 Users</option>
-                                                      <option value="1">Tier 1 Users</option>
-                                                      <option value="2">Tier 2 Users</option>
-                                                      <option value="3">Tier 3 Users</option>
-                                                    </select>
+                                                <select class="form-select" name="visibility" id="visibility" required>
+                                                  <option value="${event.getVisibility()}" selected disabled hidden>Tier ${event.getVisibility()} Users</option>
+                                                  <option value="0">Tier 0 Users</option>
+                                                  <option value="1">Tier 1 Users</option>
+                                                  <option value="2">Tier 2 Users</option>
+                                                  <option value="3">Tier 3 Users</option>
+                                                </select>
+                                                <label for="visibility">To whom do you want to make it visible?</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12"></div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="col-lg-5 col-md-6 col-sm-12">
                                             <!--Causes-->
                                             <div class="mb-3 pb-2">
                                                 <label for="">Which causes does the event include?</label><br>
                                                 <div class="form-check">
                                                     <c:forEach items="${causes}" var="cause">
-                                                        <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
-                                                        <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
+                                                        <c:set var="elementCause" scope="session" value="${cause.id}"/>
+                                                        <c:choose>
+                                                            <c:when test="${listCauses.contains(elementCause)}">
+                                                                <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}" checked>
+                                                                <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
+                                                                <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                     </c:forEach>
                                                 </div>
                                             </div>
@@ -80,7 +88,7 @@
                                     </div>
                                     <!--Location-->
                                     <div class="mb-3 pb-2">
-                                        <label class="form-label">Where does it take place?</label>
+                                        <label class="form-label mb-4">Where does it take place?</label>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
@@ -104,16 +112,16 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <label class="form-label">Additional Information Required</label>
-                                        <div class="row pb-2">
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <label class="form-label mb-4">Additional Information Required</label>
+                                        <div class="row d-flex justify-content-around mb-4">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--maxParticipantsInternational-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.getMaxParticipantsInternational()}" min="0" placeholder="0" required>
                                                     <label for="maxParticipantsInternational">Number of Max International participants:</label>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--MaxParticipantsVolunteer-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.getMaxParticipantsVolunteer()}" min="0" placeholder="0" required>
@@ -121,15 +129,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row pb-2">
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="row d-flex justify-content-around mb-4">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--eventStart-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}" required>
                                                     <label for="eventStart">When does the event start?</label>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--eventEnd-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}" required>
@@ -162,8 +170,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="row pb-2">
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="row d-flex justify-content-around mb-4">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--maxWaitingList-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" value="${event.getMaxWaitingList()}" min="0" placeholder="0" required>
@@ -171,7 +179,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--attributes-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="text" name="attributes" id="attributes" value="${event.getAttributes_asString()}" placeholder="${event.getAttributes_asString()}" required>
@@ -179,8 +187,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--thumbnail-->
                                                 <div class="mb-3">
                                                     <label class="form-label" for="thumbnail">Thumbnail:</label>
@@ -190,7 +198,7 @@
                                                     <input type="file" class="form-control" id="thumbnail" name="thumbnail" value="${thumbnail}">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--poster-->
                                                 <div class="mb-3">
                                                     <label class="form-label" for="poster">Poster:</label>
@@ -202,15 +210,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-12"></div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
                                             <button type="reset" class="btn btn-secondary">Reset the form</button>
                                         </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
                                             <button type="submit" class="btn btn-primary">Continue</button>
                                         </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12"></div>
                                     </div>
                                 </form>
                             </div>

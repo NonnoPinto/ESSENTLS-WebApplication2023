@@ -82,12 +82,24 @@
 
 
                     <c:forEach items="${events}" var="event" varStatus="loop">
+                        <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventStart}" var="dateStart"/>
+                        <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventEnd}" var="dateEnd"/>
                         <div class="border border-orange px-5 my-3 container_event" onclick="window.location='./eventdetail?id=${event.id}';">
                             <div class="container d-flex zindex-modal">          
                                 <div class="row align-self-center w-100">
-                                    <div class="col-lg-8 col-12">
-                                        <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b> · 
-                                            <i class="bi bi-geo-alt ms-2"></i>&nbsp;
+                                    <div class="col-lg-7 col-12">
+                                        <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b> 
+                                            <span class="capital-text d-none d-lg-inline-block">
+                                                · <i class="bi bi-geo-alt ms-2"></i>&nbsp;
+                                                ${event.locationMap.street},
+                                                ${event.locationMap.number}
+                                                ${event.locationMap.zip}
+                                                ${event.locationMap.city}
+                                                ${event.locationMap.country}
+                                            </span>
+                                        </p>
+                                        <p class="mb-2 d-block d-lg-none fs-7">
+                                            <i class="bi bi-geo-alt"></i>&nbsp;
                                             <span class="capital-text">
                                                 ${event.locationMap.street},
                                             </span>
@@ -104,13 +116,39 @@
                                                 ${event.locationMap.country}
                                             </span>
                                         </p>
-                                        <p class="card-text text-secondary">
+                                        <p class="mb-2 d-block d-lg-none fs-7">
+                                            <i class="bi bi-calendar-event"></i>&nbsp;
+                                            <fmt:formatDate pattern="dd/MMM/yy · HH:mm" value="${event.eventStart}"/>
+                                            <span>-</span>
+                                            <c:choose>
+                                                <c:when test="${dateStart eq dateEnd}">
+                                                    <fmt:formatDate pattern="HH:mm" value="${event.eventEnd}"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <fmt:formatDate pattern="dd/MMM · HH:mm" value="${event.eventEnd}"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </p>
+                                        <p class="card-text text-secondary mb-2">
                                             ${event.description}
                                         </p>
                                     </div>
-                                    <div class="col-lg-4 text-end d-none d-lg-block">
-                                        <p class="my-3">End subscription: <fmt:formatDate pattern="MMM dd · HH:mm" value="${event.subscriptionEnd}"/></p>
-                                        <p class="my-3">Price: &euro; <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${event.price}"/></p>
+                                    <div class="col-lg-5 text-end d-none d-lg-block">
+                                        <p class="mb-2 d-none d-lg-block">
+                                            <i class="bi bi-calendar-event"></i>&nbsp;
+                                            <fmt:formatDate pattern="dd/MMM/yy · HH:mm" value="${event.eventStart}"/>
+                                            <span>-</span>
+                                            <c:choose>
+                                                <c:when test="${dateStart eq dateEnd}">
+                                                    <fmt:formatDate pattern="HH:mm" value="${event.eventEnd}"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <fmt:formatDate pattern="dd/MMM · HH:mm" value="${event.eventEnd}"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </p>
+                                        <p class="my-2">End subscription: <fmt:formatDate pattern="MMM dd · HH:mm" value="${event.subscriptionEnd}"/></p>
+                                        <p class="my-2">Price: &euro; <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${event.price}"/></p>
                                     </div>
                                 </div>
                             </div>
