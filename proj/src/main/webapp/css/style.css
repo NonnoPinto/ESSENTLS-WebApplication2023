@@ -119,6 +119,9 @@ body {
     align-items: center;
 }
 
+.fs-7 {
+    font-size: .85rem !important;
+}
 
 /* BELOW THE OTHER CLASSES */
 
@@ -259,6 +262,7 @@ button{
     text-align: center;
 }
 
+/*HOME*/
 .container_event {
     position: relative;
     min-height: 9em;
