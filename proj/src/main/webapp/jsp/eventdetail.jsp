@@ -25,9 +25,20 @@
 				<div class="card-img-top position-relative" id="event_header"
 					 style="background-image: url('${event.poster}');">
 					<div class="clearfix">
-						<img src="${event.poster}"
-							 alt="Image of the event" class="rounded float-sm-start"
-							 id="event_icon"/>
+					    <c:choose>
+
+                           <c:when test= "${event.poster == null}">
+                              <img src="media/default_thumbnail.png"
+                                 alt="Image of the event" class="rounded float-sm-start"
+                                 id="event_icon"/>
+                           </c:when>
+
+                           <c:otherwise>
+                              <img src="${event.poster}"
+                               alt="Image of the event" class="rounded float-sm-start"
+                               id="event_icon"/>
+                           </c:otherwise>
+                        </c:choose>
 						<div id="event_info" class="float-sm-start">
 							<h2>${event.name}</h2>
 							<br/>
