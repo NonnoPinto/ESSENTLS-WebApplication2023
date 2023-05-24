@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Membership</title>
-<%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/favicon.html"%>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
