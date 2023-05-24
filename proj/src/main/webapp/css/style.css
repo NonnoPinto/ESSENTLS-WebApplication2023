@@ -313,6 +313,11 @@ button{
     margin-bottom: 3rem;
 }
 
+.home_card {
+    cursor: pointer;
+    width: 250px;
+}
+
 @media (max-width: 991px) {
     #event_card #event_header #event_icon {
         height: 150pt;
