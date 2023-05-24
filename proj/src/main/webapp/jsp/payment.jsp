@@ -13,6 +13,7 @@
 	<meta name="description" content="ESN Padova application">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Payments</title>
+<%@ include file="../html/favicon.html"%>
 </head>
 <body>
 <%@include file="navbar.jsp" %>

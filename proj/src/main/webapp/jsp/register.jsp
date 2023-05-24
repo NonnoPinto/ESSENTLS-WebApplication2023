@@ -9,6 +9,7 @@
     <%-- @ include file="/html/cdn.html"--%>
     <meta charset="utf-8">
     <title>Register</title>
+<%@ include file="../html/favicon.html"%>
 </head>
 <body>
     <%@include file="navbar.jsp"%>

@@ -17,6 +17,7 @@
     <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Edit</title>
+<%@ include file="../html/favicon.html"%>
 </head>
 
 <body>

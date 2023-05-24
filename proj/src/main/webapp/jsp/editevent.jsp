@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Edit Event</title>
+<%@ include file="../html/favicon.html"%>
     </head>
 
     <body>
@@ -213,7 +214,7 @@
                                         <div class="col-lg-2 col-md-6 col-sm-12">
                                             <button type="reset" class="btn btn-secondary">Reset the form</button>
                                         </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
                                             <button type="submit" class="btn btn-primary">Continue</button>
                                         </div>
                                     </div>

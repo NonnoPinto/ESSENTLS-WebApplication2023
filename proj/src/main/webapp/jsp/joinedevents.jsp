@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Event List</title>
+<%@ include file="../html/favicon.html"%>
     </head>
     <body>
         <%@include file="navbar.jsp"%>
