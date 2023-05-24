@@ -43,9 +43,12 @@
             </div>
 
             <!--SUBMIT BUTTON-->
-          <div>
-            <button type="submit" id="ajaxButton" class="button bg-orange text-white border-orange px-4 py-2">Search</button>
-          </div>
+            <div class="my-2">
+              <button type="submit" id="ajaxButton" class="button bg-orange text-white border-orange px-4 py-2">Search</button>
+            </div>
+            <div class="my-2">
+              <button type="submit" id="ajaxButtonAll" class="button bg-orange text-white border-orange px-4 py-2">Show all Causes</button>
+            </div>
         </div>
         </div>
       </div>

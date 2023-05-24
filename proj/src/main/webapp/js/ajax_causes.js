@@ -2,9 +2,26 @@ document.getElementById("ajaxButton")
     .addEventListener("click", searchCause);
 console.log("Event listener added to ajaxButton.")
 
+document.getElementById("ajaxButtonAll")
+    .addEventListener("click", searchCauseAll);
+console.log("Event listener added to ajaxButton.")
+
+var searchAll = new Boolean(false);
+
+function searchCauseAll(){
+    searchAll = true;
+    searchCause();
+    searchAll = false;
+}
+
 function searchCause() {
-    const id = document.getElementById("causeId").value;
-    const subCause = document.getElementById("subCause").value;
+    var id = document.getElementById("causeId").value;
+    var subCause = document.getElementById("subCause").value;
+
+    if (searchAll){
+        id = "";
+        subCause = "";
+    }
 
     url = "/proj-1.0/rest/causes/";
 
