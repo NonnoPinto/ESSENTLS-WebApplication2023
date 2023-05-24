@@ -3,7 +3,7 @@
 
 <%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="description" content="ESN Padova application">
     
