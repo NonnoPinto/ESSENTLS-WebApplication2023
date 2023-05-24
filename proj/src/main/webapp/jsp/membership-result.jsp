@@ -85,6 +85,6 @@
         </div>
     </div>
 </div>
-<%@include file="/html/footer.html" %>
+<%@include file="/html/footer.html"%>
 </body>
 </html>
