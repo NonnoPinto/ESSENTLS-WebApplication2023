@@ -6,7 +6,8 @@ document.getElementById("ajaxButtonAll")
     .addEventListener("click", searchCauseAll);
 console.log("Event listener added to ajaxButton.")
 
-var searchAll = new Boolean(false);
+var searchAll = false;
+console.log(searchAll);
 
 function searchCauseAll(){
     searchAll = true;
