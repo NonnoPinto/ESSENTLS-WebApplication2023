@@ -2,8 +2,24 @@ document.getElementById("ajaxButton")
     .addEventListener("click", searchTag);
 console.log("Event listener added to ajaxButton.")
 
+document.getElementById("ajaxButtonAll")
+    .addEventListener("click", searchTagAll);
+console.log("Event listener added to ajaxButton.")
+
+var searchAll = new Boolean(false);
+
+function searchTagAll(){
+    searchAll = true;
+    searchTag();
+    searchAll = false;
+}
+
 function searchTag() {
-    const subTag = document.getElementById("subTag").value;
+    var subTag = document.getElementById("subTag").value;
+
+    if (searchAll){
+        subTag = "";
+    }
 
     console.log("subTag: " + subTag);
 
