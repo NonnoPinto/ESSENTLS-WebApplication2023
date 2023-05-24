@@ -81,6 +81,16 @@
                                     </div>
                                 </div>
                             </form>
+                            <div style="border-top: solid 1px black;" class="py-4">
+                                <form method="POST" action="<c:url value="/search-users"/>">
+                                    <input name="userId" type="hidden" value=""/>
+                                    <input name="userName" type="hidden" value=""/>
+                                    <input name="userSurname" type="hidden" value=""/>
+                                    <input name="userCardId" type="hidden" value=""/>
+                                    <input name="userEmail" type="hidden" value=""/>
+                                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Show all users</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
