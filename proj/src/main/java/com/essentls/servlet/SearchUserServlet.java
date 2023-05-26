@@ -103,7 +103,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
             }
 
             if(!(req.getParameter("userSurname").equals(""))){
-                surname=req.getParameter("useSurname");
+                surname=req.getParameter("userSurname");
             }
 
             if(!(req.getParameter("userCardId").equals(""))){

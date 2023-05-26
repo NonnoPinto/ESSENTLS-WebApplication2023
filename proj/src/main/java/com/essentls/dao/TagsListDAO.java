@@ -20,7 +20,7 @@ public class TagsListDAO extends AbstractDAO<List<Tag>> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\" WHERE name ILIKE ?;";
+    private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\" WHERE REPLACE(name, \' \', \'\') ILIKE ?;";
 
     /**
      * The name of the tag to be listed
@@ -41,24 +41,27 @@ public class TagsListDAO extends AbstractDAO<List<Tag>> {
 
     @Override
     protected void doAccess() throws Exception {
-        
+
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         //the results of the set
         final List<Tag> tags = new ArrayList<Tag>();
 
+        //remove spaces (for searching in DB)
+        String subTagNoSpace = subTag.replaceAll("%20","");
+
         try {
             pstmt = con.prepareStatement(STATEMENT_TAG_LIST);
-            pstmt.setString(1, "%" + subTag + "%");
-        
+            pstmt.setString(1, "%" + subTagNoSpace + "%");
+
             rs = pstmt.executeQuery();
 
             while (rs.next())
                 tags.add(new Tag(rs.getString("name")));
-        
+
             LOGGER.info("%d Tag(s) successfully listed.", tags.size());
-            
+
         } finally {
             if (rs != null) {
                 rs.close();
