@@ -22,7 +22,7 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
      * The SQL statement to be executed
      */
     private static final String STATEMENT_CAUSE_LIST = "SELECT * from public.\"Causes\"" +
-                                                        " WHERE name LIKE ?" +
+                                                        " WHERE name ILIKE ?" +
                                                         " AND (? = -1 OR id = ?);";
 
     /**
