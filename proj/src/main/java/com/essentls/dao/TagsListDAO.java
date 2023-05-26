@@ -20,7 +20,7 @@ public class TagsListDAO extends AbstractDAO<List<Tag>> {
     /**
      * The SQL statement to be executed
      */
-    private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\" WHERE name LIKE ?;";
+    private static final String STATEMENT_TAG_LIST = "SELECT * from public.\"Tags\" WHERE name ILIKE ?;";
 
     /**
      * The name of the tag to be listed
