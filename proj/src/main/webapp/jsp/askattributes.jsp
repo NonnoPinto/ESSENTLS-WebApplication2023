@@ -35,7 +35,7 @@
                             <form action="<c:url value="/confirmEvent"/>" id="createEventForm" method="POST">
                                 <c:forEach items="${attributes}" var="att">
                                     <label for="${fn:replace(att.key,' ','')}" class="form-label">${att.key}</label>
-                                    <input type="text" id="${fn:replace(att.key,' ','')}" class="form-control" name="att_${fn:replace(att.key,' ','')}" value="${att.value}"><br/>
+                                    <input type="text" id="${fn:replace(att.key,' ','')}" class="form-control" name="att_${fn:replace(att.key,' ','')}" value="${att.value}" maxlength="255"><br/>
                                 </c:forEach>
                                 <input type="hidden" name="eventId" value="${event.id}">
                                 <input type="submit" name="submitAttr" class="btn btn-primary" value="Send">

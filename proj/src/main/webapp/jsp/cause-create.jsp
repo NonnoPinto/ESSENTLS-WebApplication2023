@@ -28,7 +28,7 @@
 								<label for="causeName" class="mb-2 text-left">Insert Cause Name</label>
 							</div>
 							<div class="input-container">
-								<input class="form-control" type="text" name="causeName" id="causeName" placeholder="Cause name.." required>
+								<input class="form-control" type="text" name="causeName" id="causeName" placeholder="Cause name.." maxlength="255" required>
 							</div>
 						</div>
 

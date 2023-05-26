@@ -34,7 +34,7 @@
                             <label for="subTag" class="mb-2 text-left">Insert (part of) Tag, empty for all tags</label>
                         </div>
                         <div class="input-container">
-                            <input class="form-control" type="text" name="subTag" id="subTag" placeholder="Sub-Tag..." required>
+                            <input class="form-control" maxlength="255" type="text" name="subTag" id="subTag" placeholder="Sub-Tag..." required>
                         </div>
                     </div>
 

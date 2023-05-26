@@ -41,7 +41,7 @@
                                         <label label for="email" class="mb-2 text-left">Insert your Email</label>
                                     </div>
                                     <div class="input-container">
-                                        <input name="email" id="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="email" class="form-control" placeholder="Email.." required/>
+                                        <input name="email" id="email" maxlength="254" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" type="email" class="form-control" placeholder="Email.." required/>
                                         <span id="infoEmail"></span>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         <label for="password" class="mb-2 text-left">Insert your Password</label>
                                     </div>
                                     <div class="input-container">
-                                        <input class="form-control" type="password" name="password" id="password" placeholder="Password.." required>
+                                        <input class="form-control" maxlength="255" type="password" name="password" id="password" placeholder="Password.." required>
                                         <i class="togglePassword far fa-eye" id="togglePassword"></i>
                                         <span id="infoPassword"></span>
                                     </div>
@@ -64,7 +64,7 @@
                                         <label for="rpassword" class="mb-2 text-left">Repeat Password</label>
                                     </div>
                                     <div class="input-container">
-                                        <input class="form-control" type="password" name="rpassword" id="rpassword" placeholder="Password.." required>
+                                        <input class="form-control" maxlength="255" type="password" name="rpassword" id="rpassword" placeholder="Password.." required>
                                         <i class="togglePassword far fa-eye" id="toggleRPassword"></i>
                                         <span id="infoRPassword"></span>
                                     </div>

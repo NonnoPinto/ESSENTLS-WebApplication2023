@@ -28,7 +28,7 @@
                 <label for="causeId" class="mb-2 text-left">Insert ID</label>
               </div>
               <div class="input-container">
-                <input class="form-control" type="text" name="causeId" id="causeId" placeholder="ID.." required>
+                <input class="form-control" type="text" name="causeId" id="causeId" placeholder="ID.." maxlength="255" required>
               </div>
             </div>
 
@@ -38,7 +38,7 @@
                 <label for="subCause" class="mb-2 text-left">Insert (part of) Cause, empty for all causes</label>
               </div>
               <div class="input-container">
-                <input class="form-control" type="text" name="subCause" id="subCause" placeholder="Sub-Cause.." required>
+                <input class="form-control" type="text" name="subCause" id="subCause" placeholder="Sub-Cause.." maxlength="255" required>
               </div>
             </div>
 
