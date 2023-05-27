@@ -2,7 +2,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.Arrays" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,6 +10,7 @@
         <meta charset="ISO-8859-1">
         <title>Edit Profile</title>
         <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
     <body>
     <%@include file="navbar.jsp"%>
