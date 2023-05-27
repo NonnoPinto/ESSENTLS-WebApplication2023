@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +11,7 @@
     <title>Create Event</title>
     <%@ include file="../html/favicon.html"%>
     <script type="text/javascript" src="<c:url value="/js/validate_dates.js"/>"></script>
+    <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>
