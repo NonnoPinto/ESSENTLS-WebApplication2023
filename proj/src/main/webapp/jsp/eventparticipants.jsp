@@ -26,7 +26,7 @@
             <div class="row justify-content-center my-4">
                 <p><strong>Participants:</strong></p>
                 <div class="col">
-                    <div class="card text-center border-orange">
+                    <div class="card text-center border-cyan">
                         <div class="table-responsive">
                             <table class="table table-hover mh-75 align-middle">
                                 <thead>

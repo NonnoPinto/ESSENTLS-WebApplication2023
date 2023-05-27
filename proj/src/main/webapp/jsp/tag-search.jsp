@@ -24,8 +24,8 @@
 <div class="container">
     <div class="row justify-content-center my-4">
         <div class="col-md-10 col-lg-8 col-xl-6">
-            <div class="card text-center border-orange">
-                <h2 class="card-title bg-orange color-white p-4">Search Tag</h2>
+            <div class="card text-center border-cyan">
+                <h2 class="card-title bg-cyan color-white p-4">Search Tag</h2>
                 <div class="card-body">
 
                     <!--Part of-->
@@ -40,10 +40,10 @@
 
                     <!--SUBMIT BUTTON-->
                     <div class="my-2">
-                        <button type="submit" id="ajaxButton" class="button bg-orange text-white border-orange px-4 py-2">Search</button>
+                        <button type="submit" id="ajaxButton" class="button bg-cyan text-white border-cyan px-4 py-2">Search</button>
                     </div>
                     <div class="my-2">
-                        <button type="submit" id="ajaxButtonAll" class="button bg-orange text-white border-orange px-4 py-2">Show all Tags</button>
+                        <button type="submit" id="ajaxButtonAll" class="button bg-white border-cyan color-cyan px-4 py-2">Show all Tags</button>
                     </div>
 
                 </div>

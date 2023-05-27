@@ -17,8 +17,8 @@
     <div class="container">
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
-                <div class="card text-center border-cyan">
-                    <h2 class="card-title bg-cyan color-white p-4">Register</h2>
+                <div class="card text-center border-orange">
+                    <h2 class="card-title bg-orange color-white p-4">Register</h2>
                 
                     <div class="card-body">
                     
@@ -72,8 +72,13 @@
 
                                 <!--SUBMIT BUTTON-->
                                 <div>
-                                    <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Submit</button>
+                                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
                                 </div>
+                                <p class="card-text p-2">
+                                    <small class="form-text text-muted">
+                                        Already have an account? <a href="<c:url value="/login"/>" >Login</a>
+                                    </small>
+                                </p>
                             </div>
                         </form>
                     </div>

@@ -18,8 +18,8 @@
   <div class="container">
     <div class="row justify-content-center my-4">
       <div class="col-md-10 col-lg-8 col-xl-6">
-        <div class="card text-center border-orange">
-          <h2 class="card-title bg-orange color-white p-4">Search Cause</h2>
+        <div class="card text-center border-green">
+          <h2 class="card-title bg-green color-white p-4">Search Cause</h2>
           <div class="card-body">
 
             <!--ID-->
@@ -44,10 +44,10 @@
 
             <!--SUBMIT BUTTON-->
             <div class="my-2">
-              <button type="submit" id="ajaxButton" class="button bg-orange text-white border-orange px-4 py-2">Search</button>
+              <button type="submit" id="ajaxButton" class="button bg-green text-white border-green px-4 py-2">Search</button>
             </div>
             <div class="my-2">
-              <button type="submit" id="ajaxButtonAll" class="button bg-orange text-white border-orange px-4 py-2">Show all Causes</button>
+              <button type="submit" id="ajaxButtonAll" class="button bg-white border-green color-green px-4 py-2">Show all Causes</button>
             </div>
         </div>
         </div>

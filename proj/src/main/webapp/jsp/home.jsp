@@ -205,8 +205,8 @@
                                 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 1}">
                                     <c:forEach items="${isOrganizer}" var="org" varStatus="loop">
                                         <c:if test="${org.key==event.id && org.value}">
-                                            <a href="eventparticipants?id=${event.id}"><button>(Organizer) Participants List</button></a>
-                                            <a href="editEvent?id=${event.id}"><button>(Organizer) Edit</button></a>
+                                            <a href="eventparticipants?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-3 py-1">(Organizer) Participants List</button></a>
+                                            <a href="editEvent?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-3 py-1">(Organizer) Edit</button></a>
                                         </c:if>
                                     </c:forEach>
                                 </c:if>

@@ -77,7 +77,7 @@
                                         <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
                                     </div>
                                     <div>
-                                        <button type="reset" class="button bg-orange text-white border-orange px-4 py-2">Reset the form</button>
+                                        <button type="reset" class="button bg-white color-orange border-orange px-4 py-2">Reset the form</button>
                                     </div>
                                 </div>
                             </form>
@@ -88,7 +88,7 @@
                                     <input name="userSurname" type="hidden" value=""/>
                                     <input name="userCardId" type="hidden" value=""/>
                                     <input name="userEmail" type="hidden" value=""/>
-                                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Show all users</button>
+                                    <input type="submit" class="bg-white color-orange border-0 px-4 py-2" value="Show all users"></input>
                                 </form>
                             </div>
                         </div>

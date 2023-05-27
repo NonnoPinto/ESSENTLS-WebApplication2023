@@ -27,8 +27,8 @@
 
         <div class="row justify-content-center my-4">
             <div class="col-xxl-10 col-12">
-                <div class="card text-center border-cyan">
-                    <div class="bg-cyan text-white">
+                <div class="card text-center border-magenta">
+                    <div class="bg-magenta text-white">
                         <h1 class="page-title p-2">Create Event</h1>
                     </div>
                     <div class="form my-4 card-body">
@@ -198,10 +198,10 @@
 
                                     <div class="row justify-content-center">
                                         <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <button type="reset" class="btn btn-secondary">Reset the form</button>
+                                            <button type="reset" class="button color-magenta bg-white border-magenta px-3 py-2">Reset the form</button>
                                         </div>
                                         <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <button type="submit" class="btn btn-primary">Continue</button>
+                                            <button type="submit" class="button bg-magenta text-white border-magenta px-3 py-2">Continue</button>
                                         </div>
                                     </div>
                                 </form>

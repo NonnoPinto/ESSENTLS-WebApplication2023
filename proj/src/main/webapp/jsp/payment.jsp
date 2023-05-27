@@ -43,17 +43,17 @@
 								<p>
 									You are paying: &euro; ${event.price}.
 									Choose a payment method:
-									<a class="btn btn-secondary" href="add_payment?action=${action}&id=${event.id}">
+									<button class="button border-cyan bg-white color-cyan px-3 py-1" onclick="window.location.href='add_payment?action=${action}&id=${event.id}'">
 										I've payed
-									</a>
+									</button>
 								</p>
 							</c:when>
 							<c:when test="${action.equals(\"sub\")}">
 								<p>
 									You are paying: &euro; ${subPrice}
-									<a class="btn" href="add_payment?action=${action}">
+									<button class="button bg-orange text-white border-orange px-3 py-1" onclick="window.location.href='add_payment?action=${action}'">
 										Payed
-									</a>
+									</button>
 								</p>
 							</c:when>
 							<c:otherwise>

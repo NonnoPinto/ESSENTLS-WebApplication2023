@@ -98,10 +98,10 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
-												<a class="btn bg-orange text-white border-orange px-4 py-2 w-100"
-												   href="payment?action=event&id=${event.id}">
+												<button class="btn bg-orange text-white border-orange px-4 py-2 w-100"
+												   onclick="window.location.href='payment?action=event&id=${event.id}'">
 													JOIN
-												</a>
+												</button>
 											</c:when>
 											<c:otherwise>
 												Sorry, the event is full.

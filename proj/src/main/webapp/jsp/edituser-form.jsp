@@ -319,7 +319,7 @@
                                                 <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
                                             </div>
                                             <div>
-                                                <button type="reset" class="button bg-orange text-white border-orange px-4 py-2">Reset the form</button>
+                                                <button type="reset" class="button bg-white color-orange border-orange px-4 py-2">Reset the form</button>
                                             </div>
                                         </div>
                                     </form>

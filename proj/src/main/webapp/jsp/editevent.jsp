@@ -213,10 +213,10 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <button type="reset" class="btn btn-secondary">Reset the form</button>
+                                            <button type="reset" class="button bg-white color-cyan border-cyan px-3 py-1">Reset the form</button>
                                         </div>
                                         <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <button type="submit" class="btn btn-primary">Continue</button>
+                                            <button type="submit" class="button bg-cyan text-white border-cyan px-3 py-1">Continue</button>
                                         </div>
                                     </div>
                                 </form>

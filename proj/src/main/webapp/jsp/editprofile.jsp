@@ -17,8 +17,8 @@
         <div class="container">
             <div class="row justify-content-center my-4">
                 <div class="col-md-10">
-                    <div class="card text-center border-orange">
-                        <h2 class="card-title bg-orange color-white p-4">Edit Profile</h2>
+                    <div class="card text-center border-magenta">
+                        <h2 class="card-title bg-magenta color-white p-4">Edit Profile</h2>
                         <div class="card-body">
                             <c:choose>
                                 <c:when test="${user == null}">
@@ -206,7 +206,7 @@
                                             <%--Button--%>
                                         <div class="row d-flex my-4">
                                             <div>
-                                                <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+                                                <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
                                             </div>
                                         </div>
                                     </form>

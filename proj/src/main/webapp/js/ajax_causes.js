@@ -236,7 +236,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const deleteButton = document.createElement("button");
             deleteButton.appendChild(document.createTextNode("Delete"));
-            deleteButton.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
+            deleteButton.classList.add("button", "bg-white", "color-orange", "border-orange", "px-4", "py-2");
             deleteButton.addEventListener("click", function() {deleteCause(esncause["id"]); });
             eee.appendChild(deleteButton);
             ee.appendChild(eee); //append the element to the row
