@@ -1,9 +1,4 @@
-<head>
-    <meta name="description" content="ESN Padova application">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%@ include file="../html/cdn.html" %>
-</head>
+
 <div class="d-block p-2 skippy"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">

@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,6 @@
     <meta charset="ISO-8859-1">
     <title>Select User by ID</title>
     <%@ include file="../html/favicon.html"%>
-    <%@ include file="../html/cdn.html" %>
 </head>
 
 <body>

@@ -10,6 +10,7 @@
 <%@ page import="java.util.Arrays" %>
 
 
+<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Edit</title>
     <%@ include file="../html/favicon.html"%>
-    <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>
