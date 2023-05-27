@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +9,7 @@
   <meta charset="ISO-8859-1">
   <title>Cause Create</title>
   <%@ include file="../html/favicon.html"%>
+  <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>

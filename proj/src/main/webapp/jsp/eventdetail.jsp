@@ -5,8 +5,6 @@
 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventEnd}" var="dateEnd"/>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-
-<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="ISO-8859-1">
 	<title>Event detail</title>
+	<%@ include file="../html/cdn.html" %>
     <%@ include file="../html/favicon.html"%>
 </head>
 <body>

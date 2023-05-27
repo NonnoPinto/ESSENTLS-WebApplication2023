@@ -2,7 +2,6 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
     <meta charset="ISO-8859-1">
     <title>Event registration: additional information required</title>
     <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>
