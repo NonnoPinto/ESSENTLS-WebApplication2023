@@ -121,11 +121,13 @@ function processGetResponse(xhr) {
     }
 
     const div = document.getElementById("results");
+    const instructions = document.getElementById("instructions");
 
     //parse the response as JSON and extract the resource-list array
     const resourceList = JSON.parse(xhr.response)["resource-list"];
 
     div.replaceChildren();
+    instructions.replaceChildren();
 
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
@@ -135,8 +137,19 @@ function processGetResponse(xhr) {
     }
     
     if(resourceList.length > 0){
+        const instructionsText = document.createElement("div");
+        instructions.appendChild(instructionsText);
+
+        instructions.classList.add("justify-content-center", "mt-2");
+        instructions.classList.add("col-md-10", "col-lg-8", "col-xl-6");
+
+        instructionsText.classList.add("alert", "alert-info");
+        instructionsText.setAttribute("role", "alert");
+        instructionsText.classList.add("text-center");
+        instructionsText.innerHTML = "Edit cause name: modify the input field and click the edit button to confirm.";
+
         div.classList.add("container");
-        div.classList.add("justify-content-center", "my-4");
+        div.classList.add("justify-content-center", "my-2");
         div.classList.add("col-md-10", "col-lg-8", "col-xl-6");
         div.classList.add("card", "text-center", "border-orange");
         div.classList.add("table-responsive");
@@ -243,8 +256,10 @@ function processPutResponse(xhr) {
     }
 
     const div = document.getElementById("results");
+    const instructions = document.getElementById("instructions");
 
     div.replaceChildren();
+    instructions.replaceChildren();
 
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
@@ -266,8 +281,10 @@ function processDeleteResponse(xhr) {
     }
 
     const div = document.getElementById("results");
+    const instructions = document.getElementById("instructions");
 
     div.replaceChildren();
+    instructions.replaceChildren();
 
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);

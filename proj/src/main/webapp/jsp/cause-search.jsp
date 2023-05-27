@@ -54,6 +54,10 @@
       </div>
     </div>
     <div class="row justify-content-center my-4">
+      <div id="instructions">
+      </div>
+    </div>
+    <div class="row justify-content-center my-4">
       <div id="results">
       </div>
     </div>
