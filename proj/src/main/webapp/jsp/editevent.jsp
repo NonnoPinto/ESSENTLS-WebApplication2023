@@ -226,6 +226,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <%@include file="/html/footer.html"%>
     </body>
 </html>

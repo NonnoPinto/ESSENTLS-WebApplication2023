@@ -27,7 +27,7 @@
                 <div class="bg-image rounded-3 home_banner" >
 
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-                        <div class="d-flex flex-column justify-content-center align-items-center h-100 container">
+                        <div class="d-flex flex-column justify-content-center align-items-center h-100 container py-5">
 
                             <h1 class="mb-5 color-white">Exclusive events, priceless moments!</h1>
 
