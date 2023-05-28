@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +11,7 @@
         <meta charset="utf-8">
         <title>Search User</title>
         <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
 
     <body>
@@ -40,7 +40,7 @@
                                         <label for="userName" class="mb-2 text-left">Insert Name</label>
                                     </div>
                                     <div class="input-container">
-                                        <input id="userName" name="userName" type="text" class="form-control" placeholder="Name.."/>
+                                        <input id="userName" maxlength="50" name="userName" type="text" class="form-control" placeholder="Name.."/>
                                     </div>
                                 </div>
                                 <%--Surname--%>
@@ -49,7 +49,7 @@
                                         <label for="userSurname" class="mb-2 text-left">Insert Surname</label>
                                     </div>
                                     <div class="input-container">
-                                        <input id="userSurname" name="userSurname" type="text" class="form-control" placeholder="Surname.."/>
+                                        <input id="userSurname" maxlength="50" name="userSurname" type="text" class="form-control" placeholder="Surname.."/>
                                     </div>
                                 </div>
                                 <%--CardID--%>
@@ -58,7 +58,7 @@
                                         <label for="userCardId" class="mb-2 text-left">Insert CardID</label>
                                     </div>
                                     <div class="input-container">
-                                        <input id="userCardId" name="userCardId" type="text" class="form-control" placeholder="CardID.."/>
+                                        <input id="userCardId" maxlength="50" name="userCardId" type="text" class="form-control" placeholder="CardID.."/>
                                     </div>
                                 </div>
                                 <%--Email--%>
@@ -67,7 +67,7 @@
                                         <label for="userEmail" class="mb-2 text-left">Insert Email</label>
                                     </div>
                                     <div class="input-container">
-                                        <input id="userEmail" name="userEmail" type="text" class="form-control" placeholder="Email.."/>
+                                        <input id="userEmail" maxlength="254" name="userEmail" type="text" class="form-control" placeholder="Email.."/>
                                     </div>
                                 </div>
 
@@ -77,7 +77,7 @@
                                         <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
                                     </div>
                                     <div>
-                                        <button type="reset" class="button bg-orange text-white border-orange px-4 py-2">Reset the form</button>
+                                        <button type="reset" class="button bg-white color-orange border-orange px-4 py-2">Reset the form</button>
                                     </div>
                                 </div>
                             </form>
@@ -88,7 +88,7 @@
                                     <input name="userSurname" type="hidden" value=""/>
                                     <input name="userCardId" type="hidden" value=""/>
                                     <input name="userEmail" type="hidden" value=""/>
-                                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Show all users</button>
+                                    <input type="submit" class="bg-white color-orange border-0 px-4 py-2" value="Show all users"></input>
                                 </form>
                             </div>
                         </div>

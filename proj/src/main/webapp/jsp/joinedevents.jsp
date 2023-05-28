@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="en_US"/>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ include file="../html/cdn.html"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +11,7 @@
         <meta charset="ISO-8859-1">
         <title>Event List</title>
         <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
     <body>
         <%@include file="navbar.jsp"%>
@@ -27,7 +27,7 @@
                     <div class="row justify-content-start">
                         <c:forEach items="${events}" var="event" varStatus="loop">
                             <div class="col-lg-3 col-md-6 col-sm-12 my-2">
-                                <div class="card h-100 container" onclick="window.location='./eventdetail?id=${event.id}';">
+                                <div class="card h-100 container home_card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
                                     <img class="card-img-top img-fluid event-preview-image" src="${event.thumbnail}" alt="Event thumbnail">
                                     <div class="card-body">
                                         <div class="row">

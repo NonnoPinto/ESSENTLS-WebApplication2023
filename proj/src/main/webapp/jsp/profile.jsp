@@ -9,7 +9,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.Arrays" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,14 +17,15 @@
     <meta charset="ISO-8859-1">
     <title>User details</title>
     <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html"%>
   </head>
   <body>
   <%@include file="navbar.jsp"%>
     <div class="container">
       <div class="row justify-content-center my-4">
         <div class="col-md-10">
-          <div class="card text-center border-orange">
-            <h1 class="card-title bg-orange color-white p-4">Profile Page</h1>
+          <div class="card text-center border-magenta">
+            <h1 class="card-title bg-magenta color-white p-4">Profile Page</h1>
             <div class="card-body">
               <div class="my-2 mx-4">
                 <div class="pb-2">
@@ -54,12 +54,12 @@
               <div class="row d-flex justify-content-center my-2">
                 <form action="<c:url value="/edit-profile"/>" method="GET" class="col-md-6">
                   <div>
-                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2" id="editProfileButton">Edit Profile</button>
+                    <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2" id="editProfileButton">Edit Profile</button>
                   </div>
                 </form>
                 <form action="<c:url value="/paymentslist"/>" method="GET" class="col-md-6">
                   <div>
-                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2" id="paymentListButton">Payment List</button>
+                    <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2" id="paymentListButton">Payment List</button>
                   </div>
                 </form>
               </div>

@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,6 +9,7 @@
         <meta charset="ISO-8859-1">
         <title>Event participants</title>
         <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
     <body>
         <%@include file="navbar.jsp"%>
@@ -26,7 +26,7 @@
             <div class="row justify-content-center my-4">
                 <p><strong>Participants:</strong></p>
                 <div class="col">
-                    <div class="card text-center border-orange">
+                    <div class="card text-center border-cyan">
                         <div class="table-responsive">
                             <table class="table table-hover mh-75 align-middle">
                                 <thead>

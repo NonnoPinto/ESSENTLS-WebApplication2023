@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,6 +9,8 @@
         <meta charset="ISO-8859-1">
         <title>Edit Event</title>
         <%@ include file="../html/favicon.html"%>
+        <script type="text/javascript" src="<c:url value="/js/validate_dates.js"/>"></script>
+        <%@ include file="../html/cdn.html"%>
     </head>
 
     <body>
@@ -36,7 +37,7 @@
 
                                     <!--Name-->
                                     <div class="form-floating mb-3 pb-2">
-                                            <input type="text" name="name" id="name" value="${event.getName()}" placeholder="${event.getName()}" class="form-control" required>
+                                            <input type="text" name="name" id="name" value="${event.getName()}" placeholder="${event.getName()}" class="form-control" maxlength="127" required>
                                             <label for="name">Name (currently ${event.getName()}): </label>
                                     </div>
 
@@ -49,7 +50,7 @@
                                         <div class="col-lg-5 col-md-6 col-sm-12">
                                             <!--Price-->
                                             <div class="form-floating mb-3 pb-2">
-                                                <input class="form-control" type="number" name="price" id="price" min="0" placeholder="0" step=".01" value="${event.getPrice()}" required>
+                                                <input class="form-control" type="number" name="price" id="price" min="0" max="1000000" placeholder="0" step=".01" value="${event.getPrice()}" required>
                                                 <label for="price">Price (currently ${event.getPrice()}):</label>
                                             </div>
                                             <!--Visibility-->
@@ -92,19 +93,19 @@
                                         <div class="row">
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
-                                                    <input type="text" class="form-control" value="${city}" name="city" id="city" placeholder="Enter city..." required>
+                                                    <input type="text" class="form-control" value="${city}" name="city" id="city" placeholder="Enter city..." maxlength="60" required>
                                                     <label for="city">Enter city..</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
-                                                    <input type="text" class="form-control" value="${street}" name="street" id="street" placeholder="Enter Street..." required>
+                                                    <input type="text" class="form-control" value="${street}" name="street" id="street" placeholder="Enter Street..." maxlength="100" required>
                                                     <label for="street">Enter street..</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
-                                                    <input type="text" class="form-control" value="${number}" name="number" id="number" placeholder="Enter house number..." required>
+                                                    <input type="text" class="form-control" value="${number}" maxlength="5" name="number" id="number" placeholder="Enter house number..." required>
                                                     <label for="street">Enter house number...</label>
                                                 </div>
                                             </div>
@@ -117,14 +118,14 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--maxParticipantsInternational-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.getMaxParticipantsInternational()}" min="0" placeholder="0" required>
+                                                    <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.getMaxParticipantsInternational()}" min="0" max="100000" placeholder="0" required>
                                                     <label for="maxParticipantsInternational">Number of Max International participants:</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--MaxParticipantsVolunteer-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.getMaxParticipantsVolunteer()}" min="0" placeholder="0" required>
+                                                    <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.getMaxParticipantsVolunteer()}" min="0" max="100000" placeholder="0" required>
                                                     <label for="maxParticipantsVolunteer">Number of Max Volunteer participants:</label>
                                                 </div>
                                             </div>
@@ -133,14 +134,14 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--eventStart-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}" required>
+                                                    <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" value="${event.getEventStart()}" onfocusout="validateDates()" required>
                                                     <label for="eventStart">When does the event start?</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--eventEnd-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}" required>
+                                                    <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" value="${event.getEventEnd()}" onfocusout="validateDates()" required>
                                                     <label for="eventEnd">When does the event end?</label>
                                                 </div>
                                             </div>
@@ -150,21 +151,21 @@
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--subscriptionStart-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}" required>
+                                                    <input class="form-control" type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.getSubscriptionStart()}" onfocusout="validateDates()" required>
                                                     <label for="subscriptionStart">When can the subscription start?</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--subscriptionEnd-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}" required>
+                                                    <input class="form-control" type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.getSubscriptionEnd()}" onfocusout="validateDates()" required>
                                                     <label for="subscriptionEnd">When can the subscription end?</label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                 <!--withdrawalEnd-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}" required>
+                                                    <input class="form-control" type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.getWithdrawalEnd()}" onfocusout="validateDates()" required>
                                                     <label for="withdrawalEnd">When does the withdrawal End?</label>
                                                 </div>
                                             </div>
@@ -174,7 +175,7 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--maxWaitingList-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" value="${event.getMaxWaitingList()}" min="0" placeholder="0" required>
+                                                    <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" value="${event.getMaxWaitingList()}" min="0" placeholder="0" max="100000" required>
                                                     <label for="maxWaitingList">Insert the number of the size of the waiting list:</label>
                                                 </div>
                                             </div>
@@ -182,7 +183,7 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--attributes-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="text" name="attributes" id="attributes" value="${event.getAttributes_asString()}" placeholder="${event.getAttributes_asString()}" required>
+                                                    <input class="form-control" type="text" name="attributes" id="attributes" value="${event.getAttributes_asString()}" placeholder="${event.getAttributes_asString()}" maxlength="255" required>
                                                     <label for="attributes">Attributes:</label>
                                                 </div>
                                             </div>
@@ -196,10 +197,7 @@
                                                         <!-- TODO: default .png to add in folder -->
                                                         <img src="${event.thumbnail}" class="img-fluid mb-3"/>
                                                     </c:if>
-                                                    <c:otherwise>
-                                                        <img src="default_thumbnail.png" class="img-fluid mb-3"/>
-                                                    </c:otherwise>
-                                                    <input type="file" class="form-control" id="thumbnail" name="thumbnail" value="${thumbnail}">
+                                                    <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" value="${thumbnail}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-5 col-md-6 col-sm-12">
@@ -209,17 +207,25 @@
                                                     <c:if test="${!event.poster.equals('')}">
                                                         <img src="${event.poster}" class="img-fluid mb-3"/>
                                                     </c:if>
-                                                    <input type="file" class="form-control" id="poster" name="poster" value="${poster}"/>
+                                                    <input type="file" class="form-control" id="poster" name="poster" accept="image/*" value="${poster}"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row justify-content-center">
+<<<<<<< HEAD
                                         <div class="col-lg-2 col-md-6 col-sm-12 pb-2">
                                             <button type="reset" class="btn btn-secondary">Reset the form</button>
                                         </div>
                                         <div class="col-lg-2 col-md-6 col-sm-12 pb-2">
                                             <button type="submit" class="btn btn-primary">Continue</button>
+=======
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <button type="reset" class="button bg-white color-cyan border-cyan px-3 py-1">Reset the form</button>
+                                        </div>
+                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                            <button type="submit" class="button bg-cyan text-white border-cyan px-3 py-1">Continue</button>
+>>>>>>> fb0b8fa02485580b4d3e3427fcbab682ee5c4662
                                         </div>
                                     </div>
                                 </form>
@@ -228,6 +234,7 @@
                     </c:choose>
                 </div>
             </div>
+        </div>
         </div>
         <%@include file="/html/footer.html"%>
     </body>

@@ -22,8 +22,8 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
      * The SQL statement to be executed
      */
     private static final String STATEMENT_CAUSE_LIST = "SELECT * from public.\"Causes\"" +
-                                                        " WHERE name ILIKE ?" +
-                                                        " AND (? = -1 OR id = ?);";
+            " WHERE REPLACE(name, \' \', \'\') ILIKE ?" +
+            " AND (? = -1 OR id = ?);";
 
     /**
      * The name of the cause to search for
@@ -57,9 +57,12 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
         //the results of the search
         final List<Cause> causes = new ArrayList<Cause>();
 
+        //remove spaces (for searching in DB)
+        String subCauseNoSpace = subCause.replaceAll("%20","");
+
         try {
             pstmt = con.prepareStatement(STATEMENT_CAUSE_LIST);
-            pstmt.setString(1, "%" + subCause + "%");
+            pstmt.setString(1, "%" + subCauseNoSpace + "%");
             pstmt.setInt(2, id);
             pstmt.setInt(3, id);
 

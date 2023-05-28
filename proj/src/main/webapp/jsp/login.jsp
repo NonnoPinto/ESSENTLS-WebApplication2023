@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Login</title>
 	<%@ include file="../html/favicon.html"%>
+	<%@ include file="../html/cdn.html"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>
@@ -35,7 +35,7 @@
 								<label for="email" class="mb-2 text-left">Insert your Email</label>
 							</div>
 							<div class="input-container">
-								<input class="form-control" type="text" name="email" id="email" placeholder="Email.." required>
+								<input class="form-control" maxlength="254" type="text" name="email" id="email" placeholder="Email.." required>
 								<span id="infoEmail"></span>
 							</div>
 						</div>
@@ -45,7 +45,7 @@
 								<label for="password" class="mb-2 text-left">Insert your Password</label>
 							</div>
 							<div class="input-container">
-								<input class="form-control" type="password" name="password" id="password" placeholder="Password.." required>
+								<input class="form-control" maxlength="255" type="password" name="password" id="password" placeholder="Password.." required>
 								<i class="togglePassword far fa-eye" id="togglePassword"></i>
 								<span id="infoPassword"></span>
 							</div>

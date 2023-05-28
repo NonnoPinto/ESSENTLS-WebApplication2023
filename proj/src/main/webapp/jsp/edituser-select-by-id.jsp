@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,7 @@
     <meta charset="ISO-8859-1">
     <title>Select User by ID</title>
     <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html" %>
 </head>
 
 <body>
@@ -26,8 +26,8 @@
 <div class="container">
     <div class="row justify-content-center my-4">
         <div class="col-md-10 col-lg-8 col-xl-6">
-            <div class="card text-center border-orange">
-                <h2 class="card-title bg-orange color-white p-4">Select User by ID</h2>
+            <div class="card text-center border-blue">
+                <h2 class="card-title bg-blue color-white p-4">Select User by ID</h2>
                 <div class="card-body">
                 <form method="POST" action="<c:url value="/select-user-by-id"/>">
                     <div class="form-group mb-4">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+                    <button type="submit" class="button bg-blue text-white border-blue px-4 py-2">Submit</button>
                 </form>
                 </div>
             </div>

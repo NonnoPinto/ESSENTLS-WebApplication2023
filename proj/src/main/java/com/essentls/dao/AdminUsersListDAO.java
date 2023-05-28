@@ -24,15 +24,15 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
      * The SQL statement to be executed
      */
     private static final String STATEMENT_USERS_LIST = "SELECT id, email, password, \"cardID\", tier, \"registrationDate\", " +
-                                                        "name, surname, sex, \"dateOfBirth\", nationality, \"homeCountryAddress\", " +
-                                                        "\"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", \"paduaAddress\", " +
-                                                        "\"documentType\", \"documentNumber\", \"documentFile\", \"dietType\", allergies, " +
-                                                        "\"emailHash\", \"emailConfirmed\" FROM public.\"Users\"" +
-                                                        " WHERE (? IS NULL OR name = ?)" +
-                                                        " AND (? IS NULL OR surname = ?)" +
-                                                        " AND (? = -1 OR id = ?)" +
-                                                        " AND (? IS NULL OR \"cardID\" = ?)" +
-                                                        " AND (? IS NULL OR email = ?)";
+            "name, surname, sex, \"dateOfBirth\", nationality, \"homeCountryAddress\", " +
+            "\"homeCountryUniversity\", \"periodOfStay\", \"phoneNumber\", \"paduaAddress\", " +
+            "\"documentType\", \"documentNumber\", \"documentFile\", \"dietType\", allergies, " +
+            "\"emailHash\", \"emailConfirmed\" FROM public.\"Users\"" +
+            " WHERE (? IS NULL OR name ILIKE ?)" +
+            " AND (? IS NULL OR surname ILIKE ?)" +
+            " AND (? = -1 OR id = ?)" +
+            " AND (? IS NULL OR LOWER(\"cardID\") = LOWER(?))" +
+            " AND (? IS NULL OR LOWER(email) = LOWER(?))";
 
     /**
      * The name of the user
@@ -90,11 +90,11 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
             stmt = con.prepareStatement(STATEMENT_USERS_LIST);
             //search by name
             stmt.setString(1, name);
-            stmt.setString(2, name);
+            stmt.setString(2, "%" + name  + "%");
 
             //search by surname
             stmt.setString(3, surname);
-            stmt.setString(4, surname);
+            stmt.setString(4, "%" + surname  + "%");
 
             //search by id
             stmt.setInt(5, id);

@@ -6,7 +6,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
 
-<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +14,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Event detail</title>
     <%@ include file="../html/favicon.html"%>
+	<%@ include file="../html/cdn.html" %>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -98,10 +98,10 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
-												<a class="btn bg-orange text-white border-orange px-4 py-2 w-100"
-												   href="payment?action=event&id=${event.id}">
+												<button class="btn bg-orange text-white border-orange px-4 py-2 w-100"
+												   onclick="window.location.href='payment?action=event&id=${event.id}'">
 													JOIN
-												</a>
+												</button>
 											</c:when>
 											<c:otherwise>
 												Sorry, the event is full.
