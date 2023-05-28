@@ -67,7 +67,7 @@
                                         <div class="col-lg-5 col-md-6 col-sm-12">
                                             <!--Causes-->
                                             <div class="mb-3 pb-2">
-                                                <label for="">Which causes does the event include?</label><br>
+                                                <label for="causes">Which causes does the event include?</label><br>
                                                 <div class="form-check">
                                                     <c:forEach items="${causes}" var="cause">
                                                         <c:set var="elementCause" scope="session" value="${cause.id}"/>
@@ -192,9 +192,13 @@
                                                 <!--thumbnail-->
                                                 <div class="mb-3">
                                                     <label class="form-label" for="thumbnail">Thumbnail:</label>
-                                                    <c:if test="${!event.thumbnail.equals('')}">
+                                                    <c:if test="${not empty event.thumbnail}">
+                                                        <!-- TODO: default .png to add in folder -->
                                                         <img src="${event.thumbnail}" class="img-fluid mb-3"/>
                                                     </c:if>
+                                                    <c:otherwise>
+                                                        <img src="default_thumbnail.png" class="img-fluid mb-3"/>
+                                                    </c:otherwise>
                                                     <input type="file" class="form-control" id="thumbnail" name="thumbnail" value="${thumbnail}">
                                                 </div>
                                             </div>
@@ -211,10 +215,10 @@
                                         </div>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="col-lg-2 col-md-6 col-sm-12 pb-2">
                                             <button type="reset" class="btn btn-secondary">Reset the form</button>
                                         </div>
-                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="col-lg-2 col-md-6 col-sm-12 pb-2">
                                             <button type="submit" class="btn btn-primary">Continue</button>
                                         </div>
                                     </div>
