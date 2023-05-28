@@ -213,19 +213,11 @@
                                         </div>
                                     </div>
                                     <div class="row justify-content-center">
-<<<<<<< HEAD
-                                        <div class="col-lg-2 col-md-6 col-sm-12 pb-2">
-                                            <button type="reset" class="btn btn-secondary">Reset the form</button>
-                                        </div>
-                                        <div class="col-lg-2 col-md-6 col-sm-12 pb-2">
-                                            <button type="submit" class="btn btn-primary">Continue</button>
-=======
                                         <div class="col-lg-2 col-md-6 col-sm-12">
                                             <button type="reset" class="button bg-white color-cyan border-cyan px-3 py-1">Reset the form</button>
                                         </div>
                                         <div class="col-lg-2 col-md-6 col-sm-12">
                                             <button type="submit" class="button bg-cyan text-white border-cyan px-3 py-1">Continue</button>
->>>>>>> fb0b8fa02485580b4d3e3427fcbab682ee5c4662
                                         </div>
                                     </div>
                                 </form>
