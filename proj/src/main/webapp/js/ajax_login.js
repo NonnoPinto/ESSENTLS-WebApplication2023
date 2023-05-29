@@ -94,9 +94,7 @@ function processResponse(xhr){
         var messageDiv = document.createElement("div");
         messageDiv.className = "alert alert-danger";
         messageDiv.role = "alert";
-        var messageText = document.createElement("p");
-        messageText.innerHTML = message.message;
-        messageDiv.appendChild(messageText);
+        messageDiv.innerHTML = message.message;
         errorMessageDiv.appendChild(messageDiv);
         errorMessageDiv.style.visibility = 'visible';
         errorMessageDiv.classList.remove("invisible");
