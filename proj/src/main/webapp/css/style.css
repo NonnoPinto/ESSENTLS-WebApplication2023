@@ -169,6 +169,33 @@ button:hover {
     width: auto;
 }
 
+.fix-position{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.menu-hover{
+    border-bottom: transparent solid 3px;
+}
+
+.menu-hover:hover{
+    background-color: rgba(0, 0, 0, 0.025);
+    border-bottom: #00aeef solid 3px;
+    /*border-radius: 3px;*/
+}
+
+.top-logo-navbar-small{
+    height: 3rem;
+    width: auto;
+}
+
+.navbar-space-replacement{
+    height: 5rem;
+    width: 100%;
+}
+
 
 /*FOOTER*/
 .footer{

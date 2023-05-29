@@ -1,8 +1,9 @@
 
 <div class="d-block p-2 skippy"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div id="navbar-space-replacement"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
     <div class="container-fluid">
-    <a class="navbar-brand" href="<c:url value='/'/>"><img src="./media/esn_padova_logo_full_color_2.png" class="top-logo-navbar img-fluid" alt="Logo of ESN Padova"></a>
+    <a class="navbar-brand" href="<c:url value='/'/>"><img src="./media/esn_padova_logo_full_color_2.png" id="top-logo-navbar" class="top-logo-navbar img-fluid" alt="Logo of ESN Padova"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,29 +12,29 @@
             <ul class="navbar-nav ml-auto w-100 justify-content-center">
                 <c:if test="${sessionScope.sessionUserTier == 0}">
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
+                        <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null}">
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/'/>">Home</a>
+                        <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/'/>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
+                        <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/">Padova</a>
+                        <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="https://padova.esn.it/">Padova</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/esncard">ESNCard</a>
+                        <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/esncard">ESNCard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-nowrap" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/association">About Us</a>
+                        <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/association">About Us</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
                     <li class="nav-item dropdown admin">
-                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle text-nowrap" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle text-nowrap menu-hover" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin Manage
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -73,3 +74,5 @@
         </div>
     </div>
 </nav>
+
+<script type="text/javascript" src="<c:url value="/js/fix_navbar.js"/>"></script>
