@@ -151,7 +151,7 @@ function processGetResponse(xhr) {
         div.classList.add("container");
         div.classList.add("justify-content-center", "my-2");
         div.classList.add("col-md-10", "col-lg-8", "col-xl-6");
-        div.classList.add("card", "text-center", "border-orange");
+        div.classList.add("card", "text-center", "border-green");
         div.classList.add("table-responsive");
     
         const table = document.createElement("table");
@@ -227,7 +227,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const editButton = document.createElement("button");
             editButton.appendChild(document.createTextNode("Edit"));
-            editButton.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
+            editButton.classList.add("button", "bg-green", "text-white", "border-green", "px-4", "py-2");
             editButton.addEventListener("click", function() {editCause(esncause["id"], newname); });
             eee.appendChild(editButton);
             ee.appendChild(eee); //append the element to the row
@@ -236,7 +236,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const deleteButton = document.createElement("button");
             deleteButton.appendChild(document.createTextNode("Delete"));
-            deleteButton.classList.add("button", "bg-white", "color-orange", "border-orange", "px-4", "py-2");
+            deleteButton.classList.add("button", "bg-white", "color-green", "border-green", "px-4", "py-2");
             deleteButton.addEventListener("click", function() {deleteCause(esncause["id"]); });
             eee.appendChild(deleteButton);
             ee.appendChild(eee); //append the element to the row

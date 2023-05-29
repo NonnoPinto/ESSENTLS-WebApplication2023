@@ -102,7 +102,7 @@ function processGetResponse(xhr) {
         div.classList.add("container");
         div.classList.add("justify-content-center", "my-4");
         div.classList.add("col-md-10", "col-lg-8", "col-xl-6");
-        div.classList.add("card", "text-center", "border-orange");
+        div.classList.add("card", "text-center", "border-cyan");
         div.classList.add("table-responsive");
 
         const table = document.createElement("table");
@@ -155,7 +155,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const button = document.createElement("button");
             button.appendChild(document.createTextNode("Delete"));
-            button.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
+            button.classList.add("button", "bg-cyan", "text-white", "border-cyan", "px-4", "py-2");
             button.addEventListener("click", function () {
                 deleteTag(esntag["name"]);
             });
