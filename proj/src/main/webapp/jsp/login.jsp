@@ -82,6 +82,15 @@
 			</div>
 		</div>
 	</div>
+	<noscript>
+		<div class="row justify-content-center my-4">
+			<div class="justify-content-center mt-2 col-md-10 col-lg-8 col-xl-6" id="js-alert" >
+				<div class="alert alert-warning text-center" role="alert">
+					javascript disabled, please enable it for a better experience.
+				</div>
+			</div>
+		</div>
+	</noscript>
 </div>
 <script type="text/javascript" src="<c:url value="/js/test_js.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/toggle_password.js"/>"></script>
