@@ -102,7 +102,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-zip" class="form-label">ZIP</label>
-                                                    <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" maxlength="5" class="form-control" value="${user.getHomeCountryAddress().getString("zip")}">
+                                                    <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" maxlength="9" class="form-control" value="${user.getHomeCountryAddress().getString("zip")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-country" class="form-label">Country</label>
@@ -165,7 +165,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <label for="userPaduaAddress-zip">ZIP</label>
-                                                    <input type="text" name="userPaduaAddress-zip" maxlength="5" id="userPaduaAddress-zip" class="form-control" value="${user.getPaduaAddress().getString("zip")}">
+                                                    <input type="text" name="userPaduaAddress-zip" maxlength="9" id="userPaduaAddress-zip" class="form-control" value="${user.getPaduaAddress().getString("zip")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userPaduaAddress-country">Country</label>

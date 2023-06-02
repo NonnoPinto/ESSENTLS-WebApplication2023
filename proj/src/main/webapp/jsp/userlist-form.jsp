@@ -31,7 +31,7 @@
                                         <label for="userId" class="mb-2 text-left">Insert ID</label>
                                     </div>
                                     <div class="input-container">
-                                        <input id="userId" name="userId" type="text" class="form-control" placeholder="ID.."/>
+                                        <input id="userId" name="userId" type="number" min="0" class="form-control" placeholder="ID.."/>
                                     </div>
                                 </div>
                                 <%--Name--%>

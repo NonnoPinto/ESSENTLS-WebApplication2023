@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="col">
                                             <label for="home-country-address-zip" class="form-label">ZIP</label>
-                                            <input type="text" maxlength="5" name="home-country-address-zip"
+                                            <input type="text" maxlength="9" name="home-country-address-zip"
                                                    id="home-country-address-zip" class="form-control"
                                                    placeholder="Enter zip...">
                                         </div>
@@ -199,7 +199,7 @@
                                         </div>
                                         <div class="col">
                                             <label for="padua-address-zip">ZIP</label>
-                                            <input type="text" maxlength="5" name="padua-address-zip" id="padua-address-zip"
+                                            <input type="text" maxlength="9" name="padua-address-zip" id="padua-address-zip"
                                                    class="form-control" placeholder="Enter zip...">
                                         </div>
                                         <div class="col">

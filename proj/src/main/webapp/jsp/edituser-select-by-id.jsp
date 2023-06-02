@@ -35,7 +35,7 @@
                             <label for="userId" class="mb-2 text-left">Id:</label>
                         </div>
                         <div class="input-container">
-                            <input class="form-control" id="userId" name="userId" type="text" placeholder="Insert ID.." required/><br/><br/>
+                            <input class="form-control" id="userId" name="userId" type="number" min="0" placeholder="Insert ID.." required/><br/><br/>
                         </div>
                     </div>
 
