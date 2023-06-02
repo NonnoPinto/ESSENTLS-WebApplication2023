@@ -94,15 +94,15 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                 req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
             } else {
                 String password_sha1 = DigestUtils.sha1Hex(password);
-                emailConfirmed = true; //Forcing confirmation until mail works
+                emailConfirmed = false;
                 user= new User(id,email,password_sha1,null,tier,null,null,null,null,
                         null,null,null,null,0,
                         null,null,null,null,null,
                         null,null,emailHash,emailConfirmed);
 
                 //uncomment when smtp service is set
-                // sendCreationConfirmationEmail(user);
-                //LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
+                sendCreationConfirmationEmail(user);
+                LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
                 //m = new Message(String.format("user %s successfully created and confirmation email successfully sent.", user.getEmail()));
                 // try to find the user in the database
@@ -141,6 +141,8 @@ public class RegisterServlet extends AbstractDatabaseServlet {
             req.getRequestDispatcher("/jsp/register.jsp").forward(req, res);
 //        } catch (MessagingException e) {
 //            throw new RuntimeException(e);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
         try{
             //stores the users list and the message as a request attribute

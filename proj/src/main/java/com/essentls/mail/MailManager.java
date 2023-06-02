@@ -62,6 +62,9 @@ public final class MailManager {
 	 */
 	private static final Session session;
 
+	private static final String username;
+	private static final String password;
+
 	/**
 	 * Loads the configuration from {@link CONFIG_FILE} and initializes the mailer.
 	 */
@@ -98,28 +101,23 @@ public final class MailManager {
 		if (tmp == null || tmp.isBlank()) { // ensure that null and blank are the same
 			tmp = null;
 		}
-		final String username = tmp;
+		username = tmp;
 
-		tmp = cfg.getProperty(MailManager.class.getName() + ".stmp.password");
+		tmp = cfg.getProperty(MailManager.class.getName() + ".smtp.password");
 		if (tmp == null || tmp.isBlank()) { // ensure that null and blank are the same
 			tmp = null;
 		}
-		final String password = tmp;
+		password = tmp;
 
 		p.put("mail.transport.protocol", "smtp");
-		p.put("mail.smtp.starttls.enable", "true");
-		p.put("mail.debug", "false");
+		p.put("mail.smtp.ssl.enable", true);
+		p.put("mail.debug", "true");
 
 		if (username != null && password != null) {
 			p.put("mail.smtp.auth", "true");
-			session = Session.getInstance(p, new Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(username, password);
-				}
-			});
-		} else {
-			session = Session.getInstance(p);
 		}
+		session = Session.getInstance(p);
+
 
 
 	}
@@ -163,13 +161,14 @@ public final class MailManager {
 
 		try {
 
-			mm.setFrom();
+			ia = new InternetAddress(from);
+			mm.setFrom(ia);
 
 			ia = new InternetAddress(to);
 			mm.addRecipient(Message.RecipientType.TO, ia);
 
-			ia = new InternetAddress(from);
-			mm.addRecipient(Message.RecipientType.BCC, ia);
+			/*ia = new InternetAddress(from);
+			mm.addRecipient(Message.RecipientType.BCC, ia);*/
 
 			mm.setSubject(subject);
 
@@ -177,7 +176,7 @@ public final class MailManager {
 			mm.setContent(message, messageMIME);
 
 			// Send the message
-			Transport.send(mm);
+			Transport.send(mm, username, password);
 
 		} catch (AddressException e) {
 			LOGGER.error(
