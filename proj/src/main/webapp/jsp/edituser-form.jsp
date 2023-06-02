@@ -12,7 +12,7 @@
         <%@ include file="../html/favicon.html"%>
         <%@ include file="../html/cdn.html"%>
     </head>
-    
+
     <body>
     <%@include file="navbar.jsp"%>
 
