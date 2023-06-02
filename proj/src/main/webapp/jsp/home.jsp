@@ -108,10 +108,10 @@
                                                     <p class="event-location m-0 p-0">
                                                         <i class="bi bi-geo-alt"></i>
                                                         <span class="text-capitalize">
-                                                            ${event.location.getString("city")},
+                                                            ${event.locationMap.city},
                                                         </span>
                                                         <span class="text-capitalize">
-                                                            ${event.location.getString("country")}
+                                                            ${event.locationMap.country}
                                                         </span>
                                                     </p>
                                                 </div>
