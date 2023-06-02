@@ -86,9 +86,51 @@ function editCause(id, name) {
 }
 
 function deleteCause(id) {
-
     console.log("Deleting cause: " + id);
 
+    // Creating the confirmation popup
+    const cardContainer = document.createElement("div");
+    cardContainer.classList.add("card", "text-center");
+    cardContainer.style.width = "400px";
+    cardContainer.style.position = "fixed";
+    cardContainer.style.top = "50%";
+    cardContainer.style.left = "50%";
+    cardContainer.style.transform = "translate(-50%, -50%)";
+
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    const confirmationMessage = document.createElement("h5");
+    confirmationMessage.classList.add("card-title");
+    confirmationMessage.textContent = "Are you sure you want to delete this cause?";
+    cardBody.appendChild(confirmationMessage);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-danger", "mx-2");
+    deleteButton.textContent = "Yes";
+    deleteButton.addEventListener("click", () => {
+        // Close the popup
+        cardContainer.remove();
+
+        // Perform the delete action here
+        performDelete(id);
+    });
+    cardBody.appendChild(deleteButton);
+
+    const cancelButton = document.createElement("button");
+    cancelButton.classList.add("btn", "btn-secondary", "mx-2");
+    cancelButton.textContent = "No";
+    cancelButton.addEventListener("click", () => {
+        // Close the popup
+        cardContainer.remove();
+    });
+    cardBody.appendChild(cancelButton);
+
+    cardContainer.appendChild(cardBody);
+    document.body.appendChild(cardContainer);
+}
+
+function performDelete(id) {
     const url = "/proj-1.0/rest/causes/id/" + id;
 
     console.log("Request URL: " + url);
@@ -97,19 +139,17 @@ function deleteCause(id) {
 
     if (!xhr) {
         alert("Cannot create an XMLHTTP instance.");
-
         alert("Giving up :( Cannot create an XMLHttpRequest instance");
         return false;
     }
 
     xhr.onreadystatechange = function() {
         processDeleteResponse(this);
-    }
+    };
 
     console.log("Performing DELETE request to URL: " + url);
     xhr.open("DELETE", url);
     xhr.send();
-
 }
 
 function processGetResponse(xhr) {
@@ -295,30 +335,4 @@ function processDeleteResponse(xhr) {
 
     div.classList.add("text-muted", "text-center");
     div.appendChild(document.createTextNode("Cause " + JSON.parse(xhr.response).esncause["id"] + " deleted successfully."));
-
-    //Creating Alert container
-    const alertDiv = document.createElement("div");
-    alertDiv.classList.add("alert", "alert-success", "text-center", "fixed-top", "d-flex", "justify-content-center", "align-items-center");
-    alertDiv.style.width = "400px";
-    alertDiv.style.height = "200px";
-    alertDiv.style.backgroundColor = "white";
-    alertDiv.style.zIndex = "9999";
-    alertDiv.style.border = "5px solid orange";
-    alertDiv.style.position = "fixed";
-    alertDiv.style.top = "50%";
-    alertDiv.style.left = "50%";
-    alertDiv.style.transform = "translate(-50%, -50%)";
-
-    const alertText = document.createElement("div");
-    alertText.classList.add("alert-text", "text-danger");
-    alertText.textContent = "Deleted successfully.";
-    alertText.style.fontSize = "25px";
-
-    alertDiv.appendChild(alertText);
-    document.body.appendChild(alertDiv);
-
-    // Remove the alert after a certain time (e.g., 3 seconds)
-    setTimeout(function() {
-        alertDiv.remove();
-    }, 3000);
 }

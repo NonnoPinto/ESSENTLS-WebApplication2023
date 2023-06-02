@@ -28,7 +28,7 @@
                 <label for="causeId" class="mb-2 text-left">Insert ID</label>
               </div>
               <div class="input-container">
-                <input class="form-control" type="text" name="causeId" id="causeId" placeholder="ID.." maxlength="255" required>
+                <input class="form-control" type="number" name="causeId" id="causeId" placeholder="ID.." min="0" required>
               </div>
             </div>
 
