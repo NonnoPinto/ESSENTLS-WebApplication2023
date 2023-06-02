@@ -260,4 +260,30 @@ function processDeleteResponse(xhr) {
 
     div.classList.add("text-muted", "text-center");
     div.appendChild(document.createTextNode("Cause " + JSON.parse(xhr.response).esncause["id"] + " deleted successfully."));
+
+    //Creating Alert container
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert", "alert-success", "text-center", "fixed-top", "d-flex", "justify-content-center", "align-items-center");
+    alertDiv.style.width = "400px";
+    alertDiv.style.height = "200px";
+    alertDiv.style.backgroundColor = "white";
+    alertDiv.style.zIndex = "9999";
+    alertDiv.style.border = "5px solid orange";
+    alertDiv.style.position = "fixed";
+    alertDiv.style.top = "50%";
+    alertDiv.style.left = "50%";
+    alertDiv.style.transform = "translate(-50%, -50%)";
+
+    const alertText = document.createElement("div");
+    alertText.classList.add("alert-text", "text-danger");
+    alertText.textContent = "Deleted successfully.";
+    alertText.style.fontSize = "25px";
+
+    alertDiv.appendChild(alertText);
+    document.body.appendChild(alertDiv);
+
+    // Remove the alert after a certain time (e.g., 3 seconds)
+    setTimeout(function() {
+        alertDiv.remove();
+    }, 3000);
 }

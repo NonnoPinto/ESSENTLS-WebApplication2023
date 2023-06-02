@@ -19,7 +19,7 @@
         <meta charset="utf-8">
         <title>Edit User</title>
     </head>
-    
+
     <body>
     <%@include file="navbar.jsp"%>
 
