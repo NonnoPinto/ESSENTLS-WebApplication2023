@@ -41,7 +41,7 @@
 						<c:choose>
 							<c:when test="${action.equals(\"event\")}">
 								<p>
-									You are paying: &euro; ${event.price}.
+									You are paying: &euro; ${price}.
 									Choose a payment method:
 									<button class="button border-cyan bg-white color-cyan px-3 py-1" onclick="window.location.href='add_payment?action=${action}&id=${event.id}'">
 										I've payed
@@ -50,7 +50,7 @@
 							</c:when>
 							<c:when test="${action.equals(\"sub\")}">
 								<p>
-									You are paying: &euro; ${subPrice}
+									You are paying: &euro; ${price}
 									<button class="button bg-orange text-white border-orange px-3 py-1" onclick="window.location.href='add_payment?action=${action}'">
 										Payed
 									</button>
@@ -76,7 +76,7 @@
                                     return actions.order.create({
                                         purchase_units: [{
                                             amount: {
-                                                value: '${subPrice}'
+                                                value: '${price}'
                                             }
                                         }]
                                     });
@@ -86,9 +86,14 @@
                                 onApprove: function (data, actions) {
                                     return actions.order.capture().then(function (orderData) {
                                         // Successful capture! For demo purposes:
-                                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                                        let transaction = orderData.purchase_units[0].payments.captures[0];
-                                        alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+										<c:choose>
+											<c:when test="${action.equals(\"event\")}">
+											window.location.href='add_payment?action=${action}&id=${event.id}'
+											</c:when>
+											<c:when test="${action.equals(\"sub\")}">
+											window.location.href='add_payment?action=${action}'
+											</c:when>
+                                        </c:choose>
                                     });
                                 }
 

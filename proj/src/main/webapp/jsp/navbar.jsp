@@ -45,6 +45,7 @@
                                 <li><a a class="dropdown-item" href="<c:url value='/cause-search'/>">Search cause</a></li>
                                 <li><a a class="dropdown-item" href="<c:url value='/tag-search'/>">Search tag</a></li>
                                 <li><a a class="dropdown-item" href="<c:url value='/select-user-by-id'/>">Edit user (select by id)</a></li>
+                                <li><a a class="dropdown-item" href="<c:url value='/paymentslist'/>">List of Payments</a></li>
                             </c:if>
                         </ul>
                     </li>

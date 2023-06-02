@@ -73,6 +73,7 @@ public class PaymentServlet extends AbstractDatabaseServlet{
                         session.setAttribute("event_"+eventId, "not_payed");
                         request.setAttribute("action", "event");
                         request.setAttribute("event", event);
+                        request.setAttribute("price", event.getPrice());
                         request.getRequestDispatcher("/jsp/payment.jsp").forward(request, response);
                     } else { //The event is free, I can redirect to the confirmEvent page
                         session.setAttribute("event_"+eventId, "payed");
@@ -95,7 +96,7 @@ public class PaymentServlet extends AbstractDatabaseServlet{
 
         try {
             request.setAttribute("action", "sub");
-            request.setAttribute("subPrice", 5.00);
+            request.setAttribute("price", 5.00);
             request.getRequestDispatcher("/jsp/payment.jsp").forward(request, response);
 
         }catch(Exception e){
