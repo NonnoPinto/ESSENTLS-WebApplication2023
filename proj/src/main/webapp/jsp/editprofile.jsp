@@ -2,22 +2,23 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.Arrays" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta name="description" content="ESN Padova application">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Edit Profile</title>
+        <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
     <body>
     <%@include file="navbar.jsp"%>
         <div class="container">
             <div class="row justify-content-center my-4">
                 <div class="col-md-10">
-                    <div class="card text-center border-orange">
-                        <h2 class="card-title bg-orange color-white p-4">Edit Profile</h2>
+                    <div class="card text-center border-magenta">
+                        <h2 class="card-title bg-magenta color-white p-4">Edit Profile</h2>
                         <div class="card-body">
                             <c:choose>
                                 <c:when test="${user == null}">
@@ -33,7 +34,7 @@
                                                 <label for="userName" class="mb-2 text-left">Name (currently ${user.getName()}):</label>
                                             </div>
                                             <div class="input-container">
-                                                <input id="userName" value="${user.getName()}" name="userName" type="text" class="form-control"/>
+                                                <input id="userName" value="${user.getName()}" name="userName" maxlength="50" type="text" class="form-control"/>
                                             </div>
                                         </div>
                                             <%--Surname--%>
@@ -42,7 +43,7 @@
                                                 <label for="userSurname" class="mb-2 text-left">Surname (currently ${user.getSurname()}):</label>
                                             </div>
                                             <div class="input-container">
-                                                <input id="userSurname" value="${user.getSurname()}" name="userSurname" type="text" class="form-control"/>
+                                                <input id="userSurname" value="${user.getSurname()}" name="userSurname" maxlength="50" type="text" class="form-control"/>
                                             </div>
                                         </div>
 
@@ -77,7 +78,7 @@
                                                 <label for="userNationality" class="mb-2 text-left">Nationality (currently ${user.getNationality()}):</label>
                                             </div>
                                             <div>
-                                                <input id="userNationality" value="${user.getNationality()}" name="userNationality" type="text" class="form-control"/>
+                                                <input id="userNationality" value="${user.getNationality()}" name="userNationality" type="text" maxlength="100" class="form-control"/>
                                             </div>
                                         </div>
 
@@ -89,23 +90,23 @@
                                             <div class="row input-container" id="userHomeCountryAddress">
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-street" class="form-label">Street</label>
-                                                    <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" class="form-control" value="${user.getHomeCountryAddress().getString("street")}">
+                                                    <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" maxlength="100" class="form-control" value="${user.getHomeCountryAddress().getString("street")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-number" class="form-label">Number</label>
-                                                    <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" class="form-control" value="${user.getHomeCountryAddress().getString("number")}">
+                                                    <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" maxlength="5" class="form-control" value="${user.getHomeCountryAddress().getString("number")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-city" class="form-label">City</label>
-                                                    <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" class="form-control" value="${user.getHomeCountryAddress().getString("city")}">
+                                                    <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" maxlength="60" class="form-control" value="${user.getHomeCountryAddress().getString("city")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-zip" class="form-label">ZIP</label>
-                                                    <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" class="form-control" value="${user.getHomeCountryAddress().getString("zip")}">
+                                                    <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" maxlength="5" class="form-control" value="${user.getHomeCountryAddress().getString("zip")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userHomeCountryAddress-country" class="form-label">Country</label>
-                                                    <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" class="form-control" value="${user.getHomeCountryAddress().getString("country")}">
+                                                    <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" maxlength="55" class="form-control" value="${user.getHomeCountryAddress().getString("country")}">
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +117,7 @@
                                                 <label for="userHomeCountryUniversity" class="mb-2 text-left">Home Country University (currently ${user.getHomeCountryUniversity()}):</label>
                                             </div>
                                             <div>
-                                                <input id="userHomeCountryUniversity" value="${user.getHomeCountryUniversity()}" name="userHomeCountryUniversity" type="text" class="form-control"/>
+                                                <input id="userHomeCountryUniversity" maxlength="150" value="${user.getHomeCountryUniversity()}" name="userHomeCountryUniversity" type="text" class="form-control"/>
                                             </div>
                                         </div>
 
@@ -140,7 +141,7 @@
                                                 <label for="userPhoneNumber" class="mb-2 text-left">Phone Number (currently ${user.getPhoneNumber()}):</label>
                                             </div>
                                             <div>
-                                                <input id="userPhoneNumber" value="${user.getPhoneNumber()}" name="userPhoneNumber" type="text" class="form-control"/>
+                                                <input id="userPhoneNumber" value="${user.getPhoneNumber()}" maxlength="50" name="userPhoneNumber" type="text" class="form-control"/>
                                             </div>
                                         </div>
 
@@ -152,23 +153,23 @@
                                             <div class="row input-container" id="userPaduaAddress">
                                                 <div class="col">
                                                     <label for="userPaduaAddress-street">Street</label>
-                                                    <input type="text" name="userPaduaAddress-street" id="userPaduaAddress-street" class="form-control" value="${user.getPaduaAddress().getString("street")}">
+                                                    <input type="text" name="userPaduaAddress-street" maxlength="35" maxlength="10" id="userPaduaAddress-street" class="form-control" value="${user.getPaduaAddress().getString("street")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userPaduaAddress-number">Number</label>
-                                                    <input type="text" name="userPaduaAddress-number" id="userPaduaAddress-number" class="form-control" value="${user.getPaduaAddress().getString("number")}">
+                                                    <input type="text" name="userPaduaAddress-number" maxlength="5" id="userPaduaAddress-number" class="form-control" value="${user.getPaduaAddress().getString("number")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userPaduaAddress-city">City</label>
-                                                    <input type="text" name="userPaduaAddress-city" id="userPaduaAddress-city" class="form-control" value="${user.getPaduaAddress().getString("city")}">
+                                                    <input type="text" name="userPaduaAddress-city" maxlength="25" id="userPaduaAddress-city" class="form-control" value="${user.getPaduaAddress().getString("city")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userPaduaAddress-zip">ZIP</label>
-                                                    <input type="text" name="userPaduaAddress-zip" id="userPaduaAddress-zip" class="form-control" value="${user.getPaduaAddress().getString("zip")}">
+                                                    <input type="text" name="userPaduaAddress-zip" maxlength="5" id="userPaduaAddress-zip" class="form-control" value="${user.getPaduaAddress().getString("zip")}">
                                                 </div>
                                                 <div class="col">
                                                     <label for="userPaduaAddress-country">Country</label>
-                                                    <input type="text" name="userPaduaAddress-country" id="userPaduaAddress-country" class="form-control" value="${user.getPaduaAddress().getString("country")}">
+                                                    <input type="text" name="userPaduaAddress-country" maxlength="55" id="userPaduaAddress-country" class="form-control" value="${user.getPaduaAddress().getString("country")}">
                                                 </div>
                                             </div>
                                         </div>
@@ -198,14 +199,14 @@
                                                 <label for="userAllergies" class="mb-2 text-left">Allergies (currently ${Arrays.toString(user.getAllergies())}. Separate by comma):</label>
                                             </div>
                                             <div>
-                                                <input id="userAllergies" value="${Arrays.toString(user.getAllergies()).replaceAll("[^a-zA-Z\\p{Zs},]", "")}" name="userAllergies" type="text" class="form-control"/>
+                                                <input id="userAllergies" value="${Arrays.toString(user.getAllergies()).replaceAll("[^a-zA-Z\\p{Zs},]", "")}" maxlength="255" name="userAllergies" type="text" class="form-control"/>
                                             </div>
                                         </div>
 
                                             <%--Button--%>
                                         <div class="row d-flex my-4">
                                             <div>
-                                                <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+                                                <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
                                             </div>
                                         </div>
                                     </form>

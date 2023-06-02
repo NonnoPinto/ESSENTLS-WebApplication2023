@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="en_US"/>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ include file="../html/cdn.html"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="ISO-8859-1">
         <title>Event List</title>
+        <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
     <body>
         <%@include file="navbar.jsp"%>
@@ -26,24 +27,23 @@
                     <div class="row justify-content-start">
                         <c:forEach items="${events}" var="event" varStatus="loop">
                             <div class="col-lg-3 col-md-6 col-sm-12 my-2">
-                                <div class="card h-100 container" onclick="window.location='./eventdetail?id=${event.id}';">
-                                    <img class="card-img-top event-preview-image" src="media/${event.thumbnail}" alt="Event thumbnail">
+                                <div class="card h-100 container home_card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
+                                    <img class="card-img-top img-fluid event-preview-image" src="${event.thumbnail}" alt="Event thumbnail">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-3 event-date">
-                                                <h4 class="text-center text-capitalize">
+                                            <div class="col-3 column-content-vertical-center">
+                                                <p class="event-date text-center text-capitalize m-0 p-0">
                                                     <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
-                                                </h4>
+                                                </p>
                                             </div>
                                             <div class="col-9 event-infos">
-                                                <h4 class="event title">
+                                                <p class="event-title m-0 p-0">
                                                     ${event.name}
-                                                </h4>
-                                                <h6 class="event-price">
+                                                </p>
+                                                <p class="event-price m-0 p-0">
                                                     &euro; <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${event.price}"/>
-                                                </h6>
-                                                <h6 class="event-location">
-                                                    <p>
+                                                </p>
+                                                <p class="event-location m-0 p-0">
                                                         <i class="bi bi-geo-alt"></i>
                                                         <span class="text-capitalize">
                                                             ${event.location.getString("city")},
@@ -51,8 +51,7 @@
                                                         <span class="text-capitalize">
                                                             ${event.location.getString("country")}
                                                         </span>
-                                                    </p>
-                                                </h6>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

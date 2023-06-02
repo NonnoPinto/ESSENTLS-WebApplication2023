@@ -7,12 +7,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../html/cdn.html" %>
-<html>
+<html lang="en">
 <head>
 	<meta name="description" content="ESN Padova application">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Payments</title>
+    <%@ include file="../html/favicon.html"%>
+	<%@ include file="../html/cdn.html" %>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -42,17 +43,17 @@
 								<p>
 									You are paying: &euro; ${event.price}.
 									Choose a payment method:
-									<a class="btn btn-secondary" href="add_payment?action=${action}&id=${event.id}">
+									<button class="button border-cyan bg-white color-cyan px-3 py-1" onclick="window.location.href='add_payment?action=${action}&id=${event.id}'">
 										I've payed
-									</a>
+									</button>
 								</p>
 							</c:when>
 							<c:when test="${action.equals(\"sub\")}">
 								<p>
 									You are paying: &euro; ${subPrice}
-									<a class="btn" href="add_payment?action=${action}">
+									<button class="button bg-orange text-white border-orange px-3 py-1" onclick="window.location.href='add_payment?action=${action}'">
 										Payed
-									</a>
+									</button>
 								</p>
 							</c:when>
 							<c:otherwise>
@@ -99,6 +100,6 @@
 		</div>
 	</div>
 </div>
-<%@include file="/html/footer.html" %>
+<%@include file="/html/footer.html"%>
 </body>
 </html>

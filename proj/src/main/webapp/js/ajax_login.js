@@ -25,6 +25,10 @@ function loginRequest(){
     // get the value of the password from the form field
     const password = document.getElementById("password").value;
 
+    // get the value of the password from the form field
+    const js_enabled = document.getElementById("js_enabled").value;
+    console.log(js_enabled);
+
     //Url to send the request
     const url = URL;
 
@@ -46,7 +50,7 @@ function loginRequest(){
     // perform the request
     console.log("Performing the HTTP POST request.");
 
-    var params = "email="+email+"&password="+password;
+    var params = "email="+email+"&password="+password+"&jsenabled="+js_enabled;
 
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -90,9 +94,7 @@ function processResponse(xhr){
         var messageDiv = document.createElement("div");
         messageDiv.className = "alert alert-danger";
         messageDiv.role = "alert";
-        var messageText = document.createElement("p");
-        messageText.innerHTML = message.message;
-        messageDiv.appendChild(messageText);
+        messageDiv.innerHTML = message.message;
         errorMessageDiv.appendChild(messageDiv);
         errorMessageDiv.style.visibility = 'visible';
         errorMessageDiv.classList.remove("invisible");

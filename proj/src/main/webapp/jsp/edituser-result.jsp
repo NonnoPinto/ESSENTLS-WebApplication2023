@@ -9,14 +9,15 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.Arrays" %>
 
-<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>User Edit Result</title>
+    <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html" %>
 </head>
 
 <body>
@@ -88,6 +89,6 @@
     </div>
 </div>
 
-<%@include file="/html/footer.html" %>
+<%@include file="/html/footer.html"%>
 </body>
 </html>

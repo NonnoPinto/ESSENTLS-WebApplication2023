@@ -114,6 +114,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
+            ArrayList<Integer> eventCauses = null;
             int userId = -1;
             List<Cause> causes = null;
             if(session.getAttribute("sessionUserId") != null)
@@ -131,11 +132,14 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
                 try {
                     causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
+                    eventCauses = new CausesFromEventDAO(getConnection(), eventId).access().getOutputParam();
                 }catch (SQLException sqle){
                     LOGGER.info("Unexpected Database error: "+sqle.getMessage());
                 }
 
                 req.setAttribute("causes", causes);
+                req.setAttribute("listCauses", eventCauses);
+                //LOGGER.info("dimensione cause"+eventCauses.size());
                 req.getRequestDispatcher("/jsp/editevent.jsp").forward(req, res);
             }
         } catch (Exception e) {

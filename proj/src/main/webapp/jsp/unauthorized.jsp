@@ -1,7 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"   %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"   %>
-<%-- @ include file="/html/cdn.html" --%>
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +7,8 @@
     <meta charset="utf-8">
     <title>Error 401 - Unauthorized</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="ISO-8859-1">
-    <title>Login</title>
+    <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>

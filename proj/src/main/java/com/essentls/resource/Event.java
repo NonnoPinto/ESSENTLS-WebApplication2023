@@ -58,17 +58,20 @@ public class Event {
         this.thumbnail = thumbnail;
         this.poster = poster;
     }
+
     /**
      * Constructor of event, Used in the home to get the list of events
      */
-
-    public Event(int id, String name, String description, float price, JSONObject  location, Timestamp subscriptionEnd) {
+    public Event(int id, String name, String description, float price, JSONObject location, Timestamp eventStart, Timestamp eventEnd, Timestamp subscriptionEnd, String thumbnail) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.location = location;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
         this.subscriptionEnd = subscriptionEnd;
+        this.thumbnail = thumbnail;
     }
 
     /**

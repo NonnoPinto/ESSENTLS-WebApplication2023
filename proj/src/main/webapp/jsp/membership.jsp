@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Membership</title>
+    <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html" %>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -45,7 +46,7 @@
                                         <label for="card-id" class="mb-2 text-left">Card ID:</label>
                                     </div>
                                     <div class="input-container">
-                                        <input name="card-id" id=card-id type="text" class="form-control" required>
+                                        <input name="card-id" maxlength="50" id=card-id type="text" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -55,7 +56,7 @@
                                         <label for="first_name" class="mb-2 text-left">Name:</label>
                                     </div>
                                     <div class="input-container">
-                                        <input name="first_name" id="first_name" type="text" class="form-control"
+                                        <input name="first_name" maxlength="50" id="first_name" type="text" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -66,7 +67,7 @@
                                         <label for="last_name" class="mb-2 text-left">Surname:</label>
                                     </div>
                                     <div class="input-container">
-                                        <input name="last_name" id="last_name" type="text" class="form-control"
+                                        <input name="last_name" maxlength="50" id="last_name" type="text" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -89,7 +90,7 @@
                                         <label for="nationality" class="mb-2 text-left">Nationality:</label>
                                     </div>
                                     <div>
-                                        <input name="nationality" id="nationality" type="text" class="form-control"
+                                        <input name="nationality" maxlength="100" id="nationality" type="text" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -101,7 +102,7 @@
                                             university are you from?</label>
                                     </div>
                                     <div>
-                                        <input name="home-country-university" id="home-country-university" type="text"
+                                        <input name="home-country-university" maxlength="150" id="home-country-university" type="text"
                                                class="form-control" required>
                                     </div>
                                 </div>
@@ -117,31 +118,31 @@
                                     <div class="row input-container" id="home-country-address">
                                         <div class="col">
                                             <label for="home-country-address-street" class="form-label">Street</label>
-                                            <input type="text" name="home-country-address-street"
+                                            <input type="text" maxlength="100" name="home-country-address-street"
                                                    id="home-country-address-street" class="form-control"
                                                    placeholder="Enter Street...">
                                         </div>
                                         <div class="col">
                                             <label for="home-country-address-number" class="form-label">Number</label>
-                                            <input type="text" name="home-country-address-number"
+                                            <input type="text" maxlength="5" name="home-country-address-number"
                                                    id="home-country-address-number" class="form-control"
                                                    placeholder="Enter number...">
                                         </div>
                                         <div class="col">
                                             <label for="home-country-address-city" class="form-label">City</label>
-                                            <input type="text" name="home-country-address-city"
+                                            <input type="text" maxlength="60" name="home-country-address-city"
                                                    id="home-country-address-city" class="form-control"
                                                    placeholder="Enter city...">
                                         </div>
                                         <div class="col">
                                             <label for="home-country-address-zip" class="form-label">ZIP</label>
-                                            <input type="text" name="home-country-address-zip"
+                                            <input type="text" maxlength="5" name="home-country-address-zip"
                                                    id="home-country-address-zip" class="form-control"
                                                    placeholder="Enter zip...">
                                         </div>
                                         <div class="col">
                                             <label for="home-country-address-country" class="form-label">Country</label>
-                                            <input type="text" name="home-country-address-country"
+                                            <input type="text" maxlength="55" name="home-country-address-country"
                                                    id="home-country-address-country" class="form-control"
                                                    placeholder="Enter country...">
                                         </div>
@@ -170,7 +171,7 @@
                                         <label for="phone-number" class="mb-2 text-left">Phone number:</label>
                                     </div>
                                     <div>
-                                        <input id="phone-number" name="phone-number" type="text" class="form-control"
+                                        <input id="phone-number" maxlength="50" name="phone-number" type="text" class="form-control"
                                                required>
                                     </div>
                                 </div>
@@ -183,27 +184,27 @@
                                     <div class="row input-container" id="padua-address">
                                         <div class="col">
                                             <label for="padua-address-street">Street</label>
-                                            <input type="text" name="padua-address-street" id="padua-address-street"
+                                            <input type="text" maxlength="35" name="padua-address-street" id="padua-address-street"
                                                    class="form-control" placeholder="Enter Street...">
                                         </div>
                                         <div class="col">
                                             <label for="padua-address-number">Number</label>
-                                            <input type="text" name="padua-address-number" id="padua-address-number"
+                                            <input type="text" maxlength="5" name="padua-address-number" id="padua-address-number"
                                                    class="form-control" placeholder="Enter number...">
                                         </div>
                                         <div class="col">
                                             <label for="padua-address-city">City</label>
-                                            <input type="text" name="padua-address-city" id="padua-address-city"
+                                            <input type="text" maxlength="25" name="padua-address-city" id="padua-address-city"
                                                    class="form-control" placeholder="Enter city...">
                                         </div>
                                         <div class="col">
                                             <label for="padua-address-zip">ZIP</label>
-                                            <input type="text" name="padua-address-zip" id="padua-address-zip"
+                                            <input type="text" maxlength="5" name="padua-address-zip" id="padua-address-zip"
                                                    class="form-control" placeholder="Enter zip...">
                                         </div>
                                         <div class="col">
                                             <label for="padua-address-country">Country</label>
-                                            <input type="text" name="padua-address-country" id="padua-address-country"
+                                            <input type="text" maxlength="55" name="padua-address-country" id="padua-address-country"
                                                    class="form-control" placeholder="Enter country...">
                                         </div>
                                     </div>
@@ -229,7 +230,7 @@
                                         <label for="document-number" class="mb-2 text-left">Document number:</label>
                                     </div>
                                     <div>
-                                        <input name="document-number" id="document-number" type="text"
+                                        <input name="document-number" maxlength="50" id="document-number" type="text"
                                                class="form-control"
                                                required>
                                     </div>
@@ -273,14 +274,14 @@
                                             them):</label>
                                     </div>
                                     <div>
-                                        <input id="allergies" name="allergies" type="text" class="form-control">
+                                        <input id="allergies" maxlength="255" name="allergies" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                     <%--Upload New Document--%>
                                 <div class="mx-2 my-2 d-flex justify-content-start">
                                     <label for="document-bytes">Upload Document:</label>
-                                    <input id="document-bytes" name="document-bytes" type="file" class="mx-2" required/>
+                                    <input id="document-bytes" accept="application/pdf" name="document-bytes" type="file" class="mx-2" required/>
                                 </div>
 
                                     <%--Button--%>
@@ -300,6 +301,6 @@
         </div>
     </div>
 </div>
-<%@include file="/html/footer.html" %>
+<%@include file="/html/footer.html"%>
 </body>
 </html>

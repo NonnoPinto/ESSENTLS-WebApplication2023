@@ -67,7 +67,8 @@ public class DocumentDownloadServlet extends AbstractDatabaseServlet {
             res.getOutputStream().write(document);
             res.getOutputStream().close();
         } else {
-            res.sendError(HttpServletResponse.SC_NOT_FOUND);
+            res.sendRedirect(req.getContextPath() + "/error"); // redirect to 404 page
+            //res.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
 
 

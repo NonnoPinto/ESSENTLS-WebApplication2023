@@ -2,14 +2,16 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="ISO-8859-1">
     <title>Event registration: additional information required</title>
+    <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>
@@ -34,10 +36,10 @@
                             <form action="<c:url value="/confirmEvent"/>" id="createEventForm" method="POST">
                                 <c:forEach items="${attributes}" var="att">
                                     <label for="${fn:replace(att.key,' ','')}" class="form-label">${att.key}</label>
-                                    <input type="text" id="${fn:replace(att.key,' ','')}" class="form-control" name="att_${fn:replace(att.key,' ','')}" value="${att.value}"><br/>
+                                    <input type="text" id="${fn:replace(att.key,' ','')}" class="form-control" name="att_${fn:replace(att.key,' ','')}" value="${att.value}" maxlength="255"><br/>
                                 </c:forEach>
                                 <input type="hidden" name="eventId" value="${event.id}">
-                                <input type="submit" name="submitAttr" class="btn btn-primary" value="Send">
+                                <input type="submit" name="submitAttr" class="btn btn-primary bg-cyan border-cyan" value="Send">
                             </form>
                         </div>
                     </div>

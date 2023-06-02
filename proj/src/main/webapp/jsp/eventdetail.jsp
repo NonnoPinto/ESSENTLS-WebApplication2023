@@ -6,14 +6,15 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
 
-<%@ include file="../html/cdn.html" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta name="description" content="ESN Padova application">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="ISO-8859-1">
 	<title>Event detail</title>
+    <%@ include file="../html/favicon.html"%>
+	<%@ include file="../html/cdn.html" %>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -25,9 +26,20 @@
 				<div class="card-img-top position-relative" id="event_header"
 					 style="background-image: url('${event.poster}');">
 					<div class="clearfix">
-						<img src="media/${event.thumbnail}"
-							 alt="Image of the event" class="rounded float-sm-start"
-							 id="event_icon"/>
+					    <c:choose>
+
+                           <c:when test= "${event.poster == null}">
+                              <img src="media/default_thumbnail.png"
+                                 alt="Image of the event" class="rounded float-sm-start"
+                                 id="event_icon"/>
+                           </c:when>
+
+                           <c:otherwise>
+                              <img src="${event.poster}"
+                               alt="Image of the event" class="rounded float-sm-start"
+                               id="event_icon"/>
+                           </c:otherwise>
+                        </c:choose>
 						<div id="event_info" class="float-sm-start">
 							<h2>${event.name}</h2>
 							<br/>
@@ -86,10 +98,10 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
-												<a class="btn bg-orange text-white border-orange px-4 py-2 w-100"
-												   href="payment?action=event&id=${event.id}">
+												<button class="btn bg-orange text-white border-orange px-4 py-2 w-100"
+												   onclick="window.location.href='payment?action=event&id=${event.id}'">
 													JOIN
-												</a>
+												</button>
 											</c:when>
 											<c:otherwise>
 												Sorry, the event is full.
@@ -112,6 +124,6 @@
 		</div>
 	</div>
 </div>
-<%@include file="/html/footer.html" %>
+<%@include file="/html/footer.html"%>
 </body>
 </html>

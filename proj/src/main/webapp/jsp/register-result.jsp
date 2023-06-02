@@ -10,35 +10,38 @@
 <%@ page import="java.util.Arrays" %>
 
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Edit</title>
+    <%@ include file="../html/favicon.html"%>
+    <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>
 <%@include file="navbar.jsp"%>
-<div class="title">
-    <h1>User Edit</h1>
+<div class="container">
+    <div class="title">
+        <h1>User Edit</h1>
     <hr>
+    </div>
+    <c:choose>
+        <c:when test="${user==null}">
+            <h2>Something went wrong.</h2>
+            <c:out value="${message}"/>
+        </c:when>
+        <c:otherwise>
+            <c:out value="Successfully registered."/>
+            <br/>
+            <p>Please check your email and click the invitation link to verify this account and login to our website to complete the membership registration.</p>
+            <c:out value="Email: ${user.getEmail()}"/>
+            <br/>
+            
+        </c:otherwise>
+    </c:choose>
 </div>
-<c:choose>
-    <c:when test="${user==null}">
-        <h2>Something went wrong.</h2>
-        <c:out value="${message}"/>
-    </c:when>
-    <c:otherwise>
-        <c:out value="Successfully registered."/>
-        <br/>
-        <p>Please check your email and click the invitation link to verify this account and login to our website to complete the membership registration.</p>
-        <c:out value="Email: ${user.getEmail()}"/>
-        <br/>
-        
-    </c:otherwise>
-</c:choose>
 
 <%@include file="/html/footer.html"%>
 

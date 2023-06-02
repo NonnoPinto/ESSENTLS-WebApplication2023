@@ -2,9 +2,27 @@ document.getElementById("ajaxButton")
     .addEventListener("click", searchCause);
 console.log("Event listener added to ajaxButton.")
 
+document.getElementById("ajaxButtonAll")
+    .addEventListener("click", searchCauseAll);
+console.log("Event listener added to ajaxButton.")
+
+var searchAll = false;
+console.log(searchAll);
+
+function searchCauseAll(){
+    searchAll = true;
+    searchCause();
+    searchAll = false;
+}
+
 function searchCause() {
-    const id = document.getElementById("causeId").value;
-    const subCause = document.getElementById("subCause").value;
+    var id = document.getElementById("causeId").value;
+    var subCause = document.getElementById("subCause").value;
+
+    if (searchAll){
+        id = "";
+        subCause = "";
+    }
 
     url = "/proj-1.0/rest/causes/";
 
@@ -103,11 +121,13 @@ function processGetResponse(xhr) {
     }
 
     const div = document.getElementById("results");
+    const instructions = document.getElementById("instructions");
 
     //parse the response as JSON and extract the resource-list array
     const resourceList = JSON.parse(xhr.response)["resource-list"];
 
     div.replaceChildren();
+    instructions.replaceChildren();
 
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
@@ -117,10 +137,21 @@ function processGetResponse(xhr) {
     }
     
     if(resourceList.length > 0){
+        const instructionsText = document.createElement("div");
+        instructions.appendChild(instructionsText);
+
+        instructions.classList.add("justify-content-center", "mt-2");
+        instructions.classList.add("col-md-10", "col-lg-8", "col-xl-6");
+
+        instructionsText.classList.add("alert", "alert-info");
+        instructionsText.setAttribute("role", "alert");
+        instructionsText.classList.add("text-center");
+        instructionsText.innerHTML = "Edit cause name: modify the input field and click the edit button to confirm.";
+
         div.classList.add("container");
-        div.classList.add("justify-content-center", "my-4");
+        div.classList.add("justify-content-center", "my-2");
         div.classList.add("col-md-10", "col-lg-8", "col-xl-6");
-        div.classList.add("card", "text-center", "border-orange");
+        div.classList.add("card", "text-center", "border-green");
         div.classList.add("table-responsive");
     
         const table = document.createElement("table");
@@ -196,7 +227,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const editButton = document.createElement("button");
             editButton.appendChild(document.createTextNode("Edit"));
-            editButton.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
+            editButton.classList.add("button", "bg-green", "text-white", "border-green", "px-4", "py-2");
             editButton.addEventListener("click", function() {editCause(esncause["id"], newname); });
             eee.appendChild(editButton);
             ee.appendChild(eee); //append the element to the row
@@ -205,7 +236,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const deleteButton = document.createElement("button");
             deleteButton.appendChild(document.createTextNode("Delete"));
-            deleteButton.classList.add("button", "bg-orange", "text-white", "border-orange", "px-4", "py-2");
+            deleteButton.classList.add("button", "bg-white", "color-green", "border-green", "px-4", "py-2");
             deleteButton.addEventListener("click", function() {deleteCause(esncause["id"]); });
             eee.appendChild(deleteButton);
             ee.appendChild(eee); //append the element to the row
@@ -225,8 +256,10 @@ function processPutResponse(xhr) {
     }
 
     const div = document.getElementById("results");
+    const instructions = document.getElementById("instructions");
 
     div.replaceChildren();
+    instructions.replaceChildren();
 
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
@@ -248,8 +281,10 @@ function processDeleteResponse(xhr) {
     }
 
     const div = document.getElementById("results");
+    const instructions = document.getElementById("instructions");
 
     div.replaceChildren();
+    instructions.replaceChildren();
 
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);

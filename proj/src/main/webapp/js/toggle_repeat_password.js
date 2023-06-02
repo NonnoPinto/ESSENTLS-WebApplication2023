@@ -6,5 +6,6 @@ toggleRPassword.addEventListener('click', function (e) {
     const type = rpassword.getAttribute('type') === 'password' ? 'text' : 'password';
     rpassword.setAttribute('type', type);
     // toggle the eye slash icon
+    this.classList.toggle('fa-eye');
     this.classList.toggle('fa-eye-slash');
 });

@@ -9,13 +9,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta name="description" content="ESN Padova application">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>List of found Users</title>
+  <%@ include file="../html/favicon.html"%>
+  <%@ include file="../html/cdn.html"%>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 <div class="container">
   <h1 class="page-title p-2">List of found Users</h1>
   <div class="row justify-content-center my-4">
-    <div class="col">
+    <div class="col-md-10">
       <div class="card text-center border-orange">
         <!-- display the list of found users, if any -->
         <c:if test='${not empty userList}'>

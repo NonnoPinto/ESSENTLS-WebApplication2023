@@ -69,7 +69,13 @@ public class LoginServlet extends AbstractDatabaseServlet {
             //take from the request, the parameters (email and password)
             String email = req.getParameter("email");
             String password = req.getParameter("password");
+            String js_enabled = req.getParameter("jsenabled");
 
+            if (js_enabled == null){
+                js_enabled = "false";
+            }
+
+            LOGGER.info("javascript is %s",js_enabled);
             LOGGER.info("user %s is trying to login",email);
 
             if (email == null || email.equals("")) {
@@ -82,7 +88,12 @@ public class LoginServlet extends AbstractDatabaseServlet {
                 //we used jsp for the login page: thus we forward the request
                 //req.setAttribute("message", m);
                 //req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
-                m.toJSON(res.getOutputStream());
+                if (js_enabled.equals("true")){
+                    m.toJSON(res.getOutputStream());
+                } else {
+                    req.setAttribute("message", m);
+                    req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+                }
 
             } else if (password == null || password.trim().equals("")) {
                 //the password was empty
@@ -91,7 +102,12 @@ public class LoginServlet extends AbstractDatabaseServlet {
                 m = new Message(true, "missing password");
                 //req.setAttribute("message", m);
                 //req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
-                m.toJSON(res.getOutputStream());
+                if (js_enabled.equals("true")){
+                    m.toJSON(res.getOutputStream());
+                } else {
+                    req.setAttribute("message", m);
+                    req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+                }
             } else{
                 //try to authenticate the user
                 email = email.toLowerCase();
@@ -112,7 +128,12 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     req.setAttribute("message", m);
                     req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
                     */
-                    m.toJSON(res.getOutputStream());
+                    if (js_enabled.equals("true")){
+                        m.toJSON(res.getOutputStream());
+                    } else {
+                        req.setAttribute("message", m);
+                        req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+                    }
                 }else if(!user.getEmailConfirmed()){
                     ErrorCode ec = ErrorCode.NOT_VERIFIED;
                     res.setStatus(ec.getHTTPCode());
@@ -121,7 +142,12 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     req.setAttribute("message", m);
                     req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
                     */
-                    m.toJSON(res.getOutputStream());
+                    if (js_enabled.equals("true")){
+                        m.toJSON(res.getOutputStream());
+                    } else {
+                        req.setAttribute("message", m);
+                        req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+                    }
                 } else{
                     // activate a session to keep the user data
                     HttpSession session = req.getSession();
@@ -133,7 +159,11 @@ public class LoginServlet extends AbstractDatabaseServlet {
                     // login credentials were correct: we redirect the user to the profile page
                     // now the session is active and its data can used to change the profile page
                     //res.sendRedirect(req.getContextPath()+"/home");
-                    m.toJSON(res.getOutputStream());
+                    if (js_enabled.equals("true")){
+                        m.toJSON(res.getOutputStream());
+                    } else {
+                        res.sendRedirect(req.getContextPath()+"/home");
+                    }
 
                 }
             }

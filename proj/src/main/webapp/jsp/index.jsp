@@ -1,13 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ include file="../html/cdn.html"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta name="description" content="ESN Padova application">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ESN</title>
+        <%@ include file="../html/favicon.html"%>
+        <%@ include file="../html/cdn.html"%>
     </head>
     <body>
         <%@include file="navbar.jsp"%>
@@ -19,8 +20,8 @@
                         <h2 class="card-title bg-orange color-white p-4">Please login to continue.</h2>
                         <div class="card-body">
                             <a href="<c:url value='/login'/>"><button class="button bg-orange text-white border-orange px-4 py-2">Log in</button></a>
-                            <p class="card-text p-2">Don't have an account?</p>
-                            <a href="<c:url value='/signup'/>"><button class="button bg-cyan text-white border-cyan px-4 py-2">Sign up!</button></a>
+                            <p class="card-text p-2 text-secondary">Don't have an account?</p>
+                            <a href="<c:url value='/signup'/>"><button class="button color-orange border-orange bg-white px-4 py-2">Sign up!</button></a>
                         </div>
                     </div>
                 </div>
