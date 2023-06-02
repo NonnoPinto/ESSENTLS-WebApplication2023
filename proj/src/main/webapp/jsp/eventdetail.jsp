@@ -123,6 +123,20 @@
 			</div>
 		</div>
 	</div>
+	<c:choose>
+		<c:when test="${canEditEvent}">
+			<div class="row justify-content-center my-2">
+				<div class="col-xxl-10 col-12 d-flex justify-content-end">
+					<form action="<c:url value="/editEvent"/>" method="GET">
+						<input name="id" value="${event.id}" type="hidden">
+						<button type="submit" class="button bg-orange border-orange color-white px-4 py-2">Edit Event</button>
+					</form>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
 </div>
 <%@include file="/html/footer.html"%>
 </body>

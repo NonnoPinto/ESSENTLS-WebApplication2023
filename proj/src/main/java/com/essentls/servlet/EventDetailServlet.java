@@ -50,10 +50,22 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
                 int nWaiting = 0;
                 boolean currentIsWaiting = false;
                 boolean currentIsPartecipating = false;
+                boolean canEditEvent = false;
+
+                //Tier 4 can always edit event
+                if (user.getTier() == 4){
+                    canEditEvent = true;
+                }
+
                 for (Participant p : participants) {
                     if (!p.getRole().equals("WaitingList")) {
-                        if(p.getUserId() == user.getId())
+                        if(p.getUserId() == user.getId()){
                             currentIsPartecipating = true;
+                            //if tier < 4 can edit only if is organizer
+                            if (!canEditEvent && user.getTier() >= 2 && p.getRole().equals("Organizer")){
+                                canEditEvent = true;
+                            }
+                        }
                         nParticipants++;
                     } else {
                         if(p.getUserId() == user.getId())
@@ -66,6 +78,7 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
                 request.setAttribute("nWaiting", nWaiting);
                 request.setAttribute("currentIsWaiting", currentIsWaiting);
                 request.setAttribute("currentIsPartecipating", currentIsPartecipating);
+                request.setAttribute("canEditEvent", canEditEvent);
                 request.getRequestDispatcher("/jsp/eventdetail.jsp").forward(request, response);
             }
         } catch (Exception e) {

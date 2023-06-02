@@ -120,7 +120,24 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             if(session.getAttribute("sessionUserId") != null)
                 userId = (int)session.getAttribute("sessionUserId");
             User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-            if(user == null || user.getTier() < 3){ //Auth check TODO make three dynamic
+            List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
+            boolean canEditEvent = false;
+
+            if (user.getTier() == 4){
+                canEditEvent = true;
+            } else {
+                for (Participant p : participants) {
+                    if(p.getUserId() == user.getId()){
+                        //if tier < 4 can edit only if is organizer
+                        if (!canEditEvent && user.getTier() >= 2 && p.getRole().equals("Organizer")){
+                            canEditEvent = true;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            if(user == null || !canEditEvent){ //Auth check
                 req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
             }else {
                 req.setAttribute("event", e);
