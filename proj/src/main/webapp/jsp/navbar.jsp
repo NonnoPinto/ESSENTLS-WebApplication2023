@@ -49,9 +49,7 @@
                         </ul>
                     </li>
                 </c:if>
-            </ul>
-            <ul class="navbar-nav ms-auto d-flex flex-row">
-                <c:if test="${sessionScope.sessionUserId == null}">
+                <c:if test="${sessionScope.sessionUserId == null && false}">
                     <li class="nav-item text-nowrap">
                         <a class="btn btn-outline-primary" href="<c:url value='/login'/>">Login</a>
                     </li>

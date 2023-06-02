@@ -164,6 +164,11 @@ button:hover {
     text-decoration: none;
 }
 
+.navbar a#navbarDropdownProfile{
+    font-size: 25px;
+    line-height: 25px;
+}
+
 .top-logo-navbar{
     height: 5rem;
     width: auto;
