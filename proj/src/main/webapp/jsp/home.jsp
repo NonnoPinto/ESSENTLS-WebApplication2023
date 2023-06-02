@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="en_US"/>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<jsp:useBean id="random" class="java.util.Random" scope="application" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +91,15 @@
                                 </c:if>
                                 <div class="col-12 col-md-4 mb-4">
                                     <div class="card h-100 container home_card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
-                                        <img class="card-img-top img-fluid event-preview-image" src="${event.thumbnail}" alt="Event thumbnail">
+                                        <c:choose>
+                                            <c:when test= "${event.thumbnail == null}">
+                                                <img class="card-img-top img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <img class="card-img-top img-fluid event-preview-image" src="${event.thumbnail}" alt="Event thumbnail">
+                                            </c:otherwise>
+                                        </c:choose>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-3 column-content-vertical-center">

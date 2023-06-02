@@ -242,7 +242,8 @@ button:hover {
 }
 
 .event-preview-image{
-    height: 10rem;
+    /*height: 10rem;*/
+    width: 100vw;
 }
 
 #srch{
