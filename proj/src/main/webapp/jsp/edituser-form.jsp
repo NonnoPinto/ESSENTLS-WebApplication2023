@@ -318,9 +318,12 @@
                                             <div class="mb-3">
                                                 <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
                                             </div>
-                                            <div>
+                                            <div class="mb-3">
                                                 <button type="reset" class="button bg-white color-orange border-orange px-4 py-2">Reset the form</button>
                                             </div>
+                                            <a href="<c:url value="/select-user-by-id"/>">
+                                                <button type="button" class="button bg-orange border-orange color-white px-4 py-2">Cancel</button>
+                                            </a>
                                         </div>
                                     </form>
                                 </c:otherwise>

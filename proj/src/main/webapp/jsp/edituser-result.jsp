@@ -83,6 +83,11 @@
                             </div>
                         </c:otherwise>
                     </c:choose>
+                    <div class="row d-flex my-4">
+                        <a href="<c:url value="/select-user-by-id"/>">
+                            <button type="button" class="button bg-orange border-orange color-white px-4 py-2">Back</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
