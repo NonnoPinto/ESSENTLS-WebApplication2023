@@ -104,6 +104,10 @@ public class AddPaymentServlet extends AbstractDatabaseServlet{
             if (session.getAttribute("sessionUserId") != null) {
                 int userId = (int) session.getAttribute("sessionUserId");
                 if (new UserPaymentSubmitDAO(getConnection(), new Payment(0, userId, 0, "Card", 5, new Date(System.currentTimeMillis()), "Membership")).access().getOutputParam()) {
+                    User currUser = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+                    currUser.setTier(1);
+                    new UserMembershipDAO(getConnection(), currUser).access().getOutputParam();
+                    session.setAttribute("sessionUserTier", 1);
                     response.sendRedirect(request.getContextPath() + "/home");
                 }
             }

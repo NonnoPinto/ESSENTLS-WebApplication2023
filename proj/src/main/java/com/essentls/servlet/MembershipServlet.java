@@ -2,13 +2,16 @@ package com.essentls.servlet;
 
 import com.essentls.dao.UploadUserDocumentDAO;
 import com.essentls.dao.UserMembershipDAO;
+import com.essentls.dao.UserProfileInfoDAO;
 import com.essentls.resource.Message;
 import com.essentls.resource.User;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.json.JSONObject;
@@ -45,12 +48,37 @@ public class MembershipServlet extends AbstractDatabaseServlet {
         LogContext.setResource(req.getRequestURI());
         LogContext.setAction("MEMBERSHIP");
 
-        int userTier = (int) req.getSession().getAttribute("sessionUserTier");
+        HttpSession session = req.getSession();
+        int userId = -1;
+        try {
+            userId = (int) session.getAttribute("sessionUserId"); // retrieve the user id string from session
+            LOGGER.info("userId: %s", userId);
+        } catch (NullPointerException e) {
+            LOGGER.error("stacktrace:", e);
+        }
 
-        if(userTier > 0) {
-            res.sendRedirect(req.getContextPath() + "/profile");
-        }else {
-            req.getRequestDispatcher("/jsp/membership.jsp").forward(req, res);
+        User user = null;
+        LOGGER.info("UserId: %s", userId);
+
+        try {
+
+            user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            req.setAttribute("user", user);
+
+            int userTier = user.getTier();
+
+            if(userTier > 0) {
+                res.sendRedirect(req.getContextPath() + "/profile");
+            }else {
+                if(user.getCardId().trim().length() > 0)
+                    req.getRequestDispatcher("/jsp/membership-result.jsp").forward(req,res);
+                else
+                    req.getRequestDispatcher("/jsp/membership.jsp").forward(req, res);
+            }
+
+        } catch (SQLException e) {
+            LOGGER.error("stacktrace:", e);
+            throw new ServletException(e);
         }
     }
 
@@ -81,7 +109,8 @@ public class MembershipServlet extends AbstractDatabaseServlet {
             if(userTier > 0){
                 res.sendRedirect(req.getContextPath() + "/profile");
             }else {
-                String cardId = req.getParameter("card-id");
+                // String cardId = req.getParameter("card-id");
+                String cardId = "A0000"; // PLACEHOLDER
                 Integer tier = 0;
                 java.util.Date utilDate = new java.util.Date();
                 java.sql.Date registrationDate = new java.sql.Date(utilDate.getTime());//registration date
@@ -117,7 +146,6 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 paduaAddress = paduaAddress.put("country", paduaAddressCountry);
                 String documentType = req.getParameter("document-type");
                 String documentNumber = req.getParameter("document-number");
-                String documentFile = req.getParameter("document-file");
                 String dietType = req.getParameter("diet-type");
                 String[] allergies = req.getParameter("allergies").split(",");
                 //String emailHash = email.hashCode()+"";
@@ -126,9 +154,9 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 Part documentBytesPart = req.getPart("document-bytes");
                 byte[] documentBytes = documentBytesPart.getInputStream().readAllBytes();
 
-                user = new User(id, null, null, cardId, tier, registrationDate, name, surname, sex, date2,
+                user = new User(id, null, null, null, tier, registrationDate, name, surname, sex, date2,
                         nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress,
-                        documentType, documentNumber, documentFile, dietType, allergies, null, emailConfirmed);
+                        documentType, documentNumber, null, dietType, allergies, null, emailConfirmed);
 
                 // try to find the user in the database
                 LOGGER.info("user %s is trying to membership", user.getEmail());

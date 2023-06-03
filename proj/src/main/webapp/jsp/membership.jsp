@@ -33,22 +33,22 @@
                                     </div>
                                     <div>
                                         <select name="sex" id="sex" class="form-select">
-                                            <option value="male">male</option>
-                                            <option value="female">female</option>
-                                            <option value="others">others</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="others">Others</option>
                                         </select>
                                     </div>
                                 </div>
 
                                     <%--CardId--%>
-                                <div class="mx-2 my-2">
-                                    <div class="d-flex justify-content-start">
-                                        <label for="card-id" class="mb-2 text-left">Card ID:</label>
-                                    </div>
-                                    <div class="input-container">
-                                        <input name="card-id" maxlength="50" id=card-id type="text" class="form-control" required>
-                                    </div>
-                                </div>
+<%--                                <div class="mx-2 my-2">--%>
+<%--                                    <div class="d-flex justify-content-start">--%>
+<%--                                        <label for="card-id" class="mb-2 text-left">Card ID:</label>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="input-container">--%>
+<%--                                        <input name="card-id" maxlength="50" id=card-id type="text" class="form-control" required>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
 
                                     <%--Name--%>
                                 <div class="mx-2 my-2">
@@ -233,18 +233,6 @@
                                         <input name="document-number" maxlength="50" id="document-number" type="text"
                                                class="form-control"
                                                required>
-                                    </div>
-                                </div>
-
-
-                                    <%--Document File--%>
-                                <div class="mx-2 my-2">
-                                    <div class="d-flex justify-content-start">
-                                        <label for="document-file" class="mb-2 text-left">Document file:</label>
-                                    </div>
-                                    <div>
-                                        <input name="document-file" id="document-file" type="text" class="form-control"
-                                               required/>
                                     </div>
                                 </div>
 
