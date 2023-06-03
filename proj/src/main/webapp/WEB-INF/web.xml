@@ -188,7 +188,7 @@
 
     <servlet-mapping>
         <servlet-name>EmailConfirmationServlet</servlet-name>
-        <url-pattern>/email-confirmation/*</url-pattern>
+        <url-pattern>/email-confirmation</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

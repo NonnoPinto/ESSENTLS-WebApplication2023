@@ -70,7 +70,7 @@ public class MembershipServlet extends AbstractDatabaseServlet {
             if(userTier > 0) {
                 res.sendRedirect(req.getContextPath() + "/profile");
             }else {
-                if(user.getCardId().trim().length() > 0)
+                if(user.getCardId() != null && user.getCardId().trim().length() > 0)
                     req.getRequestDispatcher("/jsp/membership-result.jsp").forward(req,res);
                 else
                     req.getRequestDispatcher("/jsp/membership.jsp").forward(req, res);

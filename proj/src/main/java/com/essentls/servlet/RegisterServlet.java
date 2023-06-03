@@ -175,10 +175,10 @@ public class RegisterServlet extends AbstractDatabaseServlet {
     private void sendCreationConfirmationEmail(User u) throws MessagingException {
 
         final StringBuilder sb = new StringBuilder();
-        sb.append(String.format("<p>Welcome %s,</p>%n", u.getSurname(), u.getName()));
+        sb.append(String.format("<p>Welcome %s,</p>%n", u.getEmail()));
         sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been created.</p>%n"));
         sb.append(String.format("<p>Please, verify your mail by clicking the link below.</p>%n"));
-        sb.append(String.format("<p><a href=\"%s\">Verify your mail</a></p>%n", "http://localhost:8080/proj-1.0/email-confirmation/hashMail=" + u.getEmailHash()));
+        sb.append(String.format("<p><a href=\"%s\" style=\"background-color: darkblue; padding: 8px; border-radius: 5px; color: white; display: block\">Verify your mail</a></p>%n", "http://localhost:8080/proj-1.0/email-confirmation?hashMail=" + u.getEmailHash()));
         sb.append(String.format("<p>Best regards,<br>The ESN Padua Team</p>%n"));
         sb.append(String.format("<p>Remember, to fully enrol you must visit our office!</p>%n"));
         sb.append(String.format("<p>You can find our office at , Padua. We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));

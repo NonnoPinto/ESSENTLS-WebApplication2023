@@ -37,12 +37,11 @@ public class EmailConfirmationServlet extends AbstractDatabaseServlet {
         LogContext.setResource(req.getRequestURI());
         LogContext.setAction("EMAIL CONFIRMATION");
 
-        String uri = req.getPathInfo();
         Message m = null;
 
-        String hash = uri.split("=")[1];
+        String hash = req.getParameter("hashMail");
 
-        LOGGER.info("Uri %s",hash);
+        LOGGER.info("Hash %s",hash);
 
         try{
             boolean verified = new EmailConfirmationDAO(getConnection(),hash).access().getOutputParam();
