@@ -241,7 +241,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             subscriptionEnd = LocalDateTime.parse(req.getParameter("subscriptionEnd"), formatter);
             withdrawalEnd = LocalDateTime.parse(req.getParameter("withdrawalEnd"), formatter);
             maxWaitingList = Integer.parseInt(req.getParameter("maxWaitingList"));
-            attributes = req.getParameter("attributes").replace(", ",",").split(",");
+            attributes = req.getParameter("attributes").replace(", ",",").replace(" ,",",").split(",");
 
             // set the name of the event as the resource in the log context
             LogContext.setResource(req.getParameter("name"));

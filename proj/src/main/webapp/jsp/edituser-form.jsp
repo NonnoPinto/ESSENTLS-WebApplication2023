@@ -23,7 +23,7 @@
                         <h2 class="card-title bg-orange color-white p-4">Edit User</h2>
                         <div class="card-body">
                             <c:choose>
-                                <c:when test="${user == null}">
+                                <c:when test="${empty user}">
                                     <p>User not found</p>
                                 </c:when>
                                 <c:otherwise>

@@ -50,25 +50,27 @@
                         </ul>
                     </li>
                 </c:if>
-                <c:if test="${sessionScope.sessionUserId == null && false}">
-                    <li class="nav-item text-nowrap">
-                        <a class="btn btn-outline-primary" href="<c:url value='/login'/>">Login</a>
-                    </li>
-                    <li class="nav-item text-nowrap">
-                        <a class="btn btn-primary" href="<c:url value='/signup'/>">Sign up</a>
-                    </li>
-                </c:if>
-                <c:if test="${sessionScope.sessionUserId != null}">
-                    <li class="nav-item dropdown">
-                        <a rel="noopener noreferrer nofollow" class="nav-link dropdown" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProfile">
-                            <li><a class="dropdown-item" href="<c:url value='/profile'/>">Profile Info</a></li>
-                            <li><a class="dropdown-item" rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">Logout</a></li>
-                        </ul>
-                    </li>
-                </c:if>
+                <c:choose>
+                    <c:when test="${empty sessionScope.sessionUserId}">
+                        <li class="nav-item text-nowrap">
+                            <a class="btn btn-outline-primary" href="<c:url value='/login'/>">Login</a>
+                        </li>
+                        <li class="nav-item text-nowrap">
+                            <a class="btn btn-primary" href="<c:url value='/signup'/>">Sign up</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item dropdown">
+                            <a rel="noopener noreferrer nofollow" class="nav-link dropdown" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProfile">
+                                <li><a class="dropdown-item" href="<c:url value='/profile'/>">Profile Info</a></li>
+                                <li><a class="dropdown-item" rel="noopener noreferrer nofollow" href="<c:url value='/logout'/>">Logout</a></li>
+                            </ul>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </div>
     </div>

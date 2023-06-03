@@ -127,7 +127,7 @@ public class EditUserProfileServlet extends AbstractDatabaseServlet {
         paduaAddress.put("country", req.getParameter("userPaduaAddress-country"));
         user.setPaduaAddress(paduaAddress);
         user.setDietType(req.getParameter("userDietType"));
-        user.setAllergies(req.getParameter("userAllergies").replace(", ",",").split(","));
+        user.setAllergies(req.getParameter("userAllergies").replace(", ",",").replace(" ,",",").split(","));
 
         try {
             new UserEditProfileDAO(getConnection(), user).access();

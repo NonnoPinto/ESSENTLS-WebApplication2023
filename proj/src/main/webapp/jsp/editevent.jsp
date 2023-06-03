@@ -21,7 +21,7 @@
             <div class="col-xxl-10 col-12">
                 <div class="card text-center border-cyan">
                     <c:choose>
-                        <c:when test="${event == null}">
+                        <c:when test="${empty event}">
                             <div class="alert alert-danger" role="alert">
                               Event not found!
                             </div>

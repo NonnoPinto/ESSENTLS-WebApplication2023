@@ -28,7 +28,7 @@
 					<div class="clearfix">
 					    <c:choose>
 
-                           <c:when test= "${event.thumbnail == null}">
+                           <c:when test= "${empty event.thumbnail}">
                               <img src="media/default_thumbnail.png"
                                  alt="Image of the event" class="rounded float-sm-start"
                                  id="event_icon"/>

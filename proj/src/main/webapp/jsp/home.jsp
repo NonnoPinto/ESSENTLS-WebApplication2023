@@ -92,7 +92,7 @@
                                 <div class="col-md-4 mb-4">
                                     <div class="card h-100 container home-card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
                                         <c:choose>
-                                            <c:when test= "${event.thumbnail == null}">
+                                            <c:when test= "${empty event.thumbnail}">
                                                 <img class="card-img-top img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
                                             </c:when>
 
