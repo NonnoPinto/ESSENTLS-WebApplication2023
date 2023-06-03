@@ -174,7 +174,7 @@
                                                 <!--attributes-->
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" type="text" maxlength="255" name="attributes" id="attributes" placeholder=" " required>
-                                                    <label for="attributes">Attributes:</label>
+                                                    <label for="attributes">Extra infos required (separated by comma):</label>
                                                 </div>
                                             </div>
                                         </div>

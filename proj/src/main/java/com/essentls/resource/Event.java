@@ -167,11 +167,11 @@ public class Event {
     }
 
     public String getThumbnail() {
-        return thumbnail;
+        return thumbnail.replace('\\', '/');
     }
 
     public String getPoster() {
-        return poster;
+        return poster.replace('\\', '/');
     }
 
     public String getAttributes_asString(){

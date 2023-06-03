@@ -34,8 +34,8 @@
 
             <!--SUBMIT-->
             <div>
-							<button type="submit" id="ajaxButton" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
-						</div>
+				<button type="submit" id="ajaxButton" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
+			</div>
           </div>
         </div>
       </div>

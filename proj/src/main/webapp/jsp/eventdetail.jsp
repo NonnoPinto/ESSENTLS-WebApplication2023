@@ -28,14 +28,14 @@
 					<div class="clearfix">
 					    <c:choose>
 
-                           <c:when test= "${event.poster == null}">
+                           <c:when test= "${event.thumbnail == null}">
                               <img src="media/default_thumbnail.png"
                                  alt="Image of the event" class="rounded float-sm-start"
                                  id="event_icon"/>
                            </c:when>
 
                            <c:otherwise>
-                              <img src="${event.poster}"
+                              <img src="${event.thumbnail}"
                                alt="Image of the event" class="rounded float-sm-start"
                                id="event_icon"/>
                            </c:otherwise>
