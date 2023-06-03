@@ -1,6 +1,5 @@
 package com.essentls.dao;
 
-import com.essentls.resource.User;
 import com.essentls.resource.Payment;
 
 import java.sql.Connection;

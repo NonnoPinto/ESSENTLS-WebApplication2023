@@ -4,7 +4,6 @@ import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.essentls.resource.User;
