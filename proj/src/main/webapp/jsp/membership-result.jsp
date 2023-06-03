@@ -35,6 +35,7 @@
 									<h3>Membership submitted successfully.</h3>
 								</div>
 								<div class="my-4">
+									<!-- TODO: fix those comments -->
 										<%--                                    <p class="pb-2 border-bottom border-gray">Registration--%>
 										<%--                                        Date: ${user.registrationDate}</p>--%>
 										<%--                                    <p class="pb-2 border-bottom border-gray">Name: ${user.name}</p>--%>

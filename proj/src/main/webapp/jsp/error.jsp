@@ -12,8 +12,7 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
-<div class="headerup"></div>
-<div class="alertTitle">
+<div>
     <h1>Error 404 - Page not found</h1>
     <hr>
 </div>
