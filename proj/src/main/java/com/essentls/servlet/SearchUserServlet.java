@@ -93,7 +93,11 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
         try{
             //creates a user with the  request parameter
             if(!(req.getParameter("userId").equals(""))){
-                id=Integer.parseInt(req.getParameter("userId"));
+                try {
+                    id = Integer.parseInt(req.getParameter("userId"));
+                }catch(NumberFormatException e){
+                    id = (int) -1;
+                }
             }else{
                 id= (int) -1;
             }
