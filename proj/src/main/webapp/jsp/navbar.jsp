@@ -1,7 +1,7 @@
 
 <div class="d-block p-2 skippy"></div>
-<div id="navbar-space-replacement"></div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+<div id="navbar-space-replacement" class="navbar-space-replacement"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fix-position" id="navbar">
     <div class="container-fluid">
     <a class="navbar-brand" href="<c:url value='/'/>"><img src="./media/esn_padova_logo_full_color_2.png" id="top-logo-navbar" class="top-logo-navbar img-fluid" alt="Logo of ESN Padova"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
