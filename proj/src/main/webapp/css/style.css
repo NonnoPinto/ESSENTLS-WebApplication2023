@@ -153,6 +153,10 @@ button:hover {
 
 .skippy{
     background: #fff url("../media/header_topbg.png") 0 -5px repeat-x;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
 
 .navbar-decoration{
@@ -176,7 +180,7 @@ button:hover {
 
 .fix-position{
     position: fixed;
-    top: 0;
+    top: 5px;
     width: 100%;
     z-index: 10;
 }
@@ -197,7 +201,9 @@ button:hover {
 }
 
 .navbar-space-replacement{
-    height: 5rem;
+    height: 7.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     width: 100%;
 }
 
