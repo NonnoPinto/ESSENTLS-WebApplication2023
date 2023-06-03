@@ -205,8 +205,13 @@
 
                                             <%--Button--%>
                                         <div class="row d-flex my-4">
-                                            <div>
+                                            <div class="mb-3">
                                                 <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
+                                            </div>
+                                            <div>
+                                                <a href="<c:url value="/profile"/>">
+                                                    <button type="button" class="button bg-white color-magenta border-magenta px-4 py-2">Cancel</button>
+                                                </a>
                                             </div>
                                         </div>
                                     </form>
