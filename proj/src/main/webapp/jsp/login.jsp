@@ -45,7 +45,7 @@
 							</div>
 							<div class="input-container">
 								<input class="form-control" maxlength="255" type="password" name="password" id="password" placeholder="Password.." required>
-								<i class="togglePassword far fa-eye" id="togglePassword"></i>
+								<i class="toggle-password far fa-eye" id="togglePassword"></i>
 								<span id="infoPassword"></span>
 							</div>
 						</div>

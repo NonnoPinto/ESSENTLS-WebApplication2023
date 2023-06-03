@@ -209,7 +209,7 @@ button:hover {
 }
 
 /*PASSWORD EYE*/
-.togglePassword{
+.toggle-password{
     margin-right: 18px;
     cursor: pointer;
     z-index: 10;
@@ -301,7 +301,7 @@ button:hover {
 }
 
 /*HOME*/
-.container_event {
+.container-event {
     position: relative;
     min-height: 9em;
     border-radius: .8em;
@@ -312,12 +312,12 @@ button:hover {
     cursor: pointer;
 }
 
-.container_event:hover .container_event_bottom {
+.container-event:hover .container-event-bottom {
     height: 100%;
     opacity: .6;
 }
 
-.container_event_bottom {
+.container-event-bottom {
     display: flex;
     justify-content: end;
     height: 1.4em;
@@ -330,17 +330,17 @@ button:hover {
     opacity: 1;
 }
 
-.container_event_bottom p {
+.container-event-bottom p {
     position: absolute;
     bottom: 0;
 }
 
-.break_flex {
+.break-flex {
     flex-basis: 100%;
     height: 0;
 }
 
-.home_banner {
+.home-banner {
     background-image: url('../media/home_banner.webp');
     height: 400px;
     text-align: center;
@@ -351,7 +351,7 @@ button:hover {
     margin-bottom: 3rem;
 }
 
-.home_card {
+.home-card {
     cursor: pointer;
     width: 250px;
 }

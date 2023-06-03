@@ -25,7 +25,7 @@
             </c:when>
             <c:otherwise>
             
-                <div class="bg-image rounded-3 home_banner" >
+                <div class="bg-image rounded-3 home-banner" >
 
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
                         <div class="d-flex flex-column justify-content-center align-items-center h-100 container py-5">
@@ -65,7 +65,7 @@
                                     </c:forEach>
                                 </select>
         
-                                <div class="break_flex d-block d-lg-none my-2"></div>
+                                <div class="break-flex d-block d-lg-none my-2"></div>
         
                                 <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" class="form-control" aria-label="Text input">
         
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="container">    
-                    
+                    <!-- TODO: fix row container logic -->
 
                     <c:forEach items="${events}" var="event" varStatus="loop">
 
@@ -90,7 +90,7 @@
                                     <div class="row justify-content-around">
                                 </c:if>
                                 <div class="col-md-4 mb-4">
-                                    <div class="card h-100 container home_card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
+                                    <div class="card h-100 container home-card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
                                         <c:choose>
                                             <c:when test= "${event.thumbnail == null}">
                                                 <img class="card-img-top img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
@@ -104,7 +104,9 @@
                                             <div class="row">
                                                 <div class="col-3 column-content-vertical-center">
                                                     <p class="event-date text-center text-capitalize m-0 p-0">
-                                                        <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
+                                                        <b>
+                                                            <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
+                                                        </b>
                                                     </p>
                                                 </div>
                                                 <div class="col-9 event-infos">
@@ -136,7 +138,7 @@
 
                                 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventStart}" var="dateStart"/>
                                 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventEnd}" var="dateEnd"/>
-                                <div class="border border-orange px-5 my-3 container_event" onclick="window.location='./eventdetail?id=${event.id}';">
+                                <div class="border border-orange px-5 my-3 container-event" onclick="window.location='./eventdetail?id=${event.id}';">
                                     <div class="container d-flex zindex-modal">          
                                         <div class="row align-self-center w-100">
                                             <div class="col-lg-7 col-12">
@@ -205,7 +207,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="container_event_bottom bg-orange">
+                                    <div class="container-event-bottom bg-orange">
                                         <p class="m-0 pe-5 color-white">#${event.id}</p>
                                     </div>
                                 </div>
