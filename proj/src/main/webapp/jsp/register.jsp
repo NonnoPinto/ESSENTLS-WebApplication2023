@@ -5,7 +5,6 @@
 <head>
     <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%-- @ include file="/html/cdn.html"--%>
     <meta charset="utf-8">
     <title>Register</title>
     <%@ include file="../html/favicon.html"%>

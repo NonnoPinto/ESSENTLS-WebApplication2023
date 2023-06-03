@@ -1,7 +1,6 @@
 package com.essentls.resource;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import org.json.JSONObject;
 /**
  * @author Vittorio Cardillo

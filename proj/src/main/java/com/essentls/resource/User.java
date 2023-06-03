@@ -1,11 +1,8 @@
 package com.essentls.resource;
 
-import java.io.InputStream;
 import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.essentls.mail.MailManager;
-import jakarta.mail.MessagingException;
 import org.json.JSONObject;
 
 /**
