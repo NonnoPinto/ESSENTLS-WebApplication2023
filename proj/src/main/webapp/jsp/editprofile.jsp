@@ -88,23 +88,23 @@
                                                 <label for="userHomeCountryAddress" class="mb-2 text-left">Home Country Address (currently Street: ${user.getHomeCountryAddress().getString("street")} | Number: ${user.getHomeCountryAddress().getString("number")} | City: ${user.getHomeCountryAddress().getString("city")} | ZIP: ${user.getHomeCountryAddress().getString("zip")} | Country: ${user.getHomeCountryAddress().getString("country")}):</label>
                                             </div>
                                             <div class="row input-container" id="userHomeCountryAddress">
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userHomeCountryAddress-street" class="form-label">Street</label>
                                                     <input type="text" name="userHomeCountryAddress-street" id="userHomeCountryAddress-street" maxlength="100" class="form-control" value="${user.getHomeCountryAddress().getString("street")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userHomeCountryAddress-number" class="form-label">Number</label>
                                                     <input type="text" name="userHomeCountryAddress-number" id="userHomeCountryAddress-number" maxlength="5" class="form-control" value="${user.getHomeCountryAddress().getString("number")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userHomeCountryAddress-city" class="form-label">City</label>
                                                     <input type="text" name="userHomeCountryAddress-city" id="userHomeCountryAddress-city" maxlength="60" class="form-control" value="${user.getHomeCountryAddress().getString("city")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userHomeCountryAddress-zip" class="form-label">ZIP</label>
                                                     <input type="text" name="userHomeCountryAddress-zip" id="userHomeCountryAddress-zip" maxlength="9" class="form-control" value="${user.getHomeCountryAddress().getString("zip")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userHomeCountryAddress-country" class="form-label">Country</label>
                                                     <input type="text" name="userHomeCountryAddress-country" id="userHomeCountryAddress-country" maxlength="55" class="form-control" value="${user.getHomeCountryAddress().getString("country")}">
                                                 </div>
@@ -151,23 +151,23 @@
                                                 <label for="userPaduaAddress" class="mb-2 text-left">Padua Address (currently Street: ${user.getPaduaAddress().getString("street")} | Number: ${user.getPaduaAddress().getString("number")} | City: ${user.getPaduaAddress().getString("city")} | ZIP: ${user.getPaduaAddress().getString("zip")} | Country: ${user.getPaduaAddress().getString("country")}):</label>
                                             </div>
                                             <div class="row input-container" id="userPaduaAddress">
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userPaduaAddress-street">Street</label>
                                                     <input type="text" name="userPaduaAddress-street" maxlength="35" maxlength="10" id="userPaduaAddress-street" class="form-control" value="${user.getPaduaAddress().getString("street")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userPaduaAddress-number">Number</label>
                                                     <input type="text" name="userPaduaAddress-number" maxlength="5" id="userPaduaAddress-number" class="form-control" value="${user.getPaduaAddress().getString("number")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userPaduaAddress-city">City</label>
                                                     <input type="text" name="userPaduaAddress-city" maxlength="25" id="userPaduaAddress-city" class="form-control" value="${user.getPaduaAddress().getString("city")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userPaduaAddress-zip">ZIP</label>
                                                     <input type="text" name="userPaduaAddress-zip" maxlength="9" id="userPaduaAddress-zip" class="form-control" value="${user.getPaduaAddress().getString("zip")}">
                                                 </div>
-                                                <div class="col">
+                                                <div class="col-md-6">
                                                     <label for="userPaduaAddress-country">Country</label>
                                                     <input type="text" name="userPaduaAddress-country" maxlength="55" id="userPaduaAddress-country" class="form-control" value="${user.getPaduaAddress().getString("country")}">
                                                 </div>

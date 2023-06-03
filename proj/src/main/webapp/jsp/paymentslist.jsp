@@ -25,7 +25,7 @@
                 <h1>Payments List</h1>
             </div>
             <div class="row justify-content-center my-4">
-                <div class="col">
+                <div class="col-lg-10 col-md-12">
                     <div class="card text-center border-blue">
                         <div class="table-responsive">
                             <table class="table table-hover mh-75 align-middle">

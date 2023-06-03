@@ -87,9 +87,9 @@
                         <c:choose>
                             <c:when test="${loop.index lt 3}">
                                 <c:if test="${loop.index eq 0}">
-                                    <div class="row justify-content-evenly">
+                                    <div class="row justify-content-around">
                                 </c:if>
-                                <div class="col-12 col-md-4 mb-4">
+                                <div class="col-md-4 mb-4">
                                     <div class="card h-100 container home_card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
                                         <c:choose>
                                             <c:when test= "${event.thumbnail == null}">

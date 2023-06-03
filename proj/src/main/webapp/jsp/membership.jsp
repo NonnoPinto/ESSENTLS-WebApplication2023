@@ -14,7 +14,7 @@
 <%@include file="navbar.jsp" %>
 <div class="container">
     <div class="row justify-content-center my-4">
-        <div class="col-md-10">
+        <div class="col-lg-10 col-md-12">
             <div class="card text-center border-orange">
                 <h2 class="card-title bg-orange color-white p-4">Membership </h2>
                 <div class="card-body">
@@ -115,38 +115,42 @@
                                             home-country
                                             address:</label>
                                     </div>
-                                    <div class="row input-container" id="home-country-address">
-                                        <div class="col">
-                                            <label for="home-country-address-street" class="form-label">Street</label>
-                                            <input type="text" maxlength="100" name="home-country-address-street"
-                                                   id="home-country-address-street" class="form-control"
-                                                   placeholder="Enter Street...">
-                                        </div>
-                                        <div class="col">
-                                            <label for="home-country-address-number" class="form-label">Number</label>
-                                            <input type="text" maxlength="5" name="home-country-address-number"
-                                                   id="home-country-address-number" class="form-control"
-                                                   placeholder="Enter number...">
-                                        </div>
-                                        <div class="col">
-                                            <label for="home-country-address-city" class="form-label">City</label>
-                                            <input type="text" maxlength="60" name="home-country-address-city"
-                                                   id="home-country-address-city" class="form-control"
-                                                   placeholder="Enter city...">
-                                        </div>
-                                        <div class="col">
-                                            <label for="home-country-address-zip" class="form-label">ZIP</label>
-                                            <input type="text" maxlength="9" name="home-country-address-zip"
-                                                   id="home-country-address-zip" class="form-control"
-                                                   placeholder="Enter zip...">
-                                        </div>
-                                        <div class="col">
-                                            <label for="home-country-address-country" class="form-label">Country</label>
-                                            <input type="text" maxlength="55" name="home-country-address-country"
-                                                   id="home-country-address-country" class="form-control"
-                                                   placeholder="Enter country...">
+                                    <div class="container">
+
+                                        <div class="row input-container" id="home-country-address">
+                                            <div class="col-md-6 col-sm-12">
+                                                <label for="home-country-address-street" class="form-label">Street</label>
+                                                <input type="text" maxlength="100" name="home-country-address-street"
+                                                id="home-country-address-street" class="form-control"
+                                                placeholder="Enter Street...">
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label for="home-country-address-number" class="form-label">Number</label>
+                                                <input type="text" maxlength="5" name="home-country-address-number"
+                                                id="home-country-address-number" class="form-control"
+                                                placeholder="Enter number...">
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label for="home-country-address-city" class="form-label">City</label>
+                                                <input type="text" maxlength="60" name="home-country-address-city"
+                                                id="home-country-address-city" class="form-control"
+                                                placeholder="Enter city...">
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label for="home-country-address-zip" class="form-label">ZIP</label>
+                                                <input type="text" maxlength="9" name="home-country-address-zip"
+                                                id="home-country-address-zip" class="form-control"
+                                                placeholder="Enter zip...">
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <label for="home-country-address-country" class="form-label">Country</label>
+                                                <input type="text" maxlength="55" name="home-country-address-country"
+                                                id="home-country-address-country" class="form-control"
+                                                placeholder="Enter country...">
+                                            </div>
                                         </div>
                                     </div>
+                                        
                                 </div>
 
 
@@ -181,28 +185,28 @@
                                     <div class="d-flex justify-content-start">
                                         <label for="padua-address" class="mb-2 text-left">Padua address:</label>
                                     </div>
-                                    <div class="row input-container" id="padua-address">
-                                        <div class="col">
+                                    <div class="row justify-content-start input-container" id="padua-address">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="padua-address-street">Street</label>
                                             <input type="text" maxlength="35" name="padua-address-street" id="padua-address-street"
                                                    class="form-control" placeholder="Enter Street...">
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="padua-address-number">Number</label>
                                             <input type="text" maxlength="5" name="padua-address-number" id="padua-address-number"
                                                    class="form-control" placeholder="Enter number...">
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="padua-address-city">City</label>
                                             <input type="text" maxlength="25" name="padua-address-city" id="padua-address-city"
                                                    class="form-control" placeholder="Enter city...">
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="padua-address-zip">ZIP</label>
                                             <input type="text" maxlength="9" name="padua-address-zip" id="padua-address-zip"
                                                    class="form-control" placeholder="Enter zip...">
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="padua-address-country">Country</label>
                                             <input type="text" maxlength="55" name="padua-address-country" id="padua-address-country"
                                                    class="form-control" placeholder="Enter country...">
