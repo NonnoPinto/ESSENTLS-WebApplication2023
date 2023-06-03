@@ -231,4 +231,44 @@ function processDeleteResponse(xhr) {
     }
 
     div.appendChild(document.createTextNode("Tag " + JSON.parse(xhr.response).esntag["name"] + " deleted successfully."));
+
+
+    // Create Deleted Successfully popup alert
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add("modal", "fade");
+    modalContainer.id = "deleteModal";
+
+    const modalDialog = document.createElement("div");
+    modalDialog.classList.add("modal-dialog", "modal-dialog-centered");
+    modalContainer.appendChild(modalDialog);
+
+    const modalContent = document.createElement("div");
+    modalContent.classList.add("modal-content");
+    modalDialog.appendChild(modalContent);
+
+    const modalHeader = document.createElement("div");
+    modalHeader.classList.add("modal-header");
+
+    const modalTitle = document.createElement("h5");
+    modalTitle.classList.add("modal-title");
+    modalTitle.textContent = "Deleted Successfully";
+    modalHeader.appendChild(modalTitle);
+
+    modalContent.appendChild(modalHeader);
+
+    const modalBody = document.createElement("div");
+    modalBody.classList.add("modal-body");
+    modalBody.textContent =
+        "Tag " + JSON.parse(xhr.response).esntag["name"] + " deleted successfully.";
+    modalContent.appendChild(modalBody);
+
+    div.appendChild(modalContainer);
+
+    $(modalContainer).modal("show");
+
+    // Remove the Bootstrap modal after 2.5 seconds
+    setTimeout(function () {
+        $(modalContainer).modal("hide");
+        modalContainer.remove();
+    }, 2500);
 }
