@@ -89,7 +89,7 @@
                                     <div class="row justify-content-around">
                                 </c:if>
                                 <div class="col-md-4 mb-4">
-                                    <div class="card h-100 container home-card border-orange" onclick="window.location='./eventdetail?id=${event.id}';">
+                                    <div class="card h-100 container home-card border-orange my-event-card" onclick="window.location='./eventdetail?id=${event.id}';">
                                         <c:choose>
                                             <c:when test= "${empty event.thumbnail}">
                                                 <img class="card-img-top img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
@@ -125,6 +125,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="my-event-card-bottom"></div>
                                     </div>
                                 </div>
                                 <c:if test="${loop.index eq 2}">
