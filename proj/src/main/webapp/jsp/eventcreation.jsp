@@ -173,7 +173,7 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--attributes-->
                                                 <div class="form-floating mb-3">
-                                                    <input class="form-control" type="text" maxlength="255" name="attributes" id="attributes" placeholder=" " required>
+                                                    <input class="form-control" type="text" maxlength="255" name="attributes" id="attributes" placeholder="">
                                                     <label for="attributes">Extra infos required (separated by comma):</label>
                                                 </div>
                                             </div>
