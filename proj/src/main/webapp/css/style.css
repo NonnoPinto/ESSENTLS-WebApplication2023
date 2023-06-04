@@ -156,6 +156,13 @@ button:hover {
     filter: brightness(0.92);
 }
 
+label{
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
 /* NAVBAR */
 .navbar-nav li{
     font-size: medium;

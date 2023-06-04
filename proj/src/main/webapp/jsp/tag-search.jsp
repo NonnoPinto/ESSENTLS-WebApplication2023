@@ -18,7 +18,7 @@
     <div class="row justify-content-center my-4">
         <div class="col-md-10 col-lg-8 col-xl-6">
             <div class="card text-center border-cyan">
-                <h2 class="card-title bg-cyan color-white p-4">Search Tag</h2>
+                <h1 class="card-title bg-cyan color-white p-4">Search Tag</h1>
                 <div class="card-body">
 
                     <!--Part of-->

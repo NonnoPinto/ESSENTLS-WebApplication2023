@@ -47,6 +47,15 @@
                     </div>
                 </div>
             </div>
+            <c:if test="${requestScope['jakarta.servlet.forward.servlet_path'] == '/userpaymentslist'}">
+            <div class="row justify-content-center mt-2 mb-4">
+                <div class="col-xxl-10 col-12 d-flex justify-content-center">
+                    <a href="<c:url value="/profile"/>">
+                        <button type="button" class="button bg-blue border-blue color-white px-4 py-2">Back</button>
+                    </a>
+                </div>
+            </div>
+            </c:if>
         </div>
         <%@include file="/html/footer.html"%>
     </body>

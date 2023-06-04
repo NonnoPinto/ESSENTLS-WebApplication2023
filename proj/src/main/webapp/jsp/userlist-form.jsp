@@ -21,7 +21,7 @@
             <div class="row justify-content-center my-4">
                 <div class="col-md-6">
                     <div class="card text-center border-orange">
-                        <h2 class="card-title bg-orange color-white p-4">Search User</h2>
+                        <h1 class="card-title bg-orange color-white p-4">Search User</h1>
 
                         <div class="card-body">
                             <form method="POST" action="<c:url value="/search-users"/>">

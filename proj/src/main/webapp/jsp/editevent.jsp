@@ -28,7 +28,7 @@
                             </c:when>
                             <c:otherwise>
                                 <div class="bg-cyan text-white">
-                                    <h7 class="page-title p-2">Edit event</h7>
+                                    <h1 class="page-title p-2">Edit event</h1>
                                     <h2 class="page-title p-2"><c:out value="${event.name}"/></h2>
                                 </div>
                                 <p class="py-2"><c:out value="Event ID: ${event.id}"/></p>
@@ -68,7 +68,7 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--Causes-->
                                                 <div class="mb-3 pb-2">
-                                                    <label>Which causes does the event include?</label><br>
+                                                    <label>Which causes are included?</label><br>
                                                     <div class="form-check max-height-20">
                                                         <c:forEach items="${causes}" var="cause">
                                                             <c:set var="elementCause" scope="session" value="${cause.id}"/>
@@ -125,14 +125,14 @@
                                                     <!--maxParticipantsInternational-->
                                                     <div class="form-floating mb-3">
                                                         <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.maxParticipantsInternational}" min="0" max="100000" placeholder="0" required>
-                                                        <label for="maxParticipantsInternational">Number of Max International participants:</label>
+                                                        <label for="maxParticipantsInternational"># Max International participants:</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-5 col-md-6 col-sm-12">
                                                     <!--MaxParticipantsVolunteer-->
                                                     <div class="form-floating mb-3">
                                                         <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.maxParticipantsVolunteer}" min="0" max="100000" placeholder="0" required>
-                                                        <label for="maxParticipantsVolunteer">Number of Max Volunteer participants:</label>
+                                                        <label for="maxParticipantsVolunteer"># Max Volunteer participants:</label>
                                                     </div>
                                                 </div>
                                             </div>

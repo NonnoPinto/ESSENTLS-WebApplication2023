@@ -25,15 +25,15 @@
                         <c:when test="${user==null}">
                             <div class="my-2 mx-4">
                                 <div class="pb-2">
-                                    <h3>Something went wrong.</h3>
-                                    <h5>${message}</h5>
+                                    <h2>Something went wrong.</h2>
+                                    <p>${message}</p>
                                 </div>
                             </div>
                         </c:when>
                         <c:otherwise>
                             <div class="my-2 mx-4">
                                 <div class="pb-2">
-                                    <h3>User #${user.id} successfully edited.</h3>
+                                    <h2>User #${user.id} successfully edited.</h2>
                                     <hr>
                                 </div>
                                 <div class="my-4">

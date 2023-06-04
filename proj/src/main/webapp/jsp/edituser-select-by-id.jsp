@@ -20,7 +20,7 @@
     <div class="row justify-content-center my-4">
         <div class="col-md-10 col-lg-8 col-xl-6">
             <div class="card text-center border-blue">
-                <h2 class="card-title bg-blue color-white p-4">Select User by ID</h2>
+                <h1 class="card-title bg-blue color-white p-4">Select User by ID</h1>
                 <div class="card-body">
                 <form method="POST" action="<c:url value="/select-user-by-id"/>">
                     <div class="form-group mb-4">
