@@ -39,17 +39,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                            <%--CardId--%>
-                                            <%--                                <div class="mx-2 my-2">--%>
-                                            <%--                                    <div class="d-flex justify-content-start">--%>
-                                            <%--                                        <label for="card-id" class="mb-2 text-left">Card ID:</label>--%>
-                                            <%--                                    </div>--%>
-                                            <%--                                    <div class="input-container">--%>
-                                            <%--                                        <input name="card-id" maxlength="50" id=card-id type="text" class="form-control" required>--%>
-                                            <%--                                    </div>--%>
-                                            <%--                                </div>--%>
 
-                                            <%--Name--%>
+                                 <%--Name--%>
                                 <div class="mx-2 my-2">
                                     <div class="d-flex justify-content-start">
                                         <label for="first_name" class="mb-2 text-left">Name:</label>
