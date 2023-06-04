@@ -20,7 +20,7 @@
             <div class="row justify-content-center my-4">
                 <div class="col-md-10">
                     <div class="card text-center border-orange">
-                        <h2 class="card-title bg-orange color-white p-4">Edit User</h2>
+                        <h1 class="card-title bg-orange color-white p-4">Edit User</h1>
                         <div class="card-body">
                             <c:choose>
                                 <c:when test="${empty user}">

@@ -42,7 +42,7 @@
                            </c:otherwise>
                         </c:choose>
 						<div id="event_info" class="float-sm-start">
-							<h2>${event.name}</h2>
+							<h1>${event.name}</h1>
 							<br/>
 							<p>
 								<i class="bi bi-geo-alt"></i>&nbsp;
@@ -125,7 +125,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<h3>Details</h3>
+					<h2>Details</h2>
 					<hr>
 					<p>
 						${event.description}

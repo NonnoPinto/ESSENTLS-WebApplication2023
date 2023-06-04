@@ -22,9 +22,9 @@
             <div class="card-body">
               <div class="my-2 mx-4">
                 <div class="pb-2">
-                  <h3>${Users.getName()} ${Users.getSurname()}</h3>
-                  <h5>Sex: ${Users.getSex()}</h5>
-                  <h5>Nationality: ${Users.getNationality()}</h5>
+                  <h2>${Users.getName()} ${Users.getSurname()}</h2>
+                  <p>Sex: ${Users.getSex()}</p>
+                  <p>Nationality: ${Users.getNationality()}</p>
                   <hr>
                 </div>
                 <div class="my-4">

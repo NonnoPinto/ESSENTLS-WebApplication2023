@@ -24,15 +24,15 @@
 						<c:when test="${user==null}">
 							<div class="my-2 mx-4">
 								<div class="pb-2">
-									<h3>Something went wrong.</h3>
-									<h5>${message}</h5>
+									<h2>Something went wrong.</h2>
+									<p>${message}</p>
 								</div>
 							</div>
 						</c:when>
 						<c:otherwise>
 							<div class="my-2 mx-4">
 								<div class="pb-2">
-									<h3>Membership submitted successfully.</h3>
+									<h2>Membership submitted successfully.</h2>
 								</div>
 								<div class="my-4">
 									<!-- TODO: fix those comments -->

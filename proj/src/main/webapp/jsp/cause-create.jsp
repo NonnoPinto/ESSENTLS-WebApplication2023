@@ -19,7 +19,7 @@
     <div class="row justify-content-center my-4">
       <div class="col-md-6">
         <div class="card text-center border-magenta">
-          <h2 class="card-title bg-magenta color-white p-4">Create Cause</h2>
+          <h1 class="card-title bg-magenta color-white p-4">Create Cause</h1>
 
           <div class="card-body">
             <!--Cause Name-->

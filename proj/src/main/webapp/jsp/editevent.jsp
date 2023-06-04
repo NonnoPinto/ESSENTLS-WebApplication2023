@@ -28,7 +28,7 @@
                             </c:when>
                             <c:otherwise>
                                 <div class="bg-cyan text-white">
-                                    <h7 class="page-title p-2">Edit event</h7>
+                                    <h1 class="page-title p-2">Edit event</h1>
                                     <h2 class="page-title p-2"><c:out value="${event.name}"/></h2>
                                 </div>
                                 <p class="py-2"><c:out value="Event ID: ${event.id}"/></p>

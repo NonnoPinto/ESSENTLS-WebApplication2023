@@ -23,7 +23,7 @@
             </div>
             
             <div class="row justify-content-center my-4">
-                <h2 class="py-2">Participants:</h2>
+                <h3 class="py-2">Participants:</h3>
                 <div class="col-12">
                     <div class="card text-center border-cyan">
                         <div class="table-responsive">
