@@ -163,6 +163,9 @@ public class Event {
     }
 
     public String[] getAttributes() {
+        if(attributes.length == 1 && attributes[0].equals("")){
+            return new String[0];
+        }
         return attributes;
     }
 
