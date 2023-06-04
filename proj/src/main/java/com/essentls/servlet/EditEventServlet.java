@@ -331,7 +331,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             e = new Event(oldEvent.getId(), name, description, price, visibility, location, maxPartecipantsInternational,
                     maxPartecipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
                     Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
-                    maxWaitingList, attributes, thumbnail, poster);
+                    maxWaitingList, attributes, thumbnail, poster, new ArrayList<String>(), new ArrayList<String>());
 
             // creates a new object for accessing the database and stores the event
             new AdminEditEventDAO(getConnection(), e).access();

@@ -1,9 +1,7 @@
 package com.essentls.resource;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import org.json.JSONObject;
 
@@ -33,13 +31,15 @@ public class Event {
     private String[] attributes;
     private String thumbnail;
     private String poster;
+    private List<String> tags = null;
+    private List<String> causes = null;
 
     /**
      * Constructor of event
      */
     public Event(int id, String name, String description, float price, int visibility, JSONObject location,
             int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd,
-                 Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
+                 Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster, List<String> tags, List<String> causes) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -57,53 +57,29 @@ public class Event {
         this.attributes = attributes;
         this.thumbnail = thumbnail;
         this.poster = poster;
+        this.tags = new ArrayList<String>(tags);
+        this.causes = new ArrayList<String>(causes);
     }
 
     /**
      * Constructor of event, Used in the home to get the list of events
      */
-    public Event(int id, String name, String description, float price, JSONObject location, Timestamp eventStart, Timestamp eventEnd, Timestamp subscriptionEnd, String thumbnail) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.location = location;
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
-        this.subscriptionEnd = subscriptionEnd;
-        this.thumbnail = thumbnail;
+    public Event(int id, String name, String description, float price, JSONObject location, Timestamp eventStart, Timestamp eventEnd, Timestamp subscriptionEnd, String thumbnail, List<String> tags, List<String> causes) {
+        this(id, name, description, price, 0, location, 0, 0, eventStart, eventEnd, new Timestamp(0), subscriptionEnd, new Timestamp(0), 0, new String[0], thumbnail, "", tags, causes);
     }
 
     /**
      * Constructor of event, Used in the profile to get a list of the joined events
      */
     public Event(int id, String name, Timestamp startDate) {
-        this.id = id;
-        this.name = name;
-        this.eventStart = startDate;
+        this(id, name, "", 0, 0, null, 0, 0, startDate, new Timestamp(0), new Timestamp(0), new Timestamp(0), new Timestamp(0), 0, new String[0], "", "", new ArrayList<String>(), new ArrayList<String>());
     }
 
     /**
      *   Constructor of event, without id
      */
     public Event(String name, String description, float price, int visibility, JSONObject location, int maxParticipantsInternational, int maxParticipantsVolunteer, Timestamp eventStart, Timestamp eventEnd, Timestamp subscriptionStart, Timestamp subscriptionEnd, Timestamp withdrawalEnd, int maxWaitingList, String[] attributes, String thumbnail, String poster) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.visibility = visibility;
-        this.location = location;
-        this.maxParticipantsInternational = maxParticipantsInternational;
-        this.maxParticipantsVolunteer = maxParticipantsVolunteer;
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
-        this.subscriptionStart = subscriptionStart;
-        this.subscriptionEnd = subscriptionEnd;
-        this.withdrawalEnd = withdrawalEnd;
-        this.maxWaitingList = maxWaitingList;
-        this.attributes = attributes;
-        this.thumbnail = thumbnail;
-        this.poster = poster;
-
+        this(0, name, description, price, visibility, location, maxParticipantsInternational, maxParticipantsVolunteer, eventStart, eventEnd, subscriptionStart, subscriptionEnd, withdrawalEnd, maxWaitingList, attributes, thumbnail, poster, new ArrayList<String>(), new ArrayList<String>());
     }
 
     public int getId() {
@@ -167,6 +143,18 @@ public class Event {
             return new String[0];
         }
         return attributes;
+    }
+
+    public String[] getTags(){
+        if(this.tags == null)
+            return new String[0];
+        return this.tags.toArray(new String[0]);
+    }
+
+    public String[] getCauses(){
+        if(this.causes == null)
+            return new String[0];
+        return this.causes.toArray(new String[0]);
     }
 
     public String getThumbnail() {

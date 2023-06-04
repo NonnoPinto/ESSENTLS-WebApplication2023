@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <fmt:setLocale value="en_US"/>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:useBean id="random" class="java.util.Random" scope="application" />
@@ -182,6 +183,13 @@
                                                 </p>
                                                 <p class="card-text text-secondary mb-2 home-text-truncate">
                                                     ${event.description}
+                                                </p>
+
+                                                <p>
+                                                    <c:forEach var="tag" items="${event.tags}">
+                                                        <c:set var="tag_color" value="${fn:length(tag) % 4}"/>
+                                                        <a href="home?tag=${tag}" class="btn rounded-pill mx-1 tag-color-${tag_color}">#${tag}</a>
+                                                    </c:forEach>
                                                 </p>
                                             </div>
                                             <div class="col-lg-5 text-end d-none d-lg-block">

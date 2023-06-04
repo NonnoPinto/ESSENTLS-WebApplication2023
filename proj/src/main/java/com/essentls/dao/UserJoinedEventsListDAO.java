@@ -79,7 +79,9 @@ public final class UserJoinedEventsListDAO extends AbstractDAO<List<Event>> {
                                 rs.getInt("MaxWaitingList"),
                                 (String[]) rs.getArray("Attributes").getArray(),
                                 rs.getString("Thumbnail"),
-                                rs.getString("Poster")
+                                rs.getString("Poster"),
+                                new ArrayList<>(),
+                                new ArrayList<>()
                         )
                 );
             }
