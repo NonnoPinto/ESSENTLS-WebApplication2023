@@ -121,17 +121,18 @@
 						${event.description}
 					</p>
 					<c:set var="full_address" value="${event.locationMap.street} ${event.locationMap.number} ${event.locationMap.zip} ${event.locationMap.city} ${event.locationMap.country}" />
+					<img src="${event.poster}" class="w-100 rounded mx-auto d-block">
+					<br/>
 					<iframe
-							width="600"
 							height="450"
 							style="border:0"
 							loading="lazy"
 							allowfullscreen
 							referrerpolicy="no-referrer-when-downgrade"
-							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3ddScAI
+							class="rounded w-100"
+							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCI68eUSGfNpKe4M8aX_CF0BQPrTGwkcQ8
     						&q=${fn:replace(full_address, ' ', '+')}">
 					</iframe>
-					<img src="${event.poster}" class="w-100 rounded mx-auto d-block">
 				</div>
 			</div>
 		</div>
