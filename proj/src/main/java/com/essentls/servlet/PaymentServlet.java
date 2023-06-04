@@ -96,7 +96,7 @@ public class PaymentServlet extends AbstractDatabaseServlet{
 
         try {
             request.setAttribute("action", "sub");
-            request.setAttribute("price", 5.00);
+            request.setAttribute("price", 10.00);
             request.getRequestDispatcher("/jsp/payment.jsp").forward(request, response);
 
         }catch(Exception e){
