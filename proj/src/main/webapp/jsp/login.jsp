@@ -14,9 +14,6 @@
 <body>
 <%@include file="navbar.jsp"%>
 
-
-
-
 <div class="container">
 	<h1 class="page-title text-center p-2">Welcome to ESN!</h1>
 	<div class="row justify-content-center my-4">

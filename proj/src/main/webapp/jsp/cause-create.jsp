@@ -31,7 +31,6 @@
 								<input class="form-control" type="text" name="causeName" id="causeName" placeholder="Cause name.." maxlength="255" required>
 							</div>
 						</div>
-
             <!--SUBMIT-->
             <div>
 				<button type="submit" id="ajaxButton" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
