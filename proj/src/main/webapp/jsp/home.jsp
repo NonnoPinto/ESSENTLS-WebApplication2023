@@ -82,7 +82,7 @@
                             <c:choose>
                                 <c:when test="${loop.index lt 3}">
                                     <div class="col-md-4 mb-4">
-                                        <div class="card h-100 container home-card border-orange my-event-card" onclick="window.location='./eventdetail?id=${event.id}';">
+                                        <div class="card w-100 h-100 container home-card border-orange my-event-card" onclick="window.location='./eventdetail?id=${event.id}';">
                                             <c:choose>
                                                 <c:when test= "${empty event.thumbnail}">
                                                     <img class="card-img-top pt-4 img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
