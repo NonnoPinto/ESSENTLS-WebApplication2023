@@ -136,7 +136,7 @@
 
                                 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventStart}" var="dateStart"/>
                                 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventEnd}" var="dateEnd"/>
-                                <div class="border border-orange px-5 my-3 container-event" onclick="window.location='./eventdetail?id=${event.id}';">
+                                <div class="border border-orange px-5 my-3 container-event flex-column" onclick="window.location='./eventdetail?id=${event.id}';">
                                     <div class="container d-flex zindex-modal">          
                                         <div class="row align-self-center w-100">
                                             <div class="col-lg-7 col-12">
@@ -205,20 +205,22 @@
                                         </div>
                                     </div>
 
+                                    <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 1}">
+                                        <c:forEach items="${isOrganizer}" var="org" varStatus="loop">
+                                            <c:if test="${org.key==event.id && org.value}">
+                                                <div class="container d-flex flex-wrap zindex-modal mt-3">
+                                                    <a href="eventparticipants?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-3 py-1 me-3 mb-3">(Organizer) Participants List</button></a>
+                                                    <a href="editEvent?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-3 py-1 mb-3">(Organizer) Edit</button></a>
+                                                </div>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+
                                     <div class="container-event-bottom bg-orange">
                                         <p class="m-0 pe-5 color-white">#${event.id}</p>
                                     </div>
                                 </div>
 
-
-                                <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 1}">
-                                    <c:forEach items="${isOrganizer}" var="org" varStatus="loop">
-                                        <c:if test="${org.key==event.id && org.value}">
-                                            <a href="eventparticipants?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-3 py-1">(Organizer) Participants List</button></a>
-                                            <a href="editEvent?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-3 py-1">(Organizer) Edit</button></a>
-                                        </c:if>
-                                    </c:forEach>
-                                </c:if>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
