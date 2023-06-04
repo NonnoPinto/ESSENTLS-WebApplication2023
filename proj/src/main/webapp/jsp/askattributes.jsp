@@ -23,7 +23,7 @@
             <div class="col-xxl-10 col-12">
                 <div class="card text-center border-cyan">
                     <div class="bg-cyan text-white">
-                        <h1 class="page-title p-2">Additional information required</h1>
+                        <h1 class="page-title text-center p-2">Additional information required</h1>
                     </div>
                     <div class="card-body text-center">
                         <div>

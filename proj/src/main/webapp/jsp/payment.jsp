@@ -19,10 +19,10 @@
 				<div class="bg-cyan text-white">
 					<c:choose>
 						<c:when test="${action.equals(\"event\")}">
-							<h1 class="page-title p-2">Event Payment</h1>
+							<h1 class="page-title text center p-2">Event Payment</h1>
 						</c:when>
 						<c:when test="${action.equals(\"sub\")}">
-							<h1 class="page-title p-2">Association Payment</h1>
+							<h1 class="page-title text-center p-2">Association Payment</h1>
 						</c:when>
 						<c:otherwise>
 							<p class="page-title p-2">Something did not work :(</p>

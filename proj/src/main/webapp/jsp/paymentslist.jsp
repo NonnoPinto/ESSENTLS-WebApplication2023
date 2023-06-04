@@ -14,9 +14,7 @@
     <body>
         <%@include file="navbar.jsp"%>
         <div class="container">
-            <div class="page-title">
-                <h1>Payments List</h1>
-            </div>
+            <h1 class="page-title text-center p-2">User Payments List</h1>
             <div class="row justify-content-center my-4">
                 <div class="col-lg-10 col-md-12">
                     <div class="card text-center border-blue">
