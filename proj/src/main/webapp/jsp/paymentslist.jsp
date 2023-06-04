@@ -26,7 +26,7 @@
                                     <tr>
                                         <th class="py-3 px-4" scope="col">UserId</th>
                                         <th class="py-3 px-4" scope="col">EventId</th>
-                                        <th class="py-3" scope="col">PaymentMethod</th>
+                                        <th class="py-3" scope="col">Payment Method</th>
                                         <th class="py-3" scope="col">Amount</th>
                                         <th class="py-3" scope="col">Date</th>
                                         <th class="py-3" scope="col">Note</th>

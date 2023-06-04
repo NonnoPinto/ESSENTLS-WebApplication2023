@@ -307,6 +307,10 @@ button:hover {
 }
 
 /*HOME*/
+#mask{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .container-event {
     position: relative;
     min-height: 9em;

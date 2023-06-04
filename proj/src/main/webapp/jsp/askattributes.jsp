@@ -39,7 +39,7 @@
                                     <input type="text" id="${fn:replace(att.key,' ','')}" class="form-control" name="att_${fn:replace(att.key,' ','')}" value="${att.value}" maxlength="255"><br/>
                                 </c:forEach>
                                 <input type="hidden" name="eventId" value="${event.id}">
-                                <input type="submit" name="submitAttr" class="btn btn-primary bg-cyan border-cyan" value="Send">
+                                <input type="submit" name="submitAttr" class="btn btn-primary bg-cyan border-cyan px-4 py-2" value="Send">
                             </form>
                         </div>
                     </div>
