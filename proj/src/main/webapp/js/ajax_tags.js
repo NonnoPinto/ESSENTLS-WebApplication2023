@@ -69,7 +69,7 @@ function deleteTag(name) {
     cardBody.appendChild(confirmationMessage);
 
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("btn", "btn-danger", "mx-2");
+    deleteButton.classList.add("button", "btn-danger", "mx-2");
     deleteButton.textContent = "Yes";
     deleteButton.addEventListener("click", () => {
         // Close the popup
@@ -81,7 +81,7 @@ function deleteTag(name) {
     cardBody.appendChild(deleteButton);
 
     const cancelButton = document.createElement("button");
-    cancelButton.classList.add("btn", "btn-secondary", "mx-2");
+    cancelButton.classList.add("button", "btn-secondary", "mx-2");
     cancelButton.textContent = "No";
     cancelButton.addEventListener("click", () => {
         // Close the popup

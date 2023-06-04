@@ -67,7 +67,7 @@
                                             <!--Causes-->
                                             <div class="mb-3 pb-2">
                                                 <label for="">Which causes does the event include?</label><br>
-                                                <div class="form-check">
+                                                <div class="form-check max-height-20">
                                                     <c:forEach items="${causes}" var="cause">
                                                         <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
                                                         <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
@@ -198,10 +198,10 @@
 
                                     <div class="row justify-content-center">
                                         <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <button type="reset" class="button color-magenta bg-white border-magenta px-3 py-2">Reset the form</button>
+                                            <button type="reset" class="button color-magenta bg-white border-magenta px-4 py-2">Reset the form</button>
                                         </div>
                                         <div class="col-lg-2 col-md-6 col-sm-12">
-                                            <button type="submit" class="button bg-magenta text-white border-magenta px-3 py-2">Continue</button>
+                                            <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2">Continue</button>
                                         </div>
                                     </div>
                                 </form>

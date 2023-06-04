@@ -6,7 +6,7 @@
     <meta name="description" content="ESN Padova application">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <title>Register</title>
+    <title>Sign up</title>
     <%@ include file="../html/favicon.html"%>
     <%@ include file="../html/cdn.html"%>
 </head>
@@ -14,10 +14,11 @@
     <%@include file="navbar.jsp"%>
 
     <div class="container">
+    	<h1 class="page-title text-center p-2">Want to join? Fill the form!</h1>
         <div class="row justify-content-center my-4">
             <div class="col-md-6">
-                <div class="card text-center border-orange">
-                    <h2 class="card-title bg-orange color-white p-4">Register</h2>
+                <div class="card text-center border-cyan">
+                    <h2 class="card-title bg-cyan color-white p-4">Sign up</h2>
                 
                     <div class="card-body">
                     
@@ -71,7 +72,7 @@
 
                                 <!--SUBMIT BUTTON-->
                                 <div>
-                                    <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+                                    <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Submit</button>
                                 </div>
                                 <p class="card-text p-2">
                                     <small class="form-text text-muted">

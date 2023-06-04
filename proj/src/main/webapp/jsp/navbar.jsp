@@ -51,10 +51,14 @@
                 <c:choose>
                     <c:when test="${empty sessionScope.sessionUserId}">
                         <li class="nav-item text-center text-nowrap">
-                            <a class="btn btn-outline-primary px-4 py-2 m-1" href="<c:url value='/login'/>">Login</a>
+                            <a href="<c:url value='/login'/>">
+                                <button class="button same-width-login bg-orange text-white border-orange px-4 py-2 m-1" >Login</button>
+                            </a>
                         </li>
                         <li class="nav-item text-center text-nowrap">
-                            <a class="btn btn-primary px-4 py-2 m-1" href="<c:url value='/signup'/>">Sign up</a>
+                            <a href="<c:url value='/signup'/>">
+                                <button class="button same-width-login bg-cyan text-white border-cyan px-4 py-2 m-1">Sign up</button>
+                            </a>
                         </li>
                     </c:when>
                     <c:otherwise>

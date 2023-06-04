@@ -36,7 +36,7 @@
 								<p>
 									You are paying: &euro; ${price}.
 									Choose a payment method:
-									<button class="button border-cyan bg-white color-cyan px-3 py-1" onclick="window.location.href='add_payment?action=${action}&id=${event.id}'">
+									<button class="button bg-white color-cyan border-cyan px-4 py-2" onclick="window.location.href='add_payment?action=${action}&id=${event.id}'">
 										I've payed
 									</button>
 								</p>
@@ -44,7 +44,7 @@
 							<c:when test="${action.equals(\"sub\")}">
 								<p>
 									You are paying: &euro; ${price}
-									<button class="button bg-orange text-white border-orange px-3 py-1" onclick="window.location.href='add_payment?action=${action}'">
+									<button class="button bg-orange text-white border-orange px-4 py-2" onclick="window.location.href='add_payment?action=${action}'">
 										Payed
 									</button>
 								</p>

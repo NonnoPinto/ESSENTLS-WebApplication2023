@@ -88,7 +88,7 @@
                                     <input name="userSurname" type="hidden" value=""/>
                                     <input name="userCardId" type="hidden" value=""/>
                                     <input name="userEmail" type="hidden" value=""/>
-                                    <input type="submit" class="btn btn-secondary bg-white color-orange border-orange px-4 py-2" value="Show all users"></input>
+                                    <input type="submit" class="button btn-secondary bg-white color-orange border-orange px-4 py-2" value="Show all users"></input>
                                 </form>
                             </div>
                         </div>

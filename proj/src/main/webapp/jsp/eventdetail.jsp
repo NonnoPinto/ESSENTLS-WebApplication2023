@@ -99,7 +99,7 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
-												<button class="btn bg-orange text-white border-orange px-4 py-2 w-100"
+												<button class="button bg-orange text-white border-orange px-4 py-2 w-100"
 												   onclick="window.location.href='payment?action=event&id=${event.id}'">
 													JOIN
 												</button>

@@ -19,7 +19,7 @@
     <div class="row justify-content-center my-4">
         <div class="col-md-10">
             <div class="card text-center border-magenta">
-                <h1 class="card-title bg-magenta color-white p-4">Register Result</h1>
+                <h1 class="card-title bg-magenta color-white p-4">Registration Result</h1>
                 <div class="card-body">
                     <div class="my-2 mx-4">
                         <div class="pb-2">

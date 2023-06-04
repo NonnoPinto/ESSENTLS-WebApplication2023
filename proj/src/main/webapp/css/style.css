@@ -113,6 +113,15 @@ body {
     min-width: 12rem;
 }
 
+.max-height-20{
+    max-height: 20rem;
+    overflow: auto;
+}
+
+.same-width-login{
+    width: 6rem;
+}
+
 .column-content-vertical-center{
     display: flex;
     justify-content: center;
@@ -135,7 +144,7 @@ button{
     transition: 0.2s;
 }
 
-button:hover, btn:hover {
+button:hover {
     filter: brightness(0.92);
 }
 
@@ -143,6 +152,11 @@ button:hover, btn:hover {
 .navbar-nav li{
     font-size: medium;
     display: inline-block;
+}
+
+.same-width-login{
+    /*to keep the buttons aligned also in mobile phones*/
+    width: 6rem;
 }
 
 .navbar-nav li:last-child{
