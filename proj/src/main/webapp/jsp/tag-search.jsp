@@ -60,6 +60,7 @@
 
 
 <script type="text/javascript" src="<c:url value="/js/ajax_tags.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/enter_submit.js"/>"></script>
 <%@include file="/html/footer.html"%>
 </body>
 </html>

@@ -44,6 +44,7 @@
   <div id="results" class="text-muted text-center">
   </div>
   <script type="text/javascript" src="<c:url value="/js/ajax_cause_create.js"/>"></script>
+  <script type="text/javascript" src="<c:url value="/js/enter_submit.js"/>"></script>
   <%@include file="/html/footer.html"%>
 </body>
 </html>
