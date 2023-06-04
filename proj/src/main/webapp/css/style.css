@@ -135,16 +135,14 @@ button{
     transition: 0.2s;
 }
 
-button:hover {
+button:hover, btn:hover {
     filter: brightness(0.92);
 }
 
 /* NAVBAR */
 .navbar-nav li{
-  margin-right: 20px;
-  font-size: medium;
-  /* TODO: sistemare il colore */
-  display: inline-block;
+    font-size: medium;
+    display: inline-block;
 }
 
 .navbar-nav li:last-child{
@@ -366,6 +364,9 @@ button:hover {
     width: 250px;
 }
 
+/* TODO: maybe replace media rules with bootstrap breakpoints */
+
+/* breakpoint md */
 @media (max-width: 991px) {
     #event_card #event_header #event_icon {
         height: 150pt;
@@ -379,6 +380,7 @@ button:hover {
     }
 }
 
+/* breakpoint sm */
 @media (max-width: 767px) {
     #event_card #event_header #event_icon {
         width: 100%;
