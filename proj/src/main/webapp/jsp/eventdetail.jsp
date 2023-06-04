@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <fmt:setLocale value="en_US"/>
 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventStart}" var="dateStart"/>
 <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventEnd}" var="dateEnd"/>
@@ -119,6 +120,18 @@
 					<p>
 						${event.description}
 					</p>
+					<c:set var="full_address" value="${event.locationMap.street} ${event.locationMap.number} ${event.locationMap.zip} ${event.locationMap.city} ${event.locationMap.country}" />
+					<iframe
+							width="600"
+							height="450"
+							style="border:0"
+							loading="lazy"
+							allowfullscreen
+							referrerpolicy="no-referrer-when-downgrade"
+							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3ddScAI
+    						&q=${fn:replace(full_address, ' ', '+')}">
+					</iframe>
+					<img src="${event.poster}" class="w-100 rounded mx-auto d-block">
 				</div>
 			</div>
 		</div>

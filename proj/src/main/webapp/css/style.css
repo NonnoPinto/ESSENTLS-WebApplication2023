@@ -270,6 +270,7 @@ button:hover {
     padding: 20pt;
     background-color: grey;
     background-blend-mode: multiply;
+    background-position: center;
 }
 
 #event_card #event_header #event_icon {
