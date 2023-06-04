@@ -321,9 +321,9 @@
                                             <div class="mb-3">
                                                 <button type="reset" class="button bg-white color-orange border-orange px-4 py-2">Reset the form</button>
                                             </div>
-                                            <div>
-                                                <button type="button" class="button bg-orange border-orange color-white px-4 py-2" onclick="history.back()">Cancel</button>
-                                            </div>
+                                            <a href="<c:url value="/search-users"/>" id="back-button">
+                                                <button type="button" class="button bg-orange border-orange color-white px-4 py-2">Cancel</button>
+                                            </a>
                                         </div>
                                     </form>
                                 </c:otherwise>
