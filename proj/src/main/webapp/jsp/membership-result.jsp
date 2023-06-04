@@ -77,7 +77,7 @@
 										By paying online you will get a temporary card number, and you will be able										to
 										view and subscribe at the events!<br/>
 										<b>IMPORTANT: </b>Be careful that you must sign the papers in the office before actually
-										partecipate at one event.
+										participate at one event.
 									</p>
 									How do you want to pay for the membership?<br/>
 									<a href="payment?action=sub">
