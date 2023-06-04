@@ -81,22 +81,28 @@
                                     <div class="mt-4 pb-2">
                                         <label class="form-label mb-4">Where does it take place?</label>
                                         <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-3 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" maxlength="60" class="form-control" name="city" id="city" placeholder="Enter city..." required>
                                                     <label for="city">Enter city.. </label>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-3 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
                                                     <input type="text" maxlength="100" class="form-control" name="street" id="street" placeholder="Enter Street..." required>
                                                     <label for="street">Enter street..</label>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                            <div class="col-lg-3 col-md-6 col-sm-12">
                                                 <div class="form-floating mb-3 pb-2">
-                                                    <input type="text" maxlength="5" class="form-control" name="number" id="number" placeholder="Enter house number..." required>
+                                                    <input type="text" maxlength="5" class="form-control" name="number" id="number" placeholder="Enter house number...">
                                                     <label for="street">Enter house number...</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                                <div class="form-floating mb-3 pb-2">
+                                                    <input type="text" class="form-control" name="country" id="country" placeholder="Enter country..." required>
+                                                    <label for="street">Enter country...</label>
                                                 </div>
                                             </div>
 

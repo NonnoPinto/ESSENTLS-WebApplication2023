@@ -141,9 +141,6 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
             }else {
                 req.setAttribute("event", e);
-                req.setAttribute("city", e.getLocation().getString("city"));
-                req.setAttribute("street", e.getLocation().getString("street"));
-                req.setAttribute("number", e.getLocation().getString("number"));
                 req.setAttribute("thumbnail", ""+getProjectPath()+e.getThumbnail());
                 req.setAttribute("poster", ""+getProjectPath()+e.getPoster());
 
@@ -212,6 +209,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         String[] attributes = null;
         String thumbnail = null;
         String poster = null;
+        String country = null;
 
         // model
         Event e = null;
@@ -233,6 +231,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             city= req.getParameter("city");
             street= req.getParameter("street");
             number= req.getParameter("number");
+            country= req.getParameter("country");
             maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
             maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxParticipantsVolunteer"));
             eventStart = LocalDateTime.parse(req.getParameter("eventStart"), formatter);
@@ -241,15 +240,16 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             subscriptionEnd = LocalDateTime.parse(req.getParameter("subscriptionEnd"), formatter);
             withdrawalEnd = LocalDateTime.parse(req.getParameter("withdrawalEnd"), formatter);
             maxWaitingList = Integer.parseInt(req.getParameter("maxWaitingList"));
-            attributes = req.getParameter("attributes").replace(", ",",").replace(" ,",",").split(",");
+            attributes = req.getParameter("attributes").trim().replace(", ",",").replace(" ,",",").split(",");
 
             // set the name of the event as the resource in the log context
             LogContext.setResource(req.getParameter("name"));
 
             location = new JSONObject();
-            location = location.put("city", city);
-            location = location.put("street", street);
-            location = location.put("number", number);
+            location.put("city", city);
+            location.put("street", street);
+            location.put("number", number);
+            location.put("country", country);
 
             LOGGER.info("The location is:  \""+location.toString()+"\"");
 

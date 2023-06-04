@@ -49,7 +49,7 @@ public class AdminCreateEventDAO extends AbstractDAO<Integer>{
 
         //return empty if so
         if(s.length ==0){
-            pgobj.setValue("");
+            pgobj.setValue("{}");
             return pgobj;
         }
 

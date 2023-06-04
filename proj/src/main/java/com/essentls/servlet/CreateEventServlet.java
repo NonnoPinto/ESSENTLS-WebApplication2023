@@ -110,6 +110,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         String[] attributes = null;
         String thumbnail = null;
         String poster = null;
+        String country = null;
 
         // model
         Event e = null;
@@ -127,6 +128,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             city= req.getParameter("city");
             street= req.getParameter("street");
             number= req.getParameter("number");
+            country= req.getParameter("country");
             maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
             maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxParticipantsVolunteer"));
             eventStart = LocalDateTime.parse(req.getParameter("eventStart"), formatter);
@@ -141,9 +143,10 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             LogContext.setResource(req.getParameter("name"));
 
             location = new JSONObject();
-            location = location.put("city", city);
-            location = location.put("street", street);
-            location = location.put("number", number);
+            location.put("city", city);
+            location.put("street", street);
+            location.put("number", number);
+            location.put("country", country);
 
             LOGGER.info("The location is:  \""+location.toString()+"\"");
 

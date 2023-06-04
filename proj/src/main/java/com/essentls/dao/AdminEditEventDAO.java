@@ -48,7 +48,7 @@ public class AdminEditEventDAO extends AbstractDAO<Event>{
 
         //return empty if so
         if(s.length ==0){
-            pgobj.setValue("");
+            pgobj.setValue("{}");
             return pgobj;
         }
 
