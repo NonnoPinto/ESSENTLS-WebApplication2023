@@ -7,7 +7,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav"><!-- EMPTY --></ul>
             <ul class="navbar-nav ml-auto w-100 justify-content-end">
                 <c:if test="${sessionScope.sessionUserTier == 0}">
                     <li class="nav-item text-center">
@@ -52,10 +51,10 @@
                 <c:choose>
                     <c:when test="${empty sessionScope.sessionUserId}">
                         <li class="nav-item text-center text-nowrap">
-                            <a class="btn btn-outline-primary" href="<c:url value='/login'/>">Login</a>
+                            <a class="btn btn-outline-primary px-4 py-2 m-1" href="<c:url value='/login'/>">Login</a>
                         </li>
                         <li class="nav-item text-center text-nowrap">
-                            <a class="btn btn-primary" href="<c:url value='/signup'/>">Sign up</a>
+                            <a class="btn btn-primary px-4 py-2 m-1" href="<c:url value='/signup'/>">Sign up</a>
                         </li>
                     </c:when>
                     <c:otherwise>

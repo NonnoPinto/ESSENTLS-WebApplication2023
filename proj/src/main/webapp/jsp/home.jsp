@@ -27,7 +27,7 @@
             
                 <div class="bg-image rounded-3 home-banner" >
 
-                    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <div id="mask">
                         <div class="d-flex flex-column justify-content-center align-items-center h-100 container py-5">
 
                             <h1 class="mb-5 color-white">Exclusive events, priceless moments!</h1>
@@ -69,7 +69,7 @@
         
                                 <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" class="form-control" aria-label="Text input">
         
-                                <button type="submit" class="btn btn-primary bg-cyan">
+                                <button type="submit" class="btn btn-primary bg-cyan px-4 py-2">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </form>
