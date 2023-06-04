@@ -50,7 +50,7 @@
                     <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2" id="editProfileButton">Edit Profile</button>
                   </div>
                 </form>
-                <form action="<c:url value="/paymentslist"/>" method="GET" class="col-md-6 pb-2">
+                <form action="<c:url value="/userpaymentslist"/>" method="GET" class="col-md-6 pb-2">
                   <div>
                     <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2" id="paymentListButton">Payment List</button>
                   </div>

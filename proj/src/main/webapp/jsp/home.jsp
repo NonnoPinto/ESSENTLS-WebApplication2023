@@ -104,9 +104,7 @@
                                             <div class="row">
                                                 <div class="col-3 column-content-vertical-center">
                                                     <p class="event-date text-center text-capitalize m-0 p-0">
-                                                        <b>
-                                                            <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
-                                                        </b>
+                                                        <fmt:formatDate pattern="MMM dd" value="${event.eventStart}"/>
                                                     </p>
                                                 </div>
                                                 <div class="col-9 event-infos">
