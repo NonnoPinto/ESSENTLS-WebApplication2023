@@ -135,6 +135,11 @@
         <servlet-class>com.essentls.servlet.DocumentDownloadServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>UserPaymentsListServlet</servlet-name>
+        <servlet-class>com.essentls.servlet.UserPaymentsListServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RestDispatcherServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
@@ -273,6 +278,10 @@
         <url-pattern>/edit-profile</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>UserPaymentsListServlet</servlet-name>
+        <url-pattern>/userpaymentslist</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>LoginFilter</filter-name>
