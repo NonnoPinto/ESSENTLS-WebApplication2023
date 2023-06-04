@@ -181,7 +181,7 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </p>
-                                                <p class="card-text text-secondary mb-2">
+                                                <p class="card-text text-secondary mb-2 home-text-truncate">
                                                     ${event.description}
                                                 </p>
                                             </div>

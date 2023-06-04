@@ -365,6 +365,14 @@ button:hover, btn:hover {
     width: 250px;
 }
 
+.home-text-truncate {
+    height: 50px;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
 /* TODO: maybe replace media rules with bootstrap breakpoints */
 
 /* breakpoint md */
