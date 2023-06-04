@@ -7,17 +7,23 @@ function validateDates() {
     var withdrawalDate = document.getElementById("withdrawalEnd").value;
 
     if (startDate > endDate) {
-        alert("The event start date must be before the end date.");
+        if(endDate.trim() != "") {
+            alert("The event start date must be before the end date.");
+        }
         document.getElementById("eventEnd").value = startDate;
         return false;
     }
     if (subscriptionStart > subscriptionEnd) {
-        alert("The event subscription start date must be before the end date.");
+        if(subscriptionEnd.trim() != "") {
+            alert("The event subscription start date must be before the end date.");
+        }
         document.getElementById("subscriptionEnd").value = subscriptionStart;
         return false;
     }
     if (endDate < withdrawalDate) {
-        alert("The event end date must be after the withdrawal date.");
+        if(withdrawalDate.trim() != "") {
+            alert("The event end date must be after the withdrawal date.");
+        }
         document.getElementById("withdrawalEnd").value = endDate;
         return false;
     }
