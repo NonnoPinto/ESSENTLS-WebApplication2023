@@ -2,29 +2,29 @@
 
 
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
-<link rel="stylesheet" href="/proj-1.0/css/all.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/all.min.css">
 
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css"> -->
-<link rel="stylesheet" href="/proj-1.0/css/boostrap-select.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/boostrap-select.min.css">
 
 <!-- LOCAL BOOTSTRAP 5.0.2, ONLY BOOTSTRAP GRID AND BOOTSTRAP BASE -->
 
-<link rel="stylesheet" href="/proj-1.0/css/bootstrap-5.0.2-dist/css/bootstrap-grid.min.css">
-<link rel="stylesheet" href="/proj-1.0/css/bootstrap-5.0.2-dist/css/bootstrap-utilities.min.css">
-<link rel="stylesheet" href="/proj-1.0/css/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="/proj-1.0/css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-5.0.2-dist/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-5.0.2-dist/css/bootstrap-utilities.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js">
 
 <!-- SHARED STYLE.CSS -->
-<link rel="stylesheet" href="/proj-1.0/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-<script src="/proj-1.0/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script> -->
-<script src="/proj-1.0/js/boostrapValidator.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/boostrapValidator.min.js"></script>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script> -->
-<script src="/proj-1.0/js/boostrap-select.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/boostrap-select.min.js"></script>
 
 <!-- FONTAWESOME: account ESSENTLS PADOVA -->
 <script src="https://kit.fontawesome.com/e80ac5cafb.js" crossorigin="anonymous"></script>

@@ -56,12 +56,13 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
      *
      * @return a {@link String} object that contains the absolute path of the cloud folder.
      */
-    private String getAbsoluteCloudPath(){
+    private String getAbsoluteCloudPath(String contextFolder){
         URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
         File file = new java.io.File(url.getFile());
         File parent = file.getParentFile();
+
         if(!(parent==null)) {
-            while (!"proj-1.0".equals(parent.getName()))
+            while (!contextFolder.equals(parent.getName()))
             {
                 parent = parent.getParentFile();
             }
@@ -76,12 +77,13 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
      *
      * @return a {@link String} object that contains the absolute path of the project folder.
      */
-    private String getProjectPath(){
+    private String getProjectPath(String contextFolder){
+
         URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
         File file = new java.io.File(url.getFile());
         File parent = file.getParentFile();
         if(!(parent==null)) {
-            while (!"proj-1.0".equals(parent.getName())) {
+            while (!contextFolder.equals(parent.getName())) {
                 parent = parent.getParentFile();
             }
 
@@ -137,12 +139,15 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 }
             }
 
+            String contextFolder = req.getContextPath().replace("/","").replace("\\","");
+
+
             if(user == null || !canEditEvent){ //Auth check
                 req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
             }else {
                 req.setAttribute("event", e);
-                req.setAttribute("thumbnail", ""+getProjectPath()+e.getThumbnail());
-                req.setAttribute("poster", ""+getProjectPath()+e.getPoster());
+                req.setAttribute("thumbnail", ""+getProjectPath(contextFolder)+e.getThumbnail());
+                req.setAttribute("poster", ""+getProjectPath(contextFolder)+e.getPoster());
 
                 try {
                     causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
@@ -253,8 +258,11 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
             LOGGER.info("The location is:  \""+location.toString()+"\"");
 
+            String contextFolder = req.getContextPath().replace("/","").replace("\\","");
+
+
             //create path
-            final String path = getAbsoluteCloudPath();
+            final String path = getAbsoluteCloudPath(contextFolder);
             final String relative_path = "ESSENTLS_Cloud";
 
             //create folder if doesn't exists

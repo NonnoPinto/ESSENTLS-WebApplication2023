@@ -8,7 +8,7 @@
     <title>Error 404 - Not Found</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%@ include file="../html/favicon.html"%>
-    <%@ include file="../html/cdn.html"%>
+    <%@ include file="../jsp/cdn.jsp"%>
 </head>
 <body>
 <%@include file="navbar.jsp"%>

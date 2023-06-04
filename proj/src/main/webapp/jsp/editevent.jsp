@@ -10,7 +10,7 @@
         <title>Edit Event</title>
         <%@ include file="../html/favicon.html"%>
         <script type="text/javascript" src="<c:url value="/js/validate_dates.js"/>"></script>
-        <%@ include file="../html/cdn.html"%>
+        <%@ include file="../jsp/cdn.jsp"%>
     </head>
 
     <body>

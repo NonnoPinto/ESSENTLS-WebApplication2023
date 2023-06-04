@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Payments</title>
     <%@ include file="../html/favicon.html"%>
-	<%@ include file="../html/cdn.html" %>
+	<%@ include file="../jsp/cdn.jsp" %>
 </head>
 <body>
 <%@include file="navbar.jsp" %>

@@ -100,8 +100,11 @@ public class RegisterServlet extends AbstractDatabaseServlet {
                         null,null,null,null,null,
                         null,null,emailHash,emailConfirmed);
 
+
+                String contextFolder = req.getContextPath().replace("/","").replace("\\","");
+
                 //uncomment when smtp service is set
-                sendCreationConfirmationEmail(user);
+                sendCreationConfirmationEmail(user, contextFolder);
                 LOGGER.info("Creation confirmation email for user %s successfully sent.", user.getEmail());
 
                 //m = new Message(String.format("user %s successfully created and confirmation email successfully sent.", user.getEmail()));
@@ -165,20 +168,21 @@ public class RegisterServlet extends AbstractDatabaseServlet {
 
     /**
      * Sends a confirmation email to the user with an url containing the hash for the email verification.
-     * The url will be something like: http://localhost:8080/proj-1.0//email-confirmation/hashMail=1234567890
+     * The url will be something like: http://localhost:8080/proj-1.0/email-confirmation/hashMail=1234567890
      *
      * This method is currently unused, but ready for deployment when the SMTP service is set.
      *
      * @param u the user to send the email to
      * @throws MessagingException if an error occurs while sending the email
      */
-    private void sendCreationConfirmationEmail(User u) throws MessagingException {
+    private void sendCreationConfirmationEmail(User u, String contextFolder) throws MessagingException {
+
 
         final StringBuilder sb = new StringBuilder();
         sb.append(String.format("<p>Welcome %s,</p>%n", u.getEmail()));
         sb.append(String.format("<p>Your account for ESN - Erasmus Student Network Padua has been created.</p>%n"));
         sb.append(String.format("<p>Please, verify your mail by clicking the link below.</p>%n"));
-        sb.append(String.format("<p><a href=\"%s\" style=\"background-color: darkblue; padding: 8px; border-radius: 5px; color: white; display: block\">Verify your mail</a></p>%n", "http://localhost:8080/proj-1.0/email-confirmation?hashMail=" + u.getEmailHash()));
+        sb.append(String.format("<p><a href=\"%s\" style=\"background-color: darkblue; padding: 8px; border-radius: 5px; color: white; display: block\">Verify your mail</a></p>%n", "http://localhost:8080/"+contextFolder+"/email-confirmation?hashMail=" + u.getEmailHash()));
         sb.append(String.format("<p>Best regards,<br>The ESN Padua Team</p>%n"));
         sb.append(String.format("<p>Remember, to fully enrol you must visit our office!</p>%n"));
         sb.append(String.format("<p>You can find our office at , Padua. We are opened 6.30-8.30 PM on Monday, Tuesday and Thursday!</p>%n"));
@@ -187,7 +191,7 @@ public class RegisterServlet extends AbstractDatabaseServlet {
         sb.append(String.format("<p>MUST: bring with yourself a valid document.</p>%n"));
         sb.append(String.format(""));
 
-        MailManager.sendMail(u.getEmail(), String.format("User %s successfully created.", u.getId()),
+        MailManager.sendMail(u.getEmail(), String.format("Welcome to ESN %s", u.getEmail()),
                 sb.toString(), "text/html;charset=UTF-8");
 
     }

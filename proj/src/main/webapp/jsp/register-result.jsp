@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register result</title>
     <%@ include file="../html/favicon.html"%>
-    <%@ include file="../html/cdn.html"%>
+    <%@ include file="../jsp/cdn.jsp"%>
 </head>
 
 <body>

@@ -10,7 +10,7 @@
         <meta charset="utf-8">
         <title>Edit User</title>
         <%@ include file="../html/favicon.html"%>
-        <%@ include file="../html/cdn.html"%>
+        <%@ include file="../jsp/cdn.jsp"%>
     </head>
 
     <body>

@@ -24,15 +24,15 @@ function searchCause() {
         subCause = "";
     }
 
-    url = "/proj-1.0/rest/causes/";
+    url = contextPath+"/rest/causes/";
 
     if (id !== "") {
         console.log("id: " + id);
-        url = "/proj-1.0/rest/causes/id/" + id;
+        url = contextPath+"/rest/causes/id/" + id;
         console.log("Request URL: " + url);
     } else {
         console.log("subCause: " + subCause);
-        url = "/proj-1.0/rest/causes/srch/" + subCause;
+        url = contextPath+"/rest/causes/srch/" + subCause;
         console.log("Request URL: " + url);
     }
 
@@ -61,7 +61,7 @@ function editCause(id, name) {
 
     console.log("Editing cause: " + id);
 
-    const url = "/proj-1.0/rest/causes/id/" + id;
+    const url = contextPath+"/rest/causes/id/" + id;
 
     console.log("Request URL: " + url);
 
@@ -131,7 +131,7 @@ function deleteCause(id) {
 }
 
 function performDelete(id) {
-    const url = "/proj-1.0/rest/causes/id/" + id;
+    const url = contextPath+"/rest/causes/id/" + id;
 
     console.log("Request URL: " + url);
 

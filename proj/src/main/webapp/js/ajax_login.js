@@ -5,7 +5,7 @@ Since: 1.0
 */
 
 //import { BASE_URL } from "constants";
-const URL = "/proj-1.0/login";
+const URL = contextPath+"/login";
 
 // Add an event listener to the button,
 // to invoke the function making the AJAX call
@@ -14,7 +14,7 @@ document.getElementById("loginButton")
 console.log("Event listener added to loginButton.")
 
 /**
- * Try to login the user using POST parameters passe dby the login form.
+ * Try to login the user using POST parameters passed by the login form.
  *
  * @returns {boolean} true if the HTTP request was successful; false otherwise.
  */

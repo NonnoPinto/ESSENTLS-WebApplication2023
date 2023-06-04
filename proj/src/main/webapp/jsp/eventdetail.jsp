@@ -15,7 +15,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Event detail</title>
     <%@ include file="../html/favicon.html"%>
-	<%@ include file="../html/cdn.html" %>
+	<%@ include file="../jsp/cdn.jsp" %>
 </head>
 <body>
 <%@include file="navbar.jsp" %>
@@ -78,11 +78,11 @@
 							<p>
 								<c:forEach var="cause" items="${event.causes}">
 									<c:set var="cause_color" value="${fn:length(cause) % 4}"/>
-									<span class="btn mx-1 tag-color-${cause_color}">${cause}</span>
+									<span class="btn mx-1 my-1 tag-color-${cause_color}">${cause}</span>
 								</c:forEach>
 								<c:forEach var="tag" items="${event.tags}">
 									<c:set var="tag_color" value="${fn:length(tag) % 4}"/>
-									<a href="home?tag=${tag}" class="btn rounded-pill mx-1 tag-color-${tag_color}">#${tag}</a>
+									<a href="home?tag=${tag}" class="btn rounded-pill mx-1 my-1 tag-color-${tag_color}">#${tag}</a>
 								</c:forEach>
 							</p>
 						</div>

@@ -1,3 +1,7 @@
+
+<script>
+    var contextPath = "${pageContext.request.contextPath}";
+</script>
 <div class="d-block p-2 skippy"></div>
 <div id="navbar-space-replacement" class="navbar-space-replacement"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fix-position" id="navbar">

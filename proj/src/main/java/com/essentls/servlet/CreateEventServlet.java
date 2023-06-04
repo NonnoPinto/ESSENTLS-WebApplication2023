@@ -119,6 +119,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         //set datetime format
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
+        String contextFolder = req.getContextPath().replace("/","").replace("\\","");
+
         try {
             // retrieves the request parameters
             name = req.getParameter("name");
@@ -155,7 +157,7 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             File file = new java.io.File(url.getFile());
             File parent = file.getParentFile();
             if(!(parent==null)) {
-                while (!"proj-1.0".equals(parent.getName())){
+                while (!contextFolder.equals(parent.getName())){
                     parent = parent.getParentFile();
                 }
 

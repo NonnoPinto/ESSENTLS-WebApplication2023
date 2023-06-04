@@ -11,7 +11,7 @@
     <title>Create Event</title>
     <%@ include file="../html/favicon.html"%>
     <script type="text/javascript" src="<c:url value="/js/validate_dates.js"/>"></script>
-    <%@ include file="../html/cdn.html"%>
+    <%@ include file="../jsp/cdn.jsp"%>
 </head>
 
 <body>
@@ -66,7 +66,7 @@
                                         <div class="col-lg-5 col-md-6 col-sm-12">
                                             <!--Causes-->
                                             <div class="mb-3 pb-2">
-                                                <label for="">Which causes does the event include?</label><br>
+                                                Which causes does the event include?<br>
                                                 <div class="form-check max-height-20">
                                                     <c:forEach items="${causes}" var="cause">
                                                         <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">

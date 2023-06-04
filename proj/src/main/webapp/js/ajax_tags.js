@@ -24,7 +24,7 @@ function searchTag() {
 
     console.log("subTag: " + subTag);
 
-    const url = "/proj-1.0/rest/tags/" + subTag;
+    const url = contextPath+"/rest/tags/" + subTag;
 
     console.log("Request URL: " + url);
 
@@ -94,7 +94,7 @@ function deleteTag(name) {
 }
 
 function performDeleteTag(name) {
-    const url = "/proj-1.0/rest/tags/" + name;
+    const url = contextPath+"/rest/tags/" + name;
 
     console.log("Request URL: " + url);
 

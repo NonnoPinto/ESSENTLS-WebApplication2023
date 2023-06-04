@@ -13,11 +13,10 @@
         <meta charset="ISO-8859-1">
         <title>Home</title>
         <%@ include file="../html/favicon.html"%>
-        <%@ include file="../html/cdn.html"%>
+        <%@ include file="../jsp/cdn.jsp"%>
     </head>
     <body>
         <%@include file="navbar.jsp"%>
-        
         <c:choose>
             <c:when test="${message.isError()}">
                 <ul>
@@ -177,7 +176,7 @@
                                                         <p>
                                                             <c:forEach var="tag" items="${event.tags}">
                                                                 <c:set var="tag_color" value="${fn:length(tag) % 4}"/>
-                                                                <a href="home?tag=${tag}" class="btn rounded-pill mx-1 tag-color-${tag_color}">#${tag}</a>
+                                                                <a href="home?tag=${tag}" class="btn rounded-pill mx-1 my-1 tag-color-${tag_color}">#${tag}</a>
                                                             </c:forEach>
                                                         </p>
                                                     </div>

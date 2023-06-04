@@ -9,7 +9,7 @@
     <meta charset="ISO-8859-1">
     <title>Tag Search</title>
     <%@ include file="../html/favicon.html"%>
-    <%@ include file="../html/cdn.html"%>
+    <%@ include file="../jsp/cdn.jsp"%>
 </head>
 
 <body>
