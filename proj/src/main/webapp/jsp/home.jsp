@@ -117,8 +117,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="my-event-card-bottom"></div>
                                         </div>
-                                        <div class="my-event-card-bottom"></div>
                                     </div>
                                 </c:when>
                                 <c:otherwise>
