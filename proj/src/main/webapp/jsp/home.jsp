@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <fmt:setLocale value="en_US"/>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:useBean id="random" class="java.util.Random" scope="application" />
@@ -126,10 +127,10 @@
                                         <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventStart}" var="dateStart"/>
                                         <fmt:formatDate pattern="MMMM dd, yyyy" value="${event.eventEnd}" var="dateEnd"/>
                                         <div class="border-orange px-5 my-3 container-event flex-column" onclick="window.location='./eventdetail?id=${event.id}';">
-                                            <div class="container d-flex zindex-modal">          
+                                            <div class="container d-flex zindex-modal">
                                                 <div class="row align-self-center w-100">
                                                     <div class="col-lg-7 col-12">
-                                                        <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b> 
+                                                        <p class="card-text mb-2"><b class="fs-3 fw-bold me-2">${event.name}</b>
                                                             <span class="capital-text d-none d-lg-inline-block">
                                                                 · <i class="bi bi-geo-alt ms-2"></i>&nbsp;
                                                                 ${event.locationMap.street},
@@ -173,6 +174,12 @@
                                                         <p class="card-text text-secondary mb-2 home-text-truncate">
                                                             ${event.description}
                                                         </p>
+                                                        <p>
+                                                            <c:forEach var="tag" items="${event.tags}">
+                                                                <c:set var="tag_color" value="${fn:length(tag) % 4}"/>
+                                                                <a href="home?tag=${tag}" class="btn rounded-pill mx-1 tag-color-${tag_color}">#${tag}</a>
+                                                            </c:forEach>
+                                                        </p>
                                                     </div>
                                                     <div class="col-lg-5 text-end d-none d-lg-block">
                                                         <p class="mb-2 d-none d-lg-block">
@@ -203,7 +210,7 @@
                                                     </c:if>
                                                 </c:forEach>
                                             </c:if>
-                                        
+
                                             <div class="container-event-bottom bg-orange">
                                                 <p class="m-0 pe-5 color-white">#${event.id}</p>
                                             </div>
@@ -216,7 +223,7 @@
                 </div>
             </c:otherwise>
         </c:choose>
-        
+
         <%@include file="/html/footer.html"%>
     </body>
     </html>

@@ -90,7 +90,12 @@ public final class HomeServlet extends AbstractDatabaseServlet {
 
             int id = -1;
             String filterCause = req.getParameter("cause");
-            if (!(filterCause == null || "".equals(filterCause))) id = Integer.parseInt(filterCause);
+            try {
+                if (!(filterCause == null || "".equals(filterCause)))
+                    id = Integer.parseInt(filterCause);
+            }catch(NumberFormatException e){
+                id = -1;
+            }
 
 
             String filterSrch=req.getParameter("srch");

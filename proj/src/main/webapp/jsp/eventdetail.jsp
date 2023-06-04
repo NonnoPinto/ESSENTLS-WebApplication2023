@@ -75,6 +75,16 @@
 									</c:otherwise>
 								</c:choose>
 							</p>
+							<p>
+								<c:forEach var="cause" items="${event.causes}">
+									<c:set var="cause_color" value="${fn:length(cause) % 4}"/>
+									<span class="btn mx-1 tag-color-${cause_color}">${cause}</span>
+								</c:forEach>
+								<c:forEach var="tag" items="${event.tags}">
+									<c:set var="tag_color" value="${fn:length(tag) % 4}"/>
+									<a href="home?tag=${tag}" class="btn rounded-pill mx-1 tag-color-${tag_color}">#${tag}</a>
+								</c:forEach>
+							</p>
 						</div>
 						<div class="card float-lg-end float-md-end" id="event_buy">
 							<div class="card-body">

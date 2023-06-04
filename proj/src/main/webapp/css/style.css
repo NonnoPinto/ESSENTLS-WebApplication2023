@@ -391,7 +391,7 @@ label{
 }
 
 .home-text-truncate {
-    height: 50px;
+    max-height: 50px;
     overflow: hidden;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -422,7 +422,28 @@ label{
     opacity: .4;
 }
 
-/* TODO: maybe replace media rules with bootstrap breakpoints */
+.tag-color-0:nth-child(odd), .tag-color-3:nth-child(even){
+    background-color: #00aeef;
+    color: white !important;
+}
+
+.tag-color-1:nth-child(odd), .tag-color-2:nth-child(even){
+    background-color: #ec008c;
+    color: white !important;
+}
+
+.tag-color-2:nth-child(odd), .tag-color-1:nth-child(even){
+    background-color: #7bc143;
+    color: white !important;
+}
+
+.tag-color-3:nth-child(odd), .tag-color-0:nth-child(even){
+    background-color: #f47b20;
+    color: white !important;
+}
+
+
+
 
 /* breakpoint md */
 @media (max-width: 991px) {

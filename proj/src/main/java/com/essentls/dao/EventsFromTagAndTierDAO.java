@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.essentls.resource.Cause;
@@ -24,6 +25,11 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
      * The SQL statement to be executed
      */
     private static final String STATEMENT_JOINED_EVENTS = "SELECT * FROM public.\"Events\" " +
+            "LEFT JOIN (SELECT \"eventId\", string_agg(tag, ';') AS tags FROM \"EventTags\" GROUP BY \"eventId\") AS tb_tags ON \"Events\".id = tb_tags.\"eventId\" " +
+            "LEFT JOIN (SELECT \"eventId\", string_agg((" +
+            "SELECT name FROM public.\"Causes\" WHERE id = \"causeId\")" +
+            ", ';') AS causes FROM \"EventCauses\" GROUP BY \"eventId\") AS tb_causes " +
+            "ON \"Events\".id = tb_causes.\"eventId\" "+
             "WHERE (? = '' OR id IN (SELECT \"eventId\" FROM \"EventTags\" WHERE tag = ?)) " +
             "AND (? = -1 OR id IN (SELECT \"eventId\" FROM \"EventCauses\" WHERE \"causeId\" = ?)) " +
             "AND visibility <= ? " +
@@ -105,6 +111,21 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+
+                List<String> tags = new ArrayList<>();
+
+                String db_tags = rs.getString("tags");
+                if(db_tags != null){
+                    tags.addAll(Arrays.stream(db_tags.split(";")).toList());
+                }
+
+                List<String> causes = new ArrayList<>();
+
+                String db_causes = rs.getString("causes");
+                if(db_causes != null){
+                    causes.addAll(Arrays.stream(db_causes.split(";")).toList());
+                }
+
                 events.add(new Event(
                         rs.getInt("id"),
                         rs.getString("name"),
@@ -114,7 +135,10 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
                         rs.getTimestamp("eventStart"),
                         rs.getTimestamp("eventEnd"),
                         rs.getTimestamp("subscriptionEnd"),
-                        rs.getString("thumbnail")));
+                        rs.getString("thumbnail"),
+                        tags,
+                        causes
+                        ));
 
 }
         
