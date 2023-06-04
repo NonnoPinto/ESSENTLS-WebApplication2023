@@ -1,4 +1,3 @@
-
 <div class="d-block p-2 skippy"></div>
 <div id="navbar-space-replacement" class="navbar-space-replacement"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fix-position" id="navbar">
@@ -9,31 +8,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav"><!-- EMPTY --></ul>
-            <ul class="navbar-nav ml-auto w-100 justify-content-center">
+            <ul class="navbar-nav ml-auto w-100 justify-content-end">
                 <c:if test="${sessionScope.sessionUserTier == 0}">
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null}">
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/'/>">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/joined-events'/>">My Events</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="https://padova.esn.it/">Padova</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/esncard">ESNCard</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="https://padova.esn.it/en/association">About Us</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 2}">
-                    <li class="nav-item dropdown admin">
+                    <li class="nav-item text-center dropdown admin">
                         <a rel="noopener noreferrer nofollow" class="nav-link dropdown-toggle text-nowrap menu-hover" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin Manage
                         </a>
@@ -52,15 +51,15 @@
                 </c:if>
                 <c:choose>
                     <c:when test="${empty sessionScope.sessionUserId}">
-                        <li class="nav-item text-nowrap">
+                        <li class="nav-item text-center text-nowrap">
                             <a class="btn btn-outline-primary" href="<c:url value='/login'/>">Login</a>
                         </li>
-                        <li class="nav-item text-nowrap">
+                        <li class="nav-item text-center text-nowrap">
                             <a class="btn btn-primary" href="<c:url value='/signup'/>">Sign up</a>
                         </li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item text-center dropdown">
                             <a rel="noopener noreferrer nofollow" class="nav-link dropdown" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle"></i>
                             </a>
