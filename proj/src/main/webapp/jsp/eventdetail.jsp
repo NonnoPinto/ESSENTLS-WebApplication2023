@@ -90,8 +90,8 @@
 								</p>
 
 								<c:choose>
-									<c:when test="${currentIsPartecipating}">
-										You are partecipating at the event.
+									<c:when test="${currentIsParticipating}">
+										You are participating at the event.
 									</c:when>
 									<c:when test="${currentIsWaiting}">
 										You are actually in the waiting list for this event.

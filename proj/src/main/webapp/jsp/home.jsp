@@ -66,7 +66,7 @@
                                 <div class="break-flex d-block d-lg-none my-2"></div>
         
                                 <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" class="form-control" aria-label="Text input">
-                                <button type="submit" class="button btn-primary bg-cyan px-4 py-2">
+                                <button type="submit" class="button border-cyan text-white bg-cyan px-4 py-2">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </form>
@@ -81,14 +81,14 @@
                         <c:forEach items="${events}" var="event" varStatus="loop">
                             <c:choose>
                                 <c:when test="${loop.index lt 3}">
-                                    <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="card h-100 container home-card border-orange my-event-card" onclick="window.location='./eventdetail?id=${event.id}';">
                                             <c:choose>
                                                 <c:when test= "${empty event.thumbnail}">
-                                                    <img class="card-img-top img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
+                                                    <img class="card-img-top pt-4 img-fluid event-preview-image" src="media/default_thumbnail_${random.nextInt(3)+1}.png" alt="Event thumbnail">
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <img class="card-img-top img-fluid event-preview-image" src="${event.thumbnail}" alt="Event thumbnail">
+                                                    <img class="card-img-top pt-4 img-fluid event-preview-image" src="${event.thumbnail}" alt="Event thumbnail">
                                                 </c:otherwise>
                                             </c:choose>
                                             <div class="card-body">
@@ -197,8 +197,8 @@
                                                 <c:forEach items="${isOrganizer}" var="org" varStatus="loop">
                                                     <c:if test="${org.key==event.id && org.value}">
                                                         <div class="container d-flex flex-wrap zindex-modal mt-3">
-                                                            <a href="eventparticipants?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-4 py-2 me-3 mb-3">(Organizer) Participants List</button></a>
-                                                            <a href="editEvent?id=${event.id}"><button class="button color-cyan border-cyan bg-white px-4 py-2 mb-3">(Organizer) Edit</button></a>
+                                                            <a href="eventparticipants?id=${event.id}"><button class="button bg-blue text-white border-blue px-4 py-2 me-3 mb-3">(Organizer) Participants List</button></a>
+                                                            <a href="editEvent?id=${event.id}"><button class="button bg-blue text-white border-blue px-4 py-2 mb-3">(Organizer) Edit</button></a>
                                                         </div>
                                                     </c:if>
                                                 </c:forEach>

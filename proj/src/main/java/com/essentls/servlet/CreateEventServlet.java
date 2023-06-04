@@ -99,8 +99,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
         String city;
         String street;
         String number;
-        int maxPartecipantsInternational = -1;
-        int maxPartecipantVolunteer = -1;
+        int maxParticipantsInternational = -1;
+        int maxParticipantVolunteer = -1;
         LocalDateTime eventStart = null;
         LocalDateTime eventEnd = null;
         LocalDateTime subscriptionStart = null;
@@ -129,8 +129,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             street= req.getParameter("street");
             number= req.getParameter("number");
             country= req.getParameter("country");
-            maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
-            maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxParticipantsVolunteer"));
+            maxParticipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
+            maxParticipantVolunteer = Integer.parseInt(req.getParameter("maxParticipantsVolunteer"));
             eventStart = LocalDateTime.parse(req.getParameter("eventStart"), formatter);
             eventEnd = LocalDateTime.parse(req.getParameter("eventEnd"), formatter);
             subscriptionStart = LocalDateTime.parse(req.getParameter("subscriptionStart"), formatter);
@@ -209,8 +209,8 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 thumbnail = relative_path + File.separator + thumbnailName;
             }
             // creates a new event from the request parameters
-            e = new Event(name, description, price, visibility, location, maxPartecipantsInternational,
-                    maxPartecipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
+            e = new Event(name, description, price, visibility, location, maxParticipantsInternational,
+                    maxParticipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
                     Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
                     maxWaitingList, attributes, thumbnail, poster);
 

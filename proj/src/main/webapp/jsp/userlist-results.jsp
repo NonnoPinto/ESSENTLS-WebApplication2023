@@ -17,7 +17,7 @@
 <div class="container">
    <h1 class="page-title text-center p-2">List of found Users</h1>
   <div class="row justify-content-center my-4">
-    <div class="col">
+    <div class="col-12">
       <div class="card text-center border-orange">
         <!-- display the list of found users, if any -->
         <c:if test='${not empty userList}'>

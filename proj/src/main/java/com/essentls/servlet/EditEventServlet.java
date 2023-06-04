@@ -198,7 +198,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         String city;
         String street;
         String number;
-        int maxPartecipantsInternational = -1;
+        int maxParticipantsInternational = -1;
         int maxPartecipantVolunteer = -1;
         LocalDateTime eventStart = null;
         LocalDateTime eventEnd = null;
@@ -232,7 +232,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             street= req.getParameter("street");
             number= req.getParameter("number");
             country= req.getParameter("country");
-            maxPartecipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
+            maxParticipantsInternational = Integer.parseInt(req.getParameter("maxParticipantsInternational"));
             maxPartecipantVolunteer = Integer.parseInt(req.getParameter("maxParticipantsVolunteer"));
             eventStart = LocalDateTime.parse(req.getParameter("eventStart"), formatter);
             eventEnd = LocalDateTime.parse(req.getParameter("eventEnd"), formatter);
@@ -328,7 +328,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
             // creates a new event from the request parameters
 
-            e = new Event(oldEvent.getId(), name, description, price, visibility, location, maxPartecipantsInternational,
+            e = new Event(oldEvent.getId(), name, description, price, visibility, location, maxParticipantsInternational,
                     maxPartecipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
                     Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
                     maxWaitingList, attributes, thumbnail, poster);

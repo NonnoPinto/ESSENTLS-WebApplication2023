@@ -50,7 +50,7 @@
                     </li>
                 </c:if>
             </ul>
-            <ul class="navbar-nav ms-auto d-flex flex-row">
+            <ul class="navbar-nav ms-auto d-flex justify-content-center  flex-row">
                 <c:choose>
                     <c:when test="${empty sessionScope.sessionUserId}">
                         <li class="nav-item text-center text-nowrap">

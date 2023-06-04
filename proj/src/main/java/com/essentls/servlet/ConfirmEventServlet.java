@@ -75,7 +75,7 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
 
     /**
      * Handles the HTTP {@code GET} method. Checks if the eventual payment is confirmed and then calls the
-     * {@Link #startPartecipation(Connection, int, int, boolean)} method to try to insert the participant in the database.
+     * {@Link #startParticipation(Connection, int, int, boolean)} method to try to insert the participant in the database.
      *
      * @param request  a {@link HttpServletRequest} object that contains the request the client has made of the servlet
      * @param response a {@link HttpServletResponse} object that contains the response the servlet sends to the client
@@ -102,12 +102,12 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
                 if (p == null && (
                         session.getAttribute("event_" + eventId) == null ||
                                 !session.getAttribute("event_" + eventId).equals("payed") ||
-                                !this.startPartecipation(transConn, eventId, userId, isOrganizer))) {
+                                !this.startParticipation(transConn, eventId, userId, isOrganizer))) {
                     transConn.rollback();
                     transConn.close();
                     throw new ServletException("Can't participate at the event");
                 } else {
-                    transConn.commit(); //Partecipation confirmed, event payed
+                    transConn.commit(); //Participation confirmed, event payed
                     transConn.close();
                     Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
 
@@ -153,7 +153,7 @@ public class ConfirmEventServlet extends AbstractDatabaseServlet{
      *
      * @throws ServletException if the request for the GET could not be handled
      */
-    protected synchronized boolean startPartecipation(Connection transConn, int eventId, int userId, boolean isOrganizer) throws ServletException {
+    protected synchronized boolean startParticipation(Connection transConn, int eventId, int userId, boolean isOrganizer) throws ServletException {
         try {
             Event event = new EventInfoDAO(transConn, eventId).access(false).getOutputParam();
             User user = new UserProfileInfoDAO(transConn, userId).access(false).getOutputParam();
