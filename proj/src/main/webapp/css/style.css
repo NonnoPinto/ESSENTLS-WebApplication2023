@@ -11,6 +11,10 @@
     font-family: 'Lato', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1,h2,h3,h4,h5,h6, .card-title, .event-title, .event-date{
     font-family: 'Oswald', sans-serif;
 }
@@ -132,6 +136,10 @@ body {
     font-size: .85rem !important;
 }
 
+.card{
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* BELOW THE OTHER CLASSES */
 
 .event-date{
@@ -157,10 +165,6 @@ button:hover {
 .same-width-login{
     /*to keep the buttons aligned also in mobile phones*/
     width: 6rem;
-}
-
-.navbar-nav li:last-child{
-  margin-right: 7px;
 }
 
 .skippy{

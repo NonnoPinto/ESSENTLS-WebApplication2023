@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <a href="<c:url value='/login'/>"><button class="button bg-orange text-white border-orange px-4 py-2">Log in</button></a>
                             <p class="card-text p-2 text-secondary">Don't have an account?</p>
-                            <a href="<c:url value='/signup'/>"><button class="button color-orange border-orange bg-white px-4 py-2">Sign up!</button></a>
+                            <a href="<c:url value='/signup'/>"><button class="button bg-cyan text-white border-cyan px-4 py-2">Sign up!</button></a>
                         </div>
                     </div>
                 </div>

@@ -12,11 +12,9 @@
 </head>
 <body>
 <%@include file="navbar.jsp"%>
-<div>
-    <h1>Error 401 - Unauthorized</h1>
-    <hr>
-</div>
 <div class="container">
+    <h1 class="page-title text-center p-2">Error 401 - Unauthorized</h1>
+    <hr>
     <div class="m-4">
         <div class="alert alert-danger d-flex align-items-center text-center" role="alert">
             <div>

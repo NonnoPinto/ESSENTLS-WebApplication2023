@@ -14,7 +14,7 @@ import java.sql.*;
  */
 public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
     /**
-     * The SQL statement to be executed to get partecipants to an event
+     * The SQL statement to be executed to get participants to an event
      */
     private static final String STATEMENT_GET_PARTICIPANTS = "SELECT * FROM public.\"Participants\" INNER JOIN public.\"Users\" ON public.\"Participants\".\"userId\" = public.\"Users\".\"id\" WHERE \"eventId\" = ?";
     /**
@@ -68,7 +68,7 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
         int waitingList = 0;
         int internationals = 0;
         int volunteers = 0;
-        boolean alreadyPartecipating = false;
+        boolean alreadyParticipating = false;
 
         try {
             pstmt_event = con.prepareStatement(STATEMENT_GET_EVENT);
@@ -86,7 +86,7 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
 
             while (rs_participants.next()) {
                 if(rs_participants.getInt("userId") == participant.getUserId()){
-                    alreadyPartecipating = true;
+                    alreadyParticipating = true;
                 }
                 if(rs_participants.getString("role").equals("WaitingList"))
                     waitingList++;
@@ -112,7 +112,7 @@ public class UserCheckEventParticipantDAO extends AbstractDAO<Participant> {
                 }
             }
 
-            if(participant.getRole() != null && !alreadyPartecipating){
+            if(participant.getRole() != null && !alreadyParticipating){
                 this.outputParam = participant;
             }else{
                 this.outputParam = null;

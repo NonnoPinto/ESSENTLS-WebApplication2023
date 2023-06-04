@@ -15,17 +15,16 @@
         <%@include file="navbar.jsp"%>
 
         <div class="container">
-            <div class="page-title">
-                <h1>Event participants</h1>
-            </div>
 
+            <h1 class="page-title text-center p-2">Event participants</h1>
+            
             <div class="event-title">
                 <h2>${event.name}</h2><hr>
             </div>
-
+            
             <div class="row justify-content-center my-4">
-                <p><strong>Participants:</strong></p>
-                <div class="col-lg-10 col-md-12">
+                <h2 class="py-2">Participants:</h2>
+                <div class="col-12">
                     <div class="card text-center border-cyan">
                         <div class="table-responsive">
                             <table class="table table-hover mh-75 align-middle">

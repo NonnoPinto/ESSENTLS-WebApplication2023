@@ -7,7 +7,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto w-100 justify-content-end">
+            <ul class="navbar-nav"><!-- EMPTY --></ul>
+            <ul class="navbar-nav ml-auto w-100 justify-content-center">
                 <c:if test="${sessionScope.sessionUserTier == 0}">
                     <li class="nav-item text-center">
                         <a class="nav-link active text-nowrap menu-hover" rel="noopener noreferrer nofollow" href="<c:url value='/membership'/>">Complete your membership</a>
@@ -48,6 +49,8 @@
                         </ul>
                     </li>
                 </c:if>
+            </ul>
+            <ul class="navbar-nav ms-auto d-flex justify-content-center  flex-row">
                 <c:choose>
                     <c:when test="${empty sessionScope.sessionUserId}">
                         <li class="nav-item text-center text-nowrap">

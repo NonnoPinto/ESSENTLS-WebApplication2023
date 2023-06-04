@@ -52,7 +52,7 @@
                 </form>
                 <form action="<c:url value="/userpaymentslist"/>" method="GET" class="col-md-6 pb-2">
                   <div>
-                    <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2" id="paymentListButton">Payment List</button>
+                    <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2" id="paymentListButton">My Payments List</button>
                   </div>
                 </form>
               </div>

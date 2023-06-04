@@ -31,7 +31,7 @@
                                     <h7 class="page-title p-2">Edit event</h7>
                                     <h2 class="page-title p-2"><c:out value="${event.name}"/></h2>
                                 </div>
-                                <p><c:out value="Event ID: ${event.id}"/></p>
+                                <p class="py-2"><c:out value="Event ID: ${event.id}"/></p>
                                 <div class="form my-4 card-body">
                                     <form action="<c:url value="/editEvent"/>" id="editEventForm" method="POST" enctype="multipart/form-data" >
 
@@ -220,7 +220,7 @@
                                         </div>
                                         <div class="row justify-content-center">
                                             <div class="col-lg-3 col-md-6 col-sm-12 p-1">
-                                                <button type="reset" class="button bg-white color-cyan border-cyan px-4 py-2">Reset the form</button>
+                                                <button type="reset" class="button bg-white color-cyan border-cyan px-4 py-2">Undo changes</button>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-12 p-1">
                                                 <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Continue</button>

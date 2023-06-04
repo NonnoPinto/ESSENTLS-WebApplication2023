@@ -29,7 +29,7 @@
             <div class="col-xxl-10 col-12">
                 <div class="card text-center border-magenta">
                     <div class="bg-magenta text-white">
-                        <h1 class="page-title p-2">Create Event</h1>
+                        <h1 class="page-title text-center p-2">Create Event</h1>
                     </div>
                     <div class="form my-4 card-body">
                                 <form action="<c:url value="/create-event"/>" id="createEventForm" method="POST" enctype="multipart/form-data" >

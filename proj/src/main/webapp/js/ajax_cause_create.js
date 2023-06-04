@@ -11,23 +11,30 @@ function createCause() {
 
     const xhr = new XMLHttpRequest();
 
-    if (!xhr) {
-        alert("Cannot create an XMLHTTP instance.");
+    //if cause name is empty, show an error message
+    if (name == null || name === ""){
+        const div = document.getElementById("results");
+        div.replaceChildren();
+        div.appendChild(document.createTextNode("A cause must have a name."));
+    } else {
+        if (!xhr) {
+            alert("Cannot create an XMLHTTP instance.");
 
-        alert("Giving up :( Cannot create an XMLHttpRequest instance");
-        return false;
+            alert("Giving up :( Cannot create an XMLHttpRequest instance");
+            return false;
+        }
+
+        xhr.onreadystatechange = function() {
+            processPostResponse(this);
+        }
+
+        console.log("Performing POST request to URL: " + url);
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({esncause: {id: 1, name: name}}));
+
+        console.log("Request sent. Waiting for response...");
     }
-
-    xhr.onreadystatechange = function() {
-        processPostResponse(this);
-    }
-
-    console.log("Performing POST request to URL: " + url);
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify({esncause: {id: 1, name: name}}));
-
-    console.log("Request sent. Waiting for response...");
 }
 
 function processPostResponse(xhr) {

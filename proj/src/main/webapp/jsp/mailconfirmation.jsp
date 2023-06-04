@@ -34,9 +34,11 @@
                         <div class="alert alert-success" role="alert">
                             <c:out value="${message.message}"/>
                         </div>
-                        <p>
-                            Login: <a href="<c:url value="/login"/>" >Login</a>
-                        </p>
+                        <div class="m-4">
+                            <a href="<c:url value='/login'/>">
+                                <button class="button same-width-login bg-orange text-white border-orange px-4 py-2 m-1" >Login</button>
+                            </a>
+                        </div>
                     </div>
                 </c:otherwise>
             </c:choose>
