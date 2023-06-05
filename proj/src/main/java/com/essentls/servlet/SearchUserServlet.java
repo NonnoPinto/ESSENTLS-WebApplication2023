@@ -59,7 +59,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
                     if (session.getAttribute("sessionUserId") != null)
                         userId = (Integer) session.getAttribute("sessionUserId");
                     User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-                    if (user == null || user.getTier() < 3) { //Auth check TODO make three dynamic
+                    if (user == null || user.getTier() < 3) { //Auth check
                         req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
                     } else {
                         req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req, res);
