@@ -33,12 +33,17 @@
                                 <tbody>
                                     <c:forEach var="payment" items="${Payments}">
                                         <tr>
-                                            <td class="px-4"><c:out value="${payment.getUserId()}"/></td>
-                                            <td class="px-4"><c:out value="${payment.getEventId()}"/></td>
-                                            <td><c:out value="${payment.getMethod()}"/></td>
-                                            <td><c:out value="${payment.getAmount()}"/></td>
-                                            <td><c:out value="${payment.getDate()}"/></td>
-                                            <td><c:out value="${payment.getNotes()}"/></td>
+                                            <td class="px-4"><a href="search-users?userId=${payment.userId}"><c:out value="${payment.userId}"/></a></td>
+                                            <c:if test="${payment.eventId != 0}">
+                                                <td class="px-4"><a href="eventdetail?id=${payment.eventId}"><c:out value="${payment.eventId}"/></a></td>
+                                            </c:if>
+                                            <c:if test="${payment.eventId == 0}">
+                                                <td class="px-4"></td>
+                                            </c:if>
+                                            <td><c:out value="${payment.method}"/></td>
+                                            <td><c:out value="${payment.amount}"/></td>
+                                            <td><c:out value="${payment.date}"/></td>
+                                            <td><c:out value="${payment.notes}"/></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

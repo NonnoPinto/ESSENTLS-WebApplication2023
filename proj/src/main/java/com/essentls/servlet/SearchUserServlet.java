@@ -43,28 +43,31 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
 
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("sessionUserTier") != null){
-            int tier = (int) session.getAttribute("sessionUserTier");
-            if( tier < 3){
-                req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
-            } else {
-                req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req, res);
-            }
-        }
-        else {
-            try {
-                int userId = -1;
-                if(session.getAttribute("sessionUserId") != null)
-                    userId = (Integer) session.getAttribute("sessionUserId");
-                User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
-                if(user == null || user.getTier() < 3){ //Auth check TODO make three dynamic
+        if(req.getParameter("userId") != null){
+            doPost(req, res);
+        }else {
+            if (session.getAttribute("sessionUserTier") != null) {
+                int tier = (int) session.getAttribute("sessionUserTier");
+                if (tier < 3) {
                     req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
                 } else {
                     req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req, res);
                 }
-            } catch (Exception e) {
-                LOGGER.error("stacktrace:", e);
-                throw new ServletException(e);
+            } else {
+                try {
+                    int userId = -1;
+                    if (session.getAttribute("sessionUserId") != null)
+                        userId = (Integer) session.getAttribute("sessionUserId");
+                    User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+                    if (user == null || user.getTier() < 3) { //Auth check TODO make three dynamic
+                        req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
+                    } else {
+                        req.getRequestDispatcher("/jsp/userlist-form.jsp").forward(req, res);
+                    }
+                } catch (Exception e) {
+                    LOGGER.error("stacktrace:", e);
+                    throw new ServletException(e);
+                }
             }
         }
     }
@@ -92,7 +95,7 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
 
         try{
             //creates a user with the  request parameter
-            if(!(req.getParameter("userId").equals(""))){
+            if(req.getParameter("userId") != null && !(req.getParameter("userId").equals(""))){
                 try {
                     id = Integer.parseInt(req.getParameter("userId"));
                 }catch(NumberFormatException e){
@@ -102,19 +105,19 @@ public final class SearchUserServlet extends AbstractDatabaseServlet{
                 id= (int) -1;
             }
 
-            if(!(req.getParameter("userName").equals(""))){
+            if(req.getParameter("userName")!= null && !(req.getParameter("userName").equals(""))){
                 name=req.getParameter("userName");
             }
 
-            if(!(req.getParameter("userSurname").equals(""))){
+            if(req.getParameter("userSurname") != null && !(req.getParameter("userSurname").equals(""))){
                 surname=req.getParameter("userSurname");
             }
 
-            if(!(req.getParameter("userCardId").equals(""))){
+            if(req.getParameter("userCardId") != null && !(req.getParameter("userCardId").equals(""))){
                 cardId=req.getParameter("userCardId");
             }
 
-            if(!(req.getParameter("userEmail").equals(""))){
+            if(req.getParameter("userEmail") != null && !(req.getParameter("userEmail").equals(""))){
                 email=req.getParameter("userEmail");
             }
 

@@ -42,7 +42,7 @@
                                 <tbody>
                                     <c:forEach items="${participants}" var="p">
                                         <tr>
-                                            <td class="px-2">${p.cardId}</td>
+                                            <td class="px-2"><a href="search-users?userId=${p.userId}">${p.cardId}</a></td>
                                             <td>${p.name}</td>
                                             <td>${p.surname}</td>
                                             <td>${p.email}</td>
