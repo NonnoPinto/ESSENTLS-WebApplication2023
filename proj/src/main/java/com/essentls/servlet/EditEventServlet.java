@@ -74,6 +74,10 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
+            if(e==null){
+                req.getRequestDispatcher("/jsp/error.jsp").forward(req, res);
+                return;
+            }
             ArrayList<Integer> eventCauses = null;
             ArrayList<String> eventTags = null;
             int userId = -1;
