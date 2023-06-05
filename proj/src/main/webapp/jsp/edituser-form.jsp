@@ -251,16 +251,6 @@
                                             </div>
                                         </div>
 
-                                            <%--Document File--%>
-                                        <div class="mx-2 my-2">
-                                            <div class="d-flex justify-content-start">
-                                                <label for="userDocumentFile" class="mb-2 text-left">Document File (currently ${user.getDocumentFile()}):</label>
-                                            </div>
-                                            <div>
-                                                <input id="userDocumentFile" value="${user.getDocumentFile()}" name="userDocumentFile" type="text" class="form-control"/>
-                                            </div>
-                                        </div>
-
                                             <%--Diet Type--%>
                                         <div class="mx-2 my-2">
                                             <div class="d-flex justify-content-start">

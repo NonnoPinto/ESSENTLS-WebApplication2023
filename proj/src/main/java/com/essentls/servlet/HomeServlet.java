@@ -111,11 +111,7 @@ public final class HomeServlet extends AbstractDatabaseServlet {
 
             try {
 
-                if (true) //tag name is "" if not filtered, "<filter>" otherwise. cause id is -1 if not filtered, <id> otherwise, cause name is always "". search is "" if not filtered, "<filter>" otherwise
-                    events = new EventsFromTagAndTierDAO(getConnection(), new Tag(filterTag), userTier,new Cause(id,""),filterSrch.toLowerCase()).access().getOutputParam();
-
-                else
-                    events = new UserEventsListDAO(getConnection(), userTier).access().getOutputParam();
+                events = new EventsFromTagAndTierDAO(getConnection(), new Tag(filterTag), userTier,new Cause(id,""),filterSrch.toLowerCase()).access().getOutputParam();
 
                 for(Event e: events){
                     List<Participant> participantsList = new AdminParticipantsListDAO(getConnection(), e.getId()).access().getOutputParam();

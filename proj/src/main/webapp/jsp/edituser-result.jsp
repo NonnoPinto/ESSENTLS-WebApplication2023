@@ -66,7 +66,6 @@
                                     <p class="pb-2 border-bottom border-gray">Document Type: ${user.documentType}</p>
                                     <p class="pb-2 border-bottom border-gray">Document
                                         Number: ${user.documentNumber}</p>
-                                    <p class="pb-2 border-bottom border-gray">Document File: ${user.documentFile}</p>
                                     <p class="pb-2 border-bottom border-gray">Diet Type: ${user.dietType}</p>
                                     <p class="pb-2 border-bottom border-gray">
                                         Allergies: ${Arrays.toString(user.getAllergies())}</p>

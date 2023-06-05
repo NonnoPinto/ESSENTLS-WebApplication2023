@@ -35,7 +35,7 @@ public class EventsFromTagAndTierDAO extends AbstractDAO<List<Event>> {
             "AND visibility <= ? " +
             "AND (LOWER(name) LIKE ? OR LOWER(description) LIKE ? OR " +
             "((LOWER(location#>>'{zip}') LIKE ?) OR (LOWER(location#>>'{number}') LIKE ?) OR (LOWER(location#>>'{country}') LIKE ?) OR " +
-            "(LOWER(location#>>'{city}') LIKE ?) OR (LOWER(location#>>'{street}') LIKE ?)))";
+            "(LOWER(location#>>'{city}') LIKE ?) OR (LOWER(location#>>'{street}') LIKE ?))) ORDER BY public.\"Events\".\"eventStart\" DESC";
 
 
     /**
