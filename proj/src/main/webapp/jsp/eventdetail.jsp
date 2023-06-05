@@ -30,7 +30,7 @@
 					    <c:choose>
 
                            <c:when test= "${empty event.thumbnail}">
-                              <img src="media/default_thumbnail.png"
+                              <img src="media/default_thumbnail_${event.getId()%3+1}.png"
                                  alt="Image of the event" class="rounded float-sm-start"
                                  id="event_icon"/>
                            </c:when>
