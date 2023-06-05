@@ -68,7 +68,7 @@
                                             <div class="col-lg-5 col-md-6 col-sm-12">
                                                 <!--Causes-->
                                                 <div class="mb-3 pb-2">
-                                                    <label>Which causes are included?</label><br>
+                                                    <label for="causes">Which causes are included?</label><br>
                                                     <div class="form-check max-height-20">
                                                         <c:forEach items="${causes}" var="cause">
                                                             <c:set var="elementCause" scope="session" value="${cause.id}"/>
@@ -80,6 +80,27 @@
                                                                 <c:otherwise>
                                                                     <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
                                                                     <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <!--Tags-->
+                                                <div class="mb-3 pb-2">
+                                                    <label>Which tags are included?</label><br>
+                                                    <div class="form-check max-height-20">
+                                                        <c:forEach items="${tags}" var="tag">
+                                                            <c:set var="elementTag" scope="session" value="${tag.name}"/>
+                                                            <c:choose>
+                                                                <c:when test="${listTags.contains(elementTag)}">
+                                                                    <input class="form-check-input" type="checkbox" id="${tag}" name="cs_${tag.name}" value="${tag.name}" checked>
+                                                                    <label class="form-check-label" for="${tag.name}">${tag.name}</label><br>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <input class="form-check-input" type="checkbox" id="${tag}" name="cs_${tag.name}" value="${tag.name}">
+                                                                    <label class="form-check-label" for="${tag.name}">${tag.name}</label><br>
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </c:forEach>

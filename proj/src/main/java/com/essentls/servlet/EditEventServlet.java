@@ -51,48 +51,6 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
     }
 
     /**
-     * Explores the file system to find the absolute path of the cloud folder. The cloud folder is a placeholder for
-     * an actual cloud storage service.
-     *
-     * @return a {@link String} object that contains the absolute path of the cloud folder.
-     */
-    private String getAbsoluteCloudPath(String contextFolder){
-        URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
-        File file = new java.io.File(url.getFile());
-        File parent = file.getParentFile();
-
-        if(!(parent==null)) {
-            while (!contextFolder.equals(parent.getName()))
-            {
-                parent = parent.getParentFile();
-            }
-            return (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
-
-        }
-        return "";
-    }
-
-    /**
-     * Explores the file system to find the absolute path of the project folder.
-     *
-     * @return a {@link String} object that contains the absolute path of the project folder.
-     */
-    private String getProjectPath(String contextFolder){
-
-        URL url = EditEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
-        File file = new java.io.File(url.getFile());
-        File parent = file.getParentFile();
-        if(!(parent==null)) {
-            while (!contextFolder.equals(parent.getName())) {
-                parent = parent.getParentFile();
-            }
-
-            return (parent.getPath()).replaceAll("%20", " ");
-        }
-        return "";
-    }
-
-    /**
      * Handles the HTTP {@code GET} method. Retrieves the event from the database and redirects the user to the event
      * edit page.
      *
@@ -117,8 +75,10 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
             ArrayList<Integer> eventCauses = null;
+            ArrayList<String> eventTags = null;
             int userId = -1;
             List<Cause> causes = null;
+            List<Tag> tags = null;
             if(session.getAttribute("sessionUserId") != null)
                 userId = (int)session.getAttribute("sessionUserId");
             User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
@@ -146,8 +106,6 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, res);
             }else {
                 req.setAttribute("event", e);
-                req.setAttribute("thumbnail", ""+getProjectPath(contextFolder)+e.getThumbnail());
-                req.setAttribute("poster", ""+getProjectPath(contextFolder)+e.getPoster());
 
                 try {
                     causes = new CausesListDAO(getConnection(), -1, "").access().getOutputParam();
@@ -155,10 +113,17 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 }catch (SQLException sqle){
                     LOGGER.info("Unexpected Database error: "+sqle.getMessage());
                 }
+                try {
+                    tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+                    eventTags = new TagsFromEventDAO(getConnection(), eventId).access().getOutputParam();
+                }catch (SQLException sqle){
+                    LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+                }
 
                 req.setAttribute("causes", causes);
                 req.setAttribute("listCauses", eventCauses);
-                //LOGGER.info("dimensione cause"+eventCauses.size());
+                req.setAttribute("tags", tags);
+                req.setAttribute("listTags", eventTags);
                 req.getRequestDispatcher("/jsp/editevent.jsp").forward(req, res);
             }
         } catch (Exception e) {
@@ -262,7 +227,10 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
 
 
             //create path
-            final String path = getAbsoluteCloudPath(contextFolder);
+
+            String contextPath = req.getServletContext().getRealPath("/");
+
+            final String path = contextPath+"ESSENTLS_Cloud";
             final String relative_path = "ESSENTLS_Cloud";
 
             //create folder if doesn't exists
@@ -273,6 +241,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             boolean isThereAThumbnail = false;
             Part posterPart = null;
             Part thumbnailPart = null;
+
             if(req.getPart("poster").getSize()>0){
                 isThereAPoster = true;
                 posterPart = req.getPart("poster");
@@ -289,7 +258,9 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             }
 
             if(isThereAPoster){
-                String posterName = getFileName(posterPart);
+                String posterOrigName = getFileName(posterPart);
+                String posterExt = posterOrigName.split("\\.")[1];
+                String posterName = "poster_"+eventID+"."+posterExt;
                 OutputStream out = null;
                 InputStream filecontent = null;
 
@@ -312,7 +283,10 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             }
 
             if(isThereAThumbnail){
-                String thumbnailName = getFileName(thumbnailPart);
+                String thumbnailOrigName = getFileName(thumbnailPart);
+                String thumbnailExt = thumbnailOrigName.split("\\.")[1];
+                String thumbnailName = "thumbnail_"+eventID+"."+thumbnailExt;
+
                 OutputStream out = null;
                 InputStream filecontent = null;
 
@@ -350,6 +324,13 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             }catch (SQLException sqle){
                 LOGGER.info("Unexpected Database error: "+sqle.getMessage());
             }
+            
+            List<Tag> tags = new ArrayList<>();
+            try {
+                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+            }catch (SQLException sqle){
+                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+            }
 
             new EventCausesDeleteDAO(getConnection(), eventID).access();
             for (Cause cause:causes) {
@@ -357,6 +338,14 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 EventCause ec= new EventCause(eventID, causeId);
                 if (cause.getName().equals(req.getParameter("cs_"+causeId))){
                     new EventCausesCreationDAO(getConnection(), ec).access();
+                }
+            }
+            new EventTagsDeleteDAO(getConnection(), eventID).access();
+            for (Tag tag:tags) {
+                String tagName= tag.getName();
+                EventTag et= new EventTag(eventID, tagName);
+                if (tag.getName().equals(req.getParameter("cs_"+tagName))){
+                    new EventTagsCreationDAO(getConnection(), et).access();
                 }
             }
 

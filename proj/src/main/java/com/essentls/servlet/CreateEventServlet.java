@@ -74,7 +74,15 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             LOGGER.info("Unexpected Database error: "+sqle.getMessage());
         }
 
+        List<Tag> tags = null;
+        try {
+            tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+        }catch (SQLException sqle){
+            LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+        }
+
         req.setAttribute("causes", causes);
+        req.setAttribute("tags", tags);
         req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
     }
 
@@ -157,76 +165,87 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
 
             URL url = CreateEventServlet.class.getProtectionDomain().getCodeSource().getLocation();
 
-            File file = new java.io.File(url.getFile());
-            File parent = file.getParentFile();
-            if(!(parent==null)) {
-                while (!contextFolder.equals(parent.getName())){
-                    parent = parent.getParentFile();
-                }
+            String contextPath = req.getServletContext().getRealPath("/");
 
-                //create path
-                final String path = (parent.getPath() + File.separator + "ESSENTLS_Cloud").replaceAll("%20", " ");
-                final String relative_path = "ESSENTLS_Cloud";
+            //create path
+            final String path = (contextPath + "ESSENTLS_Cloud").replaceAll("%20", " ");
+            final String relative_path = "ESSENTLS_Cloud";
 
-                //create folder if it doesn't exist
-                new File(path).mkdirs();
+            //create folder if it doesn't exist
+            new File(path).mkdirs();
 
-                //get file
-                final Part posterPart = req.getPart("poster");
-                final Part thumbnailPart = req.getPart("thumbnail");
-                final String posterName = getFileName(posterPart);
-                final String thumbnailName = getFileName(thumbnailPart);
+            //get file
+            final Part posterPart = req.getPart("poster");
+            final Part thumbnailPart = req.getPart("thumbnail");
+            final String posterOrigName = getFileName(posterPart);
+            final String thumbnailOrigName = getFileName(thumbnailPart);
 
-                if(posterName==null || thumbnailName==null){
-                    LOGGER.info("Poster or thumbnail not found");
-                    throw new FileNotFoundException("Poster or thumbnail not found");
-                }
 
-                OutputStream out1 = null;
-                InputStream filecontent = null;
-
-                //save poster
-
-                out1 = new FileOutputStream(new File(path + File.separator + posterName));
-                filecontent = posterPart.getInputStream();
-
-                int read = 0;
-                final byte[] posterBytes = new byte[1024];
-                final byte[] thumbnailBytes = new byte[1024];
-
-                while ((read = filecontent.read(posterBytes)) != -1) {
-                    out1.write(posterBytes, 0, read);
-                }
-                LOGGER.info("New file " + posterName + " created at " + path);
-
-                poster = relative_path + File.separator + posterName;
-
-                //save thumbnail
-
-                OutputStream out = null;
-
-                out = new FileOutputStream(new File(path + File.separator + thumbnailName));
-                filecontent = thumbnailPart.getInputStream();
-
-                read = 0;
-
-                while ((read = filecontent.read(thumbnailBytes)) != -1) {
-                    out.write(thumbnailBytes, 0, read);
-                }
-                LOGGER.info("New file " + thumbnailName + " created at " + path);
-
-                poster = relative_path + File.separator + posterName;
-                thumbnail = relative_path + File.separator + thumbnailName;
+            if(posterOrigName==null || thumbnailOrigName==null){
+                LOGGER.info("Poster or thumbnail not found");
+                throw new FileNotFoundException("Poster or thumbnail not found");
             }
+
+            final String posterExt = posterOrigName.split("\\.")[1];
+            final String thumbnailExt = thumbnailOrigName.split("\\.")[1];
+
+
+
+
             // creates a new event from the request parameters
             e = new Event(name, description, price, visibility, location, maxParticipantsInternational,
                     maxParticipantVolunteer, Timestamp.valueOf(eventStart), Timestamp.valueOf(eventEnd),
                     Timestamp.valueOf(subscriptionStart), Timestamp.valueOf(subscriptionEnd), Timestamp.valueOf(withdrawalEnd),
-                    maxWaitingList, attributes, thumbnail, poster);
+                    maxWaitingList, attributes, "", "");
 
 
             // creates a new object for accessing the database and stores the event
             int eventID = new AdminCreateEventDAO(getConnection(), e).access().getOutputParam();
+
+
+            final String posterName = "poster_"+eventID+"."+posterExt;
+            final String thumbnailName = "thumbnail_"+eventID+"."+thumbnailExt;
+
+
+            poster = relative_path + File.separator + posterName;
+            thumbnail = relative_path + File.separator + thumbnailName;
+
+            e.setId(eventID);
+            e.setThumbnail(thumbnail);
+            e.setPoster(poster);
+
+            new AdminEditEventDAO(getConnection(), e).access().getOutputParam();
+
+            OutputStream out1 = null;
+            InputStream filecontent = null;
+
+            //save poster
+
+            out1 = new FileOutputStream(new File(path + File.separator + posterName));
+            filecontent = posterPart.getInputStream();
+
+            int read = 0;
+            final byte[] posterBytes = new byte[1024];
+            final byte[] thumbnailBytes = new byte[1024];
+
+            while ((read = filecontent.read(posterBytes)) != -1) {
+                out1.write(posterBytes, 0, read);
+            }
+            LOGGER.info("New file " + posterName + " created at " + path);
+
+            //save thumbnail
+
+            OutputStream out = null;
+
+            out = new FileOutputStream(new File(path + File.separator + thumbnailName));
+            filecontent = thumbnailPart.getInputStream();
+
+            read = 0;
+
+            while ((read = filecontent.read(thumbnailBytes)) != -1) {
+                out.write(thumbnailBytes, 0, read);
+            }
+            LOGGER.info("New file " + thumbnailName + " created at " + path);
 
             List<Cause> causes = new ArrayList<>();
             try {
@@ -242,6 +261,22 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                     new EventCausesCreationDAO(getConnection(), ec).access();
                 }
             }
+
+            List<Tag> tags = new ArrayList<>();
+            try {
+                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+            }catch (SQLException sqle){
+                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+            }
+
+            for (Tag tag:tags) {
+                String tagName= tag.getName();
+                EventTag et= new EventTag(eventID, tagName);
+                if (tag.getName().equals(req.getParameter("cs_"+tagName))){
+                    new EventTagsCreationDAO(getConnection(), et).access();
+                }
+            }
+
 
             m = new Message(String.format("Event \""+e.getName()+"\" successfully created."));
 

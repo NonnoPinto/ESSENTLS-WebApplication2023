@@ -308,9 +308,9 @@
                                         </div>
 
                                             <%--Upload New Document--%>
-                                        <div class="mx-2 my-2 d-flex justify-content-start">
-                                            <label for="userDocumentBytes">Upload New Document:</label>
-                                            <input id="userDocumentBytes" accept="application/pdf" name="userDocumentBytes" type="file" class="mx-2"/>
+                                        <div class="mx-2 my-2">
+                                            <label for="userDocumentBytes" class="d-flex justify-content-start">Upload New Document:</label>
+                                            <input id="userDocumentBytes" accept="application/pdf" name="userDocumentBytes" type="file" class="form-control d-flex justify-content-start"/>
                                         </div>
 
                                             <%--Button--%>

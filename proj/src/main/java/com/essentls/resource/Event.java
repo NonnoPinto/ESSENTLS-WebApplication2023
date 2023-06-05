@@ -178,8 +178,11 @@ public class Event {
         }
         return s;
     }
-    
 
+
+    public void setId(int _id){
+        id = _id;
+    }
     public void setName(String _name){
         name = _name;
     }

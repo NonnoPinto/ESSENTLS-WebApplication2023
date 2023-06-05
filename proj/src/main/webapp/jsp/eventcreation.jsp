@@ -66,11 +66,23 @@
                                         <div class="col-lg-5 col-md-6 col-sm-12">
                                             <!--Causes-->
                                             <div class="mb-3 pb-2">
-                                                Which causes does the event include?<br>
+                                                <label for="causes">Which causes are included?</label><br>
                                                 <div class="form-check max-height-20">
                                                     <c:forEach items="${causes}" var="cause">
                                                         <input class="form-check-input" type="checkbox" id="${cause}" name="cs_${cause.id}" value="${cause.name}">
                                                         <label class="form-check-label" for="${cause.name}">${cause.name}</label><br>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-md-6 col-sm-12">
+                                            <!--Tags-->
+                                            <div class="mb-3 pb-2">
+                                                Which tags does the event include?<br>
+                                                <div class="form-check max-height-20">
+                                                    <c:forEach items="${tags}" var="tag">
+                                                        <input class="form-check-input" type="checkbox" id="${tag}" name="cs_${tag.name}" value="${tag.name}">
+                                                        <label class="form-check-label" for="${tag.name}">${tag.name}</label><br>
                                                     </c:forEach>
                                                 </div>
                                             </div>
@@ -202,11 +214,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                    <div class="row justify-content-space-between">
+                                        <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
                                             <button type="reset" class="button color-magenta bg-white border-magenta px-4 py-2">Reset the form</button>
                                         </div>
-                                        <div class="col-lg-2 col-md-6 col-sm-12">
+                                        <div class="col-lg-3 col-md-6 col-sm-12">
                                             <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2">Continue</button>
                                         </div>
                                     </div>
