@@ -38,9 +38,9 @@ public class VolunteerFilter extends AbstractFilter {
         String unauthorizedURI = req.getContextPath() + "/unauthorized";
         String loginURI = req.getContextPath() + "/login";
 
-        boolean loggedIn = session != null && session.getAttribute("sessionUserId") != null;
+        boolean loggedIn = (session != null && session.getAttribute("sessionUserId") != null);
         int tier = -1;
-        if(session.getAttribute("sessionUserTier") != null) {
+        if(loggedIn && session.getAttribute("sessionUserTier") != null) {
             tier = (int) session.getAttribute("sessionUserTier");
         }
 

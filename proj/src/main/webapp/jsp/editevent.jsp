@@ -36,25 +36,36 @@
                                     <form action="<c:url value="/editEvent"/>" id="editEventForm" method="POST" enctype="multipart/form-data" >
 
                                         <!--Name-->
-                                        <div class="form-floating mb-3 pb-2">
+                                        <div class="mb-3 pb-2">
+                                            <div class="d-flex justify-content-start">
+                                                <label for="name">Name (currently ${event.name}): </label>
+                                            </div>
                                             <input type="text" name="name" id="name" value="${event.name}" placeholder="${event.name}" class="form-control" maxlength="127" required>
-                                            <label for="name">Name (currently ${event.name}): </label>
                                         </div>
 
                                         <!--Description-->
-                                        <div class="form-floating mb-3 pb-2">
-                                            <textarea class="form-control" id="description" type="text" name="description" id="description" placeholder="Description: " rows="3">${event.description}</textarea>
-                                            <label for="description">Description:</label>
+                                        <div class="mb-3 pb-2">
+                                            <div class="d-flex justify-content-start">
+                                                <label for="description">Description:</label>
+                                            </div>
+                                            <div class="input-container">
+                                                <textarea class="form-control" id="description" type="text" name="description" id="description" placeholder="Description: " rows="3">${event.description}</textarea>
+                                            </div>
                                         </div>
-                                        <div class="row d-flex justify-content-around mb-4 align-items-center">
-                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                        <div class="row d-flex justify-content-start mb-4">
+                                            <div class="col-md-6 col-sm-12">
                                                 <!--Price-->
-                                                <div class="form-floating mb-3 pb-2">
+                                                <div class="mb-3 pb-2">
+                                                    <div class="d-flex justify-content-start">
+                                                        <label for="price">Price (currently ${event.price}):</label>
+                                                    </div>
                                                     <input class="form-control" type="number" name="price" id="price" min="0" max="1000000" placeholder="0" step=".01" value="${event.price}" required>
-                                                    <label for="price">Price (currently ${event.price}):</label>
                                                 </div>
                                                 <!--Visibility-->
-                                                <div class="form-floating mb-3 pb-2">
+                                                <div class="mb-3 pb-2">
+                                                    <div class="d-flex justify-content-start">
+                                                        <label for="visibility">To whom do you want to make it visible?</label>
+                                                    </div>
                                                     <select class="form-select" name="visibility" id="visibility" required>
                                                         <option value="${event.visibility}" selected disabled hidden>Tier ${event.visibility} Users</option>
                                                         <option value="0">Tier 0 Users</option>
@@ -62,13 +73,14 @@
                                                         <option value="2">Tier 2 Users</option>
                                                         <option value="3">Tier 3 Users</option>
                                                     </select>
-                                                    <label for="visibility">To whom do you want to make it visible?</label>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                            <div class="col-md-6 col-sm-12">
                                                 <!--Causes-->
                                                 <div class="mb-3 pb-2">
-                                                    <label for="causes">Which causes are included?</label><br>
+                                                    <div class="d-flex justify-content-start">
+                                                        <label for="causes">Which causes are included?</label>
+                                                    </div>
                                                     <div class="form-check max-height-20">
                                                         <c:forEach items="${causes}" var="cause">
                                                             <c:set var="elementCause" scope="session" value="${cause.id}"/>
@@ -86,10 +98,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                            <div class="col-md-6 col-sm-12">
                                                 <!--Tags-->
                                                 <div class="mb-3 pb-2">
-                                                    <label>Which tags are included?</label><br>
+                                                    <div class="d-flex justify-content-start">
+                                                        <label>Which tags are included?</label>
+                                                    </div>
                                                     <div class="form-check max-height-20">
                                                         <c:forEach items="${tags}" var="tag">
                                                             <c:set var="elementTag" scope="session" value="${tag.name}"/>
@@ -110,66 +124,88 @@
                                         </div>
                                         <!--Location-->
                                         <div class="mb-3 pb-2">
-                                            <label class="form-label mb-4">Where does it take place?</label>
+                                            
+                                            <div class="d-flex justify-content-start">
+                                                <label class="form-label mb-4">Where does it take place?</label>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
-                                                    <div class="form-floating mb-3 pb-2">
+                                                    <div class="mb-3 pb-2">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="city">Enter city..</label>
+                                                        </div>
                                                         <input type="text" class="form-control" value="${event.locationMap.city}" name="city" id="city" placeholder="Enter city..." maxlength="60" required>
-                                                        <label for="city">Enter city..</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
-                                                    <div class="form-floating mb-3 pb-2">
+                                                    <div class="mb-3 pb-2">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="street">Enter street..</label>
+                                                        </div>
                                                         <input type="text" class="form-control" value="${event.locationMap.street}" name="street" id="street" placeholder="Enter Street..." maxlength="100" required>
-                                                        <label for="street">Enter street..</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
-                                                    <div class="form-floating mb-3 pb-2">
+                                                    <div class="mb-3 pb-2">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="street">Enter house number...</label>
+                                                        </div>
                                                         <input type="text" class="form-control" value="${event.locationMap.number}" maxlength="5" name="number" id="number" placeholder="Enter house number...">
-                                                        <label for="street">Enter house number...</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
-                                                    <div class="form-floating mb-3 pb-2">
+                                                    <div class="mb-3 pb-2">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="street">Enter country...</label>
+                                                        </div>
                                                         <input type="text" class="form-control" value="${event.locationMap.country}" name="country" id="country" placeholder="Enter country..." required>
-                                                        <label for="street">Enter country...</label>
                                                     </div>
                                                 </div>
 
                                             </div>
                                         </div>
                                         <div>
-                                            <label class="form-label mb-4">Additional Information Required</label>
-                                            <div class="row d-flex justify-content-around mb-4">
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                            
+                                            <div class="d-flex justify-content-start">
+                                                <label class="form-label mb-4">Additional Information Required</label>
+                                            </div>
+                                            <div class="row d-flex justify-content-start mb-4">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--maxParticipantsInternational-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="maxParticipantsInternational"># Max International participants:</label>
+                                                        </div>
                                                         <input class="form-control" type="number" name="maxParticipantsInternational" id="maxParticipantsInternational" value="${event.maxParticipantsInternational}" min="0" max="100000" placeholder="0" required>
-                                                        <label for="maxParticipantsInternational"># Max International participants:</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--MaxParticipantsVolunteer-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="maxParticipantsVolunteer"># Max Volunteer participants:</label>
+                                                        </div>
                                                         <input class="form-control" type="number" name="maxParticipantsVolunteer" id="maxParticipantsVolunteer" value="${event.maxParticipantsVolunteer}" min="0" max="100000" placeholder="0" required>
-                                                        <label for="maxParticipantsVolunteer"># Max Volunteer participants:</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex justify-content-around mb-4">
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                            <div class="row d-flex justify-content-start mb-4">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--eventStart-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="eventStart">When does the event start?</label>
+                                                        </div>
                                                         <input class="form-control" type="datetime-local" name="eventStart" id="eventStart" value="${event.eventStart}" onfocusout="validateDates()" required>
-                                                        <label for="eventStart">When does the event start?</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--eventEnd-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="eventEnd">When does the event end?</label>
+                                                        </div>
                                                         <input class="form-control" type="datetime-local" name="eventEnd" id="eventEnd" value="${event.eventEnd}" onfocusout="validateDates()" required>
-                                                        <label for="eventEnd">When does the event end?</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,63 +213,78 @@
                                             <div class="row pb-2">
                                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                                     <!--subscriptionStart-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="subscriptionStart">When can the subscription start?</label>
+                                                        </div>
                                                         <input class="form-control" type="datetime-local" name="subscriptionStart" id="subscriptionStart" value="${event.subscriptionStart}" onfocusout="validateDates()" required>
-                                                        <label for="subscriptionStart">When can the subscription start?</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                                     <!--subscriptionEnd-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="subscriptionEnd">When can the subscription end?</label>
+                                                        </div>
                                                         <input class="form-control" type="datetime-local" name="subscriptionEnd" id="subscriptionEnd" value="${event.subscriptionEnd}" onfocusout="validateDates()" required>
-                                                        <label for="subscriptionEnd">When can the subscription end?</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                                     <!--withdrawalEnd-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="withdrawalEnd">When does the withdrawal End?</label>
+                                                        </div>
                                                         <input class="form-control" type="datetime-local" name="withdrawalEnd" id="withdrawalEnd" value="${event.withdrawalEnd}" onfocusout="validateDates()" required>
-                                                        <label for="withdrawalEnd">When does the withdrawal End?</label>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="row d-flex justify-content-around mb-4">
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                            <div class="row d-flex justify-content-start mb-4">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--maxWaitingList-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="maxWaitingList">Insert the number of the size of the waiting list:</label>
+                                                        </div>
                                                         <input class="form-control" type="number" name="maxWaitingList" id="maxWaitingList" value="${event.maxWaitingList}" min="0" placeholder="0" max="100000" required>
-                                                        <label for="maxWaitingList">Insert the number of the size of the waiting list:</label>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--attributes-->
-                                                    <div class="form-floating mb-3">
+                                                    <div class="mb-3">
+                                                        <div class="d-flex justify-content-start">
+                                                            <label for="attributes">Attributes:</label>
+                                                        </div>
                                                         <input class="form-control" type="text" name="attributes" id="attributes" value="${event.attributes_asString}" placeholder="${event.attributes_asString}" maxlength="255">
-                                                        <label for="attributes">Attributes:</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row d-flex justify-content-center">
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--thumbnail-->
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="thumbnail">Thumbnail:</label>
+                                                        <div class="d-flex justify-content-start">
+                                                            <label class="form-label" for="thumbnail">Thumbnail:</label>
+                                                        </div>
                                                         <c:if test="${not empty event.thumbnail}">
                                                             <img src="${event.thumbnail}" class="img-fluid mb-3"/>
                                                         </c:if>
                                                         <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" value="${thumbnail}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-5 col-md-6 col-sm-12">
+                                                <div class="col-md-6 col-sm-12">
                                                     <!--poster-->
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="poster">Poster:</label>
+                                                        
+                                                        <div class="d-flex justify-content-start">
+                                                            <label class="form-label" for="poster">Poster:</label>
+                                                        </div>
                                                         <c:if test="${!event.poster.equals('')}">
                                                             <img src="${event.poster}" class="img-fluid mb-3"/>
                                                         </c:if>
-                                                        <input type="file" class="form-control" id="poster" name="poster" accept="image/*" value="${poster}"/>
+                                                            <input type="file" class="form-control" id="poster" name="poster" accept="image/*" value="${poster}"/>
                                                     </div>
                                                 </div>
                                             </div>
