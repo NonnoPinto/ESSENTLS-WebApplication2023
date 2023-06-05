@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.essentls</groupId>
-    <artifactId>essentls</artifactId>
+    <artifactId>proj</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>essentls</name>
+    <name>proj</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
