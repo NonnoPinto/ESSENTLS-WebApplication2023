@@ -221,7 +221,6 @@
                                                     <div class="mb-3">
                                                         <label class="form-label" for="thumbnail">Thumbnail:</label>
                                                         <c:if test="${not empty event.thumbnail}">
-                                                            <!-- TODO: default .png to add in folder -->
                                                             <img src="${event.thumbnail}" class="img-fluid mb-3"/>
                                                         </c:if>
                                                         <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" value="${thumbnail}">
