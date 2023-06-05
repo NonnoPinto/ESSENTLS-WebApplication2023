@@ -230,6 +230,10 @@ label{
     width: 100%;
 }
 
+#navbar .container-fluid{
+    max-width: 1200px;
+}
+
 
 /*FOOTER*/
 .footer{
