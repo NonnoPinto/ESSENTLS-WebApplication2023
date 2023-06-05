@@ -270,7 +270,7 @@
                                 <div class="row d-flex my-4">
                                     <div class="mb-3">
                                         <button type="submit"
-                                                class="button bg-orange text-white border-orange px-4 py-2">
+                                                class="button btn bg-orange text-white border-orange px-4 py-2">
                                             Submit
                                         </button>
                                     </div>

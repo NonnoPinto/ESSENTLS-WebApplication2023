@@ -44,10 +44,10 @@
 
             <!--SUBMIT BUTTON-->
             <div class="my-2">
-              <button type="submit" id="ajaxButton" class="button bg-green text-white border-green px-4 py-2">Search</button>
+              <button type="submit" id="ajaxButton" class="button btn bg-green text-white border-green px-4 py-2">Search</button>
             </div>
             <div class="my-2">
-              <button type="submit" id="ajaxButtonAll" class="button bg-white border-green color-green px-4 py-2">Show all Causes</button>
+              <button type="submit" id="ajaxButtonAll" class="button btn bg-white border-green color-green px-4 py-2">Show all Causes</button>
             </div>
         </div>
         </div>

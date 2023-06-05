@@ -81,11 +81,11 @@
 									</p>
 									How do you want to pay for the membership?<br/>
 									<a href="payment?action=sub">
-										<button class="button bg-orange text-white border-orange px-4 py-2">ONLINE
+										<button class="button btn bg-orange text-white border-orange px-4 py-2">ONLINE
 										</button>
 									</a>
 									<a href="home">
-										<button class="button bg-orange text-white border-orange px-4 py-2">CASH
+										<button class="button btn bg-orange text-white border-orange px-4 py-2">CASH
 										</button>
 									</a>
 								</div>

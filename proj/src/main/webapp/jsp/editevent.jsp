@@ -241,10 +241,10 @@
                                         </div>
                                         <div class="row justify-content-center">
                                             <div class="col-lg-3 col-md-6 col-sm-12 p-1">
-                                                <button type="reset" class="button bg-white color-cyan border-cyan px-4 py-2">Undo changes</button>
+                                                <button type="reset" class="button btn bg-white color-cyan border-cyan px-4 py-2">Undo changes</button>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-12 p-1">
-                                                <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Continue</button>
+                                                <button type="submit" class="button btn bg-cyan text-white border-cyan px-4 py-2">Continue</button>
                                             </div>
                                         </div>
                                     </form>

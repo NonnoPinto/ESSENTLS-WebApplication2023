@@ -69,7 +69,7 @@ function deleteTag(name) {
     cardBody.appendChild(confirmationMessage);
 
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("button", "btn-danger", "mx-2");
+    deleteButton.classList.add("button", "btn", "btn-danger", "mx-2");
     deleteButton.textContent = "Yes";
     deleteButton.addEventListener("click", () => {
         // Close the popup
@@ -81,7 +81,7 @@ function deleteTag(name) {
     cardBody.appendChild(deleteButton);
 
     const cancelButton = document.createElement("button");
-    cancelButton.classList.add("button", "btn-secondary", "mx-2");
+    cancelButton.classList.add("button", "btn", "btn-secondary", "mx-2");
     cancelButton.textContent = "No";
     cancelButton.addEventListener("click", () => {
         // Close the popup
@@ -198,7 +198,7 @@ function processGetResponse(xhr) {
             eee.classList.add("p-2");
             const button = document.createElement("button");
             button.appendChild(document.createTextNode("Delete"));
-            button.classList.add("button", "bg-cyan", "text-white", "border-cyan", "px-4", "py-2");
+            button.classList.add("button", "btn", "bg-cyan", "text-white", "border-cyan", "px-4", "py-2");
             button.addEventListener("click", function () {
                 deleteTag(esntag["name"]);
             });

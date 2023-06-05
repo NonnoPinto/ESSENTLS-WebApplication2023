@@ -66,7 +66,7 @@
 						</div>
 						<!-- ---------------- SUBMIT BUTTON -------------------- -->
 						<div>
-							<button type="submit" class="button bg-orange text-white border-orange px-4 py-2" id="loginButton">Log in</button>
+							<button type="submit" class="button btn bg-orange text-white border-orange px-4 py-2" id="loginButton">Log in</button>
 						</div>
 						<p class="card-text p-2">
 							<small class="form-text text-muted">

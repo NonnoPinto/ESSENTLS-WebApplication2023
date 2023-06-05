@@ -35,13 +35,29 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String unauthorizedURI = request.getContextPath() + "/unauthorized";
         try {
             int eventId = Integer.parseInt(request.getParameter("id").trim());
             Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
             List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
-            request.setAttribute("event", event);
-            request.setAttribute("participants", participants);
-            request.getRequestDispatcher("/jsp/eventparticipants.jsp").forward(request, response);
+            boolean isOrganizer = false;
+
+            int userId = (int)session.getAttribute("sessionUserId");
+
+            for(Participant p: participants){
+                if(p.getRole().equals("Organizer") && p.getUserId() == userId){
+                    isOrganizer = true;
+                    break;
+                }
+            }
+            User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
+            if(!isOrganizer && user.getTier() < 4){
+                response.sendRedirect(unauthorizedURI);
+            }else {
+                request.setAttribute("event", event);
+                request.setAttribute("participants", participants);
+                request.getRequestDispatcher("/jsp/eventparticipants.jsp").forward(request, response);
+            }
         } catch (SQLException e) {
             LOGGER.error("stacktrace:", e);
             throw new ServletException(e);

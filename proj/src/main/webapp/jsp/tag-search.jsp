@@ -33,10 +33,10 @@
 
                     <!--SUBMIT BUTTON-->
                     <div class="my-2">
-                        <button type="submit" id="ajaxButton" class="button bg-cyan text-white border-cyan px-4 py-2">Search</button>
+                        <button type="submit" id="ajaxButton" class="button btn bg-cyan text-white border-cyan px-4 py-2">Search</button>
                     </div>
                     <div class="my-2">
-                        <button type="submit" id="ajaxButtonAll" class="button bg-white border-cyan color-cyan px-4 py-2">Show all Tags</button>
+                        <button type="submit" id="ajaxButtonAll" class="button btn bg-white border-cyan color-cyan px-4 py-2">Show all Tags</button>
                     </div>
 
                 </div>

@@ -109,7 +109,7 @@
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${(nParticipants < event.maxParticipantsInternational) || (nWaiting < event.maxWaitingList)}">
-												<button class="button bg-orange text-white border-orange px-4 py-2 w-100"
+												<button class="button btn bg-orange text-white border-orange px-4 py-2 w-100"
 												   onclick="window.location.href='payment?action=event&id=${event.id}'">
 													JOIN
 												</button>
@@ -147,20 +147,15 @@
 			</div>
 		</div>
 	</div>
-	<c:choose>
-		<c:when test="${canEditEvent}">
-			<div class="row justify-content-center my-2">
-				<div class="col-xxl-10 col-12 d-flex justify-content-end">
-					<form action="<c:url value="/editEvent"/>" method="GET">
-						<input name="id" value="${event.id}" type="hidden">
-						<button type="submit" class="button bg-orange border-orange color-white px-4 py-2">Edit Event</button>
-					</form>
-				</div>
-			</div>
-		</c:when>
-		<c:otherwise>
-		</c:otherwise>
-	</c:choose>
+
+	<c:if test="${isOrganizer || sessionScope.sessionUserTier >= 4}">
+	<div class="row justify-content-center my-4">
+		<div class="col-xxl-10 col-12">
+			<a href="eventparticipants?id=${event.id}"><button class="button btn bg-blue text-white border-blue px-4 py-2 me-3 mb-3">Participants List</button></a>
+			<a href="editEvent?id=${event.id}"><button class="button btn bg-blue text-white border-blue px-4 py-2 mb-3">Edit Event</button></a>
+		</div>
+	</div>
+	</c:if>
 </div>
 <%@include file="/html/footer.html"%>
 </body>

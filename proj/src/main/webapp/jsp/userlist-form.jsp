@@ -74,10 +74,10 @@
                                 <%--Button--%>
                                 <div class="row justify-content-space-between d-flex my-2">
                                     <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
-                                        <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Submit</button>
+                                        <button type="submit" class="button btn bg-orange text-white border-orange px-4 py-2">Submit</button>
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
-                                        <button type="reset" class="button bg-white color-orange border-orange px-4 py-2">Reset the form</button>
+                                        <button type="reset" class="button btn bg-white color-orange border-orange px-4 py-2">Reset the form</button>
                                     </div>
                                 </div>
                             </form>
@@ -88,7 +88,7 @@
                                     <input name="userSurname" type="hidden" value=""/>
                                     <input name="userCardId" type="hidden" value=""/>
                                     <input name="userEmail" type="hidden" value=""/>
-                                    <button type="submit" class="button bg-white color-orange border-orange px-4 py-2">Show all users</button>
+                                    <button type="submit" class="button btn bg-white color-orange border-orange px-4 py-2">Show all users</button>
                                 </form>
                             </div>
                         </div>

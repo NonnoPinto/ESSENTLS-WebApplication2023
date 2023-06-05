@@ -10,7 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Retrieves the details of an event from the database and redirects to the event detail page.
@@ -50,21 +53,21 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
                 int nWaiting = 0;
                 boolean currentIsWaiting = false;
                 boolean currentIsParticipating = false;
-                boolean canEditEvent = false;
 
-                //Tier 4 can always edit event
-                if (user.getTier() == 4){
-                    canEditEvent = true;
+
+                boolean isOrganizer = false;
+
+                for(Participant p: participants){
+                    if(p.getRole().equals("Organizer") && p.getUserId() == userId){
+                       isOrganizer = true;
+                       break;
+                    }
                 }
 
                 for (Participant p : participants) {
                     if (!p.getRole().equals("WaitingList")) {
                         if(p.getUserId() == user.getId()){
                             currentIsParticipating = true;
-                            //if tier < 4 can edit only if is organizer
-                            if (!canEditEvent && user.getTier() >= 2 && p.getRole().equals("Organizer")){
-                                canEditEvent = true;
-                            }
                         }
                         nParticipants++;
                     } else {
@@ -78,7 +81,7 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
                 request.setAttribute("nWaiting", nWaiting);
                 request.setAttribute("currentIsWaiting", currentIsWaiting);
                 request.setAttribute("currentIsParticipating", currentIsParticipating);
-                request.setAttribute("canEditEvent", canEditEvent);
+                request.setAttribute("isOrganizer", isOrganizer);
                 request.getRequestDispatcher("/jsp/eventdetail.jsp").forward(request, response);
             }
         } catch (Exception e) {

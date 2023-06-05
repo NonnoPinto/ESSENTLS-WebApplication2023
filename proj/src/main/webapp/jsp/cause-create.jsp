@@ -33,7 +33,7 @@
 						</div>
             <!--SUBMIT-->
             <div>
-				<button type="submit" id="ajaxButton" class="button bg-magenta text-white border-magenta px-4 py-2">Submit</button>
+				<button type="submit" id="ajaxButton" class="button btn bg-magenta text-white border-magenta px-4 py-2">Submit</button>
 			</div>
           </div>
         </div>

@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="button bg-blue text-white border-blue px-4 py-2">Submit</button>
+                    <button type="submit" class="button btn bg-blue text-white border-blue px-4 py-2">Submit</button>
                 </form>
                 </div>
             </div>

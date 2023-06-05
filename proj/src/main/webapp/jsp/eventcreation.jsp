@@ -216,10 +216,10 @@
 
                                     <div class="row justify-content-space-between">
                                         <div class="col-lg-3 col-md-6 col-sm-12 mb-2">
-                                            <button type="reset" class="button color-magenta bg-white border-magenta px-4 py-2">Reset the form</button>
+                                            <button type="reset" class="button btn color-magenta bg-white border-magenta px-4 py-2">Reset the form</button>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-sm-12">
-                                            <button type="submit" class="button bg-magenta text-white border-magenta px-4 py-2">Continue</button>
+                                            <button type="submit" class="button btn bg-magenta text-white border-magenta px-4 py-2">Continue</button>
                                         </div>
                                     </div>
                                 </form>

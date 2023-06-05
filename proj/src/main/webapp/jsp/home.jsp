@@ -66,7 +66,7 @@
                                 <div class="break-flex d-block d-lg-none my-2"></div>
         
                                 <input type="search" id="srch" name="srch" placeholder="name,location or description" value="${srch}" class="form-control" aria-label="Text input">
-                                <button type="submit" class="button border-cyan text-white bg-cyan px-4 py-2">
+                                <button type="submit" class="button btn border-cyan text-white bg-cyan px-4 py-2">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </form>
@@ -200,14 +200,23 @@
                                                 </div>
                                             </div>
                                             <c:if test="${sessionScope.sessionUserId != null && sessionScope.sessionUserTier > 1}">
+                                                <c:set var="show_buttons" value="false"/>
                                                 <c:forEach items="${isOrganizer}" var="org" varStatus="loop">
                                                     <c:if test="${org.key==event.id && org.value}">
-                                                        <div class="container d-flex flex-wrap zindex-modal mt-3">
-                                                            <a href="eventparticipants?id=${event.id}"><button class="button bg-blue text-white border-blue px-4 py-2 me-3 mb-3">(Organizer) Participants List</button></a>
-                                                            <a href="editEvent?id=${event.id}"><button class="button bg-blue text-white border-blue px-4 py-2 mb-3">(Organizer) Edit</button></a>
-                                                        </div>
+                                                        <c:set var="show_buttons" value="true"/>
                                                     </c:if>
                                                 </c:forEach>
+                                            </c:if>
+
+                                            <c:if test="${sessionScope.sessionUserTier >= 4}">
+                                                <c:set var="show_buttons" value="true"/>
+                                            </c:if>
+
+                                            <c:if test="${show_buttons=='true'}">
+                                                <div class="container d-flex flex-wrap zindex-modal mt-3">
+                                                    <a href="eventparticipants?id=${event.id}"><button class="button btn bg-blue text-white border-blue px-4 py-2 me-3 mb-3">Participants List</button></a>
+                                                    <a href="editEvent?id=${event.id}"><button class="button btn bg-blue text-white border-blue px-4 py-2 mb-3">Edit Event</button></a>
+                                                </div>
                                             </c:if>
 
                                             <div class="container-event-bottom bg-orange">

@@ -50,13 +50,13 @@
                   <td>
                     <form method="POST" action="<c:url value="/select-user-by-id"/>">
                       <input type="hidden" name="userId" value="${user.getId()}"/>
-                      <button type="submit" class="button bg-orange text-white border-orange px-4 py-2">Edit</button>
+                      <button type="submit" class="button btn bg-orange text-white border-orange px-4 py-2">Edit</button>
                     </form>
                   </td>
                   <td>
                     <form method="POST" action="<c:url value="/download-user-document"/>">
                       <input type="hidden" name="userId" value="${user.getId()}"/>
-                      <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Document</button>
+                      <button type="submit" class="button btn bg-cyan text-white border-cyan px-4 py-2">Document</button>
                     </form>
                   </td>
                 </tr>

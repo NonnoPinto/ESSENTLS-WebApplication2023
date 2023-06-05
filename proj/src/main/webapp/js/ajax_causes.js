@@ -106,7 +106,7 @@ function deleteCause(id) {
     cardBody.appendChild(confirmationMessage);
 
     const deleteButton = document.createElement("button");
-    deleteButton.classList.add("button", "button-danger", "mx-2", "px-4", "py-2");
+    deleteButton.classList.add("button", "btn", "button-danger", "mx-2", "px-4", "py-2");
     deleteButton.textContent = "Yes";
     deleteButton.addEventListener("click", () => {
         // Close the popup
@@ -118,7 +118,7 @@ function deleteCause(id) {
     cardBody.appendChild(deleteButton);
 
     const cancelButton = document.createElement("button");
-    cancelButton.classList.add("button", "btn-secondary", "mx-2", "px-4", "py-2");
+    cancelButton.classList.add("button", "btn", "btn-secondary", "mx-2", "px-4", "py-2");
     cancelButton.textContent = "No";
     cancelButton.addEventListener("click", () => {
         // Close the popup

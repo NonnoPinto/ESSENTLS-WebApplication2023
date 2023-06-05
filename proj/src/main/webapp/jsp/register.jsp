@@ -72,7 +72,7 @@
 
                                 <!--SUBMIT BUTTON-->
                                 <div>
-                                    <button type="submit" class="button bg-cyan text-white border-cyan px-4 py-2">Submit</button>
+                                    <button type="submit" class="button btn bg-cyan text-white border-cyan px-4 py-2">Submit</button>
                                 </div>
                                 <p class="card-text p-2">
                                     <small class="form-text text-muted">
