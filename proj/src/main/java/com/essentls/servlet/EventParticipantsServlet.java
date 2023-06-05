@@ -38,6 +38,10 @@ public class EventParticipantsServlet extends AbstractDatabaseServlet {
         try {
             int eventId = Integer.parseInt(request.getParameter("id").trim());
             Event event = new EventInfoDAO(getConnection(), eventId).access().getOutputParam();
+            if(event==null){
+                request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
+                return;
+            }
             List<Participant> participants = new AdminParticipantsListDAO(getConnection(), eventId).access().getOutputParam();
             request.setAttribute("event", event);
             request.setAttribute("participants", participants);

@@ -37,6 +37,10 @@ public class EventDetailServlet extends AbstractDatabaseServlet {
         Integer eventId = Integer.parseInt(request.getParameter("id").trim());
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
+            if(e==null){
+                request.getRequestDispatcher("/jsp/error.jsp").forward(request, response);
+                return;
+            }
             HttpSession session = request.getSession();
             int userId = -1;
             if(session.getAttribute("sessionUserId") != null)
