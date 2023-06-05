@@ -55,7 +55,7 @@
 						</c:choose>
 
 						<!-- Set up a container element for the button -->
-						<div id="paypal-button-container"></div>
+						<div id="paypal-button-container" class="mx-auto w-75"></div>
 
 						<!-- Include the PayPal JavaScript SDK -->
 						<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR"></script>
