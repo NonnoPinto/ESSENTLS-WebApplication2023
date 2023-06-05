@@ -426,22 +426,22 @@ label{
     opacity: .4;
 }
 
-.tag-color-0:nth-child(odd), .tag-color-3:nth-child(even){
+.tag-color-0:nth-of-type(odd), .tag-color-1:nth-of-type(even){
     background-color: #00aeef;
     color: white !important;
 }
 
-.tag-color-1:nth-child(odd), .tag-color-2:nth-child(even){
+.tag-color-1:nth-of-type(odd), .tag-color-0:nth-of-type(even){
     background-color: #ec008c;
     color: white !important;
 }
 
-.tag-color-2:nth-child(odd), .tag-color-1:nth-child(even){
+.tag-color-2:nth-of-type(odd), .tag-color-3:nth-of-type(even){
     background-color: #7bc143;
     color: white !important;
 }
 
-.tag-color-3:nth-child(odd), .tag-color-0:nth-child(even){
+.tag-color-3:nth-of-type(odd), .tag-color-2:nth-of-type(even){
     background-color: #f47b20;
     color: white !important;
 }
