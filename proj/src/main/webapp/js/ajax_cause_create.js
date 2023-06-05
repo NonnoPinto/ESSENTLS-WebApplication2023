@@ -35,6 +35,8 @@ function createCause() {
 
         console.log("Request sent. Waiting for response...");
     }
+
+    document.getElementById("causeForm").reset();
 }
 
 function processPostResponse(xhr) {
