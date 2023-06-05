@@ -99,12 +99,12 @@
                                      onclick="window.location='./eventdetail?id=${event.id}';">
                                     <c:choose>
                                         <c:when test="${empty event.thumbnail}">
-                                            <img class="card-img-top pt-4 img-fluid event-preview-image"
+                                            <img class="card-img-top mt-4 rounded img-fluid event-preview-image"
                                                  src="media/default_thumbnail_${event.getId()%3+1}.png"
                                                  alt="Event thumbnail">
                                         </c:when>
                                         <c:otherwise>
-                                            <img class="card-img-top pt-4 img-fluid event-preview-image"
+                                            <img class="card-img-top mt-4 rounded img-fluid event-preview-image"
                                                  src="${event.thumbnail}" alt="Event thumbnail">
                                         </c:otherwise>
                                     </c:choose>

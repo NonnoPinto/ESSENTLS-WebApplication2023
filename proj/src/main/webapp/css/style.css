@@ -277,6 +277,9 @@ label{
 .event-preview-image{
     /*height: 10rem;*/
     width: 100vw;
+    position: relative;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 #srch{
@@ -305,6 +308,20 @@ label{
     width: 180pt;
     object-fit: cover;
     box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+    position: relative;
+}
+
+#event_card #event_header #event_icon:before, .event-preview-image:before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../media/default_thumbnail_0.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
 }
 
 #event_card #event_header #event_info {
