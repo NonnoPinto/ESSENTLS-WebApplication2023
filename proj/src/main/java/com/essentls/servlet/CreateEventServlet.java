@@ -74,7 +74,15 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
             LOGGER.info("Unexpected Database error: "+sqle.getMessage());
         }
 
+        List<Tag> tags = null;
+        try {
+            tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+        }catch (SQLException sqle){
+            LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+        }
+
         req.setAttribute("causes", causes);
+        req.setAttribute("tags", tags);
         req.getRequestDispatcher("/jsp/eventcreation.jsp").forward(req, res);
     }
 
@@ -242,6 +250,22 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                     new EventCausesCreationDAO(getConnection(), ec).access();
                 }
             }
+
+            List<Tag> tags = new ArrayList<>();
+            try {
+                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+            }catch (SQLException sqle){
+                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+            }
+
+            for (Tag tag:tags) {
+                String tagName= tag.getName();
+                EventTag et= new EventTag(eventID, tagName);
+                if (tag.getName().equals(req.getParameter("cs_"+tagName))){
+                    new EventTagsCreationDAO(getConnection(), et).access();
+                }
+            }
+
 
             m = new Message(String.format("Event \""+e.getName()+"\" successfully created."));
 

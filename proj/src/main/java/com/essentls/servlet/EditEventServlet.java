@@ -117,8 +117,10 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
         try {
             Event e = new EventInfoDAO(getConnection(),eventId).access().getOutputParam();
             ArrayList<Integer> eventCauses = null;
+            ArrayList<String> eventTags = null;
             int userId = -1;
             List<Cause> causes = null;
+            List<Tag> tags = null;
             if(session.getAttribute("sessionUserId") != null)
                 userId = (int)session.getAttribute("sessionUserId");
             User user = new UserProfileInfoDAO(getConnection(), userId).access().getOutputParam();
@@ -155,10 +157,17 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 }catch (SQLException sqle){
                     LOGGER.info("Unexpected Database error: "+sqle.getMessage());
                 }
+                try {
+                    tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+                    eventTags = new TagsFromEventDAO(getConnection(), eventId).access().getOutputParam();
+                }catch (SQLException sqle){
+                    LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+                }
 
                 req.setAttribute("causes", causes);
                 req.setAttribute("listCauses", eventCauses);
-                //LOGGER.info("dimensione cause"+eventCauses.size());
+                req.setAttribute("tags", tags);
+                req.setAttribute("listTags", eventTags);
                 req.getRequestDispatcher("/jsp/editevent.jsp").forward(req, res);
             }
         } catch (Exception e) {
@@ -350,6 +359,13 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             }catch (SQLException sqle){
                 LOGGER.info("Unexpected Database error: "+sqle.getMessage());
             }
+            
+            List<Tag> tags = new ArrayList<>();
+            try {
+                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
+            }catch (SQLException sqle){
+                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
+            }
 
             new EventCausesDeleteDAO(getConnection(), eventID).access();
             for (Cause cause:causes) {
@@ -357,6 +373,14 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 EventCause ec= new EventCause(eventID, causeId);
                 if (cause.getName().equals(req.getParameter("cs_"+causeId))){
                     new EventCausesCreationDAO(getConnection(), ec).access();
+                }
+            }
+            new EventTagsDeleteDAO(getConnection(), eventID).access();
+            for (Tag tag:tags) {
+                String tagName= tag.getName();
+                EventTag et= new EventTag(eventID, tagName);
+                if (tag.getName().equals(req.getParameter("cs_"+tagName))){
+                    new EventTagsCreationDAO(getConnection(), et).access();
                 }
             }
 

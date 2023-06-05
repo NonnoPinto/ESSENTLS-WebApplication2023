@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.essentls.resource.Cause;
 
-
 /**
  * Lists all the causes in the database
  *
@@ -65,8 +64,6 @@ public class CausesListDAO extends AbstractDAO<List<Cause>> {
             pstmt.setString(1, "%" + subCauseNoSpace + "%");
             pstmt.setInt(2, id);
             pstmt.setInt(3, id);
-
-
 
             rs = pstmt.executeQuery();
 
