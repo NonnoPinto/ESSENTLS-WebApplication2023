@@ -20,7 +20,7 @@ public class UserMembershipDAO extends AbstractDAO<User> {
      * The SQL statement to be executed
      */
     private static final String STATEMENT_UPDATE_USER = "UPDATE public.\"Users\" SET "+
-            " \"cardID\" = ?, tier = 1,  \"registrationDate\" = ?,  name = ?,  surname = ?, "+
+            " \"cardID\" = ?, tier = ?,  \"registrationDate\" = ?,  name = ?,  surname = ?, "+
             "sex = CAST(? as gen),  \"dateOfBirth\" = ?,  nationality = ?,  \"homeCountryAddress\" = ?,  \"homeCountryUniversity\" = ?, "+
             "\"periodOfStay\" = ?,  \"phoneNumber\" = ?,  \"paduaAddress\" = ?,  \"documentType\" = CAST (? as identity),  \"documentNumber\" = ?, "+
             "\"documentFile\" = ?,  \"dietType\" = CAST (? as diet),  allergies = ? WHERE id = ? RETURNING *";
@@ -76,23 +76,24 @@ public class UserMembershipDAO extends AbstractDAO<User> {
         try {
             pstmt = con.prepareStatement(STATEMENT_UPDATE_USER);
             pstmt.setString(1, user.getCardId());
-            pstmt.setDate(2, user.getRegistrationDate());
-            pstmt.setString(3, user.getName());
-            pstmt.setString(4, user.getSurname());
-            pstmt.setString(5, user.getSex());
-            pstmt.setDate(6, user.getDateOfBirth());
-            pstmt.setString(7, user.getNationality());
-            pstmt.setObject(8,  jsonToPGobj(user.getHomeCountryAddress()));
-            pstmt.setString(9, user.getHomeCountryUniversity());
-            pstmt.setInt(10, user.getPeriodOfStay());
-            pstmt.setString(11, user.getPhoneNumber());
-            pstmt.setObject(12, jsonToPGobj(user.getPaduaAddress()));
-            pstmt.setString(13, user.getDocumentType());
-            pstmt.setString(14, user.getDocumentNumber());
-            pstmt.setString(15, user.getDocumentFile());
-            pstmt.setString(16, user.getDietType());
-            pstmt.setArray(17, arrayAllergies);
-            pstmt.setInt(18, user.getId());
+            pstmt.setInt(2, user.getTier());
+            pstmt.setDate(3, user.getRegistrationDate());
+            pstmt.setString(4, user.getName());
+            pstmt.setString(5, user.getSurname());
+            pstmt.setString(6, user.getSex());
+            pstmt.setDate(7, user.getDateOfBirth());
+            pstmt.setString(8, user.getNationality());
+            pstmt.setObject(9,  jsonToPGobj(user.getHomeCountryAddress()));
+            pstmt.setString(10, user.getHomeCountryUniversity());
+            pstmt.setInt(11, user.getPeriodOfStay());
+            pstmt.setString(12, user.getPhoneNumber());
+            pstmt.setObject(13, jsonToPGobj(user.getPaduaAddress()));
+            pstmt.setString(14, user.getDocumentType());
+            pstmt.setString(15, user.getDocumentNumber());
+            pstmt.setString(16, user.getDocumentFile());
+            pstmt.setString(17, user.getDietType());
+            pstmt.setArray(18, arrayAllergies);
+            pstmt.setInt(19, user.getId());
 
             rs= pstmt.executeQuery();
 

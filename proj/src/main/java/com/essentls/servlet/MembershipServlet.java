@@ -111,7 +111,7 @@ public class MembershipServlet extends AbstractDatabaseServlet {
             }else {
                 // String cardId = req.getParameter("card-id");
                 String cardId = "A0000"; // PLACEHOLDER
-                Integer tier = 0;
+                int tier = 0;
                 java.util.Date utilDate = new java.util.Date();
                 java.sql.Date registrationDate = new java.sql.Date(utilDate.getTime());//registration date
                 String name = req.getParameter("first_name");
@@ -154,15 +154,13 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 Part documentBytesPart = req.getPart("document-bytes");
                 byte[] documentBytes = documentBytesPart.getInputStream().readAllBytes();
 
-                user = new User(id, null, null, null, tier, registrationDate, name, surname, sex, date2,
+                user = new User(id, null, null, cardId, tier, registrationDate, name, surname, sex, date2,
                         nationality, homeCountryAddress, homeCountryUniversity, periodOfStay, phoneNumber, paduaAddress,
                         documentType, documentNumber, null, dietType, allergies, null, emailConfirmed);
 
                 // try to find the user in the database
                 LOGGER.info("user %s is trying to membership", user.getEmail());
-                if(new UserMembershipDAO(getConnection(), user).access().getOutputParam() != null) {
-                    req.getSession().setAttribute("sessionUserTier", 1);
-                }
+                new UserMembershipDAO(getConnection(), user).access().getOutputParam();
 
                 if(documentBytes.length > 0) {
                     user.setDocumentBytes(documentBytes);
