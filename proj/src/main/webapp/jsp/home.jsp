@@ -80,7 +80,7 @@
         <div class="container">
             <div class="row justify-content-space-between">
                 <c:if test="${events.isEmpty()}">
-                    <div class="col-12">
+                    <div class="col-12 pb-3">
                         <div class="card w-100 h-100 container border-orange">
                             <div class="card-body">
                                 <h2 class="event-title  text-center m-0 p-2">
