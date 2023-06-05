@@ -131,7 +131,9 @@ public class AdminUsersListDAO extends AbstractDAO<List<User>> {
                     LOGGER.error("Error while parsing homeCountryAddress for user with id: " + rs.getInt("id"));
                 }
                 try{
-                    allergies=(String[]) rs.getArray("allergies").getArray();
+                    if (rs.getArray("allergies") != null)
+                        allergies=(String[]) rs.getArray("allergies").getArray();
+                    else allergies = new String[0];
                 } catch (Exception e){
                     LOGGER.error("Error while parsing allergies for user with id: " + rs.getInt("id"));
                 }
