@@ -39,6 +39,9 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
      */
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
+        if (partHeader == null) {
+            return null;
+        }
         LOGGER.info("Part Header = {0}", partHeader);
         for (String content : part.getHeader("content-disposition").split(";")) {
             if (content.trim().startsWith("filename")) {
@@ -173,6 +176,11 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 final Part thumbnailPart = req.getPart("thumbnail");
                 final String posterName = getFileName(posterPart);
                 final String thumbnailName = getFileName(thumbnailPart);
+
+                if(posterName==null || thumbnailName==null){
+                    LOGGER.info("Poster or thumbnail not found");
+                    throw new FileNotFoundException("Poster or thumbnail not found");
+                }
 
                 OutputStream out1 = null;
                 InputStream filecontent = null;
