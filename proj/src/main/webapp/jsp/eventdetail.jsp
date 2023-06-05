@@ -102,6 +102,11 @@
 								<c:choose>
 									<c:when test="${currentIsParticipating}">
 										You are participating at the event.
+										<div class="container pt-1">
+											<a href="confirmEvent?id=${event.id}"><button class="button btn bg-orange text-white border-orange px-4 py-2 w-100">
+												Edit info
+											</button></a>
+										</div>
 									</c:when>
 									<c:when test="${currentIsWaiting}">
 										You are actually in the waiting list for this event.
