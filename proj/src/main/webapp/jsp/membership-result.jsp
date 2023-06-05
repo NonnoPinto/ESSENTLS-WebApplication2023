@@ -75,9 +75,9 @@
 										<br/>
 										Meanwhile you can speed up the procedure by paying online if you wish.<br/>
 										By paying online you will get a temporary card number, and you will be able										to
-										view and subscribe at the events!<br/>
-										<b>IMPORTANT: </b>Be careful that you must sign the papers in the office before actually
-										participate at one event.
+										view and subscribe to events!<br/>
+										<b>IMPORTANT: </b>Be careful that you must sign the papers in office before actually
+										participate at events.
 									</p>
 									How do you want to pay for the membership?<br/>
 									<a href="payment?action=sub">
