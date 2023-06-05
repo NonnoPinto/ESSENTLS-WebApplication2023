@@ -21,6 +21,7 @@ public class TagsRemovalDAO extends AbstractDAO<Tag> {
      * The SQL statement to be executed
      */
     private static final String STATEMENT = "DELETE FROM public.\"Tags\" WHERE name = ? RETURNING *";
+    private static final String STATEMENT_TAGS = "DELETE FROM public.\"EventTags\" WHERE tag = ? RETURNING *";
 
     /**
      * The name of the tag to be deleted
@@ -43,21 +44,30 @@ public class TagsRemovalDAO extends AbstractDAO<Tag> {
     protected void doAccess() throws Exception {
 
         PreparedStatement stmt = null;
+        PreparedStatement stmt_tags = null;
         ResultSet rs = null;
+        ResultSet rs_tags = null;
 
         //the deleted tag
         Tag t = null;
 
         try {
+
+            stmt_tags = con.prepareStatement(STATEMENT_TAGS);
+            stmt_tags.setString(1, name);
+            rs_tags = stmt_tags.executeQuery();
+
             stmt = con.prepareStatement(STATEMENT);
             stmt.setString(1, name);
 
-            rs = stmt.executeQuery();   //add to payment's table
+            rs = stmt.executeQuery();
 
             if (rs.next()) {
                 t = new Tag(rs.getString("name"));
 
                 LOGGER.info("Tag %s successfully deleted", t.getName());
+            }else{
+                LOGGER.info("Problem during Tag %s delete", t.getName());
             }
         } finally {
             if (rs != null)

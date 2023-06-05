@@ -226,7 +226,14 @@ function processDeleteResponse(xhr) {
     if (xhr.status !== 200) {
         console.log("Request unsuccessful: HTTP status = %d.", xhr.status);
         console.log(xhr.response);
-        div.appendChild(document.createTextNode("Unable to perform the AJAX request."));
+        if(xhr.response.length > 0){
+            response = JSON.parse(xhr.response);
+            message = response.message;
+            div.appendChild(document.createTextNode(message.message));
+        }else{
+            div.appendChild(document.createTextNode("Unable to perform the AJAX request."));
+        }
+
         return;
     }
 
