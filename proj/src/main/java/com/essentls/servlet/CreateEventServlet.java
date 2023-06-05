@@ -262,19 +262,15 @@ public final class CreateEventServlet extends AbstractDatabaseServlet {
                 }
             }
 
-            List<Tag> tags = new ArrayList<>();
-            try {
-                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
-            }catch (SQLException sqle){
-                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
-            }
 
-            for (Tag tag:tags) {
-                String tagName= tag.getName();
-                EventTag et= new EventTag(eventID, tagName);
-                if (tag.getName().equals(req.getParameter("cs_"+tagName))){
-                    new EventTagsCreationDAO(getConnection(), et).access();
-                }
+            String tags_input = req.getParameter("tags");
+            String[] tags = new String[0];
+            if(tags_input != null && tags_input.trim().length() > 0){
+                tags = tags_input.trim().split(",");
+            }
+            for (String tag:tags) {
+                EventTag et= new EventTag(eventID, tag);
+                new EventTagsCreationDAO(getConnection(), et).access();
             }
 
 

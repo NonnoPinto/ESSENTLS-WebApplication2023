@@ -15,7 +15,7 @@ public class EventTag {
      */
     public EventTag(int eventId, String tagName) {
         this.eventId = eventId;
-        this.tagName = tagName;
+        this.tagName = tagName.replace(" ", "").toLowerCase();
     }
 
     public int getEventId() {
