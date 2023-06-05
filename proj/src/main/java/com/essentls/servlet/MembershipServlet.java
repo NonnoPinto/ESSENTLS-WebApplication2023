@@ -110,7 +110,7 @@ public class MembershipServlet extends AbstractDatabaseServlet {
                 res.sendRedirect(req.getContextPath() + "/profile");
             }else {
                 // String cardId = req.getParameter("card-id");
-                String cardId = "A0000"; // PLACEHOLDER
+                String cardId = "00000"; // PLACEHOLDER
                 int tier = 0;
                 java.util.Date utilDate = new java.util.Date();
                 java.sql.Date registrationDate = new java.sql.Date(utilDate.getTime());//registration date
