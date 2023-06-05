@@ -20,6 +20,7 @@ public class EventTagsCreationDAO extends AbstractDAO<EventTag> {
         * The SQL statement to be executed
         */
         private static final String INSERT_STATEMENT = "INSERT INTO public.\"EventTags\" (\"eventId\", \"tag\") VALUES (?, ?)";
+        private static final String INSERT_TAG_STATEMENT = "INSERT INTO public.\"Tags\" (\"name\") VALUES (?) ON CONFLICT (\"name\") DO NOTHING;";
 
         /**
          *  the basic attributes
@@ -44,12 +45,17 @@ public class EventTagsCreationDAO extends AbstractDAO<EventTag> {
         protected void doAccess() throws Exception {
 
             PreparedStatement stmtInsert = null;
+            PreparedStatement stmtInsert_tag = null;
             ResultSet rs = null;
 
 
 
             try {
-                if(tagName!=""&&eventID>0){
+                if(!tagName.trim().equals("") && eventID>0){
+                    stmtInsert_tag = con.prepareStatement(INSERT_TAG_STATEMENT);
+                    stmtInsert_tag.setString(1, tagName);
+                    stmtInsert_tag.executeUpdate();
+
                     stmtInsert = con.prepareStatement(INSERT_STATEMENT);
                     stmtInsert.setInt(1, eventID);
                     stmtInsert.setString(2, tagName);

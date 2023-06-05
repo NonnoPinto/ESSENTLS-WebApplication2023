@@ -80,7 +80,7 @@
                                         <div class="col-md-6 col-sm-12">
                                             <!--Causes-->
                                             <div class="d-flex justify-content-start">
-                                                <label for="causes">Which causes are included?</label><br>
+                                                <label>Which causes are included?</label><br>
                                             </div>
                                             <div class="mb-3 pb-2">
                                                 <div class="form-check max-height-20">
@@ -95,13 +95,10 @@
                                             <!--Tags-->
                                             <div class="mb-3 pb-2">
                                                 <div class="d-flex justify-content-start">
-                                                    <label for="causes">Which tags are included?</label><br>
+                                                    <label for="tags">Tags (Separated by comma):</label>
                                                 </div>
-                                                <div class="form-check max-height-20">
-                                                    <c:forEach items="${tags}" var="tag">
-                                                        <input class="form-check-input" type="checkbox" id="${tag}" name="cs_${tag.name}" value="${tag.name}">
-                                                        <label class="form-check-label" for="${tag.name}">${tag.name}</label><br>
-                                                    </c:forEach>
+                                                <div class="input-container">
+                                                    <input class="form-control" type="text" maxlength="255" name="tags" id="tags" placeholder="">
                                                 </div>
                                             </div>
                                         </div>

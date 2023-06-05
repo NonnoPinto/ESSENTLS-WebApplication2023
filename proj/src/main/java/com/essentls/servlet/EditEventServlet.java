@@ -117,6 +117,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 }catch (SQLException sqle){
                     LOGGER.info("Unexpected Database error: "+sqle.getMessage());
                 }
+                eventTags = new ArrayList<String>();
                 try {
                     tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
                     eventTags = new TagsFromEventDAO(getConnection(), eventId).access().getOutputParam();
@@ -127,7 +128,7 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 req.setAttribute("causes", causes);
                 req.setAttribute("listCauses", eventCauses);
                 req.setAttribute("tags", tags);
-                req.setAttribute("listTags", eventTags);
+                req.setAttribute("event_tags", String.join(", ", eventTags));
                 req.getRequestDispatcher("/jsp/editevent.jsp").forward(req, res);
             }
         } catch (Exception e) {
@@ -328,13 +329,6 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
             }catch (SQLException sqle){
                 LOGGER.info("Unexpected Database error: "+sqle.getMessage());
             }
-            
-            List<Tag> tags = new ArrayList<>();
-            try {
-                tags = new TagsListDAO(getConnection(), "").access().getOutputParam();
-            }catch (SQLException sqle){
-                LOGGER.info("Unexpected Database error: "+sqle.getMessage());
-            }
 
             new EventCausesDeleteDAO(getConnection(), eventID).access();
             for (Cause cause:causes) {
@@ -345,12 +339,15 @@ public final class EditEventServlet extends AbstractDatabaseServlet {
                 }
             }
             new EventTagsDeleteDAO(getConnection(), eventID).access();
-            for (Tag tag:tags) {
-                String tagName= tag.getName();
-                EventTag et= new EventTag(eventID, tagName);
-                if (tag.getName().equals(req.getParameter("cs_"+tagName))){
-                    new EventTagsCreationDAO(getConnection(), et).access();
-                }
+
+            String tags_input = req.getParameter("tags");
+            String[] tags = new String[0];
+            if(tags_input != null && tags_input.trim().length() > 0){
+                tags = tags_input.trim().split(",");
+            }
+            for (String tag:tags) {
+                EventTag et= new EventTag(eventID, tag);
+                new EventTagsCreationDAO(getConnection(), et).access();
             }
 
             m = new Message(String.format("Event \""+e.getName()+"\" successfully edited."));

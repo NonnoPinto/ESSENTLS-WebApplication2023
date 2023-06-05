@@ -79,7 +79,7 @@
                                                 <!--Causes-->
                                                 <div class="mb-3 pb-2">
                                                     <div class="d-flex justify-content-start">
-                                                        <label for="causes">Which causes are included?</label>
+                                                        <label>Which causes are included?</label>
                                                     </div>
                                                     <div class="form-check max-height-20">
                                                         <c:forEach items="${causes}" var="cause">
@@ -102,22 +102,10 @@
                                                 <!--Tags-->
                                                 <div class="mb-3 pb-2">
                                                     <div class="d-flex justify-content-start">
-                                                        <label>Which tags are included?</label>
+                                                        <label for="tags">Tags (Separated by comma):</label>
                                                     </div>
-                                                    <div class="form-check max-height-20">
-                                                        <c:forEach items="${tags}" var="tag">
-                                                            <c:set var="elementTag" scope="session" value="${tag.name}"/>
-                                                            <c:choose>
-                                                                <c:when test="${listTags.contains(elementTag)}">
-                                                                    <input class="form-check-input" type="checkbox" id="${tag}" name="cs_${tag.name}" value="${tag.name}" checked>
-                                                                    <label class="form-check-label" for="${tag.name}">${tag.name}</label><br>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <input class="form-check-input" type="checkbox" id="${tag}" name="cs_${tag.name}" value="${tag.name}">
-                                                                    <label class="form-check-label" for="${tag.name}">${tag.name}</label><br>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
+                                                    <div class="input-container">
+                                                        <input class="form-control" type="text" maxlength="255" name="tags" id="tags" value="${event_tags}">
                                                     </div>
                                                 </div>
                                             </div>
